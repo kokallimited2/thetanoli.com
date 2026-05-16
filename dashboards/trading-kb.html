@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Trading Knowledge Base — 74 Videos Analyzed</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root { --bg: #0a0f1e; --bg2: #111827; --card: #1e293b; --accent: #f59e0b; --accent2: #22c55e; --accent3: #3b82f6; --text: #f1f5f9; --text2: #94a3b8; --text3: #64748b; --border: #334155; --rad: 12px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.hero { background: linear-gradient(135deg, #0a0f1e 0%, #065f46 40%, #0d9488 100%); padding: 50px 24px 40px; text-align: center; }
+.hero h1 { font-size: clamp(1.8rem,4vw,2.5rem); font-weight: 800; }
+.hero h1 em { color: var(--accent); font-style: normal; }
+.hero p { color: var(--text2); font-size: 14px; margin-top: 8px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 14px; margin: 24px 0; }
+.stat { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 20px; text-align: center; }
+.stat .num { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+.stat .label { font-size: 12px; color: var(--text3); }
+.category { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 24px; margin-bottom: 20px; }
+.category h2 { color: var(--accent); font-size: 1.3rem; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+.category .subtitle { color: var(--text3); font-size: 13px; margin-bottom: 16px; }
+.rule { background: var(--bg2); border-left: 3px solid var(--accent); padding: 12px 16px; margin: 10px 0; border-radius: 0 8px 8px 0; }
+.rule strong { color: var(--accent2); }
+.quote { background: rgba(59,130,246,.08); border-left: 3px solid var(--accent3); padding: 12px 16px; margin: 10px 0; border-radius: 0 8px 8px 0; font-style: italic; color: var(--text2); }
+.quote::before { content: '"'; }
+.quote::after { content: '"'; }
+.video-link { font-size: 13px; color: var(--text3); }
+.video-link a { color: var(--accent3); text-decoration: none; }
+.video-link a:hover { text-decoration: underline; }
+h3 { color: var(--text); font-size: 1.1rem; margin: 16px 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+ul { padding-left: 20px; margin: 8px 0; }
+li { color: var(--text2); margin: 4px 0; }
+footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; color: var(--text3); font-size: 12px; margin-top: 30px; }
+.tag { display: inline-block; background: rgba(59,130,246,.12); color: #60a5fa; padding: 2px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; margin: 2px; }
+.tag.pa { background: rgba(59,130,246,.15); color: #60a5fa; }
+.tag.candle { background: rgba(245,158,11,.15); color: var(--accent); }
+.tag.opt { background: rgba(139,92,246,.15); color: #a78bfa; }
+.tag.swing { background: rgba(34,197,94,.15); color: var(--accent2); }
+.tag.day { background: rgba(239,68,68,.15); color: #f87171; }
+.tag.rm { background: rgba(251,191,36,.15); color: #fbbf24; }
+.tag.val { background: rgba(16,185,129,.15); color: #34d399; }
+.tag.beg { background: rgba(168,85,247,.15); color: #c084fc; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+body { animation: fadeIn 0.4s ease-out; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>Stock Trading <em>Knowledge Base</em></h1>
+  <p>74 videos • 9,205 minutes • 153 hours • 4 days of analysis • Updated daily</p>
+</div>
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><div class="num">74</div><div class="label">Total Videos</div></div>
+    <div class="stat"><div class="num">9,205</div><div class="label">Minutes Analyzed</div></div>
+    <div class="stat"><div class="num">11</div><div class="label">Strategy Types</div></div>
+    <div class="stat"><div class="num">4</div><div class="label">Days Completed</div></div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- 1. TECHNICAL ANALYSIS -->
+  <!-- ============================ -->
+  <div class="category">
+    <h2>📈 Technical Analysis</h2>
+    <div class="subtitle">25 videos — Mete Kaplan, Rayner Teo, The Secret Mindset, The Trading Channel, Ross Cameron, Craig Percoco</div>
+
+    <h3>Core Framework</h3>
+    <div class="rule"><strong>Support & Resistance:</strong> The foundation of all technical analysis. Price respects levels where significant buying/selling occurred. Mark major S/R levels on higher timeframe (daily/weekly) — these have more weight.</div>
+    <div class="rule"><strong>Trend Analysis:</strong> Higher highs + higher lows = uptrend. Lower highs + lower lows = downtrend. <em>"The trend is your friend until it isn't"</em> — trade WITH the primary trend on higher timeframes.</div>
+    <div class="rule"><strong>Indicators (3 to master):</strong> 
+      <br>• <strong>RSI (14):</strong> Below 30 = oversold (potential bounce); Above 70 = overbought (potential pullback). Divergence between RSI and price = strongest signal.
+      <br>• <strong>MACD (12,26,9):</strong> Line crossing above signal = bullish; below = bearish. Histogram shows momentum strength.
+      <br>• <strong>Moving Averages:</strong> 20 EMA (short-term trend), 50 EMA (medium), 200 MA (long-term). Golden cross (50 above 200) = bull market.
+    </div>
+
+    <h3>Breakout Trading System</h3>
+    <div class="rule"><strong>Entry:</strong> Wait for price to break above resistance (uptrend) or below support (downtrend) with <strong>increased volume</strong>. Pullback entry is safer than breakout entry.</div>
+    <div class="rule"><strong>Stop Loss:</strong> Below the breakout level (for longs) by 1-2 ATR. A tight stop = getting stopped out.</div>
+    <div class="rule"><strong>Take Profit:</strong> Measure the height of the consolidation range and project it upward. Use 1:2 or 1:3 risk/reward minimum.</div>
+    <div class="quote">The ONE Trading Video Needed for Traders — Mete Kaplan (12 hours, 724 min)</div>
+
+    <h3>Market Structure (BOS / CHOCH)</h3>
+    <div class="rule"><strong>Break of Structure (BOS):</strong> When price breaks a previous high/low, confirming the trend is continuing. Strong BOS = breaks cleanly with momentum; weak BOS = struggles, range forms.</div>
+    <div class="rule"><strong>Change of Character (CHOCH):</strong> When price breaks the structural low (in uptrend) or high (in downtrend), signaling a potential reversal.</div>
+    <div class="rule"><strong>Entry setup after BOS:</strong> Wait for pullback to the entry zone between the broken level and the previous lower low. <em>This is where institutions enter.</em></div>
+
+    <h3>Trend Breaks & Fibonacci Confluence (Craig Percoco)</h3>
+    <div class="rule"><strong>Golden Goose — Trend Breaks & Retests:</strong> When a trend line breaks with a big momentum candle and price comes back to retest the opposite side — that's the highest-probability entry. <em>"This is one of the most important golden goose eggs I've found in trading."</em></div>
+    <div class="rule"><strong>Change of Character (CHoCH):</strong> When price breaks the structural low in an uptrend (or high in a downtrend), the trend character has changed. A retest of the broken level = potential reversal entry.</div>
+    <div class="rule"><strong>RSI Divergence:</strong> Higher price + lower RSI = bearish divergence (top signal). Lower price + higher RSI = bullish divergence (bottom signal). This is often an even stronger signal than price action alone.</div>
+    <div class="rule"><strong>Fibonacci for Wave Targets:</strong> Use trend-based fib extension from base → first wave top → retracement bottom. Look for price to react at 1.618, 2.618, or 3.618 extensions — these confluences mark potential wave 5 tops.</div>
+    <div class="rule"><strong>Fair Value Gaps (FVG):</strong> Areas left behind by large, impactful directional candles. Price often returns to fill these gaps before continuing. Become confluence zones for entries when combined with trend analysis.</div>
+    <div class="rule"><strong>Indicator Stack:</strong> Craig's setup: (1) Smart Money Concepts (CHoCH + BOS levels from Lux Algo), (2) Fair Value Gap indicator, (3) Volume indicator, (4) Custom divergence signals. <em>"Once you start understanding the trends and confluence, you can keep your risk really tight and have open-ended upside."</em></div>
+    <div class="rule"><strong>Chaos to Confluence:</strong> Use BOS + CHoCH + FVG + Fib extensions + RSI divergence to align multiple confluences. When 4+ factors point to the same zone, probability shifts dramatically in your favor.</div>
+    <div class="video-link">
+      Key videos:
+      <a href="https://www.youtube.com/watch?v=EyBQpflvb_0">Mete Kaplan — 12h TA Course</a> •
+      <a href="https://www.youtube.com/watch?v=ttPGkFAROWk">Rayner Teo — Ultimate TA Course</a> •
+      <a href="https://www.youtube.com/watch?v=UbmSxPOQRb4">The Secret Mindset — 17 Years TA</a> •
+      <a href="https://www.youtube.com/watch?v=eynxyoKgpng">The Trading Channel — Only TA Video (26M views)</a> •
+      <a href="https://www.youtube.com/watch?v=qjP31le61rM">Craig Percoco — TA Day Trading Course (138K views)</a>
+    </div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- 2. PRICE ACTION -->
+  <!-- ============================ -->
+  <div class="category">
+    <h2>📊 Price Action</h2>
+    <div class="subtitle">13 videos — Mete Kaplan, Fortune Talks, Mind Math Money, The Trading Geek, Rayner Teo, The Trading Channel, Stock Dictionary</div>
+
+    <h3>Core Philosophy</h3>
+    <div class="rule"><strong>Price action > indicators.</strong> Candlestick formations + S/R + market structure = all you need. Indicators lag; price action leads.</div>
+    <div class="rule"><strong>Market Structure Break (MSB):</strong> Identify the trend. Wait for a <strong>strong</strong> break of the last lower high (in downtrend → reversal) or last lower low (in uptrend → pullback).</div>
+
+    <h3>Entry Zone Strategy (The Mete Kaplan Method)</h3>
+    <div class="rule"><strong>3-Step Setup:</strong>
+      <br>1. Identify current trend direction on the higher timeframe
+      <br>2. Wait for a strong Market Structure Break (MSB) — clean break, not struggling
+      <br>3. Draw entry zone between: the broken level (lower high/low) and the deepest swing high/low before it
+      <br>4. Enter ONLY when price pulls back to this zone + shows a strong confirmation candlestick</div>
+    <div class="rule"><strong>Strong vs Weak MSB:</strong> Strong = breaks cleanly with one large candle. Weak = struggles, makes a range, then breaks. Only trade strong MSBs.</div>
+
+    <h3>Candlestick Confirmation</h3>
+    <div class="rule"><strong>Bullish confirmation:</strong> Hammer, Bullish Engulfing, Piercing Pattern at support</div>
+    <div class="rule"><strong>Bearish confirmation:</strong> Shooting Star, Bearish Engulfing, Dark Cloud Cover at resistance</div>
+
+    <h3>Price Action with Multi-Timeframe Confluence</h3>
+    <div class="rule"><strong>Candlestick Logic (not names):</strong> Don't memorize pattern names. Understand the logic: long lower wick = buyers absorbed selling pressure. Long upper wick = sellers rejected highs. Small body at support after big drop = weakening momentum.</div>
+    <div class="rule"><strong>Location Rule:</strong> A bullish candlestick at support = buy signal. A bearish candlestick at resistance = sell signal. Same pattern in the middle of nowhere = noise. <em>"We cannot take trade only on the basis of the candlestick — location is everything."</em></div>
+    <div class="rule"><strong>Market Structure:</strong> 70% of the time the market is sideways — beginners should AVOID trading in ranges. Uptrend = higher highs + higher lows. Downtrend = lower highs + lower lows.</div>
+    <div class="rule"><strong>Demand/Supply Zone Drawing:</strong> Need minimum 3 momentum candles. Draw a zone equal to the range of the small body candle(s) before the momentum candles. Smart money enters at these zones.</div>
+    <div class="rule"><strong>Candle Shrinkage Signal:</strong> If candles get smaller as they approach a key level (support or resistance), it signals momentum loss. The move is exhausting. Prepare for a reversal or breakout.</div>
+    <div class="rule"><strong>Bearish Flag Breakdown:</strong> Sharp down move (high volume) → correction up (low volume, two parallel trend lines) → breakdown below flag with high volume = short entry. Profit target = height of the flag pole, or use minimum 1:2 R/R.</div>
+    <div class="rule"><strong>Multi-Timeframe Convergence:</strong> Daily timeframe shows trend direction + key S/R. 4H timeframe shows entry timing. When a trend line and horizontal resistance cross on BOTH timeframes, you have high-confidence confluence.</div>
+    <div class="rule"><strong>Fake Breakout Filter:</strong> If price breaks support with a parabolic move (no consolidation/retracement before the break), DON'T trade it — likely a fakeout. Wait for a retest and confirmation candle.</div>
+
+    <div class="video-link">
+      Key videos:
+      <a href="https://www.youtube.com/watch?v=OmZZarBK_M8">Fortune Talks — Price Action Mastery (2.6M views)</a> •
+      <a href="https://www.youtube.com/watch?v=pWkwxYR0eZY">Mete Kaplan — 9h Price Action Course</a> •
+      <a href="https://www.youtube.com/watch?v=tWiErAItlpY">Mind Math Money — Price Action Made Simple</a> •
+      <a href="https://www.youtube.com/watch?v=6SPAtTn_XoA">Stock Dictionary — Price Action Full Course (81K views)</a>
+    </div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- 3. CANDLESTICK PATTERNS -->
+  <!-- ============================ -->
+  <div class="category">
+    <h2>🕯️ Candlestick Patterns</h2>
+    <div class="subtitle">12 videos — Wysetrade (5.1M views), Mind Math Money, Rayner Teo (7.5M views), The Trading Geek (2.8M views), JeaFx</div>
+
+    <h3>Key Reversal Patterns</h3>
+    <ul>
+      <li><strong>Hammer/Shooting Star:</strong> Small body + long lower/upper wick. Signals rejection of price level.</li>
+      <li><strong>Engulfing:</strong> Large candle completely engulfs previous small candle. Strong reversal signal at S/R.</li>
+      <li><strong>Doji:</strong> Open = close. Indecision. At top/bottom of trend = potential reversal.</li>
+      <li><strong>Morning Star / Evening Star:</strong> 3-candle pattern. Bearish candle → doji/small body → bullish candle (and vice versa). One of the most reliable reversal patterns.</li>
+      <li><strong>Piercing Pattern / Dark Cloud Cover:</strong> 2-candle reversal patterns confirming support/resistance.</li>
+    </ul>
+
+    <h3>Critical Rule</h3>
+    <div class="rule"><strong>Context is everything.</strong> Never trade a candlestick pattern in isolation. It MUST form at a key S/R level or at the end of a trend. A hammer in the middle of a range is meaningless.</div>
+
+    <div class="rule"><strong>Candlestick Strength:</strong> Long real body = strong momentum. Long wicks = rejection/weakness at that level. Small bodies + long wicks = uncertainty.</div>
+
+    <h3>Candle Momentum Trading (JeaFx Method)</h3>
+    <div class="rule"><strong>Candlestick Momentum:</strong> The most important way to use candles. Strong candle bodies with small or no wicks = high momentum. Large bullish/bearish bodies show who has control.</div>
+    <div class="rule"><strong>Wicks tell the story:</strong> Wicks are the most important part for reading momentum. Long upper wick = sellers rejected higher prices. Long lower wick = buyers absorbed selling pressure. <em>"Wicks show attempted price ranges but the market didn't close there."</em></div>
+    <div class="rule"><strong>Engulfing = Structural Shift:</strong> Bullish engulfing = break from downtrend into uptrend (look for buying the pullback). Bearish engulfing = break from uptrend into downtrend (look for selling the pullback). This is a break of structure on the lower timeframe.</div>
+    <div class="rule"><strong>Indecision candles at key levels:</strong> Dojis/small-body candles at supply/demand zones can signal the first signs of a potential reversal. Not confirmed — but a warning. Wait for a follow-through candle.</div>
+    <div class="rule"><strong>Entry at Supply/Demand Zones:</strong> Price trades into a point of interest → forms indecision candle → then a strong momentum candle in opposite direction with no wick. Enter after the close of that confirmation candle. Stop above the zone (for shorts) or below (for longs). Target = next point of interest.</div>
+    <div class="rule"><strong>Real Trade Example (5.24% return):</strong> Market pushed into a supply zone → formed indecision candle → bearish candle engulfed previous 2 candles with no lower wick → clear seller control → entered on close of engulfing candle → price went straight to target with zero drawdown.</div>
+    <div class="rule"><strong>Bad Trade Avoidance:</strong> If a large bullish candle appears with strong momentum at a level where you planned to sell — <em>cancel the short</em>. The momentum candle shows buying pressure has taken control. Wait for structure to reset.</div>
+
+    <div class="video-link">
+      Key videos:
+      <a href="https://www.youtube.com/watch?v=lEk4cSA7cqc">Mind Math Money — Candlestick 125min Masterclass</a> •
+      <a href="https://www.youtube.com/watch?v=UU4ZQF-X9jE">Wysetrade — Ultimate Candlestick Course (5.1M views)</a> •
+      <a href="https://www.youtube.com/watch?v=myUKta-wicQ">Ross Cameron — Read Candlestick Shapes</a> •
+      <a href="https://www.youtube.com/watch?v=ukbWRb4d5-s">JeaFx — Ultimate Candlestick Course (142K views)</a>
+    </div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- 4. OPTIONS TRADING -->
+  <!-- ============================ -->
+  <div class="category">
+    <h2>💼 Options Trading</h2>
+    <div class="subtitle">10 videos — projectoption (17.6M views), Invest with Henry, Sky View Trading, SMB Capital, The Value Thinker</div>
+
+    <h3>Foundations</h3>
+    <div class="rule"><strong>Call option:</strong> Right to BUY 100 shares at strike price before expiration. Profits when stock goes UP.</div>
+    <div class="rule"><strong>Put option:</strong> Right to SELL 100 shares at strike price before expiration. Profits when stock goes DOWN.</div>
+    <div class="rule"><strong>Option price = Intrinsic Value + Time Value + Implied Volatility premium.</strong></div>
+
+    <h3>The Greeks (Key Ones)</h3>
+    <ul>
+      <li><strong>Delta:</strong> Rate of change of option price per $1 move in stock. ATM calls ≈ 0.50 delta. Deep ITM = 1.0. OTM = 0.0.</li>
+      <li><strong>Theta:</strong> Time decay per day. <em>"Theta is like a melting ice cube"</em> — accelerates as expiration nears. <strong>Call sellers love theta, call buyers hate it.</strong></li>
+      <li><strong>IV (Implied Volatility):</strong> Higher IV = more expensive options. Buy options when IV is low (cheap), sell when high (expensive).</li>
+      <li><strong>Vega:</strong> Sensitivity to IV changes. High Vega = big price swings from IV changes.</li>
+    </ul>
+
+    <h3>Put Selling (Income Strategy)</h3>
+    <div class="rule"><strong>Sell put at strike price you'd buy the stock anyway.</strong> If stock stays above strike, you keep the premium. If it drops below, you buy at a price you wanted.</div>
+    <div class="rule"><strong>Win rate is high</strong> (70-85%) because the market tends to go up over time. Defined risk if managed with stops.</div>
+
+    <h3>Options Mechanics Deep Dive (projectoption)</h3>
+    <div class="rule"><strong>Call Option Dynamics:</strong> Call price follows stock price — as stock rises above the strike, the call gains value. You can enter/exit options intraday, not just hold to expiration. <em>"You don't have to hold an option all the way until expiration. You can enter and exit the position whenever you would like to."</em></div>
+    <div class="rule"><strong>Put Option Dynamics:</strong> Put prices rise as stock prices fall. Bearish strategy. At expiration, options only hold intrinsic value — price always trends toward intrinsic value over time (theta decay).</div>
+    <div class="rule"><strong>Risk Asymmetry:</strong> Buying options = limited loss (premium paid) + theoretically unlimited upside (calls). BUT options can go to ZERO while the stock itself hasn't moved to zero — <em>"Options trading is more risky than stock trading because your option value can go to zero while the stock retains value."</em></div>
+    <div class="rule"><strong>Shorting Options (NOT Recommended):</strong> Shorting naked call/put options is extremely high-risk. Short calls = unlimited downside if stock rallies. Short puts = risk of being assigned shares at strike after big drop. <em>"I generally do not recommend shorting naked options under any circumstances."</em></div>
+    <div class="rule"><strong>Early Assignment Risk:</strong> You're at high risk of early assignment when: (1) the option is in the money, (2) there is little to no extrinsic value left, and (3) the dividend exceeds the remaining extrinsic value. Deep ITM options with lots of extrinsic value = low assignment risk.</div>
+    <div class="rule"><strong>Liquidity Matters:</strong> Trade options with tight bid-ask spreads and high volume (SPY, QQQ, AAPL, AMZN). Wide spreads = massive slippage cost just to enter/exit. <em>"Trading liquid options will make it far easier to be a profitable options trader."</em></div>
+    <div class="rule"><strong>Stop Loss on Options:</strong> Set a stop trigger price below entry for puts (or above for calls). Use limit stops to control slippage. Credit spreads reduce naked option risk by capping max loss.</div>
+    <div class="rule"><strong>Backtesting:</strong> Use Option Net Explorer to test options strategies against historical price movements — see P&L statistics, risk graphs, and performance metrics before trading real money.</div>
+
+    <div class="video-link">
+      Key videos:
+      <a href="https://www.youtube.com/watch?v=7PM4rNDr4oI">projectoption — Options Guide (17.6M views)</a> •
+      <a href="https://www.youtube.com/watch?v=sCzdZCb0LlI">Invest with Henry — Options Course 2026</a> •
+      <a href="https://www.youtube.com/watch?v=w_BjFmbwbYA">SMB Capital — Only Options Course You Need</a> •
+      <a href="https://www.youtube.com/watch?v=0GSB5YZx9ZE">projectoption — Options In-Depth Guide (140 min, 413K views)</a>
+    </div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- 5. RISK MANAGEMENT -->
+  <!-- ============================ -->
+  <div class="category">
+    <h2>🛡️ Risk Management</h2>
+    <div class="subtitle">5 videos — Tom Basso (Market Wizard), Fractal Flow, Justin Werlein, TraderLion</div>
+
+    <h3>The #1 Skill in Trading</h3>
+    <div class="quote">Tom Basso (Market Wizard): My single investment objective is to make as much money with as little risk as possible.</div>
+    <div class="rule"><strong>Position Sizing:</strong> 1-2% maximum risk per trade. If your stop is wide, use fewer shares. If your stop is tight, use more shares. Risk per trade is FIXED, position size VARIES.</div>
+    <div class="rule"><strong>Formula: Position Size = (Account × Risk%) ÷ (Entry Price − Stop Price)</strong></div>
+
+    <h3>Risk/Reward Rules</h3>
+    <ul>
+      <li><strong>Minimum 1:2 R/R.</strong> Only take trades where potential profit ≥ 2× potential loss.</li>
+      <li><strong>Win rate is overrated.</strong> You can be right 40% of the time and be highly profitable with 1:3 R/R.</li>
+      <li><strong>Stop loss is non-negotiable.</strong> Place it at a level that, if broken, the setup is invalidated — NOT at an arbitrary percentage.</li>
+    </ul>
+
+    <div class="rule"><strong>"You can be right 40% of the time and still be massively profitable."</strong> — The most important concept in trading risk management.</div>
+    <div class="rule"><strong>The only risk that matters:</strong> Risk of permanent capital loss. Volatility is NOT risk (Howard Marks). Drawdown is temporary; blowing up is permanent.</div>
+
+    <div class="video-link">
+      Key videos:
+      <a href="https://www.youtube.com/watch?v=SMWMraeRDXs">TraderLion — Tom Basso Risk Management</a> •
+      <a href="https://www.youtube.com/watch?v=qN0-ltRAcV4">Fractal Flow — Ultimate Risk Management</a> •
+      <a href="https://www.youtube.com/watch?v=94GFz7tPKVE">Justin Werlein — Last Risk Mgmt Video</a>
+    </div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- 6. SWING TRADING -->
+  <!-- ============================ -->
+  <div class="category">
+    <h2>⏳ Swing Trading</h2>
+    <div class="subtitle">3 videos — Mind Math Money, Humbled Trader, The Trading Channel</div>
+
+    <h3>Swing Trading Framework</h3>
+    <div class="rule"><strong>Timeframe analysis:</strong> Use DAILY chart for trend direction and key S/R. Use 4H chart for entry timing.</div>
+    <div class="rule"><strong>Trend + Pullback + Confirmation:</strong> Identify strong uptrend → wait for pullback to moving average (20 or 50 EMA) → enter on bullish confirmation candle.</div>
+    <div class="rule"><strong>Hold time:</strong> 2-10 days. Let profits run. Trail stop loss using the 20 EMA as support.</div>
+    <div class="rule"><strong>Targets:</strong> First target = previous swing high. Second target = measure of range (height of consolidation added to breakout).</div>
+
+    <div class="quote">Swing trading is about catching the middle of the move, not trying to pick the exact top or bottom.</div>
+
+    <div class="video-link">
+      Key videos:
+      <a href="https://www.youtube.com/watch?v=UVGHxxYLnIE">Mind Math Money — Swing Trading Masterclass</a> •
+      <a href="https://www.youtube.com/watch?v=KO7lX7-Fi7U">The Trading Channel — Swing Guide for Beginners (887K views)</a> •
+      <a href="https://www.youtube.com/watch?v=i37xXd_wI5k">Humbled Trader — Swing Trading for Beginners 2026</a>
+    </div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- 7. DAY TRADING -->
+  <!-- ============================ -->
+  <div class="category">
+    <h2>⚡ Day Trading</h2>
+    <div class="subtitle">6 videos — TJR (3M views), Ross Cameron (947K), Craig Percoco, Riley Coleman</div>
+
+    <h3>Day Trading Rules</h3>
+    <div class="rule"><strong>Pre-market prep:</strong> Scan for stocks with high relative volume (>2× average) and news catalysts. Create watchlist of 3-5 stocks.</div>
+    <div class="rule"><strong>Opening Range Breakout:</strong> First 5-15 minute candle range determines the day's key levels. Break above = go long. Break below = go short.</div>
+    <div class="rule"><strong>Momentum strategy:</strong> Look for stocks moving up on high volume. Enter on pullback to VWAP or previous support. <em>"Strong stocks don't close below VWAP"</em> — Ross Cameron.</div>
+    <div class="rule"><strong>Stop loss:</strong> Day traders use tight stops — 10-30 cents for sub-$20 stocks. 1:1.5 or 1:2 risk/reward. If the stock doesn't move in your direction quickly, exit.</div>
+
+    <h3>Essential Day Trading Mindset</h3>
+    <div class="quote">Ross Cameron: Pattern recognition is everything. When you see the same pattern 100 times, you just know. The better you get at developing your internal database of patterns, the better you trade.</div>
+
+    <div class="video-link">
+      Key videos:
+      <a href="https://www.youtube.com/watch?v=aobHuNcI1QM">TJR — How to Start Day Trading 2026 (3M views, 9 hours)</a> •
+      <a href="https://www.youtube.com/watch?v=oxob0x0Xz7s">Ross Cameron — Day Trading Guide (947K views)</a> •
+      <a href="https://www.youtube.com/watch?v=SHJHpedYh6A">TJR — Beginners Guide (3.1M views)</a>
+    </div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- 8. VALUE INVESTING -->
+  <!-- ============================ -->
+  <div class="category">
+    <h2>🏦 Value Investing</h2>
+    <div class="subtitle">6 videos — Peter Lynch, Howard Marks, Buffett Formula, Sanjoy Bhattacharya</div>
+
+    <h3>Core Principles</h3>
+    <div class="rule"><strong>"Buy what you know"</strong> — Peter Lynch. Invest in companies you understand. If you can't explain the business in one sentence, you don't understand it enough.</div>
+    <div class="rule"><strong>Intrinsic Value:</strong> The actual worth of a company based on its fundamentals (earnings, assets, growth). Buy when price < intrinsic value (margin of safety).</div>
+    <div class="rule"><strong>Margin of Safety:</strong> Benjamin Graham's concept — buy at least 30% below intrinsic value to protect against being wrong.</div>
+    <div class="rule"><strong>Competitive Moat:</strong> What protects the company from competitors? Brand, patents, network effects, cost advantages.</div>
+
+    <h3>Value Investing Psychology (Sanjoy Bhattacharya)</h3>
+    <div class="rule"><strong>Value investing is 85% psychology:</strong> Less about economics/accounting than people think. Three things determine everything: (1) what you pay, (2) your time horizon, (3) how much you're willing to lose — and these are DIFFERENT for every person.</div>
+    <div class="rule"><strong>Realistic returns:</strong> 15-18% inclusive of dividends over long periods = doing very well. <em>"No one-size-fits-all approach to value investing."</em></div>
+    <div class="rule"><strong>Greed is the enemy:</strong> <em>"It's greed that gets us into trouble more than anything else."</em> Seth Klarman holds 40% cash when he can't find attractive opportunities at the right price.</div>
+    <div class="rule"><strong>Compounding is #1:</strong> The single most important thing in investing. Holding for long periods minimizes transaction costs, defers taxes, and lets compounding work. <em>"It certainly pays to be a patient investor."</em></div>
+    <div class="rule"><strong>Three value investing styles:</strong> (1) Growth at reasonable price, (2) Great business at fair price (Buffett/Munger), (3) Cigar butt / Benjamin Graham — buy cheap, diversify, focus on not losing money. All valid — depends on capital and temperament.</div>
+    <div class="rule"><strong>Smart selling matters:</strong> Not everything should be held forever. Technology obsolescence is faster today. CEO tenures are shorter. Global capital flows cause more correlation between markets. Know when to sell and take profits.</div>
+    <div class="quote">Buffett says the better I get as a businessman, the better I become as an investor.</div>
+
+    <div class="quote">Howard Marks: The biggest risk is the risk of permanent loss, not volatility. Volatility is just price fluctuation. Permanent loss is when your thesis breaks.</div>
+
+    <div class="quote">Peter Lynch (Learn to Earn): Look for companies that are boring, simple, and growing. Avoid hot stocks. The best investments are often in the most unexciting businesses.</div>
+
+    <div class="video-link">
+      Key videos:
+      <a href="https://www.youtube.com/watch?v=MU34sVyJ_gg">YT AudioBooks — Buffett Formula Audiobook</a> •
+      <a href="https://www.youtube.com/watch?v=V44vd4sJcPs">Howard Marks — 78 Years Wisdom (2M views)</a> •
+      <a href="https://www.youtube.com/watch?v=p9v0uE2-R4I">Peter Lynch — Learn to Earn Audiobook</a> •
+      <a href="https://www.youtube.com/watch?v=dQHHUreY05o">Sanjoy Bhattacharya — Complete Guide to Value Investing (38 min)</a>
+    </div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- 9. CHART PATTERNS -->
+  <!-- ============================ -->
+  <div class="category">
+    <h2>🔷 Chart Patterns</h2>
+    <div class="subtitle">3 videos — Rayner Teo (933K views), The Trading Channel</div>
+
+    <h3>Major Patterns</h3>
+    <ul>
+      <li><strong>Head & Shoulders:</strong> Major reversal pattern. Left shoulder → higher head → right shoulder (lower). Neckline break = new downtrend. Target = distance from head to neckline, projected from breakout.</li>
+      <li><strong>Double Top / Double Bottom:</strong> Price tests a level twice, fails to break through. Reversal signal. Works best at extremes of a trend.</li>
+      <li><strong>Triangles (Ascending, Descending, Symmetrical):</strong> Consolidation patterns. Breakout direction = continuation of the trend before the triangle. Target = height of triangle projected from breakout.</li>
+      <li><strong>Flags & Pennants:</strong> Short-term consolidation after a strong move. Continuation pattern. Breakout usually resolves in the direction of the prior trend.</li>
+    </ul>
+    <div class="rule"><strong>Volume confirmation:</strong> Breakouts need volume to be valid. A breakout on low volume is a fakeout until proven otherwise.</div>
+
+    <div class="video-link">
+      Key videos:
+      <a href="https://www.youtube.com/watch?v=sWTnFS10tdQ">Rayner Teo — Chart Patterns Course (Expert in 1 Hour, 933K views)</a>
+    </div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- 10. BEGINNERS FOUNDATION -->
+  <!-- ============================ -->
+  <div class="category">
+    <h2>🎓 Beginners Foundation</h2>
+    <div class="subtitle">12 videos — TJR (3M+), Jason Graystone (8.8M), Rayner Teo (1.6M), Ross Cameron</div>
+
+    <h3>How to Start (Step-by-Step)</h3>
+    <div class="rule"><strong>Step 1 — Learn on paper:</strong> Open a TradingView paper trading account. Trade for 3 months before using real money.</div>
+    <div class="rule"><strong>Step 2 — Master ONE strategy:</strong> Pick a strategy (e.g., support/resistance + trend + candlestick confirmation). Trade ONLY that for 100+ trades. Don't jump between strategies.</div>
+    <div class="rule"><strong>Step 3 — Keep a journal:</strong> Every trade: entry, exit, R/R, screenshot, reason for entry, what you learned. Review weekly.</div>
+    <div class="rule"><strong>Step 4 — Start small:</strong> Fund with what you can afford to lose. Increase size only after 50+ profitable paper trades.</div>
+
+    <h3>Common Beginner Mistakes</h3>
+    <ul>
+      <li><strong>Over-leveraging:</strong> Using 10:1+ leverage. Most amateur blow-ups start with too much size.</li>
+      <li><strong>No stop loss:</strong> "I'll just hold it" mentality. A trade without a stop is a gamble.</li>
+      <li><strong>Revenge trading:</strong> Trying to make back losses immediately. <em>The market doesn't care about your loss.</em></li>
+      <li><strong>Over-trading:</strong> Taking 20+ trades per day. Quality over quantity. 1-3 good trades > 20 random ones.</li>
+      <li><strong>Winning mentality:</strong> Every loss is tuition. Learn from it. Track it. Avoid repeating the same mistake.</li>
+    </ul>
+
+    <div class="video-link">
+      Key videos:
+      <a href="https://www.youtube.com/watch?v=_YVQN6_nkfs">Jason Graystone — Trading for Beginners Part 1 (8.8M views)</a> •
+      <a href="https://www.youtube.com/watch?v=mEyuQVy3OHc">Rayner Teo — Ultimate Forex Beginner Course (1.6M)</a> •
+      <a href="https://www.youtube.com/watch?v=1F7rFzRSsqY">The Trading Geek — 10-Hour Beginner Course (1.9M)</a>
+    </div>
+  </div>
+
+  <!-- ============================ -->
+  <!-- 11. TRADING PSYCHOLOGY -->
+  <!-- ============================ -->
+  <div class="category">
+    <h2>🧠 Trading Psychology</h2>
+    <div class="subtitle">Recurring theme across ALL videos</div>
+
+    <h3>Golden Rules (Synthesized from All Courses)</h3>
+    <div class="rule"><strong>"Plan the trade, trade the plan."</strong> Define your entry, stop, and target BEFORE entering. No deviations. If the setup doesn't meet your rules, don't take it.</div>
+    <div class="rule"><strong>Emotional discipline > technical analysis skills.</strong> A 70% win-rate trader who can't control emotions will lose money. A 40% win-rate trader with perfect discipline will profit.</div>
+    <div class="rule"><strong>The market will give you another chance.</strong> FOMO (fear of missing out) kills more accounts than bad analysis. If you miss the trade, let it go.</div>
+    <div class="rule"><strong>Keep losses small, let winners run.</strong> Most traders do the opposite: cut winners early and hold losers hoping they'll come back.</div>
+    <div class="rule"><strong>Trading is a skill, not a lottery.</strong> It takes 6-12 months of consistent practice before profitability. Expect to lose for the first few months. That's tuition.</div>
+
+    <div class="quote">You are not in the market to make money. You are in the market to execute your strategy well. Money is the byproduct of good execution.</div>
+  </div>
+
+  <footer>
+    <p>Stock Trading Knowledge Base — Updated: May 15, 2026</p>
+    <p>74 videos analyzed from Day 1-4 of the Stock Trading Master Course</p>
+    <p>Daily updates at 5:00 AM after pipeline completes</p>
+  </footer>
+</div>
+</body>
+</html>

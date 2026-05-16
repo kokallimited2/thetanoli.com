@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanoli Dashboard Hub</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background: #0a0f1e;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+.hero {
+  background: linear-gradient(135deg, #0a0f1e 0%, #1e3a5f 50%, #0d9488 100%);
+  padding: 48px 24px 36px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.hero h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+.hero h1 em { color: #f59e0b; font-style: normal; }
+.hero p { color: #94a3b8; font-size: 14px; margin-top: 8px; max-width: 500px; margin-inline: auto; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 60px; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+
+.card {
+  background: #111827;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  background: rgba(17,24,39,0.85);
+}
+.card:hover {
+  border-color: #3b82f6;
+  background: #1a2332;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+.card .icon { font-size: 2rem; margin-bottom: 12px; }
+.card h3 { font-size: 1.05rem; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; }
+.card p { font-size: 13px; color: #64748b; line-height: 1.5; }
+.card .badge {
+  display: inline-block;
+  background: rgba(59,130,246,0.1);
+  color: #60a5fa;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 100px;
+  margin-top: 12px;
+  letter-spacing: 0.3px;
+}
+.card .arrow {
+  position: absolute;
+  top: 20px; right: 20px;
+  color: #475569;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+.card:hover .arrow { color: #3b82f6; transform: translateX(3px); }
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin: 36px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #1e293b;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+footer { text-align: center; padding: 24px; color: #475569; font-size: 11px; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0 rgba(245,158,11,0); }
+  50% { box-shadow: 0 0 20px rgba(245,158,11,0.1); }
+}
+
+.wrap { animation: fadeInUp 0.5s ease-out; }
+.card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.card:hover {
+  border-color: #3b82f6;
+  background: #1a2332;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(59,130,246,0.15), 0 0 30px rgba(59,130,246,0.05);
+  animation: glow 2s ease-in-out infinite;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(245,158,11,0.03) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(13,148,136,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🖥️ <em>Tanoli</em> Dashboard Hub</h1>
+  <p>Central hub for all personal dashboards — trading, research, analytics, and tools</p>
+</div>
+
+<div class="wrap">
+
+  <div class="section-title">📈 Trading & Finance</div>
+  <div class="grid">
+
+    <a href="dashboards/portfolio-performance.html" class="card" style="text-decoration:none;color:inherit">
+      <div class="icon">📊</div>
+      <div class="arrow">→</div>
+      <h3>Portfolio Performance</h3>
+      <p>Real-time tracking of the £20k dual portfolio — stocks + crypto P&L, trade history, growth charts</p>
+      <div class="badge">Updated Daily 4pm</div>
+    </a>
+
+    <a href="dashboards/trading-assessment.html" class="card" style="text-decoration:none;color:inherit">
+      <div class="icon">📋</div>
+      <div class="arrow">→</div>
+      <h3>Trading Assessment</h3>
+      <p>Daily trading pipeline analysis — YouTube transcript buy signals, strategy evaluation</p>
+      <div class="badge">Updated Daily</div>
+    </a>
+
+    <a href="dashboards/stocks-learning.html" class="card" style="text-decoration:none;color:inherit">
+      <div class="icon">🧠</div>
+      <div class="arrow">→</div>
+      <h3>Stocks Learning Reports</h3>
+      <p>Self-learning stock opportunity analysis — signal reports, recommendations, market scans</p>
+      <div class="badge">Updated Daily 2pm</div>
+    </a>
+
+    <a href="dashboards/trading-kb.html" class="card" style="text-decoration:none;color:inherit">
+      <div class="icon">📚</div>
+      <div class="arrow">→</div>
+      <h3>Trading Knowledge Base</h3>
+      <p>Comprehensive strategy library — 13 strategy categories, risk profiles, market analysis</p>
+      <div class="badge">Knowledge Base</div>
+    </a>
+
+    <a href="dashboards/trading-course.html" class="card" style="text-decoration:none;color:inherit">
+      <div class="icon">🎓</div>
+      <div class="arrow">→</div>
+      <h3>Master Trading Course</h3>
+      <p>Complete stock trading education — daily YouTube video analysis, transcript-to-curriculum pipeline</p>
+      <div class="badge">Active Course</div>
+    </a>
+
+  </div>
+
+  <div class="section-title">🔍 Research & Analysis</div>
+  <div class="grid">
+
+    <a href="dashboards/ebay-dropship.html" class="card" style="text-decoration:none;color:inherit">
+      <div class="icon">🏪</div>
+      <div class="arrow">→</div>
+      <h3>eBay Dropship Hunter</h3>
+      <p>Daily UK eBay product hunting — top deals, margins analysis, dropship opportunities</p>
+      <div class="badge">Updated Daily 10am</div>
+    </a>
+
+    <a href="dashboards/money-research.html" class="card" style="text-decoration:none;color:inherit">
+      <div class="icon">💰</div>
+      <div class="arrow">→</div>
+      <h3>Money Making Research</h3>
+      <p>Daily research on online money-making — affiliate opportunities, passive income ideas</p>
+      <div class="badge">Updated Daily 8am</div>
+    </a>
+
+  </div>
+
+  <div class="section-title">⚙️ Tools & Automation</div>
+  <div class="grid">
+
+    <a href="dashboards/digital-products.html" class="card" style="text-decoration:none;color:inherit">
+      <div class="icon">🛍️</div>
+      <div class="arrow">→</div>
+      <h3>Digital Products</h3>
+      <p>Digital product creation pipeline — planners, templates, eBooks for Etsy/Gumroad</p>
+      <div class="badge">Active</div>
+    </a>
+
+    <a href="dashboards/n8n-status.html" class="card" style="text-decoration:none;color:inherit">
+      <div class="icon">⚡</div>
+      <div class="arrow">→</div>
+      <h3>n8n Social Automation</h3>
+      <p>Multi-platform content distribution — X/Twitter, Telegram, Instagram, LinkedIn via n8n</p>
+      <div class="badge">Active</div>
+    </a>
+
+  </div>
+
+</div>
+
+<footer>
+  Tanoli Dashboard Hub • Private & Secure • Cloudflare Access Protected
+</footer>
+
+</body>
+</html>

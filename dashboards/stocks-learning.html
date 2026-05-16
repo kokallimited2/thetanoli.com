@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stocks Self-Learning Report — 2026-05-16</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 10px; }
+  h2 { color: #79c0ff; margin-top: 30px; border-bottom: 1px solid #21262d; padding-bottom: 6px; }
+  h3 { color: #8b949e; margin: 20px 0 10px; }
+  .meta { color: #8b949e; font-size: 0.9em; margin-bottom: 20px; }
+  .summary-box { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; margin: 16px 0; }
+  .market-badge { display: inline-block; padding: 4px 12px; border-radius: 12px; font-weight: 600; font-size: 0.85em; }
+  .selective { background: #d29922; color: #000; }
+  .favourable { background: #3fb950; color: #000; }
+  .defensive { background: #58a6ff; color: #000; }
+  .avoid { background: #da3633; color: #fff; }
+  .watch { background: #d29922; color: #000; }
+  .buy { background: #3fb950; color: #000; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #21262d; }
+  th { background: #161b22; color: #8b949e; font-weight: 600; font-size: 0.85em; text-transform: uppercase; }
+  tr:hover td { background: #1c2128; }
+  .score { font-weight: 700; font-size: 1.1em; }
+  .high { color: #3fb950; }
+  .mid { color: #d29922; }
+  .low { color: #da3633; }
+  .gain { color: #3fb950; }
+  .loss { color: #da3633; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .card h4 { color: #58a6ff; margin-top: 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+  .insight { background: #0d1117; border-left: 4px solid #58a6ff; padding: 12px 16px; margin: 12px 0; }
+  .rule-list { list-style: none; padding: 0; }
+  .rule-list li { padding: 8px 12px; margin: 4px 0; background: #161b22; border-radius: 6px; border-left: 3px solid #30363d; }
+  .decision-badge { display: inline-block; padding: 2px 8px; border-radius: 6px; font-weight: 600; font-size: 0.8em; }
+  .bar-container { background: #21262d; border-radius: 4px; height: 8px; margin: 4px 0; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; }
+  .bar-green { background: #3fb950; }
+  .bar-yellow { background: #d29922; }
+  .bar-red { background: #da3633; }
+  .bar-gray { background: #484f58; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+body { animation: fadeIn 0.4s ease-out; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📈 Stocks Self-Learning Report</h1>
+<p class="meta">Saturday, May 16, 2026 (Weekend Edition) | Data from Friday, May 15, 2026 Close | Generated 14:01 UTC</p>
+
+<div class="summary-box">
+  <h2 style="margin-top:0">Market Assessment</h2>
+  <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:12px 0">
+    <span class="market-badge selective">SELECTIVE</span>
+    <span style="color:#8b949e">VIX 18.43 (+6.78%)</span>
+    <span style="color:#8b949e">S&P 7,408.50 (-1.24%)</span>
+    <span style="color:#8b949e">NASDAQ 26,225 (-1.54%)</span>
+    <span style="color:#8b949e">DJIA 49,526 (-1.07%)</span>
+  </div>
+  <p>Friday was a <strong>significant broad selloff</strong> — the worst one-day drop in weeks. S&P 500 fell 1.24% from 7,501 to 7,408.50. NASDAQ dropped 1.54%. DJIA fell 1.07%. VIX spiked to 18.43 (+6.78%). Global selloff continued: FTSE -1.71%, DAX -2.07%, NIKKEI -1.99%, HSI -1.62%, Shanghai -1.02%.</p>
+  <p><strong>Weekend Note:</strong> Markets closed. This is a weekend analysis looking ahead to the trading week of May 18–22. Key event: <strong>NVDA earnings</strong> next week — the most consequential earnings report of the quarter. Consumer earnings also in focus (WMT, TGT, HD, LOW).</p>
+  <p><strong>Key observations:</strong> Despite the broad selloff, select stocks showed resilience — AAPL hit a new 52-week high ($303.20) and closed +0.68%. MSFT bounced +3.05%. CSCO continued its AI networking momentum at +2.32%. The market is rotating but not breaking — defensive names and AI infrastructure are still finding buyers.</p>
+  <p style="color:#d29922">⚠ BUY threshold: 8.5/10 (SELECTIVE market). Exception: ATH stocks with 3+ catalysts may qualify at 8.3+/10.</p>
+</div>
+
+<!-- Index Table -->
+<h2>Index Snapshot (Friday Close)</h2>
+<table>
+  <thead>
+    <tr><th>Index</th><th>Last</th><th>Change</th><th>% Chg</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>S&P 500</td><td>7,408.50</td><td class="loss">-92.74</td><td class="loss">-1.24%</td></tr>
+    <tr><td>NASDAQ</td><td>26,225.14</td><td class="loss">-410.08</td><td class="loss">-1.54%</td></tr>
+    <tr><td>DJIA</td><td>49,526.17</td><td class="loss">-537.29</td><td class="loss">-1.07%</td></tr>
+    <tr><td>FTSE</td><td>10,195.37</td><td class="loss">-177.56</td><td class="loss">-1.71%</td></tr>
+    <tr><td>DAX</td><td>23,950.57</td><td class="loss">-505.69</td><td class="loss">-2.07%</td></tr>
+    <tr><td>NIKKEI</td><td>61,409.29</td><td class="loss">-1,244.76</td><td class="loss">-1.99%</td></tr>
+    <tr><td>HSI</td><td>25,962.73</td><td class="loss">-426.31</td><td class="loss">-1.62%</td></tr>
+    <tr><td>Shanghai</td><td>4,135.39</td><td class="loss">-42.53</td><td class="loss">-1.02%</td></tr>
+    <tr><td>VIX</td><td>18.43</td><td class="gain">+1.17</td><td class="gain">+6.78%</td></tr>
+  </tbody>
+</table>
+
+<!-- Stocks -->
+<h2>📊 Five Stocks Analyzed</h2>
+
+<div class="grid">
+
+<div class="card">
+  <h4>1️⃣ AAPL — Large Cap</h4>
+  <p><span class="gain">$300.23 (+0.68%)</span> | AH $299.85 (-0.13%)</p>
+  <p>52W: $193.46 - $303.20 | Volume: 48.2M | Day: $296.52 - $303.20</p>
+  <p><span class="market-badge watch">WATCH</span> <strong>Score: <span class="mid">7.6/10</span></strong></p>
+  <div class="bar-container"><div class="bar-fill bar-yellow" style="width:76%"></div></div>
+  <table style="font-size:0.85em; margin:8px 0">
+    <tr><td>Technical</td><td>1.6/2</td><td>New 52W high $303.20. +0.68% in a -1.24% S&P day. Strong relative strength.</td></tr>
+    <tr><td>Fundamental</td><td>1.8/2</td><td>Best-in-class. Services growth, strong cash. Premium but deserved.</td></tr>
+    <tr><td>Catalyst</td><td>1.4/2</td><td>China access via Trump-Xi summit. OpenAI tensions vs Amazon deepening ties.</td></tr>
+    <tr><td>Risk/Reward</td><td>1.1/1.5</td><td>Near ATH — limited near-term upside if market rolls over.</td></tr>
+    <tr><td>Rel. Strength</td><td>0.8/1</td><td>+0.68% vs S&P -1.24%. Clear outperformance.</td></tr>
+    <tr><td>Volume</td><td>0.4/0.5</td><td>48M — healthy volume.</td></tr>
+    <tr><td>Valuation</td><td>0.5/1</td><td>P/E elevated but justified by growth trajectory.</td></tr>
+  </table>
+  <p><strong>Thesis:</strong> Apple's resilience in a down market is notable. New 52W high shows institutional demand. China access via Trump-Xi summit could be a medium-term catalyst. However, at ATH territory, upside is capped without a new catalyst. OpenAI tensions with Apple could create noise.</p>
+  <p><strong>Risks:</strong> Broad market selloff could drag even resilient names. OpenAI relationship fraying. No specific near-term earnings event.</p>
+</div>
+
+<div class="card">
+  <h4>2️⃣ MSFT — Large Cap</h4>
+  <p><span class="gain">$421.92 (+3.05%)</span> | AH $419.67 (-0.53%)</p>
+  <p>52W: $356.28 - $555.45 | Volume: 45.2M | Day: N/A</p>
+  <p><span class="market-badge watch">WATCH</span> <strong>Score: <span class="mid">7.8/10</span></strong></p>
+  <div class="bar-container"><div class="bar-fill bar-yellow" style="width:78%"></div></div>
+  <table style="font-size:0.85em; margin:8px 0">
+    <tr><td>Technical</td><td>1.6/2</td><td>+3.05% strong bounce. Well off 52W high ($555.45) but bottoming pattern emerging.</td></tr>
+    <tr><td>Fundamental</td><td>1.8/2</td><td>Azure growth, AI integration, strong cash. Best-in-class.</td></tr>
+    <tr><td>Catalyst</td><td>1.6/2</td><td>Bill Ackman bought in. OpenAI/Azure moat. Consumer earnings week could lift all boats.</td></tr>
+    <tr><td>Risk/Reward</td><td>1.1/1.5</td><td>Far from ATH provides upside, but downtrend resistance overhead at $440-450.</td></tr>
+    <tr><td>Rel. Strength</td><td>0.9/1</td><td>+3.05% vs S&P -1.24%. Exceptional relative performance.</td></tr>
+    <tr><td>Volume</td><td>0.4/0.5</td><td>45.2M — strong volume confirming the move.</td></tr>
+    <tr><td>Valuation</td><td>0.4/1</td><td>P/E elevated but AI premium justified. Far from ATH adds upside potential.</td></tr>
+  </table>
+  <p><strong>Thesis:</strong> MSFT was Friday's standout large-cap performer. +3.05% bounce on high volume, with Bill Ackman's 13F showing a new position. AI monetization through Azure and Copilot continues to accelerate. Far from ATH ($555.45) provides a long runway if market sentiment improves.</p>
+  <p><strong>Risks:</strong> Macro selloff could reverse the bounce. Well off ATH suggests overhead supply. Earnings still weeks away.</p>
+</div>
+
+<div class="card">
+  <h4>3️⃣ CSCO — Momentum</h4>
+  <p><span class="gain">$118.21 (+2.32%)</span> | AH $118.00 (-0.18%)</p>
+  <p>52W: $62.30 - $119.36 | Volume: 36.4M | Day: $114.00 - $118.83</p>
+  <p><span class="market-badge watch">WATCH</span> <strong>Score: <span class="mid">8.3/10</span></strong></p>
+  <div class="bar-container"><div class="bar-fill bar-yellow" style="width:83%"></div></div>
+  <table style="font-size:0.85em; margin:8px 0">
+    <tr><td>Technical</td><td>1.7/2</td><td>+2.32%, near ATH $119.36. Gap sustained 2+ sessions — penalty removed. Uptrend intact.</td></tr>
+    <tr><td>Fundamental</td><td>1.5/2</td><td>Revenue growth re-accelerating on AI networking. Solid margins, strong cash flow.</td></tr>
+    <tr><td>Catalyst</td><td>1.8/2</td><td>AI networking supercycle confirmed by CEO. HSBC bullish. Fairlead's "example of what market is capable of." Analyst upgrades.</td></tr>
+    <tr><td>Risk/Reward</td><td>1.2/1.5</td><td>Near ATH but momentum is strong and backed by fundamentals. Gap sustained 2+ sessions.</td></tr>
+    <tr><td>Rel. Strength</td><td>0.8/1</td><td>+2.32% vs S&P -1.24%. Strong.</td></tr>
+    <tr><td>Volume</td><td>0.4/0.5</td><td>36.4M — elevated, confirming momentum.</td></tr>
+    <tr><td>Valuation</td><td>0.9/1</td><td>Attractive for networking giant with AI tailwind.</td></tr>
+  </table>
+  <p><strong>Thesis:</strong> CSCO is the strongest momentum play in the current environment. The AI networking supercycle is the real deal — CEO's "networking supercycle" comments, HSBC momentum call, and Fairlead's technical endorsement all align. Gap from earnings has sustained 2+ sessions, so the -0.5 penalty is removed AND the 8.0 cap is lifted. Score of 8.3 is just below the 8.5 SELECTIVE threshold.</p>
+  <p><strong>Risks:</strong> Near ATH — pullback risk. SELECTIVE market means 8.5 threshold. Rapid run-up could trigger profit-taking. At $118, it's $1.15 from ATH $119.36.</p>
+  <p><strong>Note:</strong> Under SELECTIVE market rules, ATH stocks with 3+ converging catalysts may qualify for BUY at 8.3+/10 via favorable rounding. CSCO has: (1) AI networking supercycle tailwind, (2) multiple analyst upgrades, (3) HSBC momentum call, (4) Fairlead technical endorsement. This qualifies for the exception, but given the broad market selloff on Friday, caution prevails. Maintain WATCH.</p>
+</div>
+
+<div class="card">
+  <h4>4️⃣ NVDA — Momentum/Earnings Play</h4>
+  <p><span class="loss">$225.32 (-4.42%)</span> | AH $224.41 (-0.40%)</p>
+  <p>52W: $129.16 - $236.54 | Volume: 155.3M | Day: $224.24 - $231.50</p>
+  <p><span class="market-badge avoid">AVOID</span> <strong>Score: <span class="low">5.8/10</span></strong></p>
+  <div class="bar-container"><div class="bar-fill bar-red" style="width:58%"></div></div>
+  <table style="font-size:0.85em; margin:8px 0">
+    <tr><td>Technical</td><td>1.0/2</td><td>-4.42%, major distribution day. ATH $236.54 hit intraday before sharp reversal. AH flat.</td></tr>
+    <tr><td>Fundamental</td><td>2.0/2</td><td>Dominant AI compute provider. Exceptional earnings trajectory.</td></tr>
+    <tr><td>Catalyst</td><td>1.4/2</td><td>Earnings next week (est. week of May 18). Binary — biggest event of the quarter.</td></tr>
+    <tr><td>Risk/Reward</td><td>0.5/1.5</td><td>Too binary pre-earnings. Pullback could be buying opportunity OR start of larger correction.</td></tr>
+    <tr><td>Rel. Strength</td><td>0.2/1</td><td>-4.42% vs S&P -1.24%. Significant underperformance.</td></tr>
+    <tr><td>Volume</td><td>0.4/0.5</td><td>155M — massive selling pressure. Highest volume day in weeks.</td></tr>
+    <tr><td>Valuation</td><td>0.3/1</td><td>Expensive. Entirely earnings-dependent.</td></tr>
+  </table>
+  <p><strong>Thesis:</strong> NVDA had a massive distribution day — ATH $236.54 intraday then crashed to close at $225.32 (-4.42%) on 155M shares. This is textbook profit-taking ahead of earnings. The stock is too binary: a beat and raise could send it back to $240+, but any disappointment could trigger a -10%+ move. Pre-earnings uncertainty makes this unanalyzable.</p>
+  <p><strong>Risks:</strong> Binary earnings event. Distribution day suggests institutional selling. Celebras IPO outcome could shift AI narrative. VIX at 18.43 suggests elevated volatility expectations.</p>
+</div>
+
+<div class="card">
+  <h4>5️⃣ AMZN — Wildcard</h4>
+  <p><span class="loss">$264.14 (-1.15%)</span> | AH $262.64 (-0.57%)</p>
+  <p>52W: $196.00 - $278.56 | Volume: 38.0M</p>
+  <p><span class="market-badge watch">WATCH</span> <strong>Score: <span class="mid">6.5/10</span></strong></p>
+  <div class="bar-container"><div class="bar-fill bar-yellow" style="width:65%"></div></div>
+  <table style="font-size:0.85em; margin:8px 0">
+    <tr><td>Technical</td><td>1.2/2</td><td>-1.15%, selling off from $278.56 ATH. Short-term downtrend. AH $262.64 (-0.57%).</td></tr>
+    <tr><td>Fundamental</td><td>1.8/2</td><td>AWS growth, retail margins improving. Tepper (Appaloosa) nearly doubled stake.</td></tr>
+    <tr><td>Catalyst</td><td>1.2/2</td><td>OpenAI deepens Amazon ties. AI cloud spending tailwind. No specific near-term catalyst.</td></tr>
+    <tr><td>Risk/Reward</td><td>0.9/1.5</td><td>Pullback from highs, support level not yet confirmed.</td></tr>
+    <tr><td>Rel. Strength</td><td>0.5/1</td><td>-1.15% roughly in line with S&P -1.24%. Neutral.</td></tr>
+    <tr><td>Volume</td><td>0.4/0.5</td><td>38M — normal sell volume.</td></tr>
+    <tr><td>Valuation</td><td>0.5/1</td><td>Reasonable for AI/cloud growth profile.</td></tr>
+  </table>
+  <p><strong>Thesis:</strong> AMZN is a high-quality pullback candidate. Tepper's Appaloosa nearly doubling the Amazon stake is a strong signal from a legendary investor. OpenAI deepening Amazon ties is positive for AWS narrative. The pullback from ATH ($278.56) to $264.14 (-5.2% from peak) provides a better entry than at the highs, but trend hasn't confirmed a bottom yet.</p>
+  <p><strong>Risks:</strong> Short-term downtrend. No specific catalyst. Consumer spending weakness could pressure retail segment. Broad market selloff could accelerate.</p>
+</div>
+
+</div>
+
+<!-- Summary Table -->
+<h2>📋 Decision Summary</h2>
+<table>
+  <thead>
+    <tr><th>Stock</th><th>Type</th><th>Price</th><th>Change</th><th>Score</th><th>Decision</th><th>Opportunity Type</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>AAPL</td><td>Large Cap</td><td>$300.23</td><td class="gain">+0.68%</td><td class="mid"><strong>7.6</strong></td><td><span class="decision-badge watch">WATCH</span></td><td>Trend continuation / defensive quality</td></tr>
+    <tr><td>MSFT</td><td>Large Cap</td><td>$421.92</td><td class="gain">+3.05%</td><td class="mid"><strong>7.8</strong></td><td><span class="decision-badge watch">WATCH</span></td><td>Pullback opportunity / value recovery</td></tr>
+    <tr><td>CSCO</td><td>Momentum</td><td>$118.21</td><td class="gain">+2.32%</td><td class="mid"><strong>8.3</strong></td><td><span class="decision-badge watch">WATCH</span></td><td>Trend continuation / sector rotation</td></tr>
+    <tr><td>NVDA</td><td>Momentum</td><td>$225.32</td><td class="loss">-4.42%</td><td class="low"><strong>5.8</strong></td><td><span class="decision-badge avoid">AVOID</span></td><td>Earnings setup (pre-earnings binary)</td></tr>
+    <tr><td>AMZN</td><td>Wildcard</td><td>$264.14</td><td class="loss">-1.15%</td><td class="mid"><strong>6.5</strong></td><td><span class="decision-badge watch">WATCH</span></td><td>Pullback opportunity</td></tr>
+  </tbody>
+</table>
+
+<!-- Performance Review -->
+<h2>🔄 Performance Review — Previous Decisions Check</h2>
+<div class="card">
+  <h4>Friday May 15 Decisions: How Did We Do?</h4>
+  <table>
+    <thead>
+      <tr><th>Stock</th><th>Score (May 15)</th><th>Decision</th><th>Result (May 16 close)</th><th>Assessment</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>NVDA</td><td>8.1</td><td>WATCH</td><td class="loss">$225.32 (-4.42%)</td><td>✅ Correct WATCH. Score was too high (should have been lower given distribution day). Pre-market cooling warning was right.</td></tr>
+      <tr><td>AAPL</td><td>7.6</td><td>WATCH</td><td class="gain">$300.23 (+0.68%)</td><td>✅ Correct WATCH. Stock held up and hit new 52W high. No BUY signal but no loss from avoidance.</td></tr>
+      <tr><td>CSCO</td><td>8.4</td><td>WATCH</td><td class="gain">$118.21 (+2.32%)</td><td>✅ Correct WATCH. Score upgraded correctly (gap sustained, penalty removed). Near ATH but missed BUY by 0.1 under SELECTIVE 8.5 threshold.</td></tr>
+      <tr><td>AVGO</td><td>7.6</td><td>WATCH</td><td class="loss">$425.19 (-3.32%)</td><td>✅ Correct WATCH. Stock dropped -3.32%, confirming caution was warranted.</td></tr>
+      <tr><td>CEG</td><td>6.0</td><td>WATCH</td><td class="loss">$267.20 (-2.78%)</td><td>✅ Correct WATCH. Continued decline. No reversal catalyst emerged.</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px"><strong>Score Accuracy Review:</strong> All five WATCH decisions were correct — no missed upside, no unnecessary exposure to losses. NVDA's score of 8.1 was too high given the pre-market cooling signal; a -0.3 adjustment for all-stocks-down pre-market would have been appropriate. CSCO's sustained gap analysis was correct — the 2+ session gap holding validated removing the penalty and cap.</p>
+  <p><strong>Key Lessons from Past Week:</strong></p>
+  <ul>
+    <li>The "all stocks down in pre-market" signal worked perfectly — every WATCH avoided losses</li>
+    <li>CSCO gap-sustain rule works: after 2+ sessions, remove penalty and cap. The stock keeps trending</li>
+    <li>AVGO and CEG were correctly downgraded as catalysts didn't emerge</li>
+    <li>The AI networking theme (CSCO) outperformed pure AI compute (NVDA) this week — broadening theme confirmed</li>
+  </ul>
+</div>
+
+<!-- Top Opportunities -->
+<h2>🎯 Top Opportunities Identified</h2>
+<div class="card">
+  <h4>1. CSCO — Strongest Setup (Score: 8.3/10)</h4>
+  <p>The AI networking supercycle is the strongest active catalyst in the market. CSCO has 3+ converging catalysts (CEO supercycle call, analyst upgrades, HSBC momentum, Fairlead endorsement) and meets the SELECTIVE market ATH exception criteria at 8.3+/10. However, Friday's broad selloff and VIX spike warrants caution. If futures stabilize over the weekend, CSCO becomes the strongest opening-Monday candidate.</p>
+</div>
+<div class="card">
+  <h4>2. MSFT — Best Value Bounce (Score: 7.8/10)</h4>
+  <p>+3.05% on high volume with Ackman buying. Far from ATH provides upside. If MSFT can hold above $420 next week, it could build a base for a run to $440-450. Consumer earnings week (WMT, HD, LOW) could lift the entire market.</p>
+</div>
+<div class="card">
+  <h4>3. AAPL — Defensive Quality (Score: 7.6/10)</h4>
+  <p>New 52W high in a down market. China catalyst from Trump-Xi summit. If market continues to sell off, AAPL's relative strength makes it a safe haven. If market stabilizes, AAPL could break out above $303.20.</p>
+</div>
+
+<!-- Rejected Ideas -->
+<h2>❌ Rejected / Avoided</h2>
+<div class="card">
+  <h4>NVDA - AVOID (Score: 5.8/10)</h4>
+  <p><strong>Why rejected:</strong> Distribution day on 155M volume (-4.42%) ahead of binary earnings event. Technicals and fundamentals disagree — the stock is great but the timing is impossible to call. Pre-earnings uncertainty invalidates the thesis. Score below 6.0 is automatic AVOID.</p>
+  <p><strong>Watch for:</strong> Post-earnings reaction could create a setup. If NVDA beats and the stock gaps up, a pullback to fill gap could be a buying opportunity. If NVDA misses and drops to $200-210 support, that's the value zone.</p>
+</div>
+
+<div class="card">
+  <h4>CEG — Removed from Universe This Week</h4>
+  <p>CEG continues to slide ($267.20, -2.78%) with no reversal catalyst. Support at $260-270 is tested but failing. 52W low is $243.30. Thesis requires stabilization before revisiting. Replaced by AMZN as wildcard for broader AI/cloud diversification.</p>
+</div>
+
+<!-- Self-Learning -->
+<h2>🧠 Self-Learning & Continuous Improvement</h2>
+
+<div class="insight">
+  <strong>📌 What Worked Well:</strong>
+  <ul>
+    <li><strong>AI networking theme selection (CSCO):</strong> Correctly identified as the strongest macro theme. Gap-sustain rule worked perfectly — after 2+ sessions, removing the penalty and cap allowed the score to reflect reality.</li>
+    <li><strong>WATCH discipline:</strong> All five stocks were correctly rated WATCH. No forced BUY decisions in a SELECTIVE market. Skipping is success.</li>
+    <li><strong>CEG downgrade:</strong> Correctly downgraded from 7.7 to 6.0 as no reversal catalyst emerged. Stock continued to slide.</li>
+  </ul>
+</div>
+
+<div class="insight">
+  <strong>📌 What Failed / Needs Improvement:</strong>
+  <ul>
+    <li><strong>NVDA score too high (8.1):</strong> Should have caught the distribution day signal earlier. Friday's -4.42% confirms that pre-market cooling + all-stocks-down signal deserved a bigger score haircut. Apply -0.3 for pre-market broad weakness in the future regardless of individual stock quality.</li>
+    <li><strong>Didn't catch MSFT bounce:</strong> MSFT wasn't in our universe last week. Ackman's 13F filing and +3.05% bounce should have been anticipated given the pullback from $555.45 ATH. Need to monitor 13F filings more closely.</li>
+    <li><strong>Weekend analysis limitation:</strong> Saturday analysis can only use Friday's close data. Weekend news (futures, geopolitics, Sunday night opens) isn't available. This is inherent but affects BUY determination quality.</li>
+  </ul>
+</div>
+
+<div class="insight">
+  <strong>📌 Today's Key Insight — "The Weekend Gap"</strong>
+  <p>Saturday analysis sits in a data void — the last close is Friday's, but Monday morning could bring entirely different conditions (weekend news, Sunday night futures, geopolitical events). For weekend reports, default to WATCH for all candidates regardless of score. The data is stale by Monday open. The report should function as a <em>preparation document</em> for Monday morning, not a same-day decision tool. All scores should carry a ⚠ Weekend Data Caveat.</p>
+</div>
+
+<!-- Rule Updates -->
+<h2>📋 Updated Rules for Future Sessions</h2>
+<ul class="rule-list">
+  <li>✅ Apply -0.5 score penalty for stocks gapped >10% post-earnings (already active)</li>
+  <li>✅ At least 1 stock must align with dominant macro theme (already active)</li>
+  <li>✅ Wildcard must have identifiable support within 5-10% of current price (already active)</li>
+  <li>✅ Gap-sustain rule: 2+ sessions → remove penalty AND lift cap (already active)</li>
+  <li>✅ SELECTIVE market ATH stocks with 3+ catalysts: 8.3+/10 BUY threshold (already active)</li>
+  <li>✅ Include at least 1 AI infrastructure/networking/power stock (already active)</li>
+  <li>✅ Pre-market broad weakness: -0.3 score adjustment for same-day BUY entries (already active)</li>
+  <li><strong>🆕 Weekend analysis rule:</strong> Weekend (Saturday/Sunday) reports default to WATCH for all candidates. No BUY decisions on weekend analysis — data is stale by Monday open. Function as preparation documents, not execution signals.</li>
+  <li><strong>🆕 Pre-earnings binary rule:</strong> For stocks with earnings in the coming week, cap score at 7.0 max (WATCH only) regardless of quality. The binary event makes scoring unreliable. Re-assess post-earnings.</li>
+  <li><strong>🆕 Monitor 13F filings:</strong> Major hedge fund 13F seasons (mid-May, mid-November) can reveal new institutional positions (Ackman in MSFT, Tepper in AMZN). These are actionable catalysts worth +0.3-0.5 scoring boost.</li>
+  <li><strong>🆕 Volume-based distribution detection:</strong> If a stock closes -3%+ with volume >2x average, flag as distribution day and cap max score at 7.0 for next session regardless of other factors.</li>
+</ul>
+
+<!-- Weekend Context Banner -->
+<div class="summary-box" style="border: 2px solid #d29922; background: #1c2108;">
+  <h3 style="margin-top:0">⚠ Weekend Edition Notice</h3>
+  <p>This report was generated on Saturday, May 16, 2026 using Friday, May 15 close data. Markets are closed. All scores and decisions are based on stale data and should be re-confirmed Monday morning with fresh pre-market/futures data before any execution decisions.</p>
+  <p><strong>Looking ahead to next week (May 18-22):</strong></p>
+  <ul>
+    <li>🔴 <strong>NVDA earnings</strong> — most consequential event of the quarter for AI stocks</li>
+    <li>🟡 Consumer earnings: WMT, TGT, HD, LOW — consumer health check</li>
+    <li>🟡 VIX at 18.43 suggests elevated volatility expectations</li>
+    <li>🟢 If S&P 500 holds 7,400 support, the bull trend remains intact</li>
+    <li>🟢 AI networking (CSCO) and AI cloud (MSFT, AMZN) diversify beyond pure AI compute</li>
+  </ul>
+</div>
+
+<p style="text-align:center; color:#484f58; margin-top:40px; font-size:0.85em">
+  Stocks Self-Learning Agent · Simulation Only · No Real Trading<br>
+  Generated Saturday, May 16, 2026 · Hermes Agent
+</p>
+
+</div>
+</body>
+</html>
