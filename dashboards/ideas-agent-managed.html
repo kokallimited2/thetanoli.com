@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 Agent-Managed Money Websites — Build & Automate</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0d1117; color: #c9d1d9; line-height: 1.6;
+  max-width: 1200px; margin: 0 auto; padding: 2rem 1rem;
+}
+h1 { font-size: 2rem; margin-bottom: 0.25rem; color: #f0f6fc; }
+h2 { font-size: 1.4rem; margin: 2rem 0 1rem; color: #f0f6fc; border-bottom: 2px solid #30363d; padding-bottom: 0.5rem; }
+h3 { font-size: 1.1rem; margin: 1.5rem 0 0.75rem; color: #f0f6fc; }
+.subtitle { color: #8b949e; margin-bottom: 2rem; font-size: 0.9rem; }
+.feature-badge { display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(59,130,246,0.1); color: #60a5fa; padding: 0.1rem 0.5rem; border-radius: 4px; font-size: 0.65rem; font-weight: 600; }
+
+.stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin: 1.5rem 0 2rem; }
+.stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; text-align: center; }
+.stat-card .num { font-size: 1.8rem; font-weight: 700; color: #58a6ff; }
+.stat-card .lbl { font-size: 0.8rem; color: #8b949e; margin-top: 0.25rem; }
+
+.legend { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; font-size: 0.8rem; }
+.legend-item { display: flex; align-items: center; gap: 0.4rem; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+.box-agency { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem; }
+.box-agency h3 { color: #f0f6fc; margin-top: 0; }
+.box-agency p { color: #8b949e; font-size: 0.85rem; }
+
+.opp-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 0.75rem; position: relative; }
+.opp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+.opp-title { font-size: 1.05rem; font-weight: 700; color: #f0f6fc; }
+.opp-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 0.5rem 0; }
+.tag { font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 600; }
+.tag-tool { background: #0d1f2d; color: #58a6ff; }
+.tag-affiliate { background: #0d1f0d; color: #7ee787; }
+.tag-content { background: #1f0d1f; color: #d2a8ff; }
+.tag-directory { background: #0d1f1f; color: #56d4dd; }
+.tag-finance { background: #1f0d0d; color: #f85149; }
+.tag-leadgen { background: #1f1f0d; color: #d29922; }
+.tag-quiz { background: #1f0d1f; color: #ffa657; }
+.tag-data { background: #0d0d1f; color: #a371f7; }
+
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin: 0.5rem 0; }
+.metric { text-align: center; }
+.metric-val { font-size: 0.9rem; font-weight: 700; }
+.metric-lbl { font-size: 0.6rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.3px; }
+.green { color: #7ee787; }
+.yellow { color: #d29922; }
+.blue { color: #58a6ff; }
+.purple { color: #d2a8ff; }
+
+.diff { margin: 0.4rem 0; font-size: 0.8rem; color: #8b949e; padding: 0.4rem 0.6rem; background: #0d1117; border-radius: 6px;}
+.diff-lit { border-left: 3px solid #3fb950; }
+.diff-med { border-left: 3px solid #d29922; }
+.diff-fade { border-left: 3px solid #475569; }
+
+.what-i-do { background: #0d1117; border: 1px solid #21262d; border-radius: 6px; padding: 0.5rem 0.7rem; margin: 0.4rem 0; font-size: 0.77rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.what-i-do strong { color: #f0f6fc; }
+.what-i-do span { color: #8b949e; }
+
+.user-needs { font-size: 0.72rem; background: #111; border: 1px solid #30363d; border-radius: 4px; padding: 0.3rem 0.6rem; margin: 0.3rem 0; display: inline-block; }
+.user-needs:before { content: "👤 Needs: "; font-weight: 700; color: #d29922; }
+
+.opp-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; font-size: 0.72rem; color: #475569; border-top: 1px solid #21262d; padding-top: 0.5rem; }
+.opp-footer b { color: #8b949e; }
+
+#search-input { background: #21262d; border: 1px solid #30363d; color: #c9d1d9; padding: 0.5rem 0.8rem; border-radius: 8px; font-size: 0.9rem; width: 100%; margin-bottom: 1rem; }
+#search-input:focus { outline: none; border-color: #58a6ff; }
+
+.sort-controls { display: flex; gap: 0.5rem; margin-bottom: 1rem; font-size: 0.8rem; align-items: center; }
+.sort-controls select { background: #21262d; border: 1px solid #30363d; color: #c9d1d9; padding: 0.3rem 0.6rem; border-radius: 6px; }
+
+.roadmap { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+.phase { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 1rem; text-align: center; }
+.phase h4 { font-size: 0.9rem; color: #f0f6fc; margin-bottom: 0.3rem; }
+.phase .pcount { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+.phase .ptext { font-size: 0.7rem; color: #8b949e; }
+.phase .pmonths { font-size: 0.65rem; color: #475569; margin-top: 0.3rem; }
+
+@media (max-width: 768px) {
+  .metrics { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .roadmap { grid-template-columns: repeat(2, 1fr); }
+}
+
+.priority-1 { border-left: 3px solid #3fb950; }
+.priority-2 { border-left: 3px solid #58a6ff; }
+.priority-3 { border-left: 3px solid #d29922; }
+
+.tier-tag { font-size: 0.6rem; padding: 0.1rem 0.4rem; border-radius: 3px; font-weight: 700; }
+.tier-1 { background: #3fb950; color: #000; }
+.tier-2 { background: #58a6ff; color: #000; }
+.tier-3 { background: #d29922; color: #000; }
+
+.aff { color: #7ee787; font-size: 0.65rem; }
+.ad { color: #58a6ff; font-size: 0.65rem; }
+.lead { color: #d29922; font-size: 0.65rem; }
+.saas { color: #d2a8ff; font-size: 0.65rem; }
+
+.bounty-badge { display: inline-block; background: rgba(245,158,11,0.1); color: #f59e0b; padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.6rem; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<h1>🤖 100 Agent-Managed Money Projects</h1>
+<div class="subtitle">Fully automated online businesses that <em>I</em> build, deploy and run. You just handle domains, accounts and affiliate signups. Everything else — content, tools, SEO, updates, maintenance — is on me.</div>
+
+<div class="box-agency">
+<h3>⚡ How This Works</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.75rem">
+<div>
+<p><strong style="color:#7ee787">I handle 100%:</strong></p>
+<p style="font-size:0.82rem;margin-top:0.3rem">
+✅ Build & deploy sites (HTML/CSS/JS to GH Pages)<br>
+✅ Generate all content (research, write, format)<br>
+✅ SEO optimization (metadata, JSON-LD, sitemaps)<br>
+✅ Set up cron jobs for daily/weekly tasks<br>
+✅ Data scraping & API integrations<br>
+✅ Interactive tool development<br>
+✅ Push updates & maintain code<br>
+✅ n8n social distribution pipelines<br>
+✅ Automated reporting & monitoring<br>
+✅ Add affiliate links & ad code
+</p>
+</div>
+<div>
+<p><strong style="color:#d29922">You handle (one-time):</strong></p>
+<p style="font-size:0.82rem;margin-top:0.3rem">
+🔹 Buy domains (£2-10/yr on Namecheap)<br>
+🔹 Create GitHub repos (or give me GH token)<br>
+🔹 Sign up for affiliate programs (once)<br>
+🔹 Enable GH Pages + Cloudflare proxy<br>
+🔹 Approve monetisation (AdSense/Ezoic)<br>
+🔹 Provide any paid API keys if needed<br>
+🔹 That's it — everything else is automated
+</p>
+</div>
+</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-card"><div class="num">100</div><div class="lbl">Total Projects</div></div>
+  <div class="stat-card"><div class="num blue">15-30 min</div><div class="lbl">Your Time Per Project</div></div>
+  <div class="stat-card"><div class="num green">£3,500-9k/mo</div><div class="lbl">Total Potential Earnings</div></div>
+  <div class="stat-card"><div class="num yellow">3-12 months</div><div class="lbl">Full Automation Timeline</div></div>
+</div>
+
+<div class="roadmap">
+  <div class="phase"><h4>Phase 1</h4><div class="pcount">10</div><div class="ptext">Quick wins</div><div class="pmonths">Month 1</div></div>
+  <div class="phase"><h4>Phase 2</h4><div class="pcount">15</div><div class="ptext">Tool ecosystem</div><div class="pmonths">Month 2</div></div>
+  <div class="phase"><h4>Phase 3</h4><div class="pcount">15</div><div class="ptext">Content sites</div><div class="pmonths">Month 3-4</div></div>
+  <div class="phase"><h4>Phase 4</h4><div class="pcount">20</div><div class="ptext">Directories & data</div><div class="pmonths">Month 4-6</div></div>
+  <div class="phase"><h4>Phase 5</h4><div class="pcount">20</div><div class="ptext">Finance & trading</div><div class="pmonths">Month 6-9</div></div>
+  <div class="phase"><h4>Phase 6</h4><div class="pcount">20</div><div class="ptext">Full automation</div><div class="pmonths">Month 9-12</div></div>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="dot" style="background:#3fb950"></span> Phase 1: Build first</span>
+  <span class="legend-item"><span class="dot" style="background:#58a6ff"></span> Phase 2-3: Scale</span>
+  <span class="legend-item"><span class="dot" style="background:#d29922"></span> Phase 4-6: Fill pipeline</span>
+</div>
+
+<input type="text" id="search-input" placeholder="Search projects by name, category, or keyword..." onkeyup="filterCards()">
+
+<div class="sort-controls">
+  <span>Sort by:</span>
+  <select id="sort-select" onchange="sortCards()">
+    <option value="earnings">💰 Earnings (highest)</option>
+    <option value="speed">⚡ Speed to build (fastest)</option>
+    <option value="phase">📈 Automation phase</option>
+    <option value="name">📋 Name A-Z</option>
+  </select>
+</div>
+
+<div id="opp-container">
+
+<!-- ============================================================ -->
+<!-- MONTH 1: PHASE 1 — QUICK WINS (10)                           -->
+<!-- ============================================================ -->
+<h2>⚡ Phase 1 — Quick Wins <span style="font-size:0.9rem;color:#8b949e;font-weight:400">(Month 1 · ~2-3 days each · 10 projects)</span></h2>
+<p style="color:#8b949e;font-size:0.85rem;margin-bottom:1rem">Single-page HTML tools. Build in 1-2 days. Deploy to GH Pages. Zero maintenance. Monetised with display ads.</p>
+
+<div class="opp-card priority-1" data-earnings="400" data-speed="2" data-phase="1" data-name="BMI Calculator UK">
+  <div class="opp-header"><div><div class="opp-title">1. BMI Calculator UK <span class="tier-tag tier-1">Phase 1</span></div></div><div class="stars">★★★★★</div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 1 day</span><span class="bounty-badge">Earnings: £200-400/mo</span></div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div>
+    <div class="metric"><div class="metric-val green">£200-400</div><div class="metric-lbl">Monthly</div></div>
+    <div class="metric"><div class="metric-val green">1 day</div><div class="metric-lbl">Build</div></div>
+    <div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maintenance</div></div>
+  </div>
+  <div class="diff diff-lit">UK BMI calculator using NHS guidelines (metric). Simple HTML + JS. 2M+ monthly searches. I build, deploy to GH Pages, add Ezoic ad code. Done.</div>
+  <div class="what-i-do"><strong>I do:</strong> <span>Build HTML/CSS/JS site</span><span>Deploy to GH Pages</span><span>Add ad slots</span><span>SEO metadata</span><span>Push live</span></div>
+  <div class="opp-footer"><span>💡 Needs: domain + GH repo</span><span>📈 Est. £200-400/mo ads</span></div>
+</div>
+
+<div class="opp-card priority-1" data-earnings="500" data-speed="1" data-phase="1" data-name="Mortgage Calculator UK">
+  <div class="opp-header"><div><div class="opp-title">2. Mortgage Calculator UK <span class="tier-tag tier-1">Phase 1</span></div></div><div class="stars">★★★★★</div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 2 days</span><span class="bounty-badge">Earnings: £300-500/mo</span></div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div>
+    <div class="metric"><div class="metric-val green">£300-500</div><div class="metric-lbl">Monthly</div></div>
+    <div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div>
+    <div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maintenance</div></div>
+  </div>
+  <div class="diff diff-lit">Monthly payment, affordability, LTV, stamp duty calculators in one hub. High CPC (£2-5) UK finance keywords. Leads to mortgage brokers (£15-35/lead). I build all calculators + deploy.</div>
+  <div class="what-i-do"><strong>I do:</strong> <span>Build 4 calculators</span><span>Add lead form</span><span>Deploy GH Pages</span><span>SEO + JSON-LD</span><span>Cross-link to property sites</span></div>
+  <div class="opp-footer"><span>💡 Needs: domain + lead partner (or just ads)</span><span>📈 Est. £300-500/mo</span></div>
+</div>
+
+<div class="opp-card priority-1" data-earnings="300" data-speed="2" data-phase="1" data-name="Unit Converter Pro">
+  <div class="opp-header"><div><div class="opp-title">3. Unit Converter Pro <span class="tier-tag tier-1">Phase 1</span></div></div><div class="stars">★★★★★</div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 2 days</span><span class="bounty-badge">Earnings: £200-300/mo</span></div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-val blue">20-25k/mo</div><div class="metric-lbl">Traffic</div></div>
+    <div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div>
+    <div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div>
+    <div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maintenance</div></div>
+  </div>
+  <div class="diff diff-lit">Length, weight, temp, volume, area, speed, currency — 7 converters in a clean hub. PWA for offline use. Display ads. I build all converters + deploy as single-page app.</div>
+  <div class="what-i-do"><strong>I do:</strong> <span>Build 7 converters</span><span>PWA features</span><span>Deploy GH Pages</span><span>Add ads</span></div>
+  <div class="opp-footer"><span>💡 Needs: domain + GH repo</span><span>📈 Est. £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-1" data-earnings="300" data-speed="1" data-phase="1" data-name="Timer Tools Hub">
+  <div class="opp-header"><div><div class="opp-title">4. Timer Tools Hub <span class="tier-tag tier-1">Phase 1</span></div></div><div class="stars">★★★★★</div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 1 day</span><span class="bounty-badge">Earnings: £200-300/mo</span></div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div>
+    <div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div>
+    <div class="metric"><div class="metric-val green">1 day</div><div class="metric-lbl">Build</div></div>
+    <div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maintenance</div></div>
+  </div>
+  <div class="diff diff-lit">Pomodoro timer, countdown, stopwatch, interval timer, alarm clock — 5 tools in one page. High DAU = high ad RPM. I build all 5 + deploy.</div>
+  <div class="what-i-do"><strong>I do:</strong> <span>Build 5 timers</span><span>Deploy GH Pages</span><span>Add ads</span><span>PWA offline</span></div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 Est. £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-1" data-earnings="400" data-speed="2" data-phase="1" data-name="Calorie Calculator Hub">
+  <div class="opp-header"><div><div class="opp-title">5. Calorie Calculator Hub <span class="tier-tag tier-1">Phase 1</span></div></div><div class="stars">★★★★★</div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 2 days</span><span class="bounty-badge">Earnings: £300-400/mo</span></div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-val blue">20-25k/mo</div><div class="metric-lbl">Traffic</div></div>
+    <div class="metric"><div class="metric-val green">£300-400</div><div class="metric-lbl">Monthly</div></div>
+    <div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div>
+    <div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maintenance</div></div>
+  </div>
+  <div class="diff diff-lit">BMR, TDEE, macro calculator, body fat, calorie needs — 5 calculators. Health niche = high RPM. I build all calculators + deploy. Display ads + Amazon affiliate (meal plans, protein).</div>
+  <div class="what-i-do"><strong>I do:</strong> <span>Build 5 calculators</span><span>Add affiliate links</span><span>Deploy</span><span>SEO</span></div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon affiliate account</span><span>📈 Est. £300-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-1" data-earnings="500" data-speed="2" data-phase="1" data-name="Stamp Duty Calculator">
+  <div class="opp-header"><div><div class="opp-title">6. Stamp Duty Calculator UK <span class="tier-tag tier-1">Phase 1</span></div></div><div class="stars">★★★★★</div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-leadgen">Lead Gen</span><span class="bounty-badge">Build: 1 day</span><span class="bounty-badge">Earnings: £300-500/mo</span></div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div>
+    <div class="metric"><div class="metric-val green">£300-500</div><div class="metric-lbl">Monthly</div></div>
+    <div class="metric"><div class="metric-val green">1 day</div><div class="metric-lbl">Build</div></div>
+    <div class="metric"><div class="metric-val green">Very Low</div><div class="metric-lbl">Maint.</div></div>
+  </div>
+  <div class="diff diff-lit">UK stamp duty calculator — first-time buyer, standard rates, additional property. Single JS file. Cross-link with mortgage calculator. Ad income + conveyancing lead gen (£25-50/lead).</div>
+  <div class="what-i-do"><strong>I do:</strong> <span>Build calculator</span><span>Add lead form</span><span>Deploy</span><span>Cross-link property sites</span></div>
+  <div class="opp-footer"><span>💡 Needs: domain + conveyancing partner</span><span>📈 Est. £300-500/mo</span></div>
+</div>
+
+<div class="opp-card priority-1" data-earnings="300" data-speed="1" data-phase="1" data-name="VAT Calculator UK">
+  <div class="opp-header"><div><div class="opp-title">7. VAT Calculator UK <span class="tier-tag tier-1">Phase 1</span></div></div><div class="stars">★★★★★</div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 4 hours</span><span class="bounty-badge">Earnings: £150-300/mo</span></div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div>
+    <div class="metric"><div class="metric-val green">£150-300</div><div class="metric-lbl">Monthly</div></div>
+    <div class="metric"><div class="metric-val green">4 hrs</div><div class="metric-lbl">Build</div></div>
+    <div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div>
+  </div>
+  <div class="diff diff-lit">Add/remove VAT, rate lookup. Ultralight single-page tool. High-intent business traffic. Monetise with accounting software affiliate (Xero, QuickBooks — £50-100 CPA).</div>
+  <div class="what-i-do"><strong>I do:</strong> <span>Build calculator</span><span>Add affiliate links</span><span>Deploy</span></div>
+  <div class="opp-footer"><span>💡 Needs: domain + Xero/QuickBooks affiliate</span><span>📈 Est. £150-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-1" data-earnings="400" data-speed="2" data-phase="1" data-name="Investment Calculator">
+  <div class="opp-header"><div><div class="opp-title">8. Investment Calculator <span class="tier-tag tier-1">Phase 1</span></div></div><div class="stars">★★★★★</div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-finance">Finance</span><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 2 days</span><span class="bounty-badge">Earnings: £300-400/mo</span></div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div>
+    <div class="metric"><div class="metric-val green">£300-400</div><div class="metric-lbl">Monthly</div></div>
+    <div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div>
+    <div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div>
+  </div>
+  <div class="diff diff-lit">Compound interest, SIP, investment return, inflation-adjusted calculators. Finance brokering affiliates (Trading212, Freetrade — £50-150 CPA). Cross-link with your trading portfolio.</div>
+  <div class="what-i-do"><strong>I do:</strong> <span>Build 4 calculators</span><span>Add broker affiliate links</span><span>Deploy</span><span>Finance SEO</span></div>
+  <div class="opp-footer"><span>💡 Needs: domain + broker affiliate accounts</span><span>📈 Est. £300-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-1" data-earnings="350" data-speed="1" data-phase="1" data-name="Password Generator Pro">
+  <div class="opp-header"><div><div class="opp-title">9. Password Generator Pro <span class="tier-tag tier-1">Phase 1</span></div></div><div class="stars">★★★★★</div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 1 day</span><span class="bounty-badge">Earnings: £200-350/mo</span></div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div>
+    <div class="metric"><div class="metric-val green">£200-350</div><div class="metric-lbl">Monthly</div></div>
+    <div class="metric"><div class="metric-val green">1 day</div><div class="metric-lbl">Build</div></div>
+    <div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div>
+  </div>
+  <div class="diff diff-lit">You already proved this model works! A fresh password generator on a .com domain. I clone + rebrand your proven template, deploy to a new GH Pages repo. Extra 28 dormant domains can host one each.</div>
+  <div class="what-i-do"><strong>I do:</strong> <span>Clone existing template</span><span>Rebrand</span><span>Deploy</span><span>Add to dashboard</span></div>
+  <div class="opp-footer"><span>💡 Needs: one of your dormant domains</span><span>📈 Est. £200-350/mo</span></div>
+</div>
+
+<div class="opp-card priority-1" data-earnings="400" data-speed="2" data-phase="1" data-name="Encryption Tools">
+  <div class="opp-header"><div><div class="opp-title">10. Encryption Tools Hub <span class="tier-tag tier-1">Phase 1</span></div></div><div class="stars">★★★★★</div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 2 days</span><span class="bounty-badge">Earnings: £250-400/mo</span></div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div>
+    <div class="metric"><div class="metric-val green">£250-400</div><div class="metric-lbl">Monthly</div></div>
+    <div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div>
+    <div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div>
+  </div>
+  <div class="diff diff-lit">AES text encrypt/decrypt, hash generator (MD5/SHA), random token generator. Client-side JS = zero server cost. Privacy niche pairs with password generators. Display ads.</div>
+  <div class="what-i-do"><strong>I do:</strong> <span>Build 3 tools</span><span>Deploy</span><span>Add ads</span><span>Cross-link to password sites</span></div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 Est. £250-400/mo</span></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- MONTH 2: PHASE 2 — TOOL ECOSYSTEM (15)                        -->
+<!-- ============================================================ -->
+<h2>🔧 Phase 2 — Tool Ecosystem <span style="font-size:0.9rem;color:#8b949e;font-weight:400">(Month 2 · ~1-3 days each · 15 projects)</span></h2>
+<p style="color:#8b949e;font-size:0.85rem;margin-bottom:1rem">More utility tools. Each is a single-page app. Deploy to GH Pages. Zero maintenance. Cross-link them all.</p>
+
+<div class="opp-card priority-2" data-earnings="300" data-speed="1" data-phase="2" data-name="LOAN CALCULATOR">
+  <div class="opp-header"><div><div class="opp-title">11. Loan Calculator UK <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-leadgen">Lead Gen</span><span class="bounty-badge">Build: 1 day</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">1 day</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Personal loan, car loan, APR calculator. Finance niche. Lead gen to lending partners (£10-30/lead). Display ads.</div>
+  <div class="what-i-do"><strong>I do:</strong> <span>Build calculators</span><span>Lead form</span><span>Deploy</span></div>
+  <div class="opp-footer"><span>💡 Needs: domain + lending partner</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="250" data-speed="1" data-phase="2" data-name="TIME ZONE CONVERTER">
+  <div class="opp-header"><div><div class="opp-title">12. Time Zone Buddy <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 1 day</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">1 day</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">World clock, time zone converter, meeting planner. Remote work niche. Pure JS Intl API = no backend. Display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="400" data-speed="2" data-phase="2" data-name="AGE CALCULATOR">
+  <div class="opp-header"><div><div class="opp-title">13. Age Calculator Pro <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 1 day</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">1 day</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Age in years/months/days/hours/minutes, birthday countdown, Chinese zodiac. Gifting affiliate. Surprising high traffic.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="300" data-speed="2" data-phase="2" data-name="QR CODE GENERATOR">
+  <div class="opp-header"><div><div class="opp-title">14. QR Code Generator <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 2 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">QR code generator with colour options, sizes, download PNG. Client-side via qrcode.js. Zero server cost. Display ads. You already have one at bestpasswordgenerator.org/qr-generator/.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="300" data-speed="2" data-phase="2" data-name="PHOTO EDITOR TOOLS">
+  <div class="opp-header"><div><div class="opp-title">15. Photo Tools Hub <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 2 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Image resize, compress, crop, format convert. All client-side Canvas API. No upload needed. PWA. Display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="200" data-speed="1" data-phase="2" data-name="COLOR PALETTE">
+  <div class="opp-header"><div><div class="opp-title">16. Color Palette Generator <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 1 day</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">1 day</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Color palette generator, complementary colours, gradient maker. Designer audience = high RPM. Display ads + Adobe affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £150-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="400" data-speed="2" data-phase="2" data-name="PUPPY AGE CALC">
+  <div class="opp-header"><div><div class="opp-title">17. Dog Age Calculator <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 1 day</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">1 day</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Dog age in human years — breed-specific, weight-adjusted. Viral sharing potential. Pet supply affiliate (Amazon). High engagement.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon affiliate</span><span>📈 £200-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="300" data-speed="2" data-phase="2" data-name="SHOPPING LIST">
+  <div class="opp-header"><div><div class="opp-title">18. Smart Shopping List <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 2 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Reusable shopping list PWA, categorised items, share with family, localStorage save. High retention = good RPM. Display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="350" data-speed="2" data-phase="2" data-name="CONTRACTOR CALC">
+  <div class="opp-header"><div><div class="opp-title">19. Contractor Calculator UK <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-finance">Finance</span><span class="bounty-badge">Build: 2 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-350</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">IR35 status calculator, umbrella company take-home pay, Ltd vs umbrella comparison. UK contractor niche = high CPC. Accounting software affiliate (£50-100 CPA).</div>
+  <div class="opp-footer"><span>💡 Needs: domain + accounting affiliate</span><span>📈 £250-350/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="300" data-speed="2" data-phase="2" data-name="WORD COUNTER">
+  <div class="opp-header"><div><div class="opp-title">20. Word Counter Pro <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 1 day</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">1 day</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Word/character/sentence/paragraph counter, reading time, speaking time. Writers and students. High traffic, simple build. Display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="350" data-speed="3" data-phase="2" data-name="BUDGET TRACKER">
+  <div class="opp-header"><div><div class="opp-title">21. Budget Tracker PWA <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-finance">Finance</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-350</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Income/expense tracking PWA. localStorage-based. Charts (Chart.js) for visualisation. Banking affiliate (Monzo, Starling — £10-25 CPA) + display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + banking affiliate</span><span>📈 £200-350/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="250" data-speed="2" data-phase="2" data-name="TEXT DIFF TOOL">
+  <div class="opp-header"><div><div class="opp-title">22. Text Comparison Tool <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 1 day</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">1 day</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Side-by-side text diff checker. Developers, writers, editors. Simple JS diff library. Display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="300" data-speed="2" data-phase="2" data-name="WEATHER WIDGET">
+  <div class="opp-header"><div><div class="opp-title">23. Weather Dashboard <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 2 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">UK weather by postcode/city. Free API (OpenWeatherMap). 7-day forecast, hourly breakdown. Display ads. Recurring traffic.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + free API key</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="250" data-speed="2" data-phase="2" data-name="DICE ROLLER">
+  <div class="opp-header"><div><div class="opp-title">24. Dice & Coin Flip Hub <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 1 day</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">1 day</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Dice roller (D4, D6, D8, D10, D12, D20), coin flip, random number generator. DnD/gamers audience. Display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="350" data-speed="3" data-phase="2" data-name="TEMPLATE VAULT">
+  <div class="opp-header"><div><div class="opp-title">25. Template Vault <span class="tier-tag tier-2">Phase 2</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-350</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Free printable templates (CV, budget, meal planner, to-do). Lead magnet → email list. Premium templates on Etsy (cross-sell). I build the site + generate the template PDFs.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Etsy account</span><span>📈 £250-350/mo</span></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- MONTH 3-4: PHASE 3 — CONTENT SITES (15)                       -->
+<!-- ============================================================ -->
+<h2>📝 Phase 3 — Automated Content Sites <span style="font-size:0.9rem;color:#8b949e;font-weight:400">(Month 3-4 · 15 projects)</span></h2>
+<p style="color:#8b949e;font-size:0.85rem;margin-bottom:1rem">Content sites I generate and maintain via cron. I write 30-50 posts per site using research + structured content. Automated posting schedules.</p>
+
+<div class="opp-card priority-2" data-earnings="600" data-speed="4" data-phase="3" data-name="BEST OF UK">
+  <div class="opp-header"><div><div class="opp-title">26. BestOfUK.com <span class="tier-tag tier-2">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="tag tag-content">Content</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£400-600</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">"Best [product] UK 2025" roundups — 40 categories (BBQ, mattress, coffee machine, robot vacuum). I write all 40 posts. Amazon affiliate. Set and forget. Weekly cron to refresh pricing.</div>
+  <div class="what-i-do"><strong>I do:</strong> <span>Write 40 posts</span><span>Add affiliate links</span><span>Deploy static site</span><span>Cron for price refresh</span></div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon Associates</span><span>📈 £400-600/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="500" data-speed="4" data-phase="3" data-name="HOME GYM UK">
+  <div class="opp-header"><div><div class="opp-title">27. HomeGymUK.com <span class="tier-tag tier-2">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£300-500</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Home gym equipment reviews — squat racks, benches, dumbbells, barbells. High-ticket (£50-200 commission per sale). I write 30 product reviews + deploy.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon/AWIN affiliate</span><span>📈 £300-500/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="500" data-speed="4" data-phase="3" data-name="GARDEN LIVING">
+  <div class="opp-header"><div><div class="opp-title">28. BackyardLivingUK.com <span class="tier-tag tier-2">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">12-18k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£300-500</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">UK garden/patio product reviews — BBQs, furniture, lighting, plants. Seasonal high CPC. Amazon affiliate. I write seasonal content + monthly roundups.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon Associates</span><span>📈 £300-500/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="400" data-speed="4" data-phase="3" data-name="KITCHEN GEAR">
+  <div class="opp-header"><div><div class="opp-title">29. KitchenGearUK.com <span class="tier-tag tier-2">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">12-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Air fryers, coffee machines, knife sets, cookware reviews. High CPC (£1-3). I write 30 "best" roundups. Amazon affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon Associates</span><span>📈 £250-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-2" data-earnings="500" data-speed="4" data-phase="3" data-name="SLEEP UK">
+  <div class="opp-header"><div><div class="opp-title">30. SleepGuideUK.com <span class="tier-tag tier-2">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">12-18k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£300-500</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Mattress, pillow, bedding reviews. Ultra-high commission (£50-200 per mattress). I write 20 reviews + "best mattress UK 2025" guide. Add sleep quiz tool.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + mattress affiliate</span><span>📈 £300-500/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="400" data-speed="4" data-phase="3" data-name="PET PRODUCTS">
+  <div class="opp-header"><div><div class="opp-title">31. PetGearUK.com <span class="tier-tag tier-3">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">12-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Cat/dog product reviews. "Best dog food UK 2025", "best cat trees", "best pet beds". Evergreen, high search volume. Amazon affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon Associates</span><span>📈 £250-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="400" data-speed="5" data-phase="3" data-name="WFH SETUP">
+  <div class="opp-header"><div><div class="opp-title">32. WFHSetupUK.com <span class="tier-tag tier-3">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Office chairs, standing desks, monitors, webcams, headsets. High-ticket items (£50-200 commission). I write 25 reviews.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon/AWIN</span><span>📈 £250-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="400" data-speed="5" data-phase="3" data-name="WELLNESS UK">
+  <div class="opp-header"><div><div class="opp-title">33. WellnessUK.co.uk <span class="tier-tag tier-3">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Supplements, essential oils, yoga mats, meditation. High CPC (£1.50-3). My writing style fits this. Amazon + health affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + health affiliate</span><span>📈 £250-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="5" data-phase="3" data-name="BABY GEAR UK">
+  <div class="opp-header"><div><div class="opp-title">34. BabyGearUK.com <span class="tier-tag tier-3">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Baby bottles, car seats, prams, baby monitors. New parent = high purchase intent. I write 25 product roundups. Amazon affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon Associates</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="4" data-phase="3" data-name="TECH GADGETS">
+  <div class="opp-header"><div><div class="opp-title">35. TechBuys.co.uk <span class="tier-tag tier-3">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val yellow">Medium</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Laptops, headphones, tablets, smart home. Higher maintenance (tech changes) but higher commissions. Monthly cron to update prices.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon/affiliate</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="3" data-phase="3" data-name="CYCLE UK">
+  <div class="opp-header"><div><div class="opp-title">36. CycleUK.com <span class="tier-tag tier-3">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Bike reviews, cycling gear, helmets. Growing UK market. High-value commissions on bikes (£50-100). Seasonal content.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + cycling brand affiliate</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="3" data-phase="3" data-name="DRONE UK">
+  <div class="opp-header"><div><div class="opp-title">37. DronePilotUK.com <span class="tier-tag tier-3">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Drone reviews, "best drone for beginners", drone law guides. Niche but high-value (£500-2000 items). Amazon affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon Associates</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="400" data-speed="4" data-phase="3" data-name="DIGITAL PRODUCTS">
+  <div class="opp-header"><div><div class="opp-title">38. DigitalProductHub.com <span class="tier-tag tier-3">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="tag tag-content">Content</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Reviews of digital products — Canva, Notion templates, Figma, SaaS tools. High CPA commissions (£20-100). I review 40 digital products.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + digital product affiliate</span><span>📈 £250-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="3" data-phase="3" data-name="COFFEE UK">
+  <div class="opp-header"><div><div class="opp-title">39. CoffeeBrewUK.com <span class="tier-tag tier-3">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Coffee machine reviews, bean guides, accessories. Loyal niche with repeat purchases. Amazon affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon</span><span>📈 £150-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="3" data-phase="3" data-name="CAR CARE UK">
+  <div class="opp-header"><div><div class="opp-title">40. CarCareUK.com <span class="tier-tag tier-3">Phase 3</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Car cleaning products, dash cams, phone mounts, accessories. Good CPC. Amazon affiliate. 25 articles.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon</span><span>📈 £150-200/mo</span></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- MONTH 4-6: PHASE 4 — DIRECTORIES & DATA (20)                  -->
+<!-- ============================================================ -->
+<h2>📇 Phase 4 — Directories & Data Sites <span style="font-size:0.9rem;color:#8b949e;font-weight:400">(Month 4-6 · 20 projects)</span></h2>
+<p style="color:#8b949e;font-size:0.85rem;margin-bottom:1rem">Programmatic sites built from open UK data. I scrape/ingest once, generate all pages. Cron-based monthly updates. True "set and forget."</p>
+
+<div class="opp-card priority-3" data-earnings="500" data-speed="5" data-phase="4" data-name="UK SOLICITORS">
+  <div class="opp-header"><div><div class="opp-title">41. UKSolicitorsDirectory.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-directory">Directory</span><span class="tag tag-leadgen">Lead Gen</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">20-30k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£300-500</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Search firm solicitors by location/practice area. Uses SRA open data (free CSV). Lead gen (£15-35/lead) + premium listings. I build with Supabase backend, generate pages, set up cron for data refresh.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + lead partner</span><span>📈 £300-500/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="400" data-speed="5" data-phase="4" data-name="UK SCHOOL GUIDE">
+  <div class="opp-header"><div><div class="opp-title">42. UKSchoolGuide.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-directory">Directory</span><span class="tag tag-education">Education</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">15-25k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">School directory with Ofsted ratings, exam results, catchment. DfE open data. Property + education crossover. Tutor affiliate. I extract data, build searchable directory, deploy.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + tutoring affiliate</span><span>📈 £250-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="400" data-speed="5" data-phase="4" data-name="UK CHARITY">
+  <div class="opp-header"><div><div class="opp-title">43. UKCharityCheck.org <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-directory">Directory</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">12-18k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Charity register lookup from Charity Commission open data. Financials, reviews. Giving platform affiliate + display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="400" data-speed="5" data-phase="4" data-name="HOUSE PRICE CHECK">
+  <div class="opp-header"><div><div class="opp-title">44. HousePriceCheck.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-property">Property</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">20-30k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£300-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">UK house price lookup by postcode. Land Registry API. Conveyancing leads (£25-50/lead). Cross-linked with pforprofits.com.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + conveyancing partner</span><span>📈 £300-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="5" data-phase="4" data-name="NHS FINDER">
+  <div class="opp-header"><div><div class="opp-title">45. NHSDoctorFinder.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-directory">Directory</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">GP surgery finder, dentist finder, pharmacist finder. NHS open data. Health insurance affiliate + display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="5" data-phase="4" data-name="AREA GUIDES">
+  <div class="opp-header"><div><div class="opp-title">46. AreaGuides.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-content">Content</span><span class="tag tag-property">Property</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">"Living in [town]" programmatic pages. Data from Land Registry, ONS, schools. 100+ auto-generated pages. Estate agent leads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="4" data-phase="4" data-name="UK TRADESMEN">
+  <div class="opp-header"><div><div class="opp-title">47. UKTradesmen.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-directory">Directory</span><span class="tag tag-leadgen">Lead Gen</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">12-18k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val yellow">Medium</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Tradesmen directory by postcode. Paid listings + lead fees. Cross-link with property sites.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="4" data-phase="4" data-name="UK EAT OUT">
+  <div class="opp-header"><div><div class="opp-title">48. UKEatOut.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-directory">Directory</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Restaurant directory + FSA hygiene ratings. Food delivery affiliate (Deliveroo, JustEat). Open data.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + food delivery affiliate</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="4" data-phase="4" data-name="BTL CALCULATOR">
+  <div class="opp-header"><div><div class="opp-title">49. BTLCalc.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-property">Property</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Buy-to-let calculator — yield, ROI, cashflow. Landlord insurance + mortgage leads. Cross-linked with pforprofits.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="4" data-phase="4" data-name="EPC COMPARE">
+  <div class="opp-header"><div><div class="opp-title">50. EPCCompare.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-property">Property</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">EPC lookup + improvement calculator. Regulatory evergreen content. Energy supplier affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + energy affiliate</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="4" data-phase="4" data-name="UK COUNTRY INFO">
+  <div class="opp-header"><div><div class="opp-title">51. UKCountryFacts.org <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-content">Content</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">195 country pages with facts, flags, data. Programmatic from static JSON. Travel affiliate (Booking.com). Zero maintenance.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Booking.com affiliate</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="5" data-phase="4" data-name="HANDWRITING SHEETS">
+  <div class="opp-header"><div><div class="opp-title">52. HandwritingSheets.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-education">Education</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Generate custom handwriting practice PDFs. Target parents/teachers. Digital product sales directly on site + display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Gumroad/Etsy</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="5" data-phase="4" data-name="UK GYM FINDER">
+  <div class="opp-header"><div><div class="opp-title">53. UKGymFinder.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-directory">Directory</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Gym directory. Member referral deals, fitness equipment affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £150-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="4" data-phase="4" data-name="UK VET FINDER">
+  <div class="opp-header"><div><div class="opp-title">54. UKVetFinder.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-directory">Directory</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£100-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Vet practice directory. Pet insurance affiliate (£10-30 CPA).</div>
+  <div class="opp-footer"><span>💡 Needs: domain + pet insurance affiliate</span><span>📈 £100-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="5" data-phase="4" data-name="UK ESTATE AGENTS">
+  <div class="opp-header"><div><div class="opp-title">55. UKEstateAgents.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-directory">Directory</span><span class="tag tag-property">Property</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Estate agent directory by area. Premium listings + conveyancing referrals. Property ecosystem extension.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="4" data-phase="4" data-name="UK TUTOR FINDER">
+  <div class="opp-header"><div><div class="opp-title">56. UKTutorFinder.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-directory">Directory</span><span class="tag tag-education">Education</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£100-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Tutor directory by subject/area. Cross-link with coachifyonline + 11+ sites. Subscription listings.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £100-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="5" data-phase="4" data-name="RENOVATION CALC">
+  <div class="opp-header"><div><div class="opp-title">57. RenovationCalc.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-property">Property</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Home renovation cost calculator (kitchen, bathroom, extension). Builder/tradesman leads. BRRR synergy.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="4" data-phase="4" data-name="RENTAL YIELD">
+  <div class="opp-header"><div><div class="opp-title">58. RentalYieldCheck.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-property">Property</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Rental yield by postcode calculator. Property investor audience. Cross-link with entire ecosystem.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="4" data-phase="4" data-name="SELL HOUSE FAST">
+  <div class="opp-header"><div><div class="opp-title">59. SellMyHouseFast.co.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-leadgen">Lead Gen</span><span class="bounty-badge">Build: 2 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Lead gen form for cash house buyers. High CPC (£2-5) keywords. Sell leads to cash buying companies.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + cash buyer partner</span><span>📈 £150-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="4" data-phase="4" data-name="FIRST TIME BUYER">
+  <div class="opp-header"><div><div class="opp-title">60. FirstTimeBuyer.uk <span class="tier-tag tier-3">Phase 4</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-content">Content</span><span class="tag tag-property">Property</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">First-time buyer guide site. Content + calculators. Mortgage broker + conveyancing leads. Funnel for calculator tools.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + mortgage partner</span><span>📈 £150-200/mo</span></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- MONTH 6-9: PHASE 5 — FINANCE & TRADING (20)                   -->
+<!-- ============================================================ -->
+<h2>📊 Phase 5 — Finance & Automated Trading Sites <span style="font-size:0.9rem;color:#8b949e;font-weight:400">(Month 6-9 · 20 projects)</span></h2>
+<p style="color:#8b949e;font-size:0.85rem;margin-bottom:1rem">Leverage your existing trading infrastructure. I use the same yfinance, CoinGecko, and portfolio tracker code. High-value finance CPA commissions.</p>
+
+<div class="opp-card priority-3" data-earnings="600" data-speed="5" data-phase="5" data-name="DIVIDEND TRACKER">
+  <div class="opp-header"><div><div class="opp-title">61. DividendTracker.co.uk <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£400-600</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">UK dividend calendar, yield tracker, ex-dividend calendar. Uses existing yfinance infra. Broker affiliate (Trading212, Freetrade — £50-150 CPA) + premium tier (£5-10/mo).</div>
+  <div class="opp-footer"><span>💡 Needs: domain + broker affiliates</span><span>📈 £400-600/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="500" data-speed="5" data-phase="5" data-name="ISA CALCULATOR">
+  <div class="opp-header"><div><div class="opp-title">62. ISACalc.co.uk <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">12-18k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£300-500</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Cash vs S&amp;S ISA comparison, £20k allowance calculator. High-value UK finance lead gen. Provider affiliate (Nutmeg, Vanguard — £75-200 CPA).</div>
+  <div class="opp-footer"><span>💡 Needs: domain + ISA provider affiliates</span><span>📈 £300-500/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="500" data-speed="5" data-phase="5" data-name="PENSION CALC">
+  <div class="opp-header"><div><div class="opp-title">63. PensionCalc.uk <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">12-18k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£300-500</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">UK state pension forecast, workplace pension projection. Highest CPC finance keywords (£3-5). PensionBee, Penfold affiliate (£50-200 CPA).</div>
+  <div class="opp-footer"><span>💡 Needs: domain + pension provider affiliates</span><span>📈 £300-500/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="400" data-speed="5" data-phase="5" data-name="STOCK SCREENER">
+  <div class="opp-header"><div><div class="opp-title">64. UKStockScreener.com <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">FTSE stock screener — PE, yield, sector filters. Uses your yfinance. Broker affiliate + premium (£10/mo).</div>
+  <div class="opp-footer"><span>💡 Needs: domain + broker affiliates</span><span>📈 £250-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="400" data-speed="5" data-phase="5" data-name="CRYPTO PROFIT">
+  <div class="opp-header"><div><div class="opp-title">65. CryptoProfitCalc.com <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Crypto P&L calculator, tax calculator (CGT). Uses CoinGecko API (same as scanner). Exchange affiliate (Binance, Coinbase — £20-50 CPA).</div>
+  <div class="opp-footer"><span>💡 Needs: domain + exchange affiliates</span><span>📈 £250-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="400" data-speed="5" data-phase="5" data-name="FOREX CALC">
+  <div class="opp-header"><div><div class="opp-title">66. ForexCalc.com <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Position size, pip value, margin calculator. Ties into your trading wisdom skills. Broker affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + forex broker affiliate</span><span>📈 £200-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="350" data-speed="5" data-phase="5" data-name="CRYPTO PORTFOLIO">
+  <div class="opp-header"><div><div class="opp-title">67. CryptoPortfolioTracker.net <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-350</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Enter holdings → live value + P&L. Uses CoinGecko. Exchange affiliate + premium features (£5-10/mo).</div>
+  <div class="opp-footer"><span>💡 Needs: domain + exchange affiliates</span><span>📈 £250-350/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="4" data-phase="5" data-name="SIDE HUSTLE CALC">
+  <div class="opp-header"><div><div class="opp-title">68. SideHustleCalc.com <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">"How much can I earn?" calculator — freelance rates, POD profit, dropship margin. Ties into your money research cron.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="4" data-phase="5" data-name="CGT CALC UK">
+  <div class="opp-header"><div><div class="opp-title">69. CGTCalc.uk <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 2 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Capital Gains Tax calculator for UK stocks/crypto. Tax season = huge traffic spike. Accounting affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="4" data-phase="5" data-name="INFLATION CALC">
+  <div class="opp-header"><div><div class="opp-title">70. InflationCalc.uk <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 2 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">UK inflation calculator, purchasing power over time. ONS data (annual update). Display ads + wealth management affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="4" data-phase="5" data-name="BUDGET PLANNER">
+  <div class="opp-header"><div><div class="opp-title">71. BudgetPlanner.uk <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 2 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">UK budget planner PWA. Banking affiliate (Monzo, Starling) + printable sales on Etsy. Cross-sell to your digital product pipeline.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + banking affiliate</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="4" data-phase="5" data-name="CRYPTO NEWS">
+  <div class="opp-header"><div><div class="opp-title">72. CryptoNewsAggregator.com <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-content">Content</span><span class="tag tag-finance">Finance</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Auto-fetch top crypto news headlines via RSS/API. Cron every hour. Exchange affiliate ads. Zero content creation.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + exchange affiliate</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="4" data-phase="5" data-name="CRYPTO FEAR GREED">
+  <div class="opp-header"><div><div class="opp-title">73. CryptoFearGreed.com <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-finance">Finance</span><span class="bounty-badge">Build: 2 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Crypto Fear &amp; Greed Index live embed + historical chart. Uses free API. Daily cron with signal comments. Exchange affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + exchange affiliate</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="3" data-phase="5" data-name="STOCK NEWS">
+  <div class="opp-header"><div><div class="opp-title">74. UKStockNews.com <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-content">Content</span><span class="tag tag-finance">Finance</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Auto-aggregate FTSE news from RSS. Cron updates hourly. Broker affiliate + display ads. Static site regenerated by cron.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + broker affiliate</span><span>📈 £150-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="4" data-phase="5" data-name="MORTGAGE COMPARE">
+  <div class="opp-header"><div><div class="opp-title">75. MortgageCompare.co.uk <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="tag tag-leadgen">Lead Gen</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Mortgage rate comparison + affordability calculator. Lead gen to mortgage brokers (£15-35/lead). Property ecosystem hub.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + broker network</span><span>📈 £200-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="4" data-phase="5" data-name="ENERGY COMPARE">
+  <div class="opp-header"><div><div class="opp-title">76. EnergySwitch.co.uk <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-leadgen">Lead Gen</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Energy tariff comparison engine. Energy supplier affiliate (£20-50 per switch). UK-specific, high search volume.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + energy affiliate</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="3" data-phase="5" data-name="BROADBAND COMPARE">
+  <div class="opp-header"><div><div class="opp-title">77. BroadbandCompare.uk <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-leadgen">Lead Gen</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Broadband deals comparison by postcode. ISP affiliate commissions (£10-50 per signup). High-intent shoppers.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + ISP affiliates</span><span>📈 £150-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="4" data-phase="5" data-name="SALARY CALC">
+  <div class="opp-header"><div><div class="opp-title">78. SalaryCalc.co.uk <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 2 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">UK take-home pay calculator, tax breakdown, NI, pension contributions. High traffic during tax season. Accounting affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="3" data-phase="5" data-name="INSURANCE COMPARE">
+  <div class="opp-header"><div><div class="opp-title">79. InsuranceCompare.uk <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-leadgen">Lead Gen</span><span class="tag tag-finance">Finance</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£100-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Life/income protection quote comparison. Lead gen to insurance providers (£10-30/lead). Finance portfolio extension.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + insurance partner</span><span>📈 £100-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="3" data-phase="5" data-name="CAR INSURANCE">
+  <div class="opp-header"><div><div class="opp-title">80. CarInsuranceCompare.uk <span class="tier-tag tier-3">Phase 5</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-leadgen">Lead Gen</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Car insurance comparison form + guide. Massive search volume. Lead gen commission (£5-15/lead).</div>
+  <div class="opp-footer"><span>💡 Needs: domain + insurance partner</span><span>📈 £150-200/mo</span></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- MONTH 9-12: PHASE 6 — FULL AUTOMATION (20)                    -->
+<!-- ============================================================ -->
+<h2>🤖 Phase 6 — Full Automation & Data Sites <span style="font-size:0.9rem;color:#8b949e;font-weight:400">(Month 9-12 · 20 projects)</span></h2>
+<p style="color:#8b949e;font-size:0.85rem;margin-bottom:1rem">Advanced automated sites. Daily cron-generated content, AI-powered tools, and passive income engines I run indefinitely.</p>
+
+<div class="opp-card priority-3" data-earnings="500" data-speed="6" data-phase="6" data-name="QUIZ ENGINE">
+  <div class="opp-header"><div><div class="opp-title">81. QuizEngine.com <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-quiz">Quiz</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">20-30k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£300-500</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Personality quizzes, trivia, knowledge tests. Viral sharing engine. I write 50 quizzes + deploy. Display ads + lead gen. Each quiz = viral traffic loop.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £300-500/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="400" data-speed="6" data-phase="6" data-name="ATS RESUME CHECK">
+  <div class="opp-header"><div><div class="opp-title">82. ATSResumeChecker.com <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">ATS keyword checker. Paste resume → score + suggestions. Resume writing service affiliate + CV templates (digital product).</div>
+  <div class="opp-footer"><span>💡 Needs: domain + resume service affiliate</span><span>📈 £250-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="400" data-speed="6" data-phase="6" data-name="WRITING TOOLS">
+  <div class="opp-header"><div><div class="opp-title">83. WritingToolsHub.com <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">12-18k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£250-400</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Grammar checker, readability score, plagiarism scanner, word counter, thesaurus — 10 writing tools in one hub. Writer audience. Display ads + premium tier.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £250-400/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="350" data-speed="6" data-phase="6" data-name="RANDOM GENERATORS">
+  <div class="opp-header"><div><div class="opp-title">84. RandomGeneratorHub.com <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">15-20k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-350</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">10 random generators in one site: name, number, colour, team, password, username, food, movie, quote, fact. High repeat traffic. Display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-350/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="350" data-speed="6" data-phase="6" data-name="WORKOUT GENERATOR">
+  <div class="opp-header"><div><div class="opp-title">85. WorkoutGenerator.uk <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-350</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">AI workout plan generator. Select goals → get weekly plan. Rules engine (no actual AI API needed). Fitness affiliate + printable workout logs.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + fitness affiliate</span><span>📈 £200-350/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="5" data-phase="6" data-name="HABIT TRACKER">
+  <div class="opp-header"><div><div class="opp-title">86. HabitTracker.app <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Habit tracking PWA with streaks, stats, reminders (localStorage). High retention. Self-improvement affiliate + printable habit journals (digital product).</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="5" data-phase="6" data-name="FLASHCARD APP">
+  <div class="opp-header"><div><div class="opp-title">87. FlashcardApp.co.uk <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-education">Education</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Spaced-repetition flashcard PWA. Create/study/share decks. Students + language learners. Cross-link with education portfolio. Display ads + premium features.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="300" data-speed="5" data-phase="6" data-name="RENTING GUIDE">
+  <div class="opp-header"><div><div class="opp-title">88. RentingGuide.uk <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-content">Content</span><span class="tag tag-property">Property</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£200-300</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Tenant rights, deposits, rental process guide. Regulatory evergreen content. Landlord/letting agent leads. I write 40 guides.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £200-300/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="5" data-phase="6" data-name="STUDY PLANNER">
+  <div class="opp-header"><div><div class="opp-title">89. StudyPlanner.co.uk <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-education">Education</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Study schedule planner + revision timetable generator. Cross-link with 11+/coachify. Exam prep affiliate + printable study planners (digital product).</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="5" data-phase="6" data-name="RECIPE GENERATOR">
+  <div class="opp-header"><div><div class="opp-title">90. RecipeGenerator.uk <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">"What's in your fridge?" recipe generator. Select ingredients → get recipe ideas. Rules engine. Amazon affiliate (cookware) + display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Amazon</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="250" data-speed="5" data-phase="6" data-name="CAR VALUE CHECK">
+  <div class="opp-header"><div><div class="opp-title">91. CarValueCheck.uk <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="tag tag-leadgen">Lead Gen</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-250</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Car valuation tool + MOT history checker. DVLA API. Car buying/selling leads. Insurance affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + DVLA API key</span><span>📈 £150-250/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="4" data-phase="6" data-name="PDF TOOLS">
+  <div class="opp-header"><div><div class="opp-title">92. PDFToolsHub.com <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">10-15k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">PDF merge, split, compress, convert — all client-side via pdf-lib.js. Zero server cost. Display ads + premium batch processing.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £150-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="4" data-phase="6" data-name="MUSIC TOOLS">
+  <div class="opp-header"><div><div class="opp-title">93. MusicToolsHub.com <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£100-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">BPM finder, chord generator, metronome, tuner, scale reference. Musician niche. Display ads + instrument affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £100-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="4" data-phase="6" data-name="WEB DEV TOOLS">
+  <div class="opp-header"><div><div class="opp-title">94. WebDevTools.org <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 4 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£100-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">4 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">HTML encoder/decoder, CSS minifier, JSON formatter, base64 converter, URL encoder. Developer audience. Display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £100-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="4" data-phase="6" data-name="CRYPTO TAX">
+  <div class="opp-header"><div><div class="opp-title">95. CryptoTaxCalc.uk <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-finance">Finance</span><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">UK crypto tax calculator. CGT allowance checker, disposal tracker. CryptoTaxCalculator/similar affiliate (£10-30 CPA).</div>
+  <div class="opp-footer"><span>💡 Needs: domain + crypto tax affiliate</span><span>📈 £150-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="4" data-phase="6" data-name="DIVORCE GUIDE">
+  <div class="opp-header"><div><div class="opp-title">96. DivorceGuide.uk <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-content">Content</span><span class="tag tag-leadgen">Lead Gen</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">UK divorce process guide — financial, children, legal. Very high CPC (£5-10) family law keywords. Solicitor lead gen (£25-50/lead). I write 30 guides.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + solicitors partner</span><span>📈 £150-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="4" data-phase="6" data-name="UK LOTTO CHECKER">
+  <div class="opp-header"><div><div class="opp-title">97. LottoChecker.uk <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£100-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">National Lottery number checker, random number generator, odds calculator. Huge traffic on draw days (Wed/Sat). Display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £100-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="200" data-speed="4" data-phase="6" data-name="UK HOLIDAY GUIDES">
+  <div class="opp-header"><div><div class="opp-title">98. UKStaycation.co.uk <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-content">Content</span><span class="tag tag-affiliate">Affiliate</span><span class="bounty-badge">Build: 5 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">8-12k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£150-200</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val yellow">5 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">UK staycation guides by region. Booking.com affiliate. I write 50 guides + deploy. Seasonal content with cron updates.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + Booking.com affiliate</span><span>📈 £150-200/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="150" data-speed="4" data-phase="6" data-name="MEAL PLANNER">
+  <div class="opp-header"><div><div class="opp-title">99. MealPlannerPro.com <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 3 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£100-150</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">3 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Low</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Weekly meal planner PWA, shopping list auto-generation. Print/export. Grocery delivery affiliate (Ocado, Tesco). Display ads.</div>
+  <div class="opp-footer"><span>💡 Needs: domain + grocery affiliate</span><span>📈 £100-150/mo</span></div>
+</div>
+
+<div class="opp-card priority-3" data-earnings="150" data-speed="3" data-phase="6" data-name="HEADLINE ANALYZER">
+  <div class="opp-header"><div><div class="opp-title">100. HeadlineAnalyzer.com <span class="tier-tag tier-3">Phase 6</span></div></div></div>
+  <div class="opp-meta"><span class="tag tag-tool">Tool</span><span class="bounty-badge">Build: 2 days</span></div>
+  <div class="metrics"><div class="metric"><div class="metric-val blue">6-10k/mo</div><div class="metric-lbl">Traffic</div></div><div class="metric"><div class="metric-val green">£100-150</div><div class="metric-lbl">Monthly</div></div><div class="metric"><div class="metric-val green">2 days</div><div class="metric-lbl">Build</div></div><div class="metric"><div class="metric-val green">Zero</div><div class="metric-lbl">Maint.</div></div></div>
+  <div class="diff diff-lit">Headline scoring tool — emotional impact, sentiment, word balance. Content marketers audience. Display ads + CoSchedule/Hemingway affiliate.</div>
+  <div class="opp-footer"><span>💡 Needs: domain</span><span>📈 £100-150/mo</span></div>
+</div>
+
+</div><!-- end opp-container -->
+
+<div style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid #30363d">
+
+<h2>📋 Operating Model</h2>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.5rem 0">
+<div style="background:#161b22;border:1px solid #30363d;border-radius:10px;padding:1rem">
+<h3 style="margin-top:0;font-size:1rem">🔨 Build Phase</h3>
+<p style="font-size:0.82rem;color:#8b949e">You give the green light on a project. I build the site, deploy to GH Pages, set up ad slots, add affiliate links, and push live. You handle domain + affiliate signup.</p>
+</div>
+<div style="background:#161b22;border:1px solid #30363d;border-radius:10px;padding:1rem">
+<h3 style="margin-top:0;font-size:1rem">🤖 Automation Phase</h3>
+<p style="font-size:0.82rem;color:#8b949e">I set up cron jobs to generate/refresh content, update prices, run data imports, and push updates. The site runs itself. I monitor via dashboard.</p>
+</div>
+<div style="background:#161b22;border:1px solid #30363d;border-radius:10px;padding:1rem">
+<h3 style="margin-top:0;font-size:1rem">💰 Revenue Phase</h3>
+<p style="font-size:0.82rem;color:#8b949e">Ads + affiliates generate income. I track earnings, suggest optimisations, and build the next project. You collect the revenue. No ongoing work from you.</p>
+</div>
+</div>
+
+<h2>🎯 Starting Strategy</h2>
+<div style="background:#161b22;border:1px solid #30363d;border-radius:10px;padding:1.5rem">
+<p style="color:#c9d1d9"><strong>First 3 projects I'll build when you give the go-ahead:</strong></p>
+<ol style="color:#c9d1d9;line-height:2;margin-top:0.75rem">
+<li><strong>BMI Calculator UK</strong> — 1 day build. Domain needed (bmi-calculator.co.uk or similar). Zero maintenance. £200-400/mo ads.</li>
+<li><strong>Mortgage Calculator UK</strong> — 2 day build. Needs domain. £300-500/mo. Cross-links with pforprofits.</li>
+<li><strong>Stamp Duty Calculator UK</strong> — 1 day build. Needs domain. £300-500/mo. Property ecosystem synergy.</li>
+</ol>
+<p style="color:#8b949e;font-size:0.85rem;margin-top:0.75rem">Each takes ~1-3 days of my time. When one is live and automated, we move to the next. By month 3, we have 10 sites generating £2,000-4,000/mo combined.</p>
+</div>
+
+</div>
+
+<footer style="margin-top:2rem;padding-top:1rem;border-top:1px solid #30363d;color:#475569;font-size:0.75rem;text-align:center">
+100 agent-managed projects • Generated by Hermes Agent • All traffic/earnings estimates based on market research
+</footer>
+
+<script>
+function filterCards() {
+  const input = document.getElementById('search-input').value.toLowerCase();
+  document.querySelectorAll('.opp-card').forEach(c => {
+    c.style.display = c.textContent.toLowerCase().includes(input) ? '' : 'none';
+  });
+}
+function sortCards() {
+  const sortBy = document.getElementById('sort-select').value;
+  const container = document.getElementById('opp-container');
+  const cards = Array.from(container.querySelectorAll('.opp-card'));
+  cards.sort((a, b) => {
+    if (sortBy === 'name') return a.dataset.name.localeCompare(b.dataset.name);
+    return (parseInt(b.dataset[sortBy]) || 0) - (parseInt(a.dataset[sortBy]) || 0);
+  });
+  cards.forEach(c => container.appendChild(c));
+}
+</script>
+
+</body>
+</html>
