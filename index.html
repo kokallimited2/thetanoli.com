@@ -114,6 +114,18 @@ footer { text-align: center; padding: 24px; color: #475569; font-size: 11px; }
               radial-gradient(circle at 70% 50%, rgba(13,148,136,0.03) 0%, transparent 50%);
   pointer-events: none;
 }
+
+/* Quota status styles */
+.quota-section { margin-top: 48px; }
+.quota-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.quota-card { background: #111827; border: 1px solid #1e293b; border-radius: 10px; padding: 16px; }
+.quota-card .label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.quota-card .value { font-size: 1.2rem; font-weight: 700; }
+.quota-card .detail { font-size: 0.7rem; color: #94a3b8; margin-top: 2px; }
+.quota-bar { background: #1e293b; border-radius: 6px; height: 5px; margin-top: 8px; overflow: hidden; }
+.quota-bar-fill { height: 100%; border-radius: 6px; transition: width 0.5s ease; }
+.quota-card .updated { font-size: 0.65rem; color: #475569; margin-top: 6px; }
+
 </style>
 </head>
 <body>
@@ -236,11 +248,67 @@ footer { text-align: center; padding: 24px; color: #475569; font-size: 11px; }
 
   </div>
 
+  <div class="quota-section" id="system-status">
+    <div class="section-title">🔧 System Status</div>
+    <div id="quota-grid" class="quota-grid">
+      <div class="quota-card" style="grid-column:1/-1;text-align:center;padding:24px">
+        <div style="color:#64748b">Loading system status...</div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <footer>
   Tanoli Dashboard Hub • Private & Secure • Cloudflare Access Protected
 </footer>
+
+<script>
+async function loadQuota() {
+  try {
+    const r = await fetch('dashboards/quota-status.json?' + Date.now());
+    const q = await r.json();
+    const grid = document.getElementById('quota-grid');
+    
+    const barColor = p => p > 80 ? p > 95 ? '#f85149' : '#d29922' : '#3fb950';
+    
+    grid.innerHTML = `
+      <div class="quota-card">
+        <div class="label">GitHub API (hourly)</div>
+        <div class="value" style="color:${barColor(q.github_api_hourly.pct)}">${q.github_api_hourly.used.toLocaleString()}/${q.github_api_hourly.limit.toLocaleString()}</div>
+        <div class="detail">Search: ${q.github_api_hourly.search_min.used}/${q.github_api_hourly.search_min.limit}/min</div>
+        <div class="quota-bar"><div class="quota-bar-fill" style="width:${Math.min(q.github_api_hourly.pct,100)}%;background:${barColor(q.github_api_hourly.pct)}"></div></div>
+      </div>
+      <div class="quota-card">
+        <div class="label">Cloudflare API (5min)</div>
+        <div class="value" style="color:${barColor(q.cloudflare_api_5min.pct)}">${q.cloudflare_api_5min.used.toLocaleString()}/${q.cloudflare_api_5min.limit.toLocaleString()}</div>
+        <div class="detail">${q.cloudflare_api_5min.extra || ''}</div>
+        <div class="quota-bar"><div class="quota-bar-fill" style="width:${Math.min(q.cloudflare_api_5min.pct,100)}%;background:${barColor(q.cloudflare_api_5min.pct)}"></div></div>
+      </div>
+      <div class="quota-card">
+        <div class="label">GH Pages Deploy</div>
+        <div class="value">${q.gh_pages_deploy.status}</div>
+        <div class="detail">${q.gh_pages_deploy.last_deploy}</div>
+        <div style="font-size:0.7rem;color:#94a3b8;margin-top:4px">${q.gh_pages_deploy.bandwidth}</div>
+      </div>
+      <div class="quota-card">
+        <div class="label">CDN Bandwidth</div>
+        <div class="value" style="color:#58a6ff">${q.cdn_bandwidth.status}</div>
+        <div class="detail">${q.cdn_bandwidth.plan}</div>
+      </div>
+      <div class="quota-card" style="grid-column:1/-1;text-align:right;padding:8px 16px;border-color:#1e293b">
+        <span class="detail" style="color:#475569">Updated: ${q.updated_at}</span>
+      </div>`;
+  } catch(e) {
+    document.getElementById('quota-grid').innerHTML = `
+      <div class="quota-card" style="grid-column:1/-1;text-align:center;padding:24px">
+        <div style="color:#64748b">Status unavailable</div>
+        <div class="detail">${e.message}</div>
+      </div>`;
+  }
+}
+loadQuota();
+</script>
 
 </body>
 </html>
