@@ -11,14 +11,13 @@ body {
   background: #0d1117; color: #c9d1d9; line-height: 1.6;
   max-width: 1300px; margin: 0 auto; padding: 1.5rem 1rem;
 }
-h1 { font-size: 1.6rem; color: #f0f6fc; margin-bottom: 0.25rem; }
-.sub { color: #8b949e; font-size: 0.85rem; margin-bottom: 1.5rem; }
-
-.tab-bar { display: flex; gap: 0; border-bottom: 2px solid #30363d; margin-bottom: 1.5rem; overflow-x: auto; }
+h1 { font-size: 1.4rem; color: #f0f6fc; margin-bottom: 0.15rem; }
+.sub { color: #8b949e; font-size: 0.8rem; margin-bottom: 1rem; }
+.tab-bar { display: flex; gap: 0; border-bottom: 2px solid #30363d; margin-bottom: 0; overflow-x: auto; }
 .tab-btn {
-  padding: 0.7rem 1.2rem; cursor: pointer; font-size: 0.85rem; font-weight: 600;
+  padding: 0.6rem 1.2rem; cursor: pointer; font-size: 0.85rem; font-weight: 600;
   color: #8b949e; background: none; border: none; border-bottom: 2px solid transparent;
-  margin-bottom: -2px; transition: all 0.15s; white-space: nowrap;
+  margin-bottom: -2px; transition: all 0.12s; white-space: nowrap;
   display: flex; align-items: center; gap: 0.4rem;
 }
 .tab-btn:hover { color: #c9d1d9; background: rgba(255,255,255,0.03); }
@@ -28,84 +27,40 @@ h1 { font-size: 1.6rem; color: #f0f6fc; margin-bottom: 0.25rem; }
   padding: 0.1rem 0.4rem; border-radius: 8px; font-weight: 400;
 }
 .tab-btn.active .badge { background: rgba(88,166,255,0.15); color: #58a6ff; }
-
-#tab-content { min-height: 70vh; }
-
-.loading { text-align: center; padding: 3rem; color: #8b949e; }
-.loading .spinner { display: inline-block; width: 24px; height: 24px; border: 2px solid #30363d; border-top-color: #58a6ff; border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 0.5rem; }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.error-box { background: #1f0d0d; border: 1px solid #f85149; border-radius: 8px; padding: 1.5rem; text-align: center; color: #f85149; }
-
-.tab-header-bar { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
-.add-tab-btn {
-  font-size: 0.75rem; padding: 0.3rem 0.7rem; border-radius: 6px;
-  background: #21262d; border: 1px dashed #30363d; color: #8b949e;
-  cursor: pointer; margin-left: auto; white-space: nowrap;
-}
-.add-tab-btn:hover { border-color: #58a6ff; color: #58a6ff; }
-
+#iframe-container { width: 100%; height: calc(100vh - 160px); min-height: 600px; border: none; }
+#iframe-container iframe { width: 100%; height: 100%; border: none; background: #0d1117; }
 @media (max-width: 768px) {
-  .tab-btn { padding: 0.5rem 0.8rem; font-size: 0.75rem; }
+  #iframe-container { height: calc(100vh - 140px); min-height: 400px; }
+  .tab-btn { padding: 0.4rem 0.8rem; font-size: 0.75rem; }
 }
 </style>
 </head>
 <body>
 
 <h1>💡 Ideas &amp; Plans</h1>
-<div class="sub">Research vault — all my online business research in one place. Switch tabs to browse different reports. New research gets its own tab.</div>
+<div class="sub">Research vault — all my online business research in one place. Switch tabs to browse. New research gets its own tab.</div>
 
-<div class="tab-header-bar">
-  <div class="tab-bar">
-    <button class="tab-btn active" data-file="ideas-agent-managed.html" onclick="switchTab(this)">
-      🤖 Agent-Managed Projects <span class="badge">100</span>
-    </button>
-    <button class="tab-btn" data-file="ideas-opportunities.html" onclick="switchTab(this)">
-      🎯 Website Opportunities <span class="badge">100</span>
-    </button>
-  </div>
+<div class="tab-bar">
+  <button class="tab-btn active" data-file="ideas-agent-managed.html" onclick="switchTab(this)">
+    🤖 Agent-Managed <span class="badge">100</span>
+  </button>
+  <button class="tab-btn" data-file="ideas-opportunities.html" onclick="switchTab(this)">
+    🎯 Opportunities <span class="badge">100</span>
+  </button>
 </div>
 
-<div id="tab-content">
-  <div class="loading"><div class="spinner"></div><p>Loading…</p></div>
-</div>
+<div id="iframe-container"></div>
 
 <script>
-const TABS = [
-  { file: 'ideas-agent-managed.html', title: 'Agent-Managed Projects' },
-  { file: 'ideas-opportunities.html', title: 'Website Opportunities' }
-];
-
-async function switchTab(btn) {
+function switchTab(btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   const file = btn.dataset.file;
-  await loadContent(file);
+  const container = document.getElementById('iframe-container');
+  container.innerHTML = `<iframe src="${file}" onload="this.style.opacity=1" style="opacity:0;transition:opacity .3s"></iframe>`;
   history.replaceState(null, '', '?tab=' + encodeURIComponent(file));
 }
 
-async function loadContent(file) {
-  const container = document.getElementById('tab-content');
-  container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading…</p></div>';
-  try {
-    const res = await fetch(file);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const html = await res.text();
-    // Extract body content, discarding the host page's <head> etc.
-    const match = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
-    container.innerHTML = match ? match[1] : html;
-    // Re-run any inline scripts in the loaded content
-    container.querySelectorAll('script').forEach(oldScript => {
-      const newScript = document.createElement('script');
-      newScript.textContent = oldScript.textContent;
-      oldScript.parentNode.replaceChild(newScript, oldScript);
-    });
-  } catch (e) {
-    container.innerHTML = `<div class="error-box">⚠️ Failed to load: ${e.message}</div>`;
-  }
-}
-
-// Load initial tab from URL param or default
 (function init() {
   const params = new URLSearchParams(window.location.search);
   const tabFile = params.get('tab');
