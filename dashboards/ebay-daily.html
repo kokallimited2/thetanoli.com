@@ -46,6 +46,68 @@
 @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 body { animation: fadeIn 0.4s ease-out; }
 </style>
+<script>
+function makeSearchLinks() {
+  // For top 5 cards: fix supplier links per product
+  document.querySelectorAll('.product-card').forEach((card) => {
+    const titleEl = card.querySelector('h3');
+    if (!titleEl) return;
+    let title = titleEl.textContent.replace(/^#\d+\s*[—–-]\s*/, '').trim();
+    title = title.split(',').shift().split('...').shift().trim();
+    const searchQ = encodeURIComponent(title);
+    // Find any detail div with links
+    card.querySelectorAll('.detail a').forEach(a => {
+      const href = a.href || '';
+      if (href.includes('avasam.com') && !href.includes('catalogue?')) {
+        a.href = 'https://www.avasam.com/catalogue?search=' + searchQ;
+      } else if (href.includes('spocket.co') && !href.includes('search?')) {
+        a.href = 'https://www.spocket.co/search?q=' + searchQ;
+      } else if (href.includes('appscenic.com') && !href.includes('catalogue?')) {
+        a.href = 'https://appscenic.com/catalogue?search=' + searchQ;
+      } else if (href.includes('autods.com') && !href.includes('search?')) {
+        a.href = 'https://www.autods.com/search?query=' + searchQ;
+      } else if (href.includes('aliexpress.com') && !href.includes('SearchText=')) {
+        a.href = 'https://www.aliexpress.com/wholesale?SearchText=' + searchQ;
+      } else if (href.includes('amazon.co.uk') && !href.includes('s?k=')) {
+        a.href = 'https://www.amazon.co.uk/s?k=' + searchQ;
+      }
+    });
+  });
+  // For detailed product tables
+  document.querySelectorAll('div[style*="background:#1a1a2e;border-radius:10px;padding:20px"]').forEach(div => {
+    const titleEl = div.querySelector('h3');
+    if (!titleEl) return;
+    let title = titleEl.textContent.replace(/^#\d+\s*[—–-]\s*/, '').trim();
+    title = title.split(',').shift().split('...').shift().trim();
+    const searchQ = encodeURIComponent(title);
+    // Find 🔗 Links row in the table
+    div.querySelectorAll('table tr td').forEach(td => {
+      if (td.textContent.includes('🔗 Links')) {
+        const linkCell = td.parentElement.querySelector('td:last-child');
+        if (linkCell) {
+          linkCell.querySelectorAll('a').forEach(a => {
+            const href = a.href || '';
+            if (href.includes('aliexpress.com') && !href.includes('SearchText=')) {
+              a.href = 'https://www.aliexpress.com/wholesale?SearchText=' + searchQ;
+            } else if (href.includes('amazon.co.uk') && !href.includes('s?k=')) {
+              a.href = 'https://www.amazon.co.uk/s?k=' + searchQ;
+            } else if (href.includes('avasam.com') && !href.includes('catalogue?')) {
+              a.href = 'https://www.avasam.com/catalogue?search=' + searchQ;
+            } else if (href.includes('spocket.co') && !href.includes('search?')) {
+              a.href = 'https://www.spocket.co/search?q=' + searchQ;
+            } else if (href.includes('appscenic.com') && !href.includes('catalogue?')) {
+              a.href = 'https://appscenic.com/catalogue?search=' + searchQ;
+            } else if (href.includes('autods.com') && !href.includes('search?')) {
+              a.href = 'https://www.autods.com/search?query=' + searchQ;
+            }
+          });
+        }
+      }
+    });
+  });
+}
+document.addEventListener('DOMContentLoaded', makeSearchLinks);
+</script>
 </head>
 <body>
 <div class="container">
