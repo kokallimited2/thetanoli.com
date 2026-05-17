@@ -1,307 +1,362 @@
-<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trading Assessment & Trial</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter','Segoe UI',sans-serif;background:#0f172a;color:#f1f5f9;line-height:1.7;font-size:15px}
-.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
-.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0d9488 100%);padding:50px 24px 40px;text-align:center}
-.hero h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800}.hero h1 em{color:#f59e0b;font-style:normal}.hero p{color:#94a3b8;max-width:600px;margin:10px auto}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
-.stat{background:rgba(30,41,59,0.85);backdrop-filter:blur(8px);border:1px solid #334155;border-radius:12px;padding:16px;text-align:center;transition:all .3s ease}
-.stat .num{font-size:1.6rem;font-weight:800;color:#f59e0b}.stat .label{font-size:12px;color:#64748b;margin-top:2px}
-.section{background:rgba(30,41,59,0.85);backdrop-filter:blur(8px);border:1px solid #334155;border-radius:12px;padding:20px;margin-bottom:16px;transition:all .3s ease}
-.section h2{color:#f59e0b;margin-bottom:8px;font-size:1.2rem}
-.summary-box{background:linear-gradient(135deg,#0f172a,#1a2744);border:1px solid #3b82f6;border-radius:8px;padding:14px 16px;margin:8px 0 14px 0;font-size:13px;color:#93c5fd;line-height:1.6}
-.summary-box strong{color:#60a5fa}
-.summary-box .rule{color:#f59e0b;font-weight:600;}
-.summary-box .key-item{display:block;margin:4px 0;padding-left:12px;border-left:2px solid #3b82f6}
-.summary-box .key-item::before{content:"→ ";color:#3b82f6}
-.q-card{border-left:3px solid #f59e0b;padding:12px 16px;margin:10px 0;background:rgba(15,23,42,0.85);backdrop-filter:blur(4px);border-radius:0 8px 8px 0;transition:all .3s ease}
-.q-card .q-type{font-size:11px;color:#f59e0b;text-transform:uppercase;letter-spacing:1px;font-weight:700}
-.q-card .q-text{margin:4px 0}.q-card .q-hint{font-size:13px;color:#64748b;font-style:italic}
-.q-actions{margin-top:12px}.q-actions button{padding:4px 12px;border-radius:6px;border:1px solid #334155;background:transparent;color:#94a3b8;cursor:pointer;font-size:12px;margin-right:6px}
-.q-actions button:hover{background:#334155}
-.trial-card{background:linear-gradient(135deg,#0f172a,#1e293b);border:1px solid #0d9488;border-radius:12px;padding:20px;margin-bottom:16px}
-.trial-card h3{color:#0d9488}.trial-card p{color:#94a3b8}
-.btn{display:inline-block;padding:8px 20px;background:#f59e0b;color:#0f172a;border-radius:8px;font-weight:700;text-decoration:none;margin-top:10px;font-size:13px}
-.btn-teal{background:#0d9488}
-.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0;align-items:center}
-.filter-btn{padding:4px 14px;border:1px solid #334155;border-radius:100px;background:transparent;color:#94a3b8;cursor:pointer;font-size:12px}
-.filter-btn.active{background:#f59e0b;color:#0f172a;border-color:#f59e0b}
-.note-box{background:#1e3a5f;border:1px solid #3b82f6;border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;color:#93c5fd}
-a{color:#3b82f6;text-decoration:none}
-.summary-toggle{background:none;border:1px solid #334155;color:#60a5fa;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;margin-bottom:10px}
-.summary-toggle:hover{background:#1e3a5f}
-.lesson-list{list-style:none;padding:0}
-.lesson-list li{color:#94a3b8;font-size:13px;padding:4px 0;border-bottom:1px solid rgba(51,65,85,0.3)}
-.lesson-list li:last-child{border-bottom:none}
-.lesson-list li strong{color:#f1f5f9}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.hero{animation:fadeIn .4s ease-out}
-.wrap{animation:fadeIn .5s ease-out .1s both}
-.q-card:hover{background:rgba(30,41,59,0.9);transform:translateX(4px);border-left-color:#3b82f6}
-.stat:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.btn:hover{transform:translateY(-1px)}
-</style></head><body>
-<div class="hero"><h1>Trading <em>Assessment & Trial</em></h1><p>116+ real trading transcripts analyzed. Wisdom extracted from 5M+ viewed courses.</p></div>
-<div class="wrap">
-<div class='stats'><div class='stat'><div class='num'>116</div><div class='label'>Videos Analyzed</div></div><div class='stat'><div class='num'>13</div><div class='label'>Strategies</div></div><div class='stat'><div class='num'>249</div><div class='label'>Questions</div></div><div class='stat'><div class='num'>May 17</div><div class='label'>Updated</div></div></div>
-
-<div class='filter-bar'><span style='color:#64748b;font-size:13px;'>Filter:</span><button class='filter-btn active' onclick="filterQuestions('all')">All</button><button class='filter-btn' onclick="filterQuestions('Technical Analysis')">Technical Analysis</button><button class='filter-btn' onclick="filterQuestions('Candlestick Patterns')">Candlestick Patterns</button><button class='filter-btn' onclick="filterQuestions('Chart Patterns')">Chart Patterns</button><button class='filter-btn' onclick="filterQuestions('Day Trading')">Day Trading</button><button class='filter-btn' onclick="filterQuestions('Forex Trading')">Forex Trading</button><button class='filter-btn' onclick="filterQuestions('Futures Trading')">Futures Trading</button><button class='filter-btn' onclick="filterQuestions('Momentum Trading')">Momentum Trading</button><button class='filter-btn' onclick="filterQuestions('Options Trading')">Options Trading</button><button class='filter-btn' onclick="filterQuestions('Price Action')">Price Action</button><button class='filter-btn' onclick="filterQuestions('Risk Management')">Risk Management</button><button class='filter-btn' onclick="filterQuestions('Technical Analysis')">Technical Analysis</button><button class='filter-btn' onclick="filterQuestions('Trading Psychology')">Trading Psychology</button><button class='filter-btn' onclick="filterQuestions('Value Investing')">Value Investing</button></div>
-
-<div class='section strategy-section' data-strategy='Technical Analysis'>
-<h2>Technical Analysis <span style='font-size:13px;color:#64748b;font-weight:400;'>(41 videos, 94 questions)</span></h2>
-<div class="summary-box">
-<strong>📊 What the transcripts teach:</strong><br><br>
-<strong>Trend Structure:</strong> A trend is confirmed with 2 higher highs + 2 higher lows (uptrend) or 2 lower highs + 2 lower lows (downtrend). Markets move in 4 phases: Accumulation → Uptrend → Distribution → Downtrend. Each impulse move has a corrective counter-move (profit booking).<br><br>
-<strong>Elliott Wave + Fib:</strong> Impulse waves 1-3-5, corrective ABC. The 61.8% Fibonacci retracement is the golden confluence zone for trend continuation entries. Volume spikes often mark new trend beginnings.<br><br>
-<strong>Break of Structure (BOS):</strong> When price breaks a trend line → BOS signals continuation. When price changes character entirely (CHoCH) → potential reversal. Combine both for high-confidence entries.<br><br>
-<strong>Key entry rules from transcripts:</strong>
-<span class="key-item">Trade from trend line zones, not single lines — treat as areas of value</span>
-<span class="key-item">Use multi-timeframe analysis: higher TF for direction, lower TF for entry precision</span>
-<span class="key-item">MACD crossover + volume confirmation = higher probability setup</span>
-<span class="key-item">Place stops below the last swing low that would invalidate your thesis</span>
-<span class="key-item">Technical + fundamental synergy beats either alone</span>
-</div>
-<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>Based on 'FULL Technical Analysis Day Trading Guide 2025', what is the recommended ENTRY signal for this technical analysis setup?</strong></div><div class='q-hint'>Hint: Look for price action, indicator crossover, or pattern confirmation. The transcripts emphasize: <strong>trend line touch + impulse wave structure + volume confirmation</strong></div></div>
-<div class='q-card'><div class='q-type'>Q2 - Exit Question</div><div class='q-text'><strong>In 'FULL Technical Analysis Day Trading Guide 2025', where should STOP LOSS and TAKE PROFIT be placed? What risk:reward?</strong></div><div class='q-hint'>Hint: Consider support/resistance, ATR, or %-based stops. Transcripts say: <strong>stop below the invalidation level (last swing low/high), target next resistance or 2:1 minimum RR</strong></div></div>
-<div class='q-card'><div class='q-type'>Q3 - Pattern Question</div><div class='q-text'><strong>From 'FULL Technical Analysis Day Trading Guide 2025': describe the KEY PATTERN - what confirms it? Invalidates it?</strong></div><div class='q-hint'>Hint: <strong>Elliott Wave 1-2-3-4-5 with ABC correction. Confirmed when wave 3 exceeds wave 1. Invalidated if wave 2 retraces beyond 78.6%</strong></div></div>
-<div class='q-card'><div class='q-type'>Q4 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Market gap up against position. What do you do?</strong></div><div class='q-hint'>Hint: <strong>Transcript rule: Wait for the first 5-min candle to close. If it gaps through your stop, accept the loss and reassess. Never revenge trade.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q5 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Using Technical Analysis from 'Secrets of Price Action Trading: 3 Steps to Master Your Trad'. Market sudden reversal against position. What do you do?</strong></div><div class='q-hint'>Hint: Apply strategy rules AND risk management. <strong>Check if the reversal breaks a key structure level — if yes, exit. If not, hold to your original stop.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q6 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Market gap up against position using 'The Only Fundamental Analysis Video You Will Ever Need'</strong></div><div class='q-hint'>Hint: <strong>Fundamental analysis sets direction, TA times the entry. A gap through your stop means your TA entry was early relative to the fundamental catalyst.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q7 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Using 'The ONLY Technical Analysis Guide' by Ross Cameron. Market gap up against position.</strong></div><div class='q-hint'>Hint: <strong>Ross Cameron's rule: "The first candle to make a new high after pullback is your entry. If it gaps through your stop, that setup was invalidated."</strong></div></div>
-<div class='q-card'><div class='q-type'>Q8 - Pattern Question</div><div class='q-text'><strong>From '12 HOURS Technical Analysis FULL COURSE!': describe the KEY PATTERN - what confirms it? Invalidates it?</strong></div><div class='q-hint'>Hint: <strong>Multi-timeframe confluence pattern. Confirmed when higher TF trend + lower TF entry align. Invalidated when higher TF structure breaks.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q9 - Pattern Question</div><div class='q-text'><strong>From 'Millionaire Explains: How to Invest for Beginners in 2026': describe the KEY PATTERN</strong></div><div class='q-hint'>Hint: <strong>"Invest in what people need - consumer staples, healthcare, utilities. During recessions, these sectors hold value."</strong></div></div>
-<div class='q-card'><div class='q-type'>Q10 - Pattern Question</div><div class='q-text'><strong>From 'Price Action Trading For Beginners (Rayner Teo)': what confirms support/resistance? Invalidates it?</strong></div><div class='q-hint'>Hint: <strong>Confirmed on 3rd touch with strong rejection wick. Invalidated when price closes clearly beyond the level on high volume.</strong></div></div>
-<!-- Additional 35+ TA questions available in the full KB -->
-<p style='color:#64748b;font-size:12px;margin-top:10px;text-align:center'>+ 34 more Technical Analysis questions available. Check the full Knowledge Base for complete set.</p>
-</div>
-
-<div class='section strategy-section' data-strategy='Trading Psychology'>
-<h2>Trading Psychology <span style='font-size:13px;color:#64748b;font-weight:400;'>(6 videos, 10 questions)</span></h2>
+     1|<!DOCTYPE html>
+     2|<html lang="en">
+     3|<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+     4|<title>Trading Assessment & Trial</title>
+     5|<style>
+     6|*{box-sizing:border-box;margin:0;padding:0}
+     7|body{font-family:'Inter','Segoe UI',sans-serif;background:#0f172a;color:#f1f5f9;line-height:1.7;font-size:15px}
+     8|.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+     9|.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0d9488 100%);padding:50px 24px 40px;text-align:center}
+    10|.hero h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800}.hero h1 em{color:#f59e0b;font-style:normal}.hero p{color:#94a3b8;max-width:600px;margin:10px auto}
+    11|.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+    12|.stat{background:rgba(30,41,59,0.85);backdrop-filter:blur(8px);border:1px solid #334155;border-radius:12px;padding:16px;text-align:center;transition:all .3s ease}
+    13|.stat .num{font-size:1.6rem;font-weight:800;color:#f59e0b}.stat .label{font-size:12px;color:#64748b;margin-top:2px}
+    14|.section{background:rgba(30,41,59,0.85);backdrop-filter:blur(8px);border:1px solid #334155;border-radius:12px;padding:20px;margin-bottom:16px;transition:all .3s ease}
+    15|.section h2{color:#f59e0b;margin-bottom:8px;font-size:1.2rem}
+    16|.summary-box{background:linear-gradient(135deg,#0f172a,#1a2744);border:1px solid #3b82f6;border-radius:8px;padding:14px 16px;margin:8px 0 14px 0;font-size:13px;color:#93c5fd;line-height:1.6}
+    17|.summary-box strong{color:#60a5fa}
+    18|.summary-box .rule{color:#f59e0b;font-weight:600;}
+    19|.summary-box .key-item{display:block;margin:4px 0;padding-left:12px;border-left:2px solid #3b82f6}
+    20|.summary-box .key-item::before{content:"→ ";color:#3b82f6}
+    21|.q-card{border-left:3px solid #f59e0b;padding:12px 16px;margin:10px 0;background:rgba(15,23,42,0.85);backdrop-filter:blur(4px);border-radius:0 8px 8px 0;transition:all .3s ease}
+    22|.q-card .q-type{font-size:11px;color:#f59e0b;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+    23|.q-card .q-text{margin:4px 0}.q-card .q-hint{font-size:13px;color:#64748b;font-style:italic}
+    24|.q-actions{margin-top:12px}.q-actions button{padding:4px 12px;border-radius:6px;border:1px solid #334155;background:transparent;color:#94a3b8;cursor:pointer;font-size:12px;margin-right:6px}
+    25|.q-actions button:hover{background:#334155}
+    26|.trial-card{background:linear-gradient(135deg,#0f172a,#1e293b);border:1px solid #0d9488;border-radius:12px;padding:20px;margin-bottom:16px}
+    27|.trial-card h3{color:#0d9488}.trial-card p{color:#94a3b8}
+    28|.btn{display:inline-block;padding:8px 20px;background:#f59e0b;color:#0f172a;border-radius:8px;font-weight:700;text-decoration:none;margin-top:10px;font-size:13px}
+    29|.btn-teal{background:#0d9488}
+    30|.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0;align-items:center}
+    31|.filter-btn{padding:4px 14px;border:1px solid #334155;border-radius:100px;background:transparent;color:#94a3b8;cursor:pointer;font-size:12px}
+    32|.filter-btn.active{background:#f59e0b;color:#0f172a;border-color:#f59e0b}
+    33|.note-box{background:#1e3a5f;border:1px solid #3b82f6;border-radius:8px;padding:12px 16px;margin:10px 0;font-size:13px;color:#93c5fd}
+    34|a{color:#3b82f6;text-decoration:none}
+    35|.summary-toggle{background:none;border:1px solid #334155;color:#60a5fa;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;margin-bottom:10px}
+    36|.summary-toggle:hover{background:#1e3a5f}
+    37|.lesson-list{list-style:none;padding:0}
+    38|.lesson-list li{color:#94a3b8;font-size:13px;padding:4px 0;border-bottom:1px solid rgba(51,65,85,0.3)}
+    39|.lesson-list li:last-child{border-bottom:none}
+    40|.lesson-list li strong{color:#f1f5f9}
+    41|@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    42|.hero{animation:fadeIn .4s ease-out}
+    43|.wrap{animation:fadeIn .5s ease-out .1s both}
+    44|.q-card:hover{background:rgba(30,41,59,0.9);transform:translateX(4px);border-left-color:#3b82f6}
+    45|.stat:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+    46|.btn:hover{transform:translateY(-1px)}
+    47|</style></head><body>
+    48|<div class="hero"><h1>Trading <em>Assessment & Trial</em></h1><p>116+ real trading transcripts analyzed. Wisdom extracted from 5M+ viewed courses.</p></div>
+    49|<div class="wrap">
+    50|<div class='stats'><div class='stat'><div class='num'>116</div><div class='label'>Videos Analyzed</div></div><div class='stat'><div class='num'>16</div><div class='label'>Strategies</div></div><div class='stat'><div class='num'>7</div><div class='label'>Skills Created</div></div><div class='stat'><div class='num'>May 17</div><div class='label'>Updated</div></div></div>
+    51|
+    52|<div class='filter-bar'><span style='color:#64748b;font-size:13px;'>Filter:</span><button class='filter-btn active' onclick="filterQuestions('all')">All</button><button class='filter-btn' onclick="filterQuestions('Technical Analysis')">Technical Analysis</button><button class='filter-btn' onclick="filterQuestions('Candlestick Patterns')">Candlestick Patterns</button><button class='filter-btn' onclick="filterQuestions('Chart Patterns')">Chart Patterns</button><button class='filter-btn' onclick="filterQuestions('Day Trading')">Day Trading</button><button class='filter-btn' onclick="filterQuestions('Forex Trading')">Forex Trading</button><button class='filter-btn' onclick="filterQuestions('Futures Trading')">Futures Trading</button><button class='filter-btn' onclick="filterQuestions('Momentum Trading')">Momentum Trading</button><button class='filter-btn' onclick="filterQuestions('Options Trading')">Options Trading</button><button class='filter-btn' onclick="filterQuestions('Price Action')">Price Action</button><button class='filter-btn' onclick="filterQuestions('Risk Management')">Risk Management</button><button class='filter-btn' onclick="filterQuestions('ICT SMC')">ICT/SMC</button><button class='filter-btn' onclick="filterQuestions('Scalping')">Scalping</button><button class='filter-btn' onclick="filterQuestions('Swing Trading')">Swing Trading</button><button class='filter-btn' onclick="filterQuestions('Technical Analysis')">Technical Analysis</button><button class='filter-btn' onclick="filterQuestions('Trading Psychology')">Trading Psychology</button><button class='filter-btn' onclick="filterQuestions('Value Investing')">Value Investing</button></div>
+    53|
+    54|<div class='section strategy-section' data-strategy='Technical Analysis'>
+    55|<h2>Technical Analysis <span style='font-size:13px;color:#64748b;font-weight:400;'>(41 videos, 94 questions)</span></h2>
+    56|<div class="summary-box">
+    57|<strong>📊 What the transcripts teach:</strong><br><br>
+    58|<strong>Trend Structure:</strong> A trend is confirmed with 2 higher highs + 2 higher lows (uptrend) or 2 lower highs + 2 lower lows (downtrend). Markets move in 4 phases: Accumulation → Uptrend → Distribution → Downtrend. Each impulse move has a corrective counter-move (profit booking).<br><br>
+    59|<strong>Elliott Wave + Fib:</strong> Impulse waves 1-3-5, corrective ABC. The 61.8% Fibonacci retracement is the golden confluence zone for trend continuation entries. Volume spikes often mark new trend beginnings.<br><br>
+    60|<strong>Break of Structure (BOS):</strong> When price breaks a trend line → BOS signals continuation. When price changes character entirely (CHoCH) → potential reversal. Combine both for high-confidence entries.<br><br>
+    61|<strong>Key entry rules from transcripts:</strong>
+    62|<span class="key-item">Trade from trend line zones, not single lines — treat as areas of value</span>
+    63|<span class="key-item">Use multi-timeframe analysis: higher TF for direction, lower TF for entry precision</span>
+    64|<span class="key-item">MACD crossover + volume confirmation = higher probability setup</span>
+    65|<span class="key-item">Place stops below the last swing low that would invalidate your thesis</span>
+    66|<span class="key-item">Technical + fundamental synergy beats either alone</span>
+    67|</div>
+    68|<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>Based on 'FULL Technical Analysis Day Trading Guide 2025', what is the recommended ENTRY signal for this technical analysis setup?</strong></div><div class='q-hint'>Hint: Look for price action, indicator crossover, or pattern confirmation. The transcripts emphasize: <strong>trend line touch + impulse wave structure + volume confirmation</strong></div></div>
+    69|<div class='q-card'><div class='q-type'>Q2 - Exit Question</div><div class='q-text'><strong>In 'FULL Technical Analysis Day Trading Guide 2025', where should STOP LOSS and TAKE PROFIT be placed? What risk:reward?</strong></div><div class='q-hint'>Hint: Consider support/resistance, ATR, or %-based stops. Transcripts say: <strong>stop below the invalidation level (last swing low/high), target next resistance or 2:1 minimum RR</strong></div></div>
+    70|<div class='q-card'><div class='q-type'>Q3 - Pattern Question</div><div class='q-text'><strong>From 'FULL Technical Analysis Day Trading Guide 2025': describe the KEY PATTERN - what confirms it? Invalidates it?</strong></div><div class='q-hint'>Hint: <strong>Elliott Wave 1-2-3-4-5 with ABC correction. Confirmed when wave 3 exceeds wave 1. Invalidated if wave 2 retraces beyond 78.6%</strong></div></div>
+    71|<div class='q-card'><div class='q-type'>Q4 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Market gap up against position. What do you do?</strong></div><div class='q-hint'>Hint: <strong>Transcript rule: Wait for the first 5-min candle to close. If it gaps through your stop, accept the loss and reassess. Never revenge trade.</strong></div></div>
+    72|<div class='q-card'><div class='q-type'>Q5 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Using Technical Analysis from 'Secrets of Price Action Trading: 3 Steps to Master Your Trad'. Market sudden reversal against position. What do you do?</strong></div><div class='q-hint'>Hint: Apply strategy rules AND risk management. <strong>Check if the reversal breaks a key structure level — if yes, exit. If not, hold to your original stop.</strong></div></div>
+    73|<div class='q-card'><div class='q-type'>Q6 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Market gap up against position using 'The Only Fundamental Analysis Video You Will Ever Need'</strong></div><div class='q-hint'>Hint: <strong>Fundamental analysis sets direction, TA times the entry. A gap through your stop means your TA entry was early relative to the fundamental catalyst.</strong></div></div>
+    74|<div class='q-card'><div class='q-type'>Q7 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Using 'The ONLY Technical Analysis Guide' by Ross Cameron. Market gap up against position.</strong></div><div class='q-hint'>Hint: <strong>Ross Cameron's rule: "The first candle to make a new high after pullback is your entry. If it gaps through your stop, that setup was invalidated."</strong></div></div>
+    75|<div class='q-card'><div class='q-type'>Q8 - Pattern Question</div><div class='q-text'><strong>From '12 HOURS Technical Analysis FULL COURSE!': describe the KEY PATTERN - what confirms it? Invalidates it?</strong></div><div class='q-hint'>Hint: <strong>Multi-timeframe confluence pattern. Confirmed when higher TF trend + lower TF entry align. Invalidated when higher TF structure breaks.</strong></div></div>
+    76|<div class='q-card'><div class='q-type'>Q9 - Pattern Question</div><div class='q-text'><strong>From 'Millionaire Explains: How to Invest for Beginners in 2026': describe the KEY PATTERN</strong></div><div class='q-hint'>Hint: <strong>"Invest in what people need - consumer staples, healthcare, utilities. During recessions, these sectors hold value."</strong></div></div>
+    77|<div class='q-card'><div class='q-type'>Q10 - Pattern Question</div><div class='q-text'><strong>From 'Price Action Trading For Beginners (Rayner Teo)': what confirms support/resistance? Invalidates it?</strong></div><div class='q-hint'>Hint: <strong>Confirmed on 3rd touch with strong rejection wick. Invalidated when price closes clearly beyond the level on high volume.</strong></div></div>
+    78|<!-- Additional 35+ TA questions available in the full KB -->
+    79|<p style='color:#64748b;font-size:12px;margin-top:10px;text-align:center'>+ 34 more Technical Analysis questions available. Check the full Knowledge Base for complete set.</p>
+    80|</div>
+    81|
+    82|<div class='section strategy-section' data-strategy='Trading Psychology'>
+<h2>Trading Psychology <span style='font-size:13px;color:#64748b;font-weight:400;'>(8 videos)</span></h2>
 <div class="summary-box">
 <strong>🧠 What the transcripts teach:</strong><br><br>
-<strong>#1 destroyer of accounts:</strong> Revenge trading after a loss. The transcripts universally agree: <strong>after 3 consecutive losses, stop trading for the day</strong>. The market will be there tomorrow.<br><br>
-<strong>FOMO kills:</strong> Chasing a move after it's already run 5%+ is statistically the worst entry. The pros wait for pullbacks even in strong trends.<br><br>
-<strong>The Journal:</strong> Every transcript recommends keeping a trading journal. Write down: entry rationale, emotional state at entry, exit rationale, lessons learned. Patterns emerge after 50+ journaled trades.<br><br>
-<span class="key-item">Plan the trade, trade the plan — deviations should be the exception, not the rule</span>
+<strong>The Mirror Principle (SMB Capital):</strong> You're not trading the market - you're trading your psychology.<br><br>
+<strong>After every trade, write down:</strong>
+<span class="key-item">(1) What emotion pulled the trigger? (fear, greed, boredom, revenge)</span>
+<span class="key-item">(2) What story did you tell yourself?</span>
+<span class="key-item">(3) What would change if you waited 10 seconds?</span><br>
+<strong>One Good Trade:</strong> Amateurs chase wins. Professionals chase process. Focus on making ONE good trade a day - if it checks your rules, it counts. That's your win.<br><br>
+<strong>The Gap:</strong> Most traders confuse "being right" (ego) with "winning" (edge). The market doesn't care about your ideas.<br><br>
+<strong>#1 destroyer:</strong> Revenge trading. After 3 consecutive losses, stop for the day.<br><br>
+<strong>FOMO kills:</strong> Chasing a move already up 5%+ is the worst entry. Pros wait for pullbacks.<br><br>
+<span class="key-item">Plan the trade, trade the plan - deviations should be the exception</span>
 <span class="key-item">Losses are tuition: review them more carefully than your wins</span>
 <span class="key-item">If you can't sleep after a trade, your position size is too large</span>
-<span class="key-item">Confidence comes from execution, not prediction. Focus on process, not P&L</span>
+<span class="key-item">Confidence from execution, not prediction. Focus on process, not P&L</span>
 </div>
-<div class='q-card'><div class='q-type'>Q1 - Scenario Question</div><div class='q-text'><strong>SCENARIO: You just took 3 consecutive losses totaling -8% of your account. What do you do?</strong></div><div class='q-hint'>Hint: <strong>Walk away. The transcripts all agree: stop for the day. Review strategy tomorrow. Trading when tilted leads to oversized, irrational positions.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q2 - Scenario Question</div><div class='q-text'><strong>SCENARIO: You see a stock running up 12% and feel intense FOMO. Your strategy missed the entry.</strong></div><div class='q-hint'>Hint: <strong>Do not chase. Wait for a pullback to your entry criteria. If no pullback comes, move on — there are 5,000+ other stocks. FOMO entries have the worst risk/reward.</strong></div></div>
+<div class='q-card'><div class='q-type'>Q1 - Scenario Question</div><div class='q-text'><strong>SCENARIO: You just took 3 consecutive losses totaling -8% of your account. What do you do?</strong></div><div class='q-hint'>Hint: <strong>Walk away. Stop for the day. Review strategy tomorrow. Trading when tilted leads to oversized positions.</strong></div></div>
+<div class='q-card'><div class='q-type'>Q2 - Scenario Question</div><div class='q-text'><strong>SCENARIO: You see a stock running up 12% and feel intense FOMO. Your strategy missed the entry.</strong></div><div class='q-hint'>Hint: <strong>Do not chase. Wait for a pullback. FOMO entries have the worst risk/reward.</strong></div></div>
+<div class='q-card'><div class='q-type'>Q3 - Practice Question</div><div class='q-text'><strong>What is the "One Good Trade" philosophy from SMB Capital?</strong></div><div class='q-hint'>Hint: <strong>Forget your P&L. Focus on making one quality trade a day that checks all your rules. Process over prediction.</strong></div></div>
 </div>
-
-<div class='section strategy-section' data-strategy='Candlestick Patterns'>
-<h2>Candlestick Patterns <span style='font-size:13px;color:#64748b;font-weight:400;'>(8 videos, 18 questions)</span></h2>
+data-strategy='Candlestick Patterns'>
+    99|<h2>Candlestick Patterns <span style='font-size:13px;color:#64748b;font-weight:400;'>(8 videos, 18 questions)</span></h2>
+   100|<div class="summary-box">
+   101|<strong>🕯️ What the transcripts teach:</strong><br><br>
+   102|The 5.1M-view Wysetrade course is the definitive source. Key framework:<br><br>
+   103|<strong>The Core Rule:</strong> <em>"Most traders take entries based on candlestick patterns alone — this results in low-quality trades. Combine candlestick patterns with <strong>key levels and areas of confluence</strong> to increase your percentage chance of success."</em><br><br>
+   104|<strong>Long Wick Candle at Key Level:</strong>
+   105|<span class="key-item">Buyers pushed price up but failed to close with momentum → sellers stepping in at resistance</span>
+   106|<span class="key-item">The smaller the body AND the longer the wick → the higher quality the signal</span>
+   107|<span class="key-item">Multiple long wick candles at same level → stronger than a single candle</span><br>
+   108|<strong>Shrinking Candles:</strong> When each candle gets smaller than the previous as price approaches a level → loss of momentum → reversal imminent.<br><br>
+   109|<strong>Multi-timeframe Entry:</strong> Identify setup on higher TF (4H/daily). Look inside that candle on a lower TF (15min/1H) for a trend change signal to enter earlier with better risk/reward.<br><br>
+   110|<strong>Key patterns from Ross Cameron (Warrior Trading):</strong>
+   111|<span class="key-item">Candle-over-candle: After pullback, first candle to make a new high = entry trigger</span>
+   112|<span class="key-item">Hammer at support + next candle opens higher = bullish confirmation</span>
+   113|<span class="key-item">Shooting star at resistance + high volume = strong reversal signal</span>
+   114|</div>
+   115|<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>From 'Ultimate Candlestick Patterns Trading Course (PRO INSTANTLY)': What is the HIGHEST QUALITY entry setup?</strong></div><div class='q-hint'>Hint: <strong>Long wick candle at key level of confluence (S/R + trend line + potential MA). The smaller the body and longer the wick, the better.</strong></div></div>
+   116|<div class='q-card'><div class='q-type'>Q2 - Pattern Question</div><div class='q-text'><strong>Describe the KEY PATTERN - what confirms it? Invalidates it?</strong></div><div class='q-hint'>Hint: <strong>Confirm: candle-over-candle reversal after pullback. Invalidate: price breaks below the trigger candle's low.</strong></div></div>
+   117|<div class='q-card'><div class='q-type'>Q3 - Entry Question</div><div class='q-text'><strong>What is a "Candle Over Candle" pattern and when do you enter?</strong></div><div class='q-hint'>Hint: <strong>Ross Cameron: 'After a pullback, the first candle to make a new high — that's your entry trigger.' Enter on break of that candle's high.</strong></div></div>
+   118|</div>
+   119|
+   120|<div class='section strategy-section' data-strategy='Price Action'>
+   121|<h2>Price Action <span style='font-size:13px;color:#64748b;font-weight:400;'>(12 videos, 28 questions)</span></h2>
+   122|<div class="summary-box">
+   123|<strong>📈 What the transcripts teach:</strong><br><br>
+   124|Rayner Teo's framework (380K views) is the clearest: <strong>Price action is a methodology to identify imbalance of buying and selling pressure.</strong> Debunks 3 myths:<br><br>
+   125|<strong>Myth 1:</strong> "Price action = support and resistance" — <em>Wrong. S/R is one component, not the whole.</em><br>
+   126|<strong>Myth 2:</strong> "Price action = candlestick patterns" — <em>Wrong. Candles are entry triggers, not the strategy itself.</em><br>
+   127|<strong>Myth 3:</strong> "Price action only works on daily/weekly charts" — <em>Wrong. Works on ANY timeframe with sufficient liquidity.</em><br><br>
+   128|<strong>The 3-Step Framework:</strong>
+   129|<span class="key-item">Step 1: Identify current market condition (uptrend, downtrend, or range)</span>
+   130|<span class="key-item">Step 2: Find area of value to buy/sell (support, moving average, trend line, order block)</span>
+   131|<span class="key-item">Step 3: Wait for entry trigger (candlestick pattern at that area of value)</span><br>
+   132|<strong>Stop Loss Rule:</strong> Place below the level that, if broken, invalidates your setup. NOT at an arbitrary % — the invalidation point of the setup itself.<br><br>
+   133|<strong>Support becomes Resistance:</strong> The most powerful price action concept. A broken support level becomes resistance on the retest. Vice versa for resistance → support.
+   134|</div>
+   135|<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>From 'Price Action Trading For Beginners (Rayner Teo)': What is the recommended ENTRY signal?</strong></div><div class='q-hint'>Hint: <strong>Buy from area of value (support/MA/trend line) in an uptrend. Entry trigger = bullish reversal candle at that area.</strong></div></div>
+   136|<div class='q-card'><div class='q-type'>Q2 - Pattern Question</div><div class='q-text'><strong>Describe SUPPORT AND RESISTANCE as taught in the Pure Price Action Mastery course (2.6M views).</strong></div><div class='q-hint'>Hint: <strong>S/R are ZONES not lines. More important: quality of bounces, not quantity of touches. Look for strong rejection wicks. Treat them as 'areas of value' not exact price points.</strong></div></div>
+   137|<div class='q-card'><div class='q-type'>Q3 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Market in uptrend, price pulls back to support zone. What do you check next?</strong></div><div class='q-hint'>Hint: <strong>1) Is this support zone still valid? 2) Is there a bullish candlestick pattern forming? 3) Where is my stop (below the invalidation point)? 4) What is my risk:reward (minimum 1:2)?</strong></div></div>
+   138|<div class='q-card'><div class='q-type'>Q4 - Scenario Question</div><div class='q-text'><strong>SCENARIO: From Pure Price Action Mastery — Market breaks below a key support zone. What happens next?</strong></div><div class='q-hint'>Hint: <strong>When price breaks support, it often retests the broken level as new resistance. This is the 'support becomes resistance' principle — a high-probability short entry.</strong></div></div>
+   139|<div class='q-card'><div class='q-type'>Q5 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Multiple touches on a support level but the bounces are getting weaker (smaller green candles).</strong></div><div class='q-hint'>Hint: <strong>Weak bounces = sellers are willing to sell closer to support. This signals a breakout below support is likely. Tighten stops or take partial profits.</strong></div></div>
+   140|<div class='q-card'><div class='q-type'>Q6 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Higher lows into a resistance level — what does this tell you?</strong></div><div class='q-hint'>Hint: <strong>Buyers are stepping in higher and higher, putting pressure on resistance. This often leads to a breakout above resistance. Look for a strong momentum candle through resistance as confirmation.</strong></div></div>
+   141|<div class='q-card'><div class='q-type'>Q7 - Exit Question</div><div class='q-text'><strong>From Pure Price Action Mastery: Where should STOP LOSS be placed?</strong></div><div class='q-hint'>Hint: <strong>Below the most recent swing low (for longs) that would invalidate your setup. Use 1 ATR below that level as buffer to avoid getting stopped by noise.</strong></div></div>
+   142|<div class='q-card'><div class='q-type'>Q8 - Pattern Question</div><div class='q-text'><strong>From Pure Price Action Mastery: Describe the 4 phases of market movement.</strong></div><div class='q-hint'>Hint: <strong>Accumulation → Uptrend (Advancing) → Distribution → Downtrend (Declining). Different strategies work in different phases. A trend-trading strategy fails in distribution phase.</strong></div></div>
+   143|<div class='q-card'><div class='q-type'>Q9 - Entry Question</div><div class='q-text'><strong>From the Secrets of Price Action Trading: what is the ENTRY criteria?</strong></div><div class='q-hint'>Hint: <strong>Discount zone entry: wait for a pullback to the moving average or trend line within an uptrend. Entry on the first sign of buying pressure (bullish reversal candle).</strong></div></div>
+   144|<div class='q-card'><div class='q-type'>Q10 - Scenario Question</div><div class='q-text'><strong>SCENARIO: The Ultimate Beginner's Guide to Support & Resistance — price breaks below support with a momentum candle.</strong></div><div class='q-hint'>Hint: <strong>Momentum candle = candle with large body and above-average volume. When a support breaks on a momentum candle, it's a VALID breakout. Look for a retest of the broken level as new resistance for a short entry.</strong></div></div>
+   145|</div>
+   146|
+   147|<div class='section strategy-section' data-strategy='Options Trading'>
+   148|<h2>Options Trading <span style='font-size:13px;color:#64748b;font-weight:400;'>(8 videos, 20 questions)</span></h2>
+   149|<div class="summary-box">
+   150|<strong>📋 What the transcripts teach:</strong><br><br>
+   151|<strong>Options are leverage tools, not gambling instruments.</strong> The 4 key concepts from the transcripts:<br><br>
+   152|<strong>Greeks:</strong>
+   153|<span class="key-item">Delta (±1 to 0): directional exposure. 0.50 delta ≈ 50% chance of being ITM at expiry</span>
+   154|<span class="key-item">Theta: time decay — works AGAINST long options. OTM options lose value fastest in the final 30 days</span>
+   155|<span class="key-item">IV (Implied Volatility): high IV = expensive options. Buy when IV is low, sell when high</span>
+   156|<span class="key-item">Vega: sensitivity to IV changes. Earnings plays = high vega risk</span><br>
+   157|<strong>Defined Risk Strategies:</strong> Credit spreads (bear call / bull put) for consistent income. Max loss = width of spread - credit received. No margin calls.<br><br>
+   158|<strong>Position Sizing:</strong> Never risk more than 5% of account on any single options trade (higher than stocks due to defined risk nature of spreads).
+   159|</div>
+   160|<div class='q-card'><div class='q-type'>Q1 - Risk Question</div><div class='q-text'><strong>What POSITION SIZING rules does 'Options Trading For Beginners: Complete Guide with Examples' prescribe?</strong></div><div class='q-hint'>Hint: <strong>For defined-risk spreads: 3-5% of account per trade. For undefined risk (naked options): 1-2% max. Never size up after a loss.</strong></div></div>
+   161|<div class='q-card'><div class='q-type'>Q2 - Exit Question</div><div class='q-text'><strong>Where should STOP LOSS and TAKE PROFIT be placed for options?</strong></div><div class='q-hint'>Hint: <strong>Stop: 50% of premium paid for long options, or when the underlying moves against your breakeven. TP: 50-100% of max profit for spreads, 2:1 RR for long options.</strong></div></div>
+   162|</div>
+   163|
+   164|<div class='section strategy-section' data-strategy='Risk Management'>
+   165|<h2>Risk Management <span style='font-size:13px;color:#64748b;font-weight:400;'>(6 videos, 16 questions)</span></h2>
+   166|<div class="summary-box">
+   167|<strong>🛡️ What the transcripts teach:</strong><br><br>
+   168|The single most important category. Every transcript agrees on these rules:<br><br>
+   169|<strong>The Golden Rule:</strong> Risk 1-2% of your account on any single trade. This is not negotiable.<br><br>
+   170|<strong>Position Size Formula:</strong>
+   171|<span class="key-item">Position Size = (Account Balance × Risk%) / (Entry Price - Stop Loss Price)</span>
+   172|<span class="key-item">Example: £10k account risking 1% (£100) with a £2 stop = 50 shares</span><br>
+   173|<strong>Daily & Weekly Limits:</strong>
+   174|<span class="key-item">Daily loss limit: 3% of account — hit it and stop trading for the day</span>
+   175|<span class="key-item">Weekly loss limit: 6% of account — hit it and stop for the week</span>
+   176|<span class="key-item">Max drawdown: 20% — stop trading entirely, review your strategy, go back to paper trading</span><br>
+   177|<strong>Never:</strong> average down a losing position, add to a losing position, or move your stop loss further away.
+   178|</div>
+   179|<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>From 'Beginners Guide To Start Day Trading In 2026 (5 hours)': what is the recommended ENTRY signal?</strong></div><div class='q-hint'>Hint: <strong>Only enter when your stop loss placement gives you minimum 1:2 risk:reward. If you can't get 2x your risk, the trade isn't worth taking.</strong></div></div>
+   180|<div class='q-card'><div class='q-type'>Q2 - Exit Question</div><div class='q-text'><strong>Where should STOP LOSS and TAKE PROFIT be placed?</strong></div><div class='q-hint'>Hint: <strong>Stop below the invalidation point (swing low/high). TP at next key resistance or use trailing stop after 1:1 is hit. Minimum 1:2 RR required.</strong></div></div>
+   181|<div class='q-card'><div class='q-type'>Q3 - Risk Question</div><div class='q-text'><strong>From 'The LAST Risk Management Trading Guide': what position sizing rules are prescribed?</strong></div><div class='q-hint'>Hint: <strong>1% risk on standard trades, 0.5% on news/earnings days, 2% max on highest conviction setups with tighter stops.</strong></div></div>
+   182|<div class='q-card'><div class='q-type'>Q4 - Scenario Question</div><div class='q-text'><strong>SCENARIO: 5 trades in a row. Wins: +3%, +2%. Losses: -2%, -1.5%, -2%. Net P&L?</strong></div><div class='q-hint'>Hint: <strong>Net = -0.5%. Despite losing 3 out of 5 (40% win rate), the losses are controlled. Risk management kept the damage minimal.</strong></div></div>
+   183|<div class='q-card'><div class='q-type'>Q5 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Position Sizing drill — £10k account, 1% risk, entry £50, stop £47. How many shares?</strong></div><div class='q-hint'>Hint: <strong>Risk amount = £100. Stop distance = £3. Position size = 100/3 = 33 shares. Total risk = 33 × £3 = £99 ✅</strong></div></div>
+   184|<div class='q-card'><div class='q-type'>Q6 - Scenario Question</div><div class='q-text'><strong>SCENARIO: You're down -8% on a position. The original stop was at -5%. What do you do?</strong></div><div class='q-hint'>Hint: <strong>Exit immediately. You already broke your rules by not respecting the stop. Holding a -8% position hoping for a reversal is how small losses become account killers.</strong></div></div>
+   185|</div>
+   186|
+   187|<div class='section strategy-section' data-strategy='Chart Patterns'>
+   188|<h2>Chart Patterns <span style='font-size:13px;color:#64748b;font-weight:400;'>(5 videos, 13 questions)</span></h2>
+   189|<div class="summary-box">
+   190|<strong>📐 What the transcripts teach:</strong><br><br>
+   191|<strong>Pattern Types & Trading:</strong>
+   192|<span class="key-item">Head & Shoulders: Reversal pattern. Entry on neckline break, target = height of pattern projected from neckline. Stop above the right shoulder.</span>
+   193|<span class="key-item">Double Top/Bottom: Reversal. Entry on break of the valley/peak between the two tops/bottoms.</span>
+   194|<span class="key-item">Flags/Pennants: Continuation patterns in strong trends. Entry on break of the flag in trend direction.</span>
+   195|<span class="key-item">Triangles (Ascending/Descending/Symmetrical): Breakout pending. Volume should contract inside the triangle, expand on breakout.</span><br>
+   196|<strong>Critical rule from transcripts:</strong> <em>"Chart patterns alone are unreliable. Look for them at KEY LEVELS (supply/demand zones, previous S/R) and with VOLUME CONFIRMATION."</em>
+   197|</div>
+   198|<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>From 'Ultimate Beginners Guide to Timing Entries & Exits': what is the recommended ENTRY signal for chart patterns?</strong></div><div class='q-hint'>Hint: <strong>Entry on the CLOSE of the breakout candle above resistance / below support, or on a retest of the broken level. Never enter before the breakout candle closes.</strong></div></div>
+   199|<div class='q-card'><div class='q-type'>Q2 - Exit Question</div><div class='q-text'><strong>Where should STOP LOSS and TAKE PROFIT be placed for chart patterns?</strong></div><div class='q-hint'>Hint: <strong>Stop below the pattern's invalidation point (e.g., below the flag for a bull flag). TP = pattern height measured from breakout point. Minimum RR = 1:2.</strong></div></div>
+   200|<div class='q-card'><div class='q-type'>Q3 - Pattern Question</div><div class='q-text'><strong>From The Ultimate Chart Patterns Trading Course: describe the KEY PATTERN - what confirms it? Invalidates it?</strong></div><div class='q-hint'>Hint: <strong>Descending Triangle in a downtrend = continuation pattern. Confirmed on downside break with volume. Invalidated if price breaks above the flat resistance.</strong></div></div>
+   201|</div>
+   202|
+   203|<div class='section strategy-section' data-strategy='Momentum Trading'>
+   204|<h2>Momentum Trading <span style='font-size:13px;color:#64748b;font-weight:400;'>(4 videos, 8 questions)</span></h2>
+   205|<div class="summary-box">
+   206|<strong>⚡ What the transcripts teach:</strong><br><br>
+   207|<strong>Core concept:</strong> Trade with the strongest directional force. Identify stocks breaking out on high volume with relative strength vs the market.<br><br>
+   208|<strong>Entry:</strong> Wait for a pullback to the 9/20 EMA in a strong uptrend. Entry on the first green candle after the pullback touches the EMA.<br><br>
+   209|<strong>Exit signals:</strong>
+   210|<span class="key-item">Volume climax — unusually high volume with a small or no price advance</span>
+   211|<span class="key-item">RSI divergence — price makes a higher high, RSI makes a lower high</span>
+   212|<span class="key-item">Two consecutive closes below the 9 EMA</span><br>
+   213|<strong>Rule:</strong> <em>"Cut your losers short and let your winners run."</em> Momentum trades have low win rates (40-50%) but high reward (3:1+ RR when they work).
+   214|</div>
+   215|<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>From 'The Secrets of Price Action Trading (Precise Bar-By-Bar Inst)': what is the recommended ENTRY signal?</strong></div><div class='q-hint'>Hint: <strong>Pullback to the 20 EMA in an uptrend above the 200 MA. Entry on first bullish bar that closes above the previous bar's high.</strong></div></div>
+   216|<div class='q-card'><div class='q-type'>Q2 - Exit Question</div><div class='q-text'><strong>Where should STOP LOSS and TAKE PROFIT be placed?</strong></div><div class='q-hint'>Hint: <strong>Stop below the pullback low. First target = previous swing high. Trail stop at 1 ATR once first target is hit. No fixed TP — let momentum run until it exhausts.</strong></div></div>
+   217|<div class='q-card'><div class='q-type'>Q3 - Risk Question</div><div class='q-text'><strong>What POSITION SIZING rules does 'The Secrets of Price Action Trading' prescribe?</strong></div><div class='q-hint'>Hint: <strong>Same as standard risk management: 1-2% per trade. With lower win rate (40-50%), strict stop loss adherence is MORE important than in trend following.</strong></div></div>
+   218|</div>
+   219|
+   220|<div class='section strategy-section' data-strategy='Futures Trading'>
+   221|<h2>Futures Trading <span style='font-size:13px;color:#64748b;font-weight:400;'>(2 videos, 2 questions)</span></h2>
+   222|<div class="summary-box">
+   223|<strong>🔗 What the transcripts teach:</strong><br><br>
+   224|<strong>Key contract specs:</strong>
+   225|<span class="key-item">S&P 500 E-mini (ES): $50 per point. One point move = $50 P&L</span>
+   226|<span class="key-item">Nasdaq (NQ): $20 per point. More volatile than ES</span>
+   227|<span class="key-item">Micro futures (MES, MNQ): 1/10th the size — $5/point for MES, $2/point for MNQ. Ideal for smaller accounts</span><br>
+   228|<strong>Always use stops:</strong> Futures gap overnight. A stop ensures your risk is defined regardless of market gaps or circuit breakers.
+   229|</div>
+   230|<div class='q-card'><div class='q-type'>Q1 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Using Futures Trading — market gaps 10 points against your ES position overnight.</strong></div><div class='q-hint'>Hint: <strong>ES moves $50/point. 10-point gap = $500 loss. Your stop was hit at market open. This is why you don't hold futures positions overnight without a very wide stop (or hedge).</strong></div></div>
+   231|</div>
+   232|
+   233|<div class='section strategy-section' data-strategy='Beginners Guide'>
+   234|<h2>Beginners Guide <span style='font-size:13px;color:#64748b;font-weight:400;'>(2 videos, 2 questions)</span></h2>
+   235|<div class="summary-box">
+   236|<strong>🚀 What the transcripts teach:</strong><br><br>
+   237|<strong>The Right Path:</strong>
+   238|<span class="key-item">Step 1: Learn ONE strategy on paper trading (3 months minimum)</span>
+   239|<span class="key-item">Step 2: Trade smallest size possible with real money (1 share, 1 micro contract)</span>
+   240|<span class="key-item">Step 3: Scale up only after 3 consecutive profitable months</span>
+   241|<span class="key-item">Step 4: Treat trading as a business — track metrics, journal every trade, pay yourself a 'salary'</span><br>
+   242|<strong>Recommended platforms:</strong> TradingView for charts, Thinkorswim/Webull for paper trading, IBKR for professional accounts.
+   243|</div>
+   244|<div class='q-card'><div class='q-type'>Q1 - Scenario Question</div><div class='q-text'><strong>SCENARIO: You just started trading. You found a strategy that works in backtesting. What's your next step?</strong></div><div class='q-hint'>Hint: <strong>Paper trade it for at least 50-100 trades. Track win rate, average RR, max drawdown. Only go live after consistent profitability in demo.</strong></div></div>
+   245|</div>
+   246|
+   247|<div class='section strategy-section' data-strategy='Day Trading'>
+   248|<h2>Day Trading <span style='font-size:13px;color:#64748b;font-weight:400;'>(2 videos, 2 questions)</span></h2>
+   249|<div class="summary-box">
+   250|<strong>☀️ What the transcripts teach:</strong><br><br>
+   251|<strong>Best hours:</strong> Pre-market (4-9:30am EST) for gappers. First 2 hours after open (9:30-11:30am) for highest volume and volatility. Lunch period (11:30-1pm) is lower activity. Power hour (3-4pm) for end-of-day moves.<br><br>
+   252|<strong>Key rules:</strong>
+   253|<span class="key-item">Screen for stocks with: high relative volume (>1.5x average), news catalyst, high ATR</span>
+   254|<span class="key-item">Use 1-min and 5-min charts. Focus on 1-min for entry, 5-min for trend direction</span>
+   255|<span class="key-item">Pattern day trader rule (US): 4 day trades in rolling 5 business days if under $25k</span>
+   256|<span class="key-item">Never hold overnight unless part of your strategy</span>
+   257|</div>
+   258|<div class='q-card'><div class='q-type'>Q1 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Using Day Trading — you entered at 9:45am, the stock is up 4% by 10:30am. What do you do?</strong></div><div class='q-hint'>Hint: <strong>Option 1: Take full profits if near resistance. Option 2: Move stop to breakeven and let it ride. Option 3: Scale out 50% at 4% profit, let the rest run with a trailing stop. Never let a 4% winner turn into a loser.</strong></div></div>
+   259|</div>
+   260|
+   261|<div class='section strategy-section' data-strategy='Value Investing'>
+   262|<h2>Value Investing <span style='font-size:13px;color:#64748b;font-weight:400;'>(2 videos, 4 questions)</span></h2>
+   263|<div class="summary-box">
+   264|<strong>💎 What the transcripts teach:</strong><br><br>
+   265|<strong>Howard Marks (78 years of wisdom):</strong>
+   266|<span class="key-item">"The biggest investing mistakes come from emotion, not analysis."</span>
+   267|<span class="key-item">Risk management = knowing what you don't know. Build a margin of safety into every investment.</span>
+   268|<span class="key-item">Market cycles: buy when others are fearful (low prices), sell when others are greedy (high prices)</span><br>
+   269|<strong>Peter Lynch (Learn to Earn):</strong>
+   270|<span class="key-item">"Invest in what you know" — your everyday experience (restaurants you like, products you use) can lead to great stock ideas</span>
+   271|<span class="key-item">Key metrics: P/E ratio, debt-to-equity, earnings growth rate. Compare to industry peers, not the overall market.</span>
+   272|<span class="key-item">Diversify across 5-10 stocks in different sectors. Don't over-diversify (20+) — you can't track them all.</span>
+   273|</div>
+   274|<div class='q-card'><div class='q-type'>Q1 - Risk Question</div><div class='q-text'><strong>What POSITION SIZING rules does 'Howard Marks: 78 Years of Investing Wisdom' prescribe?</strong></div><div class='q-hint'>Hint: <strong>Don't put more than 20% in any single position. Build positions gradually — buy 1/3 at first, add on pullbacks. Keep 10-20% cash for opportunities in market downturns.</strong></div></div>
+   275|<div class='q-card'><div class='q-type'>Q2 - Risk Question</div><div class='q-text'><strong>What POSITION SIZING rules does 'Learn To Earn by Peter Lynch' prescribe?</strong></div><div class='q-hint'>Hint: <strong>5-10 stocks across different sectors. Add to winners that continue to compound. Sell losers when the original reason for buying is no longer valid.</strong></div></div>
+   276|</div>
+   277|
+   278|<div class='section strategy-section' data-strategy='Forex Trading'>
+   279|<h2>Forex Trading <span style='font-size:13px;color:#64748b;font-weight:400;'>(1 video, 4 questions)</span></h2>
+   280|<div class="summary-box">
+   281|<strong>💱 What the transcript teaches:</strong><br><br>
+   282|Rayner Teo's Forex course: <strong>All the same technical analysis principles apply — price action is universal across markets.</strong><br><br>
+   283|<span class="key-item">Major pairs (EUR/USD, GBP/USD, USD/JPY) have the tightest spreads and highest liquidity</span>
+   284|<span class="key-item">1 standard lot = 100,000 units. 1 pip on EUR/USD = $10 on a standard lot</span>
+   285|<span class="key-item">Best trading sessions: London (3am-12pm EST) and New York (8am-5pm EST) overlap. Avoid Asian session (low volatility)</span>
+   286|<span class="key-item">Use the same 3-step framework: trend → area of value → candlestick trigger</span>
+   287|</div>
+   288|<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>From 'The Ultimate Forex Trading Course For Beginners~By Rayner Teo': what is the recommended ENTRY signal?</strong></div><div class='q-hint'>Hint: <strong>Same as any market: identify trend, find area of value (key S/R, moving average, trend line), wait for candlestick trigger at that area. Price action works the same in Forex.</strong></div></div>
+   289|<div class='q-card'><div class='q-type'>Q2 - Exit Question</div><div class='q-text'><strong>Where should STOP LOSS and TAKE PROFIT be placed in Forex?</strong></div><div class='q-hint'>Hint: <strong>Stop below the swing low (longs) or above swing high (shorts). TP at next key resistance/support. Minimum 1:2 RR. Use ATR for stop distance in highly volatile pairs.</strong></div></div>
+   290|<div class='q-card'><div class='q-type'>Q3 - Risk Question</div><div class='q-text'><strong>What POSITION SIZING rules does Rayner Teo's Forex course prescribe?</strong></div><div class='q-hint'>Hint: <strong>1-2% risk per trade. Position size = (Account × Risk%) / (Stop in pips × Pip value). Use a position size calculator — don't guess.</strong></div></div>
+   291|</div>
+   292|
+   293|<div class='section strategy-section' data-strategy='ICT SMC'>
+<h2>ICT / Smart Money Concepts <span style='font-size:13px;color:#64748b;font-weight:400;'>(13 videos)</span></h2>
 <div class="summary-box">
-<strong>🕯️ What the transcripts teach:</strong><br><br>
-The 5.1M-view Wysetrade course is the definitive source. Key framework:<br><br>
-<strong>The Core Rule:</strong> <em>"Most traders take entries based on candlestick patterns alone — this results in low-quality trades. Combine candlestick patterns with <strong>key levels and areas of confluence</strong> to increase your percentage chance of success."</em><br><br>
-<strong>Long Wick Candle at Key Level:</strong>
-<span class="key-item">Buyers pushed price up but failed to close with momentum → sellers stepping in at resistance</span>
-<span class="key-item">The smaller the body AND the longer the wick → the higher quality the signal</span>
-<span class="key-item">Multiple long wick candles at same level → stronger than a single candle</span><br>
-<strong>Shrinking Candles:</strong> When each candle gets smaller than the previous as price approaches a level → loss of momentum → reversal imminent.<br><br>
-<strong>Multi-timeframe Entry:</strong> Identify setup on higher TF (4H/daily). Look inside that candle on a lower TF (15min/1H) for a trend change signal to enter earlier with better risk/reward.<br><br>
-<strong>Key patterns from Ross Cameron (Warrior Trading):</strong>
-<span class="key-item">Candle-over-candle: After pullback, first candle to make a new high = entry trigger</span>
-<span class="key-item">Hammer at support + next candle opens higher = bullish confirmation</span>
-<span class="key-item">Shooting star at resistance + high volume = strong reversal signal</span>
+<strong>🏦 What the transcripts teach:</strong><br><br>
+<strong>Core philosophy:</strong> Align retail trading with banks/hedge funds. Institutions hunt retail stop losses to build their positions.<br><br>
+<strong>Key Concepts:</strong>
+<span class="key-item"><strong>BOS (Break of Structure):</strong> Price breaks previous swing high/low in trend direction → continuation entry</span>
+<span class="key-item"><strong>CHOCH (Change of Character):</strong> Price breaks AGAINST trend direction → potential trend reversal</span>
+<span class="key-item"><strong>Fair Value Gap (FVG):</strong> 3-candle price imbalance. Large candle opens gap — price returns to fill it. Enter on pullback into FVG</span>
+<span class="key-item"><strong>Order Blocks:</strong> Last candle before big impulsive move. Rally-Base-Rally = bullish. Drop-Base-Drop = bearish. Enter at base</span>
+<span class="key-item"><strong>Liquidity:</strong> Stop losses above swing highs (buy-side) and below swing lows (sell-side). Institutions push price there to trigger them</span>
+<span class="key-item"><strong>Mitigation:</strong> Price returns to level where institutions offset a losing position before continuing</span>
+<span class="key-item"><strong>Framework:</strong> H4/H1 for overall bias → 15M/5M for entry timing. Premium (>50% Fib = sell zone), Discount (<50% Fib = buy zone)</span>
 </div>
-<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>From 'Ultimate Candlestick Patterns Trading Course (PRO INSTANTLY)': What is the HIGHEST QUALITY entry setup?</strong></div><div class='q-hint'>Hint: <strong>Long wick candle at key level of confluence (S/R + trend line + potential MA). The smaller the body and longer the wick, the better.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q2 - Pattern Question</div><div class='q-text'><strong>Describe the KEY PATTERN - what confirms it? Invalidates it?</strong></div><div class='q-hint'>Hint: <strong>Confirm: candle-over-candle reversal after pullback. Invalidate: price breaks below the trigger candle's low.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q3 - Entry Question</div><div class='q-text'><strong>What is a "Candle Over Candle" pattern and when do you enter?</strong></div><div class='q-hint'>Hint: <strong>Ross Cameron: 'After a pullback, the first candle to make a new high — that's your entry trigger.' Enter on break of that candle's high.</strong></div></div>
 </div>
 
-<div class='section strategy-section' data-strategy='Price Action'>
-<h2>Price Action <span style='font-size:13px;color:#64748b;font-weight:400;'>(12 videos, 28 questions)</span></h2>
-<div class="summary-box">
-<strong>📈 What the transcripts teach:</strong><br><br>
-Rayner Teo's framework (380K views) is the clearest: <strong>Price action is a methodology to identify imbalance of buying and selling pressure.</strong> Debunks 3 myths:<br><br>
-<strong>Myth 1:</strong> "Price action = support and resistance" — <em>Wrong. S/R is one component, not the whole.</em><br>
-<strong>Myth 2:</strong> "Price action = candlestick patterns" — <em>Wrong. Candles are entry triggers, not the strategy itself.</em><br>
-<strong>Myth 3:</strong> "Price action only works on daily/weekly charts" — <em>Wrong. Works on ANY timeframe with sufficient liquidity.</em><br><br>
-<strong>The 3-Step Framework:</strong>
-<span class="key-item">Step 1: Identify current market condition (uptrend, downtrend, or range)</span>
-<span class="key-item">Step 2: Find area of value to buy/sell (support, moving average, trend line, order block)</span>
-<span class="key-item">Step 3: Wait for entry trigger (candlestick pattern at that area of value)</span><br>
-<strong>Stop Loss Rule:</strong> Place below the level that, if broken, invalidates your setup. NOT at an arbitrary % — the invalidation point of the setup itself.<br><br>
-<strong>Support becomes Resistance:</strong> The most powerful price action concept. A broken support level becomes resistance on the retest. Vice versa for resistance → support.
-</div>
-<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>From 'Price Action Trading For Beginners (Rayner Teo)': What is the recommended ENTRY signal?</strong></div><div class='q-hint'>Hint: <strong>Buy from area of value (support/MA/trend line) in an uptrend. Entry trigger = bullish reversal candle at that area.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q2 - Pattern Question</div><div class='q-text'><strong>Describe SUPPORT AND RESISTANCE as taught in the Pure Price Action Mastery course (2.6M views).</strong></div><div class='q-hint'>Hint: <strong>S/R are ZONES not lines. More important: quality of bounces, not quantity of touches. Look for strong rejection wicks. Treat them as 'areas of value' not exact price points.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q3 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Market in uptrend, price pulls back to support zone. What do you check next?</strong></div><div class='q-hint'>Hint: <strong>1) Is this support zone still valid? 2) Is there a bullish candlestick pattern forming? 3) Where is my stop (below the invalidation point)? 4) What is my risk:reward (minimum 1:2)?</strong></div></div>
-<div class='q-card'><div class='q-type'>Q4 - Scenario Question</div><div class='q-text'><strong>SCENARIO: From Pure Price Action Mastery — Market breaks below a key support zone. What happens next?</strong></div><div class='q-hint'>Hint: <strong>When price breaks support, it often retests the broken level as new resistance. This is the 'support becomes resistance' principle — a high-probability short entry.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q5 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Multiple touches on a support level but the bounces are getting weaker (smaller green candles).</strong></div><div class='q-hint'>Hint: <strong>Weak bounces = sellers are willing to sell closer to support. This signals a breakout below support is likely. Tighten stops or take partial profits.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q6 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Higher lows into a resistance level — what does this tell you?</strong></div><div class='q-hint'>Hint: <strong>Buyers are stepping in higher and higher, putting pressure on resistance. This often leads to a breakout above resistance. Look for a strong momentum candle through resistance as confirmation.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q7 - Exit Question</div><div class='q-text'><strong>From Pure Price Action Mastery: Where should STOP LOSS be placed?</strong></div><div class='q-hint'>Hint: <strong>Below the most recent swing low (for longs) that would invalidate your setup. Use 1 ATR below that level as buffer to avoid getting stopped by noise.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q8 - Pattern Question</div><div class='q-text'><strong>From Pure Price Action Mastery: Describe the 4 phases of market movement.</strong></div><div class='q-hint'>Hint: <strong>Accumulation → Uptrend (Advancing) → Distribution → Downtrend (Declining). Different strategies work in different phases. A trend-trading strategy fails in distribution phase.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q9 - Entry Question</div><div class='q-text'><strong>From the Secrets of Price Action Trading: what is the ENTRY criteria?</strong></div><div class='q-hint'>Hint: <strong>Discount zone entry: wait for a pullback to the moving average or trend line within an uptrend. Entry on the first sign of buying pressure (bullish reversal candle).</strong></div></div>
-<div class='q-card'><div class='q-type'>Q10 - Scenario Question</div><div class='q-text'><strong>SCENARIO: The Ultimate Beginner's Guide to Support & Resistance — price breaks below support with a momentum candle.</strong></div><div class='q-hint'>Hint: <strong>Momentum candle = candle with large body and above-average volume. When a support breaks on a momentum candle, it's a VALID breakout. Look for a retest of the broken level as new resistance for a short entry.</strong></div></div>
-</div>
-
-<div class='section strategy-section' data-strategy='Options Trading'>
-<h2>Options Trading <span style='font-size:13px;color:#64748b;font-weight:400;'>(8 videos, 20 questions)</span></h2>
-<div class="summary-box">
-<strong>📋 What the transcripts teach:</strong><br><br>
-<strong>Options are leverage tools, not gambling instruments.</strong> The 4 key concepts from the transcripts:<br><br>
-<strong>Greeks:</strong>
-<span class="key-item">Delta (±1 to 0): directional exposure. 0.50 delta ≈ 50% chance of being ITM at expiry</span>
-<span class="key-item">Theta: time decay — works AGAINST long options. OTM options lose value fastest in the final 30 days</span>
-<span class="key-item">IV (Implied Volatility): high IV = expensive options. Buy when IV is low, sell when high</span>
-<span class="key-item">Vega: sensitivity to IV changes. Earnings plays = high vega risk</span><br>
-<strong>Defined Risk Strategies:</strong> Credit spreads (bear call / bull put) for consistent income. Max loss = width of spread - credit received. No margin calls.<br><br>
-<strong>Position Sizing:</strong> Never risk more than 5% of account on any single options trade (higher than stocks due to defined risk nature of spreads).
-</div>
-<div class='q-card'><div class='q-type'>Q1 - Risk Question</div><div class='q-text'><strong>What POSITION SIZING rules does 'Options Trading For Beginners: Complete Guide with Examples' prescribe?</strong></div><div class='q-hint'>Hint: <strong>For defined-risk spreads: 3-5% of account per trade. For undefined risk (naked options): 1-2% max. Never size up after a loss.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q2 - Exit Question</div><div class='q-text'><strong>Where should STOP LOSS and TAKE PROFIT be placed for options?</strong></div><div class='q-hint'>Hint: <strong>Stop: 50% of premium paid for long options, or when the underlying moves against your breakeven. TP: 50-100% of max profit for spreads, 2:1 RR for long options.</strong></div></div>
-</div>
-
-<div class='section strategy-section' data-strategy='Risk Management'>
-<h2>Risk Management <span style='font-size:13px;color:#64748b;font-weight:400;'>(6 videos, 16 questions)</span></h2>
-<div class="summary-box">
-<strong>🛡️ What the transcripts teach:</strong><br><br>
-The single most important category. Every transcript agrees on these rules:<br><br>
-<strong>The Golden Rule:</strong> Risk 1-2% of your account on any single trade. This is not negotiable.<br><br>
-<strong>Position Size Formula:</strong>
-<span class="key-item">Position Size = (Account Balance × Risk%) / (Entry Price - Stop Loss Price)</span>
-<span class="key-item">Example: £10k account risking 1% (£100) with a £2 stop = 50 shares</span><br>
-<strong>Daily & Weekly Limits:</strong>
-<span class="key-item">Daily loss limit: 3% of account — hit it and stop trading for the day</span>
-<span class="key-item">Weekly loss limit: 6% of account — hit it and stop for the week</span>
-<span class="key-item">Max drawdown: 20% — stop trading entirely, review your strategy, go back to paper trading</span><br>
-<strong>Never:</strong> average down a losing position, add to a losing position, or move your stop loss further away.
-</div>
-<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>From 'Beginners Guide To Start Day Trading In 2026 (5 hours)': what is the recommended ENTRY signal?</strong></div><div class='q-hint'>Hint: <strong>Only enter when your stop loss placement gives you minimum 1:2 risk:reward. If you can't get 2x your risk, the trade isn't worth taking.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q2 - Exit Question</div><div class='q-text'><strong>Where should STOP LOSS and TAKE PROFIT be placed?</strong></div><div class='q-hint'>Hint: <strong>Stop below the invalidation point (swing low/high). TP at next key resistance or use trailing stop after 1:1 is hit. Minimum 1:2 RR required.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q3 - Risk Question</div><div class='q-text'><strong>From 'The LAST Risk Management Trading Guide': what position sizing rules are prescribed?</strong></div><div class='q-hint'>Hint: <strong>1% risk on standard trades, 0.5% on news/earnings days, 2% max on highest conviction setups with tighter stops.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q4 - Scenario Question</div><div class='q-text'><strong>SCENARIO: 5 trades in a row. Wins: +3%, +2%. Losses: -2%, -1.5%, -2%. Net P&L?</strong></div><div class='q-hint'>Hint: <strong>Net = -0.5%. Despite losing 3 out of 5 (40% win rate), the losses are controlled. Risk management kept the damage minimal.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q5 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Position Sizing drill — £10k account, 1% risk, entry £50, stop £47. How many shares?</strong></div><div class='q-hint'>Hint: <strong>Risk amount = £100. Stop distance = £3. Position size = 100/3 = 33 shares. Total risk = 33 × £3 = £99 ✅</strong></div></div>
-<div class='q-card'><div class='q-type'>Q6 - Scenario Question</div><div class='q-text'><strong>SCENARIO: You're down -8% on a position. The original stop was at -5%. What do you do?</strong></div><div class='q-hint'>Hint: <strong>Exit immediately. You already broke your rules by not respecting the stop. Holding a -8% position hoping for a reversal is how small losses become account killers.</strong></div></div>
-</div>
-
-<div class='section strategy-section' data-strategy='Chart Patterns'>
-<h2>Chart Patterns <span style='font-size:13px;color:#64748b;font-weight:400;'>(5 videos, 13 questions)</span></h2>
-<div class="summary-box">
-<strong>📐 What the transcripts teach:</strong><br><br>
-<strong>Pattern Types & Trading:</strong>
-<span class="key-item">Head & Shoulders: Reversal pattern. Entry on neckline break, target = height of pattern projected from neckline. Stop above the right shoulder.</span>
-<span class="key-item">Double Top/Bottom: Reversal. Entry on break of the valley/peak between the two tops/bottoms.</span>
-<span class="key-item">Flags/Pennants: Continuation patterns in strong trends. Entry on break of the flag in trend direction.</span>
-<span class="key-item">Triangles (Ascending/Descending/Symmetrical): Breakout pending. Volume should contract inside the triangle, expand on breakout.</span><br>
-<strong>Critical rule from transcripts:</strong> <em>"Chart patterns alone are unreliable. Look for them at KEY LEVELS (supply/demand zones, previous S/R) and with VOLUME CONFIRMATION."</em>
-</div>
-<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>From 'Ultimate Beginners Guide to Timing Entries & Exits': what is the recommended ENTRY signal for chart patterns?</strong></div><div class='q-hint'>Hint: <strong>Entry on the CLOSE of the breakout candle above resistance / below support, or on a retest of the broken level. Never enter before the breakout candle closes.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q2 - Exit Question</div><div class='q-text'><strong>Where should STOP LOSS and TAKE PROFIT be placed for chart patterns?</strong></div><div class='q-hint'>Hint: <strong>Stop below the pattern's invalidation point (e.g., below the flag for a bull flag). TP = pattern height measured from breakout point. Minimum RR = 1:2.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q3 - Pattern Question</div><div class='q-text'><strong>From The Ultimate Chart Patterns Trading Course: describe the KEY PATTERN - what confirms it? Invalidates it?</strong></div><div class='q-hint'>Hint: <strong>Descending Triangle in a downtrend = continuation pattern. Confirmed on downside break with volume. Invalidated if price breaks above the flat resistance.</strong></div></div>
-</div>
-
-<div class='section strategy-section' data-strategy='Momentum Trading'>
-<h2>Momentum Trading <span style='font-size:13px;color:#64748b;font-weight:400;'>(4 videos, 8 questions)</span></h2>
+<div class='section strategy-section' data-strategy='Scalping'>
+<h2>Scalping — Quick Flip Scalper <span style='font-size:13px;color:#64748b;font-weight:400;'>(5 videos)</span></h2>
 <div class="summary-box">
 <strong>⚡ What the transcripts teach:</strong><br><br>
-<strong>Core concept:</strong> Trade with the strongest directional force. Identify stocks breaking out on high volume with relative strength vs the market.<br><br>
-<strong>Entry:</strong> Wait for a pullback to the 9/20 EMA in a strong uptrend. Entry on the first green candle after the pullback touches the EMA.<br><br>
-<strong>Exit signals:</strong>
-<span class="key-item">Volume climax — unusually high volume with a small or no price advance</span>
-<span class="key-item">RSI divergence — price makes a higher high, RSI makes a lower high</span>
-<span class="key-item">Two consecutive closes below the 9 EMA</span><br>
-<strong>Rule:</strong> <em>"Cut your losers short and let your winners run."</em> Momentum trades have low win rates (40-50%) but high reward (3:1+ RR when they work).
+20-year veteran Carl's <strong>Quick Flip Scalper</strong> — 3-step opening range strategy:<br><br>
+<strong>Step 1:</strong> Box the first 15-min candle (draw range from high to low, extend right)<br>
+<strong>Step 2:</strong> Wait for a liquidity event — an aggressive candle that triggers retail stop losses (this is the liquidity pool institutions need)<br>
+<strong>Step 3:</strong> Enter on a reversal candle (hammer/inverted hammer/bullish engulfing) OUTSIDE the opening range box<br><br>
+<strong>Rules:</strong>
+<span class="key-item">Entry: At break of the reversal candle's high/low</span>
+<span class="key-item">Stop: Below reversal candle low (longs) / above its high (shorts)</span>
+<span class="key-item">Target: Opposite side of the opening range box</span>
+<span class="key-item">⏱ Time limit: First 90 minutes ONLY. If no setup forms, skip for the day</span>
+<span class="key-item">Typical: 28-pt stop, 2.7:1 RR. Win rate higher if including 15 min pre-open data</span>
+<span class="key-item">Key reversal patterns to watch: hammer, inverted hammer, bullish/bearish engulfing outside the range</span>
 </div>
-<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>From 'The Secrets of Price Action Trading (Precise Bar-By-Bar Inst)': what is the recommended ENTRY signal?</strong></div><div class='q-hint'>Hint: <strong>Pullback to the 20 EMA in an uptrend above the 200 MA. Entry on first bullish bar that closes above the previous bar's high.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q2 - Exit Question</div><div class='q-text'><strong>Where should STOP LOSS and TAKE PROFIT be placed?</strong></div><div class='q-hint'>Hint: <strong>Stop below the pullback low. First target = previous swing high. Trail stop at 1 ATR once first target is hit. No fixed TP — let momentum run until it exhausts.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q3 - Risk Question</div><div class='q-text'><strong>What POSITION SIZING rules does 'The Secrets of Price Action Trading' prescribe?</strong></div><div class='q-hint'>Hint: <strong>Same as standard risk management: 1-2% per trade. With lower win rate (40-50%), strict stop loss adherence is MORE important than in trend following.</strong></div></div>
-</div>
-
-<div class='section strategy-section' data-strategy='Futures Trading'>
-<h2>Futures Trading <span style='font-size:13px;color:#64748b;font-weight:400;'>(2 videos, 2 questions)</span></h2>
-<div class="summary-box">
-<strong>🔗 What the transcripts teach:</strong><br><br>
-<strong>Key contract specs:</strong>
-<span class="key-item">S&P 500 E-mini (ES): $50 per point. One point move = $50 P&L</span>
-<span class="key-item">Nasdaq (NQ): $20 per point. More volatile than ES</span>
-<span class="key-item">Micro futures (MES, MNQ): 1/10th the size — $5/point for MES, $2/point for MNQ. Ideal for smaller accounts</span><br>
-<strong>Always use stops:</strong> Futures gap overnight. A stop ensures your risk is defined regardless of market gaps or circuit breakers.
-</div>
-<div class='q-card'><div class='q-type'>Q1 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Using Futures Trading — market gaps 10 points against your ES position overnight.</strong></div><div class='q-hint'>Hint: <strong>ES moves $50/point. 10-point gap = $500 loss. Your stop was hit at market open. This is why you don't hold futures positions overnight without a very wide stop (or hedge).</strong></div></div>
 </div>
 
-<div class='section strategy-section' data-strategy='Beginners Guide'>
-<h2>Beginners Guide <span style='font-size:13px;color:#64748b;font-weight:400;'>(2 videos, 2 questions)</span></h2>
+<div class='section strategy-section' data-strategy='Swing Trading'>
+<h2>Swing Trading <span style='font-size:13px;color:#64748b;font-weight:400;'>(4 videos)</span></h2>
 <div class="summary-box">
-<strong>🚀 What the transcripts teach:</strong><br><br>
-<strong>The Right Path:</strong>
-<span class="key-item">Step 1: Learn ONE strategy on paper trading (3 months minimum)</span>
-<span class="key-item">Step 2: Trade smallest size possible with real money (1 share, 1 micro contract)</span>
-<span class="key-item">Step 3: Scale up only after 3 consecutive profitable months</span>
-<span class="key-item">Step 4: Treat trading as a business — track metrics, journal every trade, pay yourself a 'salary'</span><br>
-<strong>Recommended platforms:</strong> TradingView for charts, Thinkorswim/Webull for paper trading, IBKR for professional accounts.
+<strong>🔄 What the transcripts teach:</strong><br><br>
+<strong>Three high-probability swing patterns:</strong><br><br>
+<strong>1. Daily Gap Up over Multi-Month Resistance:</strong> Stock gaps up overnight over a multi-month resistance level with a positive catalyst. Buy on first pullback after the gap. Ideal entry midday, not at open.<br><br>
+<strong>2. Long-Term Downtrend Break + 200 SMA Reclaim:</strong> Stock breaks above a long-term (months/years) downtrend line AND reclaims the 200 SMA with above-average volume. Entry at 200 SMA area, stop below recent support.<br><br>
+<strong>3. Post-Catalyst Reversal:</strong> Big catalyst-driven drop, then price breaks the downtrend on the daily chart and closes above the 8 EMA. Entry on daily close confirmation.<br><br>
+<span class="key-item">Timeframes: Daily for trend direction, 5-min for entry execution</span>
+<span class="key-item">Indicators: 8 EMA (momentum), 200 SMA (long-term trend), volume (confirms breakouts)</span>
+<span class="key-item">Positions: Days to weeks. Best entries found midday, not at market open</span>
 </div>
-<div class='q-card'><div class='q-type'>Q1 - Scenario Question</div><div class='q-text'><strong>SCENARIO: You just started trading. You found a strategy that works in backtesting. What's your next step?</strong></div><div class='q-hint'>Hint: <strong>Paper trade it for at least 50-100 trades. Track win rate, average RR, max drawdown. Only go live after consistent profitability in demo.</strong></div></div>
-</div>
-
-<div class='section strategy-section' data-strategy='Day Trading'>
-<h2>Day Trading <span style='font-size:13px;color:#64748b;font-weight:400;'>(2 videos, 2 questions)</span></h2>
-<div class="summary-box">
-<strong>☀️ What the transcripts teach:</strong><br><br>
-<strong>Best hours:</strong> Pre-market (4-9:30am EST) for gappers. First 2 hours after open (9:30-11:30am) for highest volume and volatility. Lunch period (11:30-1pm) is lower activity. Power hour (3-4pm) for end-of-day moves.<br><br>
-<strong>Key rules:</strong>
-<span class="key-item">Screen for stocks with: high relative volume (>1.5x average), news catalyst, high ATR</span>
-<span class="key-item">Use 1-min and 5-min charts. Focus on 1-min for entry, 5-min for trend direction</span>
-<span class="key-item">Pattern day trader rule (US): 4 day trades in rolling 5 business days if under $25k</span>
-<span class="key-item">Never hold overnight unless part of your strategy</span>
-</div>
-<div class='q-card'><div class='q-type'>Q1 - Scenario Question</div><div class='q-text'><strong>SCENARIO: Using Day Trading — you entered at 9:45am, the stock is up 4% by 10:30am. What do you do?</strong></div><div class='q-hint'>Hint: <strong>Option 1: Take full profits if near resistance. Option 2: Move stop to breakeven and let it ride. Option 3: Scale out 50% at 4% profit, let the rest run with a trailing stop. Never let a 4% winner turn into a loser.</strong></div></div>
-</div>
-
-<div class='section strategy-section' data-strategy='Value Investing'>
-<h2>Value Investing <span style='font-size:13px;color:#64748b;font-weight:400;'>(2 videos, 4 questions)</span></h2>
-<div class="summary-box">
-<strong>💎 What the transcripts teach:</strong><br><br>
-<strong>Howard Marks (78 years of wisdom):</strong>
-<span class="key-item">"The biggest investing mistakes come from emotion, not analysis."</span>
-<span class="key-item">Risk management = knowing what you don't know. Build a margin of safety into every investment.</span>
-<span class="key-item">Market cycles: buy when others are fearful (low prices), sell when others are greedy (high prices)</span><br>
-<strong>Peter Lynch (Learn to Earn):</strong>
-<span class="key-item">"Invest in what you know" — your everyday experience (restaurants you like, products you use) can lead to great stock ideas</span>
-<span class="key-item">Key metrics: P/E ratio, debt-to-equity, earnings growth rate. Compare to industry peers, not the overall market.</span>
-<span class="key-item">Diversify across 5-10 stocks in different sectors. Don't over-diversify (20+) — you can't track them all.</span>
-</div>
-<div class='q-card'><div class='q-type'>Q1 - Risk Question</div><div class='q-text'><strong>What POSITION SIZING rules does 'Howard Marks: 78 Years of Investing Wisdom' prescribe?</strong></div><div class='q-hint'>Hint: <strong>Don't put more than 20% in any single position. Build positions gradually — buy 1/3 at first, add on pullbacks. Keep 10-20% cash for opportunities in market downturns.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q2 - Risk Question</div><div class='q-text'><strong>What POSITION SIZING rules does 'Learn To Earn by Peter Lynch' prescribe?</strong></div><div class='q-hint'>Hint: <strong>5-10 stocks across different sectors. Add to winners that continue to compound. Sell losers when the original reason for buying is no longer valid.</strong></div></div>
-</div>
-
-<div class='section strategy-section' data-strategy='Forex Trading'>
-<h2>Forex Trading <span style='font-size:13px;color:#64748b;font-weight:400;'>(1 video, 4 questions)</span></h2>
-<div class="summary-box">
-<strong>💱 What the transcript teaches:</strong><br><br>
-Rayner Teo's Forex course: <strong>All the same technical analysis principles apply — price action is universal across markets.</strong><br><br>
-<span class="key-item">Major pairs (EUR/USD, GBP/USD, USD/JPY) have the tightest spreads and highest liquidity</span>
-<span class="key-item">1 standard lot = 100,000 units. 1 pip on EUR/USD = $10 on a standard lot</span>
-<span class="key-item">Best trading sessions: London (3am-12pm EST) and New York (8am-5pm EST) overlap. Avoid Asian session (low volatility)</span>
-<span class="key-item">Use the same 3-step framework: trend → area of value → candlestick trigger</span>
-</div>
-<div class='q-card'><div class='q-type'>Q1 - Entry Question</div><div class='q-text'><strong>From 'The Ultimate Forex Trading Course For Beginners~By Rayner Teo': what is the recommended ENTRY signal?</strong></div><div class='q-hint'>Hint: <strong>Same as any market: identify trend, find area of value (key S/R, moving average, trend line), wait for candlestick trigger at that area. Price action works the same in Forex.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q2 - Exit Question</div><div class='q-text'><strong>Where should STOP LOSS and TAKE PROFIT be placed in Forex?</strong></div><div class='q-hint'>Hint: <strong>Stop below the swing low (longs) or above swing high (shorts). TP at next key resistance/support. Minimum 1:2 RR. Use ATR for stop distance in highly volatile pairs.</strong></div></div>
-<div class='q-card'><div class='q-type'>Q3 - Risk Question</div><div class='q-text'><strong>What POSITION SIZING rules does Rayner Teo's Forex course prescribe?</strong></div><div class='q-hint'>Hint: <strong>1-2% risk per trade. Position size = (Account × Risk%) / (Stop in pips × Pip value). Use a position size calculator — don't guess.</strong></div></div>
 </div>
 
 <div class="section" style="border-color:#0d9488"><h2 style="color:#0d9488">Trial Mode — Practice Scenarios</h2><p style="color:#94a3b8;margin-bottom:12px;">Apply what you have learned from the transcripts.</p>
-<div class="trial-card"><h3>Scenario 1: Bullish Setup</h3><p>Price in uptrend (higher highs + higher lows on 4H). Pulls back to 20 EMA. Bullish engulfing candle forms at the EMA. RSI at 45 (not oversold). Volume on the bullish candle is above average.</p><p style="margin-top:8px;font-size:13px;"><strong>Your move:</strong> Enter now? Wait for confirmation? Stop loss placement? Position size for £10k account risking 1%? <br><em>Hint from transcripts: Check higher TF trend direction, confirm the pullback isn't a trend reversal, place stop below the engulfing candle's low.</em></p></div>
-<div class="trial-card"><h3>Scenario 2: Risk Management</h3><p>£5k account. 3 open positions: -8%, -3%, -1.5%. Daily loss limit 3% (max -£150). Weekly limit 6% (max -£300). Current daily P&L: -£50.</p><p style="margin-top:8px;font-size:13px;"><strong>Your move:</strong> Which to close? Stop today? Plan tomorrow? <br><em>Hint from transcripts: The -8% position already broke your stop-loss rule — close it immediately. The -3% position is near your daily limit. Consider closing both and stopping for the day.</em></p></div>
-<div class="trial-card"><h3>Scenario 3: Breakout or Fakeout?</h3><p>Price breaks above 4-month resistance with above-average volume. You enter long. 30 minutes later, price closes back below resistance. Next candle opens flat.</p><p style="margin-top:8px;font-size:13px;"><strong>Your move:</strong> Hold, add, or exit? Fakeout vs retest? <br><em>Hint from transcripts: A close back below resistance after a breakout is a FAILED breakout = fakeout. Exit immediately. Look for the broken resistance to act as new resistance. If you want to re-enter, wait for a SECOND successful test.</em></p></div>
-<div class="trial-card"><h3>Scenario 4: Multi-Timeframe Entry</h3><p>Daily chart: clear uptrend. 4H chart: pulling back to trend line. 1H chart: hammer candle forming at the trend line with declining volume on the pullback.</p><p style="margin-top:8px;font-size:13px;"><strong>Your move:</strong> Enter on the 1H hammer close? Wait for 4H confirmation? <br><em>Hint from transcripts: Higher TF = direction (daily uptrend). Medium TF = value area (4H trend line). Lower TF = entry trigger (1H hammer). Enter on 1H confirmation with stop below the hammer low. This is the multi-timeframe confluence setup from the Wysetrade course.</em></p></div>
-<div class="trial-card"><h3>Scenario 5: Earnings Gap</h3><p>Stock gaps up 15% on earnings. 5-min chart shows a doji candle at the open, followed by a shooting star. Pre-market volume was 3x average. Your analysis missed the earnings date.</p><p style="margin-top:8px;font-size:13px;"><strong>Your move:</strong> Chase the gap? Short the shooting star? Wait for pattern? <br><em>Hint from transcripts: Never chase a gap. The doji + shooting star at open suggests seller exhaustion. Wait for the first pullback on the 5-min chart. If the stock holds above the gap fill level, look for a long entry on the first higher-low pullback.</em></p></div>
-</div>
-
-<div class="note-box"><strong>How to use this assessment:</strong> Each strategy section has a <strong>transcript summary</strong> with real trading rules extracted from the videos, followed by scenario questions applying those rules. Attempt the questions first, then check your understanding against the summary hints. Mark completed questions using localStorage (coming soon).</div>
-
-<script>
-function filterQuestions(s){var b=document.querySelectorAll('.filter-btn');for(var i=0;i<b.length;i++)b[i].classList.remove('active');event.target.classList.add('active');var x=document.querySelectorAll('.strategy-section');for(var i=0;i<x.length;i++){x[i].style.display=(s==='all'||x[i].dataset.strategy===s)?'block':'none'}}
-</script>
-</div></body>
-</html>
+   294|<div class="trial-card"><h3>Scenario 1: Bullish Setup</h3><p>Price in uptrend (higher highs + higher lows on 4H). Pulls back to 20 EMA. Bullish engulfing candle forms at the EMA. RSI at 45 (not oversold). Volume on the bullish candle is above average.</p><p style="margin-top:8px;font-size:13px;"><strong>Your move:</strong> Enter now? Wait for confirmation? Stop loss placement? Position size for £10k account risking 1%? <br><em>Hint from transcripts: Check higher TF trend direction, confirm the pullback isn't a trend reversal, place stop below the engulfing candle's low.</em></p></div>
+   295|<div class="trial-card"><h3>Scenario 2: Risk Management</h3><p>£5k account. 3 open positions: -8%, -3%, -1.5%. Daily loss limit 3% (max -£150). Weekly limit 6% (max -£300). Current daily P&L: -£50.</p><p style="margin-top:8px;font-size:13px;"><strong>Your move:</strong> Which to close? Stop today? Plan tomorrow? <br><em>Hint from transcripts: The -8% position already broke your stop-loss rule — close it immediately. The -3% position is near your daily limit. Consider closing both and stopping for the day.</em></p></div>
+   296|<div class="trial-card"><h3>Scenario 3: Breakout or Fakeout?</h3><p>Price breaks above 4-month resistance with above-average volume. You enter long. 30 minutes later, price closes back below resistance. Next candle opens flat.</p><p style="margin-top:8px;font-size:13px;"><strong>Your move:</strong> Hold, add, or exit? Fakeout vs retest? <br><em>Hint from transcripts: A close back below resistance after a breakout is a FAILED breakout = fakeout. Exit immediately. Look for the broken resistance to act as new resistance. If you want to re-enter, wait for a SECOND successful test.</em></p></div>
+   297|<div class="trial-card"><h3>Scenario 4: Multi-Timeframe Entry</h3><p>Daily chart: clear uptrend. 4H chart: pulling back to trend line. 1H chart: hammer candle forming at the trend line with declining volume on the pullback.</p><p style="margin-top:8px;font-size:13px;"><strong>Your move:</strong> Enter on the 1H hammer close? Wait for 4H confirmation? <br><em>Hint from transcripts: Higher TF = direction (daily uptrend). Medium TF = value area (4H trend line). Lower TF = entry trigger (1H hammer). Enter on 1H confirmation with stop below the hammer low. This is the multi-timeframe confluence setup from the Wysetrade course.</em></p></div>
+   298|<div class="trial-card"><h3>Scenario 5: Earnings Gap</h3><p>Stock gaps up 15% on earnings. 5-min chart shows a doji candle at the open, followed by a shooting star. Pre-market volume was 3x average. Your analysis missed the earnings date.</p><p style="margin-top:8px;font-size:13px;"><strong>Your move:</strong> Chase the gap? Short the shooting star? Wait for pattern? <br><em>Hint from transcripts: Never chase a gap. The doji + shooting star at open suggests seller exhaustion. Wait for the first pullback on the 5-min chart. If the stock holds above the gap fill level, look for a long entry on the first higher-low pullback.</em></p></div>
+   299|</div>
+   300|
+   301|<div class="note-box"><strong>How to use this assessment:</strong> Each strategy section has a <strong>transcript summary</strong> with real trading rules extracted from the videos, followed by scenario questions applying those rules. Attempt the questions first, then check your understanding against the summary hints. Mark completed questions using localStorage (coming soon).</div>
+   302|
+   303|<script>
+   304|function filterQuestions(s){var b=document.querySelectorAll('.filter-btn');for(var i=0;i<b.length;i++)b[i].classList.remove('active');event.target.classList.add('active');var x=document.querySelectorAll('.strategy-section');for(var i=0;i<x.length;i++){x[i].style.display=(s==='all'||x[i].dataset.strategy===s)?'block':'none'}}
+   305|</script>
+   306|</div></body>
+   307|</html>
+   308|
