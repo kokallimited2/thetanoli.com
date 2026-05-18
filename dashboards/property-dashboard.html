@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Property Intelligence Dashboard — deal analysis, area research, market intel, and lead pipeline from Nikka Khan">
+<title>🏠 Property Intelligence Dashboard</title>
+<style>
+:root {
+  --bg: #0a0f1e;
+  --bg2: #111827;
+  --card: #1e293b;
+  --border: #334155;
+  --accent: #f59e0b;
+  --green: #22c55e;
+  --red: #ef4444;
+  --blue: #3b82f6;
+  --purple: #8b5cf6;
+  --teal: #0d9488;
+  --text: #f1f5f9;
+  --text2: #94a3b8;
+  --text3: #64748b;
+  --rad: 12px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 14px;
+  min-height: 100vh;
+}
+.wrap { max-width: 1280px; margin: 0 auto; padding: 16px 20px; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #0a0f1e 0%, #1e3a5f 40%, #0d9488 100%);
+  padding: 40px 24px 32px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(245,158,11,0.04) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(13,148,136,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero h1 { font-size: 2rem; font-weight: 800; position: relative; }
+.hero h1 em { color: var(--accent); font-style: normal; }
+.hero p { color: var(--text2); font-size: 14px; margin-top: 8px; max-width: 500px; margin-inline: auto; position: relative; }
+.hero .badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  padding: 4px 14px;
+  border-radius: 100px;
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 12px;
+  position: relative;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 32px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--card);
+}
+.section-title .count {
+  color: var(--text3);
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+/* Stats row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 0 0 8px;
+}
+.stat-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--rad);
+  padding: 16px;
+  text-align: center;
+}
+.stat-card .num { font-size: 1.5rem; font-weight: 800; }
+.stat-card .label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 3px; }
+.stat-card .sub { font-size: 11px; color: var(--text2); margin-top: 2px; }
+.stat-card.green .num { color: var(--green); }
+.stat-card.red .num { color: var(--red); }
+.stat-card.accent .num { color: var(--accent); }
+.stat-card.blue .num { color: var(--blue); }
+.stat-card.purple .num { color: var(--purple); }
+.stat-card.teal .num { color: var(--teal); }
+
+/* Grid */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+
+/* Deal cards */
+.deal-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--rad);
+  padding: 18px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+.deal-card:hover {
+  border-color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+.deal-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.deal-card .strategy {
+  display: inline-block;
+  background: rgba(59,130,246,0.1);
+  color: #60a5fa;
+  padding: 2px 10px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.deal-card .score {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.deal-card .score.high { color: var(--green); }
+.deal-card .score.med { color: var(--accent); }
+.deal-card .score.low { color: var(--red); }
+.deal-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.deal-card .location {
+  color: var(--text3);
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.deal-card .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.deal-card .meta-item {
+  font-size: 12px;
+  color: var(--text2);
+}
+.deal-card .meta-item strong { color: var(--text); }
+.deal-card .verdict {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.deal-card .verdict.buy { background: rgba(34,197,94,0.12); color: var(--green); }
+.deal-card .verdict.dd { background: rgba(245,158,11,0.12); color: var(--accent); }
+.deal-card .verdict.pass { background: rgba(239,68,68,0.12); color: var(--red); }
+.deal-card .notes {
+  font-size: 12px;
+  color: var(--text3);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.deal-card .timestamp {
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 10px;
+  text-align: right;
+}
+
+/* Area cards */
+.area-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--rad);
+  padding: 16px;
+}
+.area-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.area-card .region { font-size: 11px; color: var(--text3); margin-bottom: 10px; }
+.area-card .stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.area-card .stat {
+  font-size: 12px;
+  color: var(--text2);
+}
+.area-card .stat strong { color: var(--text); }
+
+/* Intel cards */
+.intel-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--rad);
+  padding: 16px;
+}
+.intel-card .date { font-size: 10px; color: var(--text3); }
+.intel-card h4 { font-size: 14px; font-weight: 600; margin: 4px 0; }
+.intel-card p { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+/* Table */
+.table-wrap { overflow-x: auto; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--rad); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { text-align: left; padding: 10px 14px; color: var(--text3); font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); }
+td { padding: 9px 14px; border-bottom: 1px solid rgba(51,65,85,0.3); }
+tr:hover td { background: rgba(255,255,255,0.02); }
+.tag { display: inline-block; background: rgba(59,130,246,0.12); color: #60a5fa; padding: 2px 8px; border-radius: 100px; font-size: 10px; font-weight: 600; }
+.tag.green { background: rgba(34,197,94,0.12); color: var(--green); }
+.tag.red { background: rgba(239,68,68,0.12); color: var(--red); }
+.tag.amber { background: rgba(245,158,11,0.12); color: var(--accent); }
+.tag.purple { background: rgba(139,92,246,0.12); color: #a78bfa; }
+
+/* Empty state */
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  color: var(--text3);
+  background: var(--bg2);
+  border: 1px dashed var(--border);
+  border-radius: var(--rad);
+}
+.empty .icon { font-size: 2rem; margin-bottom: 8px; }
+.empty p { font-size: 13px; }
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 60px;
+  color: var(--text3);
+}
+.loading .spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--card);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Error */
+.error-state {
+  text-align: center;
+  padding: 40px;
+  color: var(--red);
+  background: var(--bg2);
+  border: 1px dashed var(--border);
+  border-radius: var(--rad);
+  margin: 20px 0;
+}
+.error-state p { font-size: 13px; color: var(--text3); margin-top: 6px; }
+
+footer { text-align: center; padding: 24px; color: var(--text3); font-size: 11px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🏠 <em>Property</em> Intelligence</h1>
+  <p>Nikka Khan — Deal analysis, area research, market intel, and lead pipeline</p>
+  <div class="badge" id="update-badge">Loading...</div>
+</div>
+
+<div class="wrap">
+
+  <!-- Stats Row -->
+  <div class="stats-row" id="stats-row">
+    <div class="stat-card accent"><div class="num" id="stat-deals">—</div><div class="label">Active Deals</div></div>
+    <div class="stat-card blue"><div class="num" id="stat-watchlist">—</div><div class="label">Areas Watched</div></div>
+    <div class="stat-card green"><div class="num" id="stat-buy">—</div><div class="label">Buy Signals</div></div>
+    <div class="stat-card purple"><div class="num" id="stat-intel">—</div><div class="label">Intel Items</div></div>
+    <div class="stat-card teal"><div class="num" id="stat-leads">—</div><div class="label">Active Leads</div></div>
+    <div class="stat-card" style="border-color:var(--accent)"><div class="num" id="stat-cashflow">—</div><div class="label" style="color:var(--accent)">Est. Monthly CF</div></div>
+  </div>
+
+  <!-- Active Deals -->
+  <div class="section-title">🔥 Active Deals <span class="count" id="deals-count"></span></div>
+  <div class="grid" id="deals-grid">
+    <div class="loading"><div class="spinner"></div><p>Loading deals...</p></div>
+  </div>
+
+  <!-- Area Watchlist -->
+  <div class="section-title">📍 Area Watchlist <span class="count" id="areas-count"></span></div>
+  <div class="grid" id="areas-grid">
+    <div class="loading"><div class="spinner"></div><p>Loading areas...</p></div>
+  </div>
+
+  <!-- Market Intelligence -->
+  <div class="section-title">📰 Market Intelligence <span class="count" id="intel-count"></span></div>
+  <div class="grid" id="intel-grid">
+    <div class="loading"><div class="spinner"></div><p>Loading intel...</p></div>
+  </div>
+
+  <!-- Lead Pipeline -->
+  <div class="section-title">📋 Lead Pipeline <span class="count" id="leads-count"></span></div>
+  <div class="table-wrap" id="leads-table-wrap">
+    <div class="loading"><div class="spinner"></div><p>Loading leads...</p></div>
+  </div>
+
+  <!-- Recent Reports -->
+  <div class="section-title">📄 Recent Reports <span class="count" id="reports-count"></span></div>
+  <div class="grid" id="reports-grid" style="grid-template-columns:1fr">
+    <div class="loading"><div class="spinner"></div><p>Loading reports...</p></div>
+  </div>
+
+</div>
+
+<footer>
+  Nikka Khan Property Intelligence • LAN: 192.168.2.4:8080/dashboards/property-dashboard.html • Data updates via property-data.json
+</footer>
+
+<script>
+async function loadData() {
+  try {
+    const r = await fetch('property-data.json?' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const d = await r.json();
+    render(d);
+  } catch(e) {
+    document.querySelectorAll('.loading').forEach(el => {
+      el.outerHTML = '<div class="empty"><div class="icon">📭</div><p>No data yet. Nikka Khan will populate this dashboard soon.</p><p style="font-size:11px;margin-top:6px;color:#475569">Push property-data.json to the thetanoli.com repo to activate</p></div>';
+    });
+    document.getElementById('update-badge').textContent = 'Awaiting first data push';
+    document.querySelectorAll('.stat-card .num').forEach(el => el.textContent = '—');
+  }
+}
+
+function render(d) {
+  // Update badge
+  const badge = document.getElementById('update-badge');
+  badge.textContent = d.updated_at ? 'Updated: ' + d.updated_at : 'Live';
+
+  // Stats
+  const deals = d.deals || [];
+  const areas = d.areas || [];
+  const intel = d.intel || [];
+  const leads = d.leads || [];
+
+  document.getElementById('stat-deals').textContent = deals.length;
+  document.getElementById('stat-watchlist').textContent = areas.length;
+  document.getElementById('stat-buy').textContent = deals.filter(x => x.verdict === 'buy').length;
+  document.getElementById('stat-intel').textContent = intel.length;
+  document.getElementById('stat-leads').textContent = leads.length;
+
+  const totalCF = deals.reduce((s, x) => s + (x.monthly_cashflow || 0), 0);
+  document.getElementById('stat-cashflow').textContent = '£' + totalCF.toLocaleString();
+
+  // Active Deals
+  document.getElementById('deals-count').textContent = '(' + deals.length + ')';
+  const dealsGrid = document.getElementById('deals-grid');
+  if (deals.length === 0) {
+    dealsGrid.innerHTML = '<div class="empty"><div class="icon">🔍</div><p>No active deals being analysed</p></div>';
+  } else {
+    dealsGrid.innerHTML = deals.map(x => {
+      const scoreClass = x.score >= 28 ? 'high' : x.score >= 20 ? 'med' : 'low';
+      const verdictClass = x.verdict === 'buy' ? 'buy' : x.verdict === 'investigate' ? 'dd' : 'pass';
+      const verdictLabel = x.verdict === 'buy' ? 'Strong Buy' : x.verdict === 'investigate' ? 'Investigate' : 'Pass';
+      return `<div class="deal-card">
+        <div class="header">
+          <span class="strategy">${x.strategy || 'BTL'}</span>
+          <span class="score ${scoreClass}">${x.score}/35</span>
+        </div>
+        <h3>${x.title || 'Unnamed Deal'}</h3>
+        <div class="location">📍 ${x.location || 'Location TBD'}</div>
+        <div class="meta">
+          <span class="meta-item">💰 <strong>£${(x.price||0).toLocaleString()}</strong></span>
+          <span class="meta-item">🏷️ Yield <strong>${x.yield || '—'}%</strong></span>
+          <span class="meta-item">📈 ROI <strong>${x.roi || '—'}%</strong></span>
+          <span class="meta-item">💵 CF <strong>£${(x.monthly_cashflow||0).toLocaleString()}/mo</strong></span>
+        </div>
+        <span class="verdict ${verdictClass}">${verdictLabel}</span>
+        <div class="notes">${x.notes || ''}</div>
+        <div class="timestamp">${x.added_at || ''}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // Area Watchlist
+  document.getElementById('areas-count').textContent = '(' + areas.length + ')';
+  const areasGrid = document.getElementById('areas-grid');
+  if (areas.length === 0) {
+    areasGrid.innerHTML = '<div class="empty"><div class="icon">🗺️</div><p>No areas being monitored yet</p></div>';
+  } else {
+    areasGrid.innerHTML = areas.map(x => `<div class="area-card">
+      <h3>${x.postcode || '—'}</h3>
+      <div class="region">${x.region || ''}${x.county ? ' · ' + x.county : ''}</div>
+      <div class="stats">
+        <div class="stat">Avg Price <strong>£${(x.avg_price||0).toLocaleString()}</strong></div>
+        <div class="stat">Yield <strong>${x.yield || '—'}%</strong></div>
+        <div class="stat">Avg Rent <strong>£${(x.avg_rent||0).toLocaleString()}</strong></div>
+        <div class="stat">Crime <strong>${x.crime || '—'}/1k</strong></div>
+        <div class="stat">Transport <strong>${x.transport || '—'}/10</strong></div>
+        <div class="stat">Demand <strong>${x.demand || '—'}</strong></div>
+      </div>
+    </div>`).join('');
+  }
+
+  // Market Intel
+  document.getElementById('intel-count').textContent = '(' + intel.length + ')';
+  const intelGrid = document.getElementById('intel-grid');
+  if (intel.length === 0) {
+    intelGrid.innerHTML = '<div class="empty"><div class="icon">📡</div><p>No market intelligence collected yet</p></div>';
+  } else {
+    intelGrid.innerHTML = intel.map(x => `<div class="intel-card">
+      <div class="date">${x.date || ''}</div>
+      <h4>${x.title || ''}</h4>
+      <p>${x.summary || ''}</p>
+    </div>`).join('');
+  }
+
+  // Lead Pipeline
+  document.getElementById('leads-count').textContent = '(' + leads.length + ')';
+  const leadsWrap = document.getElementById('leads-table-wrap');
+  if (leads.length === 0) {
+    leadsWrap.innerHTML = '<div class="empty"><div class="icon">🎯</div><p>No active leads</p></div>';
+  } else {
+    leadsWrap.innerHTML = `<table>
+      <thead><tr>
+        <th>Source</th><th>Address/Ref</th><th>Type</th><th>Guide Price</th><th>Status</th><th>Added</th>
+      </tr></thead>
+      <tbody>${leads.map(x => `<tr>
+        <td><span class="tag ${x.source === 'auction' ? 'amber' : x.source === 'probate' ? 'purple' : 'green'}">${x.source || '—'}</span></td>
+        <td>${x.address || x.ref || '—'}</td>
+        <td>${x.type || '—'}</td>
+        <td>£${(x.price||0).toLocaleString()}</td>
+        <td><span class="tag ${x.status === 'hot' ? 'red' : x.status === 'warm' ? 'amber' : 'green'}">${x.status || '—'}</span></td>
+        <td style="font-size:11px;color:var(--text3)">${x.added_at || '—'}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+  }
+
+  // Reports
+  document.getElementById('reports-count').textContent = '(' + (d.reports||[]).length + ')';
+  const reportsGrid = document.getElementById('reports-grid');
+  const reports = d.reports || [];
+  if (reports.length === 0) {
+    reportsGrid.innerHTML = '<div class="empty"><div class="icon">📄</div><p>No reports generated yet</p></div>';
+  } else {
+    reportsGrid.innerHTML = reports.map(x => `<div class="deal-card">
+      <div class="header">
+        <span class="strategy">${x.category || 'Report'}</span>
+        <span style="font-size:11px;color:var(--text3)">${x.date || ''}</span>
+      </div>
+      <h3>${x.title || 'Untitled'}</h3>
+      <div class="notes">${x.summary || ''}</div>
+      ${x.url ? `<div class="timestamp"><a href="${x.url}" style="color:var(--blue);text-decoration:none" target="_blank">Read full report →</a></div>` : ''}
+    </div>`).join('');
+  }
+}
+
+loadData();
+</script>
+
+</body>
+</html>
