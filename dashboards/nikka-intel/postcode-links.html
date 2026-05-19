@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Midlands Property Intel — Postcode Dashboard</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d29922;
+    --purple: #bc8cff;
+    --pink: #f778ba;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  h1 { 
+    font-size: 2rem; 
+    margin-bottom: 0.5rem; 
+    display: flex; 
+    align-items: center; 
+    gap: 0.75rem;
+  }
+  h1 .badge {
+    font-size: 0.8rem;
+    background: var(--accent);
+    color: #000;
+    padding: 0.15rem 0.65rem;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .subtitle {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+  }
+  .city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .city-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .city-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .city-card h2 .emoji { font-size: 1.4rem; }
+  .city-card h2 .count {
+    margin-left: auto;
+    font-size: 0.75rem;
+    background: rgba(88,166,255,0.15);
+    color: var(--accent);
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .postcode-group {
+    margin-bottom: 1rem;
+  }
+  .postcode-group:last-child { margin-bottom: 0; }
+  .postcode-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--green);
+    margin-bottom: 0.4rem;
+  }
+  .postcode-header .code {
+    background: rgba(63,185,80,0.12);
+    padding: 0.1rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.85rem;
+  }
+  .link-tree {
+    list-style: none;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--border);
+    margin-left: 0.3rem;
+  }
+  .link-tree li {
+    position: relative;
+    padding: 0.2rem 0 0.2rem 0.75rem;
+    font-size: 0.88rem;
+  }
+  .link-tree li::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    width: 10px;
+    height: 2px;
+    background: var(--border);
+  }
+  .link-tree a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .link-tree a:hover {
+    color: #79c0ff;
+    text-decoration: underline;
+  }
+  .link-tree .meta {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    margin-left: 0.4rem;
+  }
+  .specials {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .specials h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .specials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.75rem;
+  }
+  .specials-grid a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(88,166,255,0.08);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.65rem 1rem;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.15s;
+  }
+  .specials-grid a:hover {
+    background: rgba(88,166,255,0.15);
+    border-color: var(--accent);
+  }
+  .specials-grid .tag {
+    font-size: 0.7rem;
+    background: var(--purple);
+    color: #000;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-left: auto;
+  }
+  .footer {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+  }
+  .last-updated {
+    display: inline-block;
+    background: rgba(139,148,158,0.1);
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+
+<h1>
+  🗺️ West Midlands Postcode Intel
+  <span class="badge">23 areas</span>
+</h1>
+<p class="subtitle">
+  Area intelligence reports • Postcode strategy analyses • Void heatmap — organised by city
+</p>
+
+<div class="city-grid">
+
+  <!-- ===================================================== -->
+  <!-- BIRMINGHAM (Sandwell / West W.Mids)                   -->
+  <!-- ===================================================== -->
+  <div class="city-card">
+    <h2><span class="emoji">🏙️</span> Birmingham / Sandwell <span class="count">6 areas</span></h2>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">B64</span> — Cradley Heath
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/B64-intel.html">Area Intelligence</a> <span class="meta">full report</span></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">B65</span> — Rowley Regis / Blackheath
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/B65-intel.html">Area Intelligence</a> <span class="meta">full report</span></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">B66</span> — Smethwick
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/B66-intel.html">Area Intelligence</a> <span class="meta">full report</span></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">B69</span> — Oldbury
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/B69-intel.html">Area Intelligence</a> <span class="meta">full report</span></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">B70</span> — West Bromwich
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/B70-intel.html">Area Intelligence</a> <span class="meta">full report</span></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">B71</span> — West Bromwich / Hamstead
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/B71-intel.html">Area Intelligence</a> <span class="meta">full report</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- DUDLEY                                                  -->
+  <!-- ===================================================== -->
+  <div class="city-card">
+    <h2><span class="emoji">🏘️</span> Dudley Borough <span class="count">9 areas</span></h2>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">DY1</span> — Dudley Town Centre
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/DY1-intel.html">Area Intelligence</a></li>
+        <li><a href="postcode_strategy/postcode_DY1_DY2_2026-05-13.html">Postcode Strategy</a> <span class="meta">DY1+DY2</span></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">DY2</span> — Dudley / Netherton
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/DY2-intel.html">Area Intelligence</a></li>
+        <li><a href="postcode_strategy/postcode_DY1_DY2_2026-05-13.html">Postcode Strategy</a> <span class="meta">DY1+DY2</span></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">DY3</span> — Sedgley / Gornal
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/DY3-intel.html">Area Intelligence</a></li>
+        <li><a href="postcode_strategy/postcode_DY3_2026-05-14.html">Postcode Strategy</a></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">DY4</span> — Tipton
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/DY4-intel.html">Area Intelligence</a></li>
+        <li><a href="postcode_strategy/postcode_DY4_2026-05-14.html">Postcode Strategy</a></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">DY5</span> — Brierley Hill / Quarry Bank
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/DY5-intel.html">Area Intelligence</a></li>
+        <li><a href="postcode_strategy/postcode_DY5_2026-05-15.html">Postcode Strategy</a></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">DY6</span> — Kingswinford / Wall Heath
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/DY6-intel.html">Area Intelligence</a></li>
+        <li><a href="postcode_strategy/postcode_DY6_2026-05-15.html">Postcode Strategy</a></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">DY7</span> — Stourbridge / Kinver
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/DY7-intel.html">Area Intelligence</a></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">DY8</span> — Stourbridge Town
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/DY8-intel.html">Area Intelligence</a></li>
+        <li><a href="postcode_strategy/postcode_DY8-DY9_2026-05-16.html">Postcode Strategy</a> <span class="meta">DY8+DY9</span></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">DY9</span> — Hagley / Lye
+      </div>
+      <ul class="link-tree">
+        <li><a href="area-intelligence/DY9-intel.html">Area Intelligence</a></li>
+        <li><a href="postcode_strategy/postcode_DY8-DY9_2026-05-16.html">Postcode Strategy</a> <span class="meta">DY8+DY9</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- WOLVERHAMPTON                                           -->
+  <!-- ===================================================== -->
+  <div class="city-card">
+    <h2><span class="emoji">🏛️</span> Wolverhampton <span class="count">3 areas</span></h2>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">WV1</span> — City Centre / Chapel Ash
+      </div>
+      <ul class="link-tree">
+        <li><a href="postcode_strategy/postcode_WV1_2026-05-17.html">Postcode Strategy</a> <span class="meta">full report</span></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">WV2</span> — Blakenhall / Ettingshall
+      </div>
+      <ul class="link-tree">
+        <li><a href="postcode_strategy/postcode_WV2_WV3_2026-05-18.html">Postcode Strategy</a> <span class="meta">WV2+WV3</span></li>
+      </ul>
+    </div>
+
+    <div class="postcode-group">
+      <div class="postcode-header">
+        <span class="code">WV3</span> — Tettenhall / Compton
+      </div>
+      <ul class="link-tree">
+        <li><a href="postcode_strategy/postcode_WV2_WV3_2026-05-18.html">Postcode Strategy</a> <span class="meta">WV2+WV3</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ======================================================== -->
+<!-- SPECIALS                                                 -->
+<!-- ======================================================== -->
+<div class="specials">
+  <h2>🗺️ Cross-Postcode & Special Reports</h2>
+  <div class="specials-grid">
+    <a href="wm-void-heatmap.html">
+      🔥 WM Void Heatmap <span class="tag">39 postcodes</span>
+    </a>
+    <a href="postcode_strategy_MAIN.html">
+      📊 Postcode Strategy Master Index
+    </a>
+    <a href="area-intelligence/">
+      📁 All Area Intel Reports
+    </a>
+  </div>
+</div>
+
+<div class="footer">
+  <span class="last-updated">🔄 Updated 2026-05-19</span>
+  &nbsp;·&nbsp; Nikka Khan 🔵 Property Intelligence &nbsp;·&nbsp; Hermes Agent Network
+</div>
+
+</body>
+</html>

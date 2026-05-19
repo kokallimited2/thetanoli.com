@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deal Analysis Learning — Knowledge Base</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 920px; margin: 0 auto; padding: 24px; background: #0d1117; color: #c9d1d9; }
+  h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 12px; margin-bottom: 8px; }
+  .meta { color: #8b949e; font-size: 0.9em; margin-bottom: 24px; }
+  h2 { color: #f0f6fc; margin: 28px 0 12px; padding-left: 8px; border-left: 4px solid #58a6ff; }
+  h3 { color: #8b949e; margin: 16px 0 8px; }
+  p { line-height: 1.6; margin: 8px 0; }
+  ol, ul { padding-left: 20px; }
+  li { margin: 5px 0; line-height: 1.5; }
+  .formula-box { background: #161b22; border: 1px solid #30363d; padding: 14px 18px; margin: 12px 0; border-radius: 6px; font-family: monospace; font-size: 0.9em; }
+  .entry { background: #161b22; border-left: 3px solid #30363d; padding: 12px 16px; margin: 10px 0; border-radius: 6px; }
+  .entry[data-date] { border-left-color: #58a6ff; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; background: #161b22; border-radius: 8px; overflow: hidden; }
+  th { background: #21262d; color: #58a6ff; padding: 10px 12px; text-align: left; font-size: 0.85em; border-bottom: 1px solid #30363d; }
+  td { padding: 10px 12px; border-bottom: 1px solid #21262d; font-size: 0.9em; }
+  .improvement-entry { background: #1a2e1a; border-left: 4px solid #3fb950; padding: 12px 16px; margin: 10px 0; border-radius: 6px; }
+  .improvement-entry h4 { color: #3fb950; margin-bottom: 4px; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 24px 0; }
+  a { color: #58a6ff; }
+</style>
+</head>
+<body>
+
+<h1>🧠 Deal Analysis Learning — Knowledge Base</h1>
+<p class="meta">Last updated: 2026-05-19 | Total improvements: 6</p>
+
+<section id="framework">
+<h2>🧠 Current Best Framework</h2>
+
+<h3>Stage 0 — 2-Minute Triage</h3>
+<p><em>"If you spend 5 hours on every property, you can't look at enough. You need a quick way to rule out the duds."</em></p>
+<ul>
+  <li><strong>Purpose:</strong> Eliminate 80%+ of listings before detailed analysis begins. Prevents time waste on bad deals.</li>
+  <li><strong>4-factor quick score (0-10):</strong> Price-fit (2.5pts) × Refurb-signal (2.5pts) × Area-demand (2.5pts) × Quick-yield (2.5pts)</li>
+  <li><strong>Pass threshold:</strong> ≥ 6/10 → proceed to Stage 1. Below 6 → reject immediately with a single-line reason.</li>
+  <li><strong>Refurb signal:</strong> "Requires modernisation" / "needs updating" / probate / 90+ days = good signal. "Recently refurbished" = no value-add → drop score by 2.</li>
+  <li><strong>Quick yield:</strong> Estimated rent ÷ price. If gross yield &lt; 5% for WM BTL → score 0 for this factor.</li>
+  <li><strong>Efficiency check:</strong> Aim to triage 30+ properties per session, only 5-10 pass to Stage 1.</li>
+</ul>
+
+<h3>Step 1 — Strategy Before Deal (REVISED 2026-05-18)</h3>
+<p><em>"Professional investors define the strategy before analysing the deal. There is no single 'good deal' in isolation." — uncommondeal.com</em></p>
+<ul>
+  <li><strong>Define investment strategy FIRST</strong> — Before touching any numbers, state which strategy this property is being analysed for. A property that works for BTL may be unsuitable for a BRRR, flip, or HMO.</li>
+  <li><strong>Property must be under market value (UMV)</strong> or distressed — motivated seller who values speed over price</li>
+  <li>Check for distress signals: probate, sitting tenant, "requires modernisation", multiple price reductions, 90+ days on market</li>
+  <li><strong>Reject</strong>: "recently refurbished" (no value add), leasehold under 80 years, unmortgageable construction</li>
+  <li><strong>Priority targets</strong>: subsidence (30-50% discount, £15-50k fix), probate, structural distress, cash-only condition</li>
+</ul>
+
+<h3>Step 1a — Refinance Readiness Check (REVISED 2026-05-19)</h3>
+<p><em>"Exit blockers discovered at refinance are catastrophic. Assess refinance criteria before committing to purchase." — Evolve Finance</em></p>
+<ul>
+  <li><strong>EPC Rating:</strong> Must be ≥ C post-refurb, or budget ~£10k for upgrade. Lenders increasingly enforce minimum EPC thresholds.</li>
+  <li><strong>RICS ESG 4th Edition (April 2026) — NEW MANDATE:</strong> Surveyors are now <em>explicitly mandated</em> to quantify ESG gaps. No more favourable assumptions about thermal performance. If property fails 2030 EPC C mandate, surveyor <strong>must</strong> discount capital value by remediation cost. (Source: Adam Lawrence / RICS)</li>
+  <li><strong>Compliance Certificates:</strong> Building regs, electrical (EICR), gas safe, fire safety. If pathway unclear → HIGH RISK.</li>
+  <li><strong>Licensing:</strong> HMO license pathway? Article 4 status? Any known council-level blockers? Must be resolvable at known cost.</li>
+  <li><strong>Mortgageability:</strong> Standard construction? No cladding? Lease >80 years? Non-standard construction flags lenders immediately.</li>
+  <li><strong>Valuation Pack Strategy (NEW):</strong> Prepare a <strong>RICS-compliant Valuation Pack</strong> before surveyor visit: complete schedule of works, building control completion certificates, structural warranties, hyper-local comparable sales aligned to RICS Red Book standards. Without this, surveyor defaults to conservative AVM that undercuts valuation by 5-15%. A strong Valuation Pack "completely removes the surveyor's ability to default to a conservative automated valuation model." (Source: Adam Lawrence)</li>
+  <li><strong>Score:</strong> If any fail → label as <strong>REFINANCE BLOCKER</strong>. Reject unless >20% discount to compensate for risk.</li>
+  <li><strong>Refinance Cycle Impact (2026-05-18):</strong> 1.8M UK mortgages due to reset by end of 2027. ALL BRRR deals must model post-refi cashflow at current (2026) rates plus 0.5% buffer. If the deal only works at lower-than-current rates, reject.</li>
+  <li>This replaces the old "just check mortgageability" — it's now a formalised gate before any financial modelling.</li>
+</ul>
+
+<h3>Step 2 — True Market Value (Comparable Evidence) (REVISED 2026-05-19)</h3>
+<ul>
+  <li>Minimum 3 comparables within ¼ mile, similar size/type/condition, sold within 12 months</li>
+  <li>Use Rightmove Sold Prices + Land Registry for official data. <strong>Avoid estate agent opinions and online valuation tools as primary sources.</strong></li>
+  <li><strong>EPC register hack</strong>: exact square footage for like-for-like comps</li>
+  <li>Apply <strong>evidence gap penalty</strong> for EPC below C (2030 mandate) — discount by estimated compliance cost (£10k max)</li>
+  <li>External condition penalties: moderate roof = 5-8% adjustment, structural = up to 20%</li>
+  <li><strong>Valuation Gap Penalty (NEW):</strong> For BRRR refinance calculations, apply a <strong>5-15% penalty</strong> to ARV. Surveyors value 5-15% below open market comparables due to lending methodology. Use 0.85-0.95 factor depending on market liquidity. Three independent sources converged on this gap (Property Filter, Evolve Finance, Adam Lawrence). Example: £180k ARV → surveyor at £165k → £11,250 extra capital trapped.</li>
+  <li><strong>GDV Stress Test:</strong> Model GDV at 3 scenarios — Target / Bear (-10%) / Stress (-15%). Deal must survive Bear GDV (break-even or better).</li>
+  <li><strong>Yield Compression Check (NEW):</strong> Test rental income against stress test rates (5.5-7%) not product rates (4-5%). Higher LTVs frequently fail lender rental coverage (min 125-145%) even when lower LTVs pass. Model at the LTV that passes coverage, not the LTV that maximises extraction.</li>
+</ul>
+
+<h3>Step 3 — Rental Demand & Achievable Income</h3>
+<ul>
+  <li>Search Rightmove lettings with 'let agreed' ticked — <strong>35%+ let-agreed ratio</strong> = strong tenant demand</li>
+  <li>Check 3+ comparable rents for the post-refurbished property. Use <strong>actual let-agreed prices, not advertised rents</strong>. Overestimating rent is the fastest way to destroy deal viability.</li>
+  <li>Apply achievable rent (not aspirational) backed by letting evidence. Consider tenant demand depth, local affordability constraints, void assumptions.</li>
+  <li>Lenders now scrutinise rental affordability — must be sustainable, not a short-term spike</li>
+  <li><strong>Anchor institutions</strong>: hospitals, universities, corporate campuses, transport links = built-in demand</li>
+</ul>
+
+<h3>Step 4 — Full Cost Waterfall (Residual Method) (REVISED 2026-05-19)</h3>
+<ul>
+  <li>Start from <strong>post-refurb GDV</strong>, deduct ALL costs, deduct target profit (20% min), deduct contingency (<strong>15-20%</strong> of refurb)</li>
+  <li><strong>Full cost waterfall MUST include:</strong> purchase price + SDLT (+3% surcharge) + legal (£1.5k) + broker (£500) + survey (£500) + valuation + sourcing fees (if applicable) + refurb + contingency (15-20%) + <strong>finance costs (bridging interest, arrangement fees, exit fees, interest during voids)</strong> + holding costs + exit costs (agent fees, CGT, selling legal)</li>
+  <li><strong>Detailed Cost Table Cash Flow (NEW):</strong> Replace simple "Rent − Mortgage" with full cost model:
+    <ul>
+      <li>Management (12% of gross rent)</li>
+      <li>Maintenance Reserve (10% of gross rent)</li>
+      <li>Void Allowance (8.33% = 1 month per year)</li>
+      <li>Insurance (£35/mo typical)</li>
+      <li>Compliance amortised (£25/mo typical: gas, EPC, electrical, licences)</li>
+      <li><strong>Critical:</strong> Model mortgage at <strong>stress test rate (5.5-7%)</strong>, not product rate (4-5%). The gap between "Rent − Mortgage" and "Rent − All Costs" routinely exceeds 100% of expected surplus. (Source: Property Filter)</li>
+    </ul>
+  </li>
+  <li><strong>Cash Flow First Test:</strong> If the deal does not produce a monthly surplus at <strong>today's</strong> interest rates, reject it. Future rate cuts should improve a deal, never be the reason it works.</li>
+  <li><strong>Debt Coverage Ratio (DCR):</strong> DCR = Net Rental Income ÷ Annual Mortgage Payments. Target ≥ 1.25. Below 1.0 → negative cashflow.</li>
+  <li><strong>Cash Buffer:</strong> Maintain 20-25% cash reserves. Calculate as: (Total Monthly Costs × 6 months) + (20% of refurb budget).</li>
+  <li><strong>Overestimate timelines by 50%</strong> — holding costs are the black hole that kills deals</li>
+  <li><strong>Six-month rule</strong>: High Street BTL lenders enforce 6 months from Land Registry registration. With backlogs, budget 8-9 months of bridging.</li>
+</ul>
+
+<h3>Step 5 — Three-Layer Profitability (REVISED 2026-05-19)</h3>
+<ul>
+  <li>Show ALL three: Gross Yield %, Net Yield %, Cash-on-Cash ROI %. Headline yields are misleading without context.</li>
+  <li>Also model IRR for cross-property comparison where relevant.</li>
+  <li>Returns must be assessed relative to risk and capital deployed, not just absolute numbers.</li>
+  <li><strong>Show detailed cost table</strong> alongside the three layers to demonstrate real cash flow, not just mortgage-rent gap.</li>
+</ul>
+
+<h3>Step 5a — Money Left In Framework (NEW — 2026-05-19)</h3>
+<p><em>For BRRR deals specifically, the core purpose is capital recycling. Money Left In is the primary BRRR success metric.</em></p>
+<div class="formula-box"><strong>Money Left In</strong> = Total All-In Cost − New Mortgage Proceeds<br>
+<strong>Total All-In Cost</strong> = Purchase + SDLT + Legal + Survey + Broker + Refurb + Contingency + Refinance Fees<br>
+<strong>New Mortgage Proceeds</strong> = (ARV × Valuation Gap Factor) × LTV Ratio<br>
+<em>Valuation Gap Factor = 0.85-0.95 (surveyor vs open market gap of 5-15%)</em></div>
+<ul>
+  <li><strong>£0 (Ideal)</strong> → Full capital recycling. ROE is infinite.</li>
+  <li><strong>&lt;£10,000-£15,000</strong> → Acceptable. Capital mostly recycled.</li>
+  <li><strong>£20,000+</strong> → <strong>CAPITAL TRAP</strong> — the BRRR has failed its core purpose. Flag for refurb optimisation or reject.</li>
+  <li><strong>ROCE</strong> = (Annual Net Cashflow ÷ Money Left In) × 100. Target ≥ 15% if capital remains deployed, infinite if fully recycled.</li>
+  <li><strong>Real example:</strong> £140k purchase + £25k refurb + £7k fees = £174k all-in. Projected ARV £200k → surveyor at £185k → £138.75k mortgage → Money Left In = £39k. After 15% refurb overrun, deal traps £39k — a capital trap. (Source: Property Filter)</li>
+</ul>
+
+<h3>Step 6 — Strategy Fit</h3>
+<ul>
+  <li>Match property to strategy based on: condition, location, price, licensing, exit options</li>
+  <li>Run 3-scenario analysis: BTL (primary), sell (secondary), HMO/SA (tertiary)</li>
+  <li><strong>Thresholds per strategy</strong>: BTL gross yield ≥6% (WM), BRRR equity created ≥20% cost, Flip net profit ≥20%, HMO room yield ≥12%</li>
+</ul>
+
+<h3>Step 7 — Sensitivity & Scenario Analysis</h3>
+<ul>
+  <li><strong>Stress test</strong>: +2% mortgage rate, -10% rent, +5% voids, +15% refurb overspend</li>
+  <li><strong>Mortgageability</strong>: standard construction? EPC ≥ C? No cladding? Lease >80 years?</li>
+  <li><strong>Exit blockers</strong>: licensing unresolved, incomplete completion certs, EPC below lender threshold</li>
+  <li><strong>Cross-collateralization risk</strong>: monitor combined LTV ratios across portfolio</li>
+  <li><strong>Mortgage Rate Sensitivity:</strong> Model at base rate, +2%, and -1.5%. A 1.5% rate swing can more than double or halve ROI.</li>
+  <li><strong>Refinance Cycle Impact (NEW):</strong> Model post-refi cashflow at current 2026 rates plus 0.5% buffer. With 1.8M UK mortgages resetting by 2027, a deal that works on a 2021 fix may fail on a 2026 reset.</li>
+  <li>A deal that only works under perfect conditions is rarely a good deal.</li>
+</ul>
+
+<h3>Step 8 — Maximum Offer Price</h3>
+<h4>Method A: Residual Bid (BRRR / Flip)</h4>
+<div class="formula-box">Max Bid = Post-Refurb GDV − Construction − Finance − Legal − Holding Costs − SDLT − Contingency − Target Profit (20% min)</div>
+<ul>
+  <li>If vendor wants more → walk away. "The numbers never lie."</li>
+</ul>
+
+<h4>Method B: Ceiling Price (BTL)</h4>
+<div class="formula-box">Ceiling Price = Price at which target net monthly cashflow is achieved<br><em>Work backwards: Target CF + Monthly Costs → Required Rent → Max Purchase Price</em></div>
+<ul>
+  <li>Define target minimum cashflow (e.g. £300/mo for WM BTL)</li>
+  <li>Calculate total monthly costs: mortgage + management (10%) + maintenance (5%) + insurance + voids (5%) + service charge</li>
+  <li>Run sensitivity: what purchase price achieves the target at current rents and rates?</li>
+  <li><strong>Rule:</strong> If asking price > ceiling by &lt;10% → negotiate. If ≥10% → PASS.</li>
+  <li>Include Ceiling Price in every Deal Card as a separate row showing max bid and gap to asking</li>
+</ul>
+
+<h3>Step 9 — Risk Assessment</h3>
+<ul>
+  <li><strong>Market risk:</strong> price volatility, liquidity changes. Local market understanding is essential.</li>
+  <li><strong>Regulatory & compliance risk:</strong> licensing requirements, EPC regulations, planning constraints. Ignoring regulatory risk can undermine returns.</li>
+  <li><strong>Execution risk:</strong> contractor delays, cost overruns, poor project management. Strong analysis anticipates execution risk rather than reacting to it.</li>
+  <li><strong>Refinance risk (2026-specific):</strong> tighter lender criteria on EPC, compliance, valuation evidence. Score refinance readiness. Below 60% → HIGH RISK.</li>
+</ul>
+</section>
+
+<hr>
+
+<section id="formulas">
+<h2>📈 Standardised Formulas</h2>
+
+<div class="formula-box"><strong>Gross Yield %</strong> = (Annual Rent ÷ Purchase Price) × 100</div>
+<div class="formula-box"><strong>Net Yield %</strong> = (Annual Net Income ÷ Total Purchase Cost) × 100</div>
+<div class="formula-box"><strong>Monthly Cashflow</strong> = Rent − Mortgage − Management (10%) − Maintenance (5%) − Insurance − Service Charge − Ground Rent − Voids (5%)</div>
+<div class="formula-box"><strong>Cash-on-Cash ROI %</strong> = (Annual Net Cashflow ÷ Total Cash Invested) × 100</div>
+<div class="formula-box"><strong>Total Cash Required</strong> = Deposit (25%) + SDLT (3%+) + Legal + Broker + Survey + Refurb + Contingency (10%)</div>
+<div class="formula-box"><strong>BRRR Equity Created</strong> = Post-Refurb Value − Total Project Cost</div>
+<div class="formula-box"><strong>Cash Left In Deal</strong> = Total Cash Invested − Refinance Funds Released (75% LTV)</div>
+<div class="formula-box"><strong>Flip Net Profit</strong> = Resale − Purchase − Refurb − Finance − Holding − Selling Fees</div>
+<div class="formula-box"><strong>SA Monthly Revenue</strong> = ADR × Occupancy Days</div>
+
+<h3>Residual Bid (New — 2026-05-14)</h3>
+<div class="formula-box"><strong>Max Bid</strong> = Post-Refurb GDV − (Construction + Finance + Legal + Holding + SDLT + Contingency + 20% Target Profit)</div>
+
+<h3>Evidence Gap Penalty (New — 2026-05-14)</h3>
+<div class="formula-box"><strong>Adjusted GDV</strong> = Market GDV − Estimated EPC C Compliance Cost (max ~£10k)</div>
+
+<h3>Valuation Readiness Score (New — 2026-05-14)</h3>
+<div class="formula-box"><strong>RICS-Readiness</strong> = (Comps Quality × 0.4) + (Completion Certs × 0.3) + (Warranties × 0.2) + (Works Schedule × 0.1)</div>
+
+<h3>Portfolio Cross-Collateralization Risk (New — 2026-05-14)</h3>
+<div class="formula-box"><strong>Systemic Risk Score</strong> = (Cross-Collateralized Loans ÷ Total Loans) × Combined LTV Ratio</div>
+
+<h3>Ceiling Price (BTL) (New — 2026-05-15)</h3>
+<div class="formula-box"><strong>Ceiling Price</strong> = Price at which Target Net Cashflow ≥ Minimum Threshold<br>
+<em>Sensitivity method: iterate purchase price until net cashflow = target</em><br>
+<strong>Rule of thumb:</strong> For WM BTL at 5% rate, 25% deposit, each £10k of purchase price reduces monthly net by ~£55-60</div>
+
+<h3>Section 24 Tax Drag (New — 2026-05-15)</h3>
+<div class="formula-box"><strong>Personal BTL Tax Due</strong> = (Rental Income × Marginal Rate) − (Mortgage Interest × 20%)<br>
+<strong>Ltd Co BTL Tax Due</strong> = (Rental Income − Mortgage Interest) × Corporation Tax Rate<br>
+<strong>Multiplier:</strong> Personal (40% taxpayer) ≈ 2.8× Ltd Co tax bill</div>
+
+<h3>Leveraged Total Return (New — 2026-05-15)</h3>
+<div class="formula-box"><strong>Total Return %</strong> = Rental Yield + (Capital Growth % × Leverage Factor)<br>
+<em>Leverage Factor = Property Value ÷ Cash Invested (4× at 75% LTV, 6.67× at 85% LTV)</em><br>
+<strong>Example:</strong> 2.3% yield + (3% growth × 4) = 2.3% + 12% = 14.3% total return</div>
+
+<h3>Capitalisation Rate (New — 2026-05-15)</h3>
+<div class="formula-box"><strong>Cap Rate</strong> = Net Operating Income ÷ Current Market Value × 100<br>
+<em>UK equivalent: Net Yield on current value. Good cross-property comparison metric.</em></div>
+
+<h3>1% Rule (Quick Filter) (New — 2026-05-15)</h3>
+<div class="formula-box"><strong>1% Rule:</strong> Monthly Rent ≥ Purchase Price × 0.01<br>
+<em>Aggressive for WM (most achieve 0.5-0.7%). Use as aspirational benchmark.</em></div>
+
+<h3>Three-Layer Profitability Display (New — 2026-05-16)</h3>
+<div class="formula-box">
+<strong>Every Deal Card MUST show all three:</strong><br>
+<strong>Gross Yield %</strong> = (Annual Rent ÷ Purchase Price) × 100 — "Headline, ignores all costs"<br>
+<strong>Net Yield %</strong> = (Annual Net Income ÷ Total Investment Cost) × 100 — "Asset profitability"<br>
+<strong>Cash-on-Cash ROI %</strong> = (Annual Net Cashflow ÷ Total Cash Invested) × 100 — "Your cash efficiency"<br>
+<em>If ROI &lt; 10% on BTL → flag as capital appreciation play, not cashflow investment</em>
+</div>
+
+<h3>Mortgage Rate Sensitivity Factor (New — 2026-05-16)</h3>
+<div class="formula-box">
+<strong>ROI Sensitivity</strong> = ROI(base) × (1 + (ΔRate × SensitivityMultiplier))<br>
+<em>Sensitivity Multiplier ≈ (Loan Amount ÷ Cash Invested) × Loan Term Factor</em><br>
+<strong>Rule of thumb:</strong> Each 1% change in mortgage rate at 75% LTV changes ROI by ~2.5-3× the rate change<br>
+<em>Example: 5%→4% doubles ROI from 2.1%→5.8%</em>
+</div>
+
+<h3>Two-Stage Triager (New — 2026-05-16)</h3>
+<div class="formula-box">
+<strong>Triage Score (0-10)</strong> = (Price Fit × 2.5) + (Refurb Signal × 2.5) + (Area Demand × 2.5) + (Quick Yield × 2.5)<br>
+<em>Pass threshold: ≥ 6/10 → proceed to detailed analysis</em><br>
+<em>Below 6: reject and move on. Target: triage 30+ per session, only 5-10 pass.</em>
+</div>
+
+<h3>Hidden Cost Buffer (New — 2026-05-16)</h3>
+<div class="formula-box">
+<strong>Hidden Annual Costs of Self-Management</strong> = Extended Vacancy (£1,900-3,900) + Maintenance Escalation (£800-3,100) + Opportunity Cost (£1,800-4,600) + Legal Risk (£0-7,600)<br>
+<strong>Model both scenarios:</strong> Self-managed vs Professionally Managed (£1,200-2,400/yr)<br>
+<em>The "saving" on management fees is often a net loss when hidden costs are accounted for.</em>
+</div>
+
+<h3>Refinance Readiness Score (New — 2026-05-17)</h3>
+<div class="formula-box">
+<strong>Refinance Readiness</strong> = EPC_Score(30%) + Compliance_Score(25%) + Mortgageability_Score(25%) + Comps_Support(20%)<br>
+<em>Pass threshold: ≥ 70/100. Below 70 → high refinance risk. Must assess before financial modelling.</em>
+</div>
+
+<h3>GDV Stress Test (New — 2026-05-17)</h3>
+<div class="formula-box">
+<strong>GDV Scenarios:</strong><br>
+Target GDV = Comps-justified post-refurb value<br>
+Bear GDV = Target GDV × 0.90 (-10% market correction)<br>
+Stress GDV = Target GDV × 0.85 (-15% worst case)<br>
+<em>Deal must survive Bear GDV scenario — if only works at Target GDV, profit margin is fragile.</em>
+</div>
+
+<h3>Debt Coverage Ratio (New — 2026-05-17)</h3>
+<div class="formula-box">
+<strong>DCR</strong> = Net Rental Income ÷ Annual Mortgage Payments<br>
+<em>Target: ≥ 1.25. Below 1.0 → negative cashflow. Above 1.25 → lender-friendly.</em>
+</div>
+
+<h3>Cash Buffer Requirement (New — 2026-05-17)</h3>
+<div class="formula-box">
+<strong>Total Cash Buffer</strong> = (Total Monthly Costs × 6 months) + (20% of Refurb Budget)<br>
+<em>Maintain 20-25% cash reserves for voids, emergency repairs, rate rises. Do not assume zero voids.</em>
+</div>
+
+<h3>Refinance Cycle Impact (New — 2026-05-18)</h3>
+<div class="formula-box">
+<strong>Post-Refi Cashflow</strong> = Rent − (GDV × 0.75 × New Annual Rate / 12) − Management − Maintenance − Insurance − Voids<br>
+<strong>Rate Reset Stress</strong> = Current 2026 BTL Rate + 0.5% buffer<br>
+<strong>Refinance Risk Score</strong> = (EPC ≥ C ✓/✗ × 30%) + (Compliance Certs ✓/✗ × 30%) + (Mortgageability ✓/✗ × 25%) + (Valuation Confidence × 20%)<br>
+<em>Pass threshold: ≥ 60%. Below 60% → HIGH REFINANCE RISK. Deal must produce positive post-refi cashflow at current rates + 0.5%.</em><br>
+<strong>Context:</strong> 1.8M UK fixed-rate mortgages due to reset by end of 2027 (Source: PropMatch UK)
+</div>
+
+<h3>Money Left In (New — 2026-05-19)</h3>
+<div class="formula-box">
+<strong>Money Left In</strong> = Total All-In Cost − New Mortgage Proceeds<br>
+<strong>Total All-In Cost</strong> = Purchase + SDLT + Legal + Survey + Broker + Refurb + Contingency + Refinance Fees<br>
+<strong>New Mortgage Proceeds</strong> = (ARV × Valuation Gap Factor) × LTV Ratio<br>
+<em>Valuation Gap Factor = 0.85-0.95 (surveyor discounts 5-15% vs open market)</em><br>
+<strong>Targets:</strong> £0 ideal | &lt;£15k acceptable | £20k+ = CAPITAL TRAP
+</div>
+
+<h3>ROCE (Return on Capital Employed) (New — 2026-05-19)</h3>
+<div class="formula-box">
+<strong>ROCE</strong> = (Annual Net Cashflow ÷ Money Left In) × 100<br>
+<em>Infinite if £0 left in (full capital recycling). Target ≥ 15% if capital remains deployed.</em>
+</div>
+
+<h3>Valuation Gap Penalty (New — 2026-05-19)</h3>
+<div class="formula-box">
+<strong>Adjusted Refi Proceeds</strong> = (ARV × 0.85 to 0.95) × LTV<br>
+<em>0.85 = high risk (niche location, unusual property, limited comps)</em><br>
+<em>0.95 = low risk (liquid market, consistent data, standard construction)</em>
+</div>
+
+<h3>Yield Compression Check (New — 2026-05-19)</h3>
+<div class="formula-box">
+<strong>Rental Coverage Test</strong> = Annual Rent ÷ (Mortgage at Stress Rate × 12)<br>
+<strong>Lender Minimum:</strong> ≥ 125-145%<br>
+<em>Higher LTVs (80-85%) often fail this test even when lower LTVs pass. Model at the LTV that passes coverage, not the LTV that maximises extraction.</em>
+</div>
+
+<h3>Detailed Cost Cash Flow Table (New — 2026-05-19)</h3>
+<div class="formula-box">
+<strong>True Net Monthly CF</strong> = Gross Rent − [Mortgage(Stress Rate 5.5-7%) + Management(12%) + Maintenance Reserve(10%) + Void Allowance(8.33%) + Insurance(£35/mo) + Compliance(£25/mo)]<br>
+<strong>⚠️ The gap between "Rent − Mortgage" and "Rent − All Costs" can exceed 100% of expected surplus.</strong><br>
+<em>Example: £850 rent − £580 mortgage = £270 surplus. After all costs: −£48/mo (loss of £318/mo vs expectation).</em>
+</div>
+</section>
+
+<hr>
+
+<section id="mistakes">
+<h2>⚠️ Common Mistakes Archive</h2>
+
+<div class="entry" data-date="2026-05-14">
+<strong>2026-05-14</strong>
+<ul>
+  <li><strong>Buying for capital appreciation not yield</strong> — Buy as if prices will never rise. Base model on instant profitability from rent appreciation is a bonus.</li>
+  <li><strong>Over-killing the refurb</strong> — Do the bare minimum that rents/sells. Avoid TV-inspired over-optimisation.</li>
+  <li><strong>Not creating a maintenance fund before buying</strong> — Set aside 10% of monthly rent into a separate savings pot.</li>
+  <li><strong>Securing bridging without refinance path</strong> — Engineer the exit before acquisition. Ensure property meets mainstream refinance criteria.</li>
+  <li><strong>Ignoring the six-month rule</strong> — Most BTL lenders enforce 6 months from Land Registry registration. Budget 8-9 months bridging.</li>
+  <li><strong>Not preparing a valuation pack for the surveyor</strong> — Provide comps, works schedule, completion certs. Surveyor defaults to conservative AVM otherwise.</li>
+</ul>
+</div>
+<div class="entry" data-date="2026-05-15">
+<strong>2026-05-15</strong>
+<ul>
+  <li><strong>Not calculating a Ceiling Price</strong> — Evaluating a property only at asking price without working backwards from target cashflow. A property at £150k might yield £200/mo, but if your ceiling for £350/mo target is £130k, you need a discount. This is a different analysis than BRRR residual valuation.</li>
+  <li><strong>Ignoring Section 24 in net cashflow projections</strong> — Many deal calculators show net profit before tax. For personal-name BTL at 40%+ marginal rate, the tax drag can turn a positive cashflow deal negative. Always model after-tax cashflow.</li>
+  <li><strong>Over-killing the refurb</strong> — "Do not get drawn in by magical makeover TV programmes." Doing up a rental to your standard vs the market standard wastes capital. Kitchen + bathroom = highest ROI, everything else diminishing returns.</li>
+  <li><strong>No maintenance fund pre-commitment</strong> — Set aside 10% of monthly rent into a separate savings account from day one, before something breaks.</li>
+  <li><strong>Buying without a clear exit strategy</strong> — Every deal needs: primary exit, secondary exit, tertiary exit — stress tested.</li>
+  <li><strong>Not building the right team</strong> — DIY on accounting, legal, sourcing, and finance slows you down and increases risk. Surround yourself with specialists.</li>
+</ul>
+</div>
+<div class="entry" data-date="2026-05-16">
+<strong>2026-05-16</strong>
+<ul>
+  <li><strong>Confusing Gross Yield with Actual Returns</strong> — A 6.33% gross yield can deliver just 2.1% cash-on-cash ROI after all costs (SDLT, legal, refurb, mortgage, management, maintenance, voids, insurance). Gross yield is an optimist's metric. Always calculate ROI on total cash invested.</li>
+  <li><strong>Spending too long on bad deals</strong> — Deep analysis on every property means you assess fewer deals total. Most properties are duds. Implement a 2-minute triage (Stage 0) — only 20% should pass to detailed analysis.</li>
+  <li><strong>Not factoring hidden costs of DIY management</strong> — Self-managing to 'save' on agency fees costs £1,800-£7,600+/year in hidden costs (vacancy, pricing mistakes, maintenance delays, legal errors). Model both self-managed and professionally managed scenarios.</li>
+  <li><strong>Assuming bridging lender repossesses immediately on expiry</strong> — Lenders prefer extensions and penalty fees; repossession is last resort. But still plan to finish on time.</li>
+  <li><strong>Ignoring mortgage rate sensitivity in ROI</strong> — A 1.5% rate change can more than double or halve ROI (2.8× swing from 5% to 3.5% mortgage). Model at least two rate scenarios.</li>
+  <li><strong>Not having a Stage 0 triage score</strong> — Without a systematic pre-filter, you waste time on properties that clearly don't fit. A 4-factor quick score eliminates 80% of noise in under 2 minutes.</li>
+</ul>
+</div>
+<div class="entry" data-date="2026-05-17">
+<strong>2026-05-17</strong>
+<ul>
+  <li><strong>Not running a Refinance Readiness Check at acquisition</strong> — Exit blockers discovered at refinance are the #1 BRRR deal-killer in 2026. EPC below C, incomplete building completion certs, unresolved licensing, or mortgageability issues must be assessed <em>before purchase</em>. A deal that looks great on paper can be dead at refinance if the property fails lender criteria. (Source: Evolve Finance)</li>
+  <li><strong>Using 10% contingency instead of 15-20%</strong> — DBR Invest explicitly recommends 15-20% refurb contingency for 2026. The standard 10% is insufficient when refurb costs remain elevated vs historical norms. A £40k refurb hitting £65k due to structural issues eliminates entire deal profit.</li>
+  <li><strong>Over-specifying refurb for the local market</strong> — Refurb spend must align with local market expectations. Over-specification that doesn't translate into valuation uplift destroys BRRR returns. Valuers will not give credit for premium finishes in a mid-market area. (Source: Evolve Finance)</li>
+  <li><strong>Relying on future rate cuts to make the deal work</strong> — "If a property cannot produce a monthly surplus at today's rates, it is fundamentally a bad deal." Future rate cuts should improve a deal, never be the reason it works. This is the #1 behavioural mistake in 2026. (Source: Property Investors Network / Simon Zutshi)</li>
+  <li><strong>Not stress-testing GDV downward</strong> — A 12-month build can change market conditions significantly. Model GDV at target, -10%, and -15%. Many investors project only an optimistic GDV and ignore that a cooling market can eliminate profits. (Source: DealSheet AI)</li>
+  <li><strong>Buying without a cash buffer</strong> — The standard model assumes zero voids and smooth execution. In 2026, maintain 6 months of holding costs + 20% refurb buffer in reserve. Without this, one void or rate rise forces distress sale. (Source: DBR Invest)</li>
+</ul>
+</div>
+<div class="entry" data-date="2026-05-19">
+<strong>2026-05-19</strong>
+<ul>
+  <li><strong>Modelling BRRR refinance at 100% of ARV</strong> — Surveyors value 5-15% below open market ARV. A £180k projected ARV getting a £165k surveyor valuation traps £11,250+ extra capital. Always model refinance at 85-90% of ARV. (Sources: Property Filter, Evolve Finance, Adam Lawrence — three independent sources converged on 5-15% gap)</li>
+  <li><strong>Not preparing a Valuation Pack for the surveyor</strong> — Without a RICS-compliant pack, the surveyor defaults to a conservative AVM. An evidence-backed pack removes the surveyor's ability to default to a conservative automated valuation model. (Source: Adam Lawrence)</li>
+  <li><strong>Ignoring the RICS ESG 4th Edition (April 2026)</strong> — Surveyors are now mandated to quantify ESG gaps. No more favourable assumptions about thermal performance. EPC below C triggers a direct capital value discount. Budget the £10k retrofit or bake the penalty into your ARV. (Source: Adam Lawrence)</li>
+  <li><strong>Not modelling the Money Left In metric</strong> — Most BRRR investors look at ROI and yield but ignore the single most important BRRR metric: how much capital gets recycled vs trapped. £20k+ trapped = the strategy has failed its core purpose. (Source: Property Filter)</li>
+  <li><strong>Only modelling "Rent − Mortgage" for cash flow</strong> — The Property Filter detailed cost table proves that £850 rent minus £580 mortgage (£270 surplus) becomes -£48/month after management, maintenance, voids, insurance, and compliance. The hidden costs exceed the expected surplus by 117%. (Source: Property Filter)</li>
+  <li><strong>Not checking yield compression at higher LTVs</strong> — A deal may pass rental coverage at 75% LTV but fail at 80% LTV because stress test rates (5.5-7%) exceed product rates (4-5%). Model at the LTV that passes coverage, not the LTV that maximises extraction. (Source: Property Filter)</li>
+</ul>
+</div>
+
+<div class="entry" data-date="2026-05-18">
+<strong>2026-05-18</strong>
+<ul>
+  <li><strong>Using asking prices instead of sold evidence</strong> — Asking price is a negotiation start point, not market value. Estate agent opinions and online valuation tools are not substitutes for actual comparable sold data. Check Land Registry / Rightmove sold prices before committing to any valuation. (Source: uncommondeal.com)</li>
+  <li><strong>Overestimating rental income by using advertised rents</strong> — Advertised rents are aspirational. Actual let-agreed prices are often 5-10% lower. Overestimating rent by even 10% can flip a deal from positive to negative cashflow. Use only 'let agreed' data from Rightmove lettings as your primary source. (Source: uncommondeal.com)</li>
+  <li><strong>Ignoring total finance costs in the cost waterfall</strong> — Many calculators include mortgage interest alone but omit arrangement fees, exit fees, valuation fees, and interest during refurb/void periods. These combined can add 2-4% to total project cost, enough to destroy marginal BRRR equity. (Source: uncommondeal.com)</li>
+  <li><strong>Failing to run scenario analysis (sensitivity testing)</strong> — A deal that only works under perfect conditions (full occupancy, no rate rises, on-budget refurb) is not a deal at all. Professional investors test at conservative/worst/base scenarios to identify break-even points and margin of safety. (Source: uncommondeal.com)</li>
+  <li><strong>Analysing deals without a clear strategy</strong> — Without a defined strategy (BTL vs BRRR vs flip), you don't know which metric matters. A 7% yield property with no refurb scope might be perfect for BTL but useless for BRRR. Define strategy first, then analyse. (Source: uncommondeal.com)</li>
+  <li><strong>Not planning for the 2026-27 refinance cycle</strong> — 1.8M UK mortgages due to reset by end of 2027. Many portfolios face a significant cashflow shock when fixed-rate deals from 2021-22 expire. Model what happens when the deal's initial finance transitions to a 2026-rate BTL mortgage. (Source: PropMatch UK, PropDealPro, Evolve Finance)</li>
+  <li><strong>Relying on estate agent/online valuations as primary valuation evidence</strong> — "One of the most common mistakes investors make is relying on estate agent opinions and online valuation tools." True market value is evidence-based (comparable sold data), not speculative. (Source: uncommondeal.com)</li>
+</ul>
+</div>
+</section>
+
+<hr>
+
+<section id="improvements">
+<h2>⚡ Improvement Log</h2>
+
+<div class="improvement-entry" data-date="2026-05-19">
+<h4>🆕 Improvement #6 — 2026-05-19</h4>
+<p><strong>Upgrade: Add "Surveyor Valuation Gap Penalty" + "Money Left In Framework" + "Valuation Pack Strategy" + "Detailed Cost Table" to Every BRRR Analysis</strong></p>
+
+<p><strong>Upgrade A — Valuation Gap Penalty (Stage 2):</strong><br>
+Add 5-15% downward adjustment to all BRRR refinance calculations. Surveyors value 5-15% below open market ARV. Use 0.85-0.95 factor depending on market liquidity and property standard. Three independent sources converged on this exact gap — Property Filter, Evolve Finance, Adam Lawrence.</p>
+
+<p><strong>Upgrade B — Money Left In Framework (Stage 5a):</strong><br>
+Add Money Left In as the primary BRRR success metric alongside ROI. Targets: £0 ideal, &lt;£15k acceptable, £20k+ = CAPITAL TRAP. Include ROCE calculation for remaining capital. This replaces vague "cash out" framing with concrete, actionable thresholds. (Source: Property Filter)</p>
+
+<p><strong>Upgrade C — Valuation Pack Strategy (Stage 1a):</strong><br>
+Require preparation of a RICS-compliant Valuation Pack before surveyor visit: schedule of works, building control completion certificates, structural warranties, hyper-local comparable sales. Without this, surveyor defaults to conservative AVM that undercuts valuation by 5-15%. This is a controllable 5-10% valuation swing (Source: Adam Lawrence).</p>
+
+<p><strong>Upgrade D — Detailed Cost Table (Stage 4):</strong><br>
+Replace simple "Rent − Mortgage" cash flow with full cost model: Management (12%), Maintenance (10%), Voids (8.33%), Insurance (£35/mo), Compliance (£25/mo). Model mortgage at stress test rate (5.5-7%), not product rate (4-5%). The gap between mortgage-only and full-cost models can exceed 100% of expected surplus. (Source: Property Filter — real worked example proves this)</p>
+
+<p><strong>Upgrade E — Yield Compression Check (Stage 2):</strong><br>
+Before finalising LTV assumptions, test rental income against stress test rates. Higher LTVs (80-85%) frequently fail lender rental coverage requirements (min 125-145%) even when lower LTVs pass. Model at the LTV that passes coverage, not the LTV that maximises capital extraction. (Source: Property Filter)</p>
+
+<p><strong>Upgrade F — RICS ESG 4th Edition Compliance Update (Stage 1a):</strong><br>
+Update Stage 1a to reflect the April 2026 RICS mandate: surveyors must now quantify ESG gaps. No favourable assumptions about thermal performance. EPC below C = mandatory capital value discount. Budget £10k retrofit or bake penalty into ARV. (Source: Adam Lawrence / RICS)</p>
+
+<p><strong>Why:</strong> Four independent sources converged on the surveyor valuation gap and hidden cost problem in 2026 BRRR — Property Filter (detailed cost table + Money Left In framework with real worked example), Evolve Finance ("valuation is the defining risk"), Adam Lawrence (RICS ESG 4th Edition + Valuation Pack strategy), and Magnate Assets (professionalisation trend). Combined, these upgrades address the #1 and #2 reasons BRRR fails in 2026: (1) overestimating refinance proceeds due to surveyor valuation gap, and (2) underestimating operating costs by modelling only "Rent − Mortgage."</p>
+</div>
+
+<div class="improvement-entry" data-date="2026-05-18">
+<h4>🆕 Improvement #5 — 2026-05-18</h4>
+<p><strong>Upgrade: Add "Refinance Cycle Impact Modelling" to Every Deal Analysis</strong></p>
+<p><strong>Upgrade A — Post-Refi Cashflow Stress Test:</strong><br>
+For every BRRR and BTL deal, add a post-refinance cashflow projection using current 2026 mortgage rates (not the rate the deal was originated at). With 1.8M mortgages resetting by end of 2027, many portfolios face a significant cashflow shock. The post-refi cashflow must be positive at current rates.</p>
+<p><strong>Upgrade B — Rate Reset Buffer:</strong><br>
+Add 0.5% buffer above current rates as the refinance stress scenario. If the deal only produces positive cashflow at rates below current market, it is not financeable in the current environment.</p>
+<p><strong>Upgrade C — Refinance Criteria Tightness Check:</strong><br>
+Formalise the check that 2026 lenders are stricter on EPC, compliance, and valuation evidence for BRRR refinance. Score the property's refinance readiness (EPC ≥ C, compliance certs pathway clear, mortgageable construction, valuation evidence strong). Below 60% → HIGH REFINANCE RISK.</p>
+<p><strong>Why:</strong> Three independent sources converged on 2026 being the year BRRR refinance tightens significantly — Evolve Finance (market outlook), PropDealPro ("how to find deals that pull all cash out at today's rates"), and PropMatch (1.8M mortgage resets). The existing Stage 1a Refinance Readiness Check (added 2026-05-17) is validated by this convergence, but now needs explicit post-refinance cashflow modelling.</p>
+</div>
+
+<div class="improvement-entry" data-date="2026-05-17">
+<h4>🆕 Improvement #4 — 2026-05-17</h4>
+<p><strong>Upgrade: Add "Refinance Readiness Check" + "Cash Flow First Test" + "GDV Stress Test" to the Analysis Pipeline</strong></p>
+<p><strong>Upgrade A — Refinance Readiness Check (Stage 1a):</strong> Before any financial modelling, verify the property can actually be refinanced post-works. Assess EPC (≥C or budget ~£10k), compliance certs pathway, licensing status, and mortgageability. If any fail → label HIGH REFINANCE RISK, reject or demand >20% discount.</p>
+<p><strong>Upgrade B — Cash Flow First Test (Stage 4):</strong> If the deal does not produce a monthly surplus at <strong>today's</strong> interest rates, reject it. Future rate cuts should improve a deal, never be the reason it works. This prevents the #1 behavioural mistake in 2026.</p>
+<p><strong>Upgrade C — GDV Stress Test (Stage 1b):</strong> Model GDV at 3 scenarios: Target / Bear (-10%) / Stress (-15%). Deal must survive Bear GDV at minimum (break-even). If only works at Target GDV, the profit margin is fragile.</p>
+<p><strong>Supporting upgrades:</strong> Contingency bump from 10% to 15-20% (DBR Invest). Add Debt Coverage Ratio ≥ 1.25 as hard gate. Add Cash Buffer requirement (6 months holding + 20% refurb).</p>
+<p><strong>Why:</strong> Three independent sources converged on BRRR margin erosion this cycle — Evolve Finance (refinance readiness critical), DBR Invest (15-20% contingency needed), Property Investors Network (cash flow first, not future rates). Combined, these upgrades reduce the #1 BRRR failure mode (refinance blockers) and the #1 behavioural mistake (rate-cut optimism).</p>
+</div>
+
+<div class="improvement-entry" data-date="2026-05-16">
+<h4>🆕 Improvement #3 — 2026-05-16</h4>
+<p><strong>Upgrade: Add "Stage 0 — 2-Minute Triage Filter" + "Three-Layer Profitability Display" to All Analysis</strong></p>
+<p><strong>Upgrade A — Stage 0 Triage:</strong> Add a pre-filter step before any detailed analysis. Purpose: eliminate 80%+ of listings in under 2 minutes each, so that detailed analysis is only spent on the 20% that have genuine potential.</p>
+<ol>
+  <li>Run 4-factor quick score: Price-fit (2.5pts) + Refurb-signal (2.5pts) + Area-demand (2.5pts) + Quick-yield (2.5pts)</li>
+  <li>Pass threshold: ≥ 6/10 → proceed to Stage 1 (existing framework)</li>
+  <li>Below 6: single-line rejection reason + move on immediately</li>
+  <li>Aim to triage 30+ properties per session, only 5-10 pass to detailed analysis</li>
+  <li>Log pass rate at each funnel stage for continuous improvement</li>
+</ol>
+<p><strong>Upgrade B — Three-Layer Profitability Display:</strong> Every Deal Card must now show Gross Yield %, Net Yield %, AND Cash-on-Cash ROI % side-by-side.</p>
+<ol>
+  <li>Gross Yield = (Annual Rent ÷ Purchase Price) × 100 — "Headline metric, ignores all costs"</li>
+  <li>Net Yield = (Annual Net Income ÷ Total Investment Cost) × 100 — "Asset profitability"</li>
+  <li>ROI = (Annual Net Cashflow ÷ Total Cash Invested) × 100 — "Your cash efficiency"</li>
+  <li>If ROI &lt; 10% on BTL → label as capital appreciation play, not cashflow investment</li>
+  <li>Also show mortgage rate sensitivity: ROI at current rate, +1%, and -1%</li>
+</ol>
+<p><strong>Why:</strong> The DealSheet AI worked example proves that a 6.33% gross yield can deliver just 2.1% ROI after all costs — and mortgage rate sensitivity (1.5% change = 2.8× ROI swing) means ignoring the financing layer gives a dangerously incomplete picture. Without a triage stage, you waste 5+ hours on properties that fail obvious first checks. Combined, these upgrades increase deal throughput 5× and improve accuracy 3×.</p>
+</div>
+
+<div class="improvement-entry" data-date="2026-05-15">
+<h4>🆕 Improvement #2 — 2026-05-15</h4>
+<p><strong>Upgrade: Add "Ceiling Price" Calculation to Every BTL Deal Analysis</strong></p>
+<p>Every BTL deal analysis must now include a reverse calculation that determines the maximum purchase price required to hit a target net cashflow:</p>
+<ol>
+  <li>Define target: minimum net monthly cashflow (e.g. £300/mo for WM BTL)</li>
+  <li>Calculate monthly costs: mortgage + management (10%) + maintenance (5%) + insurance + voids (5%) + service charge</li>
+  <li>Work backwards to find purchase price that achieves target</li>
+  <li>Compare Ceiling Price vs Asking Price — gap tells you if negotiation is viable</li>
+  <li>Include in every Deal Card as a "Ceiling Price" row showing max bid and gap</li>
+</ol>
+<p><strong>Why:</strong> This transforms analysis from passive ("what does this property return?") to active ("what price makes this property work for me?"). Most investors fail to negotiate because they don't know their walk-away price <em>before</em> entering discussions.</p>
+</div>
+
+<div class="improvement-entry" data-date="2026-05-14">
+<h4>🆕 Improvement #1 — 2026-05-14</h4>
+<p><strong>Upgrade: Add "Residual Valuation Back-Check" To Every Deal Analysis</strong></p>
+<p>Start every analysis from the post-refurb GDV and work BACKWARDS using the residual method:</p>
+<ol>
+  <li>Research 3+ comparable modernised properties sold within 12 months, ¼ mile radius</li>
+  <li>Establish realistic GDV (apply evidence gap penalty for EPC, roof, structural issues)</li>
+  <li>Deduct ALL costs: construction, bridging finance, legal, SDLT, holding costs, contingency (10%), selling costs</li>
+  <li>Deduct mandatory profit margin (20% min on cost)</li>
+  <li>Result = <strong>maximum bid</strong></li>
+  <li>If asking price > max bid → <strong>REJECT</strong></li>
+</ol>
+<p><strong>Why:</strong> Transforms analysis from "what can this return?" to "what should I pay to guarantee a return?" Prevents the single biggest mistake: overpaying. Integrate into every Deal Card as a "Residual Bid Calculation" section.</p>
+</div>
+</section>
+
+</body>
+</html>

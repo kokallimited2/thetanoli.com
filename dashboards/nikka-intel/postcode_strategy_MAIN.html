@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK Property Postcode Intelligence Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 2rem; }
+  h1 { color: #58a6ff; font-size: 2rem; margin-bottom: 0.3rem; }
+  h2 { color: #79c0ff; font-size: 1.4rem; margin: 1.5rem 0 0.8rem 0; border-bottom: 1px solid #30363d; padding-bottom: 0.3rem; }
+  h3 { color: #d2a8ff; font-size: 1.1rem; margin: 1rem 0 0.5rem 0; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th, td { padding: 0.6rem 0.5rem; text-align: left; border-bottom: 1px solid #30363d; }
+  th { color: #58a6ff; font-weight: 600; background: #161b22; }
+  td { color: #c9d1d9; }
+  tr:hover td { background: #1c2128; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; font-weight: 600; }
+  .invest { background: #238636; color: #fff; }
+  .selective { background: #d29922; color: #000; }
+  .avoid { background: #da3633; color: #fff; }
+  .area-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin-bottom: 1rem; }
+  .score-high { color: #3fb950; font-weight: 700; }
+  .score-med { color: #d29922; font-weight: 700; }
+  .score-low { color: #f85149; font-weight: 700; }
+  .strategy-tag { display: inline-block; background: #1f6feb22; color: #58a6ff; border: 1px solid #1f6feb44; border-radius: 4px; padding: 0 6px; font-size: 0.8rem; }
+  .footer { margin-top: 2rem; color: #8b949e; font-size: 0.8rem; text-align: center; }
+</style>
+</head>
+<body>
+
+<h1>🏠 UK Property Postcode Intelligence Dashboard</h1>
+<p class="meta">Last updated: 2026-05-18 | Postcodes analysed: <strong>11</strong> (WV1, WV2, WV3, DY1, DY2, DY3, DY4, DY5, DY6, DY8, DY9)</p>
+
+<h2>📊 Top Performing Areas</h2>
+<table>
+<tr><th>Rank</th><th>Postcode</th><th>Area</th><th>Best Strategy</th><th>Score</th><th>Yield</th><th>Demand</th><th>Growth (5yr)</th><th>Verdict</th></tr>
+<tr>
+  <td>🥇</td>
+  <td><strong>DY2</strong></td>
+  <td>Netherton, Quarry Bank</td>
+  <td><span class="strategy-tag">BRRR</span></td>
+  <td><span class="score-high">8.0/10</span></td>
+  <td>5.1% (8-15% PropAI)</td>
+  <td>Medium</td>
+  <td>+28.6%</td>
+  <td><span class="badge invest">INVEST</span></td>
+</tr>
+<tr>
+  <td>🥈</td>
+  <td><strong>DY5</strong></td>
+  <td>Brierley Hill, Merry Hill</td>
+  <td><span class="strategy-tag">BTL</span></td>
+  <td><span class="score-high">7.5/10</span></td>
+  <td>5.3-8.2%</td>
+  <td>Medium</td>
+  <td>+18.4%</td>
+  <td><span class="badge selective">SELECTIVE</span></td>
+</tr>
+<tr>
+  <td>🥉</td>
+  <td><strong>DY1</strong></td>
+  <td>Dudley Town Centre</td>
+  <td><span class="strategy-tag">BRRR</span></td>
+  <td><span class="score-med">7.2/10</span></td>
+  <td>5.1% (6.6-7.9% PropAI)</td>
+  <td>Medium</td>
+  <td>+35.6%</td>
+  <td><span class="badge selective">SELECTIVE</span></td>
+</tr>
+<tr>
+  <td>4</td>
+  <td><strong>DY4</strong></td>
+  <td>Tipton, Great Bridge</td>
+  <td><span class="strategy-tag">BTL</span></td>
+  <td><span class="score-high">7.0/10</span></td>
+  <td>6.7%</td>
+  <td>Medium</td>
+  <td>+28.0%</td>
+  <td><span class="badge selective">SELECTIVE</span></td>
+</tr>
+<tr>
+  <td>5</td>
+  <td><strong>WV1</strong></td>
+  <td>Wolverhampton City Centre</td>
+  <td><span class="strategy-tag">BTL</span></td>
+  <td><span class="score-high">7.0/10</span></td>
+  <td>6.3-8.5%</td>
+  <td>Medium-High</td>
+  <td>-2% (1yr)</td>
+  <td><span class="badge selective">SELECTIVE</span></td>
+</tr>
+<tr>
+  <td>6</td>
+  <td><strong>DY3</strong></td>
+  <td>Sedgley, Gornal</td>
+  <td><span class="strategy-tag">BTL</span></td>
+  <td><span class="score-med">6.5/10</span></td>
+  <td>6.0%</td>
+  <td>Medium-Low</td>
+  <td>+21.8%</td>
+  <td><span class="badge selective">SELECTIVE</span></td>
+</tr>
+<tr>
+  <td>7</td>
+  <td><strong>WV2</strong></td>
+  <td>Blakenhall, Penn Fields</td>
+  <td><span class="strategy-tag">BTL</span></td>
+  <td><span class="score-med">6.0/10</span></td>
+  <td>5.5-6.5%</td>
+  <td>Medium</td>
+  <td>-0.6% to -7%</td>
+  <td><span class="badge selective">SELECTIVE</span></td>
+</tr>
+<tr>
+  <td>8</td>
+  <td><strong>DY6</strong></td>
+  <td>Kingswinford, Wall Heath</td>
+  <td><span class="strategy-tag">BTL</span></td>
+  <td><span class="score-med">5.5/10</span></td>
+  <td>4.4-5.4%</td>
+  <td>Low</td>
+  <td>+13.5%</td>
+  <td><span class="badge avoid">AVOID</span></td>
+</tr>
+<tr>
+  <td>9</td>
+  <td><strong>DY9</strong></td>
+  <td>Lye, Hagley (bimodal)</td>
+  <td><span class="strategy-tag">BTL</span></td>
+  <td><span class="score-med">5.5/10</span></td>
+  <td>6-8% (Lye), 3-4% (Hagley)</td>
+  <td>Low</td>
+  <td>+20.6%</td>
+  <td><span class="badge selective">SELECTIVE</span></td>
+</tr>
+<tr>
+  <td>10</td>
+  <td><strong>DY8</strong></td>
+  <td>Stourbridge</td>
+  <td><span class="strategy-tag">BTL</span></td>
+  <td><span class="score-med">5.5/10</span></td>
+  <td>5-6.5%</td>
+  <td>Low-Medium</td>
+  <td>+11.2%</td>
+  <td><span class="badge selective">SELECTIVE</span></td>
+</tr>
+<tr>
+  <td>11</td>
+  <td><strong>WV3</strong></td>
+  <td>Penn Fields, Finchfield</td>
+  <td><span class="strategy-tag">BTL</span></td>
+  <td><span class="score-med">5.5/10</span></td>
+  <td>5.5-6.5% (affordable tier)</td>
+  <td>Medium</td>
+  <td>+2.25% (1yr)</td>
+  <td><span class="badge selective">SELECTIVE (low)</span></td>
+</tr>
+</table>
+
+<h2>🗺️ Area Breakdown</h2>
+
+<div class="area-card" id="dy2">
+<h3>📍 DY2 — Netherton, Woodside, Quarry Bank (Dudley)</h3>
+<table>
+<tr><td><strong>Best Strategy</strong></td><td>BRRR — <span class="score-high">8.0/10</span></td></tr>
+<tr><td><strong>BTL Score</strong></td><td>6.8/10</td></tr>
+<tr><td><strong>Avg Asking Price</strong></td><td>£217,251 <span style="color:#8b949e;">(cheapest in Dudley)</span></td></tr>
+<tr><td><strong>Avg Sold Price</strong></td><td>£202,642</td></tr>
+<tr><td><strong>Price/Sq Ft</strong></td><td>£227 <span style="color:#8b949e;">(cheapest in Dudley)</span></td></tr>
+<tr><td><strong>Avg Rent</strong></td><td>£919/mo</td></tr>
+<tr><td><strong>Gross Yield</strong></td><td>5.1% <span style="color:#8b949e;">(PropAI est yields 8-15.9% on best buys)</span></td></tr>
+<tr><td><strong>5-Year Growth</strong></td><td>+28.6%</td></tr>
+<tr><td><strong>Demand</strong></td><td>Medium — 215 listings, 20 sales/mo, 38 price reductions</td></tr>
+<tr><td><strong>Property Target</strong></td><td>2-3 bed terraces £80-130k (BRRR), 2-bed houses £140-175k (BTL)</td></tr>
+<tr><td><strong>Regulation</strong></td><td>Borough-wide Article 4 — HMO needs planning permission</td></tr>
+<tr><td><strong>Key Risks</strong></td><td>Slow market (81-100 days), crime (Netherton ward 98/1000), tenant quality varies</td></tr>
+<tr><td><strong>Winner vs DY1</strong></td><td><span class="score-high">Better value, deeper BMV discounts, higher yield potential</span></td></tr>
+<tr><td><strong>Last Updated</strong></td><td>2026-05-13</td></tr>
+</table>
+</div>
+
+<div class="area-card" id="dy1">
+<h3>📍 DY1 — Dudley Town Centre</h3>
+<table>
+<tr><td><strong>Best Strategy</strong></td><td>BRRR — <span class="score-med">7.2/10</span></td></tr>
+<tr><td><strong>BTL Score</strong></td><td>6.2/10</td></tr>
+<tr><td><strong>Avg Asking Price</strong></td><td>£235,756</td></tr>
+<tr><td><strong>Avg Sold Price</strong></td><td>£204,500</td></tr>
+<tr><td><strong>Price/Sq Ft</strong></td><td>£235</td></tr>
+<tr><td><strong>Avg Rent</strong></td><td>£1,008/mo</td></tr>
+<tr><td><strong>Gross Yield</strong></td><td>5.1% <span style="color:#8b949e;">(PropAI est yields 6.6-7.9% on best buys)</span></td></tr>
+<tr><td><strong>5-Year Growth</strong></td><td>+35.6% <span style="color:#3fb950;">(2nd best in Dudley)</span></td></tr>
+<tr><td><strong>1-Year Momentum</strong></td><td>+7.9% <span style="color:#3fb950;">(strong YoY)</span></td></tr>
+<tr><td><strong>Demand</strong></td><td>Medium-Low — 161 listings, 18 sales/mo, 42 price reductions</td></tr>
+<tr><td><strong>Property Target</strong></td><td>2-bed flats £100-130k (BTL), 2-3 bed terraces £150-200k (BRRR)</td></tr>
+<tr><td><strong>Regulation</strong></td><td>Borough-wide Article 4 — HMO needs planning permission</td></tr>
+<tr><td><strong>Key Risks</strong></td><td>Very slow market (81-100 days), sales volume down 31% YoY, crime above average</td></tr>
+<tr><td><strong>Catalyst</strong></td><td>£1bn regeneration: Metro 2028, new university, Portersfield development</td></tr>
+<tr><td><strong>Last Updated</strong></td><td>2026-05-13</td></tr>
+</table>
+</div>
+
+<div class="area-card" id="dy4">
+<h3>📍 DY4 — Tipton, Great Bridge, Princes End, Ocker Hill (Sandwell)</h3>
+<table>
+<tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-high">7.0/10</span></td></tr>
+<tr><td><strong>BRRR Score</strong></td><td>5.5/10</td></tr>
+<tr><td><strong>Avg Asking Price</strong></td><td>£171,269 <span style="color:#8b949e;">(cheapest in DY)</span></td></tr>
+<tr><td><strong>Avg Rent (2-3 bed)</strong></td><td>£895-£1,100/mo</td></tr>
+<tr><td><strong>Gross Yield</strong></td><td><span class="score-high">~6.7% — strongest in DY</span></td></tr>
+<tr><td><strong>5-Year Growth</strong></td><td>+28.01%</td></tr>
+<tr><td><strong>Sales Volume (12mo)</strong></td><td>227 <span style="color:#f85149;">(down 57.71% YoY)</span></td></tr>
+<tr><td><strong>Days to Sell</strong></td><td>61-80 days <span style="color:#8b949e;">(faster than DY1/DY2/DY3)</span></td></tr>
+<tr><td><strong>Demand</strong></td><td>Low-Medium — 54 new instructions, 34 sales, 22 reductions in March</td></tr>
+<tr><td><strong>Property Target</strong></td><td>2-bed terraces £150-175k (BTL), 3-bed terraces £160-200k (BTL)</td></tr>
+<tr><td><strong>Regulation</strong></td><td><span style="color:#f85149;">Borough-wide Additional HMO Licensing — HMO blocked</span></td></tr>
+<tr><td><strong>Crime</strong></td><td><span style="color:#d29922;">88/1,000</span> (at WM average, weapons/vehicle crime hotspots)</td></tr>
+<tr><td><strong>Key Risks</strong></td><td>Sales volume crash -58%, high crime, HMO strategy blocked by licensing</td></tr>
+<tr><td><strong>vs DY2</strong></td><td><span style="color:#d29922;">Better BTL yield (6.7% vs 5.1%) but DY2 wins on BRRR potential (8.0 vs 5.5)</span></td></tr>
+<tr><td><strong>Last Updated</strong></td><td>2026-05-14</td></tr>
+</table>
+</div>
+
+<div class="area-card" id="dy3">
+<h3>📍 DY3 — Sedgley, Upper Gornal, Lower Gornal (Dudley)</h3>
+<table>
+<tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-med">6.5/10</span></td></tr>
+<tr><td><strong>BRRR Score</strong></td><td>4.5/10 <span style="color:#8b949e;">(zero BRRR targets today)</span></td></tr>
+<tr><td><strong>Avg Asking Price</strong></td><td>£218,750-£263,456 <span style="color:#8b949e;">(premium over DY1/2/4)</span></td></tr>
+<tr><td><strong>Avg £/sqm</strong></td><td>£2,700 (DY3 1), £2,650 (DY3 2)</td></tr>
+<tr><td><strong>Avg Rent (3-bed)</strong></td><td>£1,100/mo</td></tr>
+<tr><td><strong>Gross Yield</strong></td><td>~6.0%</td></tr>
+<tr><td><strong>5-Year Growth</strong></td><td>+21.83%</td></tr>
+<tr><td><strong>Sales Volume (12mo)</strong></td><td>338 <span style="color:#8b949e;">(down 5.92% YoY)</span></td></tr>
+<tr><td><strong>Days to Sell</strong></td><td><span style="color:#f85149;">81-100 days (very slow)</span></td></tr>
+<tr><td><strong>Demand</strong></td><td>Medium-Low — more instructions (67) than sales (47), 43 reductions</td></tr>
+<tr><td><strong>Property Target</strong></td><td>2-bed terraces £160-180k, 3-bed semis £190-230k (BTL long hold)</td></tr>
+<tr><td><strong>Regulation</strong></td><td>Partial Article 4 — mandatory HMO only (5+). No additional licensing.</td></tr>
+<tr><td><strong>Crime</strong></td><td><span style="color:#3fb950;">63/1,000</span> — 30% below WM avg. Top 5 safest medium town in WM</td></tr>
+<tr><td><strong>Key Risks</strong></td><td>Very slow market, low stock (18 houses from 389 listings), premium pricing reduces yield</td></tr>
+<tr><td><strong>vs DY2/DY4</strong></td><td><span style="color:#d29922;">Safe family area but worse yield than DY4, no BRRR potential like DY2</span></td></tr>
+<tr><td><strong>Last Updated</strong></td><td>2026-05-14</td></tr>
+</table>
+</div>
+
+<div class="area-card" id="dy5">
+<h3>📍 DY5 — Brierley Hill, Merry Hill, Quarry Bank, Pensnett (Dudley)</h3>
+<table>
+<tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-high">7.5/10</span></td></tr>
+<tr><td><strong>BRRR Score</strong></td><td>6.5/10</td></tr>
+<tr><td><strong>Avg Asking Price</strong></td><td>£204,495-£222,990 <span style="color:#8b949e;">(base town, affordable entry)</span></td></tr>
+<tr><td><strong>Avg Sold Price (12mo)</strong></td><td>£222,990 (+6% YoY, +13% vs 2023 peak)</td></tr>
+<tr><td><strong>Price/Sq Ft</strong></td><td>£243 <span style="color:#8b949e;">(5th cheapest in Dudley)</span></td></tr>
+<tr><td><strong>Avg Rent (2-bed)</strong></td><td>~£927/mo</td></tr>
+<tr><td><strong>Avg Rent (3-bed)</strong></td><td>~£960-£1,100/mo</td></tr>
+<tr><td><strong>Gross Yield</strong></td><td><span class="score-med">5.3-6.5% standard (8.2% on best buys)</span></td></tr>
+<tr><td><strong>5-Year Growth</strong></td><td>+18.43%</td></tr>
+<tr><td><strong>PropAI Total Listings</strong></td><td>249 — including White City Rd at -21.83% BMV, 8.2% yield</td></tr>
+<tr><td><strong>Demand</strong></td><td>Medium — Merry Hill employment anchor (23M visitors/yr, £1.7bn turnover)</td></tr>
+<tr><td><strong>Property Target</strong></td><td>2-bed semis £150-190k (BTL), 2-3 bed terraces £100-150k (BRRR), commercial-to-resi (Class MA)</td></tr>
+<tr><td><strong>Regulation</strong></td><td>Borough-wide Article 4 — HMO needs planning permission</td></tr>
+<tr><td><strong>Catalyst</strong></td><td><span style="color:#3fb950;">⚠️ Metro 2028 (Wednesbury to Brierley Hill tram) — largest UK tramway extension</span></td></tr>
+<tr><td><strong>Key Risks</strong></td><td>Higher entry prices than DY2/DY4, Merry Hill retail dependency, limited sub-£150k stock</td></tr>
+<tr><td><strong>vs DY2/DY4</strong></td><td><span style="color:#d29922;">Best operational base but DY2 has better BRRR (8.0), DY4 has higher yield (6.7%)</span></td></tr>
+<tr><td><strong>Last Updated</strong></td><td>2026-05-15</td></tr>
+</table>
+</div>
+
+<div class="area-card" id="dy6">
+<h3>📍 DY6 — Kingswinford, Wall Heath, Wordsley (Dudley)</h3>
+<table>
+<tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-med">5.5/10</span></td></tr>
+<tr><td><strong>BRRR Score</strong></td><td><span class="score-low">3.0/10</span></td></tr>
+<tr><td><strong>Avg House Price</strong></td><td>£285,600-£290,559 <span style="color:#f85149;">(2nd most expensive in Dudley)</span></td></tr>
+<tr><td><strong>Price/Sq Ft</strong></td><td>£299 <span style="color:#f85149;">(2nd highest in Dudley)</span></td></tr>
+<tr><td><strong>Avg Rent (3-bed)</strong></td><td>£1,129-£1,611/mo</td></tr>
+<tr><td><strong>Gross Yield</strong></td><td><span class="score-low">4.4-5.4% — BELOW INVESTMENT THRESHOLD</span></td></tr>
+<tr><td><strong>5-Year Growth</strong></td><td><span class="score-med">+13.48%</span> — slowest in Dudley</td></tr>
+<tr><td><strong>Demand</strong></td><td><span class="score-low">Low for investment</span> — high for owner-occupation</td></tr>
+<tr><td><strong>Property Type Mix</strong></td><td>Family homes, detached/semi-detached, new builds (Keepmoat at Stallings Lane)</td></tr>
+<tr><td><strong>BMV Availability</strong></td><td><span style="color:#f85149;">Zero BMV — properties sell 8.9-11.4% ABOVE market</span></td></tr>
+<tr><td><strong>Regulation</strong></td><td>Borough-wide Article 4 — HMO blocked</td></tr>
+<tr><td><strong>Crime</strong></td><td><span style="color:#3fb950;">Lowest crime in Dudley borough — excellent for family tenants</span></td></tr>
+<tr><td><strong>Key Risks</strong></td><td>Yield below 5.5%, no BMV discount, no refurb stock, high deposit requirement</td></tr>
+<tr><td><strong>Verdict</strong></td><td><span class="badge avoid">AVOID</span> — good place to live, poor place to invest</td></tr>
+<tr><td><strong>Last Updated</strong></td><td>2026-05-15</td></tr>
+</table>
+</div>
+
+<div class="area-card" id="dy9">
+<h3>📍 DY9 — Lye & Hagley (Dudley) — Bimodal Market</h3>
+<table>
+<tr><td><strong>Best Strategy</strong></td><td>BTL (Lye sector only) — <span class="score-med">6.5/10</span></td></tr>
+<tr><td><strong>BTL Score (Lye)</strong></td><td>6.5/10</td></tr>
+<tr><td><strong>BTL Score (Hagley)</strong></td><td><span class="score-low">2.5/10 — strictly AVOID</span></td></tr>
+<tr><td><strong>BRRR Score</strong></td><td><span class="score-low">3.0/10</span> — zero candidates in newest 20 listings</td></tr>
+<tr><td><strong>Avg Asking Price</strong></td><td>£427k <span style="color:#8b949e;">(skewed by Hagley premium — Lye entry at £135k)</span></td></tr>
+<tr><td><strong>Avg Sold Price</strong></td><td>£268k</td></tr>
+<tr><td><strong>Lye Median £/sqm</strong></td><td>£2,500 <span style="color:#8b949e;">(DY9 8 — cheapest sector in DY9)</span></td></tr>
+<tr><td><strong>Hagley Median £/sqm</strong></td><td><span style="color:#f85149;">£3,720</span> <span style="color:#8b949e;">(DY9 0 — premium, no investment case)</span></td></tr>
+<tr><td><strong>Gross Yield (Lye)</strong></td><td><span class="score-high">6-8%</span> <span style="color:#8b949e;">(meets minimum threshold)</span></td></tr>
+<tr><td><strong>5-Year Growth</strong></td><td>+20.6% overall / +53.2% in Lye <span style="color:#d29922;">(thin sample — 99 sales/2yr)</span></td></tr>
+<tr><td><strong>1-Year Growth (Lye)</strong></td><td>+30.2% nominal, +26.2% real <span style="color:#d29922;">(statistically unreliable — micro-sample)</span></td></tr>
+<tr><td><strong>Sales Volume (12mo)</strong></td><td>257 <span style="color:#f85149;">(down 30% YoY)</span></td></tr>
+<tr><td><strong>Days to Sell</strong></td><td><span style="color:#f85149;">101 days — slowest in DY area</span></td></tr>
+<tr><td><strong>Heat Gauge</strong></td><td><span style="color:#f85149;">81-100 days (very slow market)</span></td></tr>
+<tr><td><strong>Crime</strong></td><td><span style="color:#3fb950;">66/1,000 — 3rd safest in WM</span></td></tr>
+<tr><td><strong>Schools</strong></td><td><span style="color:#3fb950;">88% Good/Outstanding — feeds Stourbridge system</span></td></tr>
+<tr><td><strong>Property Target</strong></td><td>2-3 bed terraces in Lye £135-175k (BTL), small semis near station £170-200k</td></tr>
+<tr><td><strong>Regulation</strong></td><td>Borough-wide Article 4 — HMO blocked</td></tr>
+<tr><td><strong>Key Risks</strong></td><td>Thin market (99 sales/2yr in Lye), slowest DY exit liquidity (101 days), 30% sales crash, Lye industrial decline</td></tr>
+<tr><td><strong>vs DY5/DY2</strong></td><td><span style="color:#d29922;">Lye meets yield threshold (6-8%) but deal flow is <i>much</i> thinner than DY2/DY5. Only for occasional opportunistic buys.</span></td></tr>
+<tr><td><strong>Last Updated</strong></td><td>2026-05-16</td></tr>
+</table>
+</div>
+
+<div class="area-card" id="dy8">
+<h3>📍 DY8 — Stourbridge Town, Wollaston, Wordsley, Oldswinford, Pedmore (Dudley)</h3>
+<table>
+<tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-med">5.5/10</span></td></tr>
+<tr><td><strong>BRRR Score</strong></td><td><span class="score-low">3.5/10</span> — 1 candidate in 20 listings</td></tr>
+<tr><td><strong>Flip Score</strong></td><td><span class="score-low">3.5/10</span></td></tr>
+<tr><td><strong>Avg Asking Price</strong></td><td>£286k</td></tr>
+<tr><td><strong>Avg Sold Price</strong></td><td>£238k <span style="color:#8b949e;">(difference = -2% avg discount)</span></td></tr>
+<tr><td><strong>Median £/sqm</strong></td><td>£2,730 <span style="color:#8b949e;">(DY8 1 sector — £2,350-£3,300 IQR)</span></td></tr>
+<tr><td><strong>Cheapest Streets</strong></td><td>Church Court £94k, Dove Drive £96k, Worcester Street £96k <span style="color:#8b949e;">(all flats)</span></td></tr>
+<tr><td><strong>Cheapest Houses</strong></td><td>~£160k (terraces in Wordsley, Wollaston)</td></tr>
+<tr><td><strong>Gross Yield</strong></td><td><span class="score-low">5-6.5% — BELOW 6.5% TARGET (most properties)</span></td></tr>
+<tr><td><strong>5-Year Growth</strong></td><td>+11.2% <span style="color:#8b949e;">(solid but lowest in DY after DY6)</span></td></tr>
+<tr><td><strong>1-Year Change</strong></td><td>+2.1% <span style="color:#8b949e;">(STILL positive — DY8 1 sector: -3.8% real)</span></td></tr>
+<tr><td><strong>Sales Volume (12mo)</strong></td><td>575 <span style="color:#d29922;">(down 37% YoY — worst correction in DY after DY4)</span></td></tr>
+<tr><td><strong>Days to Sell</strong></td><td>84 <span style="color:#d29922;">(slow — 81-100d heat gauge)</span></td></tr>
+<tr><td><strong>Crime</strong></td><td><span style="color:#3fb950;">66/1,000 — 3rd safest in WM. 13% below WM avg.</span></td></tr>
+<tr><td><strong>Schools</strong></td><td><span style="color:#3fb950;">88% Good/Outstanding. Progress 8: +0.13, Attainment 8: 49.4. Old Swinford Hospital (Good, selective).</span></td></tr>
+<tr><td><strong>Transport</strong></td><td><span style="color:#3fb950;">Stourbridge Junction: 25min Birmingham Snow Hill. Chiltern to Marylebone. Strong commuter appeal.</span></td></tr>
+<tr><td><strong>Property Target</strong></td><td>2-3 bed terraces £180-220k (Wordsley, Wollaston) for long-hold BTL — capital growth play, not cashflow</td></tr>
+<tr><td><strong>Regulation</strong></td><td>Borough-wide Article 4 — HMO blocked</td></tr>
+<tr><td><strong>Key Risks</strong></td><td>Yield below 6.5% threshold, sales volume crash -37%, slow market (81-100d heat gauge), premium pricing limits entry</td></tr>
+<tr><td><strong>Catalyst</strong></td><td>School catchment premium (Oldswinford/Pedmore detached £400k+). Town centre regeneration. Birmingham overspill for families.</td></tr>
+<tr><td><strong>Verdict</strong></td><td><span class="badge selective">SELECTIVE</span> — lifestyle/education market, not investment zone. Capital growth hold only, below yield threshold.</td></tr>
+<tr><td><strong>Last Updated</strong></td><td>2026-05-16</td></tr>
+</table>
+</div>
+
+<div class="area-card" id="wv1">
+<h3>📍 WV1 — Wolverhampton City Centre, Whitmore Reans, Dunstall Hill, East Park, Horseley Fields</h3>
+<table>
+<tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-high">7.0/10</span></td></tr>
+<tr><td><strong>BRRR Score</strong></td><td><span class="score-med">5.5/10</span></td></tr>
+<tr><td><strong>Avg Sold Price (12mo)</strong></td><td>£172,816 <span style="color:#d29922;">(-2% YoY, +8% vs 2023 peak)</span></td></tr>
+<tr><td><strong>Terraced Avg</strong></td><td>£156,250</td></tr>
+<tr><td><strong>Semi-Detached Avg</strong></td><td>£210,938</td></tr>
+<tr><td><strong>Flat Avg</strong></td><td>£109,988</td></tr>
+<tr><td><strong>Avg Rent (2-3 bed)</strong></td><td>£900-£1,200/mo</td></tr>
+<tr><td><strong>Gross Yield</strong></td><td><span class="score-high">6.3-8.5%</span> <span style="color:#8b949e;">(entry terraces up to 8.5%)</span></td></tr>
+<tr><td><strong>BTL Cashflow (entry terrace £130k)</strong></td><td>~£260/mo net | 8.6% CoC ROI</td></tr>
+<tr><td><strong>Price Trend (1yr)</strong></td><td><span style="color:#d29922;">-2% (mild correction, good entry timing)</span></td></tr>
+<tr><td><strong>Sales Volume (12mo)</strong></td><td>2,394 total records — high turnover</td></tr>
+<tr><td><strong>Total Current Listings</strong></td><td>119 <span style="color:#8b949e;">(25 returned by scan)</span></td></tr>
+<tr><td><strong>Demand</strong></td><td><span class="score-high">Medium-High</span> — University of Wolverhampton (~23k students), city centre employment, strong transport links</td></tr>
+<tr><td><strong>BRRR Candidates Found</strong></td><td>1 — Francis Street, Dunstall Hill £140k (3-bed terrace, "full modernisation required")</td></tr>
+<tr><td><strong>BTL Candidates Found</strong></td><td>4 — Bright Street £180k, Bursledon Walk £190k, plus 2 BRRR-eligible</td></tr>
+<tr><td><strong>Property Target</strong></td><td>2-3 bed terraces £120-150k (BTL entry), 3-bed semis £175-200k (family BTL)</td></tr>
+<tr><td><strong>Transport</strong></td><td><span class="score-high">Excellent</span> — Wolverhampton Station (25min Birmingham), M6 J10/11, Metro terminus</td></tr>
+<tr><td><strong>Regeneration</strong></td><td>£120M Interchange Project (completed), £35M Mander Centre, University expansion. HS2 connection to Curzon Street 2029+.</td></tr>
+<tr><td><strong>Regulation</strong></td><td><span style="color:#f85149;">Borough-wide Article 4 — Additional HMO licensing. HMO strategy blocked.</span></td></tr>
+<tr><td><strong>Crime</strong></td><td>Above WM average (city centre density). Neighbourhood variation: Dunstall Hill/East Park better than Whitmore Reans/Blakenhall.</td></tr>
+<tr><td><strong>Key Risks</strong></td><td>-2% price decline (income play, not growth), HMO blocked, tenant quality varies, city centre crime, no school premium catchment</td></tr>
+<tr><td><strong>vs DY2 (Netherton)</strong></td><td><span style="color:#d29922;">DY2 wins for BRRR (8.0 vs 5.5). WV1 matches or beats DY2 for BTL yield (7.5 vs 6.8) on entry terraces but has higher crime and lower capital growth.</span></td></tr>
+<tr><td><strong>vs DY4 (Tipton)</strong></td><td><span style="color:#d29922;">DY4 has higher pure BTL yield (6.7% vs 6.3-8.5% bracket). WV1 has stronger demand drivers (university + transport + employment).</span></td></tr>
+<tr><td><strong>Last Updated</strong></td><td>2026-05-17</td></tr>
+</table>
+</div>
+
+<div class="area-card" id="wv2">
+<h3>📍 WV2 — Blakenhall, Penn Fields, Ettingshall, All Saints, Parkfields (Wolverhampton South)</h3>
+<table>
+<tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-med">6.0/10</span></td></tr>
+<tr><td><strong>BRRR Score</strong></td><td><span class="score-low">3.5/10</span></td></tr>
+<tr><td><strong>Total Listings</strong></td><td>101</td></tr>
+<tr><td><strong>Houses 2+ Bed</strong></td><td>21</td></tr>
+<tr><td><strong>Cheapest House</strong></td><td>£185,000 (2-bed semi, Ettingshall)</td></tr>
+<tr><td><strong>Typical 3-bed Semi</strong></td><td>£200k-£250k</td></tr>
+<tr><td><strong>Avg Rent (2-3 bed)</strong></td><td>£895-£1,100/mo</td></tr>
+<tr><td><strong>Gross Yield (entry)</strong></td><td>5.5-6.5%</td></tr>
+<tr><td><strong>PropAI Yield Range</strong></td><td>5.5-10.9% (best buys)</td></tr>
+<tr><td><strong>Price/Sqm (WV2 2)</strong></td><td>£2,490 — stable (-0.6% 1yr)</td></tr>
+<tr><td><strong>Price/Sqm (WV2 3)</strong></td><td>£1,850 — declining (-7% 1yr)</td></tr>
+<tr><td><strong>1-Year Price Trend</strong></td><td><span style="color:#d29922;">-0.6% (WV2 2) to -7% (WV2 3) — Two-tier decline</span></td></tr>
+<tr><td><strong>BRRR Candidates Found</strong></td><td><span class="score-low">ZERO</span> — no freehold houses under £150k</td></tr>
+<tr><td><strong>BTL Entry Options</strong></td><td>1-2 at £185-200k (very limited stock)</td></tr>
+<tr><td><strong>Demand</strong></td><td>Medium — city employment, university proximity</td></tr>
+<tr><td><strong>Sales Volume Trend</strong></td><td>Moderate (98 sales in 2yr for WV2 2 sector)</td></tr>
+<tr><td><strong>Market Speed</strong></td><td><span style="color:#d29922;">81-100 days (slow)</span></td></tr>
+<tr><td><strong>Crime</strong></td><td><span style="color:#f85149;">87/1,000 city avg — Blakenhall much higher</span></td></tr>
+<tr><td><strong>Schools</strong></td><td>96% Good/Outstanding city-wide, no specific premium catchment</td></tr>
+<tr><td><strong>Transport</strong></td><td>Wolverhampton Station, bus routes, M6 J10/11</td></tr>
+<tr><td><strong>Regulation</strong></td><td><span style="color:#f85149;">Borough-wide Article 4 + Additional HMO licensing — HMO BLOCKED</span></td></tr>
+<tr><td><strong>Property Target</strong></td><td>2-bed semis £185-200k (BTL), 3-bed semis £200-240k (family BTL)</td></tr>
+<tr><td><strong>Key Risks</strong></td><td>Zero BRRR pipeline, two-tier decline in Blakenhall, elevated crime, slow market, HMO blocked</td></tr>
+<tr><td><strong>vs WV1</strong></td><td><span style="color:#d29922;">More expensive entry (£185k vs £120k), lower yield (6% vs 7-8.5%). WV1 is the better BTL play. WV2 is backup only.</span></td></tr>
+<tr><td><strong>vs DY2</strong></td><td><span style="color:#d29922;">DY2 destroys WV2 for BRRR (8.0 vs 3.5). WV2 slightly edges DY2 on BTL yield (6% vs 5.1%) but entry prices are higher.</span></td></tr>
+<tr><td><strong>Last Updated</strong></td><td>2026-05-18</td></tr>
+</table>
+</div>
+
+<div class="area-card" id="wv3">
+<h3>📍 WV3 — Penn Fields, Whitmore Reans, Finchfield, Bradmore, Castlecroft, Compton, Merridale (Wolverhampton West)</h3>
+<table>
+<tr><td><strong>Best Strategy</strong></td><td>BTL (affordable tier only) — <span class="score-med">5.5/10</span></td></tr>
+<tr><td><strong>BRRR Score</strong></td><td><span class="score-low">2.0/10 — DEAD. Zero BRRR targets.</span></td></tr>
+<tr><td><strong>Avg House Price</strong></td><td>£225,214</td></tr>
+<tr><td><strong>5-Year Change</strong></td><td>+12.37%</td></tr>
+<tr><td><strong>1-Year Change</strong></td><td>+2.25%</td></tr>
+<tr><td><strong>Sales Volume (12mo)</strong></td><td>236 <span style="color:#f85149;">(-37.71% YoY)</span></td></tr>
+<tr><td><strong>Days to Sell</strong></td><td><span style="color:#f85149;">104 (very slow)</span></td></tr>
+<tr><td><strong>Avg Discount (sold vs asking)</strong></td><td>-3%</td></tr>
+<tr><td><strong>Total Listings</strong></td><td>283</td></tr>
+<tr><td><strong>Houses 2+ Bed</strong></td><td>24 <span style="color:#8b949e;">(91% flats)</span></td></tr>
+<tr><td><strong>Cheapest Freehold House</strong></td><td>~£210,000 (3-bed terrace)</td></tr>
+<tr><td><strong>Avg Rent</strong></td><td>£909/mo</td></tr>
+<tr><td><strong>Gross Yield (affordable tier)</strong></td><td>5.5-6.5%</td></tr>
+<tr><td><strong>Gross Yield (premium tier)</strong></td><td><span class="score-low">2-4% — AVOID</span></td></tr>
+<tr><td><strong>Market Structure</strong></td><td><span style="color:#d29922;">Bimodal: premium lifestyle (Finchfield, Castlecroft, Bradmore £300k-£600k) + affordable entry (Penn Fields, Whitmore Reans £170k-£250k)</span></td></tr>
+<tr><td><strong>Demand</strong></td><td>Medium — family-owner-occupier dominated</td></tr>
+<tr><td><strong>Schools</strong></td><td><span style="color:#3fb950;">93% Good/Outstanding city-wide. Some outstanding primaries in Finchfield/Bradmore catchment.</span></td></tr>
+<tr><td><strong>Crime</strong></td><td>Moderate (lower than WV1/WV2 in premium areas, moderate in affordable tier)</td></tr>
+<tr><td><strong>Regulation</strong></td><td><span style="color:#f85149;">Borough-wide Article 4 + Additional HMO licensing — HMO BLOCKED</span></td></tr>
+<tr><td><strong>Property Target</strong></td><td>3-bed terraces in Penn Fields £210-225k (BTL entry)</td></tr>
+<tr><td><strong>Key Risks</strong></td><td>Premium entry pricing, sales volume crash -38%, very slow market (104d), zero BRRR pipeline, HMO blocked, only 24 houses from 283 listings</td></tr>
+<tr><td><strong>vs WV1</strong></td><td><span style="color:#d29922;">WV1 entry £120k with 7-8.5% yield vs WV3 £210k with 5.5-6%. WV3 loses decisively for investment. Only for lifestyle/school-premium family BTL.</span></td></tr>
+<tr><td><strong>Last Updated</strong></td><td>2026-05-18</td></tr>
+</table>
+</div>
+
+<h2>🔥 Strategy Heatmap</h2>
+<table>
+<tr><th>Postcode</th><th>BRRR</th><th>BTL</th><th>Flip</th><th>HMO</th><th>SA</th><th>Dominant</th></tr>
+<tr>
+  <td><strong>DY2</strong></td>
+  <td style="color:#3fb950;">8.0 🔥</td>
+  <td style="color:#d29922;">6.8</td>
+  <td style="color:#d29922;">6.0</td>
+  <td style="color:#8b949e;">3.8</td>
+  <td style="color:#8b949e;">2.5</td>
+  <td><span class="badge invest">BRRR</span></td>
+</tr>
+<tr>
+  <td><strong>DY5</strong></td>
+  <td style="color:#d29922;">6.5</td>
+  <td style="color:#3fb950;">7.5 🔥</td>
+  <td style="color:#8b949e;">4.5</td>
+  <td style="color:#f85149;">3.5</td>
+  <td style="color:#f85149;">2.5</td>
+  <td><span class="badge selective">BTL</span></td>
+</tr>
+<tr>
+  <td><strong>DY1</strong></td>
+  <td style="color:#d29922;">7.2</td>
+  <td style="color:#d29922;">6.2</td>
+  <td style="color:#8b949e;">5.8</td>
+  <td style="color:#8b949e;">3.5</td>
+  <td style="color:#8b949e;">3.0</td>
+  <td><span class="badge selective">BRRR</span></td>
+</tr>
+<tr>
+  <td><strong>WV1</strong></td>
+  <td style="color:#d29922;">5.5</td>
+  <td style="color:#3fb950;">7.5 🔥</td>
+  <td style="color:#8b949e;">4.0</td>
+  <td style="color:#f85149;">2.0</td>
+  <td style="color:#f85149;">3.5</td>
+  <td><span class="badge selective">BTL</span></td>
+</tr>
+<tr>
+  <td><strong>DY4</strong></td>
+  <td style="color:#d29922;">5.5</td>
+  <td style="color:#3fb950;">7.0 🔥</td>
+  <td style="color:#8b949e;">3.5</td>
+  <td style="color:#f85149;">2.0</td>
+  <td style="color:#8b949e;">3.0</td>
+  <td><span class="badge selective">BTL</span></td>
+</tr>
+<tr>
+  <td><strong>DY3</strong></td>
+  <td style="color:#8b949e;">4.5</td>
+  <td style="color:#d29922;">6.5</td>
+  <td style="color:#8b949e;">4.0</td>
+  <td style="color:#8b949e;">4.5</td>
+  <td style="color:#8b949e;">2.5</td>
+  <td><span class="badge selective">BTL</span></td>
+</tr>
+<tr>
+  <td><strong>WV2</strong></td>
+  <td style="color:#f85149;">3.5</td>
+  <td style="color:#d29922;">6.0</td>
+  <td style="color:#f85149;">3.0</td>
+  <td style="color:#f85149;">1.0</td>
+  <td style="color:#f85149;">2.5</td>
+  <td><span class="badge selective">BTL</span></td>
+</tr>
+<tr>
+  <td><strong>DY9</strong></td>
+  <td style="color:#f85149;">3.0</td>
+  <td style="color:#d29922;">6.5</td>
+  <td style="color:#f85149;">3.0</td>
+  <td style="color:#f85149;">1.0</td>
+  <td style="color:#f85149;">2.0</td>
+  <td><span class="badge selective">BTL (Lye)</span></td>
+</tr>
+<tr>
+  <td><strong>DY6</strong></td>
+  <td style="color:#f85149;">3.0</td>
+  <td style="color:#d29922;">5.5</td>
+  <td style="color:#f85149;">3.5</td>
+  <td style="color:#f85149;">2.0</td>
+  <td style="color:#f85149;">2.0</td>
+  <td><span class="badge avoid">BTL (weak)</span></td>
+</tr>
+<tr>
+  <td><strong>DY8</strong></td>
+  <td style="color:#f85149;">3.5</td>
+  <td style="color:#d29922;">5.5</td>
+  <td style="color:#f85149;">3.5</td>
+  <td style="color:#f85149;">1.0</td>
+  <td style="color:#f85149;">2.0</td>
+  <td><span class="badge selective">BTL</span></td>
+</tr>
+<tr>
+  <td><strong>WV3</strong></td>
+  <td style="color:#f85149;">2.0</td>
+  <td style="color:#d29922;">5.5</td>
+  <td style="color:#f85149;">2.0</td>
+  <td style="color:#f85149;">1.0</td>
+  <td style="color:#f85149;">2.5</td>
+  <td><span class="badge selective">BTL (low)</span></td>
+</tr>
+</table>
+<p style="margin-top:1rem;color:#8b949e;">📌 DY2 dominates BRRR (8.0). WV1 leads BTL for entry yield (7-8.5%) with lowest entry cost (£120k). DY5 leads established BTL with metro catalyst. DY4 has highest pure BTL yield (6.7%). WV2 and WV3 are backup BTL zones — higher entry, lower yield, limited stock. BRRR dead across ALL Wolverhampton postcodes (WV1/WV2/WV3). WV3 is a bimodal lifestyle market — premium tier not investable, affordable tier has very limited stock. HMO dead across ALL 11 postcodes.</p>
+
+<h2>🎯 Action Plan</h2>
+<ol>
+<li><strong>🥇 Top Overall Pick:</strong> DY2 (Netherton) — BRRR, 8.0/10. Deepest BMV discounts, 5yr growth +28.6%, entry under £140k for fixer-uppers.</li>
+<li><strong>🥈 Top BTL Pick:</strong> WV1 City Centre — best entry BTL yield (7-8.5%) in WM metro postcodes. Entry terraces at £120-150k. University/Hospital/Council demand creates consistent churn.</li>
+<li><strong>🥉 Top Established BTL:</strong> DY5 (Brierley Hill) — base town, 7.5/10, metro 2028 catalyst, Merry Hill employment. Focus on 2-bed semis £150-190k near proposed Metro stops.</li>
+<li><strong>🎯 Highest Yield:</strong> DY4 (Tipton) — 6.7% BTL yield, cheapest entry at £171k avg.</li>
+<li><strong>💡 WV1 over WV2/WV3:</strong> For Wolverhampton BTL, WV1 is clearly superior (£120k entry, 7-8.5% yield) vs WV2 (£185k, 5.5-6.5%) and WV3 (£210k, 5.5-6.5%). Do not look at WV2/WV3 until WV1 stock exhausted.</li>
+<li><strong>⛔ WV2:</strong> SELECTIVE — BTL backup only. Two-tier market: avoid declining WV2 3 (Blakenhall, -7% nominal). Prefer WV2 2 (Penn Fields, stable at -0.6%). No BRRR pipeline.</li>
+<li><strong>⛔ WV3:</strong> SELECTIVE (low conviction) — BTL only in affordable tier (Penn Fields, Merridale, Whitmore Reans) at best-buy prices under £200k. Premium tier (Finchfield, Castlecroft, Bradmore) strictly AVOID. Sales volume crashed -38%.</li>
+<li><strong>🚫 BRRR:</strong> Dead across ALL Wolverhampton postcodes (WV1/WV2/WV3). No freehold houses under £150k. DY2 remains the only BRRR zone in the pipeline.</li>
+<li><strong>🚫 HMO:</strong> Dead across ALL 11 postcodes mapped — borough-wide Article 4 in Dudley, Sandwell, and Wolverhampton. Do not pursue.</li>
+<li><strong>📊 Progress:</strong> 11 postcodes analysed. Next: <strong>WV4</strong> (Bilston, Bradley — likely lower entry than WV2), <strong>WV5</strong> (Wombourne — likely premium/rural).</li>
+</ol>
+
+<div class="footer">
+UK Property Postcode Strategy Intelligence — Kokal Properties Ltd — Generated 18 May 2026
+</div>
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WM Void Heatmap — 18 May 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f0f13;color:#e0e0e0;padding:40px 20px}
+h1{font-size:28px;margin-bottom:8px;color:#fff}
+.sub{color:#888;font-size:14px;margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;max-width:1200px;margin:0 auto}
+.card{border-radius:12px;padding:20px;position:relative;overflow:hidden}
+.card.low{background:linear-gradient(135deg,#0d2818,#1a4731);border:1px solid #2d6b4f}
+.card.moderate{background:linear-gradient(135deg,#2a1f0d,#473a1a);border:1px solid #6b5a2d}
+.card.elevated{background:linear-gradient(135deg,#2a140d,#47301a);border:1px solid #6b4a2d}
+.card.high{background:linear-gradient(135deg,#2a0d0d,#472a1a);border:1px solid #6b2d2d}
+.postcode{font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
+.area{font-size:12px;color:#888;margin-bottom:12px}
+.rating{font-size:14px;margin-bottom:10px}
+.stat{margin:3px 0;font-size:13px;color:#bbb}
+.stat span{color:#fff;font-weight:600}
+.overview{max-width:1200px;margin:0 auto 30px;background:#1a1a24;border-radius:12px;padding:24px;border:1px solid #2a2a35}
+.overview h2{color:#fff;font-size:18px;margin-bottom:12px}
+.ov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.ov-item{padding:12px;border-radius:8px;background:#23232e;text-align:center}
+.ov-item .num{font-size:24px;font-weight:700}
+.ov-item .lbl{font-size:11px;color:#888;margin-top:4px}
+.footer{text-align:center;margin-top:30px;color:#555;font-size:12px}
+</style></head>
+<body>
+<h1>🏘 West Midlands Void Heatmap</h1>
+<p class="sub">Rightmove rental listings analysis — 18 May 2026<br>🟢 LOW ≤14d avg &lt;10% over 30d &nbsp;|&nbsp; 🟡 MODERATE ≤30d &nbsp;|&nbsp; 🟠 ELEVATED ≤60d &nbsp;|&nbsp; 🔴 HIGH &gt;60d</p>
+<div class="overview"><h2>📊 Overview</h2><div class="ov-grid"><div class="ov-item"><div class="num">39</div><div class="lbl">Postcodes Scanned</div></div><div class="ov-item"><div class="num">22</div><div class="lbl">🟢 LOW Void</div></div><div class="ov-item"><div class="num">13</div><div class="lbl">🟡 MODERATE</div></div><div class="ov-item"><div class="num">4</div><div class="lbl">🟠 ELEVATED</div></div><div class="ov-item"><div class="num">0</div><div class="lbl">🔴 HIGH</div></div><div class="ov-item"><div class="num">14d</div><div class="lbl">WM Avg Days on Market</div></div><div class="ov-item"><div class="num">3d</div><div class="lbl">Best (B35 Castle Bromwich)</div></div><div class="ov-item"><div class="num">56d</div><div class="lbl">Worst (CV1 City Centre)</div></div></div></div><div class="grid">
+<div class="card low">
+  <div class="postcode">DY1</div>
+  <div class="area">Dudley Town Centre</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>7d</span></div>
+  <div class="stat">Max days on market: <span>13d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px">37 rentals</div>
+</div>
+<div class="card low">
+  <div class="postcode">DY2</div>
+  <div class="area">Dudley (Woodside/Nethcrst)</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>9d</span></div>
+  <div class="stat">Max days on market: <span>16d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card moderate">
+  <div class="postcode">DY3</div>
+  <div class="area">Sedgley/Gornal</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>17d</span></div>
+  <div class="stat">Max days on market: <span>48d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">DY4</div>
+  <div class="area">Tipton/Oldbury border</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>5d</span></div>
+  <div class="stat">Max days on market: <span>9d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px">43 rentals</div>
+</div>
+<div class="card low">
+  <div class="postcode">DY5</div>
+  <div class="area">Brierley Hill/Quarry Bnk</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>9d</span></div>
+  <div class="stat">Max days on market: <span>15d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">DY6</div>
+  <div class="area">Kingswinford/Wall Heath</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>14d</span></div>
+  <div class="stat">Max days on market: <span>27d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">DY8</div>
+  <div class="area">Stourbridge</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>8d</span></div>
+  <div class="stat">Max days on market: <span>19d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px">28 rentals</div>
+</div>
+<div class="card low">
+  <div class="postcode">WV1</div>
+  <div class="area">Wton City Centre</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>7d</span></div>
+  <div class="stat">Max days on market: <span>12d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card moderate">
+  <div class="postcode">WV2</div>
+  <div class="area">Wton (Blakenhall/Pkfld)</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>13d</span></div>
+  <div class="stat">Max days on market: <span>52d</span></div>
+  <div class="stat">Over 30 days: <span>10%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px">36 rentals</div>
+</div>
+<div class="card low">
+  <div class="postcode">WV3</div>
+  <div class="area">Wton (Merridale/Compton)</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>4d</span></div>
+  <div class="stat">Max days on market: <span>7d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card moderate">
+  <div class="postcode">WV4</div>
+  <div class="area">Wton (Penn/Lower Penn)</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>22d</span></div>
+  <div class="stat">Max days on market: <span>73d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">WV6</div>
+  <div class="area">Wton (Tettenhall/Fdgsh)</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>6d</span></div>
+  <div class="stat">Max days on market: <span>10d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">WV10</div>
+  <div class="area">Wton (Bushbury/Fordhse)</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>6d</span></div>
+  <div class="stat">Max days on market: <span>16d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card moderate">
+  <div class="postcode">WV12</div>
+  <div class="area">Willenhall North</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>21d</span></div>
+  <div class="stat">Max days on market: <span>48d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card moderate">
+  <div class="postcode">WV13</div>
+  <div class="area">Willenhall South</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>16d</span></div>
+  <div class="stat">Max days on market: <span>46d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">WV14</div>
+  <div class="area">Bilston/Coseley</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>6d</span></div>
+  <div class="stat">Max days on market: <span>10d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px">33 rentals</div>
+</div>
+<div class="card moderate">
+  <div class="postcode">B10</div>
+  <div class="area">Bordesley Green/Small Hth</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>16d</span></div>
+  <div class="stat">Max days on market: <span>35d</span></div>
+  <div class="stat">Over 30 days: <span>20%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px">5 rentals</div>
+</div>
+<div class="card moderate">
+  <div class="postcode">B11</div>
+  <div class="area">Tyseley/Hay Mills</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>15d</span></div>
+  <div class="stat">Max days on market: <span>38d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">B12</div>
+  <div class="area">Digbeth/Sparbrook</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>4d</span></div>
+  <div class="stat">Max days on market: <span>7d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">B13</div>
+  <div class="area">Moseley/Kings Heath</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>8d</span></div>
+  <div class="stat">Max days on market: <span>16d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">B26</div>
+  <div class="area">Sheldon/Yardley</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>8d</span></div>
+  <div class="stat">Max days on market: <span>21d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card elevated">
+  <div class="postcode">B28</div>
+  <div class="area">Hall Green/Yardley Wood</div>
+  <div class="rating">🟠 ELEVATED</div>
+  <div class="stat">Avg days on market: <span>34d</span></div>
+  <div class="stat">Max days on market: <span>231d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card moderate">
+  <div class="postcode">B33</div>
+  <div class="area">Stechford/Lea Hall</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>23d</span></div>
+  <div class="stat">Max days on market: <span>167d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card elevated">
+  <div class="postcode">B34</div>
+  <div class="area">Shard End/Bucklands End</div>
+  <div class="rating">🟠 ELEVATED</div>
+  <div class="stat">Avg days on market: <span>22d</span></div>
+  <div class="stat">Max days on market: <span>41d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">B35</div>
+  <div class="area">Castle Bromwich/Bromfrd</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>3d</span></div>
+  <div class="stat">Max days on market: <span>3d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card moderate">
+  <div class="postcode">B36</div>
+  <div class="area">Castle Vale/Hodge Hill</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>17d</span></div>
+  <div class="stat">Max days on market: <span>46d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card moderate">
+  <div class="postcode">B37</div>
+  <div class="area">Chelmsley Wood/Marston Grn</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>28d</span></div>
+  <div class="stat">Max days on market: <span>171d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">B38</div>
+  <div class="area">King's Norton/Stirchley</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>13d</span></div>
+  <div class="stat">Max days on market: <span>29d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card moderate">
+  <div class="postcode">WS1</div>
+  <div class="area">Walsall Town Centre</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>19d</span></div>
+  <div class="stat">Max days on market: <span>35d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">WS2</div>
+  <div class="area">Walsall (Birchills/Bescot)</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>12d</span></div>
+  <div class="stat">Max days on market: <span>27d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card moderate">
+  <div class="postcode">WS3</div>
+  <div class="area">Bloxwich/Mossley</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>13d</span></div>
+  <div class="stat">Max days on market: <span>33d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card elevated">
+  <div class="postcode">WS4</div>
+  <div class="area">Rushall/Streetly border</div>
+  <div class="rating">🟠 ELEVATED</div>
+  <div class="stat">Avg days on market: <span>37d</span></div>
+  <div class="stat">Max days on market: <span>131d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card moderate">
+  <div class="postcode">WS5</div>
+  <div class="area">Aldridge/Barr Common</div>
+  <div class="rating">🟡 MODERATE</div>
+  <div class="stat">Avg days on market: <span>17d</span></div>
+  <div class="stat">Max days on market: <span>87d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card elevated">
+  <div class="postcode">CV1</div>
+  <div class="area">Coventry City Centre</div>
+  <div class="rating">🟠 ELEVATED</div>
+  <div class="stat">Avg days on market: <span>56d</span></div>
+  <div class="stat">Max days on market: <span>56d</span></div>
+  <div class="stat">Over 30 days: <span>-%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px"></div>
+</div>
+<div class="card low">
+  <div class="postcode">CV2</div>
+  <div class="area">Coventry (Stoke/Coundon)</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>3d</span></div>
+  <div class="stat">Max days on market: <span>7d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px">252 rentals</div>
+</div>
+<div class="card low">
+  <div class="postcode">CV3</div>
+  <div class="area">Coventry (Cheylesmore/Fln)</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>7d</span></div>
+  <div class="stat">Max days on market: <span>28d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px">150 rentals</div>
+</div>
+<div class="card low">
+  <div class="postcode">CV4</div>
+  <div class="area">Coventry (Tile Hill/Canley)</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>4d</span></div>
+  <div class="stat">Max days on market: <span>6d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px">181 rentals</div>
+</div>
+<div class="card low">
+  <div class="postcode">CV5</div>
+  <div class="area">Coventry (Earlsdon/Coundon)</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>4d</span></div>
+  <div class="stat">Max days on market: <span>6d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px">158 rentals</div>
+</div>
+<div class="card low">
+  <div class="postcode">CV6</div>
+  <div class="area">Coventry (Holbrooks/Foleshll)</div>
+  <div class="rating">🟢 LOW</div>
+  <div class="stat">Avg days on market: <span>3d</span></div>
+  <div class="stat">Max days on market: <span>5d</span></div>
+  <div class="stat">Over 30 days: <span>0%</span></div>
+  <div class="stat" style="color:#555;font-size:11px;margin-top:6px">146 rentals</div>
+</div></div><div class="footer">Data from Rightmove rental listings via CloakBrowser • Methodology: "Added on" date parsed from __NEXT_DATA__ JSON, first 20 properties per postcode • Generated 18 May 2026</div></body></html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dudley & Wolverhampton — Property Investment Map</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; }
+h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 12px; margin-bottom: 8px; font-size: 28px; }
+.subtitle { color: #8b949e; font-size: 14px; margin-bottom: 24px; }
+h2 { color: #58a6ff; margin: 30px 0 15px; font-size: 22px; border-bottom: 1px solid #21262d; padding-bottom: 8px; }
+h3 { color: #f0f6fc; margin: 15px 0 8px; font-size: 16px; }
+.map-container { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin: 15px 0; }
+.map-title { color: #f0f6fc; font-size: 18px; font-weight: 600; margin-bottom: 12px; }
+.map-title span { color: #8b949e; font-size: 13px; font-weight: 400; }
+svg { width: 100%; height: auto; }
+.legend { display: flex; flex-wrap: wrap; gap: 15px; margin: 12px 0; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #8b949e; }
+.legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+.zone-A { fill: rgba(63, 185, 80, 0.25); stroke: #3fb950; }
+.zone-B { fill: rgba(210, 153, 34, 0.2); stroke: #d29922; }
+.zone-C { fill: rgba(248, 81, 73, 0.15); stroke: #f85149; }
+.premium { fill: rgba(88, 166, 255, 0.2); stroke: #58a6ff; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; margin: 10px 0; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin: 15px 0; }
+.stat { text-align: center; padding: 12px; background: #0d1117; border-radius: 8px; }
+.stat-num { font-size: 24px; font-weight: bold; color: #58a6ff; }
+.stat-label { font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.verdict-buy { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: #1b3d1b; color: #3fb950; }
+.verdict-watch { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: #3d2e00; color: #d29922; }
+.verdict-pass { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: #3d1111; color: #f85149; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #30363d; }
+th { background: #161b22; color: #58a6ff; font-weight: 600; }
+tr:hover { background: #1c2128; }
+.bar-container { display: flex; align-items: center; gap: 8px; margin: 2px 0; }
+.bar { height: 16px; border-radius: 3px; min-width: 4px; }
+.bar-green { background: #3fb950; }
+.bar-gold { background: #d29922; }
+.bar-blue { background: #58a6ff; }
+.bar-red { background: #f85149; }
+.footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #30363d; color: #8b949e; font-size: 12px; }
+.chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; }
+@media (max-width: 700px) { .chart-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<h1>🏘️ Dudley & Wolverhampton — Property Investment Map</h1>
+<p class="subtitle">BRRR targets • Rental demand • Avg prices & rents • Key areas • May 2026</p>
+
+<div class="stat" style="margin-bottom:20px;">
+  <div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap;">
+    <div><div class="stat-num">3,399</div><div class="stat-label">DY Listings Scanned</div></div>
+    <div><div class="stat-num">3,595</div><div class="stat-label">WV Listings Scanned</div></div>
+    <div><div class="stat-num">5</div><div class="stat-label" style="color:#3fb950;">BRRR Targets Found</div></div>
+    <div><div class="stat-num">9</div><div class="stat-label" style="color:#d29922;">STC Properties</div></div>
+    <div><div class="stat-num">£926</div><div class="stat-label">Avg Rent (Wolves)</div></div>
+    <div><div class="stat-num">+11.7%</div><div class="stat-label" style="color:#3fb950;">Rent Growth YoY</div></div>
+  </div>
+</div>
+
+<!-- ==================== DUDLEY MAP ==================== -->
+<h2>📍 Dudley Borough — DY Postcodes</h2>
+
+<div class="map-container">
+  <div class="map-title">Dudley Investment Heat Map <span>— by postcode area</span></div>
+  
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#3fb950"></div> A-Tier (Best BRRR)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#d29922"></div> B-Tier (Good)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f85149"></div> C-Tier (Limited)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#58a6ff"></div> Premium (Higher Entry)</div>
+  </div>
+
+  <svg viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="600" height="500" fill="#0d1117" rx="8"/>
+    
+    <!-- Dudley Borough outline (approximate SVG path) -->
+    <path d="M 320 40 L 380 45 L 420 60 L 450 75 L 470 100 L 480 130 L 475 160 L 460 185 L 440 200 L 420 210 L 390 215 L 360 220 L 340 230 L 310 240 L 280 235 L 250 225 L 220 210 L 200 195 L 185 175 L 175 150 L 180 125 L 195 100 L 220 80 L 250 60 L 280 45 Z" fill="none" stroke="#30363d" stroke-width="2" stroke-dasharray="6,3"/>
+    <text x="300" y="30" text-anchor="middle" fill="#30363d" font-size="11">Dudley Borough Boundary</text>
+
+    <!-- DY1 — Dudley Town Centre ⬤ B-Tier -->
+    <circle cx="310" cy="150" r="32" class="zone-B" stroke-width="2"/>
+    <text x="310" y="145" text-anchor="middle" fill="#d29922" font-size="13" font-weight="bold">DY1</text>
+    <text x="310" y="158" text-anchor="middle" fill="#8b949e" font-size="8">Dudley Centre</text>
+    
+    <!-- DY2 — Netherton ⬤ A-Tier -->
+    <circle cx="340" cy="200" r="30" class="zone-A" stroke-width="2"/>
+    <text x="340" y="195" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">DY2</text>
+    <text x="340" y="208" text-anchor="middle" fill="#8b949e" font-size="8">Netherton</text>
+
+    <!-- DY3 — Sedgley/Gornal ⬤ B-Tier -->
+    <circle cx="270" cy="120" r="28" class="zone-B" stroke-width="2"/>
+    <text x="270" y="115" text-anchor="middle" fill="#d29922" font-size="13" font-weight="bold">DY3</text>
+    <text x="270" y="128" text-anchor="middle" fill="#8b949e" font-size="8">Sedgley/Gornal</text>
+
+    <!-- DY4 — Tipton ⬤ A-Tier -->
+    <circle cx="390" cy="160" r="28" class="zone-A" stroke-width="2"/>
+    <text x="390" y="155" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">DY4</text>
+    <text x="390" y="168" text-anchor="middle" fill="#8b949e" font-size="8">Tipton</text>
+
+    <!-- DY5 — Brierley Hill ⬤ A-Tier ⭐ -->
+    <circle cx="310" cy="260" r="35" class="zone-A" stroke-width="2"/>
+    <text x="310" y="252" text-anchor="middle" fill="#3fb950" font-size="14" font-weight="bold">DY5 ⭐</text>
+    <text x="310" y="265" text-anchor="middle" fill="#8b949e" font-size="8">Brierley Hill</text>
+
+    <!-- DY6 — Kingswinford ⬤ B-Tier -->
+    <circle cx="230" cy="230" r="26" class="zone-B" stroke-width="2"/>
+    <text x="230" y="225" text-anchor="middle" fill="#d29922" font-size="13" font-weight="bold">DY6</text>
+    <text x="230" y="238" text-anchor="middle" fill="#8b949e" font-size="8">Kingswinford</text>
+
+    <!-- DY7 — Kinver ⬤ C-Tier -->
+    <circle cx="200" cy="300" r="22" class="zone-C" stroke-width="2"/>
+    <text x="200" y="295" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold">DY7</text>
+    <text x="200" y="308" text-anchor="middle" fill="#8b949e" font-size="8">Kinver</text>
+
+    <!-- DY8 — Stourbridge ⬤ Premium -->
+    <circle cx="280" cy="320" r="30" class="premium" stroke-width="2"/>
+    <text x="280" y="315" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="bold">DY8</text>
+    <text x="280" y="328" text-anchor="middle" fill="#8b949e" font-size="8">Stourbridge</text>
+
+    <!-- DY9 — Lye/Hagley ⬤ B-Tier -->
+    <circle cx="340" cy="330" r="25" class="zone-B" stroke-width="2"/>
+    <text x="340" y="325" text-anchor="middle" fill="#d29922" font-size="13" font-weight="bold">DY9</text>
+    <text x="340" y="338" text-anchor="middle" fill="#8b949e" font-size="8">Lye/Hagley</text>
+
+    <!-- Info boxes -->
+    <rect x="420" y="80" width="160" height="90" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+    <text x="500" y="98" text-anchor="middle" fill="#f0f6fc" font-size="11" font-weight="bold">DY Snapshot</text>
+    <text x="430" y="115" fill="#8b949e" font-size="9">Avg house price: £195k</text>
+    <text x="430" y="130" fill="#8b949e" font-size="9">Cheapest: DY2 £87k</text>
+    <text x="430" y="145" fill="#8b949e" font-size="9">Yields: 6-12%</text>
+    <text x="430" y="160" fill="#8b949e" font-size="9">BRRR targets: 1 (DY2)</text>
+
+    <!-- BRRR target markers -->
+    <circle cx="345" cy="205" r="6" fill="#f0883e" stroke="#fff" stroke-width="1.5"/>
+    <text x="358" y="208" fill="#f0883e" font-size="8">£150k 3-bed DY2</text>
+  </svg>
+</div>
+
+<!-- DUDLEY Data Table -->
+<div class="card">
+  <h3>DY Postcode Comparison</h3>
+  <table>
+    <tr><th>Area</th><th>Postcode</th><th>Avg Price</th><th>Avg Rent 2-bed</th><th>Yield Est.</th><th>Demand</th><th>Grade</th></tr>
+    <tr><td>Dudley Centre</td><td>DY1</td><td>£180k</td><td>£650-750</td><td>4.5-5.5%</td><td>Medium</td><td><span class="verdict-watch">B</span></td></tr>
+    <tr><td><strong>Netherton</strong></td><td><strong>DY2</strong></td><td><strong>£140k</strong></td><td><strong>£625-725</strong></td><td><strong>5.5-7%</strong></td><td><strong>🟢 High</strong></td><td><span class="verdict-buy">A</span></td></tr>
+    <tr><td>Sedgley/Gornal</td><td>DY3</td><td>£165k</td><td>£625-750</td><td>4.5-5.5%</td><td>Medium</td><td><span class="verdict-watch">B</span></td></tr>
+    <tr><td><strong>Tipton</strong></td><td><strong>DY4</strong></td><td><strong>£155k</strong></td><td><strong>£600-700</strong></td><td><strong>5-6%</strong></td><td><strong>🟢 High</strong></td><td><span class="verdict-buy">A</span></td></tr>
+    <tr><td><strong>Brierley Hill ⭐</strong></td><td><strong>DY5</strong></td><td><strong>£170k</strong></td><td><strong>£675-775</strong></td><td><strong>5-6.5%</strong></td><td><strong>🟢 High</strong></td><td><span class="verdict-buy">A</span></td></tr>
+    <tr><td>Kingswinford</td><td>DY6</td><td>£220k</td><td>£700-800</td><td>4-5%</td><td>Medium</td><td><span class="verdict-watch">B</span></td></tr>
+    <tr><td>Kinver</td><td>DY7</td><td>£300k+</td><td>£750-900</td><td>3-4%</td><td>Low</td><td><span class="verdict-pass">C</span></td></tr>
+    <tr><td>Stourbridge</td><td>DY8</td><td>£280k</td><td>£700-850</td><td>3.5-4.5%</td><td>Medium</td><td><span class="verdict-pass">P</span></td></tr>
+    <tr><td>Lye/Hagley</td><td>DY9</td><td>£210k</td><td>£625-725</td><td>4-5%</td><td>Medium</td><td><span class="verdict-watch">B</span></td></tr>
+  </table>
+</div>
+
+<!-- DUDLEY BRRR Targets -->
+<div class="card" style="border-color:#3fb950;">
+  <h3 style="color:#3fb950;">🎯 Dudley BRRR Target</h3>
+  <table>
+    <tr><th>Price</th><th>Address</th><th>Type</th><th>Beds</th><th>Added</th><th>Link</th></tr>
+    <tr>
+      <td><strong>£150,000</strong></td>
+      <td>Ivanhoe Street, Dudley DY2 0YB</td>
+      <td>Terrace</td>
+      <td>3</td>
+      <td>Reduced 11/05</td>
+      <td><a href="https://www.rightmove.co.uk/properties/166573325" target="_blank" style="color:#58a6ff;">View</a></td>
+    </tr>
+  </table>
+</div>
+
+<!-- Chart: Dudley Prices vs Rents -->
+<div class="chart-row">
+  <div class="card">
+    <h3>DY Avg Prices</h3>
+    <canvas id="dudleyPricesChart" height="200"></canvas>
+  </div>
+  <div class="card">
+    <h3>DY Avg Rents (2-bed)</h3>
+    <canvas id="dudleyRentsChart" height="200"></canvas>
+  </div>
+</div>
+
+<!-- ==================== WOLVERHAMPTON MAP ==================== -->
+<h2 style="margin-top:40px;">📍 Wolverhampton — WV Postcodes</h2>
+
+<div class="map-container">
+  <div class="map-title">Wolverhampton Investment Heat Map <span>— by postcode area</span></div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#3fb950"></div> A-Tier (Best BRRR)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#d29922"></div> B-Tier (Good)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f85149"></div> C-Tier (Limited)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#58a6ff"></div> Premium (High Entry)</div>
+    <div class="legend-item"><span style="color:#f0883e;">⭐</span> BRRR Target Location</div>
+  </div>
+
+  <svg viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg">
+    <rect width="600" height="520" fill="#0d1117" rx="8"/>
+
+    <!-- City boundary -->
+    <path d="M 180 30 L 250 25 L 320 30 L 370 40 L 410 60 L 440 85 L 455 110 L 460 140 L 450 170 L 430 195 L 400 215 L 370 230 L 340 240 L 310 245 L 280 250 L 250 240 L 220 225 L 195 205 L 175 180 L 165 150 L 160 120 L 165 90 L 175 60 Z" fill="none" stroke="#30363d" stroke-width="2" stroke-dasharray="6,3"/>
+    <text x="310" y="18" text-anchor="middle" fill="#30363d" font-size="11">Wolverhampton Boundary</text>
+
+    <!-- WV1 — City Centre ⬤ A-Tier -->
+    <circle cx="300" cy="130" r="30" class="zone-A" stroke-width="2"/>
+    <text x="300" y="125" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">WV1</text>
+    <text x="300" y="138" text-anchor="middle" fill="#8b949e" font-size="8">City Centre</text>
+    
+    <!-- WV2 — All Saints ⬤ B-Tier -->
+    <circle cx="340" cy="170" r="26" class="zone-B" stroke-width="2"/>
+    <text x="340" y="165" text-anchor="middle" fill="#d29922" font-size="12" font-weight="bold">WV2</text>
+    <text x="340" y="178" text-anchor="middle" fill="#8b949e" font-size="8">All Saints</text>
+
+    <!-- WV3 — Whitmore Reans/Penn ⬤ A-Tier ⭐ -->
+    <circle cx="260" cy="160" r="30" class="zone-A" stroke-width="2"/>
+    <text x="260" y="152" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">WV3 ⭐</text>
+    <text x="260" y="165" text-anchor="middle" fill="#8b949e" font-size="8">Whitmore Reans</text>
+    <!-- BRRR marker -->
+    <circle cx="232" cy="165" r="5" fill="#f0883e" stroke="#fff" stroke-width="1.5"/>
+    <text x="220" y="182" fill="#f0883e" font-size="8">£145k Lime St</text>
+
+    <!-- WV4 — Penn ⬤ B-Tier -->
+    <circle cx="280" cy="210" r="26" class="zone-B" stroke-width="2"/>
+    <text x="280" y="205" text-anchor="middle" fill="#d29922" font-size="12" font-weight="bold">WV4</text>
+    <text x="280" y="218" text-anchor="middle" fill="#8b949e" font-size="8">Penn</text>
+
+    <!-- WV5 — Wombourne ⬤ C-Tier -->
+    <circle cx="200" cy="260" r="24" class="zone-C" stroke-width="2"/>
+    <text x="200" y="255" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold">WV5</text>
+    <text x="200" y="268" text-anchor="middle" fill="#8b949e" font-size="8">Wombourne</text>
+
+    <!-- WV6 — Tettenhall ⬤ Premium -->
+    <circle cx="220" cy="110" r="28" class="premium" stroke-width="2"/>
+    <text x="220" y="105" text-anchor="middle" fill="#58a6ff" font-size="12" font-weight="bold">WV6</text>
+    <text x="220" y="118" text-anchor="middle" fill="#8b949e" font-size="8">Tettenhall</text>
+
+    <!-- WV10 — Bushbury ⬤ A-Tier -->
+    <circle cx="330" cy="80" r="28" class="zone-A" stroke-width="2"/>
+    <text x="330" y="75" text-anchor="middle" fill="#3fb950" font-size="12" font-weight="bold">WV10</text>
+    <text x="330" y="88" text-anchor="middle" fill="#8b949e" font-size="8">Bushbury</text>
+
+    <!-- WV11 — Wednesfield ⬤ A-Tier -->
+    <circle cx="380" cy="100" r="28" class="zone-A" stroke-width="2"/>
+    <text x="380" y="95" text-anchor="middle" fill="#3fb950" font-size="12" font-weight="bold">WV11</text>
+    <text x="380" y="108" text-anchor="middle" fill="#8b949e" font-size="8">Wednesfield</text>
+
+    <!-- WV12 — Willenhall East ⬤ B-Tier ⭐ -->
+    <circle cx="420" cy="150" r="28" class="zone-B" stroke-width="2"/>
+    <text x="420" y="145" text-anchor="middle" fill="#d29922" font-size="12" font-weight="bold">WV12</text>
+    <text x="420" y="158" text-anchor="middle" fill="#8b949e" font-size="8">Willenhall E</text>
+    <circle cx="448" cy="150" r="5" fill="#f0883e" stroke="#fff" stroke-width="1.5"/>
+    <text x="442" y="172" fill="#f0883e" font-size="8">£150k Sandland</text>
+
+    <!-- WV13 — Willenhall ⬤ B-Tier ⭐⭐ -->
+    <circle cx="440" cy="200" r="30" class="zone-B" stroke-width="2"/>
+    <text x="440" y="195" text-anchor="middle" fill="#d29922" font-size="12" font-weight="bold">WV13</text>
+    <text x="440" y="208" text-anchor="middle" fill="#8b949e" font-size="8">Willenhall</text>
+    <circle cx="470" cy="200" r="5" fill="#f0883e" stroke="#fff" stroke-width="1.5"/>
+    <circle cx="472" cy="212" r="5" fill="#f0883e" stroke="#fff" stroke-width="1.5"/>
+    <text x="455" y="225" fill="#f0883e" font-size="8">£145k Charles / £150k Gipsy</text>
+
+    <!-- WV14 — Bilston ⬤ A-Tier ⭐ -->
+    <circle cx="380" cy="200" r="30" class="zone-A" stroke-width="2"/>
+    <text x="380" y="193" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">WV14 ⭐</text>
+    <text x="380" y="206" text-anchor="middle" fill="#8b949e" font-size="8">Bilston</text>
+    <circle cx="410" cy="200" r="5" fill="#f0883e" stroke="#fff" stroke-width="1.5"/>
+    <text x="395" y="222" fill="#f0883e" font-size="8">£150k Albany Cres</text>
+
+    <!-- Info box -->
+    <rect x="20" y="300" width="200" height="115" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+    <text x="120" y="318" text-anchor="middle" fill="#f0f6fc" font-size="11" font-weight="bold">WV Snapshot</text>
+    <text x="30" y="335" fill="#8b949e" font-size="9">Avg house price: £223k</text>
+    <text x="30" y="350" fill="#8b949e" font-size="9">Avg rent: £926/mo (+11.7%)</text>
+    <text x="30" y="365" fill="#8b949e" font-size="9">Best yields: WV1/WV11 5.4%</text>
+    <text x="30" y="380" fill="#8b949e" font-size="9">BRRR targets found: 5</text>
+    <text x="30" y="395" fill="#8b949e" font-size="9">SpareRoom rents +6.1% YoY</text>
+
+    <!-- Key drivers box -->
+    <rect x="240" y="300" width="200" height="115" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+    <text x="340" y="318" text-anchor="middle" fill="#f0f6fc" font-size="11" font-weight="bold">Key Drivers</text>
+    <text x="250" y="335" fill="#8b949e" font-size="9">i54 Business Park expansion</text>
+    <text x="250" y="350" fill="#8b949e" font-size="9">Smithgate £83m regen</text>
+    <text x="250" y="365" fill="#8b949e" font-size="9">30k+ university students</text>
+    <text x="250" y="380" fill="#8b949e" font-size="9">+17% annual price growth WV2</text>
+    <text x="250" y="395" fill="#8b949e" font-size="9">West Midlands Metro extension</text>
+  </svg>
+</div>
+
+<!-- WV Data Table -->
+<div class="card">
+  <h3>WV Postcode Comparison</h3>
+  <table>
+    <tr><th>Area</th><th>Postcode</th><th>Avg Price</th><th>Avg Rent 2-bed</th><th>Yield Est.</th><th>Demand</th><th>Grade</th><th>Score</th></tr>
+    <tr><td><strong>City Centre</strong></td><td><strong>WV1</strong></td><td><strong>£163k</strong></td><td><strong>£700-850</strong></td><td><strong>5.4%</strong></td><td><strong>🟢 High</strong></td><td><span class="verdict-buy">A</span></td><td>8.5/10</td></tr>
+    <tr><td>All Saints</td><td>WV2</td><td>£154k</td><td>£650-750</td><td>5.3%</td><td>🟡 Med-High</td><td><span class="verdict-buy">A</span></td><td>8/10</td></tr>
+    <tr><td><strong>Whitmore Reans/Penn ⭐</strong></td><td><strong>WV3</strong></td><td><strong>£185k</strong></td><td><strong>£675-800</strong></td><td><strong>4.7%</strong></td><td><strong>🟡 Med-High</strong></td><td><span class="verdict-watch">B</span></td><td>7/10</td></tr>
+    <tr><td>Penn</td><td>WV4</td><td>£200k</td><td>£675-775</td><td>4.5%</td><td>🟡 Medium</td><td><span class="verdict-watch">B</span></td><td>6.5/10</td></tr>
+    <tr><td>Wombourne</td><td>WV5</td><td>£300k</td><td>£750-900</td><td>3.5%</td><td>Low</td><td><span class="verdict-pass">C</span></td><td>4/10</td></tr>
+    <tr><td>Tettenhall</td><td>WV6</td><td>£350k</td><td>£800-1,000</td><td>3.2%</td><td>Low</td><td><span class="verdict-pass">P</span></td><td>3/10</td></tr>
+    <tr><td><strong>Bushbury/Low Hill</strong></td><td><strong>WV10</strong></td><td><strong>£172k</strong></td><td><strong>£675-775</strong></td><td><strong>5.3%</strong></td><td><strong>🟢 High</strong></td><td><span class="verdict-buy">A</span></td><td>8.5/10</td></tr>
+    <tr><td><strong>Wednesfield 🥇</strong></td><td><strong>WV11</strong></td><td><strong>£168k</strong></td><td><strong>£725-800</strong></td><td><strong>5.4%</strong></td><td><strong>🟢 High</strong></td><td><span class="verdict-buy">A</span></td><td>9/10</td></tr>
+    <tr><td>Willenhall East</td><td>WV12</td><td>£185k</td><td>£600-700</td><td>4.3%</td><td>🟡 Medium</td><td><span class="verdict-watch">B</span></td><td>6.5/10</td></tr>
+    <tr><td><strong>Willenhall ⭐⭐</strong></td><td><strong>WV13</strong></td><td><strong>£155k</strong></td><td><strong>£600-700</strong></td><td><strong>4.5%</strong></td><td><strong>🟡 Medium</strong></td><td><span class="verdict-watch">B</span></td><td>7/10</td></tr>
+    <tr><td><strong>Bilston ⭐</strong></td><td><strong>WV14</strong></td><td><strong>£160k</strong></td><td><strong>£650-750</strong></td><td><strong>4.9%</strong></td><td><strong>🟢 High</strong></td><td><span class="verdict-buy">A</span></td><td>8/10</td></tr>
+  </tbody></table>
+</div>
+
+<!-- WV BRRR Targets -->
+<div class="card" style="border-color:#3fb950;">
+  <h3 style="color:#3fb950;">🎯 Wolverhampton BRRR Targets (5 found)</h3>
+  <table>
+    <tr><th>Price</th><th>Address</th><th>Type</th><th>Beds</th><th>Area</th></tr>
+    <tr><td><strong>£145,000</strong></td><td>Lime Street, Wolverhampton</td><td>Terrace</td><td>3</td><td>WV3</td></tr>
+    <tr><td><strong>£145,000</strong></td><td>Charles Street, Willenhall</td><td>Terrace</td><td>3</td><td>WV13</td></tr>
+    <tr><td><strong>£150,000</strong></td><td>Sandland Road, Willenhall</td><td>Semi</td><td>3</td><td>WV12</td></tr>
+    <tr><td><strong>£150,000</strong></td><td>Gipsy Lane, Willenhall</td><td>Terrace</td><td>2</td><td>WV13</td></tr>
+    <tr><td><strong>£150,000</strong></td><td>Albany Crescent, Bilston</td><td>Semi</td><td>2</td><td>WV14</td></tr>
+  </tbody></table>
+</div>
+
+<!-- Chart: WV Yields and Scores -->
+<div class="chart-row">
+  <div class="card">
+    <h3>WV Investment Scores</h3>
+    <canvas id="wvScoreChart" height="200"></canvas>
+  </div>
+  <div class="card">
+    <h3>WV Yields by Postcode</h3>
+    <canvas id="wvYieldChart" height="200"></canvas>
+  </div>
+</div>
+
+<!-- Charts: STC Comparison -->
+<div class="card">
+  <h3>📋 What's Actually Selling — STC Prices vs BRRR Targets</h3>
+  <canvas id="stcChart" height="120"></canvas>
+  <div style="margin-top: 12px; color: #8b949e; font-size: 12px;">
+    STC avg: <strong style="color:#d29922;">£164k</strong> | BRRR target range: <strong style="color:#3fb950;">£145k-£150k</strong> | Gap: <strong style="color:#f85149;">£14k-£19k</strong>
+  </div>
+</div>
+
+<!-- Summary verdict -->
+<div class="card" style="margin-top: 20px; border-color: #58a6ff;">
+  <h3 style="color: #58a6ff;">🎯 Investment Verdict</h3>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 10px;">
+    <div>
+      <div style="color: #3fb950; font-weight: 600; font-size: 14px;">✅ Best BRRR Areas</div>
+      <div style="color: #8b949e; font-size: 12px; margin-top: 5px;">
+        • <strong>WV14 Bilston</strong> — Albany Cres £150k<br>
+        • <strong>WV3 Penn</strong> — Lime St £145k<br>
+        • <strong>DY2 Netherton</strong> — Ivanhoe St £150k
+      </div>
+    </div>
+    <div>
+      <div style="color: #d29922; font-weight: 600; font-size: 14px;">📈 Best Yields</div>
+      <div style="color: #8b949e; font-size: 12px; margin-top: 5px;">
+        • <strong>WV11 Wednesfield</strong> — 5.4% yield<br>
+        • <strong>WV1 City Centre</strong> — 5.4% yield<br>
+        • <strong>WV10 Bushbury</strong> — 5.3% yield
+      </div>
+    </div>
+    <div>
+      <div style="color: #f85149; font-weight: 600; font-size: 14px;">⚠️ Watch Out</div>
+      <div style="color: #8b949e; font-size: 12px; margin-top: 5px;">
+        • Most DY houses under £150k are auctions<br>
+        • WV12/WV13 need street-level cherry-picking<br>
+        • Coal mining risk in DY/WV — CON29M essential
+      </div>
+    </div>
+    <div>
+      <div style="color: #58a6ff; font-weight: 600; font-size: 14px;">📊 Market Pulse</div>
+      <div style="color: #8b949e; font-size: 12px; margin-top: 5px;">
+        • Rents rising faster than prices (+11.7%)<br>
+        • Supply constrained — 155 SpareRoom listings<br>
+        • STC avg £164k → BRRR targets £145k-150k
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Data sourced from Rightmove (via CloakBrowser), PropAI Deals API, SpareRoom, ONS. May 2026. For Kokal Properties Ltd.
+</div>
+
+<script>
+// Dudley Prices Chart
+new Chart(document.getElementById('dudleyPricesChart'), {
+  type: 'bar',
+  data: {
+    labels: ['DY1','DY2','DY3','DY4','DY5','DY6','DY7','DY8','DY9'],
+    datasets: [{
+      label: 'Avg Price (£k)',
+      data: [180, 140, 165, 155, 170, 220, 300, 280, 210],
+      backgroundColor: ['#d29922','#3fb950','#d29922','#3fb950','#3fb950','#d29922','#f85149','#58a6ff','#d29922'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: true, grid: { color: '#30363d' }, ticks: { color: '#8b949e' } },
+              x: { grid: { display: false }, ticks: { color: '#8b949e' } } }
+  }
+});
+
+// Dudley Rents Chart
+new Chart(document.getElementById('dudleyRentsChart'), {
+  type: 'bar',
+  data: {
+    labels: ['DY1','DY2','DY3','DY4','DY5','DY6','DY7','DY8','DY9'],
+    datasets: [{
+      label: 'Avg Rent 2-bed (£)',
+      data: [700, 675, 688, 650, 725, 750, 825, 775, 675],
+      backgroundColor: ['#d29922','#3fb950','#d29922','#3fb950','#3fb950','#d29922','#f85149','#58a6ff','#d29922'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: false, min: 500, grid: { color: '#30363d' }, ticks: { color: '#8b949e' } },
+              x: { grid: { display: false }, ticks: { color: '#8b949e' } } }
+  }
+});
+
+// WV Score Chart
+new Chart(document.getElementById('wvScoreChart'), {
+  type: 'bar',
+  data: {
+    labels: ['WV1','WV2','WV3','WV4','WV5','WV6','WV10','WV11','WV12','WV13','WV14'],
+    datasets: [{
+      label: 'Investment Score /10',
+      data: [8.5, 8, 7, 6.5, 4, 3, 8.5, 9, 6.5, 7, 8],
+      backgroundColor: ['#3fb950','#3fb950','#d29922','#d29922','#f85149','#f85149','#3fb950','#3fb950','#d29922','#d29922','#3fb950'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, plugins: { legend: { display: false } },
+    scales: { y: { max: 10, grid: { color: '#30363d' }, ticks: { color: '#8b949e' } },
+              x: { grid: { display: false }, ticks: { color: '#8b949e' } } }
+  }
+});
+
+// WV Yield Chart
+new Chart(document.getElementById('wvYieldChart'), {
+  type: 'bar',
+  data: {
+    labels: ['WV1','WV2','WV3','WV4','WV5','WV6','WV10','WV11','WV12','WV13','WV14'],
+    datasets: [{
+      label: 'Gross Yield %',
+      data: [5.4, 5.3, 4.7, 4.5, 3.5, 3.2, 5.3, 5.4, 4.3, 4.5, 4.9],
+      backgroundColor: ['#3fb950','#3fb950','#d29922','#d29922','#f85149','#f85149','#3fb950','#3fb950','#d29922','#d29922','#3fb950'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, plugins: { legend: { display: false } },
+    scales: { y: { max: 7, grid: { color: '#30363d' }, ticks: { color: '#8b949e' } },
+              x: { grid: { display: false }, ticks: { color: '#8b949e' } } }
+  }
+});
+
+// STC Price Comparison
+new Chart(document.getElementById('stcChart'), {
+  type: 'bar',
+  data: {
+    labels: ['STC Avg','BRRR Max','BRRR Avg'],
+    datasets: [{
+      data: [164444, 150000, 147000],
+      backgroundColor: ['#d29922', '#3fb950', '#3fb950'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true, indexAxis: 'y',
+    plugins: { legend: { display: false } },
+    scales: { x: { beginAtZero: false, min: 120000, grid: { color: '#30363d' }, ticks: { color: '#8b949e' } },
+              y: { grid: { display: false }, ticks: { color: '#8b949e' } } }
+  }
+});
+</script>
+
+</body>
+</html>
