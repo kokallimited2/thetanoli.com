@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WS2 Area Intelligence — Walsall (Birchills, Pleck, Bentley, Beechdale)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0e17;
+    color: #e2e8f0;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 30px 24px; }
+  
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 48px 0 36px;
+    border-bottom: 1px solid #1e293b;
+    margin-bottom: 40px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+  }
+  .header .subtitle {
+    font-size: 18px;
+    color: #94a3b8;
+    margin-top: 8px;
+    font-weight: 300;
+  }
+  .header .date {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 12px;
+  }
+  
+  /* Overview Card */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 768px) {
+    .overview-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 32px; }
+  }
+  
+  .card {
+    background: linear-gradient(145deg, #111827, #0f172a);
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 28px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #334155; }
+  .card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+  .card p, .card li { color: #cbd5e1; font-size: 15px; }
+  .card ul { list-style: none; }
+  .card ul li {
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+  .card ul li::before {
+    content: "›";
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  
+  /* KPI Strip */
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .kpi {
+    background: linear-gradient(145deg, #111827, #0f172a);
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .kpi .value {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fbbf24;
+    line-height: 1.2;
+  }
+  .kpi .label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 8px;
+  }
+  .kpi.good .value { color: #22c55e; }
+  .kpi.warn .value { color: #f59e0b; }
+  .kpi.bad .value { color: #ef4444; }
+  
+  /* Section Titles */
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin: 40px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .icon { font-size: 22px; }
+  
+  /* Two-col layout for sections */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+  
+  /* School ratings */
+  .school-list { list-style: none; }
+  .school-list li {
+    padding: 12px 16px;
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+  }
+  .school-list .rating {
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+  .rating.outstanding { background: #14532d; color: #22c55e; }
+  .rating.good { background: #1e3a5f; color: #60a5fa; }
+  .rating.requires { background: #5c3a1e; color: #fbbf24; }
+  
+  /* Verdict Box */
+  .verdict-box {
+    border-radius: 16px;
+    padding: 32px;
+    margin: 40px 0;
+    text-align: center;
+  }
+  .verdict-box h2 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    margin-bottom: 16px;
+  }
+  .verdict-box .verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .verdict-item {
+    padding: 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .verdict-item.pass { background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; color: #22c55e; }
+  .verdict-item.warn { background: rgba(251, 191, 36, 0.15); border: 1px solid #f59e0b; color: #f59e0b; }
+  .verdict-item.fail { background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #ef4444; }
+  
+  .verdict-summary {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .verdict-summary.positive { background: rgba(34, 197, 94, 0.08); border: 1px solid rgba(34, 197, 94, 0.3); }
+  
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 32px 0;
+    border-top: 1px solid #1e293b;
+    margin-top: 40px;
+    font-size: 12px;
+    color: #475569;
+  }
+  
+  /* Data source warning */
+  .source-warning {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #fbbf24;
+    margin-bottom: 16px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="badge">🏘️ Area Intelligence</div>
+    <h1>WS2 · Walsall</h1>
+    <p class="subtitle">Birchills · Pleck · Bentley · Beechdale · Leamore</p>
+    <p class="date">Report generated: 22 May 2026 · 3-Hourly Cron Run</p>
+  </div>
+
+  <!-- OVERVIEW + LOCATION -->
+  <div class="overview-grid">
+    <div class="card">
+      <h3>📍 Area Overview</h3>
+      <p><strong>WS2</strong> sits on the western side of Walsall town, covering the neighbourhoods of <strong>Birchills, Pleck, Bentley, Beechdale, and Leamore</strong>. It forms part of the Walsall borough in the West Midlands conurbation.</p>
+      <br>
+      <ul>
+        <li><strong>Distance from Dudley:</strong> ~7 miles NE (15 min drive via A454/A4031)</li>
+        <li><strong>Distance from Birmingham:</strong> ~10 miles NW (25 min by train)</li>
+        <li><strong>Distance from Wolverhampton:</strong> ~6 miles E (12 min drive)</li>
+        <li><strong>County:</strong> West Midlands (Walsall Borough)</li>
+        <li><strong>Area size:</strong> ~11 sq km (23 LSOAs)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🏠 Key Stats</h3>
+      <ul>
+        <li><strong>Population:</strong> ~43,100 (Census 2021)</li>
+        <li><strong>Median Age:</strong> 32 (UK avg: 40.7) — notably young</li>
+        <li><strong>Avg Household Income:</strong> £27,813 (vs UK £37,863)</li>
+        <li><strong>Home Ownership:</strong> 41.4% (owner-occupied), 24.2% private rent, 33.8% social</li>
+        <li><strong>Unemployment:</strong> 9.7% (above national average)</li>
+        <li><strong>Ethnicity:</strong> 53.2% White, 31.3% Asian, 4.8% Black</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- KPI STRIP -->
+  <div class="kpi-strip">
+    <div class="kpi">
+      <div class="value">£174K</div>
+      <div class="label">Avg. Sold Price (WS2)</div>
+    </div>
+    <div class="kpi">
+      <div class="value">£906</div>
+      <div class="label">Avg. Monthly Rent</div>
+    </div>
+    <div class="kpi good">
+      <div class="value">6.1%</div>
+      <div class="label">Gross Rental Yield</div>
+    </div>
+    <div class="kpi warn">
+      <div class="value">32</div>
+      <div class="label">Median Age</div>
+    </div>
+    <div class="kpi">
+      <div class="value">£27.8K</div>
+      <div class="label">Avg. Household Income</div>
+    </div>
+    <div class="kpi bad">
+      <div class="value">111%</div>
+      <div class="label">Crime Rate vs National</div>
+    </div>
+  </div>
+
+  <!-- CRIME & SAFETY -->
+  <div class="section-title"><span class="icon">🚔</span> Crime &amp; Safety</div>
+  <div class="two-col">
+    <div class="card">
+      <h3>Crime Overview</h3>
+      <ul>
+        <li>Walsall is the <strong>2nd most dangerous major town</strong> in the West Midlands</li>
+        <li>Crime rate at <strong>111% of the national average</strong></li>
+        <li>Most common: violence &amp; sexual offences (~11,696 offences in 2025)</li>
+        <li>Anti-social behaviour peak: Jan 2026 (Worst in West Midlands)</li>
+        <li>WS2 itself has higher-than-average crime but varies by neighbourhood</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Safety Notes</h3>
+      <ul>
+        <li>Pleck and Birchills areas report higher crime density</li>
+        <li>Beechdale and Bentley generally quieter residential zones</li>
+        <li>Neighbourhood Watch active across the area</li>
+        <li>Walsall town centre sees more ASB — outskirts more settled</li>
+        <li>Warning: Rental investors should check specific street-level crime data</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DEMOGRAPHICS -->
+  <div class="section-title"><span class="icon">👥</span> Demographics &amp; Population</div>
+  <div class="two-col">
+    <div class="card">
+      <h3>Age Profile</h3>
+      <ul>
+        <li><strong>0–17:</strong> 27.6% (national: 20.8%) — very high</li>
+        <li><strong>18–64:</strong> 60.1%</li>
+        <li><strong>65+:</strong> 12.3% (national: 18.6%) — low</li>
+        <li><strong>Young demographic</strong> = strong rental demand from families</li>
+        <li>High proportion of children suggests good school catchment value</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Employment &amp; Housing</h3>
+      <ul>
+        <li><strong>Employment:</strong> 50.1% in employment, 9.7% unemployed</li>
+        <li><strong>Economically inactive:</strong> 43.9% (high)</li>
+        <li><strong>Social rented:</strong> 33.8% (elevated vs 17.1% national)</li>
+        <li><strong>Private rented:</strong> 24.2% — solid rental culture</li>
+        <li><strong>Avg income £27.8K</strong> — below national average</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SCHOOLS -->
+  <div class="section-title"><span class="icon">🏫</span> Nearby Schools &amp; Ofsted Ratings</div>
+  <div class="card">
+    <ul class="school-list">
+      <li>
+        <span>Reedswood E-ACT Academy (Primary)</span>
+        <span class="rating outstanding">EXCEPTIONAL</span>
+      </li>
+      <li>
+        <span>Old Hall School (Special, ages 3–11)</span>
+        <span class="rating outstanding">OUTSTANDING</span>
+      </li>
+      <li>
+        <span>Croft Academy (Primary)</span>
+        <span class="rating good">GOOD</span>
+      </li>
+      <li>
+        <span>Kings Hill Primary School</span>
+        <span class="rating outstanding">OUTSTANDING</span>
+      </li>
+      <li>
+        <span>West Walsall E-ACT Academy (Secondary)</span>
+        <span class="rating good">GOOD</span>
+      </li>
+      <li>
+        <span>Blue Coat C.E. Academy (Secondary)</span>
+        <span class="rating good">GOOD</span>
+      </li>
+      <li>
+        <span>St John Bosco Catholic Primary</span>
+        <span class="rating outstanding">OUTSTANDING</span>
+      </li>
+      <li>
+        <span>Whitehall Nursery &amp; Infant School</span>
+        <span class="rating outstanding">OUTSTANDING</span>
+      </li>
+    </ul>
+    <p style="margin-top:12px; color:#94a3b8; font-size:13px;">WS2 benefits from an excellent school offering — multiple Outstanding/Exceptional primaries within or adjacent to the postcode. Strong family-appeal factor.</p>
+  </div>
+
+  <!-- TRANSPORT -->
+  <div class="section-title"><span class="icon">🚆</span> Transport &amp; Connectivity</div>
+  <div class="two-col">
+    <div class="card">
+      <h3>Rail</h3>
+      <ul>
+        <li><strong>Walsall Station</strong> — 5–10 min walk from central WS2. Services to Birmingham New Street (25 min), Wolverhampton, Rugeley</li>
+        <li><strong>Bescot Stadium Station</strong> — serves south WS2. Birmingham in ~20 min</li>
+        <li><strong>Bloxwich Station</strong> — serves north WS2 corridor</li>
+        <li><strong>Willenhall Station</strong> — NEW (opening 2025/26) on Wolverhampton line. Game-changer for WS2 north</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Roads &amp; Bus</h3>
+      <ul>
+        <li><strong>M6 J9</strong> (Wednesbury) — 5 min drive, access to national network</li>
+        <li><strong>M6 J10</strong> — 7 min, direct to SPARK employment site</li>
+        <li><strong>A454</strong> — Wolverhampton to Walsall corridor</li>
+        <li><strong>Bus services:</strong> Frequent National Express West Midlands routes to Walsall town centre, Wolverhampton, Birmingham</li>
+        <li><strong>Birmingham Airport:</strong> 25 min by car via M6/M42</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROPERTY & RENTAL -->
+  <div class="section-title"><span class="icon">💰</span> Property Market &amp; Rental Demand</div>
+  <div class="two-col">
+    <div class="card">
+      <h3>Sold Prices (Last 12 Months)</h3>
+      <ul>
+        <li><strong>Average sold price (WS2):</strong> ~£174,000 (Zoopla) to £185,807 (Land Registry)</li>
+        <li><strong>Detached:</strong> ~£280,000</li>
+        <li><strong>Semi-detached:</strong> ~£190,000</li>
+        <li><strong>Terraced:</strong> ~£140,000</li>
+        <li><strong>Flats:</strong> ~£85,000</li>
+        <li><strong>5-year growth:</strong> +40.27% (strong)</li>
+        <li><strong>Walsall borough avg:</strong> £212,000 (Mar 2026)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Rents &amp; Yields</h3>
+      <ul>
+        <li><strong>Avg rent (Walsall):</strong> £906/month (Apr 2026, +7.6% YoY)</li>
+        <li><strong>WS2 gross yield:</strong> Up to <strong>6.1%</strong> — top in Walsall borough</li>
+        <li><strong>Beechdale/Bentley yields:</strong> up to <strong>6.5–7%</strong></li>
+        <li><strong>Typical rent 2-bed house:</strong> £650–750 pcm</li>
+        <li><strong>Typical rent 3-bed house:</strong> £800–950 pcm</li>
+        <li><strong>Tenant demand:</strong> Strong (families, key workers, young professionals)</li>
+        <li><strong>GetGround data:</strong> Yields 7–9% reported for some pockets</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- REGENERATION & PLANNING -->
+  <div class="section-title"><span class="icon">🏗️</span> Regeneration &amp; Major Planning</div>
+  <div class="card">
+    <ul>
+      <li><strong>SPARK Walsall (M6 J10):</strong> Major employment site — 1,000+ new jobs in logistics, tech, manufacturing. Fully operational by 2026. Directly boosts rental demand in WS2 (Bentley, Leamore, Beechdale)</li>
+      <li><strong>Willenhall New Railway Station:</strong> Opening 2025/26 on Walsall–Wolverhampton line. First rail connection in 50+ years. Birmingham in under 25 min. Major capital growth catalyst for WS2 north</li>
+      <li><strong>Walsall Town Centre Masterplan:</strong> Approved 2026 — new footbridge, Guildhall restoration, civic square improvements, shopping centre upgrades</li>
+      <li><strong>Walsall–Wolverhampton Growth Corridor (A454):</strong> Major residential &amp; employment development zone</li>
+      <li><strong>Blue Lane West / Bentley Mill:</strong> Ongoing residential development sites</li>
+      <li><strong>Crown Wharf Retail Park:</strong> Established retail destination within WS2</li>
+    </ul>
+    <p style="margin-top:12px; color:#94a3b8; font-size:13px;">WS2 is at the centre of multiple regeneration initiatives — this is one of the highest-concentration regeneration zones in the Black Country.</p>
+  </div>
+
+  <!-- LOCAL AMENITIES -->
+  <div class="section-title"><span class="icon">🛒</span> Local Amenities</div>
+  <div class="two-col">
+    <div class="card">
+      <h3>Retail &amp; Supermarkets</h3>
+      <ul>
+        <li><strong>Tesco Extra</strong> — Littleton Street, WS2 8EQ</li>
+        <li><strong>Asda Bloxwich</strong> — Woodhall Street, WS2 8LL</li>
+        <li><strong>Aldi</strong> — Caldmore Road</li>
+        <li><strong>Lidl</strong> — Ablewell Street</li>
+        <li><strong>Iceland / Heron Foods</strong> — Multiple locations</li>
+        <li><strong>Crown Wharf Retail Park</strong> — Next, M&amp;S Foodhall, Boots, Pets at Home</li>
+        <li><strong>Walsall Market</strong> — High Street (traditional market)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Healthcare &amp; Leisure</h3>
+      <ul>
+        <li><strong>Walsall Manor Hospital</strong> — Major NHS hospital with A&amp;E, ~2 miles</li>
+        <li><strong>GP surgeries:</strong> Bentley Medical Practice, Beechdale Medical Centre, Dr Milne's Practice</li>
+        <li><strong>Dentists:</strong> Multiple NHS/private practices in WS2</li>
+        <li><strong>Parks:</strong> Reedswood Park, Bentley Park, Pleck Park, Arboretum (town centre)</li>
+        <li><strong>Leisure:</strong> Walsall Gala Baths, Walsall Football Club (Bescot Stadium), Odeon Cinema</li>
+        <li><strong>Library:</strong> Walsall Central Library (Lichfield Street)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INVESTMENT VERDICT -->
+  <div class="section-title"><span class="icon">📊</span> Investment Verdict</div>
+  <div class="verdict-box" style="background: linear-gradient(145deg, #111827, #0f172a); border: 1px solid #1e293b;">
+    <h2>WS2 Walsall — Investment Assessment</h2>
+    <div class="verdict-grid">
+      <div class="verdict-item pass">✅ BRRR — GOOD</div>
+      <div class="verdict-item pass">✅ BTL — GOOD</div>
+      <div class="verdict-item pass">✅ HMO — GOOD</div>
+      <div class="verdict-item warn">⚠️ Serviced Accomm — MIXED</div>
+    </div>
+    
+    <div class="verdict-summary positive">
+      <strong style="color:#22c55e; font-size:18px;">★★★☆☆ INVESTMENT GRADE: B+ (Strong Buy)</strong><br><br>
+      
+      <strong>WS2 is one of the most compelling investment zones in the Black Country.</strong><br><br>
+      
+      <strong>For BRRR:</strong> Low entry prices (~£140K terraced, ~£190K semi) with refinance potential as regeneration pushes values up. 5-year growth of +40% demonstrates strong capital appreciation. SPARK and Willenhall station provide further upside.<br><br>
+      
+      <strong>For BTL:</strong> Yields of 6.1%+ (up to 7% in Beechdale/Bentley) significantly outperform UK averages (~4–5%). Young demographic (median age 32) and high private rental share (24%) ensure strong tenant demand. Rents rising 7.6% YoY.<br><br>
+      
+      <strong>For HMO:</strong> Large families (27.6% aged 0–17), high social renting (33.8%), and proximity to employment zones make WS2 suitable for HMO conversion. Large Victorian terraces in Pleck and Birchills are prime HMO candidates. Check Article 4 / licensing with Walsall Council.<br><br>
+      
+      <strong>Risk factors:</strong> Higher crime rate (111% of national avg), lower-than-average incomes (£27.8K), and elevated unemployment (9.7%) — screen streets carefully. Focus on Beechdale/Bentley for lower crime profiles.
+    </div>
+  </div>
+
+  <!-- KEY TAKEAWAYS -->
+  <div class="section-title"><span class="icon">📋</span> Key Takeaways</div>
+  <div class="two-col">
+    <div class="card">
+      <h3>Strengths</h3>
+      <ul>
+        <li>Exceptional rental yields (6–7%) — top in Walsall</li>
+        <li>Massive regeneration investment (SPARK, station, town centre)</li>
+        <li>Low property entry prices (£140K–£190K)</li>
+        <li>Strong capital growth (+40% in 5 years)</li>
+        <li>Excellent school provision</li>
+        <li>Young demographic driving rental demand</li>
+        <li>Good transport links (M6, rail, buses)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Weaknesses / Risks</h3>
+      <ul>
+        <li>Above-average crime rates</li>
+        <li>Low average household income (£27.8K)</li>
+        <li>High unemployment (9.7%)</li>
+        <li>High social housing proportion (33.8%)</li>
+        <li>Some pockets of deprivation (Pleck, Birchills)</li>
+        <li>HMO licensing / Article 4 restrictions possible</li>
+        <li>Tenant affordability constraints limit rent ceiling</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DATA SOURCES -->
+  <div class="source-warning">
+    ⚠️ Data compiled from public sources: Zoopla, Rightmove, ONS, Ofsted, Locara, Belvoir, Plumplot, CrimeRate.co.uk, GetGround, PropertyInvestmentsUK, Walsall Council. All figures approximate and subject to change. Verify before making investment decisions.
+  </div>
+
+  <div class="footer">
+    Hermes Agent · West Midlands Area Intelligence · 3-Hourly Cron Run<br>
+    WS2 (Walsall) Report · Generated 22 May 2026<br>
+    Built with data from ONS, Land Registry, Ofsted, Zoopla, and local council sources
+  </div>
+
+</div>
+</body>
+</html>
