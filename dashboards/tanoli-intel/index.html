@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 Tanoli's Trading Intel Hub</title>
+<style>
+:root { --bg: #0a0f1e; --bg2: #111827; --card: #1e293b; --border: #334155; --accent: #f59e0b; --green: #22c55e; --red: #ef4444; --blue: #3b82f6; --purple: #8b5cf6; --teal: #0d9488; --text: #f1f5f9; --text2: #94a3b8; --rad: 12px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; padding: 20px; max-width: 1200px; margin: 0 auto; }
+h1 { color: var(--accent); font-size: 1.6rem; margin-bottom: 4px; }
+.subtitle { color: var(--text2); margin-bottom: 24px; font-size: 0.9rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 16px; transition: border-color .2s; }
+.card:hover { border-color: var(--accent); }
+.card h3 { color: var(--accent); font-size: 1rem; margin-bottom: 6px; }
+.card p { color: var(--text2); font-size: 0.85rem; margin-bottom: 10px; }
+.card .status { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.status-live { background: rgba(34,197,94,0.15); color: var(--green); }
+.status-pending { background: rgba(245,158,11,0.15); color: var(--accent); }
+.card .meta { color: var(--text2); font-size: 0.78rem; margin-top: 8px; }
+.section-title { color: var(--blue); font-size: 1.2rem; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<h1>📊 Tanoli Saab's Trading Intel Hub</h1>
+<p class="subtitle">Stock analysis, crypto signals, options flow, portfolio tracking — all in one place</p>
+
+<h2 class="section-title">📈 Trading Dashboards</h2>
+<div class="grid" id="trading-grid">
+  <a href="portfolio-performance.html" style="text-decoration:none"><div class="card">
+    <h3>📊 Portfolio Performance</h3>
+    <p>Live P&amp;L tracking, win rate, strategy performance, position monitoring</p>
+    <span class="status status-live">Live</span>
+    <div class="meta">Updated daily 4pm UK</div>
+  </div></a>
+  <a href="portfolio-dashboard.html" style="text-decoration:none"><div class="card">
+    <h3>💰 Portfolio Dashboard</h3>
+    <p>£10k stocks + £10k crypto positions overview</p>
+    <span class="status status-live">Live</span>
+    <div class="meta">Updated daily 4pm UK</div>
+  </div></a>
+  <a href="stock-scan.html" style="text-decoration:none"><div class="card">
+    <h3>📉 Stock Scanner</h3>
+    <p>Self-learning agent market analysis &amp; stock picks</p>
+    <span class="status status-live">Live</span>
+    <div class="meta">Updated daily 2pm UK</div>
+  </div></a>
+  <a href="stocks-learning.html" style="text-decoration:none"><div class="card">
+    <h3>🧠 Stock Learning Agent</h3>
+    <p>Daily 10-stock deep analysis reports</p>
+    <span class="status status-live">Live</span>
+    <div class="meta">Updated daily 2:30pm UK</div>
+  </div></a>
+</div>
+
+<h2 class="section-title">🪙 Crypto &amp; Options</h2>
+<div class="grid" id="crypto-grid">
+  <a href="crypto-scan.html" style="text-decoration:none"><div class="card">
+    <h3>🪙 Crypto Scanner</h3>
+    <p>Top 50 coins — buy/sell signals, RSI, MACD, EMA cross</p>
+    <span class="status status-live">Live</span>
+    <div class="meta">Updated 6am &amp; 6pm UK</div>
+  </div></a>
+  <a href="crypto-trade-monitor.html" style="text-decoration:none"><div class="card">
+    <h3>📈 Crypto Trade Monitor</h3>
+    <p>Virtual positions, TP/SL tracking, win/loss history</p>
+    <span class="status status-live">Live</span>
+    <div class="meta">Updated 6am &amp; 6pm UK</div>
+  </div></a>
+  <a href="options-scan.html" style="text-decoration:none"><div class="card">
+    <h3>🎯 Options Flow Scanner</h3>
+    <p>Unusual options activity on 14 watchlist tickers</p>
+    <span class="status status-live">Live</span>
+    <div class="meta">Updated 3pm &amp; 8:30pm UK</div>
+  </div></a>
+</div>
+
+<h2 class="section-title">📚 Knowledge Base</h2>
+<div class="grid" id="kb-grid">
+  <a href="trading-kb.html" style="text-decoration:none"><div class="card">
+    <h3>📖 Trading Knowledge Base</h3>
+    <p>16 strategy categories from 116+ YouTube transcripts</p>
+    <span class="status status-live">Live</span>
+    <div class="meta">Updated daily 5am UK</div>
+  </div></a>
+  <a href="trading-assessment.html" style="text-decoration:none"><div class="card">
+    <h3>✍️ Trading Assessment</h3>
+    <p>Interactive scenario-based Q&amp;A across all strategies</p>
+    <span class="status status-live">Live</span>
+    <div class="meta">249 questions across 13 categories</div>
+  </div></a>
+  <a href="trading-course.html" style="text-decoration:none"><div class="card">
+    <h3>📚 Master Trading Course</h3>
+    <p>Daily YouTube pipeline reports compilation</p>
+    <span class="status status-live">Live</span>
+    <div class="meta">Updated daily 4am UK</div>
+  </div></a>
+</div>
+
+<h2 class="section-title">📁 Submissions</h2>
+<div class="grid" id="submissions-grid">
+  <div class="card" style="border-color: var(--accent)">
+    <h3>📤 Upload New Dashboard</h3>
+    <p>Send your HTML files via Telegram to Wadda Khan. They'll be uploaded within the next batch cycle.</p>
+    <div class="meta">Urgent? Tag @elite46735243_bot with ⚡ flag</div>
+  </div>
+  <div class="card">
+    <h3>🆕 Latest Submissions</h3>
+    <p>New dashboard files will appear here once uploaded. Check back after batch runs.</p>
+    <div class="meta" id="last-update">Waiting for submissions...</div>
+  </div>
+</div>
+
+<div class="footer" style="margin-top: 32px; padding-top: 12px; border-top: 1px solid var(--border); color: var(--text2); font-size: 0.8rem; text-align: center;">
+  Tanoli Trading Intel Hub — Powered by Wadda Khan · Updated periodically
+</div>
+</body>
+</html>
