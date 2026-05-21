@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WS1 Area Intelligence — Walsall Town Centre</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0e17;
+    color: #e2e8f0;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid #1e293b;
+    margin-bottom: 2.5rem;
+  }
+  .header .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+  .header h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.03em;
+  }
+  .header h2 {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #94a3b8;
+    margin-top: 0.5rem;
+  }
+  .header .subtitle {
+    margin-top: 0.75rem;
+    color: #64748b;
+    font-size: 0.9rem;
+  }
+
+  /* Cards */
+  .card {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #334155; }
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .card-title .icon { font-size: 1.3rem; }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .stat-card {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+  }
+  .stat-card .value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #f8fafc;
+    line-height: 1.2;
+  }
+  .stat-card .value.positive { color: #22c55e; }
+  .stat-card .value.warning { color: #f59e0b; }
+  .stat-card .value.negative { color: #ef4444; }
+  .stat-card .value.neutral { color: #60a5fa; }
+  .stat-card .label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-top: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .stat-card .trend {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+  .stat-card .trend.up { color: #22c55e; }
+  .stat-card .trend.down { color: #ef4444; }
+
+  /* Verdict Box */
+  .verdict-box {
+    background: linear-gradient(135deg, #0f172a, #1a1f35);
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+  }
+  .verdict-box h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 1rem;
+  }
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  .verdict-item {
+    background: #111827;
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+  .verdict-item .verdict-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .verdict-item .verdict-rating {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-top: 0.4rem;
+  }
+  .verdict-item .verdict-rating.good { color: #22c55e; }
+  .verdict-item .verdict-rating.moderate { color: #f59e0b; }
+  .verdict-item .verdict-rating.avoid { color: #ef4444; }
+  .verdict-item .verdict-note {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-top: 0.3rem;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  th {
+    text-align: left;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+    padding: 0.75rem 0.5rem 0.5rem 0;
+    border-bottom: 1px solid #1e293b;
+  }
+  td {
+    padding: 0.6rem 0.5rem 0.6rem 0;
+    border-bottom: 1px solid #1a1f35;
+    color: #cbd5e1;
+  }
+  td:last-child { text-align: right; }
+  tr:last-child td { border-bottom: none; }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    background: #1e293b;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 6px;
+    margin: 0.15rem 0.2rem;
+  }
+  .tag.outstanding { background: #14532d; color: #4ade80; }
+  .tag.good { background: #1e3a5f; color: #60a5fa; }
+  .tag.requires-improvement { background: #713f12; color: #fbbf24; }
+
+  /* Section spacing */
+  .section { margin-bottom: 2rem; }
+  .section h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 1rem;
+  }
+
+  /* Map placeholder */
+  .map-placeholder {
+    background: #0f172a;
+    border: 1px dashed #334155;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.9rem;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: #475569;
+    font-size: 0.8rem;
+    border-top: 1px solid #1e293b;
+    margin-top: 2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .header h1 { font-size: 2rem; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .verdict-grid { grid-template-columns: 1fr; }
+    .container { padding: 1rem; }
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    height: 8px;
+    background: #1e293b;
+    border-radius: 100px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+  }
+  .progress-bar .fill {
+    height: 100%;
+    border-radius: 100px;
+    transition: width 0.5s;
+  }
+
+  /* Amenities list */
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+  .amenity-item {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .amenity-item .emoji { font-size: 1.2rem; }
+  .amenity-item .name { font-size: 0.9rem; color: #e2e8f0; }
+  .amenity-item .detail { font-size: 0.75rem; color: #64748b; }
+
+  .data-source-note {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-top: 0.75rem;
+    font-style: italic;
+  }
+
+  .list-item {
+    padding: 0.4rem 0;
+    color: #cbd5e1;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .list-item .bullet { color: #3b82f6; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="badge">West Midlands — Area Intelligence</div>
+    <h1>WS1 · Walsall Town Centre</h1>
+    <h2>Caldmore · Palfrey · The Chuckery · The Delves · Highgate</h2>
+    <div class="subtitle">Generated: Automated Cron • Data Sources: ONS, Land Registry, Ofsted, Plumplot, PropertyInvestmentsUK, Belvoir</div>
+  </div>
+
+  <!-- KEY STATS -->
+  <div class="section">
+    <h3>📊 Key Statistics at a Glance</h3>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="value neutral">~28,000</div>
+        <div class="label">WS1 Population</div>
+      </div>
+      <div class="stat-card">
+        <div class="value warning">£195k</div>
+        <div class="label">Avg House Price (WS1)</div>
+        <div class="trend down">−5% YoY</div>
+      </div>
+      <div class="stat-card">
+        <div class="value positive">£906</div>
+        <div class="label">Avg Rent PCM (Borough)</div>
+        <div class="trend up">+7.6% YoY</div>
+      </div>
+      <div class="stat-card">
+        <div class="value warning">5.2%</div>
+        <div class="label">Rental Yield (WS1)</div>
+      </div>
+      <div class="stat-card">
+        <div class="value warning">£192</div>
+        <div class="label">Price per sq ft</div>
+      </div>
+      <div class="stat-card">
+        <div class="value negative">111%</div>
+        <div class="label">Crime Rate vs Nat'l Avg</div>
+      </div>
+      <div class="stat-card">
+        <div class="value positive">47%</div>
+        <div class="label">5-Year Price Growth</div>
+        <div class="trend up">Highest in borough</div>
+      </div>
+      <div class="stat-card">
+        <div class="value neutral">£38.7k</div>
+        <div class="label">Avg Household Income</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AREA OVERVIEW -->
+  <div class="card">
+    <div class="card-title"><span class="icon">📍</span> Area Overview &amp; Location</div>
+    <p style="margin-bottom:0.8rem; color:#cbd5e1; font-size:0.95rem;">
+      <strong>WS1</strong> is the town centre postcode for <strong>Walsall</strong>, a historic market town in the
+      West Midlands, approximately <strong>10 miles northwest of Dudley</strong>, 9 miles northwest of Birmingham
+      city centre, and 7 miles east of Wolverhampton. WS1 covers the town centre core along with the
+      residential areas of <strong>Caldmore, Palfrey, The Chuckery, The Delves, and Highgate</strong>.
+    </p>
+    <p style="color:#94a3b8; font-size:0.9rem;">
+      Walsall has a rich industrial heritage in leatherworking, saddlery, and chain-making, and is now
+      undergoing major <strong>£140M+ regeneration</strong> focused on the town centre, including the Connected Gateway
+      project, Saddlers Centre revamp, and Guildhall restoration. The SPARK Enterprise Hub near J10 of the M6
+      is creating <strong>1,000+ new jobs</strong> in logistics, tech, and advanced manufacturing.
+    </p>
+    <div class="map-placeholder" style="margin-top:1rem;">
+      🗺️ WS1 sits at the centre of the Walsall borough, bounded by WS2 (south/west), WS3 (north), and WS5 (east).
+      M6 Junction 10 is ~2 miles west; Walsall Railway Station is in the town centre.
+    </div>
+  </div>
+
+  <!-- DEMOGRAPHICS -->
+  <div class="card">
+    <div class="card-title"><span class="icon">👥</span> Demographics &amp; Population</div>
+    <table>
+      <tr><th>Metric</th><th>WS1 / Walsall</th><th>UK Average</th></tr>
+      <tr><td>Population (WS1 district)</td><td>~28,000</td><td>—</td></tr>
+      <tr><td>Borough Population (2021)</td><td>284,100</td><td>—</td></tr>
+      <tr><td>Population Growth (2011–2021)</td><td>+5.5%</td><td>+6.6%</td></tr>
+      <tr><td>Median Age</td><td>38</td><td>40</td></tr>
+      <tr><td>Avg Household Income</td><td>£38,710</td><td>£38,100</td></tr>
+      <tr><td>Avg Salary</td><td>£26,673</td><td>£29,669</td></tr>
+      <tr><td>Employment Rate</td><td>70%</td><td>~75%</td></tr>
+      <tr><td>Unemployment Rate</td><td>5%</td><td>4.3%</td></tr>
+      <tr><td>White Ethnicity (Borough)</td><td>71.4%</td><td>81.7%</td></tr>
+      <tr><td>Asian Ethnicity (Borough)</td><td>18.7%</td><td>9.3%</td></tr>
+      <tr><td>Level 4 Qualifications</td><td>26.1%</td><td>33.8%</td></tr>
+      <tr><td>Private Renting</td><td>16.4%</td><td>20.7%</td></tr>
+      <tr><td>Social Renting</td><td>20.1%</td><td>17.1%</td></tr>
+    </table>
+    <div class="data-source-note">Source: ONS Census 2021, postcodearea.co.uk, Nomis</div>
+  </div>
+
+  <!-- CRIME -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🚔</span> Crime &amp; Safety</div>
+    <table>
+      <tr><th>Metric</th><th>Value</th></tr>
+      <tr><td>Crime Rate vs National Avg</td><td>111% (29th highest of 99 postcode areas)</td></tr>
+      <tr><td>Annual "Other Crime" Rate</td><td>2.4 per 1,000 people</td></tr>
+      <tr><td>Most Common Crime</td><td>Violence &amp; Sexual Offences (11,696 offences in 2026)</td></tr>
+      <tr><td>Year-on-Year Change</td><td>−3.0% (declining)</td></tr>
+      <tr><td>WS1 2 Sector Crime</td><td>179% of national rate (highest in WS1)</td></tr>
+      <tr><td>Walsall Rank (West Midlands)</td><td>2nd most dangerous major town</td></tr>
+      <tr><td>National Rank (England/Wales)</td><td>45th most dangerous major town</td></tr>
+    </table>
+    <div style="margin-top:0.8rem;">
+      <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:#94a3b8;">
+        <span>Anti-Social Behaviour (Jan 2026)</span>
+        <span>Worst in West Midlands — 86 crimes</span>
+      </div>
+      <div class="progress-bar" style="margin-top:0.3rem;">
+        <div class="fill" style="width:75%; background: linear-gradient(90deg, #ef4444, #f59e0b);"></div>
+      </div>
+    </div>
+    <div class="data-source-note">Source: Plumplot (Apr 2026), CrimeRate.co.uk (May 2026)</div>
+  </div>
+
+  <!-- SCHOOLS -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🏫</span> Nearby Schools — Ofsted Ratings</div>
+    <table>
+      <tr><th>School</th><th>Rating</th><th>Location</th></tr>
+      <tr>
+        <td>Queen Mary's Grammar School</td>
+        <td><span class="tag outstanding">Outstanding</span></td>
+        <td>Sutton Road, WS1 2PG</td>
+      </tr>
+      <tr>
+        <td>St Mary's The Mount Catholic Primary</td>
+        <td><span class="tag outstanding">Outstanding</span></td>
+        <td>Jesson Road, WS1 3AY</td>
+      </tr>
+      <tr>
+        <td>Whitehall Nursery &amp; Infant School</td>
+        <td><span class="tag outstanding">Outstanding</span></td>
+        <td>West Bromwich Road, WS1 3HS</td>
+      </tr>
+      <tr>
+        <td>Blue Coat C of E Academy (Secondary)</td>
+        <td><span class="tag good">Good</span></td>
+        <td>Birmingham Street, WS1 2ND</td>
+      </tr>
+      <tr>
+        <td>Walsall Studio School</td>
+        <td><span class="tag good">Good</span></td>
+        <td>14a Lower Hall Lane, WS1 1RL</td>
+      </tr>
+      <tr>
+        <td>Chuckery Primary School</td>
+        <td><span class="tag good">Good</span></td>
+        <td>Lincoln Road, WS1 2DZ</td>
+      </tr>
+      <tr>
+        <td>Blue Coat C of E Aided Junior School</td>
+        <td><span class="tag good">Good</span></td>
+        <td>Springhill Road, WS1 2LP</td>
+      </tr>
+      <tr>
+        <td>Caldmore Primary Academy</td>
+        <td><span class="tag good">Good</span></td>
+        <td>Carless Street, WS1 3RH</td>
+      </tr>
+      <tr>
+        <td>Whitehall Junior Community School</td>
+        <td><span class="tag good">Good</span></td>
+        <td>Delves Road, WS1 3JY</td>
+      </tr>
+      <tr>
+        <td>West Walsall E-ACT Academy (Secondary)</td>
+        <td><span class="tag outstanding">Outstanding</span></td>
+        <td>Bloxwich Road (nearby)</td>
+      </tr>
+    </table>
+    <div class="data-source-note">Source: Ofsted reports, MyLittleEyes, postcodearea.co.uk</div>
+  </div>
+
+  <!-- TRANSPORT -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🚆</span> Transport &amp; Connectivity</div>
+    <table>
+      <tr><th>Mode</th><th>Details</th></tr>
+      <tr><td>🚂 Rail</td><td><strong>Walsall Station</strong> — direct services to Birmingham New Street (25 min), Rugeley, and Wolverhampton (via Bescot). New Willenhall &amp; Darlaston stations opening 2026.</td></tr>
+      <tr><td>🚌 Bus</td><td><strong>Walsall Bus Station</strong> — extensive network across the borough and to Birmingham, Wolverhampton, West Bromwich.</td></tr>
+      <tr><td>🚗 Road</td><td><strong>M6 Junction 7</strong> (Great Barr) and <strong>Junction 10</strong> (Bentley) — ~2–3 miles. A454, A34, A41 corridors. Easy access to Wolverhampton (7 mi), Birmingham (9 mi), Dudley (10 mi).</td></tr>
+      <tr><td>🚲 Cycling</td><td>0.9% commute by bicycle. Canal towpaths and some dedicated routes.</td></tr>
+      <tr><td>🚶 Walking</td><td>7.3% commute on foot. Town centre is compact and walkable.</td></tr>
+      <tr><td>🛤️ Future</td><td>Connected Gateway scheme improving bus-rail interchange. Tram-like electric bus (Walsall–Birmingham–Solihull) approved.</td></tr>
+    </table>
+    <div style="margin-top:1rem; padding:0.8rem; background:#0f172a; border-radius:10px;">
+      <div style="font-size:0.9rem; color:#94a3b8;">
+        <strong>Commute Breakdown:</strong> Car/Van 61.4% · Work from Home 20% · On Foot 7.3% · Passenger 6.4% · Bus 1.1% · Train 0.7% · Bicycle 0.9%
+      </div>
+    </div>
+    <div class="data-source-note">Source: ONS, West Midlands Railway, Walsall Council, Moovit</div>
+  </div>
+
+  <!-- SOLD PRICES -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🏠</span> Sold Prices &amp; Property Market</div>
+    <table>
+      <tr><th>Metric</th><th>WS1</th><th>Walsall Borough</th></tr>
+      <tr><td>Avg Sold Price (WS1)</td><td>£195,162</td><td>£212,000</td></tr>
+      <tr><td>Avg Detached</td><td>—</td><td>£355,066</td></tr>
+      <tr><td>Avg Semi-Detached</td><td>—</td><td>£230,248</td></tr>
+      <tr><td>Avg Terraced</td><td>—</td><td>£190,192</td></tr>
+      <tr><td>Avg Flat</td><td>—</td><td>£122,165</td></tr>
+      <tr><td>Price per sq ft</td><td>£192</td><td>—</td></tr>
+      <tr><td>1-Year Price Change</td><td>−5.0%</td><td>+1.4%</td></tr>
+      <tr><td>5-Year Price Change</td><td><strong>+47.0%</strong></td><td>+33.9%</td></tr>
+      <tr><td>Discount vs England Avg</td><td>—</td><td>−26.1%</td></tr>
+    </table>
+    <div style="margin-top:1rem;">
+      <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:#94a3b8; margin-bottom:0.3rem;">
+        <span>Price Growth — WS1 (5 years)</span>
+        <span>+47%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="fill" style="width:94%; background: linear-gradient(90deg, #22c55e, #16a34a);"></div>
+      </div>
+    </div>
+    <div class="data-source-note">Source: HM Land Registry, Zoopla, PropertyInvestmentsUK (Feb 2026), ONS (Mar 2026)</div>
+  </div>
+
+  <!-- RENTAL -->
+  <div class="card">
+    <div class="card-title"><span class="icon">💰</span> Rental Market &amp; Yield</div>
+    <table>
+      <tr><th>Metric</th><th>WS1 / Walsall</th></tr>
+      <tr><td>Avg Rent (WS1 area)</td><td>~£800–£900 PCM</td></tr>
+      <tr><td>Avg Rent (Borough)</td><td>£906 PCM (+7.6% YoY)</td></tr>
+      <tr><td>Avg Flat Rent</td><td>£782 PCM</td></tr>
+      <tr><td>Avg House Rent</td><td>£1,164 PCM</td></tr>
+      <tr><td>Avg Room Rent</td><td>£425 PCM</td></tr>
+      <tr><td>Gross Rental Yield (WS1)</td><td>4.12% – 5.8%</td></tr>
+      <tr><td>Best Yield Nearby</td><td>WS2 (Pleck/Bentley): 6.1–7.4%</td></tr>
+      <tr><td>Tenant Demand</td><td>Young professionals, key workers, families</td></tr>
+      <tr><td>Private Renting Share</td><td>16.4% (growing)</td></tr>
+    </table>
+    <div class="data-source-note">Source: RW Invest, Belvoir, GetGround, PropertyInvestmentsUK, ONS Private Rent Statistics</div>
+  </div>
+
+  <!-- PLANNING & REGENERATION -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🏗️</span> Major Planning &amp; Regeneration</div>
+    <div class="list-item"><span class="bullet">🔶</span> <strong>Connected Gateway (£140M+):</strong> Town centre transport improvements linking bus station, rail station, and cycling routes. Framework approved Dec 2025.</div>
+    <div class="list-item"><span class="bullet">🔶</span> <strong>Saddlers Centre Phase 2 Revamp:</strong> Major refurbishment of the shopping centre including new leisure and retail units.</div>
+    <div class="list-item"><span class="bullet">🔶</span> <strong>Guildhall Restoration:</strong> £multi-million restoration of the historic Guildhall, due to complete Summer 2026.</div>
+    <div class="list-item"><span class="bullet">🔶</span> <strong>SPARK Enterprise Hub:</strong> 1,000+ new jobs in logistics, tech, advanced manufacturing at M6 J10. First buildings completed Nov 2025.</div>
+    <div class="list-item"><span class="bullet">🔶</span> <strong>Willenhall &amp; Darlaston Stations:</strong> New railway stations opening 2026 — first passenger rail in 60+ years for WS10 and WV12 postcodes.</div>
+    <div class="list-item"><span class="bullet">🔶</span> <strong>115 Homes (Longwood Lane):</strong> Contested green belt approval — 115 homes allowed on appeal (March 2026).</div>
+    <div class="list-item"><span class="bullet">🔶</span> <strong>Rushall 150 Homes:</strong> £33.8M new-build estate underway.</div>
+    <div class="list-item"><span class="bullet">🔶</span> <strong>Electric Bus Service:</strong> Tram-like electric bus route (Walsall–Birmingham–Solihull) approved — improving connectivity.</div>
+    <div class="data-source-note">Source: Walsall Council, BBC News, Belvoir, Landcycle, Place Midlands</div>
+  </div>
+
+  <!-- AMENITIES -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🛍️</span> Local Amenities</div>
+    <div class="amenities-grid">
+      <div class="amenity-item"><div class="emoji">🛒</div><div><div class="name">Saddlers Centre</div><div class="detail">Town centre shopping mall</div></div></div>
+      <div class="amenity-item"><div class="emoji">🏪</div><div><div class="name">Crown Wharf Retail Park</div><div class="detail">Next, Boots, restaurants</div></div></div>
+      <div class="amenity-item"><div class="emoji">🛍️</div><div><div class="name">Walsall Market</div><div class="detail">Historic market (since 1220)</div></div></div>
+      <div class="amenity-item"><div class="emoji">🏥</div><div><div class="name">Walsall Manor Hospital</div><div class="detail">NHS acute hospital</div></div></div>
+      <div class="amenity-item"><div class="emoji">💊</div><div><div class="name">Saddlers Health Centre</div><div class="detail">GP surgery (Hatherton St)</div></div></div>
+      <div class="amenity-item"><div class="emoji">🏛️</div><div><div class="name">The New Art Gallery</div><div class="detail">Contemporary art exhibitions</div></div></div>
+      <div class="amenity-item"><div class="emoji">🎭</div><div><div class="name">Walsall Civic Hall/Guildhall</div><div class="detail">Events &amp; performance venue</div></div></div>
+      <div class="amenity-item"><div class="emoji">🏋️</div><div><div class="name">Walsall Gala Baths</div><div class="detail">Leisure centre &amp; pool</div></div></div>
+      <div class="amenity-item"><div class="emoji">📦</div><div><div class="name">Supermarkets</div><div class="detail">Tesco, Asda, Aldi, Lidl</div></div></div>
+      <div class="amenity-item"><div class="emoji">🌳</div><div><div class="name">Walsall Arboretum</div><div class="detail">79-acre Victorian park</div></div></div>
+    </div>
+  </div>
+
+  <!-- INVESTMENT VERDICT -->
+  <div class="verdict-box">
+    <h3>📈 Investment Verdict — WS1 (Walsall Town Centre)</h3>
+    <div class="verdict-grid">
+      <div class="verdict-item">
+        <div class="verdict-label">BRRR</div>
+        <div class="verdict-rating good">GOOD</div>
+        <div class="verdict-note">Entry prices ~£192/sq ft. Strong 5-yr growth (+47%). Redevelopment upside. Recent dip (−5%) offers buying window. Caldmore/Palfrey most affordable sub-areas.</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">BTL</div>
+        <div class="verdict-rating good">GOOD</div>
+        <div class="verdict-note">Yields 4.1–5.8%. Growing rental demand from young professionals + key workers. £140M regeneration boosting employment. Rent rising 7.6% YoY.</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">HMO</div>
+        <div class="verdict-rating moderate">MODERATE</div>
+        <div class="verdict-note">Near Univ of Wolverhampton and town centre supports some HMO demand. Crime rates and area deprivation in parts of Caldmore are concerns. Licensing required.</div>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-label">Overall</div>
+        <div class="verdict-rating good">GOOD</div>
+        <div class="verdict-note">Best for BTL/BRRR targeting town centre regeneration uplift. Avoid pockets of Caldmore with highest crime. Focus near station and new developments. WS2 offers better yield (6–7%) at similar entry prices.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>WS1 Area Intelligence Report — Generated by Hermes Agent (West Midlands 3-Hourly Cron)</p>
+    <p>Data collected: ONS · HM Land Registry · Ofsted · Plumplot · PropertyInvestmentsUK · Belvoir · RW Invest · BBC · Walsall Council</p>
+    <p style="margin-top:0.5rem;">📍 WS1 is ~10 miles from Dudley · Next scheduled run: Next unprocessed postcode in target list</p>
+  </div>
+
+</div>
+</body>
+</html>

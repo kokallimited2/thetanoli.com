@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WV10 Area Intelligence — Bushbury / Low Hill / Fallings Park</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.7; }
+  .container { max-width: 960px; margin: 0 auto; padding: 2rem; }
+  /* Header */
+  .header { background: linear-gradient(135deg, #161b22 0%, #0d1117 100%); border-bottom: 1px solid #30363d; padding: 2.5rem 0; margin-bottom: 2rem; }
+  .header h1 { font-size: 2.4rem; font-weight: 800; background: linear-gradient(90deg, #58a6ff, #3fb950, #f0883e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .header .subtitle { color: #8b949e; font-size: 1rem; margin-top: 0.3rem; }
+  .badge { display: inline-block; background: #21262d; border: 1px solid #30363d; border-radius: 6px; padding: 0.25rem 0.75rem; font-size: 0.8rem; color: #8b949e; margin-top: 0.75rem; }
+  /* Cards */
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .card h2 { font-size: 1.2rem; font-weight: 700; color: #58a6ff; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #21262d; }
+  .card h3 { font-size: 1rem; font-weight: 600; color: #f0883e; margin: 1rem 0 0.5rem; }
+  /* Stat Grid */
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .stat-item { background: #0d1117; border: 1px solid #21262d; border-radius: 10px; padding: 1.25rem; text-align: center; }
+  .stat-item .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #8b949e; margin-bottom: 0.4rem; }
+  .stat-item .value { font-size: 1.6rem; font-weight: 700; color: #f0f6fc; }
+  .stat-item .value.good { color: #3fb950; }
+  .stat-item .value.warn { color: #f0883e; }
+  .stat-item .value.bad { color: #f85149; }
+  .stat-item .sub { font-size: 0.75rem; color: #8b949e; margin-top: 0.3rem; }
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; }
+  th { text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #8b949e; padding: 0.5rem 0.75rem; border-bottom: 1px solid #21262d; }
+  td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #21262d; font-size: 0.9rem; }
+  tr:last-child td { border-bottom: none; }
+  .tag { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+  .tag-outstanding { background: rgba(63,185,80,0.15); color: #3fb950; }
+  .tag-good { background: rgba(88,166,255,0.15); color: #58a6ff; }
+  .tag-ri { background: rgba(240,136,62,0.15); color: #f0883e; }
+  .tag-inadequate { background: rgba(248,81,73,0.15); color: #f85149; }
+  .verdict-box { border: 2px solid; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; text-align: center; }
+  .verdict-good { border-color: #3fb950; background: rgba(63,185,80,0.08); }
+  .verdict-good h3 { color: #3fb950; font-size: 1.3rem; }
+  .verdict-caution { border-color: #f0883e; background: rgba(240,136,62,0.08); }
+  .verdict-caution h3 { color: #f0883e; }
+  .verdict-avoid { border-color: #f85149; background: rgba(248,81,73,0.08); }
+  .verdict-avoid h3 { color: #f85149; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin-bottom: 0.3rem; }
+  .footer { text-align: center; color: #484f58; font-size: 0.8rem; padding: 2rem 0; border-top: 1px solid #21262d; margin-top: 2rem; }
+  .emoji { font-size: 1.2rem; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <h1>🏘️ WV10 Area Intelligence</h1>
+    <div class="subtitle">Bushbury · Low Hill · Fallings Park · Scotlands · Wolverhampton</div>
+    <div class="badge">📅 Generated: May 2026 · ⏱ 3-Hourly Cron Run · 📍 West Midlands</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Section 1: Area Overview -->
+  <div class="card">
+    <h2>📍 Area Overview</h2>
+    <p><strong>WV10</strong> covers the northern suburbs of Wolverhampton, comprising Bushbury, Low Hill, Fallings Park, and parts of Wednesfield and Coven Heath. It lies approximately 2 miles north of Wolverhampton city centre and 14 miles northwest of Birmingham. The area is predominantly residential with a mix of interwar council estates, 1960s/70s housing stock, and newer private developments around the edges.</p>
+    <p style="margin-top:0.5rem;">The M54 motorway (Junction 1) is 3 miles north, the M6 (Junction 11) is 5 miles east, and the A460 provides a direct route into Wolverhampton city centre. The area benefits from proximity to the i54 advanced manufacturing employment site (JLR, Moog, Collins Aerospace) and the University of Wolverhampton.</p>
+  </div>
+
+  <!-- Section 2: Key Stats -->
+  <div class="card">
+    <h2>📊 Key Statistics</h2>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="label">Population</div>
+        <div class="value">71,510</div>
+        <div class="sub">WV10 postcode district</div>
+      </div>
+      <div class="stat-item">
+        <div class="label">Avg. House Price (Sold)</div>
+        <div class="value warn">£220,528</div>
+        <div class="sub">2025 average (nethouseprices)</div>
+      </div>
+      <div class="stat-item">
+        <div class="label">Avg. Asking Price</div>
+        <div class="value">£244,338</div>
+        <div class="sub">Current market (PIUK Feb 2026)</div>
+      </div>
+      <div class="stat-item">
+        <div class="label">Avg. Rent (pcm)</div>
+        <div class="value good">£1,083</div>
+        <div class="sub">Monthly market average</div>
+      </div>
+      <div class="stat-item">
+        <div class="label">Gross Rental Yield</div>
+        <div class="value good">5.3%</div>
+        <div class="sub">3rd best in Wolverhampton</div>
+      </div>
+      <div class="stat-item">
+        <div class="label">Price per sq ft</div>
+        <div class="value">£237</div>
+        <div class="sub">Ranked 4th/8 in WV</div>
+      </div>
+      <div class="stat-item">
+        <div class="label">House Price Growth (1yr)</div>
+        <div class="value warn">+1.4%</div>
+        <div class="sub">Modest short-term</div>
+      </div>
+      <div class="stat-item">
+        <div class="label">House Price Growth (5yr)</div>
+        <div class="value good">+24.8%</div>
+        <div class="sub">Solid long-term</div>
+      </div>
+      <div class="stat-item">
+        <div class="label">Market Turnover</div>
+        <div class="value good">77%</div>
+        <div class="sub">High liquidity</div>
+      </div>
+      <div class="stat-item">
+        <div class="label">Avg Household Income</div>
+        <div class="value warn">£31,157</div>
+        <div class="sub">Below national avg (£37,863)</div>
+      </div>
+      <div class="stat-item">
+        <div class="label">Crime Rate (Wolves)</div>
+        <div class="value bad">88/1,000</div>
+        <div class="sub">16% above WM average</div>
+      </div>
+      <div class="stat-item">
+        <div class="label">Local Crime Rate (WV10)</div>
+        <div class="value warn">78-86/1,000</div>
+        <div class="sub">4/10 risk rating</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Demographics -->
+  <div class="card">
+    <h2>👥 Demographics</h2>
+    <table>
+      <tr><th>Metric</th><th>WV10</th><th>National</th></tr>
+      <tr><td>Population (polled)</td><td>71,510</td><td>—</td></tr>
+      <tr><td>Largest age band</td><td>45-64 (24.0%)</td><td>—</td></tr>
+      <tr><td>Age 0-17</td><td>23.7%</td><td>20.8%</td></tr>
+      <tr><td>Age 65+</td><td>14.0%</td><td>18.6%</td></tr>
+      <tr><td>White ethnicity</td><td>68.8%</td><td>81.7%</td></tr>
+      <tr><td>Black ethnicity</td><td>11.8%</td><td>4.0%</td></tr>
+      <tr><td>In employment</td><td>52.3%</td><td>—</td></tr>
+      <tr><td>Unemployment rate</td><td>8.4%</td><td>—</td></tr>
+      <tr><td>Economically inactive</td><td>42.0%</td><td>—</td></tr>
+      <tr><td>Owner-occupied</td><td>50.8%</td><td>—</td></tr>
+      <tr><td>Social rented</td><td>31.2%</td><td>17.1%</td></tr>
+      <tr><td>Privately rented</td><td>16.7%</td><td>—</td></tr>
+      <tr><td>Avg household income</td><td>£31,157</td><td>£37,863</td></tr>
+    </table>
+    <p style="margin-top:0.75rem; color:#8b949e; font-size:0.9rem;"><em>Source: Locara.co.uk / Census 2021 / ONS income estimates. The area is younger and more ethnically diverse than the national average, with significantly higher social renting.</em></p>
+  </div>
+
+  <!-- Section 4: Schools -->
+  <div class="card">
+    <h2>🏫 Nearby Schools — Ofsted Ratings</h2>
+    <table>
+      <tr><th>School</th><th>Type</th><th>Ofsted Rating</th><th>Postcode</th></tr>
+      <tr>
+        <td>Bushbury Lane Academy</td>
+        <td>Primary (3-11)</td>
+        <td><span class="tag tag-outstanding">Outstanding</span></td>
+        <td>WV10 9TR</td>
+      </tr>
+      <tr>
+        <td>Bushbury Nursery School</td>
+        <td>Nursery</td>
+        <td><span class="tag tag-outstanding">Outstanding</span></td>
+        <td>WV10 8JP</td>
+      </tr>
+      <tr>
+        <td>Bushbury School (SEND)</td>
+        <td>Independent Special (7-19)</td>
+        <td><span class="tag tag-good">Good</span></td>
+        <td>WV10 8ED</td>
+      </tr>
+      <tr>
+        <td>Bushbury Hill Primary School</td>
+        <td>Primary (3-11)</td>
+        <td><span class="tag tag-ri">Requires Improvement</span></td>
+        <td>WV10 8BY</td>
+      </tr>
+      <tr>
+        <td>St Anthony's Catholic Primary</td>
+        <td>Primary</td>
+        <td><span class="tag tag-good">Good</span></td>
+        <td>WV10 8NW</td>
+      </tr>
+      <tr>
+        <td>Westcroft School (SEND)</td>
+        <td>Special</td>
+        <td><span class="tag tag-good">Good</span></td>
+        <td>WV10 8NZ</td>
+      </tr>
+      <tr>
+        <td>Moreton School (Secondary)</td>
+        <td>Secondary (11-18)</td>
+        <td><span class="tag tag-ri">Requires Improvement</span></td>
+        <td>WV10 8BY</td>
+      </tr>
+      <tr>
+        <td>Our Lady & St Chad Catholic Academy (Secondary)</td>
+        <td>Secondary (11-18)</td>
+        <td><span class="tag tag-good">Good</span></td>
+        <td>WV14 0BL</td>
+      </tr>
+    </table>
+    <p style="margin-top:0.75rem; color:#8b949e; font-size:0.9rem;"><em>Bushbury Lane Academy is a standout Outstanding-rated primary. Secondary options are more mixed — families often look to schools in Tettenhall (WV6) or Wolverhampton city centre for higher-rated secondaries.</em></p>
+  </div>
+
+  <!-- Section 5: Crime -->
+  <div class="card">
+    <h2>🚔 Crime Analysis</h2>
+    <p><strong>Wolverhampton overall crime rate (2026):</strong> 88 crimes per 1,000 people — 16% higher than West Midlands average, 21% above national.</p>
+    <p><strong>WV10 specific areas:</strong> Bushbury Road area rates ~78/1,000, Bushbury Lane area ~86/1,000. Fallings Park / Bushbury ward reported top crimes as Violence & Sexual Offences (137 reports), Shoplifting (32), Criminal Damage/Arson (24) and Other Theft (22) in recent period.</p>
+    
+    <h3>Most Common Crimes in Wolverhampton (12mo to Mar 2026)</h3>
+    <table>
+      <tr><th>Crime Type</th><th>Count</th><th>Rate per 1,000</th><th>National Index</th></tr>
+      <tr><td>Violence & Sexual Offences</td><td>12,029</td><td>40.1</td><td>1.32x</td></tr>
+      <tr><td>Shoplifting</td><td>3,393</td><td>11.3</td><td>1.59x</td></tr>
+      <tr><td>Vehicle Crime</td><td>2,149</td><td>7.2</td><td>1.66x</td></tr>
+      <tr><td>Criminal Damage & Arson</td><td>2,215</td><td>7.4</td><td>1.17x</td></tr>
+      <tr><td>Anti-Social Behaviour</td><td>1,649</td><td>5.5</td><td>0.39x</td></tr>
+    </table>
+    <p style="margin-top:0.75rem; color:#8b949e; font-size:0.9rem;"><strong>Trend:</strong> Crime rate has declined steadily from a peak of 124/1,000 in 2022 to 88/1,000 in 2026. Robbery down 46% over 3 years, burglary down 21%. However, vehicle crime and weapons possession remain elevated above national averages.</p>
+  </div>
+
+  <!-- Section 6: Transport -->
+  <div class="card">
+    <h2>🚆 Transport Links</h2>
+    <h3>Rail</h3>
+    <ul>
+      <li><strong>Wolverhampton Railway Station</strong> (2.5 miles south) — West Coast Main Line: Birmingham New St 15-20 min, London Euston ~1hr 55min, Manchester ~1hr. Frequent services.</li>
+      <li><strong>Bushbury railway station</strong> — <em>Closed 1965.</em> No direct rail within WV10 boundary.</li>
+    </ul>
+    <h3>Metro (Light Rail)</h3>
+    <ul>
+      <li><strong>West Midlands Metro</strong> — Pipers Row stop (21 min walk from Bushbury). Direct trams to Birmingham via Bilston, Wednesbury, West Bromwich.</li>
+    </ul>
+    <h3>Bus</h3>
+    <ul>
+      <li><strong>Route 2</strong> Bushbury Hill ↔ Warstones via Wolverhampton city centre (frequent, day & evening)</li>
+      <li><strong>Route 32</strong> Wolverhampton ↔ Bushbury (5 min journey)</li>
+      <li><strong>Route 33/33A</strong> Wolverhampton ↔ Low Hill / Scotlands</li>
+      <li>Wolverhampton Bus Station (city centre) is the regional hub with services to Birmingham, Walsall, Cannock, Telford.</li>
+    </ul>
+    <h3>Road</h3>
+    <ul>
+      <li><strong>M54</strong> Junction 1 (3 miles north) — connects to Telford/Shrewsbury</li>
+      <li><strong>M6</strong> Junction 11 (5 miles east) — M6 north to Stafford/Manchester, M6 south to Birmingham</li>
+      <li><strong>A460</strong> — runs through WV10, providing direct route to Wolverhampton city centre and Cannock</li>
+      <li><strong>A449</strong> — Stafford Road, western boundary of WV10</li>
+      <li>Proposed <strong>M54 to M6/M6 Toll Link Road</strong> would improve east-west connectivity</li>
+    </ul>
+  </div>
+
+  <!-- Section 7: Property Market -->
+  <div class="card">
+    <h2>🏠 Property Market</h2>
+    <h3>Sold Prices by Type (Wolverhampton, Feb 2026)</h3>
+    <table>
+      <tr><th>Property Type</th><th>Avg Price (Wolves)</th><th>vs England</th></tr>
+      <tr><td>Detached</td><td>£340,157</td><td>-28.3%</td></tr>
+      <tr><td>Semi-detached</td><td>£228,807</td><td>-21.1%</td></tr>
+      <tr><td>Terraced</td><td>£183,598</td><td>-25.1%</td></tr>
+      <tr><td>Flat</td><td>£113,097</td><td>-48.9%</td></tr>
+      <tr><td><strong>All types</strong></td><td><strong>£214,304</strong></td><td><strong>-26.9%</strong></td></tr>
+    </table>
+    <p style="margin-top:0.75rem;">Wolverhampton prices rose <strong>+2.5%</strong> in the year to Feb 2026. WV10 specific sold average in 2025 was approximately <strong>£220,528</strong> (down slightly from £251k in 2024).</p>
+    
+    <h3>Rental Market</h3>
+    <table>
+      <tr><th>Metric</th><th>WV10</th><th>Wolverhampton Avg</th></tr>
+      <tr><td>Avg monthly rent</td><td>£1,083</td><td>£928</td></tr>
+      <tr><td>Gross yield</td><td><strong>5.3%</strong></td><td>~4.5-5.4%</td></tr>
+      <tr><td>Rent as % of income</td><td>36.2%</td><td>—</td></tr>
+      <tr><td>Private rented households</td><td>16.7%</td><td>—</td></tr>
+    </table>
+    <p style="margin-top:0.75rem; color:#8b949e;">Private rents in Wolverhampton rose <strong>+11.9%</strong> YoY (Mar 2026: £928 vs Mar 2025: £830), significantly outpacing West Midlands (+4.8%) and UK averages. This strong rental growth supports yield performance.</p>
+  </div>
+
+  <!-- Section 8: Planning & Regeneration -->
+  <div class="card">
+    <h2>🏗️ Planning & Regeneration</h2>
+    <ul>
+      <li><strong>City Centre West Masterplan</strong> — Hybrid planning application submitted for 1,000+ new homes, shops, cafes, restaurants on disused land between Peel Street and Market Square. Phase 1: 330 homes (mix of build-to-rent and affordable).</li>
+      <li><strong>Smithgate Regeneration</strong> — £83M, 1,000 homes over 10 years. Phase 1 'Bicycle Works' (331 build-to-rent + affordable) backed by £18M WMCA funding.</li>
+      <li><strong>Former M&S Building (Dudley Street)</strong> — 71 apartments + 3 retail units, planning approved Jan 2026.</li>
+      <li><strong>i54 Employment Park</strong> (3 miles west of WV10) — Major employment hub with Jaguar Land Rover, Moog, Collins Aerospace. Ongoing expansion plans.</li>
+      <li><strong>M54 to M6 Link Road</strong> — Preferred route announced; would improve connectivity for northern Wolverhampton and reduce congestion on A460/A449.</li>
+      <li><strong>Local planning applications</strong> — Active applications in WV10 for residential extensions, conversions, and small-scale developments (Landcycle data).</li>
+    </ul>
+  </div>
+
+  <!-- Section 9: Local Amenities -->
+  <div class="card">
+    <h2>🛒 Local Amenities</h2>
+    <table>
+      <tr><th>Category</th><th>Details</th></tr>
+      <tr><td>🛍️ Supermarkets</td><td>Asda Wolverhampton Superstore (Jack Hayward Way), Morrisons (Bentley Bridge), Tesco Express (Fallings Park), Aldi (Wednesfield)</td></tr>
+      <tr><td>🏪 Community Shops</td><td>WV10 Consortium Community Shop (Fifth Avenue, Bushbury) — volunteer-run with reduced prices</td></tr>
+      <tr><td>🏥 Healthcare</td><td>Low Hill Medical Centre (First Ave), Bushbury Surgery, New Cross Hospital (major NHS hospital, ~1.5 miles)</td></tr>
+      <tr><td>📚 Libraries</td><td>Bushbury Library (Showell Road), Low Hill Library</td></tr>
+      <tr><td>🌳 Parks & Green Spaces</td><td>Bushbury Memorial Recreation Ground, West Park (Wolverhampton), Moseley Park, Pendeford Mill Nature Reserve</td></tr>
+      <tr><td>🏋️ Leisure</td><td>Bushbury Hill Community Centre, Bert Williams Leisure Centre (Bentley Bridge), Wolverhampton Grand Theatre (city centre)</td></tr>
+      <tr><td>🛒 Retail Parks</td><td>Bentley Bridge Retail Park (multiplex cinema, restaurants, retail), Wolverhampton city centre (Mander Centre, Wulfrun Centre)</td></tr>
+    </table>
+  </div>
+
+  <!-- Section 10: Investment Verdict -->
+  <div class="card">
+    <h2>💼 Investment Verdict</h2>
+
+    <div class="verdict-box verdict-good">
+      <div class="emoji">✅</div>
+      <h3>GOOD for BTL — GOOD for HMO</h3>
+      <p style="margin-top:0.5rem; color:#e6edf3;">
+        WV10 offers the <strong>3rd best rental yield in Wolverhampton at 5.3%</strong>, backed by strong rental demand (+11.9% YoY rent growth). The average asking price of £244k with average rents of £1,083/month produces healthy cashflow potential. High market turnover (77%) means good liquidity.
+      </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-top:1rem;">
+      <div style="background:#0d1117; border:1px solid #21262d; border-radius:10px; padding:1rem;">
+        <h3 style="color:#3fb950; font-size:0.95rem; margin-bottom:0.5rem;">✅ BTL — GOOD</h3>
+        <ul style="font-size:0.85rem;">
+          <li>5.3% gross yield — strong for West Midlands</li>
+          <li>Below-average entry prices (£183k terraced)</li>
+          <li>Rapid rent growth (11.9% YoY)</li>
+          <li>High tenant demand (36%+ rent-to-income ratio)</li>
+          <li>i54 employment park supports letting demand</li>
+        </ul>
+      </div>
+      <div style="background:#0d1117; border:1px solid #21262d; border-radius:10px; padding:1rem;">
+        <h3 style="color:#f0883e; font-size:0.95rem; margin-bottom:0.5rem;">⚠️ BRRR — CAUTION</h3>
+        <ul style="font-size:0.85rem;">
+          <li>Modest 1yr price growth (+1.4%)</li>
+          <li>High social housing concentration (31.2%)</li>
+          <li>Some areas lower desirability (Bushbury Hill RI school)</li>
+          <li>Better suited to buy & hold than quick refi</li>
+          <li>Focus on terraced/semi under £200k for best margins</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-top:1rem;">
+      <div style="background:#0d1117; border:1px solid #21262d; border-radius:10px; padding:1rem;">
+        <h3 style="color:#3fb950; font-size:0.95rem; margin-bottom:0.5rem;">✅ HMO — PROMISING</h3>
+        <ul style="font-size:0.85rem;">
+          <li>Large family-sized ex-council houses</li>
+          <li>Close to Wolverhampton Uni (30k+ students)</li>
+          <li>i54 workforce demand (professionals)</li>
+          <li>Good transport links to city centre</li>
+          <li>5.3% yield could be pushed higher with HMO strategy</li>
+        </ul>
+      </div>
+      <div style="background:#0d1117; border:1px solid #21262d; border-radius:10px; padding:1rem;">
+        <h3 style="color:#f85149; font-size:0.95rem; margin-bottom:0.5rem;">🚫 AVOID If...</h3>
+        <ul style="font-size:0.85rem;">
+          <li>You need rapid capital appreciation (WV10 = slow growth area)</li>
+          <li>You're targeting premium/luxury lettings</li>
+          <li>Low crime is your #1 priority</li>
+          <li>You want a turnkey area — requires active management</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem; padding:1rem; background:#0d1117; border:1px solid #21262d; border-radius:10px;">
+      <h3 style="color:#58a6ff; font-size:1rem; margin-bottom:0.5rem;">📋 Summary Recommendation</h3>
+      <p><strong>WV10 is a STRONG BUY-TO-LET and HMO play</strong> with yields of 5.3% — among the best in Wolverhampton. The area benefits from significant regeneration (City Centre West, Smithgate, i54), strong rental demand growth, and affordable entry prices. Capital growth has been modest (+1.4% 1yr) but the 5-year trajectory (+24.8%) is respectable. The high proportion of social housing (31.2%) and above-average crime rates mean it's not a 'premium' area, but for cashflow-focused investors, WV10 presents compelling numbers. Target: terraced/semi-detached properties in the £150k-£220k range for best yields.</p>
+    </div>
+  </div>
+
+  <!-- Data Sources -->
+  <div class="card" style="border-color:#21262d;">
+    <h2>📚 Data Sources</h2>
+    <ul style="font-size:0.85rem; color:#8b949e;">
+      <li>Locara.co.uk — Demographics (Census 2021)</li>
+      <li>Property Investments UK — Wolverhampton BTL analysis (Feb 2026)</li>
+      <li>CrimeRate.co.uk — Wolverhampton crime statistics (updated May 2026)</li>
+      <li>CrystalRoof.co.uk — Local area crime rates</li>
+      <li>West Midlands Police — Fallings Park/Bushbury/Low Hill ward data</li>
+      <li>Ofsted reports — School inspection ratings</li>
+      <li>Nethouseprices.com — Sold price data</li>
+      <li>Rightmove / Zoopla — Asking prices & market data</li>
+      <li>ONS — Housing prices & private rental stats (Feb/Mar 2026)</li>
+      <li>Landcycle — Planning applications</li>
+      <li>Rome2Rio / Moovit — Transport data</li>
+      <li>BE News / Council press — Regeneration updates</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    🏘️ West Midlands Area Intelligence · Hermes Agent Cron Run · May 2026<br>
+    Next area in queue: WV11 (Wednesfield)
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WV12 - Willenhall | Area Intelligence Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0e17;
+    color: #e2e8f0;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+  
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1a1f35 50%, #0f172a 100%);
+    border: 1px solid #1e293b;
+    border-radius: 20px;
+    padding: 40px 36px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 40%, rgba(59,130,246,0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .header-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #f1f5f9;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+  .header h1 span { color: #60a5fa; }
+  .header .subtitle {
+    color: #94a3b8;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .header .meta-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 40px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid #1e293b;
+  }
+  .header .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #94a3b8;
+    font-size: 13px;
+  }
+  .header .meta-item strong { color: #e2e8f0; font-weight: 600; }
+
+  /* Cards */
+  .card {
+    background: linear-gradient(135deg, #111827 0%, #0f172a 100%);
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #334155; }
+  .card h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h2 .icon { font-size: 20px; }
+
+  /* KPI Grid */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .kpi {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+  .kpi .value {
+    font-size: 26px;
+    font-weight: 800;
+    color: #60a5fa;
+    line-height: 1.2;
+  }
+  .kpi .value.green { color: #34d399; }
+  .kpi .value.amber { color: #fbbf24; }
+  .kpi .value.red { color: #f87171; }
+  .kpi .value.purple { color: #a78bfa; }
+  .kpi .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #64748b;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th {
+    text-align: left;
+    padding: 10px 12px;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #1e293b;
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #1a1f2e;
+    color: #cbd5e1;
+  }
+  tr:last-child td { border-bottom: none; }
+  .rating { font-weight: 700; }
+  .rating.Outstanding { color: #34d399; }
+  .rating.Good { color: #60a5fa; }
+  .rating.Requires { color: #fbbf24; }
+  .rating.Inadequate { color: #f87171; }
+
+  /* Verdict Box */
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+  .verdict-box {
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #1e293b;
+  }
+  .verdict-box.good {
+    background: linear-gradient(135deg, rgba(52,211,153,0.1), rgba(52,211,153,0.02));
+    border-color: rgba(52,211,153,0.3);
+  }
+  .verdict-box.avoid {
+    background: linear-gradient(135deg, rgba(248,113,113,0.1), rgba(248,113,113,0.02));
+    border-color: rgba(248,113,113,0.3);
+  }
+  .verdict-box.caution {
+    background: linear-gradient(135deg, rgba(251,191,36,0.1), rgba(251,191,36,0.02));
+    border-color: rgba(251,191,36,0.3);
+  }
+  .verdict-box .emoji { font-size: 32px; margin-bottom: 8px; }
+  .verdict-box .title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .verdict-box.good .title { color: #34d399; }
+  .verdict-box.avoid .title { color: #f87171; }
+  .verdict-box.caution .title { color: #fbbf24; }
+  .verdict-box .desc { font-size: 12px; color: #94a3b8; line-height: 1.4; }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .tag.blue { background: rgba(59,130,246,0.15); color: #60a5fa; }
+  .tag.green { background: rgba(52,211,153,0.15); color: #34d399; }
+  .tag.amber { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .tag.red { background: rgba(248,113,113,0.15); color: #f87171; }
+  .tag.purple { background: rgba(167,139,250,0.15); color: #a78bfa; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #475569;
+    font-size: 12px;
+    border-top: 1px solid #1e293b;
+    margin-top: 28px;
+  }
+
+  /* Lists */
+  ul { list-style: none; padding: 0; }
+  ul li { 
+    padding: 8px 0;
+    border-bottom: 1px solid #1a1f2e;
+    color: #cbd5e1;
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  ul li:last-child { border-bottom: none; }
+  ul li .bullet { color: #60a5fa; flex-shrink: 0; }
+
+  @media (max-width: 640px) {
+    .container { padding: 12px; }
+    .header { padding: 24px 20px; }
+    .header h1 { font-size: 26px; }
+    .card { padding: 20px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .verdict-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-badge">🏘️ Area Intelligence Report</div>
+    <h1>WV12 <span>Willenhall</span></h1>
+    <p class="subtitle">Metropolitan Borough of Walsall, West Midlands — Black Country</p>
+    <div class="meta-grid">
+      <div class="meta-item">📅 <strong>Report Date:</strong> May 2026</div>
+      <div class="meta-item">📍 <strong>Distance from Dudley:</strong> ~6 miles SE</div>
+      <div class="meta-item">🗺️ <strong>Constituency:</strong> Walsall North</div>
+      <div class="meta-item">🏛️ <strong>Post Town:</strong> WILLENHALL</div>
+    </div>
+  </div>
+
+  <!-- KPI GRID -->
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="value">£219k</div>
+      <div class="label">Avg Sold Price (12m)</div>
+    </div>
+    <div class="kpi">
+      <div class="value green">£1,079</div>
+      <div class="label">Avg Rent (house/pcm)</div>
+    </div>
+    <div class="kpi">
+      <div class="value amber">5.9%</div>
+      <div class="label">Gross Rental Yield</div>
+    </div>
+    <div class="kpi">
+      <div class="value purple">49,587</div>
+      <div class="label">Town Population</div>
+    </div>
+    <div class="kpi">
+      <div class="value">£29,405</div>
+      <div class="label">Avg Household Income</div>
+    </div>
+    <div class="kpi">
+      <div class="value red">118%</div>
+      <div class="label">Crime Rate vs National</div>
+    </div>
+  </div>
+
+  <!-- AREA OVERVIEW -->
+  <div class="card">
+    <h2><span class="icon">📍</span> Area Overview</h2>
+    <p style="color: #94a3b8; margin-bottom: 14px; font-size: 14px;">
+      Willenhall is a historic market town in the Metropolitan Borough of Walsall, West Midlands, lying between 
+      Wolverhampton (3 miles NW) and Walsall (3 miles E). It sits on the River Tame and is part of the Black 
+      Country, historically famous for lock and key manufacturing. The WV12 postcode covers the Short Heath, 
+      New Invention, Beechdale, and Portobello neighbourhoods. The town has a large Sikh community (10.5%) 
+      and is ethnically diverse. A major catalyst is the <strong>new Willenhall railway station</strong> which 
+      opened on 19 March 2026 on the Walsall-Wolverhampton line, providing direct rail access for the first 
+      time since 1965.
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
+      <span class="tag blue">Historic market town</span>
+      <span class="tag green">New railway station 2026</span>
+      <span class="tag blue">Black Country</span>
+      <span class="tag amber">Regeneration zone</span>
+      <span class="tag purple">Lock-making heritage</span>
+    </div>
+  </div>
+
+  <!-- DEMOGRAPHICS -->
+  <div class="card">
+    <h2><span class="icon">👥</span> Demographics &amp; Population</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div>
+        <table>
+          <tr><th>Metric</th><th>Value</th></tr>
+          <tr><td>Total Population (WV12)</td><td>15,362</td></tr>
+          <tr><td>Willenhall Built-Up Area</td><td>49,587</td></tr>
+          <tr><td>Avg Household Income</td><td>£29,405</td></tr>
+          <tr><td>National Avg Income</td><td>£37,863</td></tr>
+          <tr><td>Home Ownership</td><td>67.3%</td></tr>
+          <tr><td>Private Renters</td><td>12.8%</td></tr>
+          <tr><td>Unemployment Rate</td><td>6.0%</td></tr>
+          <tr><td>Economically Inactive</td><td>42.3%</td></tr>
+        </table>
+      </div>
+      <div>
+        <table>
+          <tr><th>Age Band</th><th>%</th></tr>
+          <tr><td>0–17</td><td>21.2%</td></tr>
+          <tr><td>18–29</td><td>13.6%</td></tr>
+          <tr><td>30–44</td><td>18.4%</td></tr>
+          <tr><td>45–64</td><td>25.6% (largest)</td></tr>
+          <tr><td>65+</td><td>21.2%</td></tr>
+        </table>
+        <div style="margin-top: 12px;">
+          <table>
+            <tr><th>Ethnicity</th><th>%</th></tr>
+            <tr><td>White</td><td>83.3%</td></tr>
+            <tr><td>Asian / Asian British</td><td>12.5%</td></tr>
+            <tr><td>Mixed / Black / Other</td><td>4.2%</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOUSE PRICES -->
+  <div class="card">
+    <h2><span class="icon">🏠</span> Sold Prices &amp; Property Market</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div>
+        <table>
+          <tr><th>Metric</th><th>Value</th></tr>
+          <tr><td>Avg Price WV12 (12m, Zoopla)</td><td><strong>£218,688</strong></td></tr>
+          <tr><td>Avg Price Willenhall (12m, Zoopla)</td><td>£203,601</td></tr>
+          <tr><td>Avg Price (Rightmove, WV12)</td><td>£224,056</td></tr>
+          <tr><td>Avg Detached</td><td>£285,500</td></tr>
+          <tr><td>Avg Semi-Detached</td><td>~£241,250</td></tr>
+          <tr><td>Avg Terraced</td><td>~£220,000</td></tr>
+          <tr><td>Avg Time on Market</td><td>8 weeks</td></tr>
+        </table>
+      </div>
+      <div>
+        <table>
+          <tr><th>Property Type Mix</th><th>%</th></tr>
+          <tr><td>Semi-Detached</td><td>52%</td></tr>
+          <tr><td>Terraced</td><td>33%</td></tr>
+          <tr><td>Detached</td><td>13%</td></tr>
+          <tr><td>Other (flats, etc.)</td><td>3%</td></tr>
+        </table>
+        <div style="margin-top: 14px; background: #0f172a; border-radius: 10px; padding: 14px;">
+          <p style="color: #94a3b8; font-size: 13px;">
+            <strong style="color: #e2e8f0;">📈 Trend:</strong> House prices in WV12 have shown 
+            steady growth of approximately 3-5% YoY. The reopening of the railway station (March 2026) 
+            is expected to further support price appreciation as commuter demand increases.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RENTAL MARKET -->
+  <div class="card">
+    <h2><span class="icon">🔑</span> Rental Market &amp; Yields</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div>
+        <table>
+          <tr><th>Metric</th><th>Value</th></tr>
+          <tr><td>Avg House Rent (Willenhall)</td><td><strong>£1,214 pcm</strong></td></tr>
+          <tr><td>Avg Rent WV12 (houses)</td><td><strong>£1,079 pcm</strong></td></tr>
+          <tr><td>Avg Rent WV12 (flats)</td><td><strong>£767 pcm</strong></td></tr>
+          <tr><td>2-bed House</td><td>£947 pcm</td></tr>
+          <tr><td>3-bed House</td><td>£1,109 pcm</td></tr>
+          <tr><td>4-bed House</td><td>£1,341 pcm</td></tr>
+          <tr><td>1-bed Flat</td><td>£699 pcm</td></tr>
+          <tr><td>2-bed Flat</td><td>£830 pcm</td></tr>
+        </table>
+      </div>
+      <div>
+        <table>
+          <tr><th>Yield Metric</th><th>Estimate</th></tr>
+          <tr><td>Gross Yield (3-bed house)</td><td><strong>~6.1%</strong></td></tr>
+          <tr><td>Gross Yield (2-bed house)</td><td><strong>~5.9%</strong></td></tr>
+          <tr><td>Gross Yield (1-bed flat)</td><td><strong>~6.5%</strong></td></tr>
+          <tr><td>Reported Range (WV12)</td><td>6.6% – 8.9%</td></tr>
+        </table>
+        <div style="margin-top: 14px; background: #0f172a; border-radius: 10px; padding: 14px;">
+          <p style="color: #94a3b8; font-size: 13px;">
+            <strong style="color: #e2e8f0;">💡 Note:</strong> WV12 is the <strong>cheapest area</strong> for 
+            house rentals in Willenhall. With 74% of properties having gardens and 76% with parking, 
+            tenant demand is strong. The new station boosts commuter rental appeal.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRIME -->
+  <div class="card">
+    <h2><span class="icon">🚔</span> Crime &amp; Safety</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div>
+        <table>
+          <tr><th>Metric</th><th>WV12 / Walsall</th></tr>
+          <tr><td>Walsall Crime Rate (per 1,000)</td><td><strong>151</strong> (2022, overall)</td></tr>
+          <tr><td>Violent Crime Rate (WV area)</td><td>43.4 per 1,000</td></tr>
+          <tr><td>% of National Crime Rate</td><td>118% (Walsall) / 123% (WV area)</td></tr>
+          <tr><td>Most Common Crime</td><td>Violence &amp; Sexual Offences</td></tr>
+          <tr><td>Annual Trend</td><td><span class="tag green">-2.7% YoY (declining)</span></td></tr>
+        </table>
+      </div>
+      <div>
+        <p style="color: #94a3b8; font-size: 13px; line-height: 1.7;">
+          Walsall is the <strong>second most dangerous major town</strong> in the West Midlands. 
+          However, crime in the Wolverhampton postcode area has been <strong>declining</strong> 
+          (-2.7% year-on-year for violent crime). WV12 covers more residential suburban areas 
+          (Short Heath, New Invention) which tend to have lower crime rates than the town centre. 
+          Standard urban precautions apply — good security, well-lit properties, and tenant vetting 
+          are recommended.
+        </p>
+        <div style="margin-top: 12px;">
+          <span class="tag red">Above national average</span>
+          <span class="tag green">Trend improving</span>
+          <span class="tag amber">Suburban areas safer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHOOLS -->
+  <div class="card">
+    <h2><span class="icon">📚</span> Nearby Schools (Ofsted Ratings)</h2>
+    <table>
+      <tr><th>School</th><th>Phase</th><th>Ofsted Rating</th><th>Snobe Grade</th><th>Student:Teacher</th></tr>
+      <tr>
+        <td>Beacon Primary School</td>
+        <td>Primary (2–11)</td>
+        <td class="rating Outstanding">Outstanding</td>
+        <td>A-</td>
+        <td>17:1</td>
+      </tr>
+      <tr>
+        <td>Lodge Farm Primary School</td>
+        <td>Primary (2–11)</td>
+        <td class="rating Good">Good</td>
+        <td>A-</td>
+        <td>24:1</td>
+      </tr>
+      <tr>
+        <td>Short Heath Junior School</td>
+        <td>Primary (7–11)</td>
+        <td class="rating Good">Good</td>
+        <td>B</td>
+        <td>16:1</td>
+      </tr>
+      <tr>
+        <td>Pool Hayes Academy</td>
+        <td>Secondary (11–18)</td>
+        <td class="rating Good">Good</td>
+        <td>B-</td>
+        <td>20:1</td>
+      </tr>
+      <tr>
+        <td>Woodlands Academy of Learning</td>
+        <td>Primary (3–11)</td>
+        <td class="rating Good">Good</td>
+        <td>B-</td>
+        <td>22:1</td>
+      </tr>
+      <tr>
+        <td>New Invention Infant School</td>
+        <td>Infant (3–7)</td>
+        <td class="rating Good">Good</td>
+        <td>C-</td>
+        <td>25:1</td>
+      </tr>
+      <tr>
+        <td>Willenhall E-ACT Academy</td>
+        <td>Secondary (11–18)</td>
+        <td class="rating Requires">Requires Improvement</td>
+        <td>B-</td>
+        <td>18:1</td>
+      </tr>
+      <tr>
+        <td>Pool Hayes Primary School</td>
+        <td>Primary (3–11)</td>
+        <td class="rating Requires">Requires Improvement</td>
+        <td>B-</td>
+        <td>20:1</td>
+      </tr>
+    </table>
+    <div style="margin-top: 14px; background: #0f172a; border-radius: 10px; padding: 14px;">
+      <p style="color: #94a3b8; font-size: 13px;">
+        <strong style="color: #e2e8f0;">Summary:</strong> 1 Outstanding, 5 Good, 2 Requires Improvement. 
+        Beacon Primary is the standout school. Secondary options are mixed — Pool Hayes Academy is Good, 
+        while Willenhall E-ACT needs improvement. Overall, decent schooling for families with primary-aged 
+        children.
+      </p>
+    </div>
+  </div>
+
+  <!-- TRANSPORT -->
+  <div class="card">
+    <h2><span class="icon">🚆</span> Transport Links</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div>
+        <h3 style="color: #f1f5f9; font-size: 14px; font-weight: 600; margin-bottom: 10px;">🚄 Rail</h3>
+        <ul>
+          <li><span class="bullet">✅</span> <strong>Willenhall Station</strong> — reopened 19 March 2026 on the Walsall–Wolverhampton line</li>
+          <li><span class="bullet">✅</span> Direct services to Birmingham New Street (~30 min), Wolverhampton (~8 min), Walsall (~6 min)</li>
+          <li><span class="bullet">✅</span> West Midlands Metro extension ("5 W's" route) proposed</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="color: #f1f5f9; font-size: 14px; font-weight: 600; margin-bottom: 10px;">🚌 Bus</h3>
+        <ul>
+          <li><span class="bullet">✅</span> Route 529: Walsall–Wolverhampton (every 7–10 min weekdays)</li>
+          <li><span class="bullet">✅</span> Routes: 57, 59, 69, 703, 9 to surrounding areas</li>
+          <li><span class="bullet">✅</span> Operators: National Express WM, Diamond, Chaserider</li>
+        </ul>
+        <h3 style="color: #f1f5f9; font-size: 14px; font-weight: 600; margin: 14px 0 10px;">🚗 Road</h3>
+        <ul>
+          <li><span class="bullet">✅</span> M6 Junction 10 — ~5 min drive</li>
+          <li><span class="bullet">✅</span> A454 (Black Country Route) — main arterial road</li>
+          <li><span class="bullet">✅</span> Easy access to Wolverhampton, Walsall, Birmingham, and M54</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top: 14px; background: #0f172a; border-radius: 10px; padding: 14px;">
+      <p style="color: #94a3b8; font-size: 13px;">
+        <strong style="color: #e2e8f0;">🚉 Major Catalyst:</strong> The reopening of Willenhall railway station 
+        (March 2026) is transformative. It's the first rail service since 1965 and directly connects the town 
+        to Birmingham, Wolverhampton, and Walsall. This significantly boosts commuter appeal and is likely to 
+        drive property price and rental growth.
+      </p>
+    </div>
+  </div>
+
+  <!-- PLANNING & DEVELOPMENT -->
+  <div class="card">
+    <h2><span class="icon">🏗️</span> Planning &amp; Developments</h2>
+    <ul>
+      <li><span class="bullet">✅</span> <strong>Willenhall Railway Station</strong> — £multi-million project, opened March 2026, transforming connectivity</li>
+      <li><span class="bullet">✅</span> <strong>58 houses + 48 apartments</strong> — outline planning permission granted for town centre redevelopment</li>
+      <li><span class="bullet">✅</span> <strong>£2.1 million Heritage Lottery bid</strong> — for town centre building enhancements in conservation area</li>
+      <li><span class="bullet">✅</span> <strong>Bilston Street corridor</strong> — major roadworks and improvements underway</li>
+      <li><span class="bullet">✅</span> <strong>Former Yale factory site</strong> — now Morrisons supermarket (2010), area continues to regenerate</li>
+    </ul>
+    <div style="margin-top: 14px; background: #0f172a; border-radius: 10px; padding: 14px;">
+      <p style="color: #94a3b8; font-size: 13px;">
+        <strong style="color: #e2e8f0;">📊 Impact:</strong> Significant regeneration activity. The railway 
+        station is the biggest catalyst for property investment in Willenhall in decades. Combined with 
+        new housing approvals and heritage funding, the area is on an upward trajectory.
+      </p>
+    </div>
+  </div>
+
+  <!-- AMENITIES -->
+  <div class="card">
+    <h2><span class="icon">🛒</span> Local Amenities</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div>
+        <h3 style="color: #f1f5f9; font-size: 14px; font-weight: 600; margin-bottom: 10px;">🛍️ Shopping</h3>
+        <ul>
+          <li><span class="bullet">•</span> Morrisons Superstore (large, town centre)</li>
+          <li><span class="bullet">•</span> Tesco Superstore</li>
+          <li><span class="bullet">•</span> Two retail parks</li>
+          <li><span class="bullet">•</span> Willenhall Market Place (historic)</li>
+          <li><span class="bullet">•</span> Boundary Mill store nearby</li>
+          <li><span class="bullet">•</span> Poundland distribution hub</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="color: #f1f5f9; font-size: 14px; font-weight: 600; margin-bottom: 10px;">🏥 Healthcare</h3>
+        <ul>
+          <li><span class="bullet">•</span> Advance Healthcare UK (head office)</li>
+          <li><span class="bullet">•</span> Multiple GP surgeries in Willenhall</li>
+          <li><span class="bullet">•</span> Willow Rose Care Home (luxury, 73 beds)</li>
+          <li><span class="bullet">•</span> Walsall Manor Hospital (~4 miles)</li>
+          <li><span class="bullet">•</span> New Cross Hospital, Wolverhampton (~3 miles)</li>
+        </ul>
+        <h3 style="color: #f1f5f9; font-size: 14px; font-weight: 600; margin: 14px 0 10px;">🎭 Leisure &amp; Culture</h3>
+        <ul>
+          <li><span class="bullet">•</span> The Locksmith's House (museum)</li>
+          <li><span class="bullet">•</span> Willenhall Park &amp; Bandstand</li>
+          <li><span class="bullet">•</span> Wetherspoon's (former Dale cinema)</li>
+          <li><span class="bullet">•</span> St Giles Church</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVESTMENT VERDICT -->
+  <div class="card">
+    <h2><span class="icon">📊</span> Investment Verdict</h2>
+    <div class="verdict-grid">
+      <div class="verdict-box good">
+        <div class="emoji">🔄</div>
+        <div class="title">GOOD for BRRR</div>
+        <div class="desc">
+          Average prices under £220k with strong rental demand. Good refinance potential as railway station 
+          drives capital growth. 67% owner-occupier base supports market stability.
+        </div>
+      </div>
+      <div class="verdict-box good">
+        <div class="emoji">🏦</div>
+        <div class="title">GOOD for BTL</div>
+        <div class="desc">
+          Gross yields of 5.9–6.5% are solid for the West Midlands. New station boosts commuter tenant 
+          demand. Affordable entry prices with decent capital growth prospects. 3-bed semis are the sweet spot.
+        </div>
+      </div>
+      <div class="verdict-box caution">
+        <div class="emoji">🏘️</div>
+        <div class="title">CAUTION for HMO</div>
+        <div class="desc">
+          Moderate potential near town centre. High owner-occupation (67%) limits HMO saturation. 
+          Licensing required. Better HMO opportunities in WV1/WV2 (city centre). Yields would need 
+          careful underwriting.
+        </div>
+      </div>
+      <div class="verdict-box caution">
+        <div class="emoji">❌</div>
+        <div class="title">NOT AVOID — But Cautious</div>
+        <div class="desc">
+          Crime is above national average (118%). Income levels below national average. 
+          But declining crime trend, new infrastructure, and regeneration make this a 
+          <strong>turnaround opportunity</strong> rather than a pure avoid.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY BOX -->
+  <div class="card" style="border-color: #3b82f6; background: linear-gradient(135deg, rgba(59,130,246,0.08), #0f172a);">
+    <h2><span class="icon">💎</span> Final Summary</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+      <div>
+        <p style="color: #e2e8f0; font-size: 14px; font-weight: 600;">🏆 Key Strengths</p>
+        <ul>
+          <li><span class="bullet">✅</span> New railway station (March 2026) — transformational</li>
+          <li><span class="bullet">✅</span> Affordable entry prices — avg £219k</li>
+          <li><span class="bullet">✅</span> Solid rental yields — 5.9% to 6.5%</li>
+          <li><span class="bullet">✅</span> Regeneration momentum — new housing, heritage funding</li>
+          <li><span class="bullet">✅</span> Good primary schools — Beacon Outstanding</li>
+          <li><span class="bullet">✅</span> M6 J10 proximity — excellent road links</li>
+          <li><span class="bullet">✅</span> 67% owner-occupation — stable community</li>
+        </ul>
+      </div>
+      <div>
+        <p style="color: #e2e8f0; font-size: 14px; font-weight: 600;">⚠️ Key Risks</p>
+        <ul>
+          <li><span class="bullet">🔴</span> Crime above national average (118%)</li>
+          <li><span class="bullet">🔴</span> Income below national average (£29k vs £38k)</li>
+          <li><span class="bullet">🔴</span> Secondary schools need improvement</li>
+          <li><span class="bullet">🔴</span> Higher economic inactivity (42.3%)</li>
+          <li><span class="bullet">🔴</span> Historic town — some older housing stock needs work</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top: 18px; padding: 16px; background: #0f172a; border-radius: 12px; border: 1px solid #1e293b;">
+      <p style="color: #f1f5f9; font-size: 15px; font-weight: 600; margin-bottom: 6px;">
+        🎯 Best Investment Strategy
+      </p>
+      <p style="color: #94a3b8; font-size: 13px;">
+        <strong>BRRR / BTL</strong> — Target 3-bed semi-detached properties under £200k needing cosmetic 
+        refurbishment. Add value through kitchen/bathroom upgrades. Rent at £1,050–1,150 pcm. Hold for 
+        3-5 years to capture railway station-driven appreciation. Refinance at 75% LTV after value uplift. 
+        Focus on the Short Heath and New Invention neighbourhoods for lower crime and better schools.
+      </p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>🏘️ West Midlands Area Intelligence · Hermes Agent · Automated 3-Hourly Run</p>
+    <p style="margin-top: 4px;">Data sourced from Zoopla, Rightmove, Ofsted, ONS, Plumplot, Locara, Hutch, Wikipedia · May 2026</p>
+    <p style="margin-top: 4px;">WV12 · Willenhall · Metropolitan Borough of Walsall</p>
+  </div>
+
+</div>
+</body>
+</html>

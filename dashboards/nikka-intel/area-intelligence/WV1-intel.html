@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WV1 Area Intelligence — Wolverhampton City Centre</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0f;
+    color: #e0e0e0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+  /* HEADER */
+  .header {
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid #1e1e2a;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 120px;
+    height: 3px;
+    background: linear-gradient(90deg, #f59e0b, #ef4444, #8b5cf6);
+    border-radius: 2px;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(245, 158, 11, 0.12);
+    color: #f59e0b;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    margin-bottom: 1rem;
+  }
+  .header h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+  .header h1 span { color: #f59e0b; }
+  .header .subtitle {
+    font-size: 1.1rem;
+    color: #888;
+    margin-top: 0.75rem;
+    font-weight: 300;
+  }
+  .header .meta {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    color: #666;
+  }
+  .header .meta span strong { color: #aaa; font-weight: 500; }
+
+  /* STAT CARDS */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .stat-card {
+    background: #11111a;
+    border: 1px solid #1e1e2a;
+    border-radius: 12px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: #2a2a3a; }
+  .stat-card .value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .stat-card .value.gold { color: #f59e0b; }
+  .stat-card .value.green { color: #22c55e; }
+  .stat-card .value.red { color: #ef4444; }
+  .stat-card .value.blue { color: #60a5fa; }
+  .stat-card .value.purple { color: #a78bfa; }
+  .stat-card .label {
+    font-size: 0.72rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 0.4rem;
+    font-weight: 500;
+  }
+
+  /* SECTIONS */
+  .section {
+    background: #0e0e16;
+    border: 1px solid #1a1a26;
+    border-radius: 14px;
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .section h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section h2 .icon { font-size: 1.2rem; }
+  .section p, .section li { color: #b0b0b8; font-size: 0.95rem; }
+  .section ul { padding-left: 1.3rem; }
+  .section ul li { margin-bottom: 0.4rem; }
+  .section ul li strong { color: #d0d0d8; }
+
+  /* DATA ROWS */
+  .data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #16161f;
+    font-size: 0.92rem;
+  }
+  .data-row:last-child { border-bottom: none; }
+  .data-row .key { color: #777; }
+  .data-row .val { color: #d0d0d8; font-weight: 500; text-align: right; }
+
+  /* TWO COLUMN */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* VERDICT BOX */
+  .verdict-box {
+    border-radius: 14px;
+    padding: 2rem;
+    margin-top: 0.5rem;
+    border: 1px solid #1a1a26;
+  }
+  .verdict-box.gold {
+    background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(245,158,11,0.02));
+    border-color: rgba(245,158,11,0.25);
+  }
+  .verdict-box h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .verdict-box.gold h3 { color: #f59e0b; }
+  .verdict-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0; }
+  .tag {
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .tag.gold { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+  .tag.green { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+  .tag.blue { background: rgba(96,165,250,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
+
+  .rating-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0.4rem 0;
+  }
+  .rating-bar .label { color: #888; font-size: 0.85rem; min-width: 80px; }
+  .rating-bar .track {
+    flex: 1;
+    height: 6px;
+    background: #1a1a26;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .rating-bar .fill {
+    height: 100%;
+    border-radius: 3px;
+  }
+  .rating-bar .pct { color: #aaa; font-size: 0.8rem; min-width: 35px; text-align: right; }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #1a1a26;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #555;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0a0a0f; }
+  ::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-badge">🏘️ Area Intelligence · 3-Hourly Run</div>
+    <h1>WV1 <span>Wolverhampton</span> City Centre</h1>
+    <div class="subtitle">Comprehensive area profile for property investment analysis — postcode district WV1</div>
+    <div class="meta">
+      <span><strong>📍 Location:</strong> 14 mi NW of Dudley · West Midlands</span>
+      <span><strong>🗓️ Report:</strong> May 2026</span>
+      <span><strong>📊 Data:</strong> ONS · Plumplot · Zoopla · Ofsted · PropertyInvestmentsUK</span>
+    </div>
+  </div>
+
+  <!-- KEY STATS -->
+  <div class="stat-grid">
+    <div class="stat-card"><div class="value gold">33,767</div><div class="label">WV1 Population</div></div>
+    <div class="stat-card"><div class="value gold">£197.7k</div><div class="label">Avg Sold Price (12mo)</div></div>
+    <div class="stat-card"><div class="value green">£815</div><div class="label">Avg Monthly Rent</div></div>
+    <div class="stat-card"><div class="value green">5.4%</div><div class="label">Gross Rental Yield</div></div>
+    <div class="stat-card"><div class="value gold">£180k</div><div class="label">Avg Asking Price</div></div>
+    <div class="stat-card"><div class="value red">43.4/1k</div><div class="label">Crime Rate (City)</div></div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="section">
+    <h2><span class="icon">📍</span> Area Overview</h2>
+    <p><strong>WV1</strong> is Wolverhampton's city centre postcode district — the commercial, civic, and transport heart of the City of Wolverhampton. It sits approximately <strong>14 miles northwest of Dudley</strong> and is part of the wider West Midlands conurbation. The area encompasses the commercial core (Mander Centre, Wulfrun Centre), the University of Wolverhampton's <strong>City Campus</strong> (30,200+ students), Wolverhampton Railway Station, Molineux Stadium (home of Wolves FC), and key civic buildings including the Civic Centre and Art Gallery.</p>
+    <br>
+    <p>WV1 is <strong>the most affordable entry point</strong> for property investment across all 8 Wolverhampton postcodes, with the lowest asking prices (£180k avg) and the highest gross rental yields (5.4%, tied with WV11). The area is in the middle of a <strong>major regeneration wave</strong> including the Smithgate build-to-rent scheme, City Centre West masterplan, and Mander Centre improvements, making it one of the most dynamic investment locations in the West Midlands.</p>
+  </div>
+
+  <!-- TWO COLUMN: DEMOGRAPHICS + CRIME -->
+  <div class="two-col">
+    <div class="section">
+      <h2><span class="icon">👥</span> Demographics</h2>
+      <div class="data-row"><span class="key">Total Population (WV1)</span><span class="val">33,767</span></div>
+      <div class="data-row"><span class="key">Avg Household Income</span><span class="val">£29,603</span></div>
+      <div class="data-row"><span class="key">Largest Age Band</span><span class="val">0-17 (23.5%)</span></div>
+      <div class="data-row"><span class="key">Young Adults (18-29)</span><span class="val">20.2% (vs 14.9% nat'l)</span></div>
+      <div class="data-row"><span class="key">Aged 65+</span><span class="val">11.0% (vs 18.6% nat'l)</span></div>
+      <div class="data-row"><span class="key">Unemployment Rate</span><span class="val">12.8% (vs 3.4% nat'l)</span></div>
+      <div class="data-row"><span class="key">White Ethnicity</span><span class="val">48.5% (vs 81.7% nat'l)</span></div>
+      <div class="data-row"><span class="key">Asian Ethnicity</span><span class="val">23.1% (vs 9.3% nat'l)</span></div>
+      <div class="data-row"><span class="key">Owner-Occupied</span><span class="val">32.8% (vs 61.6% nat'l)</span></div>
+      <div class="data-row"><span class="key">Social Rented</span><span class="val">34.2% (vs 17.1% nat'l)</span></div>
+      <div class="data-row"><span class="key">Private Rented</span><span class="val">31.9% (vs 20.3% nat'l)</span></div>
+      <div class="data-row"><span class="key">City Population (2021)</span><span class="val">263,727 (+5.71% 10yr)</span></div>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">🚨</span> Crime Analysis</h2>
+      <div class="data-row"><span class="key">Annual Crime Rate (City)</span><span class="val">43.4 per 1,000</span></div>
+      <div class="data-row"><span class="key">vs National Rate</span><span class="val red">123% (18th highest of 99)</span></div>
+      <div class="data-row"><span class="key">Violent Crime Share</span><span class="val">42.5% (nat'l 35.3%)</span></div>
+      <div class="data-row"><span class="key">Total Violent Crimes</span><span class="val">16,600 (May 25-Apr 26)</span></div>
+      <div class="data-row"><span class="key">YoY Change</span><span class="val green">-2.7% (nat'l +1.3%)</span></div>
+      <br>
+      <p><strong>⚠️ WV1 sectors are the most crime-heavy:</strong></p>
+      <div class="data-row"><span class="key">WV1 3 (City Centre Core)</span><span class="val red">238% of nat'l rate</span></div>
+      <div class="data-row"><span class="key">WV1 1 (City Centre North)</span><span class="val red">181% of nat'l rate</span></div>
+      <br>
+      <p style="font-size:0.85rem; color:#888;">Crime is <strong>trending downward</strong> (-2.7% YoY) while the national rate rises. City centre crime is concentrated around nightlife, retail, and transport hubs — standard for any UK city centre. Residential streets on the periphery of WV1 see lower rates.</p>
+    </div>
+  </div>
+
+  <!-- PROPERTY MARKET -->
+  <div class="section">
+    <h2><span class="icon">🏠</span> Property Market</h2>
+    <div class="two-col">
+      <div>
+        <div class="data-row"><span class="key">Avg Sold Price (12mo)</span><span class="val gold">£197,713</span></div>
+        <div class="data-row"><span class="key">Avg Asking Price</span><span class="val gold">£180,262</span></div>
+        <div class="data-row"><span class="key">Price per sq ft</span><span class="val">£186 (lowest in Wolverhampton)</span></div>
+        <div class="data-row"><span class="key">5-Year Price Growth</span><span class="val green">+28.3%</span></div>
+        <div class="data-row"><span class="key">1-Year Change</span><span class="val red">-3.6%</span></div>
+        <div class="data-row"><span class="key">Monthly Sales</span><span class="val">8 (turnover: 31%)</span></div>
+        <div class="data-row"><span class="key">City Avg Price</span><span class="val">£214,304 (Feb 2026)</span></div>
+        <div class="data-row"><span class="key">vs England Avg</span><span class="val green">-26.9% discount</span></div>
+      </div>
+      <div>
+        <div class="data-row"><span class="key">Detached Avg</span><span class="val">£340,157</span></div>
+        <div class="data-row"><span class="key">Semi-Detached Avg</span><span class="val">£228,807</span></div>
+        <div class="data-row"><span class="key">Terraced Avg</span><span class="val">£183,598</span></div>
+        <div class="data-row"><span class="key">Flat/Maisonette Avg</span><span class="val gold">£113,097 (-48.9% vs Eng)</span></div>
+        <div class="data-row"><span class="key">Entry Deposit (30%)</span><span class="val">from £54,079</span></div>
+        <div class="data-row"><span class="key">First-Time Buyer Avg</span><span class="val">£196,000 (city)</span></div>
+        <div class="data-row"><span class="key">Avg Monthly Rent</span><span class="val green">£815 (WV1)</span></div>
+        <div class="data-row"><span class="key">City Avg Rent</span><span class="val">£928 (Mar 2026, +11.9% YoY)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RENTAL & YIELD -->
+  <div class="section">
+    <h2><span class="icon">📈</span> Rental Market &amp; Yield</h2>
+    <div class="two-col">
+      <div>
+        <div class="data-row"><span class="key">Gross Rental Yield (WV1)</span><span class="val green">5.4%</span></div>
+        <div class="data-row"><span class="key">HMO Yield Potential</span><span class="val green">up to 8.1%</span></div>
+        <div class="data-row"><span class="key">City Avg Yield</span><span class="val green">5.4% (all postcodes)</span></div>
+        <div class="data-row"><span class="key">WV1 Monthly Rent</span><span class="val green">£815</span></div>
+        <div class="data-row"><span class="key">WV11 Monthly Rent (highest)</span><span class="val">£1,089</span></div>
+        <div class="data-row"><span class="key">Rent Growth (City YoY)</span><span class="val green">+11.9%</span></div>
+      </div>
+      <div>
+        <p><strong>Tenant Demand Drivers:</strong></p>
+        <ul>
+          <li><strong>University of Wolverhampton</strong> — 30,200+ students, City Campus in WV1</li>
+          <li><strong>Young professionals</strong> — commuting to Birmingham (15-20 min train)</li>
+          <li><strong>i54 Business Park</strong> — Jaguar Land Rover &amp; advanced manufacturing, 1,000+ new jobs</li>
+          <li><strong>Affordable alternative</strong> to Birmingham for renters</li>
+        </ul>
+        <br>
+        <p><strong>Best property types for WV1:</strong></p>
+        <ul>
+          <li>1-2 bed apartments near station — high professional demand</li>
+          <li>HMOs near University City Campus — yields approaching 8%</li>
+          <li>City centre flats in new build-to-rent schemes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHOOLS -->
+  <div class="section">
+    <h2><span class="icon">🎓</span> Schools &amp; Education</h2>
+    <p><strong>96% of Wolverhampton schools</strong> are rated Good or Outstanding by Ofsted (69 primary schools). The city has <strong>23 Outstanding-rated schools</strong>.</p>
+    <br>
+    <div class="two-col">
+      <div>
+        <p><strong>🏆 Outstanding Schools (near WV1):</strong></p>
+        <ul>
+          <li>St Michael's CofE Aided Primary School</li>
+          <li>Holy Trinity Catholic Primary School</li>
+          <li>East Park Academy</li>
+          <li>Heath Park (Secondary, Outstanding)</li>
+          <li>Moseley Park (Secondary, Outstanding)</li>
+          <li>Wolverhampton Girls' High School (Secondary, Outstanding)</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>📚 Good Schools (near WV1):</strong></p>
+        <ul>
+          <li>West Park Primary School</li>
+          <li>Dunstall Hill Primary School</li>
+          <li>Whitgreave Primary School</li>
+          <li>Bilston Church of England Primary School</li>
+        </ul>
+        <br>
+        <p><strong>🎓 University:</strong> University of Wolverhampton (City Campus in WV1) — 30,200+ students, major driver of rental demand</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSPORT -->
+  <div class="section">
+    <h2><span class="icon">🚆</span> Transport &amp; Connectivity</h2>
+    <div class="two-col">
+      <div>
+        <p><strong>🚄 Rail — Wolverhampton Station (in WV1):</strong></p>
+        <ul>
+          <li>West Coast Main Line — 6 platforms</li>
+          <li>Birmingham New Street: <strong>15-20 mins</strong></li>
+          <li>London Euston: <strong>&lt; 2 hours</strong></li>
+          <li>CrossCountry: Manchester, Edinburgh, Bristol, Cardiff</li>
+          <li>Frequent services to Shrewsbury, Telford, Walsall</li>
+        </ul>
+        <br>
+        <p><strong>🚊 Metro:</strong> West Midlands Metro tram line to Birmingham (via Bilston, Wednesbury, West Bromwich) — extension opened 2024</p>
+      </div>
+      <div>
+        <p><strong>🚌 Bus:</strong> Wolverhampton Bus Station in city centre — multiple routes across West Midlands</p>
+        <br>
+        <p><strong>🚗 Road:</strong></p>
+        <ul>
+          <li>M6 Junction 10: ~10 mins via A454</li>
+          <li>M54: via A449</li>
+          <li>A41, A449, A454 corridors</li>
+          <li>Birmingham: 25 mins by car</li>
+        </ul>
+        <br>
+        <p><strong>✈️ Air:</strong> Birmingham Airport ~25 miles (direct train from Wolverhampton station)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGENERATION -->
+  <div class="section">
+    <h2><span class="icon">🏗️</span> Regeneration &amp; Planning</h2>
+    <div class="two-col">
+      <div>
+        <p><strong>🔥 Major Developments:</strong></p>
+        <ul>
+          <li><strong>Smithgate</strong> — £83m Phase 1, 331 build-to-rent &amp; affordable apartments. <em>Under construction.</em></li>
+          <li><strong>Former M&amp;S Building</strong> — conversion into 71 apartments + 3 retail units. <em>Approved Jan 2026.</em></li>
+          <li><strong>City Centre West / Brewers Yard</strong> — hundreds of new homes, masterplan unveiled Feb 2026.</li>
+          <li><strong>Westside Regeneration</strong> — ongoing mixed-use development</li>
+          <li><strong>Mander Centre</strong> — improvements and refurbishment</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>💼 Economic Drivers:</strong></p>
+        <ul>
+          <li><strong>i54 Business Park</strong> — JLR, Moog, Unilever, 1,000+ new jobs in expansion</li>
+          <li><strong>The Halls Wolverhampton</strong> — record 230,000 visitors in 2024</li>
+          <li><strong>Grand Theatre</strong> — 300,000 visitors/year</li>
+          <li>260,000+ visitors to council-run events in 2025, £11m economic impact</li>
+          <li>West Midlands Combined Authority investment in Metro &amp; transport</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- AMENITIES -->
+  <div class="section">
+    <h2><span class="icon">🛍️</span> Local Amenities</h2>
+    <div class="two-col">
+      <div>
+        <p><strong>🛒 Shopping:</strong></p>
+        <ul>
+          <li>Mander Centre — major indoor shopping centre</li>
+          <li>Wulfrun Shopping Centre</li>
+          <li>Asda Wolverhampton Superstore (with pharmacy, opticians, cafe)</li>
+          <li>Various supermarkets, high street retailers, markets</li>
+        </ul>
+        <br>
+        <p><strong>🏥 Healthcare:</strong></p>
+        <ul>
+          <li>Royal Wolverhampton NHS Trust (New Cross Hospital)</li>
+          <li>Multiple GP surgeries and dental practices in city centre</li>
+          <li>Pharmacies: Asda, Boots, Lloyds</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>🎭 Leisure &amp; Culture:</strong></p>
+        <ul>
+          <li>Molineux Stadium — Wolves FC (Premier League)</li>
+          <li>Grand Theatre — West End shows, 300k visitors/yr</li>
+          <li>Light House Cinema &amp; Art Gallery — Pop Art collection</li>
+          <li>The Halls — concerts and events</li>
+          <li>West Park — historic Victorian park</li>
+          <li>Multiple gyms, restaurants, bars, cafes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVESTMENT VERDICT -->
+  <div class="verdict-box gold">
+    <h3>⚡ Investment Verdict — WV1 Wolverhampton City Centre</h3>
+    <div class="verdict-tags">
+      <span class="tag gold">✅ GOOD for BRRR</span>
+      <span class="tag gold">✅ GOOD for BTL</span>
+      <span class="tag gold">✅ GOOD for HMO</span>
+      <span class="tag green">✅ HIGH YIELD</span>
+      <span class="tag blue">✅ REGENERATION HOTSPOT</span>
+    </div>
+    <div class="two-col">
+      <div>
+        <p><strong>BRRR (Buy, Refurb, Refinance, Rent):</strong> Strong potential. Lowest asking prices in Wolverhampton (£180k avg), flats from £113k. Refurb opportunities in Victorian terraces and ex-local authority stock. 5-year growth of +28.3% supports equity release. 31% turnover rate limits stock availability but means less competition on purchases.</p>
+        <br>
+        <p><strong>BTL (Buy-to-Let):</strong> 5.4% gross yield is the joint-highest in Wolverhampton. University students + young professionals + commuters create diverse tenant demand. Rent growth of +11.9% YoY (citywide) is exceptional. £815 avg rent vs £180k purchase price = strong cashflow potential.</p>
+      </div>
+      <div>
+        <p><strong>HMO (House in Multiple Occupation):</strong> Excellent potential near University of Wolverhampton City Campus. HMO yields approaching <strong>8.1%</strong>. Student population of 30,200+ ensures consistent demand. Selective licensing applies — due diligence required on HMO licensing rules.</p>
+        <br>
+        <p><strong>⚠️ Risk Factors:</strong></p>
+        <ul>
+          <li>High crime rate (city centre sectors) — may deter some tenants</li>
+          <li>High unemployment (12.8%) and economic inactivity (41.3%)</li>
+          <li>-3.6% 1-year price dip (though +28.3% over 5 years)</li>
+          <li>Low monthly sales volume (8) = lower liquidity</li>
+          <li>High proportion of social housing (34.2%)</li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <p style="color:#f59e0b; font-weight:600; font-size:1.05rem; text-align:center;">🥇 TOP PICK: Best for HMO / student let near City Campus or city centre flats for young professionals. WV1 offers the best yield-to-entry-price ratio in Wolverhampton paired with major regeneration upside.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>🏘️ Hermes Agent — West Midlands Area Intelligence · 3-Hourly Cron Run</p>
+    <p>Data sourced from ONS, Plumplot, Zoopla, Home.co.uk, PropertyInvestmentsUK, Belvoir, Ofsted, Locara, Invest Wolverhampton · May 2026</p>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WV4 Area Intelligence — Penn / Warstones / Wolverhampton</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0e1a;
+    color: #e2e8f0;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    border-bottom: 3px solid #3b82f6;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(59,130,246,0.08) 0%, transparent 60%);
+    animation: pulse 8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  .header h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+  .header .subtitle {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    margin-top: 0.5rem;
+    font-weight: 300;
+    position: relative;
+  }
+  .header .badge {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.4rem 1.5rem;
+    background: rgba(59,130,246,0.2);
+    border: 1px solid rgba(59,130,246,0.4);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: #93c5fd;
+    position: relative;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+  /* KPI cards */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .kpi-card {
+    background: linear-gradient(145deg, #131b2e, #1a2337);
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .kpi-card:hover {
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59,130,246,0.15);
+  }
+  .kpi-card .value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #60a5fa;
+    margin-bottom: 0.3rem;
+  }
+  .kpi-card .label {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .kpi-card .trend { font-size: 0.8rem; margin-top: 0.3rem; }
+  .trend.up { color: #34d399; }
+  .trend.down { color: #f87171; }
+  .trend.neutral { color: #fbbf24; }
+
+  /* Verdict */
+  .verdict-banner {
+    background: linear-gradient(135deg, #064e3b, #065f46);
+    border: 1px solid #34d399;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .verdict-banner.warning {
+    background: linear-gradient(135deg, #451a03, #78350f);
+    border-color: #fbbf24;
+  }
+  .verdict-banner.caution {
+    background: linear-gradient(135deg, #1e3a5f, #1e40af);
+    border-color: #60a5fa;
+  }
+  .verdict-banner h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .verdict-banner.good h2 { color: #34d399; }
+  .verdict-banner.warning h2 { color: #fbbf24; }
+  .verdict-banner.caution h2 { color: #60a5fa; }
+  .verdict-banner p { color: #d1d5db; font-size: 1rem; }
+  .verdict-tags {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  .verdict-tag {
+    padding: 0.3rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .tag-yes { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid #34d399; }
+  .tag-no { background: rgba(248,113,113,0.15); color: #f87171; border: 1px solid #f87171; }
+  .tag-maybe { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid #fbbf24; }
+
+  /* Sections */
+  .section {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.2s;
+  }
+  .section:hover { border-color: #334155; }
+  .section h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section h3 .icon { font-size: 1.5rem; }
+  .section p, .section li { color: #cbd5e1; font-size: 0.95rem; }
+  .section ul { list-style: none; padding: 0; }
+  .section ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #1a2337;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .section ul li::before {
+    content: '▸';
+    color: #3b82f6;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  .section ul li:last-child { border-bottom: none; }
+
+  /* Table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+  }
+  .data-table th {
+    text-align: left;
+    padding: 0.7rem 0.8rem;
+    background: #1a2337;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #334155;
+  }
+  .data-table td {
+    padding: 0.7rem 0.8rem;
+    border-bottom: 1px solid #1e293b;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+  }
+  .data-table tr:hover td { background: rgba(59,130,246,0.05); }
+
+  /* Price bar */
+  .price-bar-container { margin: 0.8rem 0; }
+  .price-bar-label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.3rem; }
+  .price-bar-bg {
+    height: 8px;
+    background: #1e293b;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .price-bar-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  }
+
+  .map-placeholder {
+    background: #0f172a;
+    border: 1px dashed #334155;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.9rem;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    color: #475569;
+    font-size: 0.8rem;
+    border-top: 1px solid #1e293b;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 2.2rem; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .kpi-card .value { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏘️ WV4 Area Intelligence</h1>
+  <div class="subtitle">Penn · Warstones · Merry Hill · Parkfields — Wolverhampton South-West</div>
+  <div class="badge">📅 Compiled: May 2026 · West Midlands Area Intelligence</div>
+</div>
+
+<div class="container">
+
+  <!-- KPI Grid -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="value">£241K</div>
+      <div class="label">Avg. Sold Price</div>
+      <div class="trend up">+2.1% YoY</div>
+    </div>
+    <div class="kpi-card">
+      <div class="value">£900</div>
+      <div class="label">Avg. Monthly Rent</div>
+      <div class="trend up">+11.9% YoY (Citywide)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="value">~4.5%</div>
+      <div class="label">Gross Rental Yield</div>
+      <div class="trend neutral">Est. Mid-Range</div>
+    </div>
+    <div class="kpi-card">
+      <div class="value">36,500</div>
+      <div class="label">Est. Population</div>
+      <div class="trend up">+5.7% since 2011</div>
+    </div>
+    <div class="kpi-card">
+      <div class="value">88/1K</div>
+      <div class="label">Crime Rate</div>
+      <div class="trend down">-8% YoY Decline</div>
+    </div>
+    <div class="kpi-card">
+      <div class="value">97%</div>
+      <div class="label">Schools Good/Outstanding</div>
+      <div class="trend up">Above National Avg</div>
+    </div>
+  </div>
+
+  <!-- Investment Verdict -->
+  <div class="verdict-banner good">
+    <h2>✅ INVESTMENT VERDICT: GOOD</h2>
+    <p>WV4 offers solid fundamentals for property investment — affordable prices, strong rental demand, improving transport links, and good school catchments. The area's residential character (dominated by semi-detached homes) suits family tenants and professional commuters alike.</p>
+    <div class="verdict-tags">
+      <span class="verdict-tag tag-yes">✅ BRRR — GOOD</span>
+      <span class="verdict-tag tag-yes">✅ BTL — GOOD</span>
+      <span class="verdict-tag tag-maybe">⚠️ HMO — CAUTION</span>
+      <span class="verdict-tag tag-yes">✅ FAMILY — GOOD</span>
+    </div>
+  </div>
+
+  <!-- 1. Area Overview -->
+  <div class="section">
+    <h3><span class="icon">📍</span> Area Overview</h3>
+    <p><strong>WV4</strong> covers the south-western suburbs of Wolverhampton, centred on the historic village of <strong>Penn</strong>. It also includes <strong>Warstones</strong>, <strong>Merry Hill</strong>, and parts of <strong>Parkfields</strong>. The area is primarily residential, with large swathes of semi-detached and detached housing stock built mostly in the mid-to-late 20th century.</p>
+    <br>
+    <ul>
+      <li><strong>Location:</strong> ~2.5 miles south-west of Wolverhampton city centre; ~5 miles north-west of Dudley</li>
+      <li><strong>County:</strong> West Midlands (historically Staffordshire)</li>
+      <li><strong>Households:</strong> ~13,600</li>
+      <li><strong>Postcode District:</strong> WV4 4xx (primary sector)</li>
+      <li><strong>Character:</strong> Established suburbs with good green space — Penn Common, Warstones Park, Bantock Park nearby</li>
+      <li><strong>Local Authority:</strong> City of Wolverhampton Council</li>
+    </ul>
+  </div>
+
+  <!-- 2. Demographics -->
+  <div class="section">
+    <h3><span class="icon">👥</span> Demographics</h3>
+    <table class="data-table">
+      <tr><th>Metric</th><th>Value</th><th>Notes</th></tr>
+      <tr><td>Population (WV4 est. 2025)</td><td>~36,500</td><td>34,296 in 2011 census; Wolverhampton grew 5.7% by 2021</td></tr>
+      <tr><td>City Population (Wolverhampton)</td><td>263,727</td><td>2021 Census, up from 249,470 in 2011</td></tr>
+      <tr><td>Population Density</td><td>~4,200/km²</td><td>Suburban density — typical for West Midlands suburbs</td></tr>
+      <tr><td>Median Age</td><td>~39 years</td><td>Slightly older than city average (36) — family-oriented area</td></tr>
+      <tr><td>Average Household Income</td><td>~£38,000</td><td>Above Wolverhampton average but below national median</td></tr>
+      <tr><td>Tenure: Owner-Occupied</td><td>~62%</td><td>Above city average — strong owner-occupier base</td></tr>
+      <tr><td>Tenure: Private Rent</td><td>~18%</td><td>Growing — driven by affordability vs Birmingham</td></tr>
+    </table>
+  </div>
+
+  <!-- 3. Property & Prices -->
+  <div class="section">
+    <h3><span class="icon">🏠</span> Property Market & Sold Prices</h3>
+    <p>WV4 property prices sit above the Wolverhampton city average (~£214k) due to the area's desirable suburban character, good schools, and proximity to green space.</p>
+    <br>
+    <table class="data-table">
+      <tr><th>Metric</th><th>Value</th><th>Source</th></tr>
+      <tr><td>Average Sold Price (WV4, 2025-26)</td><td>£241,000 – £257,000</td><td>Zoopla / Rightmove</td></tr>
+      <tr><td>Median Sold Price (WV4)</td><td>£235,000</td><td>Property Lookup (1,049 transactions)</td></tr>
+      <tr><td>10-Year Price Growth</td><td>+53%</td><td>Land Registry (2016-2026)</td></tr>
+      <tr><td>YoY Change</td><td>+2.1%</td><td>Steady growth, not overheated</td></tr>
+      <tr><td>Wolverhampton Avg Price</td><td>£214,000 (Feb 2026)</td><td>ONS</td></tr>
+    </table>
+    <br>
+    <h4 style="color:#94a3b8; font-size:0.9rem; margin-bottom:0.8rem;">Property Type Mix</h4>
+    <div class="price-bar-container">
+      <div class="price-bar-label"><span>Semi-Detached (48%)</span><span>Avg: £234K</span></div>
+      <div class="price-bar-bg"><div class="price-bar-fill" style="width:48%"></div></div>
+    </div>
+    <div class="price-bar-container">
+      <div class="price-bar-label"><span>Detached (21%)</span><span>Avg: £383K</span></div>
+      <div class="price-bar-bg"><div class="price-bar-fill" style="width:21%"></div></div>
+    </div>
+    <div class="price-bar-container">
+      <div class="price-bar-label"><span>Terraced (16%)</span><span>Avg: £194K</span></div>
+      <div class="price-bar-bg"><div class="price-bar-fill" style="width:16%"></div></div>
+    </div>
+    <div class="price-bar-container">
+      <div class="price-bar-label"><span>Flats (12%)</span><span>Avg: £114K</span></div>
+      <div class="price-bar-bg"><div class="price-bar-fill" style="width:12%"></div></div>
+    </div>
+  </div>
+
+  <!-- 4. Rental Market -->
+  <div class="section">
+    <h3><span class="icon">🔑</span> Rental Market & Yields</h3>
+    <ul>
+      <li><strong>Average rent (Wolverhampton city):</strong> £928/month (March 2026, ONS) — up 11.9% YoY</li>
+      <li><strong>Estimated rent in WV4:</strong> £850–£950/month for a 3-bed semi, reflecting the suburban premium</li>
+      <li><strong>Gross yield estimate:</strong> ~4.5% (3-bed semi @ £240K purchase, £900/month rent)</li>
+      <li><strong>City yield range:</strong> 3.7% (WV6) to 5.4% (WV1, WV11)</li>
+      <li><strong>HMO yields:</strong> Up to 8.1% in parts of Wolverhampton (student/HMO hotspots, mainly nearer city centre)</li>
+      <li><strong>Tenant demand:</strong> Strong — University of Wolverhampton (19,000+ students), New Cross Hospital (major employer), and Birmingham commuters drive rental demand</li>
+      <li><strong>Affordability:</strong> Price-to-income ratio of 6.2x (below national 7.54x) — supportive for first-time buyers and renters</li>
+      <li><strong>Note:</strong> WV4 is less suited to HMO than central postcodes (WV1), but excellent for family BTL and BRRR</li>
+    </ul>
+  </div>
+
+  <!-- 5. Schools -->
+  <div class="section">
+    <h3><span class="icon">🎓</span> Schools & Education</h3>
+    <p>Wolverhampton's schools perform well — 97% of city schools rated Good or Outstanding by Ofsted (August 2025). WV4 is served by several highly-rated schools:</p>
+    <br>
+    <table class="data-table">
+      <tr><th>School</th><th>Type</th><th>Ofsted Rating</th><th>Location</th></tr>
+      <tr><td>Hill Avenue Academy</td><td>Primary (3-11)</td><td>✅ Outstanding</td><td>WV4 6PY</td></tr>
+      <tr><td>St Bartholomew's CofE Primary</td><td>Primary (3-11)</td><td>✅ Outstanding (Locrating)</td><td>WV4 5LG</td></tr>
+      <tr><td>Penn Fields School</td><td>Primary</td><td>✅ Good</td><td>WV4 area</td></tr>
+      <tr><td>St Teresa's Catholic Primary</td><td>Primary</td><td>✅ Good</td><td>WV4 area</td></tr>
+      <tr><td>Highfields School (closed)</td><td>Former Secondary</td><td>— (Closed 2021)</td><td>WV4 4NT</td></tr>
+      <tr><td>Colton Hills Community School</td><td>Secondary (11-18)</td><td>✅ Good</td><td>WV4 area (nearby)</td></tr>
+      <tr><td>Beacon Hill Academy</td><td>Secondary (11-18)</td><td>✅ Good</td><td>Sedgley (nearby)</td></tr>
+      <tr><td>Wolverhampton Girls' High</td><td>Grammar Secondary</td><td>✅ Outstanding</td><td>WV6 (nearby)</td></tr>
+    </table>
+    <br>
+    <p><strong>Key insight:</strong> Strong primary school provision with multiple Outstanding-rated schools in the WV4 catchment. Secondary options include Good-rated local schools and the Outstanding Wolverhampton Girls' High (selective) within commuting distance. This makes WV4 attractive to families.</p>
+  </div>
+
+  <!-- 6. Transport -->
+  <div class="section">
+    <h3><span class="icon">🚆</span> Transport & Connectivity</h3>
+    <ul>
+      <li><strong>Rail:</strong> Wolverhampton station (2.5 miles from Penn) — West Coast Main Line. Direct trains to Birmingham New Street (15-20 mins), London Euston (1hr 50min), Manchester (1hr 15min), and Edinburgh</li>
+      <li><strong>Coseley Station:</strong> ~2 miles east — local services on the Wolverhampton-Birmingham line</li>
+      <li><strong>Bus:</strong> Frequent National Express West Midlands services — routes 8, 25, 224, 530, X8 serve Penn Road and surrounding WV4 areas, connecting to Wolverhampton city centre (10-15 mins), Dudley, and Birmingham</li>
+      <li><strong>Road:</strong> A449 (Penn Road) is the main arterial through WV4, connecting to Wolverhampton city centre and the M54 (J2 ~4 miles north). M6 (J10 ~6 miles east) via the A454</li>
+      <li><strong>Air:</strong> Birmingham Airport — 25 miles east (~45 min by train/car)</li>
+      <li><strong>Cycling:</strong> National Cycle Network Route 81 passes through the area</li>
+    </ul>
+  </div>
+
+  <!-- 7. Crime -->
+  <div class="section">
+    <h3><span class="icon">🚔</span> Crime & Safety</h3>
+    <table class="data-table">
+      <tr><th>Metric</th><th>WV / Wolverhampton</th><th>National Comparison</th></tr>
+      <tr><td>Overall Crime Rate</td><td>88 per 1,000</td><td>21% higher than national average</td></tr>
+      <tr><td>Violent Crime</td><td>40 per 1,000 (42.5% of total)</td><td>32% above national index</td></tr>
+      <tr><td>Vehicle Crime</td><td>7.16 per 1,000</td><td>66% above national (elevated)</td></tr>
+      <tr><td>Burglary</td><td>3.05 per 1,000</td><td>Near national average (index 0.97)</td></tr>
+      <tr><td>Shoplifting</td><td>11.32 per 1,000</td><td>59% above national (city centre driven)</td></tr>
+      <tr><td>Robbery</td><td>1.11 per 1,000</td><td>Down 46% over 3 years — improving</td></tr>
+      <tr><td>5-Year Crime Trend</td><td>Down 15%</td><td>Improving trajectory</td></tr>
+    </table>
+    <br>
+    <p><strong>Note:</strong> WV4 (Penn/Warstones area) is <em>quieter</em> than Wolverhampton city centre for crime. Most city-level crime data is skewed by city centre offences (shoplifting, public order). The suburban WV4 area benefits from lower street crime and anti-social behaviour compared to inner-city postcodes. Burglary rates are near the national average. Overall crime in Wolverhampton is <strong>lower than Birmingham (20% safer), Leicester, Nottingham, Liverpool, and Leeds</strong>.</p>
+  </div>
+
+  <!-- 8. Planning & Development -->
+  <div class="section">
+    <h3><span class="icon">🏗️</span> Planning & Developments</h3>
+    <ul>
+      <li><strong>Smithgate (City Centre West):</strong> Major regeneration of ~14 acres of brownfield land near Wolverhampton city centre. Approved — 1,000+ new homes, retail, cafes, restaurants. Phase 1: 330+ homes. This will boost the wider city economy and increase demand for suburban housing (people priced out of new city centre stock look to WV4)</li>
+      <li><strong>Wolverhampton Investment Prospectus:</strong> City-wide regeneration strategy focusing on bringing people back to the city centre, improving public realm, and attracting investment</li>
+      <li><strong>University of Wolverhampton expansion:</strong> Continued investment in Springfield and City Campuses drives student/academic staff demand for nearby housing</li>
+      <li><strong>Transport improvements:</strong> HS2 (phase 2a — though currently under review) would connect Wolverhampton to London in ~1hr 10min; Midlands Rail Hub upgrades proposed to improve local connectivity</li>
+      <li><strong>Penn area:</strong> No major planning applications currently flagged in WV4 specifically — the area is largely established residential. Small-scale infill development and loft/garage conversions are common</li>
+    </ul>
+  </div>
+
+  <!-- 9. Amenities -->
+  <div class="section">
+    <h3><span class="icon">🛒</span> Local Amenities</h3>
+    <table class="data-table">
+      <tr><th>Category</th><th>Details</th></tr>
+      <tr><td>Supermarkets</td><td>Tesco Express (Penn Road), Co-op (Penn), Spar, Costcutter — plus major supermarkets within 5-10 mins drive: Asda (Bushbury), Sainsbury's (Wolverhampton), Aldi (Dudley Rd)</td></tr>
+      <tr><td>Healthcare</td><td>Penn Medical Practice (Penn Road), Warstones Health Centre, New Cross Hospital (major NHS acute trust ~3 miles)</td></tr>
+      <tr><td>Parks & Green Space</td><td>Penn Common, Warstones Park, Bantock Park, West Park — good coverage for families</td></tr>
+      <tr><td>Leisure</td><td>Wolverhampton city centre: Grand Theatre, Wolves Museum, Civic Hall, Molineux Stadium (Championship football). Aldersley Leisure Village (swimming, gym) nearby</td></tr>
+      <tr><td>Shopping</td><td>Penn Road local shops (independent retailers, cafes, takeaways). Mander Centre (city centre) and Bentley Bridge (retail park) within 10-15 mins</td></tr>
+      <tr><td>Dining</td><td>Mix of independent eateries on Penn Road, plus chain restaurants in city centre</td></tr>
+    </table>
+  </div>
+
+  <!-- 10. Investment Analysis -->
+  <div class="section">
+    <h3><span class="icon">📊</span> Investment Deep-Dive</h3>
+    
+    <table class="data-table">
+      <tr><th>Strategy</th><th>Rating</th><th>Rationale</th></tr>
+      <tr>
+        <td><strong>BRRR (Buy, Refurb, Refinance, Rent)</strong></td>
+        <td style="color:#34d399;font-weight:600;">GOOD</td>
+        <td>Plentiful semi-detached stock ripe for kitchen/bathroom upgrades. Decent equity potential — 10yr growth of 53% shows strong long-term appreciation. Good refinance values.</td>
+      </tr>
+      <tr>
+        <td><strong>Buy-to-Let (Standard)</strong></td>
+        <td style="color:#34d399;font-weight:600;">GOOD</td>
+        <td>~4.5% yields sustainable for a suburban area. Strong tenant demand from families and professionals. £900/month achievable on a £240k purchase. Affordable entry vs Birmingham.</td>
+      </tr>
+      <tr>
+        <td><strong>HMO (House of Multiple Occupation)</strong></td>
+        <td style="color:#fbbf24;font-weight:600;">CAUTION</td>
+        <td>Better suited to WV1/WV2 (closer to university). WV4 is predominantly family residential — HMO licensing would be required and may face local opposition. However, large detached properties near the university bus routes could work.</td>
+      </tr>
+      <tr>
+        <td><strong>Student Let</strong></td>
+        <td style="color:#fbbf24;font-weight:600;">CAUTION</td>
+        <td>University is ~2.5 miles from WV4. Some students rent further out, but the prime student areas are WV1/WV2. Could work for post-grads/professionals seeking quieter areas.</td>
+      </tr>
+      <tr>
+        <td><strong>Family Let (3-4 bed semi)</strong></td>
+        <td style="color:#34d399;font-weight:600;">EXCELLENT</td>
+        <td>The standout strategy for WV4. Outstanding primary schools, green space, and good transport appeal strongly to families. Lower turnover than student lets.</td>
+      </tr>
+    </table>
+    <br>
+    <h4 style="color:#94a3b8; font-size:0.9rem; margin-bottom:0.5rem;">📈 SWOT Analysis</h4>
+    <table class="data-table">
+      <tr><th style="color:#34d399;">Strengths</th><th style="color:#f87171;">Weaknesses</th></tr>
+      <tr>
+        <td>• Affordable prices vs regional/national averages<br>• Outstanding primary schools<br>• Good transport links<br>• Established residential character<br>• Strong 10yr price growth</td>
+        <td>• Crime rate higher than national (though improving)<br>• Limited new-build supply<br>• HMO/student yields lower than city centre<br>• Some areas of deprivation nearby</td>
+      </tr>
+      <tr><th style="color:#60a5fa;">Opportunities</th><th style="color:#fbbf24;">Threats</th></tr>
+      <tr>
+        <td>• City centre regeneration (Smithgate) will boost demand<br>• HS2 connectivity (if delivered)<br>• Growing Wolverhampton population<br>• Birmingham spillover as prices rise in B postcodes</td>
+        <td>• Interest rate sensitivity (BTL mortgage costs)<br>• EPC regulation changes (cost of upgrades)<br>• Rental market regulation risks<br>• Infrastructure spending uncertainty</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Data Source -->
+  <div class="map-placeholder">
+    📊 Data Sources: HM Land Registry · ONS · Ofsted · Rightmove · Zoopla · Property Lookup UK · CrimeRate.co.uk · Plumplot · City of Wolverhampton Council · BBC<br>
+    <span style="font-size:0.8rem;margin-top:0.5rem;display:block;">Compiled: May 2026 | Next scheduled update: ~3 hours</span>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>🏘️ West Midlands Area Intelligence — 3-Hourly Cron Job</p>
+  <p>Prepared by Hermes Agent · Nous Research · 2026</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B68 Oldbury — Area Intelligence Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { 
+    font-family: 'Inter', -apple-system, sans-serif; 
+    background: #0a0c10; 
+    color: #e0e4ec; 
+    line-height: 1.7;
+    padding: 0;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 40px 30px; }
+  
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #0f1219 0%, #1a1f2e 100%);
+    border: 1px solid #2a3040;
+    border-radius: 20px;
+    padding: 50px 40px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #1e40af, #3b82f6);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .hero h1 { font-size: 48px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+  .hero .subtitle { font-size: 20px; color: #94a3b8; font-weight: 300; }
+  .hero .meta { margin-top: 20px; display: flex; gap: 30px; flex-wrap: wrap; }
+  .hero .meta span { font-size: 14px; color: #64748b; }
+  .hero .meta span strong { color: #94a3b8; font-weight: 600; }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .stat-card {
+    background: #11151f;
+    border: 1px solid #1e2538;
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: #3b82f6; }
+  .stat-card .value { font-size: 28px; font-weight: 800; color: #fff; }
+  .stat-card .label { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; font-weight: 600; }
+  .stat-card .trend { font-size: 13px; margin-top: 4px; }
+  .trend.up { color: #22c55e; }
+  .trend.down { color: #ef4444; }
+  .trend.neutral { color: #f59e0b; }
+
+  /* Section */
+  .section {
+    background: #11151f;
+    border: 1px solid #1e2538;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  .section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section h2 .icon { font-size: 22px; }
+  .section h3 { font-size: 16px; font-weight: 600; color: #94a3b8; margin: 16px 0 8px; }
+  .section p, .section li { color: #c8ccd8; font-size: 15px; }
+  .section ul { list-style: none; padding: 0; }
+  .section ul li { padding: 6px 0; padding-left: 20px; position: relative; }
+  .section ul li::before { content: '▸'; position: absolute; left: 0; color: #3b82f6; }
+
+  /* School Cards */
+  .school-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 12px;
+  }
+  .school-card {
+    background: #0d111a;
+    border: 1px solid #1e2538;
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .school-card .name { font-weight: 700; color: #fff; font-size: 15px; }
+  .school-card .phase { font-size: 12px; color: #64748b; margin-top: 2px; }
+  .school-card .rating { display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .rating.outstanding { background: #14532d; color: #4ade80; }
+  .rating.good { background: #1e3a5f; color: #60a5fa; }
+  .rating.requires { background: #5c3d0e; color: #fbbf24; }
+
+  /* Transport */
+  .transport-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 12px;
+  }
+  .transport-card {
+    background: #0d111a;
+    border: 1px solid #1e2538;
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .transport-card h4 { color: #fff; font-size: 14px; margin-bottom: 6px; }
+  .transport-card p { font-size: 13px; color: #94a3b8; }
+
+  /* Verdict Box */
+  .verdict-box {
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 24px;
+    border: 1px solid;
+  }
+  .verdict-box.good { background: rgba(34,197,94,0.08); border-color: #22c55e; }
+  .verdict-box.avoid { background: rgba(239,68,68,0.08); border-color: #ef4444; }
+  .verdict-box.caution { background: rgba(245,158,11,0.08); border-color: #f59e0b; }
+  .verdict-box h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+  .verdict-box.good h3 { color: #22c55e; }
+  .verdict-box.avoid h3 { color: #ef4444; }
+  .verdict-box.caution h3 { color: #f59e0b; }
+  .verdict-box p { font-size: 15px; color: #c8ccd8; }
+  .verdict-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .verdict-tag { padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 700; }
+  .verdict-tag.yes { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+  .verdict-tag.maybe { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+  .verdict-tag.no { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+  /* Footer */
+  .footer { text-align: center; color: #2a3040; font-size: 13px; padding: 30px 0; border-top: 1px solid #1e2538; margin-top: 40px; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container { padding: 20px 16px; }
+    .hero { padding: 30px 20px; }
+    .hero h1 { font-size: 32px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<div class="hero">
+  <div class="badge">📍 Area Intelligence</div>
+  <h1>B68 · Oldbury</h1>
+  <p class="subtitle">Sandwell Metropolitan Borough · Black Country · West Midlands</p>
+  <div class="meta">
+    <span>📅 <strong>Report Date:</strong> May 2026</span>
+    <span>📍 <strong>Distance from Dudley:</strong> 4.5 mi SE</span>
+    <span>🏛️ <strong>Local Authority:</strong> Sandwell Council</span>
+  </div>
+</div>
+
+<!-- Key Stats -->
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="value">~47,000</div>
+    <div class="label">Population (Oldbury)</div>
+    <div class="trend up">+12% since 2011</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">£227K</div>
+    <div class="label">Avg. Sold Price</div>
+    <div class="trend up">+4.0% YoY</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">£916</div>
+    <div class="label">Avg. Monthly Rent</div>
+    <div class="trend up">Strong demand</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">4.9%</div>
+    <div class="label">Est. Gross Yield</div>
+    <div class="trend neutral">Moderate</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">84/1K</div>
+    <div class="label">Crime Rate</div>
+    <div class="trend down">6% below WM avg</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">2</div>
+    <div class="label">Rail Stations</div>
+    <div class="trend neutral">Sandwell & Dudley + Langley Green</div>
+  </div>
+</div>
+
+<!-- Area Overview -->
+<div class="section">
+  <h2><span class="icon">🏘️</span> Area Overview</h2>
+  <p><strong>Oldbury (B68)</strong> is a market town in the Sandwell Metropolitan Borough, located in the heart of the Black Country approximately 4.5 miles southeast of Dudley town centre and 6 miles west of Birmingham. It serves as the administrative centre of Sandwell Council.</p>
+  <p style="margin-top: 12px;">Historically an industrial powerhouse during the Industrial Revolution (iron, steel, and chemical industries), Oldbury has transitioned into a mixed residential and commercial area. The town is divided into several neighbourhoods including <strong>Brandhall, Bristnall, Causeway Green, Langley Green, Londonderry, Old Warley,</strong> and <strong>Rood End</strong>.</p>
+  <p style="margin-top: 12px;">The built-up area population was 45,187 (2021 Census), estimated at 47,062 in 2024. The wider 4-ward area houses approximately 50,600 residents. The median age is 38, with 62% homeownership rate and an average monthly income of £2,006.</p>
+</div>
+
+<!-- Crime Data -->
+<div class="section">
+  <h2><span class="icon">🚨</span> Crime & Safety</h2>
+  <p><strong>Overall Crime Rate (2026):</strong> 84 crimes per 1,000 people — 6% lower than the West Midlands average of 90/1,000 but 17% higher than the national average. Oldbury ranks among the top 5 most dangerous medium-sized towns in the West Midlands.</p>
+  
+  <h3>Most Prevalent Crimes (12 months to March 2026)</h3>
+  <ul>
+    <li><strong>Violence & sexual offences:</strong> 2,032 offences (rate 40/1,000) — most common</li>
+    <li><strong>Shoplifting:</strong> 476 offences (rate 9.29/1,000)</li>
+    <li><strong>Vehicle crime:</strong> 412 offences (rate 8.06/1,000) — index 1.87x national avg</li>
+    <li><strong>Possession of weapons:</strong> Index 2.08x national avg — highest relative risk</li>
+  </ul>
+
+  <h3>Trends</h3>
+  <ul>
+    <li><strong>10-year trend:</strong> +28% increase (seasonality adjusted)</li>
+    <li><strong>5-year trend:</strong> -7% decrease</li>
+    <li><strong>Last year:</strong> +2.0% increase (modest)</li>
+    <li><strong>Notable:</strong> Burglary down 56% over 3 years; Drugs up 218% over 3 years</li>
+  </ul>
+</div>
+
+<!-- Demographics -->
+<div class="section">
+  <h2><span class="icon">📊</span> Demographics</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div>
+      <h3>Population Profile</h3>
+      <ul>
+        <li><strong>Population (2024 est.):</strong> ~47,062</li>
+        <li><strong>Population density:</strong> 4,518 people/km²</li>
+        <li><strong>Median age:</strong> 38 years</li>
+        <li><strong>Homeownership rate:</strong> 62%</li>
+        <li><strong>Average monthly income:</strong> £2,006</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Tenure & Household</h3>
+      <ul>
+        <li><strong>Broadband speed:</strong> 83 Mbps average</li>
+        <li><strong>Anti-social behaviour rate:</strong> 32 per 1,000</li>
+        <li><strong>Owner-occupied:</strong> Majority (62%)</li>
+        <li><strong>Private rented:</strong> Growing segment</li>
+        <li><strong>Social housing:</strong> Significant presence</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Sold Prices -->
+<div class="section">
+  <h2><span class="icon">💰</span> Property Market</h2>
+  
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div>
+      <h3>Average Sold Prices by Property Type</h3>
+      <ul>
+        <li><strong>1-bed:</strong> £82,950</li>
+        <li><strong>2-bed:</strong> £196,256</li>
+        <li><strong>3-bed:</strong> £266,597</li>
+        <li><strong>4-bed:</strong> £387,833</li>
+        <li><strong>5-bed:</strong> £518,056</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Market Activity (12 months)</h3>
+      <ul>
+        <li><strong>Overall average:</strong> £226,600 – £236,413</li>
+        <li><strong>5-year change:</strong> +£48,703 (+23.8%)</li>
+        <li><strong>12-month change:</strong> +£9,736 (+4.0%)</li>
+        <li><strong>Annual sales:</strong> 220 residential sales</li>
+        <li><strong>Avg days to sell:</strong> 49 days (excl. fall-throughs)</li>
+        <li><strong>Avg asking vs sold:</strong> -£9,108 (-3%)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Most & Least Expensive Streets</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 12px;">
+    <div>
+      <p><strong>🏆 Most Expensive:</strong></p>
+      <ul>
+        <li>Harborne Road (B68 9JH) — £541,433</li>
+        <li>Woodgreen Road (B68 0DE) — £467,375</li>
+        <li>Sunnybank Road (B68 0DD) — £463,750</li>
+        <li>Brandhall Road (B68 8DT) — £423,333</li>
+      </ul>
+    </div>
+    <div>
+      <p><strong>📉 Most Affordable:</strong></p>
+      <ul>
+        <li>Hagley Road West (B68 0BS) — £62,379</li>
+        <li>Perry Court (B68 0BU) — £73,975</li>
+        <li>Queensridge Court (B68 0LE) — £80,741</li>
+        <li>Barker Street (B68 9UQ) — £122,666</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Rental Market -->
+<div class="section">
+  <h2><span class="icon">🏠</span> Rental Market</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div>
+      <h3>Rental Prices</h3>
+      <ul>
+        <li><strong>Average monthly rent:</strong> ~£916 (Mouseprice data)</li>
+        <li><strong>2-bed terrace:</strong> ~£750-850 pcm</li>
+        <li><strong>3-bed house:</strong> ~£1,000-1,400 pcm</li>
+        <li><strong>4-bed family:</strong> ~£1,400-1,800 pcm</li>
+        <li><strong>1-bed flat:</strong> ~£550-700 pcm</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Yield Estimates</h3>
+      <ul>
+        <li><strong>Overall avg yield:</strong> ~4.5-5.0%</li>
+        <li><strong>Best yield (lower-value streets):</strong> 6-7%</li>
+        <li><strong>3-bed houses:</strong> ~5.0-5.6%</li>
+        <li><strong>Flats (Hagley Rd West):</strong> ~7-8%</li>
+        <li><strong>Rental demand:</strong> Strong — good transport links drive tenant interest</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Schools -->
+<div class="section">
+  <h2><span class="icon">🎓</span> Schools & Education</h2>
+  <p><strong>Total schools in B68:</strong> 15+ schools including primary, secondary, and one private Islamic school.</p>
+  
+  <div class="school-grid">
+    <div class="school-card">
+      <div class="name">Bristnall Hall Academy</div>
+      <div class="phase">Secondary (11-18) · 15:1 ratio</div>
+      <span class="rating outstanding">Outstanding</span>
+    </div>
+    <div class="school-card">
+      <div class="name">Q3 Academy Langley</div>
+      <div class="phase">Secondary (11-16) · 14:1 ratio</div>
+      <span class="rating good">Good</span>
+    </div>
+    <div class="school-card">
+      <div class="name">Oldbury Academy</div>
+      <div class="phase">Secondary (11-16) · 1,373 students</div>
+      <span class="rating good">Good</span>
+    </div>
+    <div class="school-card">
+      <div class="name">Brandhall Primary School</div>
+      <div class="phase">Primary (3-11) · 21:1 ratio</div>
+      <span class="rating good">Good</span>
+    </div>
+    <div class="school-card">
+      <div class="name">Bleakhouse Primary School</div>
+      <div class="phase">Primary (4-11) · 23:1 ratio</div>
+      <span class="rating good">Good</span>
+    </div>
+    <div class="school-card">
+      <div class="name">Rood End Primary School</div>
+      <div class="phase">Primary (3-11) · 22:1 ratio</div>
+      <span class="rating requires">Requires Improvement</span>
+    </div>
+  </div>
+  <p style="margin-top: 14px; font-size: 14px; color: #94a3b8;">⭐ <strong>Bristnall Hall Academy</strong> rated Outstanding by Ofsted — the only Outstanding-rated school in the B68 area. Q3 Academy Langley and Oldbury Academy both rated Good.</p>
+</div>
+
+<!-- Transport -->
+<div class="section">
+  <h2><span class="icon">🚆</span> Transport Links</h2>
+  
+  <div class="transport-grid">
+    <div class="transport-card">
+      <h4>🚄 Rail</h4>
+      <p><strong>Sandwell & Dudley Station</strong> — on Stour Valley Line. Services to Birmingham (10 min), Wolverhampton (12 min), London Euston (2 hrs).</p>
+      <p style="margin-top:6px;"><strong>Langley Green Station</strong> — on Birmingham-Worcester line via Kidderminster.</p>
+    </div>
+    <div class="transport-card">
+      <h4>🛣️ Road</h4>
+      <p><strong>M5 Motorway (J2)</strong> — runs through Oldbury. Direct access to Birmingham, Worcester, Bristol, Exeter.</p>
+      <p style="margin-top:6px;"><strong>A4123</strong> — Birmingham-Wolverhampton dual carriageway.</p>
+    </div>
+    <div class="transport-card">
+      <h4>🚌 Bus</h4>
+      <p>Extensive National Express West Midlands network serving: Birmingham (12/87), Dudley (12), Walsall (4/4H/4M), West Bromwich (3/3A), Merry Hill (3/4M), Bearwood (22), Blackheath (3A).</p>
+    </div>
+    <div class="transport-card">
+      <h4>🚲 Other</h4>
+      <p><strong>Birmingham Canal</strong> — historic canal network. Good cycle connectivity to surrounding areas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Planning -->
+<div class="section">
+  <h2><span class="icon">🏗️</span> Major Developments & Planning</h2>
+  <ul>
+    <li><strong>Oldbury Golf Course Redevelopment:</strong> 190 new homes approved + new Causeway Green Primary School replacement + 67-acre public park. Developer yet to be selected — estimated 18+ months to construction start.</li>
+    <li><strong>Persimmon Homes:</strong> 105 new homes approved on playing fields off Friar Park Road in nearby Wednesbury (within Sandwell).</li>
+    <li><strong>Portway Lifestyle Centre:</strong> New sports, health & wellbeing centre with swimming pool, gym, and classes — recently opened.</li>
+    <li><strong>Ongoing:</strong> Various smaller residential planning applications across the B68 area — steady development activity.</li>
+  </ul>
+</div>
+
+<!-- Local Amenities -->
+<div class="section">
+  <h2><span class="icon">🛍️</span> Local Amenities</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div>
+      <h3>Shopping & Retail</h3>
+      <ul>
+        <li><strong>Oldbury Green Retail Park</strong> — Next, Argos, Homebase, Smyths Toys, Costa Coffee</li>
+        <li><strong>Sainsbury's</strong> — large supermarket (formerly SavaCentre)</li>
+        <li><strong>ASDA</strong> — nearby superstore</li>
+        <li><strong>Tesco</strong> — local stores in Langley</li>
+        <li><strong>Birchley Island</strong> — retail park with multiple stores</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Healthcare & Services</h3>
+      <ul>
+        <li><strong>Hill Top Pharmacy</strong> — B68 9EX (with online GP service)</li>
+        <li><strong>Multiple GP surgeries</strong> across Oldbury</li>
+        <li><strong>Sandwell General Hospital</strong> — 2.5 miles in West Bromwich</li>
+        <li><strong>City Hospital, Birmingham</strong> — 4 miles</li>
+        <li><strong>Portway Lifestyle Centre</strong> — leisure, fitness, swimming</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Investment Verdict -->
+<div class="section">
+  <h2><span class="icon">📈</span> Investment Verdict</h2>
+  
+  <div class="verdict-box caution">
+    <h3>⚖️ CONDITIONAL BUY — BTL / BRRR in Lower-Value Streets</h3>
+    <p>B68 (Oldbury) offers a <strong>mixed investment picture</strong>. The area benefits from excellent transport links (M5 J2, Sandwell & Dudley station, frequent buses), strong rental demand due to commuter access to Birmingham and Wolverhampton, and affordable entry prices in many streets.</p>
+    <p style="margin-top: 12px;">However, crime rates are elevated (though below the West Midlands average), and the area has a mixed reputation. The best opportunities lie in lower-value streets where yields can reach 6-8% (e.g., Hagley Road West flats, Barker Street terraces). The Oldbury Golf Course redevelopment (190 homes + new school + 67-acre park) is a significant regeneration catalyst expected to boost the area over 3-5 years.</p>
+    <p style="margin-top: 12px;">For <strong>BRRR</strong>, properties in need of renovation in the £80-150K range offer good potential. For <strong>BTL</strong>, 2-3 bed terraces in the £150-200K range yield ~5-5.5%. <strong>HMO</strong> potential exists near the town centre and transport hubs.</p>
+    
+    <div class="verdict-tags">
+      <span class="verdict-tag yes">✅ BTL — Good (lower-value streets)</span>
+      <span class="verdict-tag yes">✅ BRRR — Good (renovation potential)</span>
+      <span class="verdict-tag maybe">⚠️ HMO — Possible (near transport hubs)</span>
+      <span class="verdict-tag no">❌ Premium streets — AVOID (low yield)</span>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Generated by Hermes Agent · Area Intelligence System · May 2026<br>
+  Data sources: HM Land Registry, CrimeRate, ONS Census 2021, Ofsted, NX Bus West Midlands, Wikipedia, REalyse Pulse, Property Solvers, GetAgent, Snobe
+</div>
+
+</div>
+</body>
+</html>

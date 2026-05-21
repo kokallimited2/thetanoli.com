@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WV6 Area Intelligence — Tettenhall, Wolverhampton</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0b0e14;
+    color: #e8edf5;
+    line-height: 1.7;
+    padding: 0;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #0f1923 0%, #1a2a3a 50%, #0d2137 100%);
+    padding: 60px 0 50px;
+    border-bottom: 1px solid #1e3348;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -50%; right: -20%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: #1e3a5f;
+    color: #60a5fa;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(96,165,250,0.2);
+  }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #f0f4ff 0%, #93bbfc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero .subtitle {
+    font-size: 18px;
+    color: #8899b4;
+    font-weight: 300;
+  }
+  .hero .meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #6a7e9e;
+  }
+  .hero .meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* KPI Grid */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 16px;
+    margin: -30px 0 40px;
+    position: relative;
+    z-index: 2;
+  }
+  .kpi-card {
+    background: #141c28;
+    border: 1px solid #1f2d3d;
+    border-radius: 14px;
+    padding: 22px 18px;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .kpi-card:hover { border-color: #2a4060; transform: translateY(-2px); }
+  .kpi-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6a7e9e;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .kpi-card .value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #e8edf5;
+  }
+  .kpi-card .value.gold { color: #fbbf24; }
+  .kpi-card .value.green { color: #34d399; }
+  .kpi-card .value.red { color: #f87171; }
+  .kpi-card .value.blue { color: #60a5fa; }
+  .kpi-card .sub {
+    font-size: 12px;
+    color: #5a6e8e;
+    margin-top: 4px;
+  }
+
+  /* Section */
+  .section {
+    margin: 40px 0;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #e0e8f0;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .icon { font-size: 24px; }
+
+  /* Cards */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+  }
+  .card {
+    background: #111a26;
+    border: 1px solid #1c2a3a;
+    border-radius: 12px;
+    padding: 22px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #2a4060; }
+  .card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #93b4d4;
+    margin-bottom: 10px;
+  }
+  .card p, .card li {
+    font-size: 14px;
+    color: #b0c0d8;
+    line-height: 1.7;
+  }
+  .card ul { list-style: none; padding: 0; }
+  .card ul li::before { content: '› '; color: #60a5fa; font-weight: 700; }
+  .card ul li { margin-bottom: 4px; }
+
+  /* Rating Badge */
+  .rating { display: inline-flex; align-items: center; gap: 6px; }
+  .rating .stars { color: #fbbf24; font-size: 14px; }
+  .rating .out { color: #6a7e9e; font-size: 13px; }
+
+  /* Verdict Box */
+  .verdict-box {
+    background: linear-gradient(135deg, #0f1923, #162230);
+    border: 1px solid #1f2d3d;
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin: 30px 0;
+  }
+  .verdict-box h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+  .verdict-item {
+    background: #0d1520;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid #1a2838;
+  }
+  .verdict-item .tag {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .verdict-item .tag.good { color: #34d399; }
+  .verdict-item .tag.ok { color: #fbbf24; }
+  .verdict-item .tag.avoid { color: #f87171; }
+  .verdict-item .desc { font-size: 12px; color: #6a7e9e; }
+
+  /* Table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .data-table th {
+    text-align: left;
+    padding: 10px 14px;
+    background: #0d1520;
+    color: #6a7e9e;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #1a2838;
+  }
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #15202e;
+    color: #b0c0d8;
+  }
+  .data-table tr:hover td { background: #0f1a26; }
+
+  /* School list */
+  .school-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #15202e;
+  }
+  .school-item:last-child { border-bottom: none; }
+  .school-item .name { font-size: 14px; color: #c8d8e8; }
+  .school-item .type { font-size: 12px; color: #6a7e9e; }
+  .school-item .ofsted {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
+  .ofsted.outstanding { background: #065f4620; color: #34d399; border: 1px solid #065f46; }
+  .ofsted.good { background: #1e3a5f20; color: #60a5fa; border: 1px solid #1e3a5f; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 0;
+    font-size: 12px;
+    color: #3a4e6e;
+    border-top: 1px solid #15202e;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 32px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); margin-top: -20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">🏘️ Area Intelligence</div>
+    <h1>WV6 — Tettenhall &amp; Whitmore Reans</h1>
+    <p class="subtitle">Wolverhampton's most affluent suburb · Premium family living · Strong schools corridor</p>
+    <div class="meta">
+      <span>📅 Report: May 2026</span>
+      <span>📍 West Midlands · City of Wolverhampton</span>
+      <span>📊 Data: Land Registry · Ofsted · Plumplot · PropertyData</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- KPI GRID -->
+<div class="kpi-grid">
+  <div class="kpi-card">
+    <div class="label">Avg. House Price</div>
+    <div class="value gold">£347k</div>
+    <div class="sub">Highest in Wolverhampton</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">Avg. Rent (3-bed)</div>
+    <div class="value blue">£1,200</div>
+    <div class="sub">Per calendar month</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">Gross Rental Yield</div>
+    <div class="value red">3.7%</div>
+    <div class="sub">Lowest in Wolverhampton</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">Crime Rate</div>
+    <div class="value gold">MODERATE</div>
+    <div class="sub">Safer than city average</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">Price / sq ft</div>
+    <div class="value blue">£286</div>
+    <div class="sub">Highest in WV postcodes</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">Pop. (W'ton city)</div>
+    <div class="value">264k</div>
+    <div class="sub">+5.7% since 2011</div>
+  </div>
+</div>
+
+<!-- AREA OVERVIEW -->
+<div class="section">
+  <div class="section-title"><span class="icon">📍</span> Area Overview</div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Location &amp; Description</h3>
+      <p>WV6 covers the desirable northwestern suburbs of Wolverhampton, including <strong>Tettenhall</strong>, <strong>Whitmore Reans</strong>, <strong>Aldersley</strong>, <strong>Compton</strong> and parts of <strong>Perton</strong>. Tettenhall is a historic conservation village with a charming high street of independent shops, restaurants and period properties.</p>
+      <p style="margin-top:10px;">Located approximately <strong>2 miles west of Wolverhampton city centre</strong>, bordering South Staffordshire. The area sits close to the i54 Business Park — a major employment hub housing Jaguar Land Rover, Moog, and other advanced manufacturers.</p>
+    </div>
+    <div class="card">
+      <h3>Location Summary</h3>
+      <ul>
+        <li>2 miles NW of Wolverhampton city centre</li>
+        <li>4 miles from Dudley town centre</li>
+        <li>15 miles from Birmingham city centre</li>
+        <li>Borders South Staffordshire green belt</li>
+        <li>Close to A41, A449 and M54 corridors</li>
+        <li>Historic conservation area (Tettenhall village)</li>
+        <li>Mix of Victorian, Edwardian &amp; modern homes</li>
+        <li>Affluent family-oriented suburb</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DEMOGRAPHICS -->
+<div class="section">
+  <div class="section-title"><span class="icon">👥</span> Demographics &amp; Population</div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Wolverhampton City Profile</h3>
+      <ul>
+        <li><strong>Population (2024 est.):</strong> 263,727–281,251</li>
+        <li><strong>Growth:</strong> +5.71% since 2011 census</li>
+        <li><strong>Median annual salary:</strong> £35,858 (below WM £37,050)</li>
+        <li><strong>Employment rate:</strong> 77.2% (above national 75.6%)</li>
+        <li><strong>Price-to-earnings ratio (WV6):</strong> 9.7x (highest in Wolverhampton)</li>
+        <li><strong>Ethnicity:</strong> ~68% White, growing Asian/minority pop.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>WV6 Area Characteristics</h3>
+      <ul>
+        <li>Predominantly <strong>professional/managerial</strong> demographic</li>
+        <li>Higher-than-average home ownership rates</li>
+        <li>Large family homes with good school catchments</li>
+        <li>Tettenhall village: affluent, older demographic</li>
+        <li>Whitmore Reans: more diverse, younger families</li>
+        <li>University proximity drives some rental demand</li>
+        <li>Low unemployment relative to city average</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SCHOOLS -->
+<div class="section">
+  <div class="section-title"><span class="icon">🏫</span> Nearby Schools &amp; Ofsted Ratings</div>
+  <div class="card">
+    <p style="margin-bottom:14px;color:#8899b4;font-size:14px;">WV6 benefits from some of the best schools in Wolverhampton. 96% of city schools rated Good or Outstanding. The Tettenhall/Compton corridor is a key driver of family demand.</p>
+    
+    <h3 style="margin-bottom:10px;">⭐ Outstanding Rated Schools</h3>
+    <div class="school-item">
+      <div><span class="name">St Michael's CofE Primary Academy</span> <span class="type">· Primary</span></div>
+      <span class="ofsted outstanding">OUTSTANDING</span>
+    </div>
+    <div class="school-item">
+      <div><span class="name">Christ Church (CE) Infant &amp; Nursery School</span> <span class="type">· Primary</span></div>
+      <span class="ofsted outstanding">OUTSTANDING</span>
+    </div>
+    <div class="school-item">
+      <div><span class="name">Wolverhampton Girls' High School</span> <span class="type">· Secondary (Grammar)</span></div>
+      <span class="ofsted outstanding">OUTSTANDING</span>
+    </div>
+    <div class="school-item">
+      <div><span class="name">Heath Park School</span> <span class="type">· Secondary</span></div>
+      <span class="ofsted outstanding">OUTSTANDING</span>
+    </div>
+    <div class="school-item">
+      <div><span class="name">Moseley Park School</span> <span class="type">· Secondary</span></div>
+      <span class="ofsted outstanding">OUTSTANDING</span>
+    </div>
+    
+    <h3 style="margin:14px 0 10px;">📚 Other Notable Schools</h3>
+    <div class="school-item">
+      <div><span class="name">Tettenhall College</span> <span class="type">· Independent (2–18)</span></div>
+      <span class="ofsted good">INDEPENDENT</span>
+    </div>
+    <div class="school-item">
+      <div><span class="name">Tettenhall Wood School</span> <span class="type">· Special School</span></div>
+      <span class="ofsted good">GOOD</span>
+    </div>
+    <div class="school-item">
+      <div><span class="name">Bushbury Lane Academy</span> <span class="type">· Primary</span></div>
+      <span class="ofsted outstanding">OUTSTANDING</span>
+    </div>
+    <div class="school-item">
+      <div><span class="name">Woodfield Primary School</span> <span class="type">· Primary</span></div>
+      <span class="ofsted good">GOOD</span>
+    </div>
+    <p style="margin-top:12px;font-size:13px;color:#5a6e8e;">ⓘ 22 open schools serve approximately 7,293 pupils across WV6.</p>
+  </div>
+</div>
+
+<!-- TRANSPORT -->
+<div class="section">
+  <div class="section-title"><span class="icon">🚆</span> Transport Links</div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Rail</h3>
+      <ul>
+        <li><strong>Wolverhampton Station</strong> — 0.5–2 miles from WV6 areas</li>
+        <li>West Coast Main Line: <strong>15 min</strong> to Birmingham New Street</li>
+        <li><strong>&lt;2 hours</strong> to London Euston</li>
+        <li>Frequent services to Manchester, Liverpool, Glasgow</li>
+        <li>Midland Metro tram extension to Birmingham (opened 2024)</li>
+        <li>6-platform station with CrossCountry &amp; Avanti services</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Road &amp; Bus</h3>
+      <ul>
+        <li><strong>A41</strong> — connects to Wolverhampton city centre</li>
+        <li><strong>A449</strong> — to Stafford and M6 (Junction 12)</li>
+        <li><strong>M54</strong> (Junction 2) — 10 min via A449</li>
+        <li><strong>M6</strong> (Junction 12/13) — 15 min</li>
+        <li><strong>Bus routes:</strong> 5, 6, 62, 62A (NX West Midlands)</li>
+        <li>Bus 6: Wolverhampton → Whitmore Reans → Aldersley → Wobaston</li>
+        <li>Bus 9/3: to Wightwick Bank (Mermaid pub)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PROPERTY MARKET -->
+<div class="section">
+  <div class="section-title"><span class="icon">🏠</span> Property Market Analysis</div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Sold Prices &amp; Trends</h3>
+      <table class="data-table">
+        <tr><th>Metric</th><th>Value</th></tr>
+        <tr><td>Avg. asking price (WV6)</td><td><strong>£346,717</strong></td></tr>
+        <tr><td>Avg. sold (W'ton overall)</td><td>£214,304</td></tr>
+        <tr><td>Avg. sold (WV postcode area)</td><td>£246,000</td></tr>
+        <tr><td>Median price/sqm (WV6 0)</td><td>£1,930</td></tr>
+        <tr><td>5-year growth (WV6)</td><td>+18.9%</td></tr>
+        <tr><td>1-year growth (WV6)</td><td>+0.8%</td></tr>
+        <tr><td>Sales/month (WV6)</td><td>~39</td></tr>
+        <tr><td>Turnover rate</td><td>48%</td></tr>
+      </table>
+      <p style="margin-top:10px;font-size:13px;color:#5a6e8e;">WV6 has the highest property values in Wolverhampton but the slowest growth rate over 5 years (+18.9% vs WV11's +31.6%).</p>
+    </div>
+    <div class="card">
+      <h3>Prices by Property Type (Wolverhampton)</h3>
+      <table class="data-table">
+        <tr><th>Type</th><th>Avg Price</th><th>vs National</th></tr>
+        <tr><td>Detached</td><td>£383k</td><td>-28.3%</td></tr>
+        <tr><td>Semi-detached</td><td>£234k</td><td>-21.1%</td></tr>
+        <tr><td>Terraced</td><td>£194k</td><td>-25.1%</td></tr>
+        <tr><td>Flat</td><td>£114k</td><td>-48.9%</td></tr>
+        <tr><td><strong>All types</strong></td><td><strong>£214k</strong></td><td><strong>-26.9%</strong></td></tr>
+      </table>
+      <p style="margin-top:10px;font-size:13px;color:#5a6e8e;">In WV6 specifically, a typical 3-bed semi costs £280k–£350k. Executive detached homes reach £500k–£1M+ in prime Tettenhall.</p>
+    </div>
+  </div>
+</div>
+
+<!-- RENTAL DEMAND -->
+<div class="section">
+  <div class="section-title"><span class="icon">📈</span> Rental Market &amp; Demand</div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Rental Prices</h3>
+      <table class="data-table">
+        <tr><th>Property Type</th><th>Typical Rent (pcm)</th></tr>
+        <tr><td>1-bed flat</td><td>£550–£700</td></tr>
+        <tr><td>2-bed flat</td><td>£670–£833</td></tr>
+        <tr><td>2-bed house</td><td>£750–£950</td></tr>
+        <tr><td>3-bed house (family)</td><td><strong>£1,100–£1,400</strong></td></tr>
+        <tr><td>4-bed detached</td><td>£1,500–£2,200</td></tr>
+      </table>
+      <p style="margin-top:10px;font-size:13px;color:#5a6e8e;">Family homes in Tettenhall command premium rents due to school catchments. University of Wolverhampton (30,200+ students) supports lower-end demand.</p>
+    </div>
+    <div class="card">
+      <h3>Yield Analysis</h3>
+      <ul>
+        <li><strong>Gross rental yield (WV6):</strong> 3.7% — lowest in Wolverhampton</li>
+        <li><strong>City best yield:</strong> 5.4% (WV1 city centre, WV11 Wednesfield)</li>
+        <li>Typical 30% deposit needed: <strong>£104,015</strong> (highest in city)</li>
+        <li>Higher capital appreciation potential vs high-yield areas</li>
+        <li>Family HMO (4-5 bed near Compton/Uni): potentially 5-6%</li>
+        <li>Strong tenant demand from professionals working at i54</li>
+        <li>Low void rates in prime Tettenhall locations</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CRIME -->
+<div class="section">
+  <div class="section-title"><span class="icon">🚨</span> Crime &amp; Safety</div>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Wolverhampton City Crime</h3>
+      <ul>
+        <li><strong>Overall crime rate:</strong> 88 per 1,000 people (2026)</li>
+        <li>West Midlands average: 90 per 1,000</li>
+        <li>Wolverhampton ranked <strong>most dangerous city</strong> in West Midlands</li>
+        <li>Violent crime rate: 43.4 per 1,000 (123% of national)</li>
+        <li>Most common: violence &amp; sexual offences (12,029 offences)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>WV6 Specific Safety</h3>
+      <ul>
+        <li>Tettenhall is significantly <strong>safer</strong> than city average</li>
+        <li>Low crime relative to WV1/WV2 city centre areas</li>
+        <li>Primarily residential with low density of pubs/nightlife</li>
+        <li>Community policing presence in conservation areas</li>
+        <li>Burglary rates lower than city average</li>
+        <li>Anti-social behaviour minimal in Tettenhall village</li>
+        <li>Whitmore Reans has slightly higher crime than Tettenhall</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- AMENITIES -->
+<div class="section">
+  <div class="section-title"><span class="icon">🛒</span> Local Amenities</div>
+  <div class="grid-3">
+    <div class="card">
+      <h3>🛍️ Shopping &amp; Supermarkets</h3>
+      <ul>
+        <li>Tettenhall High Street — independent shops, cafes, restaurants</li>
+        <li>Asda Wolverhampton Superstore (Jack Hayward Way)</li>
+        <li>Tesco Express (Tettenhall)</li>
+        <li>Sainsbury's Local (Compton)</li>
+        <li>Mander Centre (city centre — 2 miles)</li>
+        <li>Wolverhampton Market</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🏥 Healthcare</h3>
+      <ul>
+        <li>Tettenhall Medical Practice</li>
+        <li>Compton Care Medical Centre</li>
+        <li>New Cross Hospital (major NHS) — 3 miles</li>
+        <li>Royal Wolverhampton NHS Trust</li>
+        <li>Multiple dental practices in Tettenhall</li>
+        <li>Pharmacies: Boots, Lloyds, local chemists</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🍽️ Leisure &amp; Dining</h3>
+      <ul>
+        <li>The Mermaid — historic pub restaurant</li>
+        <li>Numerous independent restaurants on High Street</li>
+        <li>Bantock House Museum &amp; Park</li>
+        <li>West Park (Victorian park, 2 miles)</li>
+        <li>Wightwick Manor &amp; Gardens (National Trust)</li>
+        <li>Aldersley Leisure Centre</li>
+        <li>Tettenhall Golf Club</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PLANNING & REGENERATION -->
+<div class="section">
+  <div class="section-title"><span class="icon">🏗️</span> Planning &amp; Regeneration</div>
+  <div class="card">
+    <table class="data-table">
+      <tr><th>Project</th><th>Value</th><th>Impact on WV6</th></tr>
+      <tr>
+        <td><strong>Smithgate (city centre)</strong></td>
+        <td>£83M (Ph1)</td>
+        <td>1,000 homes + BTR — boosts city-wide demand, limited direct WV6 impact</td>
+      </tr>
+      <tr>
+        <td><strong>i54 Business Park Western Expansion</strong></td>
+        <td>Major</td>
+        <td>Up to 45,000m² B1/B2 space — drives professional jobs near WV6, supports housing demand</td>
+      </tr>
+      <tr>
+        <td><strong>Wolverhampton Interchange</strong></td>
+        <td>Major</td>
+        <td>Transport hub regeneration — improves connectivity for WV6 commuters</td>
+      </tr>
+      <tr>
+        <td><strong>Tettenhall Neighbourhood Plan</strong></td>
+        <td>N/A</td>
+        <td>Conservation-led development — restricts overdevelopment in prime areas</td>
+      </tr>
+      <tr>
+        <td><strong>Various residential (WV6)</strong></td>
+        <td>Small</td>
+        <td>Extensions, conversions, infill — limited new supply due to green belt constraints</td>
+      </tr>
+    </table>
+    <p style="margin-top:12px;font-size:13px;color:#5a6e8e;">Supply constraints (green belt, conservation area) support existing property values. New large-scale development is limited within WV6 itself, but city centre regeneration improves overall Wolverhampton prospects.</p>
+  </div>
+</div>
+
+<!-- INVESTMENT VERDICT -->
+<div class="section">
+  <div class="section-title"><span class="icon">💎</span> Investment Verdict</div>
+  
+  <div class="verdict-box">
+    <h2>📊 WV6 — Investment Assessment</h2>
+    <div class="verdict-grid">
+      <div class="verdict-item">
+        <div class="tag ok">BRRR</div>
+        <div class="desc">MODERATE — High entry prices make finding BMV deals harder. Good capital appreciation potential if buying below market.</div>
+      </div>
+      <div class="verdict-item">
+        <div class="tag avoid">BTL</div>
+        <div class="desc">AVOID for pure yield — 3.7% gross is below most investor thresholds. Better yields available elsewhere in Wolverhampton.</div>
+      </div>
+      <div class="verdict-item">
+        <div class="tag ok">HMO</div>
+        <div class="desc">MODERATE — Near university/Compton, large period homes suit HMO conversion. Potential 5-6% yield with professional letting.</div>
+      </div>
+      <div class="verdict-item">
+        <div class="tag good">FAMILY</div>
+        <div class="desc">EXCELLENT — Best schools corridor in Wolverhampton. Strong capital preservation. Ideal for family homes/long-term hold.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📋 Summary &amp; Strategic Advice</h3>
+    <p><strong>WV6 (Tettenhall)</strong> is Wolverhampton's premium residential address — the most expensive postcode, best schools, lowest crime, and strongest family demographics. It is <strong>not a typical BTL investment play</strong> due to sub-4% yields, but it excels for:</p>
+    <ul style="margin-top:10px;">
+      <li><strong>Capital appreciation</strong> — constrained supply + high demand = steady long-term growth</li>
+      <li><strong>Family homes</strong> — premium rental achieved in school catchments (£1,100–£1,400 pcm for 3-beds)</li>
+      <li><strong>Portfolio diversification</strong> — low-risk, high-value asset to balance higher-yield city centre BTLs</li>
+      <li><strong>HMO conversion</strong> — large Victorian/Edwardian properties near the university could achieve 5-6% with professional/HMO letting strategy</li>
+    </ul>
+    <p style="margin-top:12px;padding:14px;background:#0d1520;border-left:3px solid #fbbf24;border-radius:6px;font-size:14px;">
+      <strong>Final Verdict:</strong> 🟡 <strong>MODERATE INVESTMENT</strong> — Best suited for capital growth / family buyers rather than yield-focused investors. If targeting yield, look at WV1 (5.4%) or WV11 (5.4%) instead. If targeting capital preservation with good long-term appreciation, WV6 is the strongest choice in Wolverhampton.
+    </p>
+  </div>
+</div>
+
+<!-- DATA SOURCES -->
+<div class="section">
+  <div class="section-title"><span class="icon">📋</span> Data Sources</div>
+  <div class="card" style="font-size:13px;color:#6a7e9e;">
+    <p>Data compiled May 2026 from: HM Land Registry Price Paid Data, Ofsted Inspection Reports, Plumplot.co.uk, PropertyInvestmentsUK.co.uk, HouseMetric.co.uk, CrimeRate.co.uk, Zoopla, OpenRent, Nomis/ONS, Wolverhampton City Council planning portal.</p>
+    <p style="margin-top:6px;">ⓘ All figures are indicative and should be verified with professional advice before making investment decisions.</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>🏘️ West Midlands Area Intelligence · Generated by Hermes Agent · Cron Job</p>
+  <p>WV6 — Tettenhall, Whitmore Reans, Aldersley, Compton · May 2026</p>
+</div>
+
+</div>
+</body>
+</html>

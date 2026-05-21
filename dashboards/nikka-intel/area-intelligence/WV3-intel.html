@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WV3 Area Intelligence — Wolverhampton</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  .container { max-width: 1000px; margin: 0 auto; }
+  h1 {
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, #58a6ff, #3fb950);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+  }
+  .subtitle { color: #8b949e; font-size: 0.95rem; margin-bottom: 24px; }
+  .badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+  .badge-green { background: #1a3a2a; color: #3fb950; border: 1px solid #3fb950; }
+  .badge-blue { background: #0c2d4b; color: #58a6ff; border: 1px solid #58a6ff; }
+  .badge-amber { background: #3d2e00; color: #d29922; border: 1px solid #d29922; }
+  .badge-red { background: #3d1114; color: #f85149; border: 1px solid #f85149; }
+  .badge-purple { background: #2a1452; color: #bc8cff; border: 1px solid #bc8cff; }
+
+  .card {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 18px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #30363d; }
+  .card h2 {
+    font-size: 1.2rem;
+    color: #f0f6fc;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h2 .icon { font-size: 1.3rem; }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .stat {
+    background: #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .stat .value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #f0f6fc;
+  }
+  .stat .value.green { color: #3fb950; }
+  .stat .value.blue { color: #58a6ff; }
+  .stat .value.amber { color: #d29922; }
+  .stat .value.red { color: #f85149; }
+  .stat .label {
+    font-size: 0.78rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  th {
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 2px solid #21262d;
+    color: #8b949e;
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #21262d;
+  }
+  tr:last-child td { border-bottom: none; }
+
+  .school-row .ofsted-good { color: #3fb950; font-weight: 600; }
+  .school-row .ofsted-ri { color: #d29922; font-weight: 600; }
+  .school-row .ofsted-outstanding { color: #58a6ff; font-weight: 600; }
+
+  .verdict-banner {
+    background: linear-gradient(135deg, #161b22, #0d1117);
+    border: 2px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .verdict-banner .verdict-title {
+    font-size: 1.1rem;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .verdict-banner .verdict {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .verdict-banner .verdict.good { color: #3fb950; }
+  .verdict-banner .verdict.avoid { color: #f85149; }
+  .verdict-banner .verdict-desc { color: #8b949e; font-size: 0.9rem; }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tag {
+    background: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    color: #c9d1d9;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 30px 0 10px;
+    color: #484f58;
+    font-size: 0.8rem;
+    border-top: 1px solid #21262d;
+    margin-top: 20px;
+  }
+
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .crime-bar {
+    display: flex;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 8px 0;
+    background: #21262d;
+  }
+  .crime-bar .segment {
+    height: 100%;
+    transition: width 0.3s;
+  }
+
+  @media (max-width: 600px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    h1 { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <h1>🏘️ WV3 — Finchfield, Bradmore &amp; Compton</h1>
+  <div class="subtitle">
+    Wolverhampton · West Midlands · Generated 19 May 2026 · 3-Hourly Cron Run
+    <span style="display:block;margin-top:6px;">
+      <span class="badge badge-green">✅ LIVE DATA</span>
+      <span class="badge badge-blue">📊 5 SOURCES</span>
+      <span class="badge badge-amber">⏱️ 19 May 2026</span>
+    </span>
+  </div>
+
+  <!-- VERDICT BANNER -->
+  <div class="verdict-banner">
+    <div class="verdict-title">🏠 Investment Verdict</div>
+    <div class="verdict good">GOOD for BTL &amp; BRRR</div>
+    <div class="verdict-desc">
+      Solid residential area with 28.3% 5-year growth, good schools, and strong transport links.
+      Mid-range yields (~4.2%) but excellent capital appreciation prospects. Family-oriented — less suited to HMO.
+    </div>
+  </div>
+
+  <!-- KEY STATS -->
+  <div class="card">
+    <h2><span class="icon">📊</span> Key Statistics</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="value blue">£225k</div>
+        <div class="label">Avg Sold Price (All Types)</div>
+      </div>
+      <div class="stat">
+        <div class="value blue">£283k</div>
+        <div class="label">Avg Asking Price</div>
+      </div>
+      <div class="stat">
+        <div class="value green">+7.4%</div>
+        <div class="label">1-Year Price Growth</div>
+      </div>
+      <div class="stat">
+        <div class="value green">+28.3%</div>
+        <div class="label">5-Year Price Growth</div>
+      </div>
+      <div class="stat">
+        <div class="value green">£928</div>
+        <div class="label">Avg Monthly Rent (Citywide)</div>
+      </div>
+      <div class="stat">
+        <div class="value amber">~4.2%</div>
+        <div class="label">Est. Gross Rental Yield</div>
+      </div>
+      <div class="stat">
+        <div class="value amber">263,727</div>
+        <div class="label">City Population (2021)</div>
+      </div>
+      <div class="stat">
+        <div class="value green">40.1 yrs</div>
+        <div class="label">Average Age</div>
+      </div>
+      <div class="stat">
+        <div class="value amber">£246/sqft</div>
+        <div class="label">Price per Sq Ft</div>
+      </div>
+      <div class="stat">
+        <div class="value amber">£196k</div>
+        <div class="label">Avg First-Time Buyer Price</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRIME -->
+  <div class="card">
+    <h2><span class="icon">🚨</span> Crime Analysis</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="value green">61.9/1k</div>
+        <div class="label">Crime Rate (per 1,000 residents)</div>
+      </div>
+      <div class="stat">
+        <div class="value green">3/10</div>
+        <div class="label">Crime Rating (Low)</div>
+      </div>
+      <div class="stat">
+        <div class="value blue">265</div>
+        <div class="label">Incidents (1-mi radius, Mar 2026)</div>
+      </div>
+    </div>
+    <p style="margin-bottom:6px;color:#8b949e;font-size:0.85rem;">WV3 crime is rated <strong>low</strong> compared to national average. Wolverhampton city as a whole has 88 crimes/1k people, so WV3 is significantly safer than the city average.</p>
+    <div style="margin-top:10px;">
+      <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:#8b949e;margin-bottom:4px;">
+        <span>Violent Crime</span><span>104 (39%)</span>
+      </div>
+      <div class="crime-bar"><div class="segment" style="width:39%;background:#f85149;"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:#8b949e;margin-bottom:4px;">
+        <span>Shoplifting</span><span>30 (11%)</span>
+      </div>
+      <div class="crime-bar"><div class="segment" style="width:11%;background:#d29922;"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:#8b949e;margin-bottom:4px;">
+        <span>Other Theft</span><span>23 (9%)</span>
+      </div>
+      <div class="crime-bar"><div class="segment" style="width:9%;background:#58a6ff;"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:#8b949e;margin-bottom:4px;">
+        <span>Criminal Damage / Arson</span><span>19 (7%)</span>
+      </div>
+      <div class="crime-bar"><div class="segment" style="width:7%;background:#bc8cff;"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:#8b949e;margin-bottom:4px;">
+        <span>Public Order</span><span>17 (6%)</span>
+      </div>
+      <div class="crime-bar"><div class="segment" style="width:6%;background:#79c0ff;"></div></div>
+    </div>
+  </div>
+
+  <!-- DEMOGRAPHICS -->
+  <div class="card">
+    <h2><span class="icon">👥</span> Demographics &amp; Population</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="value blue">263,727</div>
+        <div class="label">Wolverhampton City Pop.</div>
+      </div>
+      <div class="stat">
+        <div class="value green">+5.71%</div>
+        <div class="label">Population Growth (2011-2021)</div>
+      </div>
+      <div class="stat">
+        <div class="value blue">40.1 yrs</div>
+        <div class="label">Average Age (vs 40.8 E&amp;W)</div>
+      </div>
+      <div class="stat">
+        <div class="value amber">£35,858</div>
+        <div class="label">Median Annual Salary</div>
+      </div>
+      <div class="stat">
+        <div class="value green">77.2%</div>
+        <div class="label">Employment Rate (Above Regional)</div>
+      </div>
+    </div>
+    <table style="margin-top:10px;">
+      <tr><th>Age Group</th><th>Share (W'ton)</th><th>Share (Eng &amp; Wales)</th></tr>
+      <tr><td>0-15 (Children)</td><td><strong>20.0%</strong></td><td>18.3%</td></tr>
+      <tr><td>16-64 (Working Age)</td><td><strong>61.4%</strong></td><td>62.8%</td></tr>
+      <tr><td>65+ (Retired)</td><td><strong>18.6%</strong></td><td>18.9%</td></tr>
+    </table>
+    <p style="color:#8b949e;font-size:0.85rem;margin-top:8px;">WV3 (Finchfield, Bradmore, Compton) is a predominantly residential area with a family-oriented profile. Above-average proportion of children suggests strong demand for family housing.</p>
+  </div>
+
+  <!-- SCHOOLS -->
+  <div class="card">
+    <h2><span class="icon">🏫</span> Nearby Schools &amp; Ofsted Ratings</h2>
+    <table>
+      <tr><th>School</th><th>Type</th><th>Ages</th><th>Ofsted</th><th>Rating</th></tr>
+      <tr class="school-row">
+        <td>Merridale Primary School</td><td>State Primary</td><td>3-11</td>
+        <td class="ofsted-good">Good</td><td>Snobe A+</td>
+      </tr>
+      <tr class="school-row">
+        <td>Bantock Primary School</td><td>State Primary</td><td>3-11</td>
+        <td class="ofsted-good">Good</td><td>Snobe A+</td>
+      </tr>
+      <tr class="school-row">
+        <td>Nishkam Primary School Wolverhampton</td><td>State Primary</td><td>4-11</td>
+        <td class="ofsted-good">Good</td><td>Snobe A+</td>
+      </tr>
+      <tr class="school-row">
+        <td>The Royal School Wolverhampton</td><td>State (Boarding)</td><td>4-19</td>
+        <td class="ofsted-good">Good</td><td>Snobe B-</td>
+      </tr>
+      <tr class="school-row">
+        <td>Uplands Junior School</td><td>State Primary</td><td>7-11</td>
+        <td class="ofsted-good">Good</td><td>Snobe B-</td>
+      </tr>
+      <tr class="school-row">
+        <td>St Michael's Catholic Primary Academy</td><td>State Primary</td><td>3-11</td>
+        <td class="ofsted-good">Good</td><td>Snobe B-</td>
+      </tr>
+      <tr class="school-row">
+        <td>Castlecroft Primary School</td><td>State Primary</td><td>3-11</td>
+        <td class="ofsted-good">Good</td><td>Snobe B-</td>
+      </tr>
+      <tr class="school-row">
+        <td>S.Peter's Collegiate CofE School</td><td>State Secondary</td><td>11-18</td>
+        <td class="ofsted-ri">Requires Improvement</td><td>Snobe B-</td>
+      </tr>
+      <tr class="school-row">
+        <td>Wolverhampton Grammar School</td><td>Private</td><td>4-18</td>
+        <td style="color:#58a6ff;font-weight:600;">Independent</td><td>⭐⭐⭐⭐⭐</td>
+      </tr>
+    </table>
+    <p style="color:#8b949e;font-size:0.85rem;margin-top:8px;">WV3 is well-served by Good-rated primary schools. Secondary options are more limited (S.Peter's RI). Wolverhampton Grammar provides a strong private option. Strong primary provision is a plus for family buyers/tenants.</p>
+  </div>
+
+  <!-- TRANSPORT -->
+  <div class="card">
+    <h2><span class="icon">🚆</span> Transport &amp; Connectivity</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="value green">15 min</div>
+        <div class="label">Train to Birmingham New Street</div>
+      </div>
+      <div class="stat">
+        <div class="value amber">&lt;2 hrs</div>
+        <div class="label">Train to London Euston</div>
+      </div>
+      <div class="stat">
+        <div class="value blue">M6 / M54</div>
+        <div class="label">Motorway Access</div>
+      </div>
+    </div>
+    <table style="margin-top:8px;">
+      <tr><th>Mode</th><th>Details</th></tr>
+      <tr><td><strong>🚄 Rail</strong></td><td>Wolverhampton Station — West Coast Main Line. Regular services to Birmingham (15 min), London Euston (&lt;2 hrs), Manchester, Edinburgh.</td></tr>
+      <tr><td><strong>🚋 Metro</strong></td><td>West Midlands Metro (tram) — Wolverhampton to Birmingham via Bilston, Wednesbury, West Bromwich. Every 6-8 mins daytime.</td></tr>
+      <tr><td><strong>🚌 Bus</strong></td><td>National Express West Midlands routes 1, 10A, 17, 59, 69, 89, 255, 256, 713, 711. Frequent services to city centre, Dudley, Walsall.</td></tr>
+      <tr><td><strong>🚗 Road</strong></td><td>A449 (Penn Road) to city centre and M54 (J2). A454 (Bridgnorth Road). M6 J10 via A454. Easy access to wider Midlands motorway network.</td></tr>
+      <tr><td><strong>✈️ Air</strong></td><td>Birmingham International Airport — 40 min drive or direct train connection.</td></tr>
+    </table>
+    <p style="color:#8b949e;font-size:0.85rem;margin-top:8px;">Excellent connectivity — WV3 is within easy reach of Wolverhampton city centre and its mainline station, making it viable for Birmingham and London commuters.</p>
+  </div>
+
+  <!-- SOLD PRICES -->
+  <div class="card">
+    <h2><span class="icon">💰</span> Sold Prices &amp; Market Activity</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="value blue">£97k</div>
+        <div class="label">Avg Terraced</div>
+      </div>
+      <div class="stat">
+        <div class="value blue">£169k</div>
+        <div class="label">Avg Semi-Detached</div>
+      </div>
+      <div class="stat">
+        <div class="value blue">£227k</div>
+        <div class="label">Avg Detached</div>
+      </div>
+      <div class="stat">
+        <div class="value green">164</div>
+        <div class="label">Sales in Last 12 Months</div>
+      </div>
+    </div>
+    <p style="margin-top:6px;color:#8b949e;font-size:0.85rem;">
+      <strong>Price comparison:</strong> WV3 prices are 23% below England average (£293k). 
+      The area has seen <strong>+7.4% annual growth</strong> and <strong>+28.3% over 5 years</strong>.
+      Terraced properties offer the best value entry point for investors at ~£97k average.
+    </p>
+    <table style="margin-top:10px;">
+      <tr><th>Property Type</th><th>Avg Price (WV3)</th><th>England Avg</th><th>Discount</th></tr>
+      <tr><td>Terraced</td><td>£97,098</td><td>£245,002</td><td style="color:#3fb950;">-60.4%</td></tr>
+      <tr><td>Semi-Detached</td><td>£169,413</td><td>£290,004</td><td style="color:#3fb950;">-41.6%</td></tr>
+      <tr><td>Detached</td><td>£226,852</td><td>£474,400</td><td style="color:#3fb950;">-52.2%</td></tr>
+      <tr><td>Flats</td><td>~£113k</td><td>£221,565</td><td style="color:#3fb950;">-48.9%</td></tr>
+    </table>
+  </div>
+
+  <!-- RENTAL DEMAND -->
+  <div class="card">
+    <h2><span class="icon">📈</span> Rental Market &amp; Yield</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="value green">£928</div>
+        <div class="label">Avg Rent (Wolverhampton, Mar 2026)</div>
+      </div>
+      <div class="stat">
+        <div class="value green">+11.9%</div>
+        <div class="label">Annual Rent Growth</div>
+      </div>
+      <div class="stat">
+        <div class="value amber">~4.2%</div>
+        <div class="label">Est. Gross Yield (WV3)</div>
+      </div>
+      <div class="stat">
+        <div class="value amber">3.7%-5.4%</div>
+        <div class="label">Yield Range (Citywide)</div>
+      </div>
+    </div>
+    <p style="margin-top:6px;color:#8b949e;font-size:0.85rem;">
+      Wolverhampton rents rose 11.9% in the year to March 2026 (ONS) — significantly above the West Midlands average of 4.8%.
+      WV3's yield sits in the 4-4.5% range due to higher property values relative to WV1/WV11.
+      Strong tenant demand driven by University of Wolverhampton (30,200+ students), proximity to i54 business park (JLR), and commuter access to Birmingham.
+    </p>
+  </div>
+
+  <!-- PLANNING & DEVELOPMENT -->
+  <div class="card">
+    <h2><span class="icon">🏗️</span> Planning &amp; Regeneration</h2>
+    <table>
+      <tr><th>Project</th><th>Details</th></tr>
+      <tr>
+        <td><strong>Smithgate Regeneration</strong></td>
+        <td>£83M Phase 1 — 331 build-to-rent/affordable apartments (Bicycle Works). 12-acre site, up to 1,000 homes planned total. Under construction.</td>
+      </tr>
+      <tr>
+        <td><strong>Former M&S → Apartments</strong></td>
+        <td>Planning approved Jan 2026. Conversion to 71 apartments + 3 retail units in city centre. Boosts city centre living stock.</td>
+      </tr>
+      <tr>
+        <td><strong>City Centre West Masterplan</strong></td>
+        <td>Brewers Yard — hundreds of new homes, council fleet relocation. Feb 2026 announcement. Long-term regeneration play.</td>
+      </tr>
+      <tr>
+        <td><strong>Local WV3 Applications</strong></td>
+        <td>Planning activity on Castlecroft Gardens (extensions), Compton Road West (Compton Care), and various residential extensions/alterations. Steady organic development.</td>
+      </tr>
+    </table>
+    <p style="color:#8b949e;font-size:0.85rem;margin-top:8px;">Major city centre regeneration will have positive spillover effects on surrounding residential areas like WV3. Smithgate alone will bring hundreds of new residents to the city, increasing local amenity demand.</p>
+  </div>
+
+  <!-- LOCAL AMENITIES -->
+  <div class="card">
+    <h2><span class="icon">🛒</span> Local Amenities</h2>
+    <div class="tag-list">
+      <span class="tag">🛍️ Sainsbury's (St Marks, Raglan St)</span>
+      <span class="tag">🛍️ Asda Superstore (Waterloo Rd)</span>
+      <span class="tag">🛍️ Mander Centre (City Centre)</span>
+      <span class="tag">🏥 New Cross Hospital (Major NHS)</span>
+      <span class="tag">🏥 Compton Care (Hospice)</span>
+      <span class="tag">🏥 Multiple GP Surgeries</span>
+      <span class="tag">🌳 West Park</span>
+      <span class="tag">🌳 Bantock Park</span>
+      <span class="tag">🌳 Compton Park</span>
+      <span class="tag">⚽ Molineux Stadium (Wolves FC)</span>
+      <span class="tag">🏋️ Aldersley Leisure Village</span>
+      <span class="tag">🍽️ Finchfield High Street (Local Shops)</span>
+      <span class="tag">🏦 Banks &amp; Post Offices (Finchfield)</span>
+    </div>
+    <p style="color:#8b949e;font-size:0.85rem;margin-top:10px;">
+      WV3 is well-served by supermarkets (Sainsbury's St Marks, Asda Waterloo Rd), healthcare (New Cross Hospital is a major NHS trust with A&amp;E), and recreational spaces including West Park and Bantock Park. The Finchfield/Bradmore area has its own local shops and amenities.
+    </p>
+  </div>
+
+  <!-- AREA OVERVIEW -->
+  <div class="card">
+    <h2><span class="icon">📍</span> Area Overview</h2>
+    <p><strong>WV3</strong> covers the western and south-western suburbs of Wolverhampton, including <strong>Finchfield, Bradmore, Compton, Merridale,</strong> and part of <strong>Penn</strong>. It is roughly <strong>1.5–2.5 miles</strong> from Wolverhampton city centre and about <strong>14 miles northwest of Dudley</strong> via the A4039/A4123.</p>
+    <p style="margin-top:8px;">The area is predominantly residential with a mix of Victorian terraces, 1930s semi-detached homes, and modern developments. Finchfield has a village-like feel with local shops, while Bradmore and Compton offer larger family homes with good access to parks and green space.</p>
+    <p style="margin-top:8px;"><strong>Key employers nearby:</strong> i54 business park (Jaguar Land Rover, Moog, Collins Aerospace — ~12 min drive), Royal Wolverhampton NHS Trust (New Cross Hospital), University of Wolverhampton, Wolverhampton City Council.</p>
+  </div>
+
+  <!-- INVESTMENT DETAILS -->
+  <div class="card">
+    <h2><span class="icon">💡</span> Investment Strategy Breakdown</h2>
+    <table>
+      <tr><th>Strategy</th><th>Rating</th><th>Notes</th></tr>
+      <tr>
+        <td><strong>BRRR</strong></td>
+        <td style="color:#3fb950;font-weight:600;">✅ GOOD</td>
+        <td>Solid 28.3% 5-year growth supports value appreciation. Terraced properties (~£97k) are strong candidates for refurb and refinance. Good rental demand ensures realistic exit.</td>
+      </tr>
+      <tr>
+        <td><strong>Buy-to-Let</strong></td>
+        <td style="color:#3fb950;font-weight:600;">✅ GOOD</td>
+        <td>~4.2% yield with strong rental growth (+11.9% YoY). Family-oriented area attracts reliable tenants. Good transport links aid tenant retention. Affordable entry vs England average.</td>
+      </tr>
+      <tr>
+        <td><strong>HMO</strong></td>
+        <td style="color:#d29922;font-weight:600;">⚠️ LIMITED</td>
+        <td>WV3 is primarily family residential — not ideal for HMO conversions. Better HMO prospects in WV1 (city centre, student corridor). Some potential near the University but limited.</td>
+      </tr>
+      <tr>
+        <td><strong>Capital Growth</strong></td>
+        <td style="color:#3fb950;font-weight:600;">✅ GOOD</td>
+        <td>28.3% over 5 years, 7.4% over 1 year. Regeneration spillover from Smithgate and wider Wolverhampton renewal. Infrastructure investment (Metro extension) supports continued growth.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- DATA SOURCES -->
+  <div class="card">
+    <h2><span class="icon">📋</span> Data Sources</h2>
+    <table>
+      <tr><th>Source</th><th>Data Used</th></tr>
+      <tr><td>HM Land Registry / Property Solvers</td><td>Sold prices, price trends, transaction volumes</td></tr>
+      <tr><td>Property Report UK</td><td>Crime data, EPC ratings, recent sales</td></tr>
+      <tr><td>Property Investments UK</td><td>Rental yields, price per sqft, growth metrics</td></tr>
+      <tr><td>ONS / Plumplot</td><td>Population, demographics, age profile</td></tr>
+      <tr><td>Ofsted / Snobe</td><td>School ratings and performance</td></tr>
+      <tr><td>Transport for West Midlands</td><td>Bus, rail, metro, road connectivity</td></tr>
+      <tr><td>Wolverhampton City Council / Planning Alerts</td><td>Planning applications and regeneration projects</td></tr>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Hermes Agent · West Midlands Area Intelligence · 3-Hourly Cron Run · 19 May 2026<br>
+    Data collected from public sources — may not be fully comprehensive. Verify before investing.
+  </div>
+
+</div>
+</body>
+</html>

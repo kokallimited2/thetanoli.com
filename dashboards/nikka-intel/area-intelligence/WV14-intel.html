@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WV14 • Bilston — Area Intelligence Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: #0a0c10;
+    color: #e8eaed;
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 1100px; margin:0 auto; padding: 2rem 1.5rem; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a1e2e 0%, #0f1923 100%);
+    border: 1px solid #2a3050;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .badge-row { display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem; }
+  .badge {
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .badge-area { background:#1e3a5f; color:#60a5fa; }
+  .badge-date { background:#1e2a1e; color:#4ade80; }
+  .badge-verdict { background:#3b1f1f; color:#f87171; }
+  .header h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header .subtitle {
+    color: #9ca3af;
+    font-size: 1.1rem;
+    font-weight: 300;
+  }
+  .header .location-info {
+    margin-top: 1rem;
+    color: #d1d5db;
+    font-size: 0.95rem;
+  }
+  .header .location-info span { color: #60a5fa; font-weight:500; }
+
+  /* Verdict Banner */
+  .verdict-banner {
+    background: linear-gradient(135deg, #0d2818, #1a3a2a);
+    border: 1px solid #2d6b47;
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .verdict-banner.btl { background: linear-gradient(135deg, #0d2818, #1a3a2a); border-color: #2d6b47; }
+  .verdict-banner.brrr { background: linear-gradient(135deg, #1a2d3b, #0f2840); border-color: #2a6090; }
+  .verdict-banner.hmo { background: linear-gradient(135deg, #2a1f2e, #3d2440); border-color: #7c3a8a; }
+  .verdict-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    color: #9ca3af;
+  }
+  .verdict-score {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .verdict-banner.btl .verdict-score { color: #4ade80; }
+  .verdict-banner.brrr .verdict-score { color: #60a5fa; }
+  .verdict-banner.hmo .verdict-score { color: #c084fc; }
+  .verdict-banner .divider { width:1px; height:40px; background:#333; }
+
+  /* KPI Grid */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .kpi-card {
+    background: #11141c;
+    border: 1px solid #1e2332;
+    border-radius: 14px;
+    padding: 1.3rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .kpi-card:hover { border-color: #2a3050; }
+  .kpi-card .kpi-icon { font-size: 1.4rem; margin-bottom: 0.3rem; }
+  .kpi-card .kpi-value {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #f0f2f5;
+  }
+  .kpi-card .kpi-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #6b7280;
+    margin-top: 0.2rem;
+  }
+  .kpi-card .kpi-sub {
+    font-size: 0.75rem;
+    color: #4b5563;
+    margin-top: 0.1rem;
+  }
+
+  /* Cards */
+  .card {
+    background: #11141c;
+    border: 1px solid #1e2332;
+    border-radius: 16px;
+    padding: 1.8rem;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #2a3050; }
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #60a5fa;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .card-title .emoji { font-size: 1.2rem; }
+
+  /* Two column */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+  /* Lists */
+  .stat-list { list-style: none; }
+  .stat-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #1a1f2e;
+    font-size: 0.9rem;
+  }
+  .stat-list li:last-child { border-bottom: none; }
+  .stat-list .label { color: #9ca3af; }
+  .stat-list .value { color: #e8eaed; font-weight: 500; }
+
+  /* School ratings */
+  .school-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid #1a1f2e;
+  }
+  .school-item:last-child { border-bottom: none; }
+  .school-name { font-size: 0.9rem; color: #d1d5db; }
+  .school-rating {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .rating-outstanding { background: #064e3b; color: #6ee7b7; }
+  .rating-good { background: #1e3a5f; color: #93c5fd; }
+  .rating-requires { background: #5c3a1e; color: #fcd34d; }
+  .rating-inadequate { background: #3b1f1f; color: #fca5a5; }
+
+  /* Transport */
+  .transport-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #1a1f2e;
+    font-size: 0.9rem;
+  }
+  .transport-item:last-child { border-bottom: none; }
+  .transport-item strong { color: #e8eaed; }
+  .transport-item .tag {
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+  .tag-tram { background: #1e3a5f; color: #60a5fa; }
+  .tag-bus { background: #2a1f2e; color: #c084fc; }
+  .tag-road { background: #1e2a1e; color: #4ade80; }
+  .tag-rail { background: #3b2a1a; color: #fbbf24; }
+
+  /* Planning */
+  .planning-item {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #1a1f2e;
+  }
+  .planning-item:last-child { border-bottom: none; }
+  .planning-item .plan-name { font-weight: 600; color: #d1d5db; }
+  .planning-item .plan-desc { font-size: 0.85rem; color: #9ca3af; margin-top: 0.2rem; }
+
+  /* Investment Section */
+  .investment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  .invest-card {
+    border-radius: 14px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .invest-card.good {
+    background: linear-gradient(135deg, #0d2818, #0f1f12);
+    border: 1px solid #2d6b47;
+  }
+  .invest-card.caution {
+    background: linear-gradient(135deg, #2a1f0e, #1e180a);
+    border: 1px solid #6b5a2d;
+  }
+  .invest-card.avoid {
+    background: linear-gradient(135deg, #2a0e0e, #1f0a0a);
+    border: 1px solid #6b2d2d;
+  }
+  .invest-card .invest-verdict {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .invest-card.good .invest-verdict { color: #4ade80; }
+  .invest-card.caution .invest-verdict { color: #fbbf24; }
+  .invest-card.avoid .invest-verdict { color: #f87171; }
+  .invest-card .invest-sub {
+    font-size: 0.8rem;
+    color: #9ca3af;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: #4b5563;
+    font-size: 0.8rem;
+    border-top: 1px solid #1a1f2e;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; }
+    .investment-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2rem; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge-row">
+      <span class="badge badge-area">🏘️ WV14</span>
+      <span class="badge badge-date">May 2026</span>
+      <span class="badge badge-verdict">3-Hourly Run</span>
+    </div>
+    <h1>Bilston · WV14</h1>
+    <div class="subtitle">Area Intelligence Report — West Midlands Property Market</div>
+    <div class="location-info">
+      📍 <span>Bilston</span> · City of Wolverhampton · <span>2.5 mi SE</span> of Wolverhampton City Centre · <span>Black Country</span>
+    </div>
+  </div>
+
+  <!-- Verdict Banner -->
+  <div class="verdict-banner brrr">
+    <div>
+      <div class="verdict-label">🏚️ BRRR</div>
+      <div class="verdict-score">★★★★☆ GOOD</div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="verdict-label">🏠 BTL</div>
+      <div class="verdict-score">★★★★☆ GOOD</div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="verdict-label">🏡 HMO</div>
+      <div class="verdict-score">★★★★★ EXCELLENT</div>
+    </div>
+    <div style="margin-left:auto; font-size:0.85rem; color:#9ca3af; max-width:280px; text-align:right;">
+      Regeneration upside · Strong yields · Affordable entry · HMO sweet spot
+    </div>
+  </div>
+
+  <!-- KPI Grid -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-icon">👥</div>
+      <div class="kpi-value">51,619</div>
+      <div class="kpi-label">Population (WV14)</div>
+      <div class="kpi-sub">+1.5% annual growth</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">🏠</div>
+      <div class="kpi-value">£175K</div>
+      <div class="kpi-label">Median Price</div>
+      <div class="kpi-sub">Land Registry / Zoopla</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">💰</div>
+      <div class="kpi-value">£675</div>
+      <div class="kpi-label">Avg Monthly Rent</div>
+      <div class="kpi-sub">Across all property types</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">📈</div>
+      <div class="kpi-value">4.4%</div>
+      <div class="kpi-label">Gross Rental Yield</div>
+      <div class="kpi-sub">Above Eng. avg (3.6%)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">🛡️</div>
+      <div class="kpi-value">106 / 1K</div>
+      <div class="kpi-label">Crime Rate</div>
+      <div class="kpi-sub">18% above WM avg</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">💷</div>
+      <div class="kpi-value">£35,945</div>
+      <div class="kpi-label">Avg Household Income</div>
+      <div class="kpi-sub">UK avg: £38,100</div>
+    </div>
+  </div>
+
+  <!-- Two Column Layout -->
+  <div class="two-col">
+
+    <!-- Demographics -->
+    <div class="card">
+      <div class="card-title"><span class="emoji">📊</span> Demographics</div>
+      <ul class="stat-list">
+        <li><span class="label">Population (WV14)</span><span class="value">51,619</span></li>
+        <li><span class="label">Bilston town pop.</span><span class="value">34,639</span></li>
+        <li><span class="label">Avg age</span><span class="value">38.6 (UK: 40.7)</span></li>
+        <li><span class="label">White ethnicity</span><span class="value">54.9%</span></li>
+        <li><span class="label">Asian</span><span class="value">14.7%</span></li>
+        <li><span class="label">Black</span><span class="value">6.4%</span></li>
+        <li><span class="label">Mixed/Other</span><span class="value">9.5%</span></li>
+        <li><span class="label">Children under 18</span><span class="value">20%</span></li>
+        <li><span class="label">Retired (65+)</span><span class="value">14.1%</span></li>
+        <li><span class="label">Largest age band</span><span class="value">25–34 (18%)</span></li>
+        <li><span class="label">Employment rate</span><span class="value">68%</span></li>
+        <li><span class="label">Unemployment</span><span class="value">5% (UK: 4.3%)</span></li>
+        <li><span class="label">Population growth/yr</span><span class="value">1.5% (UK: 0.66%)</span></li>
+      </ul>
+    </div>
+
+    <!-- Housing Market -->
+    <div class="card">
+      <div class="card-title"><span class="emoji">🏡</span> Housing Market</div>
+      <ul class="stat-list">
+        <li><span class="label">Median house price</span><span class="value">£175,000</span></li>
+        <li><span class="label">Avg Land Registry price</span><span class="value">£217,259</span></li>
+        <li><span class="label">Avg listing price</span><span class="value">£214,679</span></li>
+        <li><span class="label">Detached median</span><span class="value">£270,000</span></li>
+        <li><span class="label">Semi-detached median</span><span class="value">£190,000</span></li>
+        <li><span class="label">Terraced median</span><span class="value">£171,000</span></li>
+        <li><span class="label">Flat median</span><span class="value">£95,000</span></li>
+        <li><span class="label">Semi-detached share</span><span class="value">49.2%</span></li>
+        <li><span class="label">Terraced share</span><span class="value">22.2%</span></li>
+        <li><span class="label">Detached share</span><span class="value">15.4%</span></li>
+        <li><span class="label">Flats share</span><span class="value">17.7%</span></li>
+        <li><span class="label">Owned (outright/mortgaged)</span><span class="value">53.1%</span></li>
+        <li><span class="label">Social rented</span><span class="value">31.5%</span></li>
+        <li><span class="label">Privately rented</span><span class="value">15.4%</span></li>
+        <li><span class="label">5-yr price growth</span><span class="value">+12.19%</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Rental Market -->
+  <div class="card">
+    <div class="card-title"><span class="emoji">💸</span> Rental Market &amp; Yield Analysis</div>
+    <div class="two-col">
+      <div>
+        <ul class="stat-list">
+          <li><span class="label">Gross rental yield (avg)</span><span class="value">4.4%</span></li>
+          <li><span class="label">Median monthly rent</span><span class="value">£675</span></li>
+          <li><span class="label">3-bed rent (typ.)</span><span class="value">£775–£868 pcm</span></li>
+          <li><span class="label">4-bed rent</span><span class="value">£1,005–£1,428 pcm</span></li>
+          <li><span class="label">HMO room rent (avg)</span><span class="value">~£450–£550 pcm</span></li>
+          <li><span class="label">HMO gross yield per room</span><span class="value">Up to 8.5%</span></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="stat-list">
+          <li><span class="label">West Midlands avg yield</span><span class="value">3.5%</span></li>
+          <li><span class="label">England avg yield</span><span class="value">3.6%</span></li>
+          <li><span class="label">WV14 vs WM avg</span><span class="value" style="color:#4ade80;">+0.9pp higher</span></li>
+          <li><span class="label">Transactions (3yr)</span><span class="value">1,244</span></li>
+          <li><span class="label">Avg. rent growth (YoY)</span><span class="value">~6.1%</span></li>
+          <li><span class="label">Rental demand</span><span class="value" style="color:#4ade80;">HIGH</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Two Col: Crime + Schools -->
+  <div class="two-col">
+
+    <!-- Crime -->
+    <div class="card">
+      <div class="card-title"><span class="emoji">🚔</span> Crime &amp; Safety</div>
+      <ul class="stat-list">
+        <li><span class="label">Crime rate (Bilston)</span><span class="value" style="color:#f87171;">106 / 1,000 pop.</span></li>
+        <li><span class="label">vs West Midlands avg</span><span class="value" style="color:#f87171;">18% higher</span></li>
+        <li><span class="label">Most common crime</span><span class="value">Violence &amp; sexual offences</span></li>
+        <li><span class="label">Violent crime rate</span><span class="value">47 / 1,000</span></li>
+        <li><span class="label">Shoplifting</span><span class="value">40 (monthly)</span></li>
+        <li><span class="label">Other theft</span><span class="value">37 (monthly)</span></li>
+        <li><span class="label">Criminal damage</span><span class="value">36 (monthly)</span></li>
+        <li><span class="label">National crime rank</span><span class="value">1,201 / 32,482</span></li>
+        <li><span class="label">Overall assessment</span><span class="value" style="color:#fbbf24;">⚠️ Elevated — factor in insurance</span></li>
+      </ul>
+    </div>
+
+    <!-- Schools -->
+    <div class="card">
+      <div class="card-title"><span class="emoji">🎓</span> Nearby Schools (Ofsted)</div>
+      <div class="school-item">
+        <span class="school-name">Moseley Park</span>
+        <span class="school-rating rating-outstanding">OUTSTANDING</span>
+      </div>
+      <div class="school-item">
+        <span class="school-name">Manor Primary School</span>
+        <span class="school-rating rating-outstanding">OUTSTANDING</span>
+      </div>
+      <div class="school-item">
+        <span class="school-name">Holy Trinity Catholic Primary</span>
+        <span class="school-rating rating-outstanding">OUTSTANDING</span>
+      </div>
+      <div class="school-item">
+        <span class="school-name">Ormiston SWB Academy</span>
+        <span class="school-rating rating-good">GOOD</span>
+      </div>
+      <div class="school-item">
+        <span class="school-name">Loxdale Primary School</span>
+        <span class="school-rating rating-good">GOOD</span>
+      </div>
+      <div class="school-item">
+        <span class="school-name">Bilston CofE Primary</span>
+        <span class="school-rating rating-good">GOOD</span>
+      </div>
+      <div class="school-item">
+        <span class="school-name">Stowlawn Primary</span>
+        <span class="school-rating rating-good">GOOD</span>
+      </div>
+      <div class="school-item">
+        <span class="school-name">Green Park School</span>
+        <span class="school-rating rating-good">GOOD</span>
+      </div>
+      <div class="school-item">
+        <span class="school-name">Villiers Primary</span>
+        <span class="school-rating rating-good">GOOD</span>
+      </div>
+      <div class="school-item">
+        <span class="school-name">Field View Primary</span>
+        <span class="school-rating rating-good">GOOD</span>
+      </div>
+      <div style="margin-top:0.8rem; font-size:0.8rem; color:#6b7280;">
+        🎯 <strong>3 Outstanding</strong> · 7 Good · Strong school provision
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Transport -->
+  <div class="card">
+    <div class="card-title"><span class="emoji">🚆</span> Transport &amp; Connectivity</div>
+    <div class="two-col">
+      <div>
+        <div class="transport-item">
+          <span class="tag tag-tram">TRAM</span> <strong>West Midlands Metro</strong> — Bilston Central, Loxdale, The Crescent stops
+        </div>
+        <div class="transport-item">
+          <span class="tag tag-tram">TRAM</span> Wolverhampton → Birmingham via Metro (trams every 8–10 min)
+        </div>
+        <div class="transport-item">
+          <span class="tag tag-bus">BUS</span> <strong>Bilston Bus Station</strong> — Routes to Wolverhampton, Dudley, Walsall, Tipton, Willenhall, New Cross Hospital
+        </div>
+        <div class="transport-item">
+          <span class="tag tag-bus">BUS</span> Operators: National Express WM, Chaserider, Diamond, Banga Bus
+        </div>
+      </div>
+      <div>
+        <div class="transport-item">
+          <span class="tag tag-road">ROAD</span> <strong>A463 Black Country Route</strong> — Dual carriageway to M6 J10 (Walsall)
+        </div>
+        <div class="transport-item">
+          <span class="tag tag-road">ROAD</span> <strong>M5</strong> J2 (3.5 mi) — <strong>M6</strong> J10 (4 mi) — Birmingham 15 mi
+        </div>
+        <div class="transport-item">
+          <span class="tag tag-rail">RAIL</span> <strong>Coseley</strong> (1.5 mi) — trains to Birmingham NW &amp; Wolverhampton
+        </div>
+        <div class="transport-item">
+          <span class="tag tag-rail">RAIL</span> <strong>Wolverhampton</strong> (2.5 mi) — Mainline to London Euston (1h20), Birmingham (15 min)
+        </div>
+        <div class="transport-item">
+          <span>🚲 Cycle-friendly · Canal towpath walks (BCN Old Main Line)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Planning & Regeneration -->
+  <div class="card">
+    <div class="card-title"><span class="emoji">🏗️</span> Planning &amp; Regeneration</div>
+    <div class="planning-item">
+      <div class="plan-name">🏘️ Bilston Urban Village</div>
+      <div class="plan-desc">Mixed-tenure regeneration on former GKN Sankey site — 1,000+ new homes, green space, infrastructure. Ongoing since 1996, now delivering final phases.</div>
+    </div>
+    <div class="planning-item">
+      <div class="plan-name">🏪 Bilston Market Redevelopment</div>
+      <div class="plan-desc">Multi-million-pound new market building — steel framework in progress, expected completion 2026/27. Major town centre investment.</div>
+    </div>
+    <div class="planning-item">
+      <div class="plan-name">🏠 54 Affordable Homes (Hatton Street)</div>
+      <div class="plan-desc">Morro Partnerships — mix of 2-bed and 3-bed affordable homes. 3rd resubmission, part of Local Plan up to 2042.</div>
+    </div>
+    <div class="planning-item">
+      <div class="plan-name">🏠 6 New Homes (near Bilston CofE Primary)</div>
+      <div class="plan-desc">Approved by council — new homes adjacent to Bilston Church of England Primary School.</div>
+    </div>
+    <div class="planning-item">
+      <div class="plan-name">📋 Wolverhampton Local Plan 2024–2042</div>
+      <div class="plan-desc">Bilston Corridor identified for strategic growth. Brownfield regeneration priority area. Continued investment in transport and housing.</div>
+    </div>
+  </div>
+
+  <!-- Local Amenities -->
+  <div class="card">
+    <div class="card-title"><span class="emoji">🛒</span> Local Amenities</div>
+    <div class="two-col">
+      <div>
+        <ul class="stat-list">
+          <li><span class="label">🛍️ Town centre</span><span class="value">Bilston Market, Mount Pleasant</span></li>
+          <li><span class="label">🛒 Supermarkets</span><span class="value">Iceland, Tesco Express, Aldi (nearby)</span></li>
+          <li><span class="label">🏥 Healthcare</span><span class="value">Bert Williams Leisure Centre, GP surgeries, Bilston Health Centre</span></li>
+          <li><span class="label">🏥 Hospital</span><span class="value">New Cross Hospital (2.5 mi)</span></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="stat-list">
+          <li><span class="label">🌳 Green spaces</span><span class="value">Bilston Urban Park, canal towpaths, Stowlawn Park</span></li>
+          <li><span class="label">🏋️ Leisure</span><span class="value">Bert Williams Leisure Centre (gym, pool, classes)</span></li>
+          <li><span class="label">⛪ Heritage</span><span class="value">St Leonard's Church (Grade II*)</span></li>
+          <li><span class="label">🚗 Car ownership</span><span class="value">69.4% own at least 1 car</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Investment Verdict -->
+  <div class="card">
+    <div class="card-title"><span class="emoji">💎</span> Investment Verdict</div>
+    <div class="investment-grid">
+      <div class="invest-card good">
+        <div class="invest-verdict">★★★★☆</div>
+        <div style="font-size:1.1rem; font-weight:700; color:#4ade80;">GOOD</div>
+        <div class="invest-sub" style="margin-top:0.5rem; font-weight:600;">BRRR Strategy</div>
+        <div class="invest-sub" style="margin-top:0.3rem;">
+          Median price £175K leaves room for refurb equity. High transaction volumes (1,244 in 3yr) = liquidity. 3 Outstanding schools boost desirability. Regeneration upside. Target semi-detached (£190K) for best value-add.
+        </div>
+      </div>
+      <div class="invest-card good">
+        <div class="invest-verdict">★★★★☆</div>
+        <div style="font-size:1.1rem; font-weight:700; color:#4ade80;">GOOD</div>
+        <div class="invest-sub" style="margin-top:0.5rem; font-weight:600;">BTL Strategy</div>
+        <div class="invest-sub" style="margin-top:0.3rem;">
+          4.4% gross yield above national avg. Affordable entry prices. High rental demand driven by young population (25–34 largest band). Metro connectivity attracts commuters. £675 median rent covers mortgage on £175K purchase.
+        </div>
+      </div>
+      <div class="invest-card good">
+        <div class="invest-verdict">★★★★★</div>
+        <div style="font-size:1.1rem; font-weight:700; color:#c084fc;">EXCELLENT</div>
+        <div class="invest-sub" style="margin-top:0.5rem; font-weight:600;">HMO Strategy</div>
+        <div class="invest-sub" style="margin-top:0.3rem;">
+          HMO room yields up to 8.5% — well above single-let. Large 3–4 bed semis ideal for conversion. Young worker/student profile. Proximity to Wolverhampton city centre. 31.5% social housing = high rental demand across all tiers.
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem; padding:1rem; background:#0a0d14; border-radius:10px; border-left:3px solid #4ade80;">
+      <strong style="color:#4ade80;">📌 Bottom Line:</strong>
+      <span style="color:#d1d5db;"> WV14 (Bilston) is a <strong style="color:#e8eaed;">strong investment area</strong> for value-focused investors. Affordable pricing (£175K median), above-average yields (4.4% single-let, 8.5% HMO), and major regeneration create compelling upside. The main downside is elevated crime (106/1K) — factor in higher insurance and target well-lit streets. Best opportunity: HMO conversion in larger Victorian/Edwardian semis near the Metro line or BRRR in the Urban Village regeneration zone. Avoid streets with high social housing concentration. <strong style="color:#4ade80;">Investment grade: B+</strong></span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>WV14 Area Intelligence Report · Generated May 2026 · Data from Land Registry, ONS Census 2021, Ofsted, Police.uk, RentalYield.uk, PostcodeArea.co.uk, Wikipedia</p>
+    <p style="margin-top:0.3rem;">🏘️ West Midlands Area Intelligence — 3-Hourly Cron Job · Hermes Agent</p>
+  </div>
+
+</div>
+</body>
+</html>

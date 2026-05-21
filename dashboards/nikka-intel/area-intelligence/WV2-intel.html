@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WV2 Area Intelligence — All Saints / Blakenhall</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.7;
+            padding: 0;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(88,166,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .header-badge {
+            display: inline-block;
+            background: #1f6feb;
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .header h1 { font-size: 36px; font-weight: 700; color: #f0f6fc; margin-bottom: 8px; }
+        .header h1 span { color: #58a6ff; }
+        .header .subtitle { font-size: 18px; color: #8b949e; }
+        .header .meta-row {
+            display: flex; gap: 24px; margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .header .meta-item {
+            background: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 8px;
+            padding: 12px 20px;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+        .header .meta-item .label { font-size: 11px; text-transform: uppercase; color: #8b949e; letter-spacing: 0.5px; }
+        .header .meta-item .value { font-size: 22px; font-weight: 700; color: #f0f6fc; margin-top: 4px; }
+
+        /* Section */
+        .section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+        }
+        .section h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #f0f6fc;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #21262d;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section h2 .icon { font-size: 22px; }
+        .section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #58a6ff;
+            margin: 16px 0 8px;
+        }
+        .section p { color: #c9d1d9; margin-bottom: 10px; }
+        .section ul { list-style: none; padding: 0; }
+        .section ul li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+            color: #c9d1d9;
+        }
+        .section ul li::before {
+            content: '›';
+            position: absolute;
+            left: 4px;
+            color: #58a6ff;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Stat grid */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 14px;
+            margin: 16px 0;
+        }
+        .stat-card {
+            background: #0d1117;
+            border: 1px solid #21262d;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        .stat-card .stat-value { font-size: 24px; font-weight: 700; color: #f0f6fc; }
+        .stat-card .stat-label { font-size: 12px; color: #8b949e; margin-top: 4px; }
+
+        /* Crime bar */
+        .crime-bar-container { margin: 10px 0; }
+        .crime-bar { display: flex; align-items: center; margin: 6px 0; gap: 10px; }
+        .crime-bar .label { min-width: 140px; font-size: 13px; color: #c9d1d9; }
+        .crime-bar .bar-bg {
+            flex: 1; height: 16px;
+            background: #0d1117; border-radius: 8px; overflow: hidden;
+        }
+        .crime-bar .bar-fill {
+            height: 100%; border-radius: 8px;
+            background: linear-gradient(90deg, #f85149, #d29922);
+        }
+        .crime-bar .count { min-width: 50px; text-align: right; font-size: 13px; color: #f0f6fc; font-weight: 600; }
+
+        /* School rating badges */
+        .school-table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        .school-table th { text-align: left; padding: 8px 12px; font-size: 12px; text-transform: uppercase; color: #8b949e; border-bottom: 1px solid #21262d; }
+        .school-table td { padding: 10px 12px; border-bottom: 1px solid #21262d; font-size: 14px; }
+        .badge {
+            display: inline-block; padding: 2px 10px; border-radius: 10px;
+            font-size: 12px; font-weight: 600;
+        }
+        .badge-good { background: #1a7f37; color: #fff; }
+        .badge-outstanding { background: #1f6feb; color: #fff; }
+        .badge-ri { background: #d29922; color: #000; }
+        .badge-special { background: #f85149; color: #fff; }
+
+        /* Verdict box */
+        .verdict-box {
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 16px;
+        }
+        .verdict-box.good { border-left: 4px solid #3fb950; }
+        .verdict-box.caution { border-left: 4px solid #d29922; }
+        .verdict-box.avoid { border-left: 4px solid #f85149; }
+        .verdict-box h3 { margin-top: 0; }
+        .verdict-box p { margin-bottom: 6px; }
+        .verdict-tag {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 4px;
+        }
+        .verdict-tag.btl { background: #1a7f37; color: #fff; }
+        .verdict-tag.brrr { background: #1f6feb; color: #fff; }
+        .verdict-tag.hmo { background: #d29922; color: #000; }
+        .verdict-tag.avoid { background: #f85149; color: #fff; }
+
+        .footer {
+            text-align: center;
+            color: #484f58;
+            font-size: 12px;
+            padding: 20px 0 10px;
+            border-top: 1px solid #21262d;
+            margin-top: 32px;
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 16px; }
+            .header { padding: 24px; }
+            .header h1 { font-size: 26px; }
+            .section { padding: 20px; }
+            .stat-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-badge">🏘️ Area Intelligence</div>
+        <h1>WV2 <span>Postcode District</span></h1>
+        <div class="subtitle">All Saints · Blakenhall · Ettingshall · Graiseley · Wolverhampton</div>
+        <div class="meta-row">
+            <div class="meta-item">
+                <div class="label">Population</div>
+                <div class="value">19,222</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">Area</div>
+                <div class="value">1.62 sq mi</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">Avg. Price</div>
+                <div class="value">£191,293</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">Avg. Rent</div>
+                <div class="value">£834/mo</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">Gross Yield</div>
+                <div class="value">4.9%</div>
+            </div>
+            <div class="meta-item">
+                <div class="label">Crime Rating</div>
+                <div class="value" style="color:#d29922;">HIGH</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <div class="section">
+        <h2><span class="icon">📍</span> Area Overview</h2>
+        <p><strong>WV2</strong> is the All Saints, Blakenhall, Ettingshall and Graiseley area of <strong>Wolverhampton</strong>, approximately <strong>1 mile south</strong> of the city centre. It lies about <strong>3.5 miles northwest of Dudley</strong> town centre, and forms the southern gateway into Wolverhampton via the A449 (Penn Road) and A4123 (Birmingham Road) corridors.</p>
+        <p>The district covers <strong>4.19 km² (1.62 sq mi)</strong> of largely urban residential and commercial land, with the major Dudley Road retail artery running through its heart. It is a densely populated inner-city area with a mix of Victorian terraces, 1930s semi-detached homes, and some newer infill developments.</p>
+        <p><strong>Neighbouring postcode districts:</strong> WV1 (city centre, north), WV3 (west), WV4 (southwest), WV14 (southeast — Bilston).</p>
+    </div>
+
+    <!-- KEY STATS -->
+    <div class="section">
+        <h2><span class="icon">📊</span> Key Statistics</h2>
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-value">19,222</div>
+                <div class="stat-label">Population (2021 Census)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">£191,293</div>
+                <div class="stat-label">Avg Sold Price (WV2)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">£202,933</div>
+                <div class="stat-label">Avg Asking Price</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">£834/mo</div>
+                <div class="stat-label">Avg Monthly Rent</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">4.9%</div>
+                <div class="stat-label">Gross Rental Yield</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">5.7x</div>
+                <div class="stat-label">Price-to-Earnings Ratio</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">27.9%</div>
+                <div class="stat-label">Rent as % of Income</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">+11.7%</div>
+                <div class="stat-label">5-Year Price Growth</div>
+            </div>
+        </div>
+        <p style="margin-top:12px; font-size:14px; color:#8b949e;">
+            *Data sourced from HM Land Registry, ONS, Zoopla, and Property Investments UK (Feb 2026).
+        </p>
+    </div>
+
+    <!-- CRIME -->
+    <div class="section">
+        <h2><span class="icon">🚨</span> Crime Data</h2>
+        <p><strong>WV2 overall crime rate:</strong> 166% of the national average (WV2 2 sector: 59 crimes per 1,000 people). The Wolverhampton postcode area as a whole has a crime rate of <strong>43.4 per 1,000</strong> — 123% of the England & Wales average, though <strong>-2.7% year-on-year</strong> (national crime is rising at +1.3%, so WV is improving).</p>
+        
+        <h3>Most Common Crime Types in WV2</h3>
+        <div class="crime-bar-container">
+            <div class="crime-bar"><span class="label">Violence & sexual offences</span><div class="bar-bg"><div class="bar-fill" style="width:60%;"></div></div><span class="count">2,578</span></div>
+            <div class="crime-bar"><span class="label">Vehicle crime</span><div class="bar-bg"><div class="bar-fill" style="width:15%;"></div></div><span class="count">641</span></div>
+            <div class="crime-bar"><span class="label">Shoplifting</span><div class="bar-bg"><div class="bar-fill" style="width:13%;"></div></div><span class="count">554</span></div>
+            <div class="crime-bar"><span class="label">Criminal damage / arson</span><div class="bar-bg"><div class="bar-fill" style="width:11%;"></div></div><span class="count">461</span></div>
+            <div class="crime-bar"><span class="label">Other theft</span><div class="bar-bg"><div class="bar-fill" style="width:9%;"></div></div><span class="count">386</span></div>
+            <div class="crime-bar"><span class="label">Burglary</span><div class="bar-bg"><div class="bar-fill" style="width:6%;"></div></div><span class="count">237</span></div>
+            <div class="crime-bar"><span class="label">Drugs</span><div class="bar-bg"><div class="bar-fill" style="width:4%;"></div></div><span class="count">175</span></div>
+            <div class="crime-bar"><span class="label">Robbery</span><div class="bar-bg"><div class="bar-fill" style="width:2.5%;"></div></div><span class="count">104</span></div>
+        </div>
+        <p style="font-size:13px; color:#8b949e; margin-top:8px;">Violent crime makes up 42.5% of all offences — above the national average of 35.3%. However, overall crime in WV is <strong>declining</strong> year-on-year.</p>
+        <p style="font-size:13px; color:#8b949e;">Hotspots: Penn Road A449 (233 offences), Graiseley Hill (203), Church Lane (175), Gower Street (166).</p>
+    </div>
+
+    <!-- SCHOOLS -->
+    <div class="section">
+        <h2><span class="icon">🏫</span> Schools & Education</h2>
+        <p>Wolverhampton has <strong>97% of schools rated Good or Outstanding</strong> (as of Aug 2025). 64% of primary pupils achieve expected standards in reading, writing and maths — above the national average.</p>
+        
+        <table class="school-table">
+            <thead>
+                <tr><th>School</th><th>Phase</th><th>Ofsted</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Grove Primary Academy</td><td>Primary</td><td><span class="badge badge-good">Good</span></td></tr>
+                <tr><td>St Luke's CofE Aided Primary School</td><td>Primary</td><td><span class="badge badge-good">Good</span></td></tr>
+                <tr><td>Graiseley Primary School</td><td>Primary</td><td><span class="badge badge-good">Good</span></td></tr>
+                <tr><td>Phoenix Nursery School</td><td>Nursery</td><td><span class="badge badge-good">Good</span></td></tr>
+                <tr><td>SS. Mary & John's Catholic Primary Academy</td><td>Primary</td><td><span class="badge badge-ri">Requires Improvement</span></td></tr>
+                <tr><td>Grove Primary School (separate)</td><td>Primary</td><td><span class="badge badge-special">Special Measures</span></td></tr>
+            </tbody>
+        </table>
+        <p style="font-size:13px; color:#8b949e; margin-top:8px;">Notable secondary schools nearby in wider Wolverhampton: Heath Park (Outstanding), Moseley Park (Good), Wolverhampton Girls' High (Outstanding). University of Wolverhampton is a major local institution with multiple campuses.</p>
+    </div>
+
+    <!-- TRANSPORT -->
+    <div class="section">
+        <h2><span class="icon">🚆</span> Transport Links</h2>
+        <h3>Rail</h3>
+        <p><strong>Wolverhampton Railway Station</strong> is ~1 mile north of WV2 (10 min walk / 5 min bus). Direct services to:</p>
+        <ul>
+            <li><strong>London Euston</strong> — from 1hr 50min (Avanti West Coast)</li>
+            <li><strong>Birmingham New Street</strong> — from 17min, up to 177 trains/day</li>
+            <li><strong>Manchester, Liverpool, Glasgow, Edinburgh</strong> — regular intercity services</li>
+            <li><strong>Shrewsbury, Telford, Walsall</strong> — local/regional connections</li>
+        </ul>
+        <h3>Metro (Tram)</h3>
+        <p>West Midlands Metro (Wolverhampton St George's — Birmingham Centenary Square). Stops at Wolverhampton city centre, Bilston, Wednesbury, West Bromwich.</p>
+        <h3>Road</h3>
+        <p>Major A-roads through WV2: <strong>A449</strong> (Penn Road — Wolverhampton to M6 J12), <strong>A4123</strong> (Birmingham Road — to M5 J2), <strong>A459</strong> (Dudley Road), <strong>A41</strong> (Bilston Road). M6 (J10 & J12) and M5 (J2) within 10-15 min drive.</p>
+        <h3>Bus</h3>
+        <p>Wolverhampton Bus Station (city centre) serves all WV2 sectors. Routes include: <strong>1, 2, 16, 79, 529</strong> providing connections to Birmingham, Dudley, Walsall, Bilston, and surrounding suburbs.</p>
+    </div>
+
+    <!-- PROPERTY / RENTAL -->
+    <div class="section">
+        <h2><span class="icon">🏠</span> Property Market & Rental Demand</h2>
+        <p>WV2 is one of the most <strong>affordable inner-city postcodes</strong> in the West Midlands, with an average sold price of <strong>£191,293</strong> (HM Land Registry) and asking prices around <strong>£202,933</strong>. This is well below the West Midlands average of £249,000 and the UK average of £268,000.</p>
+        
+        <h3>House Price Breakdown by Property Type (estimated)</h3>
+        <ul>
+            <li><strong>Terraced houses:</strong> £140,000–£170,000 (most common — Victorian stock)</li>
+            <li><strong>Semi-detached:</strong> £180,000–£230,000</li>
+            <li><strong>Detached:</strong> £250,000–£320,000 (limited stock)</li>
+            <li><strong>Flats / Apartments:</strong> £80,000–£130,000</li>
+        </ul>
+
+        <h3>Rental Market</h3>
+        <ul>
+            <li><strong>Average rent:</strong> £834/month</li>
+            <li><strong>Typical 2-bed rent:</strong> £650–£750/month</li>
+            <li><strong>Typical 3-bed rent:</strong> £800–£950/month</li>
+            <li><strong>Rent as % of median income:</strong> 27.9% (affordable for tenants)</li>
+            <li><strong>Student demand:</strong> University of Wolverhampton drives steady rental demand</li>
+        </ul>
+
+        <h3>Price-to-Earnings Ratio: 5.7x</h3>
+        <p>Well below the national benchmark of 7.5x — making WV2 one of the more affordable places in the region for first-time buyers and investors alike.</p>
+    </div>
+
+    <!-- PLANNING -->
+    <div class="section">
+        <h2><span class="icon">🏗️</span> Planning & Regeneration</h2>
+        <ul>
+            <li><strong>Smithgate (City Centre West) — £83m:</strong> 12-acre brownfield redevelopment with 331 build-to-rent apartments, shops, cafes, restaurants. £18m WMCA + £65m private investment. Approved early 2025.</li>
+            <li><strong>Former M&S Building (planning approved Jan 2026):</strong> Conversion to 71 apartments + 3 retail units in the city centre.</li>
+            <li><strong>Brewers Yard masterplan (Feb 2026):</strong> Council fleet services relocation for hundreds of new homes — part of 'Our Future City Centre Plan'.</li>
+            <li><strong>Dudley Road corridor:</strong> Ongoing retail and mixed-use improvements; 137 shops make it a major commercial artery.</li>
+            <li><strong>University of Wolverhampton expansion:</strong> Continued investment in city centre campuses sustains student housing demand.</li>
+        </ul>
+        <p style="font-size:13px; color:#8b949e;">These regeneration projects create a structural floor under property values — the city is seeing its largest development phase since the 1960s.</p>
+    </div>
+
+    <!-- AMENITIES -->
+    <div class="section">
+        <h2><span class="icon">🛒</span> Local Amenities</h2>
+        <h3>Shopping & Retail</h3>
+        <ul>
+            <li><strong>Dudley Road</strong> — 137 retail units: the main shopping artery (supermarkets, convenience stores, takeaways, cafes)</li>
+            <li><strong>Worcester Street</strong> — 29 shops</li>
+            <li><strong>Temple Street</strong> — 23 shops</li>
+            <li><strong>Bilston Road</strong> — 22 shops</li>
+            <li><strong>Wolverhampton City Centre</strong> — Mander Centre, Wulfrun Centre (10-15 min walk)</li>
+        </ul>
+        <h3>Healthcare</h3>
+        <ul>
+            <li><strong>GP:</strong> Duncan Street Primary Care Centre, Health And Beyond (Steelhouse Lane), All Saints Surgery</li>
+            <li><strong>Dentist:</strong> Goldthorn Hill Dental Surgery, Dudley Road Dental Surgery</li>
+            <li><strong>Pharmacies:</strong> 6+ pharmacies including Ettingshall Pharmacy, Anderson Chemist, Supercare Pharmacy, All Saints Pharmacy</li>
+            <li><strong>Opticians:</strong> Eye Detail Opticians, Vision Clinics</li>
+            <li><strong>Hospital:</strong> New Cross Hospital (major acute) ~2 miles north</li>
+        </ul>
+        <h3>Parks & Green Space</h3>
+        <ul>
+            <li>Green space coverage: <strong>25.4%</strong></li>
+            <li>West Park, Bantock Park, Graiseley Park all within 1-2 miles</li>
+        </ul>
+    </div>
+
+    <!-- INVESTMENT VERDICT -->
+    <div class="section">
+        <h2><span class="icon">💎</span> Investment Verdict</h2>
+        
+        <div class="verdict-box good">
+            <h3 style="color:#3fb950;">📈 WV2 — Investment Summary</h3>
+            <p>WV2 (All Saints / Blakenhall) offers one of the lowest entry prices in the West Midlands at ~£191K average sold price. The area benefits from proximity to Wolverhampton's city centre regeneration, strong transport links (rail, metro, motorway), and steady rental demand from both professionals and University of Wolverhampton students. The yield of 4.9% is solid, though below the top WV postcodes (WV1/WV11 at 5.4%).</p>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;">
+            <span class="verdict-tag btl">✅ GOOD for BTL</span>
+            <span class="verdict-tag brrr">✅ GOOD for BRRR</span>
+            <span class="verdict-tag hmo">⚠️ MODERATE for HMO</span>
+        </div>
+
+        <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div style="background:#0d1117; border:1px solid #21262d; border-radius:8px; padding:16px;">
+                <h4 style="color:#3fb950; font-size:14px; margin-bottom:8px;">✅ Strengths</h4>
+                <ul>
+                    <li>Low entry price (£191K avg vs £268K UK)</li>
+                    <li>4.9% gross yield — above national avg</li>
+                    <li>Price-to-earnings 5.7x (very affordable)</li>
+                    <li>Rent 27.9% of income (tenant-friendly)</li>
+                    <li>Major city centre regeneration (£83m Smithgate)</li>
+                    <li>Excellent transport links (rail, metro, M6/M5)</li>
+                    <li>Strong university student demand</li>
+                </ul>
+            </div>
+            <div style="background:#0d1117; border:1px solid #21262d; border-radius:8px; padding:16px;">
+                <h4 style="color:#d29922; font-size:14px; margin-bottom:8px;">⚠️ Risks</h4>
+                <ul>
+                    <li>Crime rated HIGH (166% of national avg)</li>
+                    <li>Only 11.7% 5-year growth (lags WV1/WV11)</li>
+                    <li>Some streets have special measures schools</li>
+                    <li>Dense inner-city area — limited garden space</li>
+                    <li>Below median salary catchment for tenants</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="margin-top:16px; padding:16px; background:#0d1117; border:1px solid #30363d; border-radius:8px;">
+            <h4 style="color:#58a6ff; font-size:14px; margin-bottom:6px;">🎯 Best Strategy</h4>
+            <p><strong>BRRR:</strong> Target Victorian terraces under £150K, refurbish to add £30-50K equity, refinance at £190-200K valuation, rent at £700-800/month. Strong cashflow potential with low entry.</p>
+            <p><strong>BTL:</strong> 2-bed terrace at ~£160K with £650-750 rent = 5.0-5.5% yield. Student-friendly location near university. Solid returns in a capital-light investment.</p>
+            <p><strong>HMO:</strong> Only in specific locations near the university/hospital. Requires HMO licensing and higher management overhead. Moderate suitability.</p>
+        </div>
+    </div>
+
+    <!-- DATA SOURCES -->
+    <div class="section" style="background:#0d1117;">
+        <h2><span class="icon">📋</span> Data Sources</h2>
+        <p style="font-size:13px; color:#8b949e;">
+            HM Land Registry · ONS Census 2021 · Zoopla · Streetlist.co.uk · Plumplot.co.uk · Ofsted · 
+            Property Investments UK (Feb 2026) · Belvoir Wolverhampton · City of Wolverhampton Council · 
+            National Rail / Avanti West Coast · Transport for West Midlands · Moovit
+        </p>
+        <p style="font-size:12px; color:#484f58; margin-top:8px;">
+            Report generated: May 2026 · All data points approximate and subject to change. 
+            This is not financial advice — always conduct your own due diligence.
+        </p>
+    </div>
+
+    <div class="footer">
+        🏘️ Hermes Agent · West Midlands Area Intelligence · 3-Hourly Run
+    </div>
+
+</div>
+</body>
+</html>

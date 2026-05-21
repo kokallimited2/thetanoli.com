@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WV8 Area Intelligence Report | Codsall & Bilbrook</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0a0e17;
+    color: #e0e6f0;
+    line-height: 1.6;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0f1829 0%, #1a2744 50%, #0f1829 100%);
+    border: 1px solid #1e3355;
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff, #94b8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .header .subtitle {
+    font-size: 18px;
+    color: #8899bb;
+    font-weight: 400;
+  }
+  .header .meta {
+    margin-top: 16px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: #667799;
+  }
+  .header .meta span { display: flex; align-items: center; gap: 6px; }
+  .header .meta .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+  .dot.green { background: #22c55e; }
+  .dot.blue { background: #3b82f6; }
+  .dot.amber { background: #f59e0b; }
+
+  /* KPI Cards */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+  .kpi-card {
+    background: linear-gradient(145deg, #111a2e, #0d1525);
+    border: 1px solid #1a2a45;
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #5577aa;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .kpi-card .value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .kpi-card .change {
+    font-size: 13px;
+    margin-top: 4px;
+  }
+  .kpi-card .change.positive { color: #22c55e; }
+  .kpi-card .change.negative { color: #ef4444; }
+  .kpi-card .change.neutral { color: #f59e0b; }
+  .kpi-card .icon-bg {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    font-size: 40px;
+    opacity: 0.06;
+    color: #3b82f6;
+  }
+
+  /* Section */
+  .section {
+    background: linear-gradient(145deg, #111a2e, #0d1525);
+    border: 1px solid #1a2a45;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section h2 .icon { font-size: 20px; }
+  .section p { color: #b0c0dd; margin-bottom: 8px; }
+  .section ul { list-style: none; padding: 0; }
+  .section ul li {
+    padding: 8px 0 8px 20px;
+    position: relative;
+    color: #b0c0dd;
+    border-bottom: 1px solid #15203a;
+  }
+  .section ul li:last-child { border-bottom: none; }
+  .section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 4px;
+    color: #3b82f6;
+    font-weight: 700;
+  }
+
+  /* Two column */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* Rating badge */
+  .rating {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .rating.good { background: rgba(34,197,94,0.15); color: #22c55e; }
+  .rating.outstanding { background: rgba(59,130,246,0.15); color: #60a5fa; }
+  .rating.requires { background: rgba(245,158,11,0.15); color: #f59e0b; }
+  .rating.inadequate { background: rgba(239,68,68,0.15); color: #ef4444; }
+
+  /* Verdict Box */
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
+  }
+  .verdict-box {
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .verdict-box h3 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .verdict-box .verdict-label {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .verdict-box.good {
+    background: rgba(34,197,94,0.08);
+    border: 1px solid rgba(34,197,94,0.2);
+  }
+  .verdict-box.good h3 { color: #22c55e; }
+  .verdict-box.good .verdict-label { color: #22c55e; }
+  .verdict-box.avoid {
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.2);
+  }
+  .verdict-box.avoid h3 { color: #ef4444; }
+  .verdict-box.avoid .verdict-label { color: #ef4444; }
+  .verdict-box.caution {
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.2);
+  }
+  .verdict-box.caution h3 { color: #f59e0b; }
+  .verdict-box.caution .verdict-label { color: #f59e0b; }
+
+  /* Table */
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  th, td { padding: 10px 12px; text-align: left; font-size: 14px; }
+  th {
+    background: rgba(59,130,246,0.08);
+    color: #94b8ff;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  td { color: #b0c0dd; border-bottom: 1px solid #15203a; }
+  tr:last-child td { border-bottom: none; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 30px 0;
+    color: #445566;
+    font-size: 12px;
+    border-top: 1px solid #15203a;
+    margin-top: 30px;
+  }
+
+  /* Progress bar */
+  .stat-bar {
+    height: 6px;
+    background: #0a0e17;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 6px;
+  }
+  .stat-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s;
+  }
+
+  /* Tag */
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(59,130,246,0.1);
+    color: #60a5fa;
+    margin-right: 4px;
+  }
+
+  /* Price table */
+  .price-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #15203a; }
+  .price-row:last-child { border-bottom: none; }
+  .price-row .type { color: #8899bb; }
+  .price-row .amount { color: #ffffff; font-weight: 600; }
+
+  .section-intro {
+    color: #8899bb;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  /* School list */
+  .school-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #15203a;
+  }
+  .school-item:last-child { border-bottom: none; }
+  .school-name { color: #e0e6f0; font-weight: 500; }
+  .school-phase { color: #667799; font-size: 12px; margin-left: 8px; }
+
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(37,99,235,0.04));
+    border: 1px solid rgba(59,130,246,0.15);
+    border-radius: 10px;
+    padding: 16px;
+    margin: 12px 0;
+  }
+  .highlight-box p { margin-bottom: 4px; color: #b0c0dd; }
+  .highlight-box strong { color: #ffffff; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-badge">📊 Area Intelligence Report</div>
+    <h1>WV8 · Codsall & Bilbrook</h1>
+    <p class="subtitle">South Staffordshire — Wolverhampton West Suburbs</p>
+    <div class="meta">
+      <span><span class="dot green"></span> Generated: 21 May 2026</span>
+      <span><span class="dot blue"></span> Data: Land Registry, ONS, Ofsted, Plumplot</span>
+      <span><span class="dot amber"></span> Distance from Dudley: ~8 miles NW</span>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="label">Avg House Price</div>
+      <div class="value">£332,897</div>
+      <div class="change negative">▼ 4% YoY</div>
+      <div class="icon-bg">🏠</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Avg Rent (pcm)</div>
+      <div class="value">£867</div>
+      <div class="change neutral">Yield: 2.7%</div>
+      <div class="icon-bg">💰</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Population</div>
+      <div class="value">18,059</div>
+      <div class="change positive">Growth: 2% p.a.</div>
+      <div class="icon-bg">👥</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Crime Rating</div>
+      <div class="value" style="color:#22c55e;">VERY LOW</div>
+      <div class="change positive">34% of national avg</div>
+      <div class="icon-bg">🛡️</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Household Income</div>
+      <div class="value">£43,129</div>
+      <div class="change positive">13% above UK avg</div>
+      <div class="icon-bg">📈</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">Home Ownership</div>
+      <div class="value">67.6%</div>
+      <div class="change positive">6% above UK avg</div>
+      <div class="icon-bg">🔑</div>
+    </div>
+  </div>
+
+  <!-- Two column: Overview + Demographics -->
+  <div class="two-col">
+    <div class="section">
+      <h2><span class="icon">📍</span> Area Overview</h2>
+      <p class="section-intro">WV8 covers the affluent western Wolverhampton suburbs of <strong>Codsall</strong>, <strong>Bilbrook</strong>, and surrounding villages including Oaken, Codsall Wood, and Lane Green. Located in South Staffordshire district, it borders the West Midlands conurbation.</p>
+      <ul>
+        <li><strong>Settlements:</strong> Codsall, Bilbrook, Codsall Wood, Oaken, Lane Green, Gunstone, Kiddemore Green</li>
+        <li><strong>Council:</strong> South Staffordshire District Council (Staffordshire county)</li>
+        <li><strong>Postal Town:</strong> Wolverhampton</li>
+        <li><strong>Distance to Dudley:</strong> ~8 miles northwest (15-20 min drive via A454/A41)</li>
+        <li><strong>Character:</strong> Leafy village suburbs with high proportion of detached & semi-detached homes, strong community feel, popular with families and commuters</li>
+        <li><strong>Poverty Rate:</strong> 15% (below national average)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">📊</span> Demographics</h2>
+      <table>
+        <tr><th>Metric</th><th>WV8</th><th>UK Avg</th></tr>
+        <tr><td>Average Age</td><td>42.7</td><td>40.7</td></tr>
+        <tr><td>Largest Age Band</td><td>45-64 (26.6%)</td><td>—</td></tr>
+        <tr><td>Population Density</td><td>2,867/km²</td><td>—</td></tr>
+        <tr><td>Unemployment</td><td>5.0%</td><td>4.3%</td></tr>
+        <tr><td>Avg Salary</td><td>£25,446</td><td>£29,669</td></tr>
+        <tr><td>Avg Household Income</td><td>£43,129</td><td>£38,100</td></tr>
+        <tr><td>White Ethnicity</td><td>77.6%</td><td>81.7%</td></tr>
+        <tr><td>Asian Ethnicity</td><td>12.3%</td><td>9.3%</td></tr>
+        <tr><td>Level 4+ Qualifications</td><td>30.5%</td><td>—</td></tr>
+        <tr><td>Work from Home</td><td>29.9%</td><td>—</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Crime Section -->
+  <div class="section">
+    <h2><span class="icon">🛡️</span> Crime & Safety</h2>
+    <div class="two-col">
+      <div>
+        <p class="section-intro">WV8 is one of the safest areas in the Wolverhampton postcode region, with some sectors ranking among the lowest crime rates nationally.</p>
+        <div class="highlight-box">
+          <p>🔒 <strong>WV8 2</strong> sector: Just <strong>12 crimes per 1,000 people</strong> — only <strong>34%</strong> of the national average. The safest sector in the entire Wolverhampton area.</p>
+        </div>
+        <ul>
+          <li><strong>Area crime rank:</strong> 21,903 out of 32,482 — relatively safe</li>
+          <li><strong>Wolverhampton overall crime rate:</strong> 43.4 per 1,000 (123% of national)</li>
+          <li><strong>Violent crime share:</strong> 42.5% of all crimes (typical for area)</li>
+          <li><strong>Trend:</strong> 2.7% decrease YoY in Wolverhampton area</li>
+        </ul>
+      </div>
+      <div>
+        <p class="section-intro"><strong>Crime Comparison — WV Postcode Sectors</strong></p>
+        <table>
+          <tr><th>Sector</th><th>Rate/1k</th><th>vs National</th></tr>
+          <tr><td>WV8 2 (Codsall)</td><td>12</td><td style="color:#22c55e;">34% ✓</td></tr>
+          <tr><td>WV7 3</td><td>15</td><td style="color:#22c55e;">42% ✓</td></tr>
+          <tr><td>WV15 6</td><td>14</td><td style="color:#22c55e;">39% ✓</td></tr>
+          <tr><td>WV1 3 (City centre)</td><td>84</td><td style="color:#ef4444;">238% ✗</td></tr>
+          <tr><td>WV14 7</td><td>82</td><td style="color:#ef4444;">231% ✗</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property & Housing -->
+  <div class="section">
+    <h2><span class="icon">🏘️</span> Property Market</h2>
+    <div class="two-col">
+      <div>
+        <p class="section-intro"><strong>Average Prices by Type (Last 12 Months)</strong></p>
+        <div class="price-row"><span class="type">Detached</span><span class="amount">£449,204</span></div>
+        <div class="price-row"><span class="type">Semi-detached</span><span class="amount">£278,017</span></div>
+        <div class="price-row"><span class="type">Terraced</span><span class="amount">£216,789</span></div>
+        <div class="price-row"><span class="type">Overall Average (WV8)</span><span class="amount">£332,897</span></div>
+        <div class="price-row"><span class="type">Overall Average (Codsall)</span><span class="amount" style="color:#94b8ff;">£350,455</span></div>
+        <div style="margin-top: 12px;">
+          <p><strong>Price Change:</strong> ▼ 4% YoY (Rightmove) | ▲ 9.3% in WV8 1 sector (last year)</p>
+          <p><strong>Vs 2022 Peak:</strong> Still ▲ 5% above £317,489</p>
+          <p><strong>Properties:</strong> 45.8% 3-bed houses, 37.5% owned outright</p>
+        </div>
+      </div>
+      <div>
+        <p class="section-intro"><strong>Housing Tenure Breakdown</strong></p>
+        <div class="price-row"><span class="type">Owned Outright</span><span class="amount" style="color:#22c55e;">38.7%</span></div>
+        <div class="price-row"><span class="type">Owned with Mortgage</span><span class="amount" style="color:#22c55e;">28.9%</span></div>
+        <div class="price-row"><span class="type">Social Rented</span><span class="amount">6.2%</span></div>
+        <div class="price-row"><span class="type">Private Rented</span><span class="amount" style="color:#f59e0b;">11.7%</span></div>
+        <div class="price-row"><span class="type">Shared Ownership</span><span class="amount">1.3%</span></div>
+        <div style="margin-top: 12px;">
+          <p><strong>Property Types:</strong> Detached 26.3% · Semi 36.5% · Terraced 18.4% · Flats 15.8%</p>
+          <p><strong>Avg Cars/household:</strong> 2.33 (UK: 1.4) — very high car dependency</p>
+          <p><strong>Recent Sales Range:</strong> £140k (flat) → £590k (executive detached)</p>
+          <p><strong>Example Appreciation:</strong> 14 Canford Cres: £195k (2011) → £570k (2026) = <strong>+192%</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rental Market -->
+  <div class="section">
+    <h2><span class="icon">💷</span> Rental Market & Yields</h2>
+    <div class="two-col">
+      <div>
+        <div class="highlight-box">
+          <p>💰 <strong>Average Rent:</strong> £867 pcm</p>
+          <p>📉 <strong>Gross Yield:</strong> 2.7% — <span style="color:#f59e0b;">below national BTL average</span></p>
+          <p>📊 <strong>Wolverhampton avg yield:</strong> 6.5% (WV8 is much lower due to higher prices)</p>
+        </div>
+        <ul>
+          <li><strong>Private rented share:</strong> Only 11.7% — low rental market penetration</li>
+          <li><strong>Rental demand:</strong> Moderate — family-oriented area, not student/HMO</li>
+          <li><strong>West Midlands rental growth:</strong> 11% over 12 months (3rd best in UK)</li>
+        </ul>
+      </div>
+      <div>
+        <p class="section-intro"><strong>Yield Comparison — Wolverhampton Postcodes</strong></p>
+        <table>
+          <tr><th>Postcode</th><th>Avg Price</th><th>Rent pcm</th><th>Yield</th></tr>
+          <tr><td><strong>WV8</strong></td><td>£332,897</td><td>£867</td><td style="color:#f59e0b;">2.7%</td></tr>
+          <tr><td>WV10</td><td>£207,271</td><td>£1,178</td><td style="color:#22c55e;">6.8%</td></tr>
+          <tr><td>WV11</td><td>£203,827</td><td>£950</td><td style="color:#22c55e;">5.6%</td></tr>
+          <tr><td>WV2</td><td>£181,451</td><td>£742</td><td style="color:#22c55e;">4.9%</td></tr>
+          <tr><td>WV4</td><td>£235,811</td><td>£850</td><td>4.3%</td></tr>
+          <tr><td>WV6</td><td>£286,698</td><td>£799</td><td>3.3%</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schools -->
+  <div class="section">
+    <h2><span class="icon">🏫</span> Schools & Education</h2>
+    <p class="section-intro">WV8 is well-served by schools rated <strong>Good</strong> by Ofsted, making it particularly attractive for families. The Codsall "pyramid" system (First → Middle → High School) is well-regarded.</p>
+    <table>
+      <tr><th>School</th><th>Phase</th><th>Ofsted</th><th>Distance</th></tr>
+      <tr>
+        <td>Codsall Community High School</td>
+        <td>Secondary (13-18)</td>
+        <td><span class="rating good">GOOD</span></td>
+        <td>In Codsall</td>
+      </tr>
+      <tr>
+        <td>Codsall Middle School</td>
+        <td>Middle (9-13)</td>
+        <td><span class="rating good">GOOD</span></td>
+        <td>In Codsall</td>
+      </tr>
+      <tr>
+        <td>Bilbrook CofE (VC) Middle School</td>
+        <td>Middle (9-13)</td>
+        <td><span class="rating good">GOOD</span></td>
+        <td>Bilbrook</td>
+      </tr>
+      <tr>
+        <td>St Nicholas Church of England First School</td>
+        <td>First (5-9)</td>
+        <td><span class="rating good">GOOD</span></td>
+        <td>Codsall</td>
+      </tr>
+      <tr>
+        <td>Birches First School</td>
+        <td>First (5-9)</td>
+        <td><span class="rating good">GOOD</span></td>
+        <td>Codsall</td>
+      </tr>
+      <tr>
+        <td>Dovecotes Primary School</td>
+        <td>Primary</td>
+        <td><span class="rating good">GOOD</span></td>
+        <td>Pendeford</td>
+      </tr>
+      <tr>
+        <td>Lane Green First School</td>
+        <td>First (5-9)</td>
+        <td><span class="rating requires">REQUIRES IMPROVEMENT</span></td>
+        <td>Bilbrook</td>
+      </tr>
+    </table>
+    <p style="margin-top: 12px; font-size: 13px; color: #667799;">📘 <strong>Note:</strong> Codsall operates a unique three-tier system: First School (5-9), Middle School (9-13), High School (13-18).</p>
+  </div>
+
+  <!-- Transport -->
+  <div class="section">
+    <h2><span class="icon">🚆</span> Transport & Connectivity</h2>
+    <div class="two-col">
+      <div>
+        <p class="section-intro"><strong>Rail</strong></p>
+        <ul>
+          <li><strong>Codsall Station:</strong> Wolverhampton-Shrewsbury line (West Midlands Railway) — ~15 min to Wolverhampton, ~40 min to Birmingham New Street</li>
+          <li><strong>Bilbrook Station:</strong> Same line, closer to Bilbrook village</li>
+          <li><strong>Frequency:</strong> Hourly services each direction (more at peak times)</li>
+        </ul>
+        <p class="section-intro" style="margin-top: 16px;"><strong>Road</strong></p>
+        <ul>
+          <li><strong>M54 J2:</strong> ~3 miles north — connects to M6 at J10A</li>
+          <li><strong>M6 J12:</strong> ~6 miles east</li>
+          <li><strong>A41:</strong> Direct to Wolverhampton city centre (15 min)</li>
+          <li><strong>A454:</strong> Connects to Dudley, Walsall, Birmingham</li>
+          <li><strong>Free parking at stations:</strong> Good for park-and-ride commuters</li>
+        </ul>
+      </div>
+      <div>
+        <p class="section-intro"><strong>Bus & Local</strong></p>
+        <ul>
+          <li><strong>Bus routes:</strong> Multiple services to Wolverhampton bus station (15-20 min)</li>
+          <li><strong>29.9% work from home</strong> — high remote working rate</li>
+          <li><strong>Commuting:</strong> 54.4% drive to work, 2.5% train, 1.8% bus</li>
+          <li><strong>Cycling:</strong> 1.2% — limited cycling infrastructure</li>
+        </ul>
+        <p class="section-intro" style="margin-top: 16px;"><strong>Travel Times</strong></p>
+        <table>
+          <tr><th>Destination</th><th>Car</th><th>Train</th></tr>
+          <tr><td>Wolverhampton</td><td>12-15 min</td><td>12 min</td></tr>
+          <tr><td>Dudley</td><td>18-22 min</td><td>—</td></tr>
+          <tr><td>Birmingham</td><td>35-45 min</td><td>40 min</td></tr>
+          <tr><td>Birmingham Airport</td><td>40 min</td><td>55 min</td></tr>
+          <tr><td>Telford</td><td>20 min</td><td>25 min</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Amenities -->
+  <div class="section">
+    <h2><span class="icon">🛒</span> Local Amenities</h2>
+    <div class="two-col">
+      <div>
+        <p class="section-intro"><strong>Shopping & Retail</strong></p>
+        <ul>
+          <li><strong>Codsall High Street:</strong> Independent shops, cafes, restaurants, takeaways</li>
+          <li><strong>Co-op Food:</strong> Wood Road, Codsall (main supermarket)</li>
+          <li><strong>Bilbrook Village:</strong> Local shops, pharmacy, takeaway</li>
+          <li><strong>Wolverhampton City Centre:</strong> Mander Centre, Wulfrun Centre (15 min drive)</li>
+          <li><strong>Morrisons:</strong> Pendeford (3 miles)</li>
+        </ul>
+      </div>
+      <div>
+        <p class="section-intro"><strong>Healthcare & Services</strong></p>
+        <ul>
+          <li><strong>Codsall Healthcare:</strong> GP surgery on Wood Road (<span class="tag">NHS</span>)</li>
+          <li><strong>Codsall Clinic:</strong> Elliotts Lane — NHS services</li>
+          <li><strong>New Cross Hospital:</strong> Wolverhampton (15 min drive) — major A&E</li>
+          <li><strong>Dentists:</strong> Codsall Dental Practice</li>
+          <li><strong>Pharmacies:</strong> Multiple in Codsall and Bilbrook</li>
+        </ul>
+        <p class="section-intro" style="margin-top: 12px;"><strong>Leisure</strong></p>
+        <ul>
+          <li><strong>Codsall Village Hall</strong> — community events</li>
+          <li><strong>South Staffordshire Golf Club</strong></li>
+          <li><strong>West Park, Wolverhampton</strong> (10 min drive)</li>
+          <li><strong>Numerous public footpaths</strong> and countryside walks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Planning & Development -->
+  <div class="section">
+    <h2><span class="icon">🏗️</span> Planning & Developments</h2>
+    <div class="highlight-box">
+      <p>🏠 <strong>130 homes</strong> — Bilbrook Mill, Codsall (40% affordable). Planning application lodged with South Staffs Council.</p>
+      <p>🏠 <strong>Up to 480 homes</strong> — Land west of Blurtons Lane, Codsall (Bloor Homes outline application)</p>
+      <p>🏠 <strong>65 homes</strong> — Green belt land at Lower Penn, edge of Wolverhampton</p>
+      <p>🏠 <strong>750 homes</strong> — Approved elsewhere in South Staffordshire (incl. new school, nursery, retail)</p>
+    </div>
+    <p style="color: #b0c0dd;">Significant development pressure on Codsall and surrounding villages as South Staffordshire's Local Plan identifies this corridor for substantial housing growth. This suggests upward pressure on property values long-term, but also increased competition and potential infrastructure strain.</p>
+  </div>
+
+  <!-- Investment Verdict -->
+  <div class="section">
+    <h2><span class="icon">📋</span> Investment Verdict — WV8</h2>
+    <p class="section-intro">Based on comprehensive analysis of property prices, rental yields, crime, schools, transport, demographics, and development pipeline.</p>
+
+    <div class="verdict-grid">
+      <div class="verdict-box caution">
+        <h3>🏡 BRRR</h3>
+        <div class="verdict-label">GOOD</div>
+        <p style="font-size: 13px; color: #b0c0dd; margin-top: 8px;">Older properties in Codsall village with value-add potential. Good capital growth track record.</p>
+      </div>
+      <div class="verdict-box avoid">
+        <h3>📈 BTL</h3>
+        <div class="verdict-label">AVOID</div>
+        <p style="font-size: 13px; color: #b0c0dd; margin-top: 8px;">Yield of 2.7% is well below viable BTL threshold. Better yields in WV10/WV11.</p>
+      </div>
+      <div class="verdict-box avoid">
+        <h3>🏢 HMO</h3>
+        <div class="verdict-label">AVOID</div>
+        <p style="font-size: 13px; color: #b0c0dd; margin-top: 8px;">Family-oriented area. No student/HMO demand. Most properties are 3+ bed family homes.</p>
+      </div>
+      <div class="verdict-box good">
+        <h3>⭐ Overall</h3>
+        <div class="verdict-label">FAMILY BUY</div>
+        <p style="font-size: 13px; color: #b0c0dd; margin-top: 8px;">Excellent for owner-occupation. Safe area, great schools, good transport. Capital appreciation expected from planned developments.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px; padding: 16px; background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.12); border-radius: 10px;">
+      <p style="color: #f59e0b; font-weight: 600;">⚠️ Investment Note</p>
+      <p style="font-size: 14px; color: #b0c0dd;">WV8 is a <strong>premium suburban residential area</strong> with low crime, good schools, and high owner-occupation. It is excellent for <strong>family home buyers</strong> and <strong>long-term capital appreciation</strong> (boosted by major planned developments). However, it is <strong>not suitable for BTL or HMO investment</strong> due to low yields (2.7%) and limited rental demand. For buy-to-let in the Wolverhampton area, focus on <strong>WV10</strong> (yield 6.8%) or <strong>WV11</strong> (yield 5.6%). For BRRR, target older semi-detached properties in need of modernisation on larger plots.</p>
+    </div>
+  </div>
+
+  <!-- Recent Sales Table -->
+  <div class="section">
+    <h2><span class="icon">📋</span> Recent Sales (Jan-Mar 2026) — Land Registry</h2>
+    <table>
+      <tr><th>Address</th><th>Price</th><th>Date</th></tr>
+      <tr><td>14 Warner Road, WV8 1SA</td><td>£285,000</td><td>Mar 2026</td></tr>
+      <tr><td>11 Oaken Lanes, Codsall WV8 2AQ</td><td>£260,000</td><td>Mar 2026</td></tr>
+      <tr><td>33 Brindley Gardens, WV8 1FL</td><td>£215,000</td><td>Mar 2026</td></tr>
+      <tr><td>75 Birches Road, Codsall WV8 2JJ</td><td>£495,000</td><td>Mar 2026</td></tr>
+      <tr><td>4 Shop Lane, WV8 2AX</td><td>£362,000</td><td>Feb 2026</td></tr>
+      <tr><td>14 Canford Crescent, WV8 2AF</td><td>£570,000</td><td>Feb 2026</td></tr>
+      <tr><td>10 Belvide Gardens, WV8 1AN</td><td>£440,000</td><td>Feb 2026</td></tr>
+      <tr><td>25 Old Farm Drive, WV8 1GF</td><td>£590,000</td><td>Jan 2026</td></tr>
+      <tr><td>109 Oaken Park, Codsall WV8 2BW</td><td>£338,000</td><td>Jan 2026</td></tr>
+      <tr><td>10 The Covert, WV8 1UF</td><td>£140,000</td><td>Jan 2026</td></tr>
+    </table>
+    <p style="margin-top: 10px; font-size: 12px; color: #445566;">Source: HM Land Registry via Rightmove. Contains public sector information licensed under the Open Government Licence v3.0.</p>
+  </div>
+
+  <!-- Data Sources -->
+  <div class="section" style="border-color: #15203a; background: #080c18;">
+    <h2 style="font-size: 14px; color: #5577aa;">📎 Data Sources</h2>
+    <p style="font-size: 12px; color: #445566;">
+      Rightmove / HM Land Registry · Plumplot Crime Statistics · Locara.co.uk Demographics · PostcodeArea.co.uk · Ofsted Reports · BBC News · RW Invest · South Staffordshire Council Planning Portal · ONS Census 2021
+    </p>
+  </div>
+
+  <div class="footer">
+    Hermes Agent — West Midlands Area Intelligence · 3-Hourly Run · 21 May 2026<br>
+    Data may not be fully comprehensive. Always verify with local professionals before making investment decisions.
+  </div>
+
+</div>
+</body>
+</html>

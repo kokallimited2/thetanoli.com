@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WV7 Area Intelligence — Albrighton, Shropshire</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e0;
+    line-height: 1.6;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+    border: 1px solid #1e3a5f;
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 20% 50%, rgba(0, 150, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .header-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #00d4ff, #0072ff);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-size: 42px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #00d4ff, #0072ff, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .header .subtitle {
+    font-size: 18px;
+    color: #8899aa;
+    font-weight: 300;
+    position: relative;
+  }
+  .header .meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .header .meta span {
+    color: #667788;
+    font-size: 13px;
+  }
+  .header .meta strong { color: #99bbdd; }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+  .stat-card {
+    background: linear-gradient(145deg, #111122, #0d0d1a);
+    border: 1px solid #1a1a30;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .stat-card:hover {
+    border-color: #00d4ff44;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 150, 255, 0.1);
+  }
+  .stat-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #667788;
+    margin-bottom: 8px;
+  }
+  .stat-card .value {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #00d4ff, #0088ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-card .value.gold { background: linear-gradient(135deg, #ffd700, #ffaa00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-card .value.green { background: linear-gradient(135deg, #00e676, #00c853); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-card .value.red { background: linear-gradient(135deg, #ff5252, #ff1744); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .stat-card .sub {
+    font-size: 12px;
+    color: #556677;
+    margin-top: 4px;
+  }
+
+  /* Sections */
+  .section {
+    background: linear-gradient(145deg, #0e0e1a, #0a0a15);
+    border: 1px solid #1a1a30;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #00d4ff;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section h2 .emoji { font-size: 24px; }
+  .section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #aabbcc;
+    margin: 16px 0 8px 0;
+  }
+  .section p, .section li {
+    font-size: 14px;
+    color: #c0c8d4;
+    margin-bottom: 6px;
+  }
+  .section ul { padding-left: 20px; }
+  .section li { margin-bottom: 4px; }
+
+  /* Crime Meter */
+  .crime-meter {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 12px 0;
+  }
+  .crime-bar-bg {
+    flex: 1;
+    height: 10px;
+    background: #1a1a2e;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .crime-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00e676, #ffd700, #ff5252);
+    width: 45%;
+  }
+  .crime-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #aaddaa;
+    min-width: 90px;
+  }
+
+  /* Data Table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  .data-table th {
+    text-align: left;
+    padding: 10px 12px;
+    background: #1a1a2e;
+    color: #00d4ff;
+    font-weight: 600;
+    border-bottom: 2px solid #2a2a40;
+  }
+  .data-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #1a1a2e;
+    color: #c0c8d4;
+  }
+  .data-table tr:hover td { background: #111122; }
+
+  /* Verdict Box */
+  .verdict-box {
+    background: linear-gradient(135deg, #0d1a0d, #0a150a);
+    border: 2px solid #00e67644;
+    border-radius: 12px;
+    padding: 28px;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .verdict-item {
+    text-align: center;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  .verdict-item.good {
+    background: rgba(0, 230, 118, 0.1);
+    border: 1px solid #00e67633;
+  }
+  .verdict-item.caution {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid #ffc10733;
+  }
+  .verdict-item.avoid {
+    background: rgba(255, 82, 82, 0.1);
+    border: 1px solid #ff525233;
+  }
+  .verdict-item .rating {
+    font-size: 32px;
+    margin-bottom: 6px;
+  }
+  .verdict-item .verdict-label {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .verdict-item .verdict-desc {
+    font-size: 12px;
+    color: #8899aa;
+    margin-top: 4px;
+  }
+  .verdict-item.good .verdict-label { color: #00e676; }
+  .verdict-item.caution .verdict-label { color: #ffc107; }
+  .verdict-item.avoid .verdict-label { color: #ff5252; }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .badge-good { background: #00e67622; color: #00e676; }
+  .badge-ok { background: #ffc10722; color: #ffc107; }
+  .badge-bad { background: #ff525222; color: #ff5252; }
+
+  .footer {
+    text-align: center;
+    padding: 30px;
+    color: #445566;
+    font-size: 12px;
+    border-top: 1px solid #1a1a2e;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 28px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-badge">🏘️ Area Intelligence Report</div>
+    <h1>WV7 · Albrighton</h1>
+    <div class="subtitle">Shropshire — M54 Growth Corridor | Post Town: Wolverhampton</div>
+    <div class="meta">
+      <span>📅 <strong>Generated:</strong> May 2026</span>
+      <span>📍 <strong>Distance to Dudley:</strong> ~14 mi SE</span>
+      <span>🧑‍🤝‍🧑 <strong>Population:</strong> 7,669</span>
+      <span>📐 <strong>Area:</strong> 9.47 sq mi</span>
+      <span>🏛️ <strong>Council:</strong> Shropshire</span>
+    </div>
+  </div>
+
+  <!-- KEY STATS -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">Population</div>
+      <div class="value">7,669</div>
+      <div class="sub">2021 Census</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Avg House Price</div>
+      <div class="value gold">£337,501</div>
+      <div class="sub">+8% YoY (Rightmove)</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Avg Rent (House)</div>
+      <div class="value">£1,312</div>
+      <div class="sub">pcm · £1,169 (3-bed)</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Gross Rental Yield</div>
+      <div class="value green">4.7–6.0%</div>
+      <div class="sub">Est. based on sold prices</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Crime Rate</div>
+      <div class="value green">⬇ 83%</div>
+      <div class="sub">of national average (Shropshire)</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Avg Income</div>
+      <div class="value">£47,800</div>
+      <div class="sub">Household (2020 est.)</div>
+    </div>
+  </div>
+
+  <!-- AREA OVERVIEW -->
+  <div class="section">
+    <h2><span class="emoji">📍</span> Area Overview</h2>
+    <p><strong>WV7</strong> covers the village of <strong>Albrighton</strong> in Shropshire, approximately 7 miles west of Wolverhampton and 8 miles east of Telford. It's a semi-rural commuter village with strong transport links via the M54 motorway (Junction 3, ~2.2 miles away) and Albrighton Railway Station (Wolverhampton–Shrewsbury line, ~1 train/hour).</p>
+    <p>The area sits within the <strong>M54 Growth Corridor</strong> — a strategic development zone with major housing and employment sites including Shifnal East (38 hectares) and the i54 business park. RAF Cosford (Defence College of Technical Training) and the RAF Museum Midlands are key local employers.</p>
+    <p>Albrighton has a traditional village character with a High Street (42 shops), GP surgery, dental practices, and two primary schools. It's popular with families and professionals commuting to Wolverhampton, Birmingham, and Telford.</p>
+  </div>
+
+  <!-- CRIME -->
+  <div class="section">
+    <h2><span class="emoji">🚔</span> Crime Data</h2>
+    <p>WV7 sits within the <strong>Shropshire</strong> police area, which has significantly lower crime than both the West Midlands conurbation and the national average.</p>
+    
+    <div class="crime-meter">
+      <span class="crime-label">Shropshire Crime Rate</span>
+      <div class="crime-bar-bg"><div class="crime-bar-fill" style="width: 45%"></div></div>
+      <span><strong>83%</strong> of national avg</span>
+    </div>
+    
+    <p style="margin-top: 8px; font-size: 13px; color: #99aa77;">⬇ Below national average — 83.4 crimes per 1,000 vs 100.0 national</p>
+
+    <h3>WV7 Top Streets by Crime (last 12 months)</h3>
+    <table class="data-table">
+      <tr><th>Street</th><th>Incidents</th></tr>
+      <tr><td>High Street</td><td>54</td></tr>
+      <tr><td>Abney Avenue</td><td>33</td></tr>
+      <tr><td>Newport Road</td><td>25</td></tr>
+      <tr><td>Austin Drive</td><td>20</td></tr>
+      <tr><td>St Cuthberts Crescent</td><td>20</td></tr>
+    </table>
+
+    <h3>Most Common Crime Types (WV7)</h3>
+    <table class="data-table">
+      <tr><th>Crime Type</th><th>Count</th></tr>
+      <tr><td>Violence & Sexual Offences</td><td>242</td></tr>
+      <tr><td>Shoplifting</td><td>60</td></tr>
+      <tr><td>Other Theft</td><td>40</td></tr>
+      <tr><td>Public Order</td><td>33</td></tr>
+      <tr><td>Criminal Damage & Arson</td><td>32</td></tr>
+      <tr><td>Vehicle Crime</td><td>30</td></tr>
+      <tr><td>Burglary</td><td>24</td></tr>
+    </table>
+    <p style="font-size: 12px; color: #667788;">Compared to Wolverhampton city (102.3 per 1,000), Albrighton is notably safer. Shropshire is rated <strong>83% of national crime rate</strong> — one of the safest counties in the West Midlands region.</p>
+  </div>
+
+  <!-- DEMOGRAPHICS -->
+  <div class="section">
+    <h2><span class="emoji">👥</span> Demographics & Income</h2>
+    <table class="data-table">
+      <tr><th>Metric</th><th>Value</th></tr>
+      <tr><td>Population (WV7 district)</td><td>7,669 (2021 Census)</td></tr>
+      <tr><td>Wolverhampton city population</td><td>~263,700 (2021, +5.7% since 2011)</td></tr>
+      <tr><td>Average household income (WV7 area)</td><td>£47,800</td></tr>
+      <tr><td>Wolverhampton average income</td><td>~£23,600 (median individual)</td></tr>
+      <tr><td>Unemployment rate (Wolverhampton)</td><td>4.7% (down from 7.1% in 2011)</td></tr>
+      <tr><td>Retired population (Wolverhampton)</td><td>19.2% (down from 21.2% in 2011)</td></tr>
+    </table>
+    <p style="margin-top: 10px;">WV7 (Albrighton) is more affluent than Wolverhampton city average, with a household income of ~£47,800 reflecting its semi-rural commuter profile. The population is relatively settled with a mix of families and retirees.</p>
+  </div>
+
+  <!-- SCHOOLS -->
+  <div class="section">
+    <h2><span class="emoji">🏫</span> Schools & Education</h2>
+    <table class="data-table">
+      <tr><th>School</th><th>Phase</th><th>Ofsted Rating</th><th>Location</th></tr>
+      <tr>
+        <td>St Mary's CofE Primary School</td>
+        <td>Primary</td>
+        <td><span class="badge badge-good">GOOD</span></td>
+        <td>Shaw Lane, Albrighton WV7 3DS</td>
+      </tr>
+      <tr>
+        <td>Albrighton Primary School & Nursery</td>
+        <td>Primary</td>
+        <td><span class="badge badge-good">GOOD</span></td>
+        <td>Newhouse Lane, Albrighton WV7 3QS</td>
+      </tr>
+    </table>
+    <p style="margin-top: 10px;">There are <strong>no secondary schools within the WV7 district</strong>. Secondary-aged children typically travel to schools in nearby Wolverhampton, Codsall, or Telford. Popular secondary options include <strong>Codsall Community High School</strong> and schools in the Wolverhampton LEA. This is a consideration for families — travel to secondary school is necessary.</p>
+  </div>
+
+  <!-- TRANSPORT -->
+  <div class="section">
+    <h2><span class="emoji">🚆</span> Transport Links</h2>
+    
+    <h3>Rail</h3>
+    <ul>
+      <li><strong>Albrighton Station (ALB)</strong> — Station Road, WV7 3DS — West Midlands Railway. Hourly service to Birmingham New Street (~45 min) and Shrewsbury (~35 min) via Wolverhampton. 92,196 passengers (2024/25, rising sharply).</li>
+      <li><strong>Cosford Station (COS)</strong> — also within WV7 area, same line.</li>
+    </ul>
+
+    <h3>Road</h3>
+    <ul>
+      <li><strong>M54 Junction 3</strong> — 2.2 miles / 3.6 min avg drive — connects to M6 (north-south) and M6 Toll</li>
+      <li><strong>A41</strong> — runs through Albrighton connecting Wolverhampton and Shifnal</li>
+      <li><strong>A464</strong> — Holyhead Road, alternative route to Wolverhampton</li>
+      <li>~25 min to Birmingham city centre (via M54/M6)</li>
+      <li>~15 min to Wolverhampton city centre</li>
+      <li>~12 min to Telford town centre</li>
+    </ul>
+
+    <h3>Bus</h3>
+    <ul>
+      <li>Services to Wolverhampton, Telford, and surrounding villages</li>
+      <li>Local bus routes connect Albrighton to Cosford, Codsall, and Shifnal</li>
+    </ul>
+
+    <h3>Travel Times to Key Locations</h3>
+    <table class="data-table">
+      <tr><th>Destination</th><th>Distance</th><th>Drive</th><th>Train</th></tr>
+      <tr><td>Wolverhampton</td><td>6.8 mi</td><td>~15 min</td><td>~8 min</td></tr>
+      <tr><td>Telford</td><td>8.0 mi</td><td>~12 min</td><td>~10 min</td></tr>
+      <tr><td>Birmingham</td><td>~20 mi</td><td>~25 min</td><td>~45 min</td></tr>
+      <tr><td>Dudley (Dudley town)</td><td>~14 mi</td><td>~30 min</td><td>~50 min (via Wolverhampton)</td></tr>
+      <tr><td>Shrewsbury</td><td>~19 mi</td><td>~30 min</td><td>~35 min</td></tr>
+    </table>
+  </div>
+
+  <!-- PROPERTY / SOLD PRICES -->
+  <div class="section">
+    <h2><span class="emoji">🏠</span> Sold Prices (Last 12 Months)</h2>
+    
+    <table class="data-table">
+      <tr><th>Property Type</th><th>Avg Price (2025)</th><th>Sales Volume</th></tr>
+      <tr><td>Detached</td><td>£453,834</td><td>31</td></tr>
+      <tr><td>Semi-detached</td><td>£295,163</td><td>26</td></tr>
+      <tr><td>Terraced</td><td>£267,568</td><td>28</td></tr>
+      <tr><td>Flats</td><td>£174,400</td><td>5</td></tr>
+      <tr style="background: #111122;"><td><strong>Overall Average</strong></td><td><strong>£337,501</strong></td><td><strong>+8% YoY</strong></td></tr>
+    </table>
+
+    <h3>Recent Transaction Examples (Dec 2025 – Mar 2026)</h3>
+    <table class="data-table">
+      <tr><th>Property</th><th>Sold Price</th><th>Date</th></tr>
+      <tr><td>30 Anvil Close, WV7 3JP</td><td>£562,500</td><td>Feb 2026</td></tr>
+      <tr><td>3 The Courts, WV7 3QA</td><td>£480,000</td><td>Feb 2026</td></tr>
+      <tr><td>4 Cartwright Road, WV7 3LX</td><td>£389,950</td><td>Jan 2026</td></tr>
+      <tr><td>60a Treeview, High St, WV7 3JG</td><td>£382,500</td><td>Mar 2026</td></tr>
+      <tr><td>12 Bowling Green Lane, WV7 3HL</td><td>£330,000</td><td>Feb 2026</td></tr>
+      <tr><td>10 Botfield Close, WV7 3PT</td><td>£303,000</td><td>Mar 2026</td></tr>
+      <tr><td>5 Cedar Drive, WV7 3DF</td><td>£272,000</td><td>Feb 2026</td></tr>
+      <tr><td>33 Loak Road, WV7 3HR</td><td>£265,000</td><td>Feb 2026</td></tr>
+      <tr><td>89 Station Road, WV7 3DP</td><td>£255,000</td><td>Jan 2026</td></tr>
+      <tr><td>73 Elm Road, WV7 3LN</td><td>£200,000</td><td>Dec 2025</td></tr>
+      <tr><td>16 Pitchford Road, WV7 3LS</td><td>£187,950</td><td>Nov 2025</td></tr>
+      <tr><td>1 Beechurst Gardens, WV7 3LT</td><td>£176,000</td><td>Dec 2025</td></tr>
+    </table>
+    <p style="font-size: 12px; color: #667788; margin-top: 8px;">Source: Rightmove / HM Land Registry data (Open Government Licence v3.0). Prices range from £176k (flats) to £677k (large detached).</p>
+  </div>
+
+  <!-- RENTAL DEMAND -->
+  <div class="section">
+    <h2><span class="emoji">🔑</span> Rental Market</h2>
+    
+    <table class="data-table">
+      <tr><th>Property Type</th><th>Avg Rent (pcm)</th></tr>
+      <tr><td>House (overall avg in WV7)</td><td>£1,312</td></tr>
+      <tr><td>2-bed house</td><td>£1,074</td></tr>
+      <tr><td>3-bed house</td><td>£1,169</td></tr>
+      <tr><td>4-bed house</td><td>£1,864</td></tr>
+      <tr><td>Flat (overall avg)</td><td>£857</td></tr>
+      <tr><td>1-bed flat</td><td>£732</td></tr>
+      <tr><td>2-bed flat</td><td>£896</td></tr>
+    </table>
+
+    <h3>Yield Analysis</h3>
+    <ul>
+      <li><strong>3-bed terraced</strong> (~£267k purchase) renting at ~£1,169 pcm = <strong>5.2% gross yield</strong></li>
+      <li><strong>3-bed semi</strong> (~£295k purchase) renting at ~£1,312 pcm = <strong>5.3% gross yield</strong></li>
+      <li><strong>Flat</strong> (~£174k purchase) renting at ~£857 pcm = <strong>5.9% gross yield</strong></li>
+    </ul>
+    <p>Rental demand is supported by commuter traffic to Wolverhampton, Birmingham, and Telford. The M54 Growth Corridor and planned 265+ new homes (Wain Estates + Taylor Wimpey) will increase local population and rental demand further. 84% of houses have gardens and 85% have parking — strong family rental appeal.</p>
+  </div>
+
+  <!-- PLANNING -->
+  <div class="section">
+    <h2><span class="emoji">🏗️</span> Planning & Development</h2>
+    
+    <h3>Active Major Developments</h3>
+    <table class="data-table">
+      <tr><th>Development</th><th>Homes</th><th>Developer</th><th>Status</th></tr>
+      <tr>
+        <td>Kingswood Road, Albrighton</td>
+        <td>150</td>
+        <td>Wain Estates</td>
+        <td><span class="badge badge-good">Recommended for approval</span></td>
+      </tr>
+      <tr>
+        <td>Land at Cross Road, Albrighton</td>
+        <td>115</td>
+        <td>Taylor Wimpey</td>
+        <td><span class="badge badge-ok">Outline application being prepared</span></td>
+      </tr>
+    </table>
+    <p style="margin-top: 10px;"><strong>Total planned new homes: 265+</strong> — a significant increase for a village of ~7,700 people (roughly +8-10% housing stock). Combined with M54 Growth Corridor employment sites (38 ha Shifnal East/i54), this signals strong population and economic growth for the area.</p>
+    <p>The Shropshire Local Plan identifies Albrighton as a sustainable settlement for growth, with ~31,000 homes planned across the county up to 2038. The M54 corridor is a primary focus for both housing and employment development.</p>
+  </div>
+
+  <!-- LOCAL AMENITIES -->
+  <div class="section">
+    <h2><span class="emoji">🏪</span> Local Amenities</h2>
+    
+    <h3>Retail</h3>
+    <ul>
+      <li><strong>High Street</strong> — 42 shops including convenience stores, cafes, takeaways, and independent retailers</li>
+      <li><strong>Station Road</strong> — 12 commercial units</li>
+      <li>53 total commercial units in Albrighton village centre (6,300 m² floor space)</li>
+      <li>Larger supermarkets in Wolverhampton (Tesco, Asda, Morrisons) ~10 min drive</li>
+      <li>Codsall (~3 miles) offers additional retail options</li>
+    </ul>
+
+    <h3>Healthcare</h3>
+    <ul>
+      <li><strong>Albrighton Medical Practice</strong> — Shaw Lane, Albrighton WV7 3DT — GP surgery</li>
+      <li><strong>Cosford Medical Centre</strong> — Worcester Road, WV7 3EX — branch surgery</li>
+      <li><strong>Albrighton Dental Surgery</strong> — 20 Station Road — Mr G Shiravi</li>
+      <li><strong>Rhodes Tc Chemist</strong> — 77 High Street, WV7 3JA</li>
+      <li><strong>Evenett & Bishop Opticians</strong> — 67 High Street</li>
+      <li>Wolverhampton's New Cross Hospital ~15 min drive</li>
+    </ul>
+
+    <h3>Leisure & Community</h3>
+    <ul>
+      <li>Albrighton & Donington Parish Council</li>
+      <li>RAF Cosford & RAF Museum Midlands (major visitor attraction)</li>
+      <li>Public houses, village halls, sports clubs</li>
+      <li>Proximity to Shropshire countryside — walking, cycling, horse riding</li>
+      <li>Cosford Air Show (annual event)</li>
+    </ul>
+  </div>
+
+  <!-- INVESTMENT VERDICT -->
+  <div class="section">
+    <h2><span class="emoji">💎</span> Investment Verdict</h2>
+    <p style="margin-bottom: 16px;">WV7 (Albrighton) presents a <strong>strong investment case</strong> driven by the M54 Growth Corridor, excellent transport links, low crime, and growing housing demand. The key considerations:</p>
+    
+    <div class="verdict-box">
+      <div class="verdict-item good">
+        <div class="rating">🟢</div>
+        <div class="verdict-label">GOOD for BRRR</div>
+        <div class="verdict-desc">
+          +8% YoY price growth. Terraced entry from £267k, semi from £295k. Strong capital appreciation potential from M54 corridor developments. Refurb opportunities in older village stock.
+        </div>
+      </div>
+      <div class="verdict-item good">
+        <div class="rating">🟢</div>
+        <div class="verdict-label">GOOD for BTL</div>
+        <div class="verdict-desc">
+          4.7–6.0% gross yields. Strong commuter demand. £1,169–1,312 pcm rents. Low crime, good schools, excellent transport — attracts quality tenants. 85% of houses have parking.
+        </div>
+      </div>
+      <div class="verdict-item caution">
+        <div class="rating">🟡</div>
+        <div class="verdict-label">CAUTION for HMO</div>
+        <div class="verdict-desc">
+          Semi-rural village character limits HMO viability. Family/commuter market dominates. Consider standard single-family lets instead of HMO strategy. No large student population.
+        </div>
+      </div>
+      <div class="verdict-item good">
+        <div class="rating">🟢</div>
+        <div class="verdict-label">NOT AVOID</div>
+        <div class="verdict-desc">
+          Low crime (83% of national), rising prices (+8% YoY), 265+ planned new homes, M54 Growth Corridor investment. Strong fundamentals. No red flags.
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px; padding: 16px; background: #0d1a2d; border: 1px solid #00d4ff22; border-radius: 8px;">
+      <p style="font-weight: 600; color: #00d4ff;">📊 Overall Verdict: <strong style="font-size: 18px;">GOOD for BTL · GOOD for BRRR</strong></p>
+      <p style="margin-top: 8px; font-size: 13px;">WV7 (Albrighton) is a classic <strong>commuter village growth play</strong>. The combination of M54 corridor investment, 265+ planned new homes, low crime, good schools, and rising prices (+8% YoY) makes it a solid choice for buy-to-let and BRRR investors. Yields of 4.7-6.0% are competitive for the West Midlands region. The main risk is the lack of secondary schools within the district, but nearby options in Codsall and Wolverhampton offset this. <strong>Best suited to family rental properties in the £250k–£400k bracket.</strong></p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>WV7 Area Intelligence Report · Generated May 2026</p>
+    <p>Data sources: Rightmove, Zoopla, HM Land Registry, ONS, Streetlist, Plumplot, Hutch, BBC, Taylor Wimpey, Invest in Shropshire, Shropshire Council</p>
+    <p>⚠️ This report is for informational purposes only. Verify all data independently before making investment decisions.</p>
+  </div>
+
+</div>
+</body>
+</html>

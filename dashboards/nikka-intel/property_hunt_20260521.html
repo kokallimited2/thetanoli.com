@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Hunt — 21 May 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:#0a0e17; color:#e2e8f0; line-height:1.6; padding:20px; }
+  .container { max-width:960px; margin:0 auto; }
+  h1 { font-size:1.8em; font-weight:800; color:#f8fafc; margin-bottom:4px; letter-spacing:-0.5px; }
+  .subtitle { color:#94a3b8; font-size:0.9em; margin-bottom:30px; }
+  h2 { font-size:1.3em; font-weight:700; color:#60a5fa; margin:30px 0 15px; padding-bottom:8px; border-bottom:1px solid #1e293b; }
+  h3 { font-size:1.05em; font-weight:600; color:#e2e8f0; margin:18px 0 8px; }
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-bottom:25px; }
+  .stat-card { background:#131a2b; border:1px solid #1e293b; border-radius:12px; padding:14px; text-align:center; }
+  .stat-card .num { font-size:1.6em; font-weight:700; color:#60a5fa; }
+  .stat-card .label { font-size:0.75em; color:#94a3b8; margin-top:4px; }
+  .deal-card { background:#131a2b; border:1px solid #1e293b; border-radius:14px; padding:20px; margin-bottom:18px; position:relative; overflow:hidden; }
+  .deal-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+  .deal-card.hot::before { background:linear-gradient(90deg,#ef4444,#f97316); }
+  .deal-card.warm::before { background:linear-gradient(90deg,#f59e0b,#eab308); }
+  .deal-card.monitor::before { background:linear-gradient(90deg,#6366f1,#818cf8); }
+  .badge { display:inline-block; font-size:0.7em; font-weight:600; padding:3px 10px; border-radius:20px; margin-bottom:10px; }
+  .badge.hot { background:#ef444420; color:#ef4444; border:1px solid #ef444440; }
+  .badge.warm { background:#f59e0b20; color:#f59e0b; border:1px solid #f59e0b40; }
+  .badge.monitor { background:#6366f120; color:#818cf8; border:1px solid #6366f140; }
+  .badge.stc { background:#22c55e20; color:#22c55e; border:1px solid #22c55e40; }
+  .badge.score { background:#60a5fa20; color:#60a5fa; border:1px solid #60a5fa40; }
+  .deal-header { display:flex; justify-content:space-between; align-items:start; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .deal-address { font-size:1.05em; font-weight:600; color:#f8fafc; }
+  .deal-price { font-size:1.3em; font-weight:700; color:#22c55e; }
+  .deal-meta { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 12px; }
+  .deal-meta span { background:#1e293b; padding:3px 10px; border-radius:6px; font-size:0.8em; color:#94a3b8; }
+  .deal-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:8px; margin:10px 0; }
+  .deal-stat { background:#0a0e17; border-radius:8px; padding:10px; text-align:center; }
+  .deal-stat .val { font-size:1.1em; font-weight:700; color:#60a5fa; }
+  .deal-stat .lbl { font-size:0.7em; color:#64748b; margin-top:2px; }
+  .verdict-box { display:inline-block; padding:6px 14px; border-radius:8px; font-weight:600; font-size:0.85em; margin:8px 0; }
+  .verdict-buy { background:#22c55e20; color:#22c55e; border:1px solid #22c55e40; }
+  .verdict-view { background:#f59e0b20; color:#f59e0b; border:1px solid #f59e0b40; }
+  .verdict-monitor { background:#6366f120; color:#818cf8; border:1px solid #6366f140; }
+  .verdict-pass { background:#ef444420; color:#ef4444; border:1px solid #ef444440; }
+  .link-btn { display:inline-block; background:#1e293b; color:#60a5fa; padding:6px 14px; border-radius:8px; text-decoration:none; font-size:0.85em; font-weight:500; margin-top:8px; transition:all 0.2s; }
+  .link-btn:hover { background:#2563eb; color:white; }
+  .viewing-brief { background:#0a0e17; border:1px solid #1e293b; border-radius:10px; padding:14px; margin:12px 0; }
+  .viewing-brief h4 { color:#f59e0b; font-size:0.9em; margin-bottom:8px; }
+  .viewing-brief ul { padding-left:18px; font-size:0.85em; color:#94a3b8; }
+  .viewing-brief li { margin-bottom:4px; }
+  .section-card { background:#131a2b; border:1px solid #1e293b; border-radius:12px; padding:16px; margin-bottom:14px; }
+  .section-card h4 { color:#f8fafc; font-size:0.95em; margin-bottom:8px; }
+  .section-card ul { padding-left:18px; font-size:0.85em; color:#94a3b8; }
+  .section-card li { margin-bottom:5px; }
+  .pulse-line { display:flex; gap:10px; overflow-x:auto; padding:5px 0 10px; }
+  .pulse-item { min-width:160px; background:#0a0e17; border:1px solid #1e293b; border-radius:10px; padding:12px; flex-shrink:0; }
+  .pulse-item .p-price { color:#22c55e; font-weight:600; }
+  .pulse-item .p-addr { font-size:0.8em; color:#94a3b8; margin:4px 0; }
+  .pulse-item .p-added { font-size:0.7em; color:#64748b; }
+  .stc-badge { display:inline-block; background:#22c55e20; color:#22c55e; font-size:0.65em; padding:2px 8px; border-radius:10px; }
+  .footer { margin-top:30px; padding-top:20px; border-top:1px solid #1e293b; font-size:0.8em; color:#64748b; text-align:center; }
+  .emoji-icon { font-size:1.2em; margin-right:4px; }
+  .negotiate-tip { background:#f59e0b10; border:1px solid #f59e0b30; border-radius:10px; padding:12px; margin:8px 0; font-size:0.85em; color:#fbbf24; }
+  .negotiate-tip strong { color:#f59e0b; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🏠 Daily Property Hunt — 21 May 2026</h1>
+<p class="subtitle">Autonomous scan of DY, WV & B postcodes for BRRR/Flip/BTL targets | Hermes Property Intelligence</p>
+
+<div class="stats-grid">
+  <div class="stat-card"><div class="num">45</div><div class="label">Postcodes Scanned</div></div>
+  <div class="stat-card"><div class="num">~5,400</div><div class="label">Total Listings</div></div>
+  <div class="stat-card"><div class="num">38</div><div class="label">BRRR Candidates</div></div>
+  <div class="stat-card"><div class="num">3</div><div class="label">Top Picks</div></div>
+</div>
+
+<!-- ===== TOP 3 DEEP DIVE ===== -->
+<h2>🔥 Top 3 Picks — Deep Dive</h2>
+
+<!-- #1 - Sandland Road -->
+<div class="deal-card hot">
+  <span class="badge hot">🔴 HOT — Best BRRR Candidate</span>
+  <div class="deal-header">
+    <div>
+      <div class="deal-address">Sandland Road, Willenhall, WV12</div>
+      <div class="deal-meta">
+        <span>3 Bed Semi-Detached</span>
+        <span>Freehold</span>
+        <span>Added: 11/05/2026</span>
+        <span class="badge score">Score: 85/100</span>
+      </div>
+    </div>
+    <div class="deal-price">£150,000</div>
+  </div>
+
+  <div class="deal-stats">
+    <div class="deal-stat"><div class="val">£150k</div><div class="lbl">Asking</div></div>
+    <div class="deal-stat"><div class="val">£145k</div><div class="lbl">Target Offer</div></div>
+    <div class="deal-stat"><div class="val">£25-30k</div><div class="lbl">Refurb Est</div></div>
+    <div class="deal-stat"><div class="val">£200-215k</div><div class="lbl">ARV Refurbed</div></div>
+    <div class="deal-stat"><div class="val">£900-950/mo</div><div class="lbl">Rent Potential</div></div>
+    <div class="deal-stat"><div class="val">7.2-7.6%</div><div class="lbl">Gross Yield</div></div>
+  </div>
+
+  <div class="verdict-box verdict-buy">✅ STRONG BUY — VIEW IMMEDIATELY</div>
+
+  <p style="font-size:0.88em;color:#94a3b8;margin:8px 0;"><strong style="color:#f8fafc;">Why it's hot:</strong> Listed as "CASH OFFERS PREFERRED DUE TO CONDITION" — the strongest distress signal. "A Fantastic Refurbishment Project!" per agent. 3-bed semi with deceptively spacious layout, separate lounge and dining room, driveway parking, large rear garden. Added 11/05/2026, still active at 10 days. L&S Prestige Estates, Willenhall.</p>
+
+  <div class="negotiate-tip">
+    <strong>💰 Negotiation Angle:</strong> Cash offers preferred = seller needs speed, not price. Offer £140-145k cash with quick completion (14-21 days). The roof needs replacing (rear hall), garden overgrown, needs full modernisation. Use condition as leverage — agent already setting expectations. Market position: offer £145k, settle at £147.5k.
+  </div>
+
+  <div class="viewing-brief">
+    <h4>📋 Viewing Brief</h4>
+    <ul>
+      <li><strong>Check:</strong> Rear hall roof condition (agent says needs replacement — get roofer quote on the spot)</li>
+      <li><strong>Check:</strong> Damp in lounge/dining room (feature fireplace may hide issues)</li>
+      <li><strong>Check:</strong> Roof condition overall — look for slipped tiles, valley gutters</li>
+      <li><strong>Measure:</strong> Bedroom 3 (1.778m × 2.896m) — is this viable as a double or only a single? Important for HMO conversion viability</li>
+      <li><strong>Measure:</strong> Kitchen (2.845m × 3.556m) — can it open-plan into dining room?</li>
+      <li><strong>Ask agent:</strong> Is the vendor in a chain? Why cash preferred? Is there a mortgage issue/possession?</li>
+      <li><strong>Photo:</strong> Rear garden (overgrown — clearance cost estimate needed)</li>
+      <li><strong>Photo:</strong> Rear hall roof — get clear shots for builder quote</li>
+      <li><strong>Photo:</strong> Heating system — if only "majority" on gas CH, what's the rest?</li>
+    </ul>
+  </div>
+
+  <a href="https://www.rightmove.co.uk/properties/88320027#/?channel=RES_BUY" target="_blank" class="link-btn">🔗 View on Rightmove</a>
+</div>
+
+<!-- #2 - Church Street, Quarry Bank -->
+<div class="deal-card warm">
+  <span class="badge warm">🟡 WARM — Local to DY5 Base</span>
+  <div class="deal-header">
+    <div>
+      <div class="deal-address">Church Street, Quarry Bank, Brierley Hill, DY5</div>
+      <div class="deal-meta">
+        <span>2 Bed Semi-Detached</span>
+        <span>Freehold</span>
+        <span>Reduced yesterday</span>
+        <span class="badge score">Score: 87/100</span>
+      </div>
+    </div>
+    <div class="deal-price">£180,000</div>
+  </div>
+
+  <div class="deal-stats">
+    <div class="deal-stat"><div class="val">£180k</div><div class="lbl">Asking</div></div>
+    <div class="deal-stat"><div class="val">£170k</div><div class="lbl">Target Offer</div></div>
+    <div class="deal-stat"><div class="val">£15-20k</div><div class="lbl">Refurb Est</div></div>
+    <div class="deal-stat"><div class="val">£215-230k</div><div class="lbl">ARV Refurbed</div></div>
+    <div class="deal-stat"><div class="val">£800-850/mo</div><div class="lbl">Rent Potential</div></div>
+    <div class="deal-stat"><div class="val">5.7-6.0%</div><div class="lbl">Gross Yield</div></div>
+  </div>
+
+  <div class="verdict-box verdict-view">👁️ VIEW — Good BTL/Hold Candidate</div>
+
+  <p style="font-size:0.88em;color:#94a3b8;margin:8px 0;"><strong style="color:#f8fafc;">Why it's interesting:</strong> Right on Tanoli's turf — Quarry Bank, Brierley Hill DY5. Reduced YESTERDAY (strong motivation signal). 2-bed semi with decent plot potential. Connells, Stourbridge are the agents — professional but negotiable. Only 2 bed limits BRRR ceiling but good for first-time BTL or downsizer flip.</p>
+
+  <div class="negotiate-tip">
+    <strong>💰 Negotiation Angle:</strong> The "Reduced yesterday" timing is critical — seller just dropped the price. Call agent TODAY. Offer £165-170k citing: (1) 2-bed limits buyer pool, (2) refurb needed, (3) Quarry Bank comps support £170k. Aim to settle at £172-175k. Quick completion leverage.
+  </div>
+
+  <div class="viewing-brief">
+    <h4>📋 Viewing Brief</h4>
+    <ul>
+      <li><strong>Check:</strong> Why was it reduced after only 1 day? Listed, then immediately reduced — pricing mistake or urgent situation?</li>
+      <li><strong>Check:</strong> Semi-detached condition — check party wall, roof line, extension potential to the rear</li>
+      <li><strong>Measure:</strong> Room sizes — can it be extended or loft converted for third bedroom?</li>
+      <li><strong>Ask agent:</strong> Vendor situation (chain? moved out? probate?)</li>
+      <li><strong>Check:</strong> EPC rating — if below C, budget for post-refurb upgrade</li>
+    </ul>
+  </div>
+
+  <a href="https://www.rightmove.co.uk/properties/174599768#/?channel=RES_BUY" target="_blank" class="link-btn">🔗 View on Rightmove</a>
+</div>
+
+<!-- #3 - Merridale Road -->
+<div class="deal-card warm">
+  <span class="badge warm">🟡 WARM — Fresh Reduction, Good Location</span>
+  <div class="deal-header">
+    <div>
+      <div class="deal-address">Merridale Road, Wolverhampton, WV3</div>
+      <div class="deal-meta">
+        <span>3 Bed Terraced</span>
+        <span>Freehold</span>
+        <span>Reduced yesterday</span>
+        <span class="badge score">Score: 90/100</span>
+      </div>
+    </div>
+    <div class="deal-price">£160,000</div>
+  </div>
+
+  <div class="deal-stats">
+    <div class="deal-stat"><div class="val">£160k</div><div class="lbl">Asking</div></div>
+    <div class="deal-stat"><div class="val">£150k</div><div class="lbl">Target Offer</div></div>
+    <div class="deal-stat"><div class="val">£20-25k</div><div class="lbl">Refurb Est</div></div>
+    <div class="deal-stat"><div class="val">£200-210k</div><div class="lbl">ARV Refurbed</div></div>
+    <div class="deal-stat"><div class="val">£875-925/mo</div><div class="lbl">Rent Potential</div></div>
+    <div class="deal-stat"><div class="val">6.6-6.9%</div><div class="lbl">Gross Yield</div></div>
+  </div>
+
+  <div class="verdict-box verdict-view">👁️ VIEW — Strong BRRR Potential</div>
+
+  <p style="font-size:0.88em;color:#94a3b8;margin:8px 0;"><strong style="color:#f8fafc;">Why it scores highest:</strong> WV3 is a solid area (Penn/Merridale — better than WV1/2). 3-bed terrace with scope. Reduced YESTERDAY — seller is motivated. Listed with Connells (pro agents = slightly harder negotiation but credible). £160k asking with £150k target offer could give £190-200k ARV and £40k+ gross margin before costs. Good area for tenant demand near Wolverhampton Uni.</p>
+
+  <div class="negotiate-tip">
+    <strong>💰 Negotiation Angle:</strong> Call Connells Wolverhampton TODAY citing the reduction. Offer £150k with: proof of funds, 21-day completion, no chain. If they push back, explain Merridale Road comps are £190-200k refurbed and you need minimum £40k margin. Settle at £152-155k.
+  </div>
+
+  <div class="viewing-brief">
+    <h4>📋 Viewing Brief</h4>
+    <ul>
+      <li><strong>Check:</strong> BC1 condition — what requires the reduction? Cosmetic or structural?</li>
+      <li><strong>Check:</strong> Roof condition — terraced house shared roof responsibilities</li>
+      <li><strong>Check:</strong> Damp proof course — WV3 properties near university often have conversion damage</li>
+      <li><strong>Measure:</strong> Room dimensions vs floorplan — check for HMO conversion potential</li>
+      <li><strong>Ask agent:</strong> Why reduced yesterday? Vendor timeline?</li>
+      <li><strong>Check:</strong> EPC — min D for BTL, C target for 2028 MEES compliance</li>
+    </ul>
+  </div>
+
+  <a href="https://www.rightmove.co.uk/properties/173460665#/?channel=RES_BUY" target="_blank" class="link-btn">🔗 View on Rightmove</a>
+</div>
+
+<!-- ===== STC TRACKER ===== -->
+<h2>📊 Market Pulse — Sold STC</h2>
+<p style="font-size:0.85em;color:#64748b;margin-bottom:12px;">Tracking what's selling to gauge market demand and pricing accuracy</p>
+
+<div class="section-card">
+  <h4>🏁 Francis Street, Dunstall Hill, Wolverhampton WV1 — SOLD STC</h4>
+  <ul>
+    <li><strong>Price:</strong> £140,000 (3-bed mid-terrace, freehold)</li>
+    <li><strong>Condition:</strong> "Full modernisation required throughout" — genuine refurb opportunity</li>
+    <li><strong>Agent:</strong> D B Roberts & Partners, Wolverhampton</li>
+    <li><strong>Listed:</strong> 28/04/2026 → Sold in ~23 days</li>
+    <li><strong>Significance:</strong> A cheap refurb target (£140k) going STC in 23 days confirms STRONG DEMAND for sub-£150k investment properties in Wolverhampton. Seller achieved asking price in a competitive market. This is the kind of deal we need to be quicker on.</li>
+  </ul>
+  <a href="https://www.rightmove.co.uk/properties/87778377#/?channel=RES_BUY" target="_blank" class="link-btn">🔗 Past Listing</a>
+</div>
+
+<!-- ===== SECONDARY CANDIDATES ===== -->
+<h2>📋 Watchlist — Additional Candidates</h2>
+
+<div class="pulse-line">
+  <div class="pulse-item">
+    <div class="p-price">£180,000</div>
+    <div class="p-addr">Stroud Avenue, Willenhall WV12</div>
+    <div style="font-size:0.75em;color:#94a3b8;">3 bed Semi • Reduced 16/05</div>
+    <div class="p-added">Score: 88 • View if DY5 fails</div>
+  </div>
+  <div class="pulse-item">
+    <div class="p-price">£195,000</div>
+    <div class="p-addr">Wheeler Street, Stourbridge DY8</div>
+    <div style="font-size:0.75em;color:#94a3b8;">3 bed Terrace • 2 baths • Reduced yesterday</div>
+    <div class="p-added">Score: 85 • Best Stourbridge pick</div>
+  </div>
+  <div class="pulse-item">
+    <div class="p-price">£150,000</div>
+    <div class="p-addr">Lichfield Road, Willenhall WV12</div>
+    <div style="font-size:0.75em;color:#94a3b8;">3 bed Semi • Added 11/05</div>
+    <div class="p-added">Score: 85 • Twin to Sandland Road</div>
+  </div>
+  <div class="pulse-item">
+    <div class="p-price">£200,000</div>
+    <div class="p-addr">Greaves Road, Dudley DY2</div>
+    <div style="font-size:0.75em;color:#94a3b8;">3 bed Semi • 2 baths • Reduced 19/05</div>
+    <div class="p-added">Score: 85 • Solid DY2 pick</div>
+  </div>
+  <div class="pulse-item">
+    <div class="p-price">£190,000</div>
+    <div class="p-addr">Wassell Road, Stourbridge DY9</div>
+    <div style="font-size:0.75em;color:#94a3b8;">3 bed Semi • Reduced 19/05</div>
+    <div class="p-added">Score: 85 • Good area, good price</div>
+  </div>
+</div>
+
+<!-- ===== ADDITIONAL NEW LISTINGS ===== -->
+<h2>🆕 Fresh Listings (Added/Reduced Yesterday)</h2>
+<div class="section-card">
+  <ul>
+    <li><strong>£160,000</strong> — Merridale Road, Wolverhampton WV3 · 3 bed Terraced · REDUCED YESTERDAY · Connells</li>
+    <li><strong>£180,000</strong> — Church Street, Quarry Bank, Brierley Hill DY5 · 2 bed Semi · REDUCED YESTERDAY · Connells</li>
+    <li><strong>£170,000</strong> — Somerset Road, Handsworth Wood, Birmingham B20 · 2 bed Terraced · Added yesterday</li>
+    <li><strong>£158,000</strong> — Nineveh Road, Birmingham B21 · 2 bed Terraced · Added yesterday</li>
+    <li><strong>£240,000</strong> — Stechford Lane, Birmingham B8 · 3 bed Semi · Added yesterday</li>
+    <li><strong>£160,000</strong> — Derrydown Road, Great Barr, Birmingham B42 · 3 bed Semi · Added yesterday</li>
+    <li><strong>£180,000</strong> — Jervoise Road, Weoley Castle, Birmingham B29 · 3 bed Semi · Added yesterday</li>
+    <li><strong>£185,000</strong> — Witton Street, Birmingham B9 · 2 bed Terraced · Added yesterday</li>
+    <li><strong>£200,000</strong> — Redhill Road, Northfield, Birmingham B31 · 2 bed Terraced · Added yesterday</li>
+    <li><strong>£200,000</strong> — Laburnum Avenue, Birmingham B37 · 2 bed Terraced · REDUCED YESTERDAY</li>
+  </ul>
+</div>
+
+<!-- ===== NEGOTIATION SCRIPTS ===== -->
+<h2>🎯 Offer Scripts — Call Today</h2>
+
+<div class="section-card">
+  <h4>📞 Sandland Road, WV12 — L&S Prestige Estates</h4>
+  <p style="font-size:0.88em;color:#94a3b8;margin-bottom:8px;">
+  <em>"Hi, I'm calling about Sandland Road, Willenhall. I see it's listed at £150k and described as 'cash offers preferred due to condition.' I've got cash funds ready and can complete in 14 days, no chain. I've looked at the room sizes and factored in a full refurb — roof work, kitchen, bathroom, full rewire. Based on my numbers I'd be at £142,000. Is the vendor open to offers around that level?"</em>
+  </p>
+  <p style="font-size:0.8em;color:#64748b;">→ Expect pushback. Give them £145k as a walk-away. If they say no, leave the door open: "I'm at £145k max with that completion speed. Call me if the vendor's position changes."</p>
+</div>
+
+<div class="section-card">
+  <h4>📞 Church Street, DY5 — Connells Stourbridge</h4>
+  <p style="font-size:0.88em;color:#94a3b8;margin-bottom:8px;">
+  <em>"Hi, about Church Street, Quarry Bank. Noticed it was reduced yesterday — what's the vendor's situation? I'm a local investor, can move quickly with cash, no chain. I'd be looking at around £168k given it needs work and the 2-bed layout limits resale value. Would that be in the ballpark?"</em>
+  </p>
+</div>
+
+<div class="section-card">
+  <h4>📞 Merridale Road, WV3 — Connells Wolverhampton</h4>
+  <p style="font-size:0.88em;color:#94a3b8;margin-bottom:8px;">
+  <em>"I'm looking at the Merridale Road property you reduced yesterday. I can offer £150k with proof of funds, 21-day completion, no chain. I've factored in the refurb needed. Is that something you could put to the vendor?"</em>
+  </p>
+</div>
+
+<!-- ===== SOUTH BIRMINGHAM WATCH ===== -->
+<h2>📍 Birmingham Spotlight — B Postcodes</h2>
+<p style="font-size:0.85em;color:#64748b;margin-bottom:12px;">Best sub-£200k freehold houses found in B postcodes (some may be worth considering)</p>
+
+<div class="section-card">
+  <ul>
+    <li><strong>£155,000</strong> — Bosworth Drive, Chelmsley Wood B37 · 3 bed Terraced · REDUCED 19/05 · Good BRRR candidate at this price</li>
+    <li><strong>£160,000</strong> — Derrydown Road, Great Barr B42 · 3 bed Semi-Detached · Added yesterday · Great Barr is a solid area</li>
+    <li><strong>£158,000</strong> — Nineveh Road, Birmingham B21 · 2 bed Terraced · Added yesterday · Handsworth — high yield area</li>
+    <li><strong>£180,000</strong> — Grange Avenue, Birmingham B8 · 2 bed End of Terrace · Reduced 19/05</li>
+    <li><strong>£185,000</strong> — Honeysuckle Grove, Birmingham B27 · 2 bed End of Terrace · Reduced 13/05</li>
+    <li><strong>£190,000</strong> — Pinner Grove, Quinton B32 · 2 bed Semi-Detached · Added 19/05</li>
+    <li><strong>£200,000</strong> — Redhill Road, Northfield B31 · 2 bed Terraced · Added yesterday</li>
+  </ul>
+</div>
+
+<!-- ===== MARKET SUMMARY ===== -->
+<h2>📈 Market Summary — 21 May 2026</h2>
+
+<div class="stats-grid">
+  <div class="stat-card"><div class="num" style="color:#22c55e;">£150k</div><div class="label">Best BRRR Entry</div></div>
+  <div class="stat-card"><div class="num" style="color:#f59e0b;">5</div><div class="label">Reduced Yesterday</div></div>
+  <div class="stat-card"><div class="num" style="color:#60a5fa;">1</div><div class="label">Cash Preferred</div></div>
+  <div class="stat-card"><div class="num" style="color:#818cf8;">1</div><div class="label">SSTC This Week</div></div>
+</div>
+
+<div class="section-card">
+  <h4>🔍 Key Takeaways</h4>
+  <ul>
+    <li><strong>Best candidate today:</strong> Sandland Road, Willenhall WV12 — £150k, cash preferred, 3-bed semi. Classic BRRR material. Call L&S Prestige today.</li>
+    <li><strong>Closest to base:</strong> Church Street, Quarry Bank DY5 — £180k, reduced yesterday. Right on Tanoli's doorstep in Brierley Hill.</li>
+    <li><strong>WV market is active:</strong> Francis Street (£140k) went SSTC in 23 days. Wolverhampton investment market is strong at sub-£150k.</li>
+    <li><strong>DY market is thin:</strong> Very few genuine BRRR targets in DY below £180k. Most DY stock is either auction, flats, or overpriced.</li>
+    <li><strong>Birmingham has volume:</strong> B8, B9, B10, B21, B29, B31, B32, B35, B37, B42 all had good freehold stock at £150-250k.</li>
+    <li><strong>Priority action:</strong> Call about Sandland Road (WV12) and Church Street (DY5) today. Both reduced/vulnerable right now.</li>
+  </ul>
+</div>
+
+<div class="footer">
+  Generated by Hermes Autonomous Property Investment System · 21 May 2026 06:00 BST<br>
+  Data sourced from Rightmove via CloakBrowser stealth scraping · Filtered for BRRR/Flip/BTL candidates
+</div>
+
+</div>
+</body>
+</html>

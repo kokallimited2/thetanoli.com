@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏘️ B67 Area Intelligence — Bearwood / Smethwick</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+    background: #0a0e1a;
+    color: #d1d5db;
+    line-height: 1.7;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+  .header {
+    background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
+    border: 1px solid #1e3a5f;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 2.2rem;
+    color: #60a5fa;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: #1e3a5f;
+    color: #93c5fd;
+    padding: 0.3rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+  }
+  .header .subtitle {
+    color: #9ca3af;
+    font-size: 0.95rem;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: #111827;
+    border: 1px solid #1e3a5f;
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: #3b82f6; }
+  .stat-card .value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #60a5fa;
+    margin-bottom: 0.2rem;
+  }
+  .stat-card .label {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .stat-card .trend-up { color: #34d399; }
+  .stat-card .trend-down { color: #f87171; }
+  .stat-card .trend-neutral { color: #fbbf24; }
+  .section {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .section h2 {
+    font-size: 1.3rem;
+    color: #93c5fd;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #1e293b;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section h2 .icon { font-size: 1.3rem; }
+  .section ul, .section p { margin-bottom: 0.8rem; }
+  .section ul { padding-left: 1.5rem; }
+  .section li { margin-bottom: 0.4rem; }
+  .section strong { color: #e5e7eb; }
+  .verdict-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .verdict-item {
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+    font-weight: 600;
+  }
+  .verdict-good { background: #064e3b; border: 1px solid #10b981; color: #6ee7b7; }
+  .verdict-caution { background: #451a03; border: 1px solid #f59e0b; color: #fcd34d; }
+  .verdict-avoid { background: #450a0a; border: 1px solid #ef4444; color: #fca5a5; }
+  .verdict-item h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+  .verdict-item p { font-size: 0.85rem; font-weight: 400; opacity: 0.9; }
+  .footer {
+    text-align: center;
+    color: #4b5563;
+    font-size: 0.8rem;
+    padding: 2rem 0 0;
+    border-top: 1px solid #1e293b;
+    margin-top: 2rem;
+  }
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  th {
+    background: #1e293b;
+    color: #93c5fd;
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border-bottom: 1px solid #1e293b;
+  }
+  tr:hover td { background: #1a2236; }
+  .tag {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .tag-outstanding { background: #065f46; color: #6ee7b7; }
+  .tag-good { background: #1e3a5f; color: #93c5fd; }
+  .tag-requires { background: #78350f; color: #fcd34d; }
+  .tag-inadequate { background: #7f1d1d; color: #fca5a5; }
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.5rem; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .verdict-box { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>🏘️ B67 Area Intelligence</h1>
+    <div class="badge">Bearwood · Smethwick · Sandwell</div>
+    <p class="subtitle">West Midlands | Compiled: May 2026 | 3-Hourly Run #6</p>
+    <p class="subtitle" style="margin-top:0.3rem;">📍 ~3 miles W of Birmingham city centre · Adjacent to B66, B68, B17</p>
+  </div>
+
+  <!-- KEY STATS -->
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="value">64,007</div>
+      <div class="label">Population (Smethwick, 2021)</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">£214,666</div>
+      <div class="label">Avg House Price (B67)</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">£1,100</div>
+      <div class="label">Avg Monthly Rent (2-bed)</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">6.1%</div>
+      <div class="label">Est. Gross Rental Yield</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">33</div>
+      <div class="label">Median Age (England: 39)</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">+3.5%</div>
+      <div class="label">Price Change (12mo) <span class="trend-up">↑</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="value">+20.6%</div>
+      <div class="label">Price Change (5yr) <span class="trend-up">↑</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="value">⚠️ HIGH</div>
+      <div class="label">Crime Rating (vs National)</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">£28,978</div>
+      <div class="label">Avg Household Income</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">28.4%</div>
+      <div class="label">Private Rented Sector</div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="section">
+    <h2><span class="icon">📍</span> Area Overview</h2>
+    <p><strong>B67</strong> covers <strong>Bearwood</strong> and parts of <strong>Smethwick</strong> in the Sandwell borough of the West Midlands. It lies <strong>~3 miles west of Birmingham city centre</strong>, directly west of B17 (Harborne) and east of B68 (Oldbury). Historically part of Staffordshire, Bearwood is now a vibrant, densely-populated suburb known for its Victorian terraces, diverse community, and strong local high street.</p>
+    <p>Smethwick is one of six towns in Sandwell and includes the wards of Abbey, Smethwick, Soho & Victoria, and St Pauls. The area covers approximately <strong>14.73 km²</strong> with a population density of <strong>4,345/km²</strong> — among the highest in Sandwell.</p>
+    <p><strong>Key characteristics:</strong></p>
+    <ul>
+      <li>Young, diverse population — 76% from ethnic minority backgrounds (vs 27% England average)</li>
+      <li>Rapid population growth — <strong>+16% since 2011</strong> (Sandwell +11%, England +6.6%)</li>
+      <li>Significant South Asian community — 43.5% Asian, 28.9% White</li>
+      <li>Below-average household income (£28,978 vs £37,863 national) — but Abbey ward outperforms</li>
+      <li>High private rented sector (28.4%) and significant social housing (22.9%)</li>
+      <li>59% of LSOAs are among the <strong>20% most deprived</strong> in England (IMD 2019)</li>
+      <li>Vibrant cultural scene — Bearwoodstock festival, Bearwood Shuffle, street festival</li>
+    </ul>
+  </div>
+
+  <!-- CRIME -->
+  <div class="section">
+    <h2><span class="icon">🚔</span> Crime & Safety</h2>
+    <table>
+      <tr><th>Metric</th><th>Smethwick / Sandwell</th><th>England & Wales</th></tr>
+      <tr><td>Annual crime rate (West Midlands region)</td><td><strong>41.4 per 1,000</strong></td><td>35.4 per 1,000</td></tr>
+      <tr><td>Regional vs national</td><td><strong>117%</strong> of national rate</td><td>100%</td></tr>
+      <tr><td>Violent crime share</td><td>40.1% of all crimes</td><td>35.3%</td></tr>
+      <tr><td>West Midlands county rate</td><td><strong>133%</strong> of national (highest in region)</td><td>—</td></tr>
+      <tr><td>Income deprivation</td><td><strong>27%</strong> of residents income-deprived</td><td>17.1%</td></tr>
+    </table>
+    <p style="margin-top:0.8rem;">⚠️ <strong>Crime is a significant concern.</strong> The West Midlands region has the <strong>2nd highest violent crime rate</strong> among all 9 English regions. Sandwell/specific B67 areas see elevated levels of crime, particularly in the more deprived wards (Soho & Victoria, St Pauls). However, <strong>total crime dropped 6%</strong> across the West Midlands in the year to October 2025. Abbey ward (south Bearwood) is more affluent and safer.</p>
+  </div>
+
+  <!-- DEMOGRAPHICS -->
+  <div class="section">
+    <h2><span class="icon">👥</span> Demographics</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Indicator</th><th>Smethwick</th><th>Sandwell</th><th>England</th></tr>
+      <tr><td>Population (2021)</td><td><strong>64,007</strong></td><td>342,536</td><td>56.5M</td></tr>
+      <tr><td>Growth 2011–2021</td><td><strong>+16.0%</strong></td><td>+11.1%</td><td>+6.6%</td></tr>
+      <tr><td>Median Age</td><td><strong>33</strong></td><td>—</td><td>39</td></tr>
+      <tr><td>0-17 age band</td><td><strong>28.2%</strong></td><td>—</td><td>20.8%</td></tr>
+      <tr><td>65+ age band</td><td><strong>10.2%</strong></td><td>—</td><td>18.6%</td></tr>
+      <tr><td>Asian ethnicity</td><td><strong>43.5%</strong></td><td>—</td><td>9.3%</td></tr>
+      <tr><td>White ethnicity</td><td><strong>28.9%</strong></td><td>—</td><td>81.7%</td></tr>
+      <tr><td>No qualifications</td><td><strong>30%</strong></td><td>29%</td><td>18%</td></tr>
+      <tr><td>Owner-occupied</td><td><strong>47.3%</strong></td><td>53.7%</td><td>64%</td></tr>
+      <tr><td>Private rented</td><td><strong>28.4%</strong></td><td>18.6%</td><td>20.3%</td></tr>
+      <tr><td>Avg household income</td><td><strong>£28,978</strong></td><td>—</td><td>£37,863</td></tr>
+      <tr><td>Unemployment rate</td><td><strong>5.4%</strong></td><td>4.5%</td><td>3.4%</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:0.8rem;">💡 <strong>Key insight:</strong> Bearwood has a much younger profile than national average. The area is a <strong>landlord hotspot</strong> — over a quarter of households are privately rented. Abbey ward stands out with higher incomes, more qualifications, and life expectancy exceeding the national average.</p>
+  </div>
+
+  <!-- SCHOOLS -->
+  <div class="section">
+    <h2><span class="icon">🏫</span> Nearby Schools & Ofsted Ratings</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>School</th><th>Type</th><th>Ofsted</th><th>Location</th></tr>
+      <tr>
+        <td>St Gregory's Catholic Primary</td>
+        <td>Primary</td>
+        <td><span class="tag tag-outstanding">OUTSTANDING</span></td>
+        <td>Park Road, B67 5HX</td>
+      </tr>
+      <tr>
+        <td>Bearwood Primary School</td>
+        <td>Primary (3-11)</td>
+        <td><span class="tag tag-good">GOOD</span></td>
+        <td>Bearwood Road, B66 4HB</td>
+      </tr>
+      <tr>
+        <td>Shireland Hall Primary Academy</td>
+        <td>Primary</td>
+        <td><span class="tag tag-good">GOOD</span></td>
+        <td>Smethwick</td>
+      </tr>
+      <tr>
+        <td>Galton Valley Primary School</td>
+        <td>Primary</td>
+        <td><span class="tag tag-good">GOOD</span></td>
+        <td>Smethwick</td>
+      </tr>
+      <tr>
+        <td>Abbey Infant/Junior School</td>
+        <td>Primary</td>
+        <td><span class="tag tag-good">GOOD</span></td>
+        <td>Smethwick</td>
+      </tr>
+      <tr>
+        <td>Victoria Park Primary</td>
+        <td>Primary</td>
+        <td><span class="tag tag-good">GOOD</span></td>
+        <td>Smethwick</td>
+      </tr>
+      <tr>
+        <td>Holly Lodge High School College of Science</td>
+        <td>Secondary</td>
+        <td><span class="tag tag-good">GOOD</span></td>
+        <td>Holly Lane, Smethwick</td>
+      </tr>
+      <tr>
+        <td>George Dixon Academy</td>
+        <td>Secondary</td>
+        <td><span class="tag tag-good">GOOD</span></td>
+        <td>Edgbaston / Bearwood border</td>
+      </tr>
+      <tr>
+        <td>St Matthew's CofE Primary</td>
+        <td>Primary</td>
+        <td><span class="tag tag-good">GOOD</span></td>
+        <td>Smethwick</td>
+      </tr>
+    </table>
+    </div>
+    <p style="margin-top:0.8rem;">📚 Bearwood is well-served by <strong>Good and Outstanding</strong> schools. Bearwood Primary (rated Good, May 2023) has a <strong>reading-first approach</strong> and a Forest School area. St Gregory's is <strong>Outstanding</strong>. Secondary options include <strong>Holly Lodge</strong> and <strong>George Dixon Academy</strong>. Family buyers are well catered for.</p>
+  </div>
+
+  <!-- TRANSPORT -->
+  <div class="section">
+    <h2><span class="icon">🚆</span> Transport Links</h2>
+    <p><strong>Bus:</strong> Bearwood has its own <strong>bus station</strong> at Hagley Road / Bearwood Road crossroads — the main bus hub in Smethwick. Key routes: <strong>11A/11C</strong> (Birmingham Outer Circle), 80, 87, 89. Frequent services to Birmingham city centre (15-20 mins).</p>
+    <p><strong>Rail:</strong></p>
+    <ul>
+      <li><strong>Smethwick Rolfe Street</strong> (~2 miles) — West Midlands Railway to Birmingham New Street, Wolverhampton, Walsall</li>
+      <li><strong>Smethwick Galton Bridge</strong> (~2 miles) — Links to Birmingham, Wolverhampton, Stourbridge, Worcester, and <strong>London Euston</strong> (via Avanti West Coast)</li>
+      <li><strong>Langley Green</strong> — Local services to Birmingham and Kidderminster</li>
+      <li><strong>Five Ways</strong> (~3 miles) — Cross-city line to Redditch/Bromsgrove and Lichfield</li>
+      <li><strong>Sandwell & Dudley</strong> — Mainline station with intercity services</li>
+    </ul>
+    <p><strong>Road:</strong> Easy access to <strong>M5 J1</strong> (West Bromwich), <strong>M6 J7</strong> (Great Barr), and <strong>M42</strong>. The <strong>A456 (Hagley Road)</strong> runs through Bearwood into Birmingham city centre.</p>
+    <p><strong>Metro:</strong> A <strong>West Midlands Metro extension</strong> along Hagley Road is proposed, which would bring a tram stop to Bearwood — a significant upside factor.</p>
+    <p><strong>Airport:</strong> Birmingham Airport — <strong>9.6 miles</strong> (~25 mins by car/train).</p>
+    <p style="margin-top:0.5rem;">⭐ <strong>Overall:</strong> Good transport links. Frequent buses, multiple rail options, and motorway access. The area is well-connected despite not having its own train station within walking distance of all parts.</p>
+  </div>
+
+  <!-- SOLD PRICES -->
+  <div class="section">
+    <h2><span class="icon">💰</span> Sold Prices & Market Analysis</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Metric</th><th>B67 (Smethwick)</th><th>Notes</th></tr>
+      <tr><td>Average house price</td><td><strong>£214,666</strong></td><td>HM Land Registry data</td></tr>
+      <tr><td>Price change (12 months)</td><td><strong>+3.53%</strong> (+£8,182)</td><td>Modest growth</td></tr>
+      <tr><td>Price change (5 years)</td><td><strong>+20.59%</strong> (+£40,925)</td><td>Strong medium-term gains</td></tr>
+      <tr><td>Sales in last 12 months</td><td><strong>190</strong></td><td>-18.4% vs prior year</td></tr>
+      <tr><td>Average days to sell</td><td><strong>81 days</strong></td><td>Slow market</td></tr>
+      <tr><td>Avg asking vs sold difference</td><td><strong>-£8,332 (-3%)</strong></td><td>Negotiation room</td></tr>
+      <tr><td>Median £/sqft (B67 5)</td><td><strong>£242</strong></td><td>Range: £209–£281</td></tr>
+      <tr><td>Most expensive street</td><td><strong>Lightwoods Hill</strong> — £513,375</td><td>Premium area</td></tr>
+      <tr><td>Least expensive street</td><td><strong>Rawlings Road / Beakes Road</strong> — ~£210/sqft</td><td>Terraced housing</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:0.8rem;">📊 <strong>Market commentary:</strong> The B67 market is <strong>slowing</strong> — fewer sales, longer selling times, and most properties selling below asking. However, the 5-year trajectory is positive (+20.6%). In real (inflation-adjusted) terms, prices fell -2.7% nominally last year (-5.7% real). The market has softened with higher interest rates.</p>
+    <p><strong>Typical property profile:</strong> Victorian terraced houses (2-3 bed) are the dominant stock — many have been renovated/extended. Semi-detached homes in the £250k-£350k range. Larger detached properties around Lightwoods Park exceed £500k.</p>
+  </div>
+
+  <!-- RENTAL DEMAND -->
+  <div class="section">
+    <h2><span class="icon">🏠</span> Rental Demand & Yields</h2>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Property Type</th><th>Typical Rent (pcm)</th><th>Typical Price</th><th>Est. Gross Yield</th></tr>
+      <tr><td>1-bed flat</td><td>£700-800</td><td>£120,000-150,000</td><td>5.6-6.4%</td></tr>
+      <tr><td>2-bed terrace</td><td>£1,000-1,200</td><td>£180,000-220,000</td><td>5.9-6.7%</td></tr>
+      <tr><td>3-bed terrace</td><td>£1,200-1,500</td><td>£220,000-280,000</td><td>5.5-6.5%</td></tr>
+      <tr><td>3-bed semi</td><td>£1,400-1,700</td><td>£280,000-350,000</td><td>5.8-6.4%</td></tr>
+      <tr><td>HMO (7-bed)</td><td>£500-600/room</td><td>£350,000-450,000</td><td>8-12%</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:0.8rem;">🔥 <strong>Strong rental demand.</strong> The <strong>28.4% private rented sector</strong> is well above the national average (20.3%). With a young, mobile population and significant BME communities requiring larger family homes, demand for rental properties is robust. The <strong>HMO market is highly active</strong> — numerous planning applications for HMO conversions (e.g., 81 Vicarage Road: dwelling → 7-bed HMO).</p>
+    <p>Gross yields of <strong>5.5-6.5%</strong> are healthy for the West Midlands, well above central Birmingham yields (~4%) and the national average (~5.6%). Abbey ward commands slightly lower yields but better capital growth prospects.</p>
+  </div>
+
+  <!-- PLANNING -->
+  <div class="section">
+    <h2><span class="icon">🏗️</span> Planning & Developments</h2>
+    <p><strong>Major Applications & Developments in the Area:</strong></p>
+    <ul>
+      <li><strong>13 dwellings, Thimblemill Road</strong> (DC/17/61372) — 4-bed, 2-storey houses with garages (renewal granted)</li>
+      <li><strong>54 apartments + 4 houses</strong> — Within Smethwick Regeneration Area, work started on site</li>
+      <li><strong>Crosswells Road development</strong> — 12 affordable, energy-efficient homes (shortlisted for Inside Housing Development Awards 2025)</li>
+      <li><strong>4 Londonderry Lane, B67 7EY</strong> — Planning application DC/25/70667 (July 2025 Planning Committee)</li>
+      <li><strong>HMO Conversions</strong> — Multiple change-of-use applications (dwelling to HMO) across the area, reflecting strong HMO investor interest</li>
+      <li><strong>Sandwell Local Plan</strong> — Ongoing regeneration framework for Smethwick, targeting improved housing stock and infrastructure</li>
+      <li><strong>West Midlands Metro Extension</strong> — Proposed along Hagley Road corridor — would significantly boost Bearwood connectivity and property values</li>
+    </ul>
+    <p>💡 The <strong>Smethwick Regeneration Area</strong> is a long-term positive. The <strong>proposed Metro extension</strong> to Hagley Road would be a major catalyst — areas near tram stops typically see 5-15% property price uplifts.</p>
+  </div>
+
+  <!-- AMENITIES -->
+  <div class="section">
+    <h2><span class="icon">🛒</span> Local Amenities</h2>
+    <p><strong>Shopping:</strong> Bearwood Road offers a bustling high street with an <strong>indoor market</strong>, <strong>Aldi supermarket</strong>, bakeries, pharmacies, opticians, and a <strong>Post Office</strong>. Lidl is also nearby. Bearwood is known for its diverse independent shops and eateries.</p>
+    <p><strong>Healthcare:</strong></p>
+    <ul>
+      <li><strong>Bearwood Medical Centre</strong> — 176 Milcote Road, B67 5BP (GP surgery)</li>
+      <li><strong>Bearwood Road Surgery</strong> — GP services</li>
+      <li><strong>Bearwood Dental Care</strong> — NHS and private</li>
+      <li><strong>Complete Dental Practice</strong> — Bearwood</li>
+    </ul>
+    <p><strong>Parks & Greenspace:</strong></p>
+    <ul>
+      <li><strong>Lightwoods Park</strong> — Skate park, children's play area, Grade II listed tea room/venue</li>
+      <li><strong>Warley Woods</strong> — ~100 acres of woodland + 9-hole golf course</li>
+      <li><strong>Victoria Park</strong> — Smethwick's main park with bowling greens and tennis courts</li>
+    </ul>
+    <p><strong>Food & Drink:</strong> Excellent dining scene — The Bear Tavern (comedy/events), Purnima (Bangladeshi), Mount Nemrut (Turkish), A La Mexicana, craft beer pubs (The Midland, Craft Inn), and the famous <strong>Little Nibble</strong> cafe (Dexy's Midnight Runners fame).</p>
+    <p><strong>Library:</strong> Thimblemill Library — Grade II listed building, built 1937, offers full digital services.</p>
+    <p><strong>Culture:</strong> Bearwoodstock (charity music festival), Bearwood Shuffle (free bandstand concerts), Bearwood Players theatre group.</p>
+  </div>
+
+  <!-- INVESTMENT VERDICT -->
+  <div class="section">
+    <h2><span class="icon">📊</span> Investment Verdict</h2>
+    <div class="verdict-box">
+      <div class="verdict-item verdict-good">
+        <h3>✅ GOOD for BTL</h3>
+        <p>£214k avg price · 5.5-6.5% yields<br>Strong rental demand · 28.4% PRS<br>Young population · HMO conversions active</p>
+      </div>
+      <div class="verdict-item verdict-good">
+        <h3>✅ GOOD for HMO</h3>
+        <p>Large Victorian terraces suited to HMO conversion · Multiple precedent approvals · Room rents £500-600 · Student/professional demand from Birmingham</p>
+      </div>
+      <div class="verdict-item verdict-caution">
+        <h3>⚠️ CAUTIOUS for BRRR</h3>
+        <p>Slow market (81 days to sell) · 3% below asking · -2.7% nominal 1yr decline · Refinance risk with falling values · Renovation margins need careful modelling</p>
+      </div>
+      <div class="verdict-item verdict-caution">
+        <h3>⚠️ AVOID if: Crime-sensitive</h3>
+        <p>West Midlands 2nd highest crime region · 59% LSOAs in 20% most deprived · Stick to Abbey ward for lower risk</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:1.5rem; color:#60a5fa;">📋 Summary Assessment</h3>
+    <p><strong>B67 (Bearwood/Smethwick) is a strong play for cash-flow focused investors, particularly those targeting BTL and HMO strategies.</strong> Key positives include:</p>
+    <ul>
+      <li>✅ <strong>Affordable entry prices</strong> — Avg £214k vs Birmingham average ~£270k</li>
+      <li>✅ <strong>High rental demand</strong> — Young, growing population; 28.4% PRS</li>
+      <li>✅ <strong>Decent yields</strong> — 5.5-6.5% BTL, 8-12% HMO</li>
+      <li>✅ <strong>Regeneration upside</strong> — Smethwick Regeneration Area + proposed Metro extension</li>
+      <li>✅ <strong>Good schools</strong> — Outstanding and Good Ofsted options</li>
+      <li>✅ <strong>Transport connectivity</strong> — Bus, rail, motorway, airport</li>
+      <li>⚠️ <strong>Crime and deprivation</strong> are significant concerns, particularly in northern wards</li>
+      <li>⚠️ <strong>Market softening</strong> — slow sales, price reductions common, real terms decline</li>
+    </ul>
+    <p><strong>Best sub-area:</strong> <strong>Abbey ward</strong> (south Bearwood, near Lightwoods Park/Hagley Road) — higher incomes, better life expectancy, stronger capital values (Lightwoods Hill avg £513k).</p>
+    <p><strong>Strategy recommendation:</strong> Look for <strong>2-3 bed Victorian terraces under £200k</strong> requiring cosmetic renovation. Let at £1,000-1,200 pcm (BTL) or convert to 5-7 bed HMO targeting students/young professionals commuting to Birmingham. Hold for 5+ years for Metro extension and regeneration benefits to materialise.</p>
+  </div>
+
+  <!-- DATA SOURCES -->
+  <div class="section" style="border-color:#1e293b;">
+    <h2><span class="icon">📎</span> Data Sources</h2>
+    <ul style="font-size:0.85rem; color:#9ca3af;">
+      <li>HM Land Registry — Sold price data via Property Solvers & HouseMetric</li>
+      <li>Ofsted — School inspection reports</li>
+      <li>ONS Census 2021 — Population, ethnicity, employment, housing</li>
+      <li>Locara.co.uk — Demographic breakdowns</li>
+      <li>Sandwell Trends — Smethwick Town Profile 2023</li>
+      <li>Police.uk & Plumplot — Crime statistics</li>
+      <li>Sandwell Council — Planning applications & Local Plan</li>
+      <li>Landcycle.com — Sandwell planning application records</li>
+      <li>OpenRent / Rightmove — Rental listings</li>
+      <li>Wikipedia — Bearwood area history & amenities</li>
+      <li>National Rail — Station information</li>
+      <li>Transport for West Midlands — Bus routes</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p>🏘️ West Midlands Area Intelligence — 3-Hourly Cron Job</p>
+    <p>Processed: B67 (Bearwood / Smethwick) | Next: B68</p>
+    <p>Generated: Tuesday, 19 May 2026 03:00 UTC</p>
+  </div>
+
+</div>
+</body>
+</html>
