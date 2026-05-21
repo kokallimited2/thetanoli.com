@@ -1,0 +1,148 @@
+# 🖥️ TheTanoli.com Dashboard Upload Guide
+
+## 📍 Where to upload
+All dashboard files go under the `dashboards/` directory on **thetanoli.com**.
+
+- **Nikka Khan**: `thetanoli.com/dashboards/nikka-intel/` (your subdirectory already set up)
+- **Tanoli Saab**: `thetanoli.com/dashboards/tanoli-intel/` (your subdirectory is ready)
+- **Global dashboards**: `thetanoli.com/dashboards/` (for portfolio, crypto, etc.)
+
+## 🎨 Design Template
+All dashboards follow a **dark theme** with CSS variables. Use this template:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏷️ Your Dashboard Title</title>
+<style>
+:root {
+  --bg: #0a0f1e;      /* page background */
+  --bg2: #111827;      /* card backgrounds */
+  --card: #1e293b;     /* card border/alt bg */
+  --border: #334155;   /* borders */
+  --accent: #f59e0b;   /* amber accent - links, highlights */
+  --green: #22c55e;    /* positive values */
+  --red: #ef4444;      /* negative values */
+  --blue: #3b82f6;     /* section titles */
+  --purple: #8b5cf6;   /* optional accent */
+  --teal: #0d9488;     /* optional accent */
+  --text: #f1f5f9;     /* primary text */
+  --text2: #94a3b8;    /* secondary text */
+  --text3: #64748b;    /* muted text */
+  --rad: 12px;         /* border radius */
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 14px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Hero header */
+.hero { background: linear-gradient(135deg, #0a0f1e 0%, #1e3a5f 40%, #0d9488 100%); padding: 36px 24px 28px; text-align: center; border-radius: 0 0 var(--rad) var(--rad); margin-bottom: 20px; }
+.hero h1 { font-size: 1.8rem; font-weight: 800; }
+.hero h1 .accent { color: var(--accent); font-style: normal; }
+.hero .badge { display: inline-block; background: rgba(255,255,255,0.08); padding: 3px 12px; border-radius: 100px; font-size: 11px; color: var(--text2); margin-top: 8px; }
+
+/* Stats grid */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
+.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 16px; text-align: center; }
+.stat-card .value { font-size: 1.6rem; font-weight: 700; }
+.stat-card .label { color: var(--text2); font-size: 0.8rem; margin-top: 4px; }
+
+/* Data tables */
+.table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); margin-bottom: 16px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th { background: var(--bg2); padding: 0.6rem 0.8rem; text-align: left; color: var(--text2); font-weight: 600; border-bottom: 1px solid var(--border); white-space: nowrap; }
+td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--bg2); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* Cards */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 16px; margin-bottom: 12px; }
+.card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }
+.card-sub { color: var(--text2); font-size: 0.85rem; margin-bottom: 8px; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+.tag-green { background: rgba(34,197,94,0.15); color: var(--green); }
+.tag-red { background: rgba(239,68,68,0.15); color: var(--red); }
+.tag-blue { background: rgba(59,130,246,0.15); color: var(--blue); }
+.tag-amber { background: rgba(245,158,11,0.15); color: var(--accent); }
+
+/* Footer */
+.footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--border); color: var(--text2); font-size: 0.8rem; text-align: center; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  body { padding: 12px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+  <!-- Hero -->
+  <div class="hero">
+    <h1>📊 <span class="accent">Your</span> Dashboard Title</h1>
+    <div class="badge">Updated $(date +%Y-%m-%d)</div>
+  </div>
+  
+  <!-- Stats Grid -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="value" style="color: var(--green)">+12.4%</div>
+      <div class="label">Win Rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="value" style="color: var(--blue)">£1,240</div>
+      <div class="label">P&L</div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Symbol</th><th>Price</th><th>Signal</th></tr></thead>
+      <tbody>
+        <tr><td>EXAMPLE</td><td>$100.50</td><td><span class="tag tag-green">BUY</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    Generated by [Your Agent Name] · thetanoli.com
+  </div>
+</body>
+</html>
+```
+
+## 📥 How to Submit
+Stop using WS hub for file transfers. Instead:
+
+1. **Send dashboard HTML files directly to Wadda Khan via Telegram** (this group or DM)
+2. Wadda will review, commit, and push to GitHub Pages
+3. Files appear at `thetanoli.com/dashboards/[your-dir]/[filename].html`
+
+## ⏰ Upload Frequency
+| Priority | When |
+|----------|------|
+| ⚡ **URGENT** (trade entries, live signals) | **Immediately** — tag with ⚡ and Wadda will upload ASAP |
+| 📋 **Normal updates** (reports, scans) | **Twice daily batch** — bofore 9am & 8pm UK |
+
+## 📁 File Naming
+- Lowercase, hyphens for spaces
+- Descriptive: `trade-signals-2026-05-21.html`, `portfolio-update.html`
+- Keep individual files under 500KB
+- Update existing files by sending the same filename
+
+## 🚫 What NOT to Do
+- Don't use WS hub for file transfers anymore
+- Don't send raw data/CSV — always wrap in HTML with the dark theme
+- Don't exceed 1MB per file
+- Don't create files outside your assigned subdirectory
