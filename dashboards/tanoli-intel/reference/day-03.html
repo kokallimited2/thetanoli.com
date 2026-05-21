@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Trading Master Course — Day 3 | May 14, 2026</title>
+<style>
+    :root { --bg: #0f172a; --bg2: #1e293b; --card: #1e293b; --accent: #f59e0b; --accent2: #22c55e; --accent3: #3b82f6; --text: #f1f5f9; --text2: #94a3b8; --text3: #64748b; --border: #334155; --rad: 12px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+    
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #065f46 50%, #0d9488 100%); padding: 50px 24px 40px; text-align: center; }
+    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -1px; }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero p { color: var(--text2); max-width: 600px; margin: 10px auto 0; }
+    .hero .day-badge { display: inline-block; background: rgba(245,158,11,.15); border: 1px solid rgba(245,158,11,.3); color: var(--accent); padding: 4px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; margin-bottom: 12px; }
+    
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin: 20px 0; }
+    .stat { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 16px; text-align: center; }
+    .stat .num { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+    .stat .label { font-size: 12px; color: var(--text3); margin-top: 2px; }
+    
+    .video-entry { display: flex; gap: 16px; padding: 20px; background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); margin-bottom: 12px; }
+    .vid-num { font-size: 1.4rem; font-weight: 800; color: var(--text3); min-width: 36px; text-align: center; padding-top: 4px; }
+    .vid-content { flex: 1; }
+    .vid-header { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; align-items: center; }
+    .vid-badge { padding: 2px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+    .vid-badge.price-action { background: rgba(59,130,246,.15); color: #60a5fa; }
+    .vid-badge.candlestick-patterns { background: rgba(245,158,11,.15); color: var(--accent); }
+    .vid-badge.options-trading { background: rgba(139,92,246,.15); color: #a78bfa; }
+    .vid-badge.swing-trading { background: rgba(34,197,94,.15); color: var(--accent2); }
+    .vid-badge.day-trading { background: rgba(239,68,68,.15); color: #f87171; }
+    .vid-badge.technical-analysis { background: rgba(59,130,246,.15); color: #60a5fa; }
+    .vid-badge.risk-management { background: rgba(251,191,36,.15); color: #fbbf24; }
+    .vid-badge.momentum-trading { background: rgba(236,72,153,.15); color: #f472b6; }
+    .vid-badge.value-investing { background: rgba(16,185,129,.15); color: var(--accent2); }
+    .vid-badge.ict-smc { background: rgba(168,85,247,.15); color: #c084fc; }
+    .vid-badge.general-trading { background: rgba(100,116,139,.15); color: #94a3b8; }
+    .vid-badge.beginners-guide { background: rgba(34,197,94,.15); color: var(--accent2); }
+    .vid-duration { font-size: 12px; color: var(--text3); }
+    .vid-views { font-size: 12px; color: var(--text3); }
+    h3 { font-size: 1rem; font-weight: 700; margin: 4px 0; }
+    h3 a { color: var(--text); text-decoration: none; }
+    h3 a:hover { color: var(--accent3); }
+    .vid-channel { font-size: 13px; color: var(--text2); margin-bottom: 6px; }
+    .vid-summary { font-size: 13px; color: var(--text3); line-height: 1.6; }
+    .vid-concepts { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+    .vid-concepts span { background: var(--bg); color: var(--text3); padding: 2px 8px; border-radius: 6px; font-size: 11px; border: 1px solid var(--border); }
+    
+    .strategy-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 20px; margin: 16px 0; }
+    .strategy-card h3 { color: var(--accent); }
+    .strategy-card p { font-size: 13px; color: var(--text2); }
+    
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; color: var(--text3); font-size: 12px; margin-top: 30px; }
+    
+    @media (max-width: 600px) { .video-entry { flex-direction: column; gap: 8px; } .stats { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<div class="hero">
+    <div class="day-badge">📈 DAY 3 OF 10</div>
+    <h1>Stock Trading <em>Master Course</em></h1>
+    <p>May 14, 2026 — 20 videos analyzed • Learning all strategies: technical analysis, price action, options, swing/day trading, risk management, ICT/SMC & more</p>
+</div>
+
+<div class="wrap">
+    <div class="stats">
+        <div class="stat"><div class="num">20</div><div class="label">Videos Today</div></div>
+        <div class="stat"><div class="num">1086</div><div class="label">Minutes Content</div></div>
+        <div class="stat"><div class="num">14</div><div class="label">Channels</div></div>
+        <div class="stat"><div class="num">8</div><div class="label">Strategy Types</div></div>
+    </div>
+    
+    <h2 style="margin: 24px 0 16px;font-size:1.3rem;">📹 Videos Analyzed</h2>
+    
+        <div class="video-entry">
+            <div class="vid-num">1</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge unknown">Unknown</span>
+                    <span class="vid-duration">162 min</span>
+                    <span class="vid-views">21,843 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=IIarYxAlskY" target="_blank">Price Action Complete Beginners Trading Full Course</a></h3>
+                <p class="vid-channel">Andi creative and Andi Trd</p>
+                <p class="vid-summary">Video from Andi creative and Andi Trd could not be transcribed. Key points would need manual review.</p>
+                <div class="vid-concepts">Transcript unavailable</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">2</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge value-investing">Value Investing</span>
+                    <span class="vid-duration">98 min</span>
+                    <span class="vid-views">1,893 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=p9v0uE2-R4I" target="_blank">Learn To Earn by Peter Lynch FULL Audiobook Value Investing one of best books on value investing!</a></h3>
+                <p class="vid-channel">Hightower Investing and History Channel</p>
+                <p class="vid-summary">Trading strategy video by Hightower Investing and History Channel</p>
+                <div class="vid-concepts">Entry, Volume, Momentum, Signal, Strategy</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">3</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge options-trading">Options Trading</span>
+                    <span class="vid-duration">71 min</span>
+                    <span class="vid-views">5,489,659 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=SD7sw0bf1ms" target="_blank">How to Trade Options on Robinhood for Beginners | Comprehensive Guide by InTheMoney</a></h3>
+                <p class="vid-channel">InTheMoney</p>
+                <p class="vid-summary">Trading strategy video by InTheMoney</p>
+                <div class="vid-concepts">Entry, Exit, Volume, Volatility, Strategy</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">4</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge candlestick-patterns">Candlestick Patterns</span>
+                    <span class="vid-duration">54 min</span>
+                    <span class="vid-views">5,856,699 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=miaGZZusRnE" target="_blank">Candlestick Trading Full Course | Candlesticks Free Masterclass  #candlestickpattern #trading</a></h3>
+                <p class="vid-channel">Trade with Purab</p>
+                <p class="vid-summary">hard to educate you all for free So today...</p>
+                <div class="vid-concepts">Support, Reversal, Continuation, Volume, Confirmation</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">5</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge candlestick-patterns">Candlestick Patterns</span>
+                    <span class="vid-duration">53 min</span>
+                    <span class="vid-views">5,167,684 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=UU4ZQF-X9jE" target="_blank">Ultimate Candlestick Patterns Trading Course (PRO INSTANTLY)</a></h3>
+                <p class="vid-channel">Wysetrade</p>
+                <p class="vid-summary">Trading strategy video by Wysetrade</p>
+                <div class="vid-concepts">Stop Loss, Entry, Exit, Support, Resistance, Trend Line, Breakout, Pullback, Reversal, Continuation, Momentum, Divergence, Confirmation, Signal, Setup</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">6</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge price-action">Price Action</span>
+                    <span class="vid-duration">51 min</span>
+                    <span class="vid-views">380,779 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=Z6lKUPUEYJQ" target="_blank">Price Action Trading For Beginners (The Ultimate Guide)</a></h3>
+                <p class="vid-channel">Rayner Teo</p>
+                <p class="vid-summary">Trading strategy video by Rayner Teo</p>
+                <div class="vid-concepts">Stop Loss, Take Profit, Entry, Exit, Support, Resistance, Trend Line, Breakout, Pullback, Reversal, Volatility, Signal, Setup, Strategy, Win Rate</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">7</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge options-trading">Options Trading</span>
+                    <span class="vid-duration">50 min</span>
+                    <span class="vid-views">2,479,711 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=NW1ziUDjB7w" target="_blank">Options Trading For Beginners: Complete Guide with Examples</a></h3>
+                <p class="vid-channel">ClearValue Tax</p>
+                <p class="vid-summary">Trading strategy video by ClearValue Tax</p>
+                <div class="vid-concepts">Volatility</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">8</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge price-action">Price Action</span>
+                    <span class="vid-duration">49 min</span>
+                    <span class="vid-views">655,733 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=kzRsEU3M7zY" target="_blank">COMPLETE Price Action Trading Course (Beginner to Pro)</a></h3>
+                <p class="vid-channel">The Trading Geek</p>
+                <p class="vid-summary">Trading strategy video by The Trading Geek</p>
+                <div class="vid-concepts">Stop Loss, Take Profit, Entry, Exit, Support, Resistance, Trend Line, Breakout, Reversal, Volume, Momentum, Strategy, Win Rate</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">9</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge price-action">Price Action</span>
+                    <span class="vid-duration">49 min</span>
+                    <span class="vid-views">389,473 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=vbM2R2CM96Q" target="_blank">Ultimate Beginners Guide To Price Action Trading (Full Course: Beginner To Advanced)</a></h3>
+                <p class="vid-channel">The Trading Channel (The Trading Channel)</p>
+                <p class="vid-summary">Trading strategy video by The Trading Channel (The Trading Channel)</p>
+                <div class="vid-concepts">Stop Loss, Entry, Support, Resistance, Pullback, Reversal, Continuation, Volume, Setup, Strategy</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">10</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge technical-analysis">Technical Analysis</span>
+                    <span class="vid-duration">48 min</span>
+                    <span class="vid-views">853,666 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=lNPRb2GPOwI" target="_blank">How to Do Technical Analysis for Beginners in 2025 | Forex Trading Course</a></h3>
+                <p class="vid-channel">fxalexg </p>
+                <p class="vid-summary">Trading strategy video by fxalexg </p>
+                <div class="vid-concepts">Entry, Support, Resistance, Pullback, Reversal, Momentum, Confirmation, Strategy</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">11</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge price-action">Price Action</span>
+                    <span class="vid-duration">47 min</span>
+                    <span class="vid-views">655,033 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=td5TjsqDCKw" target="_blank">The Only Price Action Trading Video You Will Ever Need... (Full Course: Beginner To Advanced)</a></h3>
+                <p class="vid-channel">The Trading Channel (The Trading Channel)</p>
+                <p class="vid-summary">Trading strategy video by The Trading Channel (The Trading Channel)</p>
+                <div class="vid-concepts">Stop Loss, Entry, Support, Resistance, Breakout, Pullback, Reversal, Continuation, Signal, Setup, Strategy</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">12</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge unknown">Unknown</span>
+                    <span class="vid-duration">46 min</span>
+                    <span class="vid-views">772,910 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=J1DFMXL2kXE" target="_blank">Peter Lynch: The Ultimate Guide To Stock Market Investing</a></h3>
+                <p class="vid-channel">iValue Investing</p>
+                <p class="vid-summary">Video from iValue Investing could not be transcribed. Key points would need manual review.</p>
+                <div class="vid-concepts">Transcript unavailable</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">13</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge unknown">Unknown</span>
+                    <span class="vid-duration">43 min</span>
+                    <span class="vid-views">1,675,549 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=SO0R7XANb20" target="_blank">Complete Candlestick Patterns | Episode 1 #TechnicalAnalysis Price Action</a></h3>
+                <p class="vid-channel">DAY TRADER తెలుగు 2.0</p>
+                <p class="vid-summary">Video from DAY TRADER తెలుగు 2.0 could not be transcribed. Key points would need manual review.</p>
+                <div class="vid-concepts">Transcript unavailable</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">14</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge price-action">Price Action</span>
+                    <span class="vid-duration">41 min</span>
+                    <span class="vid-views">297,470 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=nuVv0ZWUfs4" target="_blank">Support and Resistance For Beginners (The Ultimate Guide)</a></h3>
+                <p class="vid-channel">Rayner Teo</p>
+                <p class="vid-summary">Trading strategy video by Rayner Teo</p>
+                <div class="vid-concepts">Risk Management, Stop Loss, Take Profit, Entry, Exit, Support, Resistance, Breakout, Pullback, Reversal, Confirmation, Signal, Setup, Strategy</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">15</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge swing-trading">Swing Trading</span>
+                    <span class="vid-duration">40 min</span>
+                    <span class="vid-views">887,652 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=KO7lX7-Fi7U" target="_blank">The Ultimate Swing Trading Guide For Beginners (ALL YOU NEED TO KNOW)</a></h3>
+                <p class="vid-channel">The Trading Channel (The Trading Channel)</p>
+                <p class="vid-summary">holy [ __ ] it lost yeah guys it lost and...</p>
+                <div class="vid-concepts">Risk Management, Stop Loss, Entry, Exit, Support, Resistance, Pullback, Continuation, Confirmation, Signal, Setup, Strategy, Backtest, Win Rate</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">16</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge candlestick-patterns">Candlestick Patterns</span>
+                    <span class="vid-duration">38 min</span>
+                    <span class="vid-views">2,895,640 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=BfopLn_IoFM" target="_blank">ULTIMATE Candlestick Patterns Trading Guide *EXPERT INSTANTLY*</a></h3>
+                <p class="vid-channel">The Trading Geek</p>
+                <p class="vid-summary">Trading strategy video by The Trading Geek</p>
+                <div class="vid-concepts">Risk Management, Stop Loss, Take Profit, Support, Resistance, Trend Line, Breakout, Reversal, Continuation, Volume, Momentum, Confirmation, Signal, Risk Reward</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">17</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge candlestick-patterns">Candlestick Patterns</span>
+                    <span class="vid-duration">38 min</span>
+                    <span class="vid-views">7,503,780 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=C3KRwfj9F8Q" target="_blank">The Ultimate Candlestick Patterns Trading Course (For Beginners)</a></h3>
+                <p class="vid-channel">Rayner Teo</p>
+                <p class="vid-summary">Now some of you might be thinking, right?...</p>
+                <div class="vid-concepts">Stop Loss, Take Profit, Entry, Exit, Support, Resistance, Trend Line, Reversal, Setup</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">18</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge day-trading">Day Trading</span>
+                    <span class="vid-duration">37 min</span>
+                    <span class="vid-views">342,259 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=uh5fCPGwByM" target="_blank">How To Day Trade For BEGINNERS In 2026 (Complete Guide)</a></h3>
+                <p class="vid-channel">Craig Percoco</p>
+                <p class="vid-summary">Trading strategy video by Craig Percoco</p>
+                <div class="vid-concepts">Risk Management, Stop Loss, Entry, Support, Resistance, Trend Line, Reversal, Confirmation, Signal, Setup, Strategy</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">19</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge swing-trading">Swing Trading</span>
+                    <span class="vid-duration">37 min</span>
+                    <span class="vid-views">241,955 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=i37xXd_wI5k" target="_blank">How to Start Swing Trading for Beginners 2026</a></h3>
+                <p class="vid-channel">Humbled Trader</p>
+                <p class="vid-summary">Trading strategy video by Humbled Trader</p>
+                <div class="vid-concepts">Take Profit, Entry, Exit, Support, Resistance, Trend Line, Breakout, Pullback, Volume, Volatility, Momentum, Setup, Strategy</div>
+            </div>
+        </div>
+        <div class="video-entry">
+            <div class="vid-num">20</div>
+            <div class="vid-content">
+                <div class="vid-header">
+                    <span class="vid-badge technical-analysis">Technical Analysis</span>
+                    <span class="vid-duration">34 min</span>
+                    <span class="vid-views">488,222 views</span>
+                </div>
+                <h3><a href="https://www.youtube.com/watch?v=17dYvqJNtGA" target="_blank">FULL Technical Analysis Day Trading Guide 2025 (ALL Levels To Pro)</a></h3>
+                <p class="vid-channel">Craig Percoco</p>
+                <p class="vid-summary">Trading strategy video by Craig Percoco</p>
+                <div class="vid-concepts">Stop Loss, Entry, Exit, Support, Resistance, Trend Line, Pullback, Reversal, Continuation, Volume, Volatility, Momentum, Setup, Strategy, Risk Reward</div>
+            </div>
+        </div>
+</div>
+
+<footer>
+    <p>Stock Trading Master Course — Day 3/10 • Auto-generated by AI trading research pipeline</p>
+</footer>
+</body>
+</html>
