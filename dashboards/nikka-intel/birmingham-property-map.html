@@ -7,39 +7,39 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; }
-h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 12px; margin-bottom: 8px; font-size: 28px; }
-.subtitle { color: #8b949e; font-size: 14px; margin-bottom: 24px; }
-h2 { color: #58a6ff; margin: 30px 0 15px; font-size: 22px; border-bottom: 1px solid #21262d; padding-bottom: 8px; }
-h3 { color: #f0f6fc; margin: 15px 0 8px; font-size: 16px; }
-.map-container { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin: 15px 0; }
-.map-title { color: #f0f6fc; font-size: 18px; font-weight: 600; margin-bottom: 12px; }
-.map-title span { color: #8b949e; font-size: 13px; font-weight: 400; }
-svg { width: 100%; height: auto; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; overflow-wrap: break-word; word-break: break-word; max-width: 100%; }
+h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 12px; margin-bottom: 8px; font-size: 32px; }
+.subtitle { color: #8b949e; font-size: 16px; margin-bottom: 24px; }
+h2 { color: #58a6ff; margin: 30px 0 15px; font-size: 26px; border-bottom: 1px solid #21262d; padding-bottom: 8px; }
+h3 { color: #f0f6fc; margin: 15px 0 8px; font-size: 18px; }
+.map-container { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin: 15px 0; overflow-x: auto; }
+.map-title { color: #f0f6fc; font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+.map-title span { color: #8b949e; font-size: 14px; font-weight: 400; }
+svg { width: 100%; height: auto; max-width: 700px; display: block; margin: 0 auto; }
 .legend { display: flex; flex-wrap: wrap; gap: 15px; margin: 12px 0; }
-.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #8b949e; }
-.legend-dot { width: 12px; height: 12px; border-radius: 50%; }
-.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; margin: 10px 0; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 14px; color: #8b949e; }
+.legend-dot { width: 14px; height: 14px; border-radius: 50%; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 18px; margin: 12px 0; }
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin: 15px 0; }
-.stat { text-align: center; padding: 12px; background: #0d1117; border-radius: 8px; }
-.stat-num { font-size: 24px; font-weight: bold; color: #58a6ff; }
-.stat-label { font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.stat { text-align: center; padding: 14px; background: #0d1117; border-radius: 8px; }
+.stat-num { font-size: 28px; font-weight: bold; color: #58a6ff; }
+.stat-label { font-size: 13px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
 .zone-A { fill: rgba(63, 185, 80, 0.2); stroke: #3fb950; }
 .zone-B { fill: rgba(210, 153, 34, 0.15); stroke: #d29922; }
 .zone-C { fill: rgba(248, 81, 73, 0.12); stroke: #f85149; }
 .zone-P { fill: rgba(88, 166, 255, 0.15); stroke: #58a6ff; }
-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
-th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #30363d; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 15px; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #30363d; white-space: nowrap; }
 th { background: #161b22; color: #58a6ff; font-weight: 600; }
 tr:hover { background: #1c2128; }
-.footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #30363d; color: #8b949e; font-size: 12px; }
+.footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #30363d; color: #8b949e; font-size: 14px; }
 .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; }
 @media (max-width: 700px) { .chart-row { grid-template-columns: 1fr; } }
-.tooltip-box { display: none; position: absolute; background: #1c2128; border: 1px solid #30363d; border-radius: 8px; padding: 12px; font-size: 12px; max-width: 250px; z-index: 100; }
+.tooltip-box { display: none; position: absolute; background: #1c2128; border: 1px solid #30363d; border-radius: 8px; padding: 12px; font-size: 14px; max-width: 250px; z-index: 100; }
 .area-card { display: none; background: #1c2128; border: 1px solid #30363d; border-radius: 8px; padding: 15px; margin: 10px 0; }
 .area-card.active { display: block; }
 .area-card h4 { color: #f0f6fc; margin-bottom: 8px; }
-.area-card p { color: #8b949e; font-size: 12px; line-height: 1.6; }
+.area-card p { color: #8b949e; font-size: 14px; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -248,7 +248,7 @@ tr:hover { background: #1c2128; }
 
 <!-- Area detail cards -->
 <h2>📋 Postcode Breakdown</h2>
-<div style="overflow-x:auto;">
+<div style="overflow-x:auto; -webkit-overflow-scrolling: touch;">
 <table>
   <tr><th>Area</th><th>PC</th><th>Listings</th><th>Houses</th><th>BRRR</th><th>£170k</th><th>STC</th><th>Auc</th><th>Zone</th></tr>
   <tr><td>Aston</td><td>B6</td><td>37</td><td>23</td><td>0</td><td>2</td><td>7</td><td>5</td><td><span style="color:#3fb950;">A</span></td></tr>
@@ -307,6 +307,7 @@ tr:hover { background: #1c2128; }
 <!-- Top 10 BRRR Targets -->
 <div class="card" style="border-color:#3fb950;margin-top:20px;">
   <h3 style="color:#3fb950;">🎯 Top 10 BRRR Targets — Birmingham £150k-£200k (57 total)</h3>
+  <div style="overflow-x:auto; -webkit-overflow-scrolling: touch;">
   <table>
     <tr><th>Price</th><th>Beds</th><th>Type</th><th>Address</th><th>Area</th><th>Added</th></tr>
     <tr><td><strong>£150,000</strong></td><td>3</td><td>Terrace</td><td>Rowan Way, Chelmsley Wood</td><td>B37</td><td>Reduced 07/05</td></tr>
@@ -320,11 +321,12 @@ tr:hover { background: #1c2128; }
     <tr><td><strong>£180,000</strong></td><td>2</td><td>Terrace</td><td>Ridgacre Road West, Quinton</td><td>B32</td><td>Added yesterday</td></tr>
     <tr><td><strong>£180,000</strong></td><td>2</td><td>Semi</td><td>Atlantic Road, Great Barr</td><td>B44</td><td>11/05</td></tr>
   </tbody></table>
-</div>
+</div></div>
 
 <!-- Wider Net £150k-£200k -->
 <div class="card" style="margin-top:15px;">
   <h3>🔍 Top Non-Auction Freehold Houses £150k-£200k (57 total)</h3>
+  <div style="overflow-x:auto; -webkit-overflow-scrolling: touch;">
   <table>
     <tr><th>Price</th><th>Beds</th><th>Type</th><th>Address</th><th>Area</th></tr>
     <tr style="color:#3fb950;font-weight:bold;"><td>£150,000</td><td>3</td><td>Terrace</td><td>Rowan Way, Chelmsley Wood</td><td>B37 ⭐</td></tr>
@@ -336,15 +338,15 @@ tr:hover { background: #1c2128; }
     <tr><td>£170,000</td><td>2</td><td>Terrace</td><td>Charles Edward Road, Yardley</td><td>B26</td></tr>
     <tr><td>£170,000</td><td>3</td><td>Terrace</td><td>Worcester Walk, Marston Green</td><td>B37</td></tr>
   </tbody></table>
-</div>
+</div></div>
 
 <!-- Verdict -->
 <div class="card" style="margin-top:20px;border-color:#58a6ff;">
   <h3 style="color:#58a6ff;">🎯 Investment Verdict — Birmingham</h3>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:10px;">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:10px;">
     <div>
-      <div style="color:#f85149;font-weight:600;font-size:14px;">⚠️ Market Reality</div>
-      <div style="color:#8b949e;font-size:12px;margin-top:5px;">
+      <div style="color:#f85149;font-weight:600;font-size:16px;">⚠️ Market Reality</div>
+      <div style="color:#8b949e;font-size:14px;margin-top:5px;">
         • Target adjusted to £150k-£200k (Bham market floor)<br>
         • 57 BRRR targets in this range — healthy pipeline<br>
         • STC avg £179k — the market is active here<br>
@@ -352,8 +354,8 @@ tr:hover { background: #1c2128; }
       </div>
     </div>
     <div>
-      <div style="color:#3fb950;font-weight:600;font-size:14px;">✅ Adjusted: £150k-£200k</div>
-      <div style="color:#8b949e;font-size:12px;margin-top:5px;">
+      <div style="color:#3fb950;font-weight:600;font-size:16px;">✅ Adjusted: £150k-£200k</div>
+      <div style="color:#8b949e;font-size:14px;margin-top:5px;">
         • 57 BRRR targets in realistic Birmingham range<br>
         • Best areas: B37, B21, B8, B11, B32, B23<br>
         • B6 Aston / B21 Handsworth most active market<br>
@@ -361,8 +363,8 @@ tr:hover { background: #1c2128; }
       </div>
     </div>
     <div>
-      <div style="color:#58a6ff;font-weight:600;font-size:14px;">📈 Market Stats</div>
-      <div style="color:#8b949e;font-size:12px;margin-top:5px;">
+      <div style="color:#58a6ff;font-weight:600;font-size:16px;">📈 Market Stats</div>
+      <div style="color:#8b949e;font-size:14px;margin-top:5px;">
         • Avg house price: £280k (citywide)<br>
         • Cheapest areas: B6/B10/B21 ~£160k<br>
         • Student yields B29: 8-12% (HMO)<br>
