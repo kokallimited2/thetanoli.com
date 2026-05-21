@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Midlands Area Intelligence — Postcode Strategy</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; padding: 20px; }
+h1 { font-size: 1.8em; margin-bottom: 5px; color: #38bdf8; }
+h2 { font-size: 1.3em; margin: 25px 0 10px; color: #818cf8; border-bottom: 1px solid #1e293b; padding-bottom: 5px; }
+.subtitle { color: #94a3b8; margin-bottom: 20px; font-size: 0.9em; }
+.stats { display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap; }
+.stat-card { background: #1e293b; border-radius: 10px; padding: 18px 20px; flex: 1; min-width: 140px; text-align: center; }
+.stat-card .num { font-size: 1.8em; font-weight: bold; color: #38bdf8; }
+.stat-card .label { font-size: 0.85em; color: #94a3b8; margin-top: 4px; }
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.82em; }
+th { background: #1e293b; color: #94a3b8; padding: 8px 6px; text-align: left; font-weight: 600; position: sticky; top: 0; cursor: pointer; }
+th:hover { color: #38bdf8; }
+td { padding: 6px; border-bottom: 1px solid #1e293b; }
+tr:hover { background: rgba(56,189,248,0.05); }
+.yield-high { color: #4ade80; font-weight: bold; }
+.yield-med { color: #facc15; }
+.yield-low { color: #f87171; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.78em; font-weight: 600; }
+.badge-green { background: rgba(74,222,128,0.15); color: #4ade80; }
+.badge-amber { background: rgba(250,204,21,0.15); color: #facc15; }
+.badge-red { background: rgba(248,113,113,0.15); color: #f87171; }
+.footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid #1e293b; color: #64748b; font-size: 0.8em; }
+.note { background: #1e293b; padding: 15px; border-radius: 8px; margin: 10px 0; color: #94a3b8; font-size: 0.9em; line-height: 1.6; }
+.strategy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 10px 0; }
+.strategy-card { background: #1e293b; border-radius: 8px; padding: 12px; }
+.strategy-card h3 { font-size: 0.95em; color: #38bdf8; margin-bottom: 5px; }
+.strategy-card p { font-size: 0.85em; color: #94a3b8; }
+</style>
+</head>
+<body>
+<h1>🏘️ West Midlands Area Intelligence</h1>
+<p class="subtitle">PropertyData API Professional | Generated 20 May 2026 at 01:36 | 33 postcodes</p>
+
+<div class="stats">
+<div class="stat-card"><div class="num">33</div><div class="label">Postcodes</div></div>
+<div class="stat-card"><div class="num">33</div><div class="label">With Prices</div></div>
+<div class="stat-card"><div class="num">30</div><div class="label">With Rents</div></div>
+<div class="stat-card"><div class="num">30</div><div class="label">With Yields</div></div>
+<div class="stat-card"><div class="num" style="color:#4ade80">4</div><div class="label">≥6% Yield</div></div>
+</div>
+
+<div class="note">
+<strong>⚠️ Quick Verdict:</strong> Birmingham city centre (B1-B3) leads yields at 6.0-6.8%. Best Black Country value: WV1 (5.7%), WV10 (5.3%), WV2 (5.2%), WV14 (5.0%). Avoid DY7/DY9 (rural Stourbridge) — yields under 3%. WS2 (Walsall East) surprises at 6.1% — lowest avg price in the dataset at £183k. For BRRR, target WV1 (lowest price £177k) or WS2 (£183k). For HMO, WV14/Bilston shows good per-room potential at 5.0%.
+</div>
+
+<h2>📊 Full Comparison Table</h2>
+<div style="overflow-x:auto"><table>
+<thead><tr><th>Postcode</th><th>Area</th><th>Avg Price</th><th>2-Bed</th><th>3-Bed</th><th>Rent/mo</th><th>Yield</th><th>Crime/1K</th><th>Pop</th><th>Gr 1Y</th></tr></thead>
+<tbody><tr><td>B1</td><td>Birmingham CC</td><td>£211,748</td><td>£273,603</td><td>£335,220</td><td>£1,088/mo</td><td class='yield-high'>6.2%</td><td>414</td><td>8,512</td><td>—</td></tr>
+<tr><td>B2</td><td>Birmingham Business</td><td>£202,727</td><td>£240,550</td><td>—</td><td>£1,018/mo</td><td class='yield-high'>6.0%</td><td>6580</td><td>653</td><td>None</td></tr>
+<tr><td>B3</td><td>Birmingham Financial</td><td>£200,305</td><td>£276,248</td><td>£527,217</td><td>£1,131/mo</td><td class='yield-high'>6.8%</td><td>872</td><td>2,225</td><td>—</td></tr>
+<tr><td>DY1</td><td>Dudley Town</td><td>£239,941</td><td>£174,850</td><td>£249,739</td><td>£893/mo</td><td class='yield-med'>4.6%</td><td>145</td><td>31,930</td><td>—</td></tr>
+<tr><td>DY2</td><td>Dudley East</td><td>£229,099</td><td>£171,646</td><td>£244,946</td><td>£849/mo</td><td class='yield-med'>4.6%</td><td>112</td><td>34,041</td><td>—</td></tr>
+<tr><td>DY3</td><td>Dudley North</td><td>£286,070</td><td>£217,568</td><td>£282,738</td><td>£1,036/mo</td><td class='yield-low'>3.9%</td><td>78</td><td>34,092</td><td>—</td></tr>
+<tr><td>DY4</td><td>Tipton</td><td>£246,976</td><td>£157,572</td><td>£260,249</td><td>£1,023/mo</td><td class='yield-med'>5.1%</td><td>120</td><td>43,161</td><td>—</td></tr>
+<tr><td>DY5</td><td>Brierley Hill</td><td>£227,236</td><td>£190,593</td><td>£249,977</td><td>£884/mo</td><td class='yield-med'>4.7%</td><td>116</td><td>42,225</td><td>—</td></tr>
+<tr><td>DY6</td><td>Kingswinford</td><td>£288,477</td><td>£245,990</td><td>£302,064</td><td>£1,083/mo</td><td class='yield-low'>4.2%</td><td>61</td><td>28,146</td><td>—</td></tr>
+<tr><td>DY7</td><td>Stourbridge Rural</td><td>£479,834</td><td>£287,850</td><td>£459,367</td><td>—</td><td class=''>—</td><td>60</td><td>8,028</td><td>—</td></tr>
+<tr><td>DY8</td><td>Stourbridge</td><td>£282,612</td><td>£228,183</td><td>£309,389</td><td>£1,027/mo</td><td class='yield-low'>4.1%</td><td>67</td><td>50,205</td><td>—</td></tr>
+<tr><td>DY9</td><td>Hagley</td><td>£421,736</td><td>£274,446</td><td>£389,280</td><td>£966/mo</td><td class='yield-low'>3.0%</td><td>84</td><td>30,035</td><td>—</td></tr>
+<tr><td>WS1</td><td>Walsall Town</td><td>£217,497</td><td>£133,679</td><td>£280,786</td><td>£797/mo</td><td class='yield-low'>4.4%</td><td>202</td><td>26,909</td><td>—</td></tr>
+<tr><td>WS10</td><td>Wednesbury</td><td>£234,106</td><td>£173,704</td><td>£242,682</td><td>£962/mo</td><td class='yield-med'>4.9%</td><td>140</td><td>46,704</td><td>—</td></tr>
+<tr><td>WS2</td><td>Walsall East</td><td>£183,290</td><td>£142,601</td><td>£220,260</td><td>£932/mo</td><td class='yield-high'>6.1%</td><td>168</td><td>38,857</td><td>—</td></tr>
+<tr><td>WS3</td><td>Bloxwich</td><td>£251,741</td><td>£180,339</td><td>£250,813</td><td>£992/mo</td><td class='yield-med'>4.7%</td><td>114</td><td>50,107</td><td>—</td></tr>
+<tr><td>WS4</td><td>Walsall West</td><td>£279,401</td><td>£201,023</td><td>£278,845</td><td>£1,044/mo</td><td class='yield-med'>4.5%</td><td>84</td><td>17,012</td><td>—</td></tr>
+<tr><td>WS5</td><td>Bescot</td><td>£393,694</td><td>£198,292</td><td>£346,561</td><td>£1,135/mo</td><td class='yield-low'>3.5%</td><td>61</td><td>21,540</td><td>—</td></tr>
+<tr><td>WS6</td><td>Cheslyn Hay</td><td>£258,767</td><td>£196,998</td><td>£265,362</td><td>—</td><td class=''>—</td><td>50</td><td>18,282</td><td>—</td></tr>
+<tr><td>WS7</td><td>Burntwood</td><td>£299,517</td><td>£236,439</td><td>£319,703</td><td>£971/mo</td><td class='yield-low'>3.9%</td><td>59</td><td>29,651</td><td>—</td></tr>
+<tr><td>WS8</td><td>Brownhills</td><td>£234,420</td><td>£189,000</td><td>£253,716</td><td>—</td><td class=''>—</td><td>118</td><td>15,652</td><td>—</td></tr>
+<tr><td>WS9</td><td>Aldridge</td><td>£353,194</td><td>£252,854</td><td>£336,680</td><td>£1,075/mo</td><td class='yield-low'>3.7%</td><td>89</td><td>26,509</td><td>—</td></tr>
+<tr><td>WV1</td><td>Wolverhampton Centre</td><td>£177,375</td><td>£139,770</td><td>£223,594</td><td>£836/mo</td><td class='yield-med'>5.7%</td><td>328</td><td>16,413</td><td>—</td></tr>
+<tr><td>WV10</td><td>Bushbury</td><td>£250,130</td><td>£184,709</td><td>£253,552</td><td>£1,083/mo</td><td class='yield-med'>5.3%</td><td>134</td><td>56,251</td><td>—</td></tr>
+<tr><td>WV11</td><td>Wednesfield</td><td>£242,769</td><td>£209,480</td><td>£255,556</td><td>£949/mo</td><td class='yield-med'>4.9%</td><td>110</td><td>34,832</td><td>—</td></tr>
+<tr><td>WV12</td><td>Willenhall North</td><td>£242,773</td><td>£173,267</td><td>£248,975</td><td>£880/mo</td><td class='yield-low'>4.3%</td><td>84</td><td>25,417</td><td>—</td></tr>
+<tr><td>WV13</td><td>Willenhall South</td><td>£232,294</td><td>£145,800</td><td>£260,140</td><td>£958/mo</td><td class='yield-med'>4.9%</td><td>164</td><td>20,903</td><td>—</td></tr>
+<tr><td>WV14</td><td>Bilston</td><td>£235,661</td><td>£182,295</td><td>£245,291</td><td>£997/mo</td><td class='yield-med'>5.0%</td><td>134</td><td>46,931</td><td>—</td></tr>
+<tr><td>WV2</td><td>Wolverhampton East</td><td>£204,231</td><td>£158,627</td><td>£226,498</td><td>£901/mo</td><td class='yield-med'>5.2%</td><td>190</td><td>15,148</td><td>—</td></tr>
+<tr><td>WV3</td><td>Wolverhampton West</td><td>£288,004</td><td>£214,086</td><td>£275,433</td><td>£901/mo</td><td class='yield-low'>3.6%</td><td>91</td><td>29,663</td><td>—</td></tr>
+<tr><td>WV4</td><td>Bilston East</td><td>£291,811</td><td>£181,485</td><td>£294,113</td><td>£1,118/mo</td><td class='yield-med'>4.6%</td><td>73</td><td>34,295</td><td>—</td></tr>
+<tr><td>WV5</td><td>Wombourne</td><td>£394,010</td><td>£287,162</td><td>£388,303</td><td>£1,213/mo</td><td class='yield-low'>3.7%</td><td>52</td><td>15,537</td><td>—</td></tr>
+<tr><td>WV6</td><td>Tettenhall/Finchfield</td><td>£349,503</td><td>£242,739</td><td>£339,673</td><td>£1,105/mo</td><td class='yield-low'>3.8%</td><td>76</td><td>44,689</td><td>—</td></tr>
+</tbody></table></div>
+
+<h2>🏆 Top 20 Yield Leaders</h2>
+<div style="overflow-x:auto"><table>
+<thead><tr><th>#</th><th>Postcode</th><th>Area</th><th>Yield</th><th>Avg Price</th><th>Rent/mo</th></tr></thead>
+<tbody><tr><td>1</td><td>B3</td><td>Birmingham Financial</td><td class='yield-high'>6.8%</td><td>£200,305</td><td>£1,131</td></tr>
+<tr><td>2</td><td>B1</td><td>Birmingham CC</td><td class='yield-high'>6.2%</td><td>£211,748</td><td>£1,088</td></tr>
+<tr><td>3</td><td>WS2</td><td>Walsall East</td><td class='yield-high'>6.1%</td><td>£183,290</td><td>£932</td></tr>
+<tr><td>4</td><td>B2</td><td>Birmingham Business</td><td class='yield-high'>6.0%</td><td>£202,727</td><td>£1,018</td></tr>
+<tr><td>5</td><td>WV1</td><td>Wolverhampton Centre</td><td class='yield-med'>5.7%</td><td>£177,375</td><td>£836</td></tr>
+<tr><td>6</td><td>WV10</td><td>Bushbury</td><td class='yield-med'>5.3%</td><td>£250,130</td><td>£1,083</td></tr>
+<tr><td>7</td><td>WV2</td><td>Wolverhampton East</td><td class='yield-med'>5.2%</td><td>£204,231</td><td>£901</td></tr>
+<tr><td>8</td><td>DY4</td><td>Tipton</td><td class='yield-med'>5.1%</td><td>£246,976</td><td>£1,023</td></tr>
+<tr><td>9</td><td>WV14</td><td>Bilston</td><td class='yield-med'>5.0%</td><td>£235,661</td><td>£997</td></tr>
+<tr><td>10</td><td>WV11</td><td>Wednesfield</td><td class='yield-med'>4.9%</td><td>£242,769</td><td>£949</td></tr>
+<tr><td>11</td><td>WV13</td><td>Willenhall South</td><td class='yield-med'>4.9%</td><td>£232,294</td><td>£958</td></tr>
+<tr><td>12</td><td>WS10</td><td>Wednesbury</td><td class='yield-med'>4.9%</td><td>£234,106</td><td>£962</td></tr>
+<tr><td>13</td><td>DY5</td><td>Brierley Hill</td><td class='yield-med'>4.7%</td><td>£227,236</td><td>£884</td></tr>
+<tr><td>14</td><td>WS3</td><td>Bloxwich</td><td class='yield-med'>4.7%</td><td>£251,741</td><td>£992</td></tr>
+<tr><td>15</td><td>DY1</td><td>Dudley Town</td><td class='yield-med'>4.6%</td><td>£239,941</td><td>£893</td></tr>
+<tr><td>16</td><td>DY2</td><td>Dudley East</td><td class='yield-med'>4.6%</td><td>£229,099</td><td>£849</td></tr>
+<tr><td>17</td><td>WV4</td><td>Bilston East</td><td class='yield-med'>4.6%</td><td>£291,811</td><td>£1,118</td></tr>
+<tr><td>18</td><td>WS4</td><td>Walsall West</td><td class='yield-med'>4.5%</td><td>£279,401</td><td>£1,044</td></tr>
+<tr><td>19</td><td>WS1</td><td>Walsall Town</td><td class='yield-med'>4.4%</td><td>£217,497</td><td>£797</td></tr>
+<tr><td>20</td><td>WV12</td><td>Willenhall North</td><td class='yield-med'>4.3%</td><td>£242,773</td><td>£880</td></tr>
+</tbody></table></div>
+
+<h2>📉 Bottom 15 — Sub-4% Yields (Avoid for BTL)</h2>
+<div style="overflow-x:auto"><table>
+<thead><tr><th>Postcode</th><th>Area</th><th>Yield</th><th>Avg Price</th></tr></thead>
+<tbody><tr><td>DY9</td><td>Hagley</td><td class='yield-low'>3.0%</td><td>£421,736</td></tr>
+<tr><td>WS5</td><td>Bescot</td><td class='yield-low'>3.5%</td><td>£393,694</td></tr>
+<tr><td>WV3</td><td>Wolverhampton West</td><td class='yield-low'>3.6%</td><td>£288,004</td></tr>
+<tr><td>WS9</td><td>Aldridge</td><td class='yield-low'>3.7%</td><td>£353,194</td></tr>
+<tr><td>WV5</td><td>Wombourne</td><td class='yield-low'>3.7%</td><td>£394,010</td></tr>
+<tr><td>WV6</td><td>Tettenhall/Finchfield</td><td class='yield-low'>3.8%</td><td>£349,503</td></tr>
+<tr><td>WS7</td><td>Burntwood</td><td class='yield-low'>3.9%</td><td>£299,517</td></tr>
+<tr><td>DY3</td><td>Dudley North</td><td class='yield-low'>3.9%</td><td>£286,070</td></tr>
+<tr><td>DY8</td><td>Stourbridge</td><td class='yield-low'>4.1%</td><td>£282,612</td></tr>
+<tr><td>DY6</td><td>Kingswinford</td><td class='yield-low'>4.2%</td><td>£288,477</td></tr>
+<tr><td>WV12</td><td>Willenhall North</td><td class='yield-low'>4.3%</td><td>£242,773</td></tr>
+<tr><td>WS1</td><td>Walsall Town</td><td class='yield-low'>4.4%</td><td>£217,497</td></tr>
+<tr><td>WS4</td><td>Walsall West</td><td class='yield-low'>4.5%</td><td>£279,401</td></tr>
+<tr><td>WV4</td><td>Bilston East</td><td class='yield-low'>4.6%</td><td>£291,811</td></tr>
+<tr><td>DY2</td><td>Dudley East</td><td class='yield-low'>4.6%</td><td>£229,099</td></tr>
+</tbody></table></div>
+
+<h2>🎯 Strategy Recommendations</h2>
+<div class="strategy-grid">
+<div class="strategy-card"><h3>🏠 BTL Best</h3><p>B1 (6.2%), B3 (6.8%), WS2 (6.1%), B2 (6.0%)</p></div>
+<div class="strategy-card"><h3>🔄 BRRR Best</h3><p>WV1 (£177k), WS2 (£183k), B3 (£200k), WS1 (£217k)</p></div>
+<div class="strategy-card"><h3>🏘️ HMO Potential</h3><p>WV14 (5.0%, Bilston), WV10 (5.3%), WV1 (5.7%)</p></div>
+<div class="strategy-card"><h3>💰 Value Entry</h3><p>WV1 (£177k), WS2 (£183k), WS1 (£217k), DY5 (£227k)</p></div>
+</div>
+
+<h2>🔮 Next Postcodes to Add</h2>
+<p>B4-B98, CV1-CV6, WR1-WR5, ST1-ST6, TF1-TF4, LE1-LE5, NN1-NN5</p>
+
+<div class="footer">
+<p>Data: PropertyData API (Professional) · Strategy scoring framework: <code>property-intelligence/references/postcode-strategy-framework.md</code></p>
+<p>Generated: 2026-05-20T01:36:39.355914</p>
+</div>
+</body>
+</html>
