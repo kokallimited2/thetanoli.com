@@ -1,475 +1,627 @@
-     1|<!DOCTYPE html>
-     2|<html lang="en">
-     3|<head>
-     4|<meta charset="UTF-8">
-     5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
-     6|<title>Nikka's Intel Hub — Property Intelligence</title>
-     7|<style>
-     8|:root {
-     9|  --bg: #0a0f1e;
-    10|  --bg2: #111827;
-    11|  --card: #1e293b;
-    12|  --border: #334155;
-    13|  --accent: #f59e0b;
-    14|  --green: #22c55e;
-    15|  --red: #ef4444;
-    16|  --blue: #3b82f6;
-    17|  --text: #f1f5f9;
-    18|  --text2: #94a3b8;
-    19|}
-    20|* { margin: 0; padding: 0; box-sizing: border-box; }
-    21|body {
-    22|  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    23|  background: var(--bg);
-    24|  color: var(--text);
-    25|  min-height: 100vh;
-    26|}
-    27|.hero {
-    28|  background: linear-gradient(135deg, #0a0f1e 0%, #1e293b 50%, #0f172a 100%);
-    29|  padding: 40px 20px 28px;
-    30|  text-align: center;
-    31|  border-bottom: 1px solid var(--border);
-    32|  position: relative;
-    33|  overflow: hidden;
-    34|}
-    35|.hero::before {
-    36|  content: '';
-    37|  position: absolute;
-    38|  top: -50%; left: -50%;
-    39|  width: 200%; height: 200%;
-    40|  background: radial-gradient(circle at 30% 50%, rgba(245,158,11,0.04) 0%, transparent 50%),
-    41|              radial-gradient(circle at 70% 50%, rgba(59,130,246,0.03) 0%, transparent 50%);
-    42|  pointer-events: none;
-    43|}
-    44|.hero h1 { font-size: 1.8rem; font-weight: 800; position: relative; }
-    45|.hero h1 span { color: var(--accent); }
-    46|.hero p { color: var(--text2); font-size: 13px; margin-top: 6px; position: relative; }
-    47|.hero .stats { display: flex; gap: 20px; justify-content: center; margin-top: 16px; flex-wrap: wrap; position: relative; }
-    48|.hero .stats .s { font-size: 12px; color: var(--text2); }
-    49|.hero .stats .s strong { color: var(--text); }
-    50|
-    51|.wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 60px; }
-    52|
-    53|.section-title {
-    54|  font-size: 11px;
-    55|  font-weight: 700;
-    56|  color: var(--text2);
-    57|  text-transform: uppercase;
-    58|  letter-spacing: 1px;
-    59|  margin: 32px 0 12px;
-    60|  padding-bottom: 8px;
-    61|  border-bottom: 1px solid var(--border);
-    62|}
-    63|.section-title .count { color: #475569; font-weight: 400; }
-    64|
-    65|.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
-    66|
-    67|.card {
-    68|  background: var(--card);
-    69|  border: 1px solid var(--border);
-    70|  border-radius: 10px;
-    71|  padding: 16px;
-    72|  text-decoration: none;
-    73|  color: inherit;
-    74|  transition: all 0.2s ease;
-    75|  position: relative;
-    76|}
-    77|.card:hover {
-    78|  border-color: var(--blue);
-    79|  background: #1a2332;
-    80|  transform: translateY(-2px);
-    81|  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    82|}
-    83|.card .icon { font-size: 1.4rem; margin-bottom: 6px; }
-    84|.card h3 { font-size: 13px; font-weight: 700; color: var(--text); }
-    85|.card p { font-size: 11px; color: var(--text2); margin-top: 3px; line-height: 1.4; }
-    86|.card .badge {
-    87|  display: inline-block;
-    88|  font-size: 9px;
-    89|  font-weight: 600;
-    90|  padding: 1px 8px;
-    91|  border-radius: 100px;
-    92|  margin-top: 6px;
-    93|  letter-spacing: 0.3px;
-    94|}
-    95|.badge-blue { background: rgba(59,130,246,0.1); color: #60a5fa; }
-    96|.badge-amber { background: rgba(245,158,11,0.1); color: var(--accent); }
-    97|.badge-green { background: rgba(34,197,94,0.1); color: var(--green); }
-    98|.badge-purple { background: rgba(168,85,247,0.1); color: #a78bfa; }
-    99|
-   100|.postcode-grid {
-   101|  display: grid;
-   102|  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-   103|  gap: 6px;
-   104|  margin-top: 6px;
-   105|}
-   106|.postcode-grid a {
-   107|  display: block;
-   108|  background: rgba(30,41,59,0.6);
-   109|  border: 1px solid var(--border);
-   110|  border-radius: 6px;
-   111|  padding: 6px 8px;
-   112|  text-align: center;
-   113|  text-decoration: none;
-   114|  color: var(--text2);
-   115|  font-size: 11px;
-   116|  font-weight: 600;
-   117|  transition: all 0.15s ease;
-   118|}
-   119|.postcode-grid a:hover {
-   120|  border-color: var(--blue);
-   121|  color: var(--text);
-   122|  background: rgba(59,130,246,0.08);
-   123|}
-   124|
-   125|.updated-badge {
-   126|  display: inline-block;
-   127|  font-size: 9px;
-   128|  color: #64748b;
-   129|  margin-top: 4px;
-   130|}
-   131|.updated-badge::before { content: "🕐 "; }
-   132|.updated-badge.loading { opacity: 0.5; }
-   133|.updated-badge.loading::before { content: "⏳ "; }
-   134|.updated-badge.stale { color: var(--red); }
-   135|.updated-badge.stale::before { content: "⚠️ "; }
-   136|
-   137|footer { text-align: center; padding: 20px; color: #475569; font-size: 11px; border-top: 1px solid var(--border); }
-   138|footer a { color: var(--text2); text-decoration: none; }
-   139|footer .live-date { color: #64748b; font-size: 10px; margin-top: 4px; }
-   140|
-   141|@keyframes fadeInUp {
-   142|  from { opacity: 0; transform: translateY(15px); }
-   143|  to { opacity: 1; transform: translateY(0); }
-   144|}
-   145|.wrap { animation: fadeInUp 0.4s ease-out; }
-   146|.card { animation: fadeInUp 0.4s ease-out; animation-fill-mode: backwards; }
-   147|.card:nth-child(1) { animation-delay: 0.02s; }
-   148|.card:nth-child(2) { animation-delay: 0.04s; }
-   149|.card:nth-child(3) { animation-delay: 0.06s; }
-   150|.card:nth-child(4) { animation-delay: 0.08s; }
-   151|.card:nth-child(5) { animation-delay: 0.10s; }
-   152|.card:nth-child(6) { animation-delay: 0.12s; }
-   153|
-   154|@media (max-width: 600px) {
-   155|  .grid { grid-template-columns: 1fr; }
-   156|  .postcode-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
-   157|  .hero h1 { font-size: 1.4rem; }
-   158|}
-   159|</style>
-   160|</head>
-   161|<body>
-   162|
-   163|<div class="hero">
-   164|  <h1>🗺️ <span>Nikka's</span> Intel Hub</h1>
-   165|  <p>Property intelligence archive — area analysis, market signals, deal sourcing, HMO data & research reports</p>
-   166|  <div class="stats">
-   167|    <div class="s">📊 <strong>31</strong> Area Intel Reports</div>
-   168|    <div class="s">🏠 <strong>17</strong> Dashboard Reports</div>
-   169|    <div class="s">📅 Updated <strong>22 May 2026</strong></div>
-   170|  </div>
-   171|</div>
-   172|
-   173|<div class="wrap">
-   174|
-   175|  <!-- ===== PROPERTY MAPS ===== -->
-   176|  <div class="section-title">🗺️ Property Maps <span class="count">(3)</span></div>
-   177|  <div class="grid">
-   178|    <a href="birmingham-property-map.html" class="card" data-file="birmingham-property-map.html">
-   179|      <div class="icon">🏙️</div>
-   180|      <h3>Birmingham Property Map</h3>
-   181|      <p>Interactive property heatmap — prices, yields, demand across Birmingham postcodes</p>
-   182|      <span class="badge badge-blue">Birmingham</span>
-   183|      <div class="updated-badge loading">loading...</div>
-   184|    </a>
-   185|    <a href="dudley-wolves-property-map.html" class="card" data-file="dudley-wolves-property-map.html">
-   186|      <div class="icon">🏘️</div>
-   187|      <h3>Dudley & Wolverhampton Map</h3>
-   188|      <p>DY & WV postcode analysis — prices, yields, void risk, growth trends</p>
-   189|      <span class="badge badge-blue">Black Country</span>
-   190|      <div class="updated-badge loading">loading...</div>
-   191|    </a>
-   192|    <a href="wm-void-heatmap.html" class="card" data-file="wm-void-heatmap.html">
-   193|      <div class="icon">🔥</div>
-   194|      <h3>WM Void Heatmap</h3>
-   195|      <p>Void risk across 39 postcodes — avg days on market, turnover rates, rental demand</p>
-   196|      <span class="badge badge-amber">39 Postcodes</span>
-   197|      <div class="updated-badge loading">loading...</div>
-   198|    </a>
-   199|  </div>
-   200|
-   201|  <!-- ===== AREA INTELLIGENCE ===== -->
-   202|  <div class="section-title">📋 Area Intelligence <span class="count">(31 postcodes)</span></div>
-   203|
-   204|  <div style="margin-bottom:6px"><span class="badge badge-purple" style="font-size:10px">DY — Dudley</span></div>
-   205|  <div class="postcode-grid">
-   206|    <a href="area-intelligence/DY1-intel.html">DY1</a>
-   207|    <a href="area-intelligence/DY2-intel.html">DY2</a>
-   208|    <a href="area-intelligence/DY3-intel.html">DY3</a>
-   209|    <a href="area-intelligence/DY4-intel.html">DY4</a>
-   210|    <a href="area-intelligence/DY5-intel.html">DY5</a>
-   211|    <a href="area-intelligence/DY6-intel.html">DY6</a>
-   212|    <a href="area-intelligence/DY7-intel.html">DY7</a>
-   213|    <a href="area-intelligence/DY8-intel.html">DY8</a>
-   214|    <a href="area-intelligence/DY9-intel.html">DY9</a>
-   215|  </div>
-   216|
-   217|  <div style="margin-top:10px;margin-bottom:6px"><span class="badge badge-blue" style="font-size:10px">B — Birmingham</span></div>
-   218|  <div class="postcode-grid">
-   219|    <a href="area-intelligence/B64-intel.html">B64</a>
-   220|    <a href="area-intelligence/B65-intel.html">B65</a>
-   221|    <a href="area-intelligence/B66-intel.html">B66</a>
-   222|    <a href="area-intelligence/B67-intel.html">B67</a>
-   223|    <a href="area-intelligence/B68-intel.html">B68</a>
-   224|    <a href="area-intelligence/B69-intel.html">B69</a>
-   225|    <a href="area-intelligence/B70-intel.html">B70</a>
-   226|    <a href="area-intelligence/B71-intel.html">B71</a>
-   227|  </div>
-   228|
-   229|  <div style="margin-top:10px;margin-bottom:6px"><span class="badge badge-green" style="font-size:10px">WV — Wolverhampton</span></div>
-   230|  <div class="postcode-grid">
-   231|    <a href="area-intelligence/WV1-intel.html">WV1</a>
-   232|    <a href="area-intelligence/WV2-intel.html">WV2</a>
-   233|    <a href="area-intelligence/WV3-intel.html">WV3</a>
-   234|    <a href="area-intelligence/WV4-intel.html">WV4</a>
-   235|    <a href="area-intelligence/WV6-intel.html">WV6</a>
-   236|    <a href="area-intelligence/WV7-intel.html">WV7</a>
-   237|    <a href="area-intelligence/WV8-intel.html">WV8</a>
-   238|    <a href="area-intelligence/WV9-intel.html">WV9</a>
-   239|    <a href="area-intelligence/WV10-intel.html">WV10</a>
-   240|    <a href="area-intelligence/WV11-intel.html">WV11</a>
-   241|    <a href="area-intelligence/WV12-intel.html">WV12</a>
-   242|    <a href="area-intelligence/WV13-intel.html">WV13</a>
-   243|    <a href="area-intelligence/WV14-intel.html">WV14</a>
-   244|  </div>
-   245|
-   246|  <div style="margin-top:10px;margin-bottom:6px"><span class="badge badge-amber" style="font-size:10px">WS — Walsall</span></div>
-   247|  <div class="postcode-grid">
-   248|    <a href="area-intelligence/WS1-intel.html">WS1</a>
-   249|  </div>
-   250|
-   251|  <!-- ===== POSTCODE STRATEGY ===== -->
-   252|  <div class="section-title">📈 Postcode Strategy <span class="count">(7)</span></div>
-   253|  <div class="grid">
-   254|    <a href="postcode_strategy_MAIN.html" class="card">
-   255|      <div class="icon">📊</div>
-   256|      <h3>Postcode Strategy — Main Report</h3>
-   257|      <p>Comprehensive postcode-by-postcode investment strategy across all WM areas</p>
-   258|      <span class="badge badge-amber">Main Dashboard</span>
-   259|    </a>
-   260|    <a href="postcode-links.html" class="card">
-   261|      <div class="icon">🔗</div>
-   262|      <h3>Postcode Links & References</h3>
-   263|      <p>Quick-access links to all postcode strategy breakdowns</p>
-   264|      <span class="badge badge-blue">Reference</span>
-   265|    </a>
-   266|  </div>
-   267|
-   268|  <!-- ===== PROPERTY DEALS ===== -->
-   269|  <div class="section-title">🏠 Property Deals <span class="count">(4)</span></div>
-   270|  <div class="grid">
-   271|    <a href="deals/deal-radar-MASTER.html" class="card">
-   272|      <div class="icon">🎯</div>
-   273|      <h3>Deal Radar — Master</h3>
-   274|      <p>Consolidated deal radar — all scored BMV/BRRR/flip opportunities across WM</p>
-   275|      <span class="badge badge-green">Master List</span>
-   276|    </a>
-   277|    <a href="deals/deal-radar-2026-05-21.html" class="card">
-   278|      <div class="icon">📡</div>
-   279|      <h3>Deal Radar — Latest Scan</h3>
-   280|      <p>21 May 2026 daily deal scan — new opportunities, scores, and recommendations</p>
-   281|      <span class="badge badge-blue">21 May</span>
-   282|    </a>
-   283|    <a href="deals/daily-report_20260521.html" class="card">
-   284|      <div class="icon">📋</div>
-   285|      <h3>Daily Deal Report</h3>
-   286|      <p>Full daily report with property details, BMV analysis, recommended actions</p>
-   287|      <span class="badge badge-blue">21 May</span>
-   288|    </a>
-   289|    <a href="property_hunt_20260521.html" class="card">
-   290|      <div class="icon">🏹</div>
-   291|      <h3>Property Hunt — Daily</h3>
-   292|      <p>Autonomous property investor daily hunt results — scored and prioritised</p>
-   293|      <span class="badge badge-blue">21 May</span>
-   294|    </a>
-   295|  </div>
-   296|
-   297|  <!-- ===== MARKET INTELLIGENCE ===== -->
-   298|  <div class="section-title">📡 Market Intelligence <span class="count">(5)</span></div>
-   299|  <div class="grid">
-   300|    <a href="market_signals_MAIN.html" class="card">
-   301|      <div class="icon">📶</div>
-   302|      <h3>Market Signal Scanner</h3>
-   303|      <p>Daily market signals + opportunity engine — price movements, trends, hotspots</p>
-   304|      <span class="badge badge-purple">Daily</span>
-   305|    </a>
-   306|    <a href="r2r_sa_intelligence_MAIN.html" class="card">
-   307|      <div class="icon">🛏️</div>
-   308|      <h3>R2R & SA Intelligence</h3>
-   309|      <p>Rent-to-Rent & Serviced Accommodation — market trends, regulations, yields</p>
-   310|      <span class="badge badge-purple">Kimi K2.6</span>
-   311|    </a>
-   312|    <a href="course_intel_MAIN.html" class="card">
-   313|      <div class="icon">🎓</div>
-   314|      <h3>Course Intelligence</h3>
-   315|      <p>Property course video analysis — key takeaways, strategies, actionable insights</p>
-   316|      <span class="badge badge-purple">DeepSeek Flash</span>
-   317|    </a>
-   318|    <a href="deal_analysis_learning_MAIN.html" class="card">
-   319|      <div class="icon">🧠</div>
-   320|      <h3>Deal Analysis Learning</h3>
-   321|      <p>Self-improving deal analysis — patterns, lessons learned, refined scoring</p>
-   322|      <span class="badge badge-purple">Learning Loop</span>
-   323|    </a>
-   324|    <a href="video_learning_MAIN.html" class="card">
-   325|      <div class="icon">📺</div>
-   326|      <h3>Video Learning</h3>
-   327|      <p>Daily property video analysis — top 5 videos summarised with key takeaways</p>
-   328|      <span class="badge badge-purple">Daily</span>
-   329|    </a>
-   330|  </div>
-   331|
-   332|  <!-- ===== COMMERCIAL ===== -->
-   333|  <div class="section-title">🏢 Commercial <span class="count">(3)</span></div>
-   334|  <div class="grid">
-   335|    <a href="commercial_high_street_MAIN.html" class="card">
-   336|      <div class="icon">🏪</div>
-   337|      <h3>Commercial High Street Research</h3>
-   338|      <p>High street commercial buildings & residential conversion opportunities</p>
-   339|      <span class="badge badge-amber">Mon/Wed/Fri</span>
-   340|    </a>
-   341|    <a href="commercial-property-intelligence_MAIN.html" class="card">
-   342|      <div class="icon">🏢</div>
-   343|      <h3>Commercial Property Intelligence</h3>
-   344|      <p>Commercial strategy — Class E→C3, shop-with-flat, pub conversion analysis</p>
-   345|      <span class="badge badge-amber">Daily</span>
-   346|    </a>
-   347|    <a href="commercial/daily-radar_20260521.html" class="card">
-   348|      <div class="icon">📡</div>
-   349|      <h3>Commercial Deal Radar</h3>
-   350|      <p>Daily commercial deal scan — Rightmove Commercial, OTM, yield analysis</p>
-   351|      <span class="badge badge-blue">21 May</span>
-   352|    </a>
-   353|  </div>
-   354|
-   355|  <!-- ===== LAND & PLANNING ===== -->
-   356|  <div class="section-title">🏗️ Land & Planning <span class="count">(3)</span></div>
-   357|  <div class="grid">
-   358|    <a href="land-planning-uplift-intelligence_MAIN.html" class="card">
-   359|      <div class="icon">📐</div>
-   360|      <h3>Land & Planning Uplift</h3>
-   361|      <p>Land value analysis, planning permission uplift, development viability</p>
-   362|      <span class="badge badge-green">Daily</span>
-   363|    </a>
-   364|    <a href="title-split-intelligence_MAIN.html" class="card">
-   365|      <div class="icon">✂️</div>
-   366|      <h3>Title Split Intelligence</h3>
-   367|      <p>Title split & property subdivision analysis — viability, costs, returns across WM</p>
-   368|      <span class="badge badge-green">Daily</span>
-   369|    </a>
-   370|    <a href="flats_leasehold_MAIN.html" class="card">
-   371|      <div class="icon">🏗️</div>
-   372|      <h3>Flats & Leasehold Research</h3>
-   373|      <p>UK flats and leasehold property investment — buying strategies, regulations</p>
-   374|      <span class="badge badge-green">Tue/Thu</span>
-   375|    </a>
-   376|  </div>
-   377|
-   378|  <!-- ===== HMO DATA ===== -->
-   379|  <div class="section-title">🏘️ HMO Data <span class="count">(3)</span></div>
-   380|  <div class="grid">
-   381|    <a href="hmo/hmo-rental-demand_2026-05-21.html" class="card">
-   382|      <div class="icon">📈</div>
-   383|      <h3>HMO Rental Demand</h3>
-   384|      <p>HMO room rental demand analysis — yields, occupancy, room rates across WM</p>
-   385|      <span class="badge badge-blue">21 May</span>
-   386|    </a>
-   387|    <a href="supported_housing_MAIN.html" class="card">
-   388|      <div class="icon">🏥</div>
-   389|      <h3>Supported Housing Research</h3>
-   390|      <p>UK supported housing — regulations, referrals, yields, operational strategies</p>
-   391|      <span class="badge badge-blue">Research</span>
-   392|    </a>
-   393|    <a href="postcode-strategy-2026-05-20.html" class="card">
-   394|      <div class="icon">🏛️</div>
-   395|      <h3>Postcode Strategy Area Intel</h3>
-   396|      <p>West Midlands area intelligence — comprehensive postcode-by-postcode analysis</p>
-   397|      <span class="badge badge-amber">20 May</span>
-   398|    </a>
-   399|  </div>
-   400|
-   401|  <!-- ===== OVERVIEW DASHBOARDS ===== -->
-   402|  <div class="section-title">📊 Overview Dashboards <span class="count">(2)</span></div>
-   403|  <div class="grid">
-   404|    <a href="property-dashboard_MAIN.html" class="card">
-   405|      <div class="icon">🏠</div>
-   406|      <h3>Property Dashboard</h3>
-   407|      <p>Central property intelligence dashboard — all data consolidated in one view</p>
-   408|      <span class="badge badge-amber">Main Dashboard</span>
-   409|    </a>
-   410|    <a href="dashboard_MAIN.html" class="card">
-   411|      <div class="icon">📉</div>
-   412|      <h3>Dashboard Overview</h3>
-   413|      <p>High-level overview of all property research pipelines and outputs</p>
-   414|      <span class="badge badge-amber">Overview</span>
-   415|    </a>
-   416|  </div>
-   417|
-   418|</div>
-   419|
-   420|<footer>
-   421|  <a href="/">← Tanoli Dashboard Hub</a> • Nikka's Intel Hub • Property Intelligence Engine
-   422|  <div class="live-date" id="page-timestamp">Page generated: <span>loading...</span></div>
-   423|</footer>
-   424|
-   425|<script>
-   426|async function loadTimestamps() {
-   427|  try {
-   428|    const r = await fetch('manifest.json?' + Date.now());
-   429|    const manifest = await r.json();
-   430|    
-   431|    document.querySelectorAll('.card').forEach(card => {
-   432|      const href = card.getAttribute('href');
-   433|      if (!href) return;
-   434|      
-   435|      // Find best match in manifest
-   436|      const entry = manifest[href];
-   437|      if (!entry) return;
-   438|      
-   439|      const badge = card.querySelector('.updated-badge');
-   440|      if (!badge) return;
-   441|      
-   442|      const updated = entry.updated;
-   443|      const parts = updated.split(' ');
-   444|      const day = parseInt(parts[0]);
-   445|      const now = new Date();
-   446|      const today = now.getDate();
-   447|      const yesterday = today - 1;
-   448|      
-   449|      if (day === today) {
-   450|        badge.textContent = 'Updated today ' + parts.slice(1).join(' ');
-   451|        badge.style.color = '#22c55e';
-   452|      } else if (day === yesterday) {
-   453|        badge.textContent = 'Updated yesterday ' + parts.slice(1).join(' ');
-   454|        badge.style.color = '#f59e0b';
-   455|      } else {
-   456|        badge.textContent = 'Updated ' + updated;
-   457|      }
-   458|    });
-   459|    
-   460|    // Page timestamp
-   461|    document.getElementById('page-timestamp').querySelector('span').textContent = new Date().toLocaleString('en-GB', { timeZone: 'Europe/London', day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }) + ' BST';
-   462|    
-   463|  } catch(e) {
-   464|    document.querySelectorAll('.updated-badge').forEach(b => {
-   465|      b.textContent = 'timestamp unavailable';
-   466|      b.style.color = '#ef4444';
-   467|    });
-   468|    document.getElementById('page-timestamp').querySelector('span').textContent = 'unavailable';
-   469|  }
-   470|}
-   471|loadTimestamps();
-   472|</script>
-   473|
-   474|</body>
-   475|
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikka's Intel Hub — Property Intelligence</title>
+<style>
+:root {
+  --bg: #0a0f1e;
+  --bg2: #111827;
+  --card: #1e293b;
+  --border: #334155;
+  --accent: #f59e0b;
+  --green: #22c55e;
+  --red: #ef4444;
+  --blue: #3b82f6;
+  --text: #f1f5f9;
+  --text2: #94a3b8;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+.hero {
+  background: linear-gradient(135deg, #0a0f1e 0%, #1e293b 50%, #0f172a 100%);
+  padding: 40px 20px 28px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(245,158,11,0.04) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(59,130,246,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero h1 { font-size: 1.8rem; font-weight: 800; position: relative; }
+.hero h1 span { color: var(--accent); }
+.hero p { color: var(--text2); font-size: 13px; margin-top: 6px; position: relative; }
+.hero .stats { display: flex; gap: 20px; justify-content: center; margin-top: 16px; flex-wrap: wrap; position: relative; }
+.hero .stats .s { font-size: 12px; color: var(--text2); }
+.hero .stats .s strong { color: var(--text); }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 24px 16px 60px; }
+
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 32px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.section-title .count { color: #475569; font-weight: 400; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.card:hover {
+  border-color: var(--blue);
+  background: #1a2332;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+.card .icon { font-size: 1.4rem; margin-bottom: 6px; }
+.card h3 { font-size: 13px; font-weight: 700; color: var(--text); }
+.card p { font-size: 11px; color: var(--text2); margin-top: 3px; line-height: 1.4; }
+.card .badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 1px 8px;
+  border-radius: 100px;
+  margin-top: 6px;
+  letter-spacing: 0.3px;
+}
+.badge-blue { background: rgba(59,130,246,0.1); color: #60a5fa; }
+.badge-amber { background: rgba(245,158,11,0.1); color: var(--accent); }
+.badge-green { background: rgba(34,197,94,0.1); color: var(--green); }
+.badge-purple { background: rgba(168,85,247,0.1); color: #a78bfa; }
+
+.postcode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 6px;
+  margin-top: 6px;
+}
+.postcode-grid a {
+  display: block;
+  background: rgba(30,41,59,0.6);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text2);
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+.postcode-grid a:hover {
+  border-color: var(--blue);
+  color: var(--text);
+  background: rgba(59,130,246,0.08);
+}
+
+.updated-badge {
+  display: inline-block;
+  font-size: 9px;
+  color: #64748b;
+  margin-top: 4px;
+}
+.updated-badge::before { content: "🕐 "; }
+.updated-badge.loading { opacity: 0.5; }
+.updated-badge.loading::before { content: "⏳ "; }
+.updated-badge.stale { color: var(--red); }
+.updated-badge.stale::before { content: "⚠️ "; }
+
+footer { text-align: center; padding: 20px; color: #475569; font-size: 11px; border-top: 1px solid var(--border); }
+footer a { color: var(--text2); text-decoration: none; }
+footer .live-date { color: #64748b; font-size: 10px; margin-top: 4px; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.wrap { animation: fadeInUp 0.4s ease-out; }
+.card { animation: fadeInUp 0.4s ease-out; animation-fill-mode: backwards; }
+.card:nth-child(1) { animation-delay: 0.02s; }
+.card:nth-child(2) { animation-delay: 0.04s; }
+.card:nth-child(3) { animation-delay: 0.06s; }
+.card:nth-child(4) { animation-delay: 0.08s; }
+.card:nth-child(5) { animation-delay: 0.10s; }
+.card:nth-child(6) { animation-delay: 0.12s; }
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+  .postcode-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+  .hero h1 { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🗺️ <span>Nikka's</span> Intel Hub</h1>
+  <p>Property intelligence archive — area analysis, market signals, deal sourcing, HMO data & research reports</p>
+  <div class="stats">
+    <div class="s">📊 <strong>31</strong> Area Intel Reports</div>
+    <div class="s">🏠 <strong>17</strong> Dashboard Reports</div>
+    <div class="s">📅 Updated <strong>22 May 2026</strong></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ===== PROPERTY MAPS ===== -->
+  <div class="section-title">🗺️ Property Maps <span class="count">(3)</span></div>
+  <div class="grid">
+    <a href="birmingham-property-map.html" class="card" data-file="birmingham-property-map.html">
+      <div class="icon">🏙️</div>
+      <h3>Birmingham Property Map</h3>
+      <p>Interactive property heatmap — prices, yields, demand across Birmingham postcodes</p>
+      <span class="badge badge-blue">Birmingham</span>
+    </a>
+
+      <div class="icon">🏙️</div>
+      <h3>Birmingham Property Map</h3>
+      <p>Interactive property heatmap — prices, yields, demand across Birmingham postcodes</p>
+      <span class="badge badge-blue">Birmingham</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="dudley-wolves-property-map.html" class="card" data-file="dudley-wolves-property-map.html">
+      <div class="icon">🏘️</div>
+      <h3>Dudley & Wolverhampton Map</h3>
+      <p>DY & WV postcode analysis — prices, yields, void risk, growth trends</p>
+      <span class="badge badge-blue">Black Country</span>
+    </a>
+
+      <div class="icon">🏘️</div>
+      <h3>Dudley & Wolverhampton Map</h3>
+      <p>DY & WV postcode analysis — prices, yields, void risk, growth trends</p>
+      <span class="badge badge-blue">Black Country</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="wm-void-heatmap.html" class="card" data-file="wm-void-heatmap.html">
+      <div class="icon">🔥</div>
+      <h3>WM Void Heatmap</h3>
+      <p>Void risk across 39 postcodes — avg days on market, turnover rates, rental demand</p>
+      <span class="badge badge-amber">39 Postcodes</span>
+    </a>
+
+      <div class="icon">🔥</div>
+      <h3>WM Void Heatmap</h3>
+      <p>Void risk across 39 postcodes — avg days on market, turnover rates, rental demand</p>
+      <span class="badge badge-amber">39 Postcodes</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+  </div>
+
+  <!-- ===== AREA INTELLIGENCE ===== -->
+  <div class="section-title">📋 Area Intelligence <span class="count">(31 postcodes)</span></div>
+
+  <div style="margin-bottom:6px"><span class="badge badge-purple" style="font-size:10px">DY — Dudley</span></div>
+  <div class="postcode-grid">
+    <a href="area-intelligence/DY1-intel.html">DY1</a>
+    <a href="area-intelligence/DY2-intel.html">DY2</a>
+    <a href="area-intelligence/DY3-intel.html">DY3</a>
+    <a href="area-intelligence/DY4-intel.html">DY4</a>
+    <a href="area-intelligence/DY5-intel.html">DY5</a>
+    <a href="area-intelligence/DY6-intel.html">DY6</a>
+    <a href="area-intelligence/DY7-intel.html">DY7</a>
+    <a href="area-intelligence/DY8-intel.html">DY8</a>
+    <a href="area-intelligence/DY9-intel.html">DY9</a>
+  </div>
+
+  <div style="margin-top:10px;margin-bottom:6px"><span class="badge badge-blue" style="font-size:10px">B — Birmingham</span></div>
+  <div class="postcode-grid">
+    <a href="area-intelligence/B64-intel.html">B64</a>
+    <a href="area-intelligence/B65-intel.html">B65</a>
+    <a href="area-intelligence/B66-intel.html">B66</a>
+    <a href="area-intelligence/B67-intel.html">B67</a>
+    <a href="area-intelligence/B68-intel.html">B68</a>
+    <a href="area-intelligence/B69-intel.html">B69</a>
+    <a href="area-intelligence/B70-intel.html">B70</a>
+    <a href="area-intelligence/B71-intel.html">B71</a>
+  </div>
+
+  <div style="margin-top:10px;margin-bottom:6px"><span class="badge badge-green" style="font-size:10px">WV — Wolverhampton</span></div>
+  <div class="postcode-grid">
+    <a href="area-intelligence/WV1-intel.html">WV1</a>
+    <a href="area-intelligence/WV2-intel.html">WV2</a>
+    <a href="area-intelligence/WV3-intel.html">WV3</a>
+    <a href="area-intelligence/WV4-intel.html">WV4</a>
+    <a href="area-intelligence/WV6-intel.html">WV6</a>
+    <a href="area-intelligence/WV7-intel.html">WV7</a>
+    <a href="area-intelligence/WV8-intel.html">WV8</a>
+    <a href="area-intelligence/WV9-intel.html">WV9</a>
+    <a href="area-intelligence/WV10-intel.html">WV10</a>
+    <a href="area-intelligence/WV11-intel.html">WV11</a>
+    <a href="area-intelligence/WV12-intel.html">WV12</a>
+    <a href="area-intelligence/WV13-intel.html">WV13</a>
+    <a href="area-intelligence/WV14-intel.html">WV14</a>
+  </div>
+
+  <div style="margin-top:10px;margin-bottom:6px"><span class="badge badge-amber" style="font-size:10px">WS — Walsall</span></div>
+  <div class="postcode-grid">
+    <a href="area-intelligence/WS1-intel.html">WS1</a>
+  </div>
+
+  <!-- ===== POSTCODE STRATEGY ===== -->
+  <div class="section-title">📈 Postcode Strategy <span class="count">(7)</span></div>
+  <div class="grid">
+    <a href="postcode_strategy_MAIN.html" class="card" data-file="postcode_strategy_MAIN.html">
+      <div class="icon">📊</div>
+      <h3>Postcode Strategy — Main Report</h3>
+      <p>Comprehensive postcode-by-postcode investment strategy across all WM areas</p>
+      <span class="badge badge-amber">Main Dashboard</span>
+    </a>
+
+      <div class="icon">📊</div>
+      <h3>Postcode Strategy — Main Report</h3>
+      <p>Comprehensive postcode-by-postcode investment strategy across all WM areas</p>
+      <span class="badge badge-amber">Main Dashboard</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="postcode-links.html" class="card" data-file="postcode-links.html">
+      <div class="icon">🔗</div>
+      <h3>Postcode Links & References</h3>
+      <p>Quick-access links to all postcode strategy breakdowns</p>
+      <span class="badge badge-blue">Reference</span>
+    </a>
+
+      <div class="icon">🔗</div>
+      <h3>Postcode Links & References</h3>
+      <p>Quick-access links to all postcode strategy breakdowns</p>
+      <span class="badge badge-blue">Reference</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+  </div>
+
+  <!-- ===== PROPERTY DEALS ===== -->
+  <div class="section-title">🏠 Property Deals <span class="count">(4)</span></div>
+  <div class="grid">
+    <a href="deals/deal-radar-MASTER.html" class="card" data-file="deals/deal-radar-MASTER.html">
+      <div class="icon">🎯</div>
+      <h3>Deal Radar — Master</h3>
+      <p>Consolidated deal radar — all scored BMV/BRRR/flip opportunities across WM</p>
+      <span class="badge badge-green">Master List</span>
+    </a>
+
+      <div class="icon">🎯</div>
+      <h3>Deal Radar — Master</h3>
+      <p>Consolidated deal radar — all scored BMV/BRRR/flip opportunities across WM</p>
+      <span class="badge badge-green">Master List</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="deals/deal-radar-2026-05-21.html" class="card" data-file="deals/deal-radar-2026-05-21.html">
+      <div class="icon">📡</div>
+      <h3>Deal Radar — Latest Scan</h3>
+      <p>21 May 2026 daily deal scan — new opportunities, scores, and recommendations</p>
+      <span class="badge badge-blue">21 May</span>
+    </a>
+
+      <div class="icon">📡</div>
+      <h3>Deal Radar — Latest Scan</h3>
+      <p>21 May 2026 daily deal scan — new opportunities, scores, and recommendations</p>
+      <span class="badge badge-blue">21 May</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="deals/daily-report_20260521.html" class="card" data-file="deals/daily-report_20260521.html">
+      <div class="icon">📋</div>
+      <h3>Daily Deal Report</h3>
+      <p>Full daily report with property details, BMV analysis, recommended actions</p>
+      <span class="badge badge-blue">21 May</span>
+    </a>
+
+      <div class="icon">📋</div>
+      <h3>Daily Deal Report</h3>
+      <p>Full daily report with property details, BMV analysis, recommended actions</p>
+      <span class="badge badge-blue">21 May</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="property_hunt_20260521.html" class="card" data-file="property_hunt_20260521.html">
+      <div class="icon">🏹</div>
+      <h3>Property Hunt — Daily</h3>
+      <p>Autonomous property investor daily hunt results — scored and prioritised</p>
+      <span class="badge badge-blue">21 May</span>
+    </a>
+
+      <div class="icon">🏹</div>
+      <h3>Property Hunt — Daily</h3>
+      <p>Autonomous property investor daily hunt results — scored and prioritised</p>
+      <span class="badge badge-blue">21 May</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+  </div>
+
+  <!-- ===== MARKET INTELLIGENCE ===== -->
+  <div class="section-title">📡 Market Intelligence <span class="count">(5)</span></div>
+  <div class="grid">
+    <a href="market_signals_MAIN.html" class="card" data-file="market_signals_MAIN.html">
+      <div class="icon">📶</div>
+      <h3>Market Signal Scanner</h3>
+      <p>Daily market signals + opportunity engine — price movements, trends, hotspots</p>
+      <span class="badge badge-purple">Daily</span>
+    </a>
+
+      <div class="icon">📶</div>
+      <h3>Market Signal Scanner</h3>
+      <p>Daily market signals + opportunity engine — price movements, trends, hotspots</p>
+      <span class="badge badge-purple">Daily</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="r2r_sa_intelligence_MAIN.html" class="card" data-file="r2r_sa_intelligence_MAIN.html">
+      <div class="icon">🛏️</div>
+      <h3>R2R & SA Intelligence</h3>
+      <p>Rent-to-Rent & Serviced Accommodation — market trends, regulations, yields</p>
+      <span class="badge badge-purple">Kimi K2.6</span>
+    </a>
+
+      <div class="icon">🛏️</div>
+      <h3>R2R & SA Intelligence</h3>
+      <p>Rent-to-Rent & Serviced Accommodation — market trends, regulations, yields</p>
+      <span class="badge badge-purple">Kimi K2.6</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="course_intel_MAIN.html" class="card" data-file="course_intel_MAIN.html">
+      <div class="icon">🎓</div>
+      <h3>Course Intelligence</h3>
+      <p>Property course video analysis — key takeaways, strategies, actionable insights</p>
+      <span class="badge badge-purple">DeepSeek Flash</span>
+    </a>
+
+      <div class="icon">🎓</div>
+      <h3>Course Intelligence</h3>
+      <p>Property course video analysis — key takeaways, strategies, actionable insights</p>
+      <span class="badge badge-purple">DeepSeek Flash</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="deal_analysis_learning_MAIN.html" class="card" data-file="deal_analysis_learning_MAIN.html">
+      <div class="icon">🧠</div>
+      <h3>Deal Analysis Learning</h3>
+      <p>Self-improving deal analysis — patterns, lessons learned, refined scoring</p>
+      <span class="badge badge-purple">Learning Loop</span>
+    </a>
+
+      <div class="icon">🧠</div>
+      <h3>Deal Analysis Learning</h3>
+      <p>Self-improving deal analysis — patterns, lessons learned, refined scoring</p>
+      <span class="badge badge-purple">Learning Loop</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="video_learning_MAIN.html" class="card" data-file="video_learning_MAIN.html">
+      <div class="icon">📺</div>
+      <h3>Video Learning</h3>
+      <p>Daily property video analysis — top 5 videos summarised with key takeaways</p>
+      <span class="badge badge-purple">Daily</span>
+    </a>
+
+      <div class="icon">📺</div>
+      <h3>Video Learning</h3>
+      <p>Daily property video analysis — top 5 videos summarised with key takeaways</p>
+      <span class="badge badge-purple">Daily</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+  </div>
+
+  <!-- ===== COMMERCIAL ===== -->
+  <div class="section-title">🏢 Commercial <span class="count">(3)</span></div>
+  <div class="grid">
+    <a href="commercial_high_street_MAIN.html" class="card" data-file="commercial_high_street_MAIN.html">
+      <div class="icon">🏪</div>
+      <h3>Commercial High Street Research</h3>
+      <p>High street commercial buildings & residential conversion opportunities</p>
+      <span class="badge badge-amber">Mon/Wed/Fri</span>
+    </a>
+
+      <div class="icon">🏪</div>
+      <h3>Commercial High Street Research</h3>
+      <p>High street commercial buildings & residential conversion opportunities</p>
+      <span class="badge badge-amber">Mon/Wed/Fri</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="commercial-property-intelligence_MAIN.html" class="card" data-file="commercial-property-intelligence_MAIN.html">
+      <div class="icon">🏢</div>
+      <h3>Commercial Property Intelligence</h3>
+      <p>Commercial strategy — Class E→C3, shop-with-flat, pub conversion analysis</p>
+      <span class="badge badge-amber">Daily</span>
+    </a>
+
+      <div class="icon">🏢</div>
+      <h3>Commercial Property Intelligence</h3>
+      <p>Commercial strategy — Class E→C3, shop-with-flat, pub conversion analysis</p>
+      <span class="badge badge-amber">Daily</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="commercial/daily-radar_20260521.html" class="card" data-file="commercial/daily-radar_20260521.html">
+      <div class="icon">📡</div>
+      <h3>Commercial Deal Radar</h3>
+      <p>Daily commercial deal scan — Rightmove Commercial, OTM, yield analysis</p>
+      <span class="badge badge-blue">21 May</span>
+    </a>
+
+      <div class="icon">📡</div>
+      <h3>Commercial Deal Radar</h3>
+      <p>Daily commercial deal scan — Rightmove Commercial, OTM, yield analysis</p>
+      <span class="badge badge-blue">21 May</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+  </div>
+
+  <!-- ===== LAND & PLANNING ===== -->
+  <div class="section-title">🏗️ Land & Planning <span class="count">(3)</span></div>
+  <div class="grid">
+    <a href="land-planning-uplift-intelligence_MAIN.html" class="card" data-file="land-planning-uplift-intelligence_MAIN.html">
+      <div class="icon">📐</div>
+      <h3>Land & Planning Uplift</h3>
+      <p>Land value analysis, planning permission uplift, development viability</p>
+      <span class="badge badge-green">Daily</span>
+    </a>
+
+      <div class="icon">📐</div>
+      <h3>Land & Planning Uplift</h3>
+      <p>Land value analysis, planning permission uplift, development viability</p>
+      <span class="badge badge-green">Daily</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="title-split-intelligence_MAIN.html" class="card" data-file="title-split-intelligence_MAIN.html">
+      <div class="icon">✂️</div>
+      <h3>Title Split Intelligence</h3>
+      <p>Title split & property subdivision analysis — viability, costs, returns across WM</p>
+      <span class="badge badge-green">Daily</span>
+    </a>
+
+      <div class="icon">✂️</div>
+      <h3>Title Split Intelligence</h3>
+      <p>Title split & property subdivision analysis — viability, costs, returns across WM</p>
+      <span class="badge badge-green">Daily</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="flats_leasehold_MAIN.html" class="card" data-file="flats_leasehold_MAIN.html">
+      <div class="icon">🏗️</div>
+      <h3>Flats & Leasehold Research</h3>
+      <p>UK flats and leasehold property investment — buying strategies, regulations</p>
+      <span class="badge badge-green">Tue/Thu</span>
+    </a>
+
+      <div class="icon">🏗️</div>
+      <h3>Flats & Leasehold Research</h3>
+      <p>UK flats and leasehold property investment — buying strategies, regulations</p>
+      <span class="badge badge-green">Tue/Thu</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+  </div>
+
+  <!-- ===== HMO DATA ===== -->
+  <div class="section-title">🏘️ HMO Data <span class="count">(3)</span></div>
+  <div class="grid">
+    <a href="hmo/hmo-rental-demand_2026-05-21.html" class="card" data-file="hmo/hmo-rental-demand_2026-05-21.html">
+      <div class="icon">📈</div>
+      <h3>HMO Rental Demand</h3>
+      <p>HMO room rental demand analysis — yields, occupancy, room rates across WM</p>
+      <span class="badge badge-blue">21 May</span>
+    </a>
+
+      <div class="icon">📈</div>
+      <h3>HMO Rental Demand</h3>
+      <p>HMO room rental demand analysis — yields, occupancy, room rates across WM</p>
+      <span class="badge badge-blue">21 May</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="supported_housing_MAIN.html" class="card" data-file="supported_housing_MAIN.html">
+      <div class="icon">🏥</div>
+      <h3>Supported Housing Research</h3>
+      <p>UK supported housing — regulations, referrals, yields, operational strategies</p>
+      <span class="badge badge-blue">Research</span>
+    </a>
+
+      <div class="icon">🏥</div>
+      <h3>Supported Housing Research</h3>
+      <p>UK supported housing — regulations, referrals, yields, operational strategies</p>
+      <span class="badge badge-blue">Research</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="postcode-strategy-2026-05-20.html" class="card" data-file="postcode-strategy-2026-05-20.html">
+      <div class="icon">🏛️</div>
+      <h3>Postcode Strategy Area Intel</h3>
+      <p>West Midlands area intelligence — comprehensive postcode-by-postcode analysis</p>
+      <span class="badge badge-amber">20 May</span>
+    </a>
+
+      <div class="icon">🏛️</div>
+      <h3>Postcode Strategy Area Intel</h3>
+      <p>West Midlands area intelligence — comprehensive postcode-by-postcode analysis</p>
+      <span class="badge badge-amber">20 May</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+  </div>
+
+  <!-- ===== OVERVIEW DASHBOARDS ===== -->
+  <div class="section-title">📊 Overview Dashboards <span class="count">(2)</span></div>
+  <div class="grid">
+    <a href="property-dashboard_MAIN.html" class="card" data-file="property-dashboard_MAIN.html">
+      <div class="icon">🏠</div>
+      <h3>Property Dashboard</h3>
+      <p>Central property intelligence dashboard — all data consolidated in one view</p>
+      <span class="badge badge-amber">Main Dashboard</span>
+    </a>
+
+      <div class="icon">🏠</div>
+      <h3>Property Dashboard</h3>
+      <p>Central property intelligence dashboard — all data consolidated in one view</p>
+      <span class="badge badge-amber">Main Dashboard</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+    <a href="dashboard_MAIN.html" class="card" data-file="dashboard_MAIN.html">
+      <div class="icon">📉</div>
+      <h3>Dashboard Overview</h3>
+      <p>High-level overview of all property research pipelines and outputs</p>
+      <span class="badge badge-amber">Overview</span>
+    </a>
+
+      <div class="icon">📉</div>
+      <h3>Dashboard Overview</h3>
+      <p>High-level overview of all property research pipelines and outputs</p>
+      <span class="badge badge-amber">Overview</span>
+      <div class="updated-badge loading">loading...</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <a href="/">← Tanoli Dashboard Hub</a> • Nikka's Intel Hub • Property Intelligence Engine
+  <div class="live-date" id="page-timestamp">Page generated: <span>loading...</span></div>
+</footer>
+
+<script>
+async function loadTimestamps() {
+  try {
+    const r = await fetch('manifest.json?' + Date.now());
+    const manifest = await r.json();
+    document.querySelectorAll('.card').forEach(card => {
+      const href = card.getAttribute('href');
+      if (!href) return;
+      const entry = manifest[href];
+      if (!entry) return;
+      const badge = card.querySelector('.updated-badge');
+      if (!badge) return;
+      const updated = entry.updated;
+      const day = parseInt(updated.split(' ')[0]);
+      const now = new Date();
+      const today = now.getDate();
+      if (day === today) { badge.textContent = 'Updated today'; badge.style.color = '#22c55e'; }
+      else if (day === today - 1) { badge.textContent = 'Updated yesterday'; badge.style.color = '#f59e0b'; }
+      else { badge.textContent = 'Updated ' + updated; }
+    });
+    document.getElementById('page-timestamp').querySelector('span').textContent = new Date().toLocaleString('en-GB', { timeZone: 'Europe/London', day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }) + ' BST';
+  } catch(e) {
+    document.querySelectorAll('.updated-badge').forEach(b => { b.textContent = 'unavailable'; b.style.color = '#ef4444'; });
+    document.getElementById('page-timestamp').querySelector('span').textContent = 'unavailable';
+  }
+}
+loadTimestamps();
+</script>
+
+</body>
+</html>
