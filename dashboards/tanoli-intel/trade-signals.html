@@ -3,67 +3,242 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📊 Tanoli Saab — Trade Signals</title>
+<title>Trade Signals — 2026-05-21</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
-:root { --bg: #0a0f1e; --bg2: #111827; --card: #1e293b; --border: #334155; --accent: #f59e0b; --green: #22c55e; --red: #ef4444; --blue: #3b82f6; --text: #f1f5f9; --text2: #94a3b8; --rad: 12px; }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; padding: 20px; max-width: 1200px; margin: 0 auto; }
-.hero { background: linear-gradient(135deg, #0a0f1e 0%, #1e3a5f 40%, #0d9488 100%); padding: 36px 24px 28px; text-align: center; border-radius: 12px; margin-bottom: 20px; }
-.hero h1 { font-size: 1.8rem; font-weight: 800; }
-.hero h1 .accent { color: var(--accent); }
-.hero .badge { display: inline-block; background: rgba(255,255,255,0.08); padding: 3px 12px; border-radius: 100px; font-size: 11px; color: var(--text2); margin-top: 8px; }
-.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 20px 0; }
-.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 16px; text-align: center; }
-.stat-card .value { font-size: 1.6rem; font-weight: 700; }
-.stat-card .label { color: var(--text2); font-size: 0.8rem; margin-top: 4px; }
-.table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); margin-bottom: 16px; }
-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-th { background: var(--bg2); padding: 0.6rem 0.8rem; text-align: left; color: var(--text2); font-weight: 600; border-bottom: 1px solid var(--border); }
-td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--bg2); }
-tr:hover td { background: rgba(255,255,255,0.02); }
-.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 16px; margin-bottom: 12px; }
-.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
-.tag-green { background: rgba(34,197,94,0.15); color: var(--green); }
-.tag-red { background: rgba(239,68,68,0.15); color: var(--red); }
-.tag-blue { background: rgba(59,130,246,0.15); color: var(--blue); }
-.tag-amber { background: rgba(245,158,11,0.15); color: var(--accent); }
-.footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--border); color: var(--text2); font-size: 0.8rem; text-align: center; }
+:root {
+  --bg: #0a0f1e;
+  --bg2: #111827;
+  --card: #1e293b;
+  --border: #334155;
+  --accent: #f59e0b;
+  --green: #22c55e;
+  --red: #ef4444;
+  --blue: #3b82f6;
+  --text: #f1f5f9;
+  --text2: #94a3b8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 { font-size: 24px; margin-bottom: 4px; }
+h2 { font-size: 18px; margin: 24px 0 12px; color: var(--blue); }
+p, .subtitle { color: var(--text2); font-size: 13px; margin-bottom: 16px; }
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-card .num {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.stat-card .label {
+  font-size: 11px;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* Tables */
+.table-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+th {
+  background: var(--bg2);
+  color: var(--text2);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+tr:last-child td { border-bottom: none; }
+tr:hover { background: rgba(255,255,255,0.03); }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.tag-buy { background: rgba(34,197,94,0.15); color: var(--green); }
+.tag-sell { background: rgba(239,68,68,0.15); color: var(--red); }
+.tag-watch { background: rgba(245,158,11,0.15); color: var(--accent); }
+
+/* Chart */
+.chart-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.green { color: var(--green); }
+.red { color: var(--red); }
+.accent { color: var(--accent); }
+.text2 { color: var(--text2); }
 </style>
 </head>
 <body>
-<div class="hero">
-  <h1>📊 <span class="accent">Tanoli Saab</span> — Trade Signals</h1>
-  <div class="badge">Placeholder — send your first dashboard via Telegram</div>
-</div>
+
+<h1>📊 Tanoli Saab — Trade Signals</h1>
+<p class="subtitle">2026-05-21 · Automated Trading Pipeline</p>
 
 <div class="stats-grid">
   <div class="stat-card">
-    <div class="value" style="color: var(--blue)">--</div>
-    <div class="label">Total Trades</div>
+    <div class="num">£10,000</div>
+    <div class="label">Stocks Portfolio</div>
   </div>
   <div class="stat-card">
-    <div class="value" style="color: var(--green)">--</div>
-    <div class="label">Wins</div>
+    <div class="num">£10,000</div>
+    <div class="label">Crypto Portfolio</div>
   </div>
   <div class="stat-card">
-    <div class="value" style="color: var(--red)">--</div>
-    <div class="label">Losses</div>
+    <div class="num">£20,000</div>
+    <div class="label">Total Value</div>
   </div>
   <div class="stat-card">
-    <div class="value" style="color: var(--accent)">--</div>
-    <div class="label">Win Rate</div>
+    <div class="num">0</div>
+    <div class="label">Open Positions</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">4</div>
+    <div class="label">Active Crons</div>
   </div>
 </div>
 
-<div class="card" style="text-align: center; border-color: var(--accent);">
-  <div class="card-title" style="margin-bottom: 8px;">📤 Upload Your First Dashboard</div>
-  <p style="color: var(--text2); font-size: 0.85rem;">
-    Send your HTML file to Wadda Khan via Telegram. It'll appear here within the next batch upload.
-  </p>
+<h2>📡 Active Cron Schedule</h2>
+<div class="table-wrap">
+<table>
+<tr><th>Time (UK)</th><th>Job</th><th>Script</th></tr>
+<tr><td>05:30 Mon-Fri</td><td>Strategy Mapper</td><td>strategy_mapper.py</td></tr>
+<tr><td>14:30 Mon-Fri</td><td>Signal Executor</td><td>signal_executor.py</td></tr>
+<tr><td>16:00 Daily</td><td>Portfolio Update</td><td>portfolio_daily_update.py</td></tr>
+<tr><td>21:00 Mon-Fri</td><td>Power Hour Check</td><td>power_hour_check.py</td></tr>
+</table>
 </div>
 
-<div class="footer">
-  Generated by Tanoli Saab · thetanoli.com
+<h2>🛠️ System Status</h2>
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="num green">12</div>
+    <div class="label">Scripts Built</div>
+  </div>
+  <div class="stat-card">
+    <div class="num green">7</div>
+    <div class="label">Skills Imported</div>
+  </div>
+  <div class="stat-card">
+    <div class="num green">4</div>
+    <div class="label">Crons Active</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">2</div>
+    <div class="label">Portfolios</div>
+  </div>
 </div>
+
+<h2>📋 Latest Signals</h2>
+<div class="card">
+  <p class="text2">No active signals yet. Portfolios initialised at £10k each.<br>
+  Signal executor runs next at <strong>14:30 UK today</strong> (Mon-Fri).</p>
+</div>
+
+<div class="chart-wrap">
+  <canvas id="portfolioChart" height="80"></canvas>
+</div>
+
+<p style="color:var(--text2);font-size:11px;margin-top:24px;text-align:center">
+  Generated by Hermes (Tanoli Saab) · 2026-05-21 · Git push auto-deploy
+</p>
+
+<script>
+const ctx = document.getElementById('portfolioChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['2026-05-21'],
+    datasets: [{
+      label: 'Stocks',
+      data: [10000],
+      borderColor: '#22c55e',
+      backgroundColor: 'rgba(34,197,94,0.1)',
+      tension: 0.3,
+      fill: true
+    }, {
+      label: 'Crypto',
+      data: [10000],
+      borderColor: '#3b82f6',
+      backgroundColor: 'rgba(59,130,246,0.1)',
+      tension: 0.3,
+      fill: true
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { labels: { color: '#94a3b8' } }
+    },
+    scales: {
+      x: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } },
+      y: { ticks: { color: '#94a3b8', callback: v => '£' + v.toLocaleString() }, grid: { color: '#334155' } }
+    }
+  }
+});
+</script>
 </body>
 </html>
