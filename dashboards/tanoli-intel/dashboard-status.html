@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanoli Intel — Dashboard Status</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #020617; color: #e2e8f0; font-family: system-ui, -apple-system, sans-serif; padding: 2rem; }
+  h1 { font-size: 1.5rem; color: #facc15; margin-bottom: 0.5rem; }
+  .sub { color: #94a3b8; margin-bottom: 2rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 0.75rem; padding: 1.25rem; }
+  .card h2 { font-size: 1rem; color: #facc15; margin-bottom: 0.5rem; }
+  .card .status { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+  .live { background: #166534; color: #bbf7d0; }
+  .cron { color: #94a3b8; font-size: 0.8rem; margin-top: 0.5rem; font-family: monospace; }
+  .card p { font-size: 0.85rem; color: #cbd5e1; margin-top: 0.3rem; }
+  .footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #334155; font-size: 0.8rem; color: #64748b; text-align: center; }
+</style>
+</head>
+<body>
+<h1>🟢 Tanoli Intel — Dashboard Status</h1>
+<p class="sub">Last verified: 23 May 2026 | All pipelines intact post-consolidation</p>
+<div class="grid">
+
+<div class="card">
+  <h2>📊 Stocks Scan</h2>
+  <span class="status live">● LIVE</span>
+  <p class="cron">35 14 * * 1-5 | ID: 8fc68e4d2af5</p>
+  <p>15 tickers, technical signals, Reddit sentiment</p>
+</div>
+
+<div class="card">
+  <h2>📈 Options Scan</h2>
+  <span class="status live">● LIVE</span>
+  <p class="cron">35 14 * * 1-5 | ID: 39e49157b6dd</p>
+  <p>14 tickers, unusual volume/OI, IV spikes</p>
+</div>
+
+<div class="card">
+  <h2>🪙 Stocks Report</h2>
+  <span class="status live">● LIVE</span>
+  <p class="cron">00 08 * * 1-5</p>
+  <p>Learning agent daily analysis</p>
+</div>
+
+<div class="card">
+  <h2>💰 Trade Signals</h2>
+  <span class="status live">● LIVE</span>
+  <p class="cron">00 16 * * *</p>
+  <p>Portfolio update + P&L tracking</p>
+</div>
+
+<div class="card">
+  <h2>🪙 Crypto Scan</h2>
+  <span class="status live">● LIVE</span>
+  <p class="cron">00 06,18 * * *</p>
+  <p>Top 50 coin signals, dual 0-10 scoring</p>
+</div>
+
+<div class="card">
+  <h2>📖 Trading KB</h2>
+  <span class="status live">● LIVE</span>
+  <p class="cron">00 05 * * *</p>
+  <p>Strategy knowledge base, assessments</p>
+</div>
+
+<div class="card">
+  <h2>💼 Portfolio</h2>
+  <span class="status live">● LIVE</span>
+  <p class="cron">00 16 * * *</p>
+  <p>Dual portfolio: stocks £10k + crypto £10k</p>
+</div>
+
+<div class="card">
+  <h2>⚡ Test Push</h2>
+  <span class="status live">● PASSED</span>
+  <p class="cron">git push → kokallimited2/thetanoli.com</p>
+  <p>Commit e4de5ab confirmed</p>
+</div>
+
+</div>
+<div class="footer">
+  Khan Lala 👑 · Skill consolidation 191→135 skills complete · All deploy paths verified
+</div>
+</body>
+</html>
