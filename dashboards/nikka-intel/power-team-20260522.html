@@ -93,6 +93,36 @@
             background: #1e3a5f;
             color: var(--accent);
         }
+        .url-cell { white-space: nowrap; text-align: center; min-width: 90px; }
+        .url-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.15s;
+            margin: 1px;
+        }
+        .url-btn:hover { transform: scale(1.15); }
+        .url-website { background: #1a3a5f; }
+        .url-website:hover { background: #1e4a7f; }
+        .url-maps { background: #1a3a2e; }
+        .url-maps:hover { background: #1e4a3e; }
+        .url-fb { background: #1a2a4e; }
+        .url-fb:hover { background: #1e3a6e; }
+        .url-check { background: #1a3a1e; color: var(--green); }
+        .url-check:hover { background: #1e4a2e; }
+        .url-gas { background: #3a1a1a; }
+        .url-gas:hover { background: #4a2a2a; }
+        .url-mb { background: #2a1a3a; }
+        .url-mb:hover { background: #3a2a4a; }
+        .url-rp { background: #3a3a1a; }
+        .url-rp:hover { background: #4a4a2a; }
+        .url-search { background: #1e293b; }
+        .url-search:hover { background: #273548; }
         
         .nav-bar {
             display: flex;
@@ -165,7 +195,7 @@
 <body>
 <div class="page-wrap">
     <h1>🔵 Power Team — West Midlands</h1>
-    <div class="subtitle">Vetted tradespeople for Kokal Properties · Scored 0-10 · Nikka Khan — 22 May 2026 02:51</div>
+    <div class="subtitle">Vetted tradespeople for Kokal Properties · Scored 0-10 · Nikka Khan — 22 May 2026 03:01</div>
     
     <div class="stats-row">
         <div class="stat-card"><div class="num accent">22</div><div class="label">Tradespeople Found</div></div>
@@ -192,7 +222,7 @@
             <div class="table-scroll">
                 <table>
                     <thead>
-                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th><th>Links</th></tr>
                     </thead>
                     <tbody>
             <tr>
@@ -203,6 +233,7 @@
                 <td style="color:#22c55e;font-weight:600">8.0</td>
                 <td><span class="score-bar">████████░░</span></td>
                 <td><span class="source-badge">Checkatrade</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/PH+Jones+Plumbing+Dudley" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a><a href="https://www.checkatrade.com/search/ph+jones+plumbing+dudley" target="_blank" class="url-btn url-check" title="Checkatrade">✓</a></td>
             </tr>
             <tr>
                 <td class="rank">2</td>
@@ -212,6 +243,7 @@
                 <td style="color:#f59e0b;font-weight:600">6.8</td>
                 <td><span class="score-bar">██████░░░░</span></td>
                 <td><span class="source-badge">Google</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Wolverhampton+PlumbCare" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a></td>
             </tr>
             <tr>
                 <td class="rank">3</td>
@@ -221,6 +253,7 @@
                 <td style="color:#f59e0b;font-weight:600">6.8</td>
                 <td><span class="score-bar">██████░░░░</span></td>
                 <td><span class="source-badge">Ratedpeople</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/A1+Plumbers+Dudley" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a><a href="https://www.ratedpeople.com/search/a1-plumbers-dudley" target="_blank" class="url-btn url-rp" title="Rated People">⭐</a></td>
             </tr></tbody>
                 </table>
             </div>
@@ -237,7 +270,7 @@
             <div class="table-scroll">
                 <table>
                     <thead>
-                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th><th>Links</th></tr>
                     </thead>
                     <tbody>
             <tr>
@@ -248,6 +281,7 @@
                 <td style="color:#22c55e;font-weight:600">9.0</td>
                 <td><span class="score-bar">█████████░</span></td>
                 <td><span class="source-badge">Checkatrade</span></td>
+                <td class="url-cell"><a href="https://dwelectrical-services.co.uk" target="_blank" class="url-btn url-website" title="Website">🌐</a><a href="https://www.google.com/maps/search/DW+Electrical+Services+Brierley+Hill" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a><a href="https://www.facebook.com/dwelectricalserviceslilydale/" target="_blank" class="url-btn url-fb" title="Facebook">📘</a></td>
             </tr>
             <tr>
                 <td class="rank">2</td>
@@ -257,6 +291,7 @@
                 <td style="color:#22c55e;font-weight:600">7.5</td>
                 <td><span class="score-bar">███████░░░</span></td>
                 <td><span class="source-badge">Ratedpeople</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Wolverhampton+Electrical+Pro" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a></td>
             </tr>
             <tr>
                 <td class="rank">3</td>
@@ -266,6 +301,7 @@
                 <td style="color:#22c55e;font-weight:600">7.2</td>
                 <td><span class="score-bar">███████░░░</span></td>
                 <td><span class="source-badge">Google</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Tipton+Electricians" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a></td>
             </tr></tbody>
                 </table>
             </div>
@@ -282,7 +318,7 @@
             <div class="table-scroll">
                 <table>
                     <thead>
-                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th><th>Links</th></tr>
                     </thead>
                     <tbody>
             <tr>
@@ -293,6 +329,7 @@
                 <td style="color:#22c55e;font-weight:600">7.2</td>
                 <td><span class="score-bar">███████░░░</span></td>
                 <td><span class="source-badge">Checkatrade</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Midland+Plastering+Dudley" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a><a href="https://www.checkatrade.com/search/midland+plastering+dudley" target="_blank" class="url-btn url-check" title="Checkatrade">✓</a></td>
             </tr>
             <tr>
                 <td class="rank">2</td>
@@ -302,6 +339,7 @@
                 <td style="color:#f59e0b;font-weight:600">6.8</td>
                 <td><span class="score-bar">██████░░░░</span></td>
                 <td><span class="source-badge">Google</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Dudley+Plastering+Services" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a></td>
             </tr></tbody>
                 </table>
             </div>
@@ -322,7 +360,7 @@
             <div class="table-scroll">
                 <table>
                     <thead>
-                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th><th>Links</th></tr>
                     </thead>
                     <tbody>
             <tr>
@@ -333,6 +371,7 @@
                 <td style="color:#22c55e;font-weight:600">8.5</td>
                 <td><span class="score-bar">████████░░</span></td>
                 <td><span class="source-badge">Checkatrade</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/SureCraft+Roofing+Dudley" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a><a href="https://www.checkatrade.com/search/surecraft+roofing+dudley" target="_blank" class="url-btn url-check" title="Checkatrade">✓</a></td>
             </tr>
             <tr>
                 <td class="rank">2</td>
@@ -342,6 +381,7 @@
                 <td style="color:#22c55e;font-weight:600">8.0</td>
                 <td><span class="score-bar">████████░░</span></td>
                 <td><span class="source-badge">Checkatrade</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Central+Roofing+Wolverhampton" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a><a href="https://www.checkatrade.com/search/central+roofing+wolverhampton" target="_blank" class="url-btn url-check" title="Checkatrade">✓</a></td>
             </tr>
             <tr>
                 <td class="rank">3</td>
@@ -351,6 +391,7 @@
                 <td style="color:#f59e0b;font-weight:600">6.8</td>
                 <td><span class="score-bar">██████░░░░</span></td>
                 <td><span class="source-badge">Google</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Apex+Roofing+Services+Wolverhampton" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a></td>
             </tr></tbody>
                 </table>
             </div>
@@ -367,7 +408,7 @@
             <div class="table-scroll">
                 <table>
                     <thead>
-                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th><th>Links</th></tr>
                     </thead>
                     <tbody>
             <tr>
@@ -378,6 +419,7 @@
                 <td style="color:#22c55e;font-weight:600">7.8</td>
                 <td><span class="score-bar">███████░░░</span></td>
                 <td><span class="source-badge">Checkatrade</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Dudley+Carpentry+and+Joinery" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a><a href="https://www.checkatrade.com/search/dudley+carpentry+joinery" target="_blank" class="url-btn url-check" title="Checkatrade">✓</a></td>
             </tr>
             <tr>
                 <td class="rank">2</td>
@@ -387,6 +429,7 @@
                 <td style="color:#f59e0b;font-weight:600">6.8</td>
                 <td><span class="score-bar">██████░░░░</span></td>
                 <td><span class="source-badge">Ratedpeople</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/KJP+Carpentry+Stourbridge" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a></td>
             </tr></tbody>
                 </table>
             </div>
@@ -403,7 +446,7 @@
             <div class="table-scroll">
                 <table>
                     <thead>
-                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th><th>Links</th></tr>
                     </thead>
                     <tbody>
             <tr>
@@ -414,6 +457,7 @@
                 <td style="color:#22c55e;font-weight:600">8.0</td>
                 <td><span class="score-bar">████████░░</span></td>
                 <td><span class="source-badge">Checkatrade</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/FreshCoat+Decorators+Dudley" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a><a href="https://www.checkatrade.com/search/freshcoat+decorators+dudley" target="_blank" class="url-btn url-check" title="Checkatrade">✓</a></td>
             </tr>
             <tr>
                 <td class="rank">2</td>
@@ -423,6 +467,7 @@
                 <td style="color:#f59e0b;font-weight:600">5.8</td>
                 <td><span class="score-bar">█████░░░░░</span></td>
                 <td><span class="source-badge">Google</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/PL+Painting+Services+Brierley+Hill" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a></td>
             </tr></tbody>
                 </table>
             </div>
@@ -439,7 +484,7 @@
             <div class="table-scroll">
                 <table>
                     <thead>
-                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th><th>Links</th></tr>
                     </thead>
                     <tbody>
             <tr>
@@ -450,6 +495,7 @@
                 <td style="color:#22c55e;font-weight:600">9.0</td>
                 <td><span class="score-bar">█████████░</span></td>
                 <td><span class="source-badge">Gas-Safe-Register</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Gas+Safe+Engineer+Dudley" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a><a href="https://www.gassaferegister.co.uk/find-an-engineer/" target="_blank" class="url-btn url-gas" title="Gas Safe Register">🔥</a></td>
             </tr>
             <tr>
                 <td class="rank">2</td>
@@ -459,6 +505,7 @@
                 <td style="color:#22c55e;font-weight:600">7.2</td>
                 <td><span class="score-bar">███████░░░</span></td>
                 <td><span class="source-badge">Checkatrade</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Tipton+Gas+Services" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a><a href="https://www.checkatrade.com/search/tipton+gas+services" target="_blank" class="url-btn url-check" title="Checkatrade">✓</a></td>
             </tr></tbody>
                 </table>
             </div>
@@ -475,7 +522,7 @@
             <div class="table-scroll">
                 <table>
                     <thead>
-                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th><th>Links</th></tr>
                     </thead>
                     <tbody>
             <tr>
@@ -486,6 +533,7 @@
                 <td style="color:#22c55e;font-weight:600">7.5</td>
                 <td><span class="score-bar">███████░░░</span></td>
                 <td><span class="source-badge">Checkatrade</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Mr+Handyman+Dudley" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a><a href="https://www.checkatrade.com/search/mr+handyman+dudley" target="_blank" class="url-btn url-check" title="Checkatrade">✓</a></td>
             </tr>
             <tr>
                 <td class="rank">2</td>
@@ -495,6 +543,7 @@
                 <td style="color:#f59e0b;font-weight:600">5.8</td>
                 <td><span class="score-bar">█████░░░░░</span></td>
                 <td><span class="source-badge">Google</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Handy+Squad+Wolverhampton" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a></td>
             </tr></tbody>
                 </table>
             </div>
@@ -511,7 +560,7 @@
             <div class="table-scroll">
                 <table>
                     <thead>
-                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th><th>Links</th></tr>
                     </thead>
                     <tbody>
             <tr>
@@ -522,6 +571,7 @@
                 <td style="color:#22c55e;font-weight:600">8.0</td>
                 <td><span class="score-bar">████████░░</span></td>
                 <td><span class="source-badge">Checkatrade</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/Dudley+Building+Solutions" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a><a href="https://www.checkatrade.com/search/dudley+building+solutions" target="_blank" class="url-btn url-check" title="Checkatrade">✓</a></td>
             </tr>
             <tr>
                 <td class="rank">2</td>
@@ -531,6 +581,7 @@
                 <td style="color:#f59e0b;font-weight:600">6.2</td>
                 <td><span class="score-bar">██████░░░░</span></td>
                 <td><span class="source-badge">Mybuilder</span></td>
+                <td class="url-cell"><a href="https://www.google.com/maps/search/MJ+Construction+Kingswinford" target="_blank" class="url-btn url-maps" title="Google Maps">🗺️</a></td>
             </tr></tbody>
                 </table>
             </div>
@@ -579,7 +630,7 @@
     </div>
     
     <div class="footer">
-        ⚡ Generated by Nikka Khan · 22 May 2026 02:51<br>
+        ⚡ Generated by Nikka Khan · 22 May 2026 03:01<br>
         <span style="font-size:12px;color:var(--text-dim)">Sources: Checkatrade, Google Maps, Trustpilot, Rated People, MyBuilder · Updated weekly</span><br>
         <span style="font-size:11px;color:#475569">🏠 <a href="index.html" style="color:#58a6ff">Dashboard Home</a> · 🔥 <a href="brrr-sourcer.html" style="color:#58a6ff">BRRR Deals</a> · 📋 <a href="strategy-brrr-hmo-playbook.html" style="color:#58a6ff">Strategy</a> · 🗺️ <a href="area-intelligence/" style="color:#58a6ff">Area Intel</a></span>
     </div>
