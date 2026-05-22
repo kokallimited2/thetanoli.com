@@ -7,31 +7,33 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; }
-h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 12px; margin-bottom: 8px; font-size: 28px; }
-.subtitle { color: #8b949e; font-size: 14px; margin-bottom: 24px; }
-h2 { color: #58a6ff; margin: 30px 0 15px; font-size: 22px; border-bottom: 1px solid #21262d; padding-bottom: 8px; }
-h3 { color: #f0f6fc; margin: 15px 0 8px; font-size: 16px; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; overflow-wrap: break-word; word-break: break-word; max-width: 100%; }
+.page-wrap { max-width: 1100px; margin: 0 auto; }
+h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 12px; margin-bottom: 8px; font-size: 32px; }
+.subtitle { color: #8b949e; font-size: 16px; margin-bottom: 24px; }
+h2 { color: #58a6ff; margin: 30px 0 15px; font-size: 26px; border-bottom: 1px solid #21262d; padding-bottom: 8px; }
+h3 { color: #f0f6fc; margin: 15px 0 8px; font-size: 18px; }
 .map-container { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin: 15px 0; }
-.map-title { color: #f0f6fc; font-size: 18px; font-weight: 600; margin-bottom: 12px; }
-.map-title span { color: #8b949e; font-size: 13px; font-weight: 400; }
-svg { width: 100%; height: auto; }
+.map-title { color: #f0f6fc; font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+.map-title span { color: #8b949e; font-size: 14px; font-weight: 400; }
+svg { width: 100%; height: auto; display: block; }
 .legend { display: flex; flex-wrap: wrap; gap: 15px; margin: 12px 0; }
-.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #8b949e; }
-.legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 14px; color: #8b949e; }
+.legend-dot { width: 14px; height: 14px; border-radius: 50%; }
 .zone-A { fill: rgba(63, 185, 80, 0.25); stroke: #3fb950; }
 .zone-B { fill: rgba(210, 153, 34, 0.2); stroke: #d29922; }
 .zone-C { fill: rgba(248, 81, 73, 0.15); stroke: #f85149; }
 .premium { fill: rgba(88, 166, 255, 0.2); stroke: #58a6ff; }
-.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; margin: 10px 0; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 18px; margin: 12px 0; }
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin: 15px 0; }
-.stat { text-align: center; padding: 12px; background: #0d1117; border-radius: 8px; }
-.stat-num { font-size: 24px; font-weight: bold; color: #58a6ff; }
-.stat-label { font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+.stat { text-align: center; padding: 14px; background: #0d1117; border-radius: 8px; }
+.stat-num { font-size: 28px; font-weight: bold; color: #58a6ff; }
+.stat-label { font-size: 13px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
 .verdict-buy { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: #1b3d1b; color: #3fb950; }
 .verdict-watch { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: #3d2e00; color: #d29922; }
 .verdict-pass { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: #3d1111; color: #f85149; }
-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
 th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #30363d; }
 th { background: #161b22; color: #58a6ff; font-weight: 600; }
 tr:hover { background: #1c2128; }
@@ -41,12 +43,13 @@ tr:hover { background: #1c2128; }
 .bar-gold { background: #d29922; }
 .bar-blue { background: #58a6ff; }
 .bar-red { background: #f85149; }
-.footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #30363d; color: #8b949e; font-size: 12px; }
+.footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #30363d; color: #8b949e; font-size: 14px; }
 .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; }
 @media (max-width: 700px) { .chart-row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <h1>🏘️ Dudley & Wolverhampton — Property Investment Map</h1>
 <p class="subtitle">BRRR targets • Rental demand • Avg prices & rents • Key areas • May 2026</p>
@@ -145,6 +148,7 @@ tr:hover { background: #1c2128; }
 <!-- DUDLEY Data Table -->
 <div class="card">
   <h3>DY Postcode Comparison</h3>
+  <div class="table-scroll">
   <table>
     <tr><th>Area</th><th>Postcode</th><th>Avg Price</th><th>Avg Rent 2-bed</th><th>Yield Est.</th><th>Demand</th><th>Grade</th></tr>
     <tr><td>Dudley Centre</td><td>DY1</td><td>£180k</td><td>£650-750</td><td>4.5-5.5%</td><td>Medium</td><td><span class="verdict-watch">B</span></td></tr>
@@ -157,11 +161,12 @@ tr:hover { background: #1c2128; }
     <tr><td>Stourbridge</td><td>DY8</td><td>£280k</td><td>£700-850</td><td>3.5-4.5%</td><td>Medium</td><td><span class="verdict-pass">P</span></td></tr>
     <tr><td>Lye/Hagley</td><td>DY9</td><td>£210k</td><td>£625-725</td><td>4-5%</td><td>Medium</td><td><span class="verdict-watch">B</span></td></tr>
   </table>
-</div>
+</div></div>
 
 <!-- DUDLEY BRRR Targets -->
 <div class="card" style="border-color:#3fb950;">
   <h3 style="color:#3fb950;">🎯 Dudley BRRR Target</h3>
+  <div class="table-scroll">
   <table>
     <tr><th>Price</th><th>Address</th><th>Type</th><th>Beds</th><th>Added</th><th>Link</th></tr>
     <tr>
@@ -173,7 +178,8 @@ tr:hover { background: #1c2128; }
       <td><a href="https://www.rightmove.co.uk/properties/166573325" target="_blank" style="color:#58a6ff;">View</a></td>
     </tr>
   </table>
-</div>
+</div></div>
+
 
 <!-- Chart: Dudley Prices vs Rents -->
 <div class="chart-row">
@@ -296,6 +302,7 @@ tr:hover { background: #1c2128; }
 <!-- WV Data Table -->
 <div class="card">
   <h3>WV Postcode Comparison</h3>
+  <div class="table-scroll">
   <table>
     <tr><th>Area</th><th>Postcode</th><th>Avg Price</th><th>Avg Rent 2-bed</th><th>Yield Est.</th><th>Demand</th><th>Grade</th><th>Score</th></tr>
     <tr><td><strong>City Centre</strong></td><td><strong>WV1</strong></td><td><strong>£163k</strong></td><td><strong>£700-850</strong></td><td><strong>5.4%</strong></td><td><strong>🟢 High</strong></td><td><span class="verdict-buy">A</span></td><td>8.5/10</td></tr>
@@ -310,11 +317,12 @@ tr:hover { background: #1c2128; }
     <tr><td><strong>Willenhall ⭐⭐</strong></td><td><strong>WV13</strong></td><td><strong>£155k</strong></td><td><strong>£600-700</strong></td><td><strong>4.5%</strong></td><td><strong>🟡 Medium</strong></td><td><span class="verdict-watch">B</span></td><td>7/10</td></tr>
     <tr><td><strong>Bilston ⭐</strong></td><td><strong>WV14</strong></td><td><strong>£160k</strong></td><td><strong>£650-750</strong></td><td><strong>4.9%</strong></td><td><strong>🟢 High</strong></td><td><span class="verdict-buy">A</span></td><td>8/10</td></tr>
   </tbody></table>
-</div>
+</div></div>
 
 <!-- WV BRRR Targets -->
 <div class="card" style="border-color:#3fb950;">
   <h3 style="color:#3fb950;">🎯 Wolverhampton BRRR Targets (5 found)</h3>
+  <div class="table-scroll">
   <table>
     <tr><th>Price</th><th>Address</th><th>Type</th><th>Beds</th><th>Area</th></tr>
     <tr><td><strong>£145,000</strong></td><td>Lime Street, Wolverhampton</td><td>Terrace</td><td>3</td><td>WV3</td></tr>
@@ -323,7 +331,7 @@ tr:hover { background: #1c2128; }
     <tr><td><strong>£150,000</strong></td><td>Gipsy Lane, Willenhall</td><td>Terrace</td><td>2</td><td>WV13</td></tr>
     <tr><td><strong>£150,000</strong></td><td>Albany Crescent, Bilston</td><td>Semi</td><td>2</td><td>WV14</td></tr>
   </tbody></table>
-</div>
+</div></div>
 
 <!-- Chart: WV Yields and Scores -->
 <div class="chart-row">
@@ -341,7 +349,7 @@ tr:hover { background: #1c2128; }
 <div class="card">
   <h3>📋 What's Actually Selling — STC Prices vs BRRR Targets</h3>
   <canvas id="stcChart" height="120"></canvas>
-  <div style="margin-top: 12px; color: #8b949e; font-size: 12px;">
+  <div style="margin-top: 12px; color: #8b949e; font-size: 14px;">
     STC avg: <strong style="color:#d29922;">£164k</strong> | BRRR target range: <strong style="color:#3fb950;">£145k-£150k</strong> | Gap: <strong style="color:#f85149;">£14k-£19k</strong>
   </div>
 </div>
@@ -349,34 +357,34 @@ tr:hover { background: #1c2128; }
 <!-- Summary verdict -->
 <div class="card" style="margin-top: 20px; border-color: #58a6ff;">
   <h3 style="color: #58a6ff;">🎯 Investment Verdict</h3>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 10px;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 10px;">
     <div>
-      <div style="color: #3fb950; font-weight: 600; font-size: 14px;">✅ Best BRRR Areas</div>
-      <div style="color: #8b949e; font-size: 12px; margin-top: 5px;">
+      <div style="color: #3fb950; font-weight: 600; font-size: 16px;">✅ Best BRRR Areas</div>
+      <div style="color: #8b949e; font-size: 14px; margin-top: 5px;">
         • <strong>WV14 Bilston</strong> — Albany Cres £150k<br>
         • <strong>WV3 Penn</strong> — Lime St £145k<br>
         • <strong>DY2 Netherton</strong> — Ivanhoe St £150k
       </div>
     </div>
     <div>
-      <div style="color: #d29922; font-weight: 600; font-size: 14px;">📈 Best Yields</div>
-      <div style="color: #8b949e; font-size: 12px; margin-top: 5px;">
+      <div style="color: #d29922; font-weight: 600; font-size: 16px;">📈 Best Yields</div>
+      <div style="color: #8b949e; font-size: 14px; margin-top: 5px;">
         • <strong>WV11 Wednesfield</strong> — 5.4% yield<br>
         • <strong>WV1 City Centre</strong> — 5.4% yield<br>
         • <strong>WV10 Bushbury</strong> — 5.3% yield
       </div>
     </div>
     <div>
-      <div style="color: #f85149; font-weight: 600; font-size: 14px;">⚠️ Watch Out</div>
-      <div style="color: #8b949e; font-size: 12px; margin-top: 5px;">
+      <div style="color: #f85149; font-weight: 600; font-size: 16px;">⚠️ Watch Out</div>
+      <div style="color: #8b949e; font-size: 14px; margin-top: 5px;">
         • Most DY houses under £150k are auctions<br>
         • WV12/WV13 need street-level cherry-picking<br>
         • Coal mining risk in DY/WV — CON29M essential
       </div>
     </div>
     <div>
-      <div style="color: #58a6ff; font-weight: 600; font-size: 14px;">📊 Market Pulse</div>
-      <div style="color: #8b949e; font-size: 12px; margin-top: 5px;">
+      <div style="color: #58a6ff; font-weight: 600; font-size: 16px;">📊 Market Pulse</div>
+      <div style="color: #8b949e; font-size: 14px; margin-top: 5px;">
         • Rents rising faster than prices (+11.7%)<br>
         • Supply constrained — 155 SpareRoom listings<br>
         • STC avg £164k → BRRR targets £145k-150k
@@ -485,6 +493,6 @@ new Chart(document.getElementById('stcChart'), {
   }
 });
 </script>
-
+</div>
 </body>
 </html>
