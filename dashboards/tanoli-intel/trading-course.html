@@ -1,802 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stock Trading Master Course — Complete (191 Videos)</title>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trading Knowledge Base — 2026-05-22 01:22 UK</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-:root { --bg: #0f172a; --bg2: #1e293b; --card: #1e293b; --accent: #f59e0b; --accent2: #22c55e; --accent3: #3b82f6; --text: #f1f5f9; --text2: #94a3b8; --text3: #64748b; --border: #334155; --rad: 12px; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-    .hero { background: linear-gradient(135deg, #0f172a 0%, #065f46 50%, #0d9488 100%); padding: 50px 24px 40px; text-align: center; }
-    .hero h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; }
-    .hero h1 em { color: var(--accent); font-style: normal; }
-    .hero p { color: var(--text2); font-size: 14px; }
-    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin: 24px 0; }
-    .stat { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 20px; text-align: center; }
-    .stat .num { font-size: 2rem; font-weight: 800; color: var(--accent); }
-    .stat .label { font-size: 12px; color: var(--text3); }
-    .day-section { margin-bottom: 8px; }
-    .day-heading { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 14px 20px; cursor: pointer; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; }
-    .day-heading:hover { border-color: var(--accent); }
-    .toggle { font-size: 14px; color: var(--text3); }
-    .day-count { font-size: 12px; color: var(--text3); margin-left: auto; }
-    .day-body { padding: 16px; display: block; }
-    .day-strats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-    .tag { background: rgba(59,130,246,.12); color: #60a5fa; padding: 2px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; }
-    .tag.price-action { background: rgba(59,130,246,.15); color: #60a5fa; }
-    .tag.candlestick-patterns { background: rgba(245,158,11,.15); color: var(--accent); }
-    .tag.options-trading { background: rgba(139,92,246,.15); color: #a78bfa; }
-    .tag.swing-trading { background: rgba(34,197,94,.15); color: var(--accent2); }
-    .tag.day-trading { background: rgba(239,68,68,.15); color: #f87171; }
-    .tag.risk-management { background: rgba(251,191,36,.15); color: #fbbf24; }
-    .tag.ict-smc { background: rgba(168,85,247,.15); color: #c084fc; }
-    table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    th { background: var(--bg); color: var(--text); padding: 10px 12px; text-align: left; border-bottom: 2px solid var(--border); font-weight: 700; }
-    td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text2); }
-    tr:hover td { background: rgba(255,255,255,.02); }
-    a { color: var(--text); text-decoration: none; }
-    a:hover { color: var(--accent3); }
-    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; color: var(--text3); font-size: 12px; margin-top: 30px; }
-
-/* Animations */
-@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-body { animation: fadeIn 0.4s ease-out; }
-</style>
-<script type="text/javascript">
-(function(c,l,a,r,i,t,y){
-    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-})(window, document, "clarity", "script", "YOUR_CLARITY_PROJECT_ID");
-</script>
-</head>
-<body>
+body { background:#0d1117; color:#e6edf3; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; margin:0; font-size:16px; line-height:1.7; padding:0; }
+.container { max-width:1000px; margin:0 auto; padding:24px 28px; }
+h1 { font-size:2rem; font-weight:800; margin:0; }
+.hero { background:linear-gradient(135deg,#f59e0b,#d97706); border-radius:10px; padding:20px 24px; margin-bottom:24px; }
+.hero h1 { color:#0d1117; }
+.hero p { color:#422006; margin:6px 0 0; opacity:0.85; }
+.stats { display:flex; gap:16px; margin:20px 0; flex-wrap:wrap; }
+.stat { background:#161b22; border:1px solid #30363d; border-radius:10px; padding:14px 22px; text-align:center; min-width:120px; }
+.stat .num { font-size:26px; font-weight:800; color:#f59e0b; }
+.stat .label { font-size:11px; color:#8b949e; text-transform:uppercase; letter-spacing:0.5px; }
+.cat-section { background:#161b22; border:1px solid #30363d; border-radius:10px; margin-bottom:14px; overflow:hidden; }
+.cat-header { padding:14px 18px; cursor:pointer; display:flex; align-items:center; gap:12px; user-select:none; }
+.cat-header:hover { background:#1c2128; }
+.cat-header h2 { margin:0; font-size:1.1rem; font-weight:700; color:#f0f6fc; }
+.cat-count { font-size:12px; color:#8b949e; font-weight:400; margin-left:8px; }
+.toggle-hint { font-size:11px; color:#8b949e; margin-left:auto; }
+.cat-body { padding:0 18px 14px; }
+.cat-body.collapsed { display:none; }
+.vid-entry { background:#0d1117; border:1px solid #30363d; border-radius:8px; padding:12px 16px; margin:8px 0; }
+.vid-title { font-size:14px; font-weight:600; margin-bottom:4px; }
+.vid-title a { color:#58a6ff; text-decoration:none; }
+.vid-title a:hover { text-decoration:underline; }
+.vid-meta { color:#8b949e; font-size:12px; margin-bottom:6px; }
+.strategy-list { margin:6px 0 0; padding-left:18px; font-size:13px; color:#c9d1d9; }
+.strategy-list li { margin:4px 0; }
+.no-strat { color:#8b949e; font-size:12px; font-style:italic; margin:4px 0; }
+.footer { text-align:center; color:#8b949e; font-size:12px; margin-top:32px; padding-top:16px; border-top:1px solid #30363d; }
+@media (max-width:768px) { .container { padding:16px; } }
+</style></head><body>
+<div class="container">
 <div class="hero">
-    <div class="day-badge" style="display:inline-block;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);color:var(--accent);padding:4px 14px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:12px;">📊 COMPLETE COURSE</div>
-    <h1>Stock Trading <em>Master Course</em></h1>
-    <p>191 videos • 12740 minutes • 6 days • All strategies covered</p>
+<h1>📚 Trading Knowledge Base</h1>
+<p>2026-05-22 01:22 UK — Daily scan of trading strategies across stocks, shares, options &amp; crypto</p>
 </div>
-<div class="wrap">
-    <div class="stats">
-        <div class="stat"><div class="num">191</div><div class="label">Total Videos</div></div>
-        <div class="stat"><div class="num">12740</div><div class="label">Total Minutes</div></div>
-        <div class="stat"><div class="num">6</div><div class="label">Days</div></div>
-        <div class="stat"><div class="num">212h 20m</div><div class="label">Total Hours</div></div>
-    </div>
-    
-    <h2 style="margin:24px 0 16px;font-size:1.2rem;">📋 All Days (click to expand)</h2>
-    
-        <div class="day-section">
-            <h2 class="day-heading" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.toggle').textContent = this.querySelector('.toggle').textContent === '▶' ? '▼' : '▶'">
-                <span class="toggle">▼</span> Day 1 — May 11, 2026 <span class="day-count">20 videos</span>
-            </h2>
-            <div class="day-body">
-                <div class="day-strats"><span class="tag">Beginners Guide: 8</span><span class="tag">Candlestick Patterns: 2</span><span class="tag">General Trading: 1</span><span class="tag">Momentum Trading: 1</span><span class="tag">Options Trading: 2</span><span class="tag">Price Action: 1</span><span class="tag">Technical Analysis: 3</span><span class="tag">Unknown: 2</span></div>
-                <table>
-                    <tr><th>#</th><th>Strategy</th><th>Title</th><th>Channel</th><th>Min</th><th>Key Concepts</th></tr>
-                    
-            <tr>
-                <td>1</td>
-                <td><span class="tag technical-analysis">Technical Analysis</span></td>
-                <td><a href="https://www.youtube.com/watch?v=EyBQpflvb_0" target="_blank">12 HOURS Technical Analysis FULL COURSE! The ONE Trading Vid</a></td>
-                <td>Mete Kaplan</td>
-                <td>724</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Entry, Exit</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=aobHuNcI1QM" target="_blank">How To Start Day Trading As A Beginner In 2026 (9 hours)</a></td>
-                <td>TJR</td>
-                <td>543</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Entry, Exit</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td><span class="tag options-trading">Options Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=sCzdZCb0LlI" target="_blank">Options Trading for Beginners 2026 FULL FREE COURSE (6+ Hour</a></td>
-                <td>Invest with Henry</td>
-                <td>363</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Entry, Exit</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td><span class="tag unknown">Unknown</span></td>
-                <td><a href="https://www.youtube.com/watch?v=YW3A5deSxiA" target="_blank">Learn Technical Analysis Completely (Free Course)</a></td>
-                <td>Punch</td>
-                <td>340</td>
-                <td style="font-size:12px;color:var(--text3)">Transcript unavailable</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=SHJHpedYh6A" target="_blank">Beginners Guide To Start Day Trading In 2026 (5 hours)</a></td>
-                <td>TJR</td>
-                <td>315</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Entry, Exit</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td><span class="tag price-action">Price Action</span></td>
-                <td><a href="https://www.youtube.com/watch?v=OmZZarBK_M8" target="_blank">Pure "PRICE ACTION Mastery" Course🔥 | 3+ Hours of Price acti</a></td>
-                <td>Fortune Talks </td>
-                <td>207</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Position Size, Entry</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td><span class="tag unknown">Unknown</span></td>
-                <td><a href="https://www.youtube.com/watch?v=KwS0XZb4qGA" target="_blank">Complete Price Action Course in 3 Hours | Basic to Advanced </a></td>
-                <td>Price Lesson हिंदी</td>
-                <td>196</td>
-                <td style="font-size:12px;color:var(--text3)">Transcript unavailable</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td><span class="tag general-trading">General Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=oxob0x0Xz7s" target="_blank">The Ultimate Day Trading Guide (Full Training Chapters 1 - 1</a></td>
-                <td>Ross Cameron - Warrior Trading</td>
-                <td>186</td>
-                <td style="font-size:12px;color:var(--text3)">Position Size, Entry, Exit, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td><span class="tag options-trading">Options Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=7PM4rNDr4oI" target="_blank">Options Trading for Beginners (The ULTIMATE In-Depth Guide)</a></td>
-                <td>projectoption</td>
-                <td>173</td>
-                <td style="font-size:12px;color:var(--text3)">Entry, Exit, Support, Volume, Volatility</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=u11tIO9AdP4" target="_blank">How to Start Day Trading As A Beginner [2025 Full Guide]</a></td>
-                <td>Riley Coleman</td>
-                <td>167</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Support, Resistance, Trend Line</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=_YVQN6_nkfs" target="_blank">Trading for Beginners Part 1 - FULL TRADING COURSE TUTORIAL</a></td>
-                <td>Jason Graystone</td>
-                <td>146</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Position Size, Entry, Exit</td>
-            </tr>
-            <tr>
-                <td>12</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=mEyuQVy3OHc" target="_blank">The Ultimate Forex Trading Course (For Beginners)</a></td>
-                <td>Rayner Teo</td>
-                <td>130</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Position Size, Entry</td>
-            </tr>
-            <tr>
-                <td>13</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=prBIaSHKU-0" target="_blank">The Ultimate Forex Trading Course For Beginners~By Rayner Te</a></td>
-                <td>Online Trading Education </td>
-                <td>130</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Position Size, Entry</td>
-            </tr>
-            <tr>
-                <td>14</td>
-                <td><span class="tag candlestick-patterns">Candlestick Patterns</span></td>
-                <td><a href="https://www.youtube.com/watch?v=lEk4cSA7cqc" target="_blank">MASTER Candlestick Patterns in 125 Minutes (YES, IT'S FREE)</a></td>
-                <td>Mind Math Money</td>
-                <td>125</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Exit, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>15</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=8yDmq03XAHQ" target="_blank">The Only Fundamental Analysis Video You Will Ever Need... (F</a></td>
-                <td>Henry Chien (Buttonwood)</td>
-                <td>118</td>
-                <td style="font-size:12px;color:var(--text3)">Support, Resistance, Volume, Momentum, Divergence</td>
-            </tr>
-            <tr>
-                <td>16</td>
-                <td><span class="tag technical-analysis">Technical Analysis</span></td>
-                <td><a href="https://www.youtube.com/watch?v=ttPGkFAROWk" target="_blank">The Ultimate Technical Analysis Trading Course (For Beginner</a></td>
-                <td>Rayner Teo</td>
-                <td>111</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Position Size, Entry</td>
-            </tr>
-            <tr>
-                <td>17</td>
-                <td><span class="tag technical-analysis">Technical Analysis</span></td>
-                <td><a href="https://www.youtube.com/watch?v=BUCPPCXOHbs" target="_blank">The ONLY Technical Analysis Guide You'll Ever Need! (Beginne</a></td>
-                <td>Ross Cameron - Warrior Trading</td>
-                <td>101</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Take Profit, Entry, Exit, Support</td>
-            </tr>
-            <tr>
-                <td>18</td>
-                <td><span class="tag candlestick-patterns">Candlestick Patterns</span></td>
-                <td><a href="https://www.youtube.com/watch?v=_I1omSmy44Q" target="_blank">The Ultimate Candlestick Patterns Trading Course (For Beginn</a></td>
-                <td>Rayner Teo</td>
-                <td>101</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Take Profit, Entry, Exit, Support</td>
-            </tr>
-            <tr>
-                <td>19</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=y7iVTTH5tOA" target="_blank">The Ultimate Stock Trading Course (for Beginners)</a></td>
-                <td>Rayner Teo</td>
-                <td>97</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Position Size, Entry</td>
-            </tr>
-            <tr>
-                <td>20</td>
-                <td><span class="tag momentum-trading">Momentum Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=ZS8x6xK8-Vk" target="_blank">Ultimate Beginners Guide to Timing Entries & Exits for Momen</a></td>
-                <td>Ross Cameron - Warrior Trading</td>
-                <td>83</td>
-                <td style="font-size:12px;color:var(--text3)">Take Profit, Entry, Exit, Support, Resistance</td>
-            </tr>
-                </table>
-            </div>
-        </div>
-        <div class="day-section">
-            <h2 class="day-heading" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.toggle').textContent = this.querySelector('.toggle').textContent === '▶' ? '▼' : '▶'">
-                <span class="toggle">▼</span> Day 2 — May 12, 2026 <span class="day-count">20 videos</span>
-            </h2>
-            <div class="day-body">
-                <div class="day-strats"><span class="tag">Beginners Guide: 1</span><span class="tag">Candlestick Patterns: 2</span><span class="tag">Chart Patterns: 1</span><span class="tag">General Trading: 1</span><span class="tag">Options Trading: 4</span><span class="tag">Price Action: 2</span><span class="tag">Risk Management: 2</span><span class="tag">Swing Trading: 2</span><span class="tag">Technical Analysis: 2</span><span class="tag">Unknown: 1</span><span class="tag">Value Investing: 2</span></div>
-                <table>
-                    <tr><th>#</th><th>Strategy</th><th>Title</th><th>Channel</th><th>Min</th><th>Key Concepts</th></tr>
-                    
-            <tr>
-                <td>1</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=1F7rFzRSsqY" target="_blank">How to Start Day Trading in 2026 (Full 10-Hour BEGINNER Cour</a></td>
-                <td>The Trading Geek</td>
-                <td>637</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Position Size, Entry</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><span class="tag price-action">Price Action</span></td>
-                <td><a href="https://www.youtube.com/watch?v=pWkwxYR0eZY" target="_blank">9 HOURS Price Action COURSE! The ONLY Technical Analysis Vid</a></td>
-                <td>Mete Kaplan</td>
-                <td>523</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Entry, Exit</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td><span class="tag unknown">Unknown</span></td>
-                <td><a href="https://www.youtube.com/watch?v=NjyafjQYKmU" target="_blank">[Part 1] Complete Price Action Course - Basic to Super Advan</a></td>
-                <td>Trade Legend</td>
-                <td>340</td>
-                <td style="font-size:12px;color:var(--text3)">Transcript unavailable</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td><span class="tag options-trading">Options Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=u847cbKEWu0" target="_blank">Options Trading For Beginners (Complete 4 Hour Course)</a></td>
-                <td>Sky View Trading</td>
-                <td>236</td>
-                <td style="font-size:12px;color:var(--text3)">Take Profit, Position Size, Entry, Exit, Volatility</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td><span class="tag value-investing">Value Investing</span></td>
-                <td><a href="https://www.youtube.com/watch?v=MU34sVyJ_gg" target="_blank">Mastering the Buffett Formula: A Practical Guide to Value In</a></td>
-                <td>YT AudioBooks</td>
-                <td>183</td>
-                <td style="font-size:12px;color:var(--text3)">Exit, Volume, Momentum, Signal, Strategy</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td><span class="tag technical-analysis">Technical Analysis</span></td>
-                <td><a href="https://www.youtube.com/watch?v=UbmSxPOQRb4" target="_blank">17 Years In ONE Technical Analysis Course (Learn Trading Fro</a></td>
-                <td>The Secret Mindset</td>
-                <td>144</td>
-                <td style="font-size:12px;color:var(--text3)">Take Profit, Entry, Exit, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td><span class="tag risk-management">Risk Management</span></td>
-                <td><a href="https://www.youtube.com/watch?v=SMWMraeRDXs" target="_blank">The ULTIMATE Trading Risk Management Guide | Market Wizard T</a></td>
-                <td>TraderLion</td>
-                <td>84</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Take Profit, Position Size, Entry, Reversal</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td><span class="tag risk-
-
-... [OUTPUT TRUNCATED - 13959 chars omitted out of 63959 total] ...
-
-</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Entry, Exit</td>
-            </tr>
-            <tr>
-                <td>15</td>
-                <td><span class="tag swing-trading">Swing Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=KO7lX7-Fi7U" target="_blank">The Ultimate Swing Trading Guide For Beginners (ALL YOU NEED</a></td>
-                <td>The Trading Channel (The Trading Channel)</td>
-                <td>40</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Entry, Exit, Support</td>
-            </tr>
-            <tr>
-                <td>16</td>
-                <td><span class="tag candlestick-patterns">Candlestick Patterns</span></td>
-                <td><a href="https://www.youtube.com/watch?v=BfopLn_IoFM" target="_blank">ULTIMATE Candlestick Patterns Trading Guide *EXPERT INSTANTL</a></td>
-                <td>The Trading Geek</td>
-                <td>38</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>17</td>
-                <td><span class="tag candlestick-patterns">Candlestick Patterns</span></td>
-                <td><a href="https://www.youtube.com/watch?v=C3KRwfj9F8Q" target="_blank">The Ultimate Candlestick Patterns Trading Course (For Beginn</a></td>
-                <td>Rayner Teo</td>
-                <td>38</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Take Profit, Entry, Exit, Support</td>
-            </tr>
-            <tr>
-                <td>18</td>
-                <td><span class="tag day-trading">Day Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=uh5fCPGwByM" target="_blank">How To Day Trade For BEGINNERS In 2026 (Complete Guide)</a></td>
-                <td>Craig Percoco</td>
-                <td>37</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Entry, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>19</td>
-                <td><span class="tag swing-trading">Swing Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=i37xXd_wI5k" target="_blank">How to Start Swing Trading for Beginners 2026</a></td>
-                <td>Humbled Trader</td>
-                <td>37</td>
-                <td style="font-size:12px;color:var(--text3)">Take Profit, Entry, Exit, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>20</td>
-                <td><span class="tag technical-analysis">Technical Analysis</span></td>
-                <td><a href="https://www.youtube.com/watch?v=17dYvqJNtGA" target="_blank">FULL Technical Analysis Day Trading Guide 2025 (ALL Levels T</a></td>
-                <td>Craig Percoco</td>
-                <td>34</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Exit, Support, Resistance</td>
-            </tr>
-                </table>
-            </div>
-        </div>
-        <div class="day-section">
-            <h2 class="day-heading" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.toggle').textContent = this.querySelector('.toggle').textContent === '▶' ? '▼' : '▶'">
-                <span class="toggle">▼</span> Day 4 — May 22, 2026 <span class="day-count">9 videos</span>
-            </h2>
-            <div class="day-body">
-                <div class="day-strats"><span class="tag">Candlestick Patterns: 1</span><span class="tag">General Trading: 1</span><span class="tag">Options Trading: 1</span><span class="tag">Price Action: 1</span><span class="tag">Risk Management: 1</span><span class="tag">Technical Analysis: 1</span><span class="tag">Unknown: 2</span><span class="tag">Value Investing: 1</span></div>
-                <table>
-                    <tr><th>#</th><th>Strategy</th><th>Title</th><th>Channel</th><th>Min</th><th>Key Concepts</th></tr>
-                    
-            <tr>
-                <td>1</td>
-                <td><span class="tag options-trading">Options Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=0GSB5YZx9ZE" target="_blank">Options Trading for Beginners (The ULTIMATE In-Depth Guide)</a></td>
-                <td>projectoption</td>
-                <td>140</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Exit, Support, Volume</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><span class="tag general-trading">General Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=V44vd4sJcPs" target="_blank">Howard Marks: 78 Years of Investing Wisdom in 60 Minutes (MU</a></td>
-                <td>Investor Center</td>
-                <td>65</td>
-                <td style="font-size:12px;color:var(--text3)">Support, Continuation, Strategy</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td><span class="tag value-investing">Value Investing</span></td>
-                <td><a href="https://www.youtube.com/watch?v=dQHHUreY05o" target="_blank">Complete Guide To Value Investing By Sanjoy Bhattacharya</a></td>
-                <td>Wise Owl Wealth (WoW)</td>
-                <td>38</td>
-                <td style="font-size:12px;color:var(--text3)"></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td><span class="tag unknown">Unknown</span></td>
-                <td><a href="https://www.youtube.com/watch?v=gfGMtIoPJyY" target="_blank">How to Read Trading Charts Like a Pro (Full 35-Minute Course</a></td>
-                <td>Umar Punjabi</td>
-                <td>35</td>
-                <td style="font-size:12px;color:var(--text3)">Transcript unavailable</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td><span class="tag candlestick-patterns">Candlestick Patterns</span></td>
-                <td><a href="https://www.youtube.com/watch?v=ukbWRb4d5-s" target="_blank">The Ultimate Candlestick Trading Course</a></td>
-                <td>JeaFx</td>
-                <td>33</td>
-                <td style="font-size:12px;color:var(--text3)">Entry, Support, Resistance, Pullback, Reversal</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td><span class="tag price-action">Price Action</span></td>
-                <td><a href="https://www.youtube.com/watch?v=6SPAtTn_XoA" target="_blank">Price Action Trading Full Course | Price Action Trading</a></td>
-                <td>Stock Dictionary.</td>
-                <td>32</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Exit, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td><span class="tag risk-management">Risk Management</span></td>
-                <td><a href="https://www.youtube.com/watch?v=94GFz7tPKVE" target="_blank">The Last Risk Management Video You'll Ever Need to Become Pr</a></td>
-                <td>Justin Werlein </td>
-                <td>32</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Entry, Setup, Strategy</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td><span class="tag unknown">Unknown</span></td>
-                <td><a href="https://www.youtube.com/watch?v=aE9HrZT3Dmk" target="_blank">Price Action Free Masterclass | Learn Stock Market Trading</a></td>
-                <td>Pushkar Raj Thakur: Stock Market Educator 📈</td>
-                <td>30</td>
-                <td style="font-size:12px;color:var(--text3)">Transcript unavailable</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td><span class="tag technical-analysis">Technical Analysis</span></td>
-                <td><a href="https://www.youtube.com/watch?v=qjP31le61rM" target="_blank">Technical Analysis FULL Day Trading Course 2025 (All Levels </a></td>
-                <td>Craig Percoco</td>
-                <td>30</td>
-                <td style="font-size:12px;color:var(--text3)">Entry, Exit, Support, Resistance, Trend Line</td>
-            </tr>
-                </table>
-            </div>
-        </div>
-        <div class="day-section">
-            <h2 class="day-heading" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.toggle').textContent = this.querySelector('.toggle').textContent === '▶' ? '▼' : '▶'">
-                <span class="toggle">▼</span> Day 5 — May 22, 2026 <span class="day-count">20 videos</span>
-            </h2>
-            <div class="day-body">
-                <div class="day-strats"><span class="tag">Beginners Guide: 7</span><span class="tag">Candlestick Patterns: 2</span><span class="tag">Day Trading: 1</span><span class="tag">General Trading: 4</span><span class="tag">ICT / SMC: 1</span><span class="tag">Price Action: 3</span><span class="tag">Risk Management: 1</span><span class="tag">Unknown: 1</span></div>
-                <table>
-                    <tr><th>#</th><th>Strategy</th><th>Title</th><th>Channel</th><th>Min</th><th>Key Concepts</th></tr>
-                    
-            <tr>
-                <td>1</td>
-                <td><span class="tag ict-/-smc">ICT / SMC</span></td>
-                <td><a href="https://www.youtube.com/watch?v=IXSu0MClr34" target="_blank">Ultimate ICT & SMC Course (12 Hours)</a></td>
-                <td>Mulham Trading</td>
-                <td>713</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Entry, Support</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=LoUfmN8aZ9o" target="_blank">Volume Price Analysis: A Complete Guide of Volume Price Anal</a></td>
-                <td>Trading For Life</td>
-                <td>401</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Exit, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=IrpQyeFFfYg" target="_blank">The Ultimate Guide to Smart Investing | John C. Bogle | HD A</a></td>
-                <td>The Finance Audiobook Hub</td>
-                <td>304</td>
-                <td style="font-size:12px;color:var(--text3)">Entry, Exit, Support, Reversal, Volatility</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=2ByOXdddmDM" target="_blank">FULL Cryptocurrency Trading Course - From Beginner To EXPERT</a></td>
-                <td>MoneyZG</td>
-                <td>253</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Support, Resistance, Breakout</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=8IOi2tcYIhk" target="_blank">Beginners Guide To Forex Trading In 2025 (+3 hours)</a></td>
-                <td>Matt Donlevey - Photon Trading</td>
-                <td>207</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Position Size, Entry</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td><span class="tag risk-management">Risk Management</span></td>
-                <td><a href="https://www.youtube.com/watch?v=k20xl1nmmyI" target="_blank">The LAST Risk Management Trading Guide You'll Ever Need!</a></td>
-                <td>TraderLion</td>
-                <td>129</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Position Size, Entry</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td><span class="tag general-trading">General Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=FA7Q_9tmLaQ" target="_blank">Trading Discipline, The Discipline Trader by Mark Douglas | </a></td>
-                <td>Time Affairs</td>
-                <td>107</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Entry, Exit, Support, Momentum</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td><span class="tag price-action">Price Action</span></td>
-                <td><a href="https://www.youtube.com/watch?v=7rdixIbe9V4" target="_blank">MASTER Price Action in 105 Minutes (Premium Trading Course)</a></td>
-                <td>Mind Math Money</td>
-                <td>105</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Exit, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td><span class="tag price-action">Price Action</span></td>
-                <td><a href="https://www.youtube.com/watch?v=9jJM_OcnIug" target="_blank">The Ultimate Supply and Demand Trading Course (2025)</a></td>
-                <td>FX telepath</td>
-                <td>102</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Entry, Exit</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td><span class="tag general-trading">General Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=ICeHYLSXgYI" target="_blank">Master Trading Psychology in UNDER 83 Minutes with Rande How</a></td>
-                <td>Words of Rizdom</td>
-                <td>82</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Entry</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=GnlTeRXyuaI" target="_blank">The ULTIMATE Beginner’s Guide to SUPPORT & RESISTANCE</a></td>
-                <td>Mind Math Money</td>
-                <td>74</td>
-                <td style="font-size:12px;color:var(--text3)">Take Profit, Exit, Support, Resistance, Trend Line</td>
-            </tr>
-            <tr>
-                <td>12</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=noHsKFy7NgY" target="_blank">How to Start Day Trading for Beginners Step by Step in 2026 </a></td>
-                <td>fxalexg </td>
-                <td>71</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Take Profit, Entry, Exit, Support</td>
-            </tr>
-            <tr>
-                <td>13</td>
-                <td><span class="tag general-trading">General Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=MsyvJwwDKUU" target="_blank">Trading Psychology: Discipline Like a Pro Trader</a></td>
-                <td>Trading Psychology Stick</td>
-                <td>67</td>
-                <td style="font-size:12px;color:var(--text3)">Entry, Exit, Support, Resistance, Breakout</td>
-            </tr>
-            <tr>
-                <td>14</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=Tfztg6P4gV4" target="_blank">Day Trading For Dummies: 1-Hour Beginner Course</a></td>
-                <td>Master The Market</td>
-                <td>62</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Position Size, Exit, Support</td>
-            </tr>
-            <tr>
-                <td>15</td>
-                <td><span class="tag price-action">Price Action</span></td>
-                <td><a href="https://www.youtube.com/watch?v=2gIMJfB5bco" target="_blank">Secrets of Price Action Trading: 3 Steps to Master Your Trad</a></td>
-                <td>Urban Forex</td>
-                <td>59</td>
-                <td style="font-size:12px;color:var(--text3)">Support, Trend Line, Strategy</td>
-            </tr>
-            <tr>
-                <td>16</td>
-                <td><span class="tag candlestick-patterns">Candlestick Patterns</span></td>
-                <td><a href="https://www.youtube.com/watch?v=hEUALimWs7E" target="_blank">The Only Candlestick Patterns Trading Video You Will Ever Ne</a></td>
-                <td>The Trading Channel (The Trading Channel)</td>
-                <td>58</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Exit, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>17</td>
-                <td><span class="tag day-trading">Day Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=p1W8Mjl4kWs" target="_blank">High Accuracy 1 Minute Scalping Strategy (Full Training)</a></td>
-                <td>Ross Cameron - Warrior Trading</td>
-                <td>57</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Take Profit, Entry, Exit, Support</td>
-            </tr>
-            <tr>
-                <td>18</td>
-                <td><span class="tag candlestick-patterns">Candlestick Patterns</span></td>
-                <td><a href="https://www.youtube.com/watch?v=wC2Bbf6OMFQ" target="_blank">The RIGHT WAY to use Volume on Candlestick Charts (with ZERO</a></td>
-                <td>Ross Cameron - Warrior Trading</td>
-                <td>56</td>
-                <td style="font-size:12px;color:var(--text3)">Take Profit, Entry, Support, Resistance, Trend Line</td>
-            </tr>
-            <tr>
-                <td>19</td>
-                <td><span class="tag general-trading">General Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=qLtq73bTPBA" target="_blank">Breaking Down My SIMPLE Trading Strategy (step by step)</a></td>
-                <td>Tori Trades</td>
-                <td>55</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Take Profit, Position Size, Entry</td>
-            </tr>
-            <tr>
-                <td>20</td>
-                <td><span class="tag unknown">Unknown</span></td>
-                <td><a href="https://www.youtube.com/watch?v=mRuohN6NzBA" target="_blank">MASTER Smart Money Concepts in 49 Minutes (Complete SMC Cour</a></td>
-                <td>Mind Math Money</td>
-                <td>49</td>
-                <td style="font-size:12px;color:var(--text3)">Transcript unavailable</td>
-            </tr>
-                </table>
-            </div>
-        </div>
-        <div class="day-section">
-            <h2 class="day-heading" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'none' ? 'block' : 'none'; this.querySelector('.toggle').textContent = this.querySelector('.toggle').textContent === '▶' ? '▼' : '▶'">
-                <span class="toggle">▼</span> Day 6 — May 16, 2026 <span class="day-count">20 videos</span>
-            </h2>
-            <div class="day-body">
-                <div class="day-strats"><span class="tag">Beginners Guide: 3</span><span class="tag">Candlestick Patterns: 1</span><span class="tag">General Trading: 3</span><span class="tag">ICT / SMC: 1</span><span class="tag">Momentum Trading: 2</span><span class="tag">Price Action: 2</span><span class="tag">Risk Management: 1</span><span class="tag">Swing Trading: 1</span><span class="tag">Technical Analysis: 4</span><span class="tag">Unknown: 2</span></div>
-                <table>
-                    <tr><th>#</th><th>Strategy</th><th>Title</th><th>Channel</th><th>Min</th><th>Key Concepts</th></tr>
-                    
-            <tr>
-                <td>1</td>
-                <td><span class="tag unknown">Unknown</span></td>
-                <td><a href="https://www.youtube.com/watch?v=enwGyswTzUE" target="_blank">The Ultimate "Smart Money Course" Ever🔥 | Liquidity - Imbala</a></td>
-                <td>Fortune Talks </td>
-                <td>296</td>
-                <td style="font-size:12px;color:var(--text3)">Transcript unavailable</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><span class="tag unknown">Unknown</span></td>
-                <td><a href="https://www.youtube.com/watch?v=JwL8Sy-156Q" target="_blank">PRICE ACTION Trading FULL COURSE | Smart Money Concepts | Pr</a></td>
-                <td>Neeraj joshi</td>
-                <td>45</td>
-                <td style="font-size:12px;color:var(--text3)">Transcript unavailable</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td><span class="tag ict-/-smc">ICT / SMC</span></td>
-                <td><a href="https://www.youtube.com/watch?v=0ysRYbBr2NI" target="_blank">I Spent 500 Hours Learning Smart Money Concepts & ICT (Here'</a></td>
-                <td>The Secret Mindset</td>
-                <td>30</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Exit, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td><span class="tag technical-analysis">Technical Analysis</span></td>
-                <td><a href="https://www.youtube.com/watch?v=50rVEJhAWdA" target="_blank">Master Supply & Demand Trading (ULTIMATE In-Depth Guide)</a></td>
-                <td>The Trading Geek</td>
-                <td>28</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Take Profit, Entry, Support, Breakout</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td><span class="tag swing-trading">Swing Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=bYROdw0xJdc" target="_blank">How To Start SWING TRADING as Beginner in 2025 | Full Guide </a></td>
-                <td>fxalexg </td>
-                <td>28</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Take Profit, Entry, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td><span class="tag general-trading">General Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=N7SM8a7Dc9s" target="_blank">+$1,000,000 From One Simple Strategy</a></td>
-                <td>TJR</td>
-                <td>27</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Exit, Reversal, Continuation</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=xHU5MHuUSKI" target="_blank">How To Start Day Trading As A Beginner In 2025 [Full Tutoria</a></td>
-                <td>Craig Percoco</td>
-                <td>27</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Take Profit, Position Size, Entry, Continuation</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=CC6IxGsdrLE" target="_blank">How To Start Day Trading As A BEGINNER (2025 Tutorial)</a></td>
-                <td>Craig Percoco</td>
-                <td>26</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Take Profit, Position Size, Entry, Exit</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td><span class="tag price-action">Price Action</span></td>
-                <td><a href="https://www.youtube.com/watch?v=XtvgkfDEGB8" target="_blank">The Secrets of Price Action Trading (Precise Bar-By-Bar Inst</a></td>
-                <td>SMB Capital</td>
-                <td>26</td>
-                <td style="font-size:12px;color:var(--text3)">Entry, Exit, Resistance, Breakout, Volume</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td><span class="tag technical-analysis">Technical Analysis</span></td>
-                <td><a href="https://www.youtube.com/watch?v=VRYcu8fpE78" target="_blank">The Only Moving Average Guide You’ll Ever Need</a></td>
-                <td>Oliver Velez Trading</td>
-                <td>26</td>
-                <td style="font-size:12px;color:var(--text3)">Entry, Exit, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td><span class="tag risk-management">Risk Management</span></td>
-                <td><a href="https://www.youtube.com/watch?v=x5p5rBkeF6c" target="_blank">Position Sizing, Risk & Strategy: Trading for beginners - Pa</a></td>
-                <td>Jason Graystone</td>
-                <td>25</td>
-                <td style="font-size:12px;color:var(--text3)">Risk Management, Stop Loss, Position Size, Entry, Exit</td>
-            </tr>
-            <tr>
-                <td>12</td>
-                <td><span class="tag price-action">Price Action</span></td>
-                <td><a href="https://www.youtube.com/watch?v=Y-3ZwXPvHws" target="_blank">Your Support And Resistance & Trendlines Are Wrong (Here's W</a></td>
-                <td>Pro Trading School</td>
-                <td>25</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Take Profit, Entry, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>13</td>
-                <td><span class="tag momentum-trading">Momentum Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=JGy4WUVGwGE" target="_blank">The Missing Piece in Your Trading: Momentum</a></td>
-                <td>JeaFx</td>
-                <td>25</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Resistance, Pullback, Reversal</td>
-            </tr>
-            <tr>
-                <td>14</td>
-                <td><span class="tag technical-analysis">Technical Analysis</span></td>
-                <td><a href="https://www.youtube.com/watch?v=ovOebLQjKvE" target="_blank">(EASY) How To Make Thousands Off Of Chart Patterns | Technic</a></td>
-                <td>Kelly Ohgee</td>
-                <td>24</td>
-                <td style="font-size:12px;color:var(--text3)">Entry, Support, Resistance, Trend Line, Breakout</td>
-            </tr>
-            <tr>
-                <td>15</td>
-                <td><span class="tag momentum-trading">Momentum Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=_gvbOxMgt0Y" target="_blank">Market Momentum Masterclass (see the market clearly)</a></td>
-                <td>JeaFx</td>
-                <td>24</td>
-                <td style="font-size:12px;color:var(--text3)">Resistance, Pullback, Reversal, Continuation, Momentum</td>
-            </tr>
-            <tr>
-                <td>16</td>
-                <td><span class="tag beginners-guide">Beginners Guide</span></td>
-                <td><a href="https://www.youtube.com/watch?v=Jd8Xv1v51vU" target="_blank">Millionaire Explains: How to Invest for Beginners in 2026</a></td>
-                <td>Mark Tilbury</td>
-                <td>23</td>
-                <td style="font-size:12px;color:var(--text3)">Strategy</td>
-            </tr>
-            <tr>
-                <td>17</td>
-                <td><span class="tag general-trading">General Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=fV02FcLmFpA" target="_blank">26 Years Of Brutal Trading Advice in 23 Minutes</a></td>
-                <td>The Rumers</td>
-                <td>23</td>
-                <td style="font-size:12px;color:var(--text3)">Position Size, Exit, Support, Resistance, Signal</td>
-            </tr>
-            <tr>
-                <td>18</td>
-                <td><span class="tag general-trading">General Trading</span></td>
-                <td><a href="https://www.youtube.com/watch?v=VjXeD-Ez7VM" target="_blank">The Only Day Trading Strategy That Actually Works (Powerful </a></td>
-                <td>The Rumers</td>
-                <td>23</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Exit, Support, Resistance</td>
-            </tr>
-            <tr>
-                <td>19</td>
-                <td><span class="tag candlestick-patterns">Candlestick Patterns</span></td>
-                <td><a href="https://www.youtube.com/watch?v=XFtayhPIdEs" target="_blank">The “ONE CANDLE" Scalping Strategy I Will Use For Life</a></td>
-                <td>ProRealAlgos</td>
-                <td>23</td>
-                <td style="font-size:12px;color:var(--text3)">Stop Loss, Entry, Exit, Reversal, Volume</td>
-            </tr>
-            <tr>
-                <td>20</td>
-                <td><span class="tag technical-analysis">Technical Analysis</span></td>
-                <td><a href="https://www.youtube.com/watch?v=T5-R_hXUiH4" target="_blank">Nepse Technical Analysis for Beginners | Nepal Share Market </a></td>
-                <td>Trading Talks Nepal</td>
-                <td>23</td>
-                <td style="font-size:12px;color:var(--text3)">Support, Resistance</td>
-            </tr>
-                </table>
-            </div>
-        </div>
+<div class="stats">
+<div class="stat"><div class="num">10</div><div class="label">Videos Today</div></div>
+<div class="stat"><div class="num">7</div><div class="label">Strategy Categories</div></div>
+<div class="stat"><div class="num">25</div><div class="label">Strategies Found</div></div>
+<div class="stat"><div class="num">50</div><div class="label">Queries Searched</div></div>
 </div>
-<footer>
-    <p>Stock Trading Master Course — 10-Day Comprehensive Program • Auto-generated by AI trading research pipeline</p>
-</footer>
-</body>
-</html>
+
+        <div class="cat-section">
+            <div class="cat-header" onclick="this.nextElementSibling.classList.toggle('collapsed')">
+                <h2>Technical Analysis <span class="cat-count">8 videos</span></h2>
+                <span class="toggle-hint">▼ click to collapse</span>
+            </div>
+            <div class="cat-body">
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=ZudTPpJCbbA" target="_blank">▶️ How to Avoid False Breakouts (My Secret Technique)</a></div>
+                <div class="vid-meta">👁️ 4.3M views</div>
+                <ul class="strategy-list"><li>You set your support line, you set your resistance line, and wait for a breakout to happen.</li><li>So what happens is people usually wait for a breakout in either direction.</li><li>It s not a momentum candle, because it does not have a big body, so we wait for further confirmation.</li><li>Should we wait for a pullback to happen?</li><li>Rather than wait for a pullback, I m going to enter the trade at the close of this momentum candle.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=0L6Rcgp6j7Y" target="_blank">▶️ Four Price Action Secrets (The Ultimate Guide To Price Action)</a></div>
+                <div class="vid-meta">👁️ 2.2M views</div>
+                <ul class="strategy-list"><li>This means a lot more buyers are entering the market and gaining strength.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=lGhFX4Pwj6Y" target="_blank">▶️ Technical Analysis is Hard (until you see this)</a></div>
+                <div class="vid-meta">👁️ 2.0M views</div>
+                <ul class="strategy-list"><li>A long wick at the top of a green candle tells us that at some point within the day the price significantly exceeded the closing price, meaning that traders might have considered that to be the top and then decided to take profits at that top price, </li><li>So if a trade has surpassed your target, you can simply hold longer and set up a trailing stop loss.</li><li>Now, a trailing stop loss is a stop loss tool you can use that will follow the price of an asset by a dollar amount of your choice and then close your trade at the maximum amount of profits possible, completely on autopilot.</li><li>Typically, you wouldn't set up a trailing stop loss until your price target is already hit, and you just want to try and make a little bit more profit.</li><li>Now, understanding when to take profits can sometimes be tricky, but there's a solid rule you can remember and I think everyone should follow this.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=e-QmGJU1XYc" target="_blank">▶️ The Only Trading Strategy You'll Ever Need</a></div>
+                <div class="vid-meta">👁️ 1.9M views</div>
+                <ul class="strategy-list"><li>Which means,&nbsp; we should only look for bullish trades.</li><li>Since we are in an uptrend.&nbsp;&nbsp; We only look for long trades.</li><li>WE DO NOT look for any sell positions &nbsp; As shorting in a uptrend is just silly.</li><li>So now that we know we are in an uptrend,&nbsp;&nbsp; we want to look for demand zone opportunities.</li><li>&nbsp; We wait for price to re-enter into this&nbsp; zone and this is where we would enter.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=pCmJ8wsAS_w" target="_blank">▶️ Bollinger Band + RSI Trading Strategy That Actually Works</a></div>
+                <div class="vid-meta">👁️ 1.7M views</div>
+                <ul class="strategy-list"><li>The first step for this strategy is setting up the Bollinger bands.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=ZS8x6xK8-Vk" target="_blank">▶️ Ultimate Beginners Guide to Timing Entries & Exits for Momentum/Trend Trading</a></div>
+                <div class="vid-meta">👁️ 1.6M views</div>
+                <ul class="strategy-list"><li>So, I think you want to look for stocks that have you want to look for stocks that have you want to look for stocks that have the potential to go up at least 10 to the potential to go up at least 10 to the potential to go up at least 10 to 20%, but r</li><li>So, the micro pullback strategy is what we've got going on strategy is what we've got going on strategy is what we've got going on right here.</li><li>And then, we also will try to take profit on the ask.</li><li>And then, I can look for continuation to And then, I can look for continuation to And then, I can look for continuation to add back to my position.</li><li>I may just get in and then take profit through the breakout.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=nYKpik-o8zI" target="_blank">▶️ Fibonacci Retracement explained in under 5 minutes</a></div>
+                <div class="vid-meta">👁️ 1.6M views</div>
+                <ul class="strategy-list"><li>this video is going to be the easiest this video is going to be the easiest this video is going to be the easiest and fastest explanation of Fibonacci and fastest explanation of Fibonacci and fastest explanation of Fibonacci retracements when it come</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=-RTpm9ZNV-M" target="_blank">▶️ Master Institutional Supply and Demand Trading (ULTIMATE STRATEGY GUIDE)</a></div>
+                <div class="vid-meta">👁️ 1.6M views</div>
+                <ul class="strategy-list"><li>if you can Master supply and demand you if you can Master supply and demand you if you can Master supply and demand you will be able to trade with the large will be able to trade with the large will be able to trade with the large institutions find b</li></ul>
+            </div></div>
+        </div>
+        <div class="cat-section">
+            <div class="cat-header" onclick="this.nextElementSibling.classList.toggle('collapsed')">
+                <h2>Options Trading <span class="cat-count">2 videos</span></h2>
+                <span class="toggle-hint">▼ click to collapse</span>
+            </div>
+            <div class="cat-body">
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=lGhFX4Pwj6Y" target="_blank">▶️ Technical Analysis is Hard (until you see this)</a></div>
+                <div class="vid-meta">👁️ 2.0M views</div>
+                <ul class="strategy-list"><li>A long wick at the top of a green candle tells us that at some point within the day the price significantly exceeded the closing price, meaning that traders might have considered that to be the top and then decided to take profits at that top price, </li><li>So if a trade has surpassed your target, you can simply hold longer and set up a trailing stop loss.</li><li>Now, a trailing stop loss is a stop loss tool you can use that will follow the price of an asset by a dollar amount of your choice and then close your trade at the maximum amount of profits possible, completely on autopilot.</li><li>Typically, you wouldn't set up a trailing stop loss until your price target is already hit, and you just want to try and make a little bit more profit.</li><li>Now, understanding when to take profits can sometimes be tricky, but there's a solid rule you can remember and I think everyone should follow this.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=hM6hiV7M6MM" target="_blank">▶️ People are Wrong about Dividend Stocks. Here’s why</a></div>
+                <div class="vid-meta">👁️ 1.6M views</div>
+                <p class="no-strat">No specific strategy extracted — review transcript</p>
+            </div></div>
+        </div>
+        <div class="cat-section">
+            <div class="cat-header" onclick="this.nextElementSibling.classList.toggle('collapsed')">
+                <h2>Crypto Trading <span class="cat-count">3 videos</span></h2>
+                <span class="toggle-hint">▼ click to collapse</span>
+            </div>
+            <div class="cat-body">
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=0L6Rcgp6j7Y" target="_blank">▶️ Four Price Action Secrets (The Ultimate Guide To Price Action)</a></div>
+                <div class="vid-meta">👁️ 2.2M views</div>
+                <ul class="strategy-list"><li>This means a lot more buyers are entering the market and gaining strength.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=hM6hiV7M6MM" target="_blank">▶️ People are Wrong about Dividend Stocks. Here’s why</a></div>
+                <div class="vid-meta">👁️ 1.6M views</div>
+                <p class="no-strat">No specific strategy extracted — review transcript</p>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=nYKpik-o8zI" target="_blank">▶️ Fibonacci Retracement explained in under 5 minutes</a></div>
+                <div class="vid-meta">👁️ 1.6M views</div>
+                <ul class="strategy-list"><li>this video is going to be the easiest this video is going to be the easiest this video is going to be the easiest and fastest explanation of Fibonacci and fastest explanation of Fibonacci and fastest explanation of Fibonacci retracements when it come</li></ul>
+            </div></div>
+        </div>
+        <div class="cat-section">
+            <div class="cat-header" onclick="this.nextElementSibling.classList.toggle('collapsed')">
+                <h2>Day Trading <span class="cat-count">2 videos</span></h2>
+                <span class="toggle-hint">▼ click to collapse</span>
+            </div>
+            <div class="cat-body">
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=ZS8x6xK8-Vk" target="_blank">▶️ Ultimate Beginners Guide to Timing Entries & Exits for Momentum/Trend Trading</a></div>
+                <div class="vid-meta">👁️ 1.6M views</div>
+                <ul class="strategy-list"><li>So, I think you want to look for stocks that have you want to look for stocks that have you want to look for stocks that have the potential to go up at least 10 to the potential to go up at least 10 to the potential to go up at least 10 to 20%, but r</li><li>So, the micro pullback strategy is what we've got going on strategy is what we've got going on strategy is what we've got going on right here.</li><li>And then, we also will try to take profit on the ask.</li><li>And then, I can look for continuation to And then, I can look for continuation to And then, I can look for continuation to add back to my position.</li><li>I may just get in and then take profit through the breakout.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=nYKpik-o8zI" target="_blank">▶️ Fibonacci Retracement explained in under 5 minutes</a></div>
+                <div class="vid-meta">👁️ 1.6M views</div>
+                <ul class="strategy-list"><li>this video is going to be the easiest this video is going to be the easiest this video is going to be the easiest and fastest explanation of Fibonacci and fastest explanation of Fibonacci and fastest explanation of Fibonacci retracements when it come</li></ul>
+            </div></div>
+        </div>
+        <div class="cat-section">
+            <div class="cat-header" onclick="this.nextElementSibling.classList.toggle('collapsed')">
+                <h2>Risk Management <span class="cat-count">6 videos</span></h2>
+                <span class="toggle-hint">▼ click to collapse</span>
+            </div>
+            <div class="cat-body">
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=i5OZQQWj5-I" target="_blank">▶️ How To Start Trading Stocks As A Complete Beginner</a></div>
+                <div class="vid-meta">👁️ 5.3M views</div>
+                <ul class="strategy-list"><li>Did you&nbsp;&nbsp; move your stop loss?</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=ZudTPpJCbbA" target="_blank">▶️ How to Avoid False Breakouts (My Secret Technique)</a></div>
+                <div class="vid-meta">👁️ 4.3M views</div>
+                <ul class="strategy-list"><li>You set your support line, you set your resistance line, and wait for a breakout to happen.</li><li>So what happens is people usually wait for a breakout in either direction.</li><li>It s not a momentum candle, because it does not have a big body, so we wait for further confirmation.</li><li>Should we wait for a pullback to happen?</li><li>Rather than wait for a pullback, I m going to enter the trade at the close of this momentum candle.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=lGhFX4Pwj6Y" target="_blank">▶️ Technical Analysis is Hard (until you see this)</a></div>
+                <div class="vid-meta">👁️ 2.0M views</div>
+                <ul class="strategy-list"><li>A long wick at the top of a green candle tells us that at some point within the day the price significantly exceeded the closing price, meaning that traders might have considered that to be the top and then decided to take profits at that top price, </li><li>So if a trade has surpassed your target, you can simply hold longer and set up a trailing stop loss.</li><li>Now, a trailing stop loss is a stop loss tool you can use that will follow the price of an asset by a dollar amount of your choice and then close your trade at the maximum amount of profits possible, completely on autopilot.</li><li>Typically, you wouldn't set up a trailing stop loss until your price target is already hit, and you just want to try and make a little bit more profit.</li><li>Now, understanding when to take profits can sometimes be tricky, but there's a solid rule you can remember and I think everyone should follow this.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=e-QmGJU1XYc" target="_blank">▶️ The Only Trading Strategy You'll Ever Need</a></div>
+                <div class="vid-meta">👁️ 1.9M views</div>
+                <ul class="strategy-list"><li>Which means,&nbsp; we should only look for bullish trades.</li><li>Since we are in an uptrend.&nbsp;&nbsp; We only look for long trades.</li><li>WE DO NOT look for any sell positions &nbsp; As shorting in a uptrend is just silly.</li><li>So now that we know we are in an uptrend,&nbsp;&nbsp; we want to look for demand zone opportunities.</li><li>&nbsp; We wait for price to re-enter into this&nbsp; zone and this is where we would enter.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=ZS8x6xK8-Vk" target="_blank">▶️ Ultimate Beginners Guide to Timing Entries & Exits for Momentum/Trend Trading</a></div>
+                <div class="vid-meta">👁️ 1.6M views</div>
+                <ul class="strategy-list"><li>So, I think you want to look for stocks that have you want to look for stocks that have you want to look for stocks that have the potential to go up at least 10 to the potential to go up at least 10 to the potential to go up at least 10 to 20%, but r</li><li>So, the micro pullback strategy is what we've got going on strategy is what we've got going on strategy is what we've got going on right here.</li><li>And then, we also will try to take profit on the ask.</li><li>And then, I can look for continuation to And then, I can look for continuation to And then, I can look for continuation to add back to my position.</li><li>I may just get in and then take profit through the breakout.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=-RTpm9ZNV-M" target="_blank">▶️ Master Institutional Supply and Demand Trading (ULTIMATE STRATEGY GUIDE)</a></div>
+                <div class="vid-meta">👁️ 1.6M views</div>
+                <ul class="strategy-list"><li>if you can Master supply and demand you if you can Master supply and demand you if you can Master supply and demand you will be able to trade with the large will be able to trade with the large will be able to trade with the large institutions find b</li></ul>
+            </div></div>
+        </div>
+        <div class="cat-section">
+            <div class="cat-header" onclick="this.nextElementSibling.classList.toggle('collapsed')">
+                <h2>Trading Psychology <span class="cat-count">2 videos</span></h2>
+                <span class="toggle-hint">▼ click to collapse</span>
+            </div>
+            <div class="cat-body">
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=i5OZQQWj5-I" target="_blank">▶️ How To Start Trading Stocks As A Complete Beginner</a></div>
+                <div class="vid-meta">👁️ 5.3M views</div>
+                <ul class="strategy-list"><li>Did you&nbsp;&nbsp; move your stop loss?</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=-RTpm9ZNV-M" target="_blank">▶️ Master Institutional Supply and Demand Trading (ULTIMATE STRATEGY GUIDE)</a></div>
+                <div class="vid-meta">👁️ 1.6M views</div>
+                <ul class="strategy-list"><li>if you can Master supply and demand you if you can Master supply and demand you if you can Master supply and demand you will be able to trade with the large will be able to trade with the large will be able to trade with the large institutions find b</li></ul>
+            </div></div>
+        </div>
+        <div class="cat-section">
+            <div class="cat-header" onclick="this.nextElementSibling.classList.toggle('collapsed')">
+                <h2>Value & Long-Term <span class="cat-count">2 videos</span></h2>
+                <span class="toggle-hint">▼ click to collapse</span>
+            </div>
+            <div class="cat-body">
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=e-QmGJU1XYc" target="_blank">▶️ The Only Trading Strategy You'll Ever Need</a></div>
+                <div class="vid-meta">👁️ 1.9M views</div>
+                <ul class="strategy-list"><li>Which means,&nbsp; we should only look for bullish trades.</li><li>Since we are in an uptrend.&nbsp;&nbsp; We only look for long trades.</li><li>WE DO NOT look for any sell positions &nbsp; As shorting in a uptrend is just silly.</li><li>So now that we know we are in an uptrend,&nbsp;&nbsp; we want to look for demand zone opportunities.</li><li>&nbsp; We wait for price to re-enter into this&nbsp; zone and this is where we would enter.</li></ul>
+            </div>
+            <div class="vid-entry">
+                <div class="vid-title"><a href="https://youtube.com/watch?v=hM6hiV7M6MM" target="_blank">▶️ People are Wrong about Dividend Stocks. Here’s why</a></div>
+                <div class="vid-meta">👁️ 1.6M views</div>
+                <p class="no-strat">No specific strategy extracted — review transcript</p>
+            </div></div>
+        </div>
+<div class="footer">
+<p>Daily Knowledge Base · Generated by Hermes Agent · 2026-05-22 01:22 UK</p>
+<p>YouTube search covers stocks, shares, options, crypto, and trading strategies</p>
+</div>
+</div>
+<script>
+document.querySelectorAll('.cat-body').forEach(b => b.classList.remove('collapsed'));
+</script>
+</body></html>
