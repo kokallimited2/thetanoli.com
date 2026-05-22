@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Title Split Intelligence — 15 May 2026</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #21262d;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d29922;
+    --red: #f85149;
+    --purple: #bc8cff;
+    --cyan: #39d2c0;
+    --text: #e6edf3;
+    --text2: #8b949e;
+    --border: #30363d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a2332 0%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 24px 24px;
+    text-align: center;
+  }
+  .header h1 { font-size: 2rem; color: var(--cyan); }
+  .header p { color: var(--text2); font-size: 0.95rem; margin-top: 8px; }
+  .header .badge {
+    display: inline-block;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 4px 14px;
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-top: 12px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+  .section {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section h3 {
+    color: var(--cyan);
+    font-size: 1rem;
+    margin: 14px 0 8px;
+  }
+  .section h4 { color: var(--purple); font-size: 0.95rem; margin: 10px 0 6px; }
+  .section ul, .section ol { margin: 8px 0 8px 20px; }
+  .section li { margin-bottom: 4px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.85rem;
+  }
+  th {
+    background: var(--bg3);
+    color: var(--accent);
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover { background: var(--bg3); }
+  .highlight { color: var(--green); font-weight: 600; }
+  .risk { color: var(--red); }
+  .insight { color: var(--orange); }
+  .info { color: var(--accent); }
+  .score-high { color: var(--green); font-weight: 700; }
+  .score-med { color: var(--orange); font-weight: 700; }
+  .score-low { color: var(--red); font-weight: 700; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .tag-green { background: #1a3a2a; color: var(--green); border: 1px solid #2ea043; }
+  .tag-orange { background: #3a2a1a; color: var(--orange); border: 1px solid #bb8009; }
+  .tag-red { background: #3a1a1a; color: var(--red); border: 1px solid #da3633; }
+  .tag-blue { background: #1a2a3a; color: var(--accent); border: 1px solid #1f6feb; }
+  .tag-purple { background: #2a1a3a; color: var(--purple); border: 1px solid #8957e5; }
+  .split-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .alert-box {
+    background: #3a1a1a;
+    border: 1px solid #da3633;
+    border-radius: 6px;
+    padding: 14px;
+    margin: 12px 0;
+  }
+  .alert-box.breaking {
+    background: #1a2a3a;
+    border: 1px solid #1f6feb;
+  }
+  .alert-box.insight-box {
+    background: #1a3a2a;
+    border: 1px solid #2ea043;
+  }
+  .alert-box .alert-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+  .metric-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 8px 0; }
+  .metric-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    min-width: 100px;
+  }
+  .metric-card .value { font-size: 1.2rem; font-weight: 700; color: var(--cyan); }
+  .metric-card .label { font-size: 0.7rem; color: var(--text2); text-transform: uppercase; }
+  @media (max-width: 700px) { .split-cols { grid-template-columns: 1fr; } }
+  .footer { text-align: center; padding: 24px; color: var(--text2); font-size: 0.8rem; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏘️ Title Split Intelligence — 15 May 2026</h1>
+  <p>UK Title Split &amp; Property Subdivision Analysis · Post-Auction Review</p>
+  <div class="badge">📅 Bond Wolfe 14 May Auction Done · Next: 9 July 2026</div>
+</div>
+
+<div class="container">
+
+<!-- Today's Insight -->
+<div class="section">
+  <h2>🔑 Today's Title Split Insight</h2>
+  <p><strong>"Freehold-to-Leasehold Title Splitting — The Zero-Build-Cost Strategy Takes Centre Stage"</strong></p>
+  <p>With the Bond Wolfe auction yesterday (14 May) producing strong results across the region, today's analysis focuses on the clearest, lowest-risk title split strategy available right now: <span class="highlight">freehold-to-leasehold splitting of existing blocks</span> where flats already physically exist on a single freehold title. No planning, no building work, no planning risk — pure legal arbitrage.</p>
+  <p>The Peppercorn Law model (£995/flat fixed fee) has established this as a scalable, accessible play. With <span class="highlight">314,486 unsplit blocks</span> across England & Wales according to TitleSplit.com data, there is an enormous addressable market. The market is further validated by the Property Investors Network (Simon Zutshi) canonical case study showing <span class="highlight">£100k equity gain from zero construction</span> on a 4-flat block.</p>
+  <p>Meanwhile, the <span class="insight">Commonhold & Leasehold Reform Bill</span> (draft published 27 Jan 2026) creates a <span class="risk">limited window</span> for traditional leasehold splits before new long-leases for flats are banned. Jones Day, TLT LLP, Baker McKenzie and Norton Rose Fulbright all confirm existing leases are unaffected — but the Bill is progressing through pre-legislative scrutiny. <strong>Key action: commence splits now while leasehold model remains valid.</strong></p>
+</div>
+
+<!-- BREAKING -->
+<div class="alert-box breaking">
+  <div class="alert-title">🚨 COMMONHOLD & LEASEHOLD REFORM BILL — DEEP LEGAL ANALYSIS NOW AVAILABLE</div>
+  <p>Multiple major law firms have now published detailed analysis of the draft Bill (published 27 Jan 2026, consultation closed 24 Apr 2026):</p>
+  <ul>
+    <li><span class="highlight">Jones Day (May 2026):</span> Bill would phase out residential leases >21 years for flats, replacing with commonhold. Each flat owner owns freehold + shares in commonhold association. Conversion threshold reduced from 100% to 50% of qualifying leaseholders.</li>
+    <li><span class="highlight">TLT LLP:</span> Central measure is enabling easier conversion to commonhold. Notes leaseholders already have right to manage — commonhold shifts ownership structure.</li>
+    <li><span class="highlight">Baker McKenzie (March 2026):</span> Overarching intention is all new flats sold as commonhold, replacing leasehold as default tenure. Includes formal shared responsibility through "commonhold association" company.</li>
+    <li><span class="highlight">Norton Rose Fulbright:</span> Detailed analysis of transitional arrangements — still awaiting commencement orders.</li>
+  </ul>
+  <p style="margin-top:8px;"><strong>Impact on title splitting:</strong> <span class="insight">Act NOW</span> — commence leasehold splits under current rules. The traditional freehold + 999-year leasehold model will eventually be banned for newly-created flats. Existing leases unaffected. For future conversions, consult solicitor on adopting commonhold model.</p>
+</div>
+
+<!-- Metrics -->
+<div class="section">
+  <h2>📊 Today's Metrics</h2>
+  <div class="metric-row">
+    <div class="metric-card"><div class="value">14</div><div class="label">Searches Conducted</div></div>
+    <div class="metric-card"><div class="value">9</div><div class="label">Key Sources Analysed</div></div>
+    <div class="metric-card"><div class="value">2</div><div class="label">STRONG Strategies ID'd</div></div>
+    <div class="metric-card"><div class="value">$995</div><div class="label">Peppercorn Law/unit</div></div>
+  </div>
+</div>
+
+<!-- Post-Auction Analysis -->
+<div class="section">
+  <h2>⚡ Post-Auction Analysis — Bond Wolfe 14 May 2026</h2>
+  <div class="alert-box insight-box">
+    <div class="alert-title" style="color: var(--green);">✅ Auction Held Yesterday — Results Pending Publication</div>
+  </div>
+  <p>Yesterday's Bond Wolfe auction (livestreamed, 162+ lots, 08:30 start) was the <span class="highlight">51st auction</span> for the West Midlands market leader. Auction results anticipated within days. Based on past performance:</p>
+  <ul>
+    <li><span class="highlight">Feb 2026:</span> £23.5m raised, 93% success rate, bidders up 37%</li>
+    <li><span class="highlight">March 2026:</span> £26.6m raised, 88% success rate</li>
+    <li><span class="highlight">14 May:</span> Anticipated £25-28m based on catalogue size</li>
+  </ul>
+  <h4>Key Lots Watched (from yesterday's pre-auction analysis):</h4>
+  <table>
+    <tr><th>Address</th><th>Guide Price</th><th>Type</th><th>Title Split Potential</th><th>Status</th></tr>
+    <tr>
+      <td>33 Spouthouse Lane, Great Barr B43</td>
+      <td>£29,000+</td>
+      <td>Retail + flat + land</td>
+      <td><span class="score-high">9.0/10</span> — Shop/flat split + develop side land</td>
+      <td><span class="tag tag-orange">AWAITING RESULT</span></td>
+    </tr>
+    <tr>
+      <td>54 West Bromwich St, Walsall WS1</td>
+      <td>£195,000+</td>
+      <td>Shop + 2 flats (let £25.2k/yr)</td>
+      <td><span class="score-high">8.5/10</span> — 3-title split. 12.9% yield at guide</td>
+      <td><span class="tag tag-orange">AWAITING RESULT</span></td>
+    </tr>
+    <tr>
+      <td>914 Stratford Rd, Sparkhill B11</td>
+      <td>£250,000+</td>
+      <td>Mixed-use (let £24k/yr)</td>
+      <td><span class="score-high">8.3/10</span> — Commercial/resi split. 9.6% yield</td>
+      <td><span class="tag tag-orange">AWAITING RESULT</span></td>
+    </tr>
+    <tr>
+      <td>924 Stratford Rd, Sparkhill B11</td>
+      <td>£250,000+</td>
+      <td>Mixed-use (vacant)</td>
+      <td><span class="score-high">8.0/10</span> — Vacant value-add conversion + split</td>
+      <td><span class="tag tag-orange">AWAITING RESULT</span></td>
+    </tr>
+    <tr>
+      <td>40 Valley Rd, Lye, Stourbridge DY9</td>
+      <td>£142,000+</td>
+      <td>3-bed detached</td>
+      <td>7.8/10 — Detached → 2 flats or annexe split</td>
+      <td><span class="tag tag-orange">AWAITING RESULT</span></td>
+    </tr>
+  </table>
+  <p style="margin-top:10px; font-size:0.85rem; color:var(--text2);">📞 Bond Wolfe: 0121 312 1212 | auctions@bondwolfe.com | Next auction: 9 July 2026</p>
+</div>
+
+<!-- Top Strategies Table -->
+<div class="section">
+  <h2>🏆 Top Title Split Strategies — May 2026</h2>
+  <table>
+    <tr>
+      <th>Score</th><th>Strategy</th><th>Risk Level</th><th>Capital Required</th><th>Timeline</th><th>Typical Return</th>
+    </tr>
+    <tr>
+      <td><span class="score-high">9.5/10</span></td>
+      <td><strong>Freehold-to-Leasehold existing block</strong> (already converted flats on single title)</td>
+      <td><span class="tag tag-green">LOW</span></td>
+      <td>£1.5k-£4k legal + purchase price</td>
+      <td>4-12 weeks (HMLR registration)</td>
+      <td>25-50% equity gain</td>
+    </tr>
+    <tr>
+      <td><span class="score-high">9.0/10</span></td>
+      <td><strong>Shop + flat above mixed-use</strong> (non-residential SDLT)</td>
+      <td><span class="tag tag-orange">MEDIUM</span></td>
+      <td>£50k-£250k purchase + £3k title split legal</td>
+      <td>8-16 weeks</td>
+      <td>£50-150k (30-60%)</td>
+    </tr>
+    <tr>
+      <td><span class="score-high">8.0/10</span></td>
+      <td><strong>Bond Wolfe auction mixed-use lots</strong> (BMV entry + split)</td>
+      <td><span class="tag tag-orange">MEDIUM</span></td>
+      <td>£29k-£250k purchase</td>
+      <td>8-16 weeks</td>
+      <td>£70-235k (varies widely)</td>
+    </tr>
+    <tr>
+      <td>7.5/10</td>
+      <td><strong>Victorian/Edwardian 2-3 flat split</strong> (≥120sqm, full planning)</td>
+      <td><span class="tag tag-red">HIGH</span></td>
+      <td>£400k-£700k all-in</td>
+      <td>12-18 months</td>
+      <td>Breakeven-marginal (post-2024 market)</td>
+    </tr>
+    <tr>
+      <td>7.0/10</td>
+      <td><strong>Commercial-to-residential (Class MA PD)</strong></td>
+      <td><span class="tag tag-orange">MEDIUM</span></td>
+      <td>£200k-£2M</td>
+      <td>8-16 months</td>
+      <td>Variable</td>
+    </tr>
+  </table>
+</div>
+
+<!-- Best Property Types -->
+<div class="section">
+  <h2>🏗️ Best Property Types for Title Splitting — Updated 15 May 2026</h2>
+  <div class="split-cols">
+    <div>
+      <h3>✅ Highest Priority</h3>
+      <ul>
+        <li><span class="highlight">Existing block of flats on single freehold title</span> — <strong>STRONGEST PLAY</strong>. Pure legal split (£995/unit via Peppercorn Law). No planning. No construction. 314,486 unsplit blocks in England & Wales. Proven £100k+ equity gain on 4-flat block (Simon Zutshi/PIN case study).</li>
+        <li><span class="highlight">Shop + flat above (mixed-use)</span> — Non-residential SDLT (max 5%). Separate commercial + BTL financings. Clever Lending (12 May 2026) confirms this as strongest current model. Bond Wolfe auctions consistently feature these — yesterday's catalogue had 5+.</li>
+        <li><span class="highlight">Auction-sourced mixed-use (BMV)</span> — Bond Wolfe consistently delivers the best BMV entry points for title split plays. 37% more bidders in 2026. 88-93% success rate.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>⚠️ Monitor / Caution</h3>
+      <ul>
+        <li><span class="insight">Victorian/Edwardian ≥120sqm full conversion split</span> — Only works with exceptional BMV entry or mixed-use structure. Post-MDR economics are tight.</li>
+        <li><span class="insight">Commercial-to-resi (Class MA)</span> — Valid strategy but requires building work, larger capital, longer timeline.</li>
+        <li><span class="risk">Pure resi 2-flat split</span> — Most deals fail in 2026 market. Cost >70% GDV typical.</li>
+        <li><span class="risk">Two-up-two-down terraces</span> — Always fail NDSS. Walk away.</li>
+        <li><span class="risk">Coal-affected land DY/WV</span> — CON29M search mandatory. Budget £5-20k stabilisation.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Market Intelligence -->
+<div class="section">
+  <h2>📊 Market Intelligence — 15 May 2026</h2>
+  
+  <div class="alert-box breaking">
+    <div class="alert-title">🔥 HMO Applications Surge 964% in Sandwell — Represents Title Split Opportunity</div>
+    <p>Between 2018 and end 2024, HMO applications in <span class="highlight">Sandwell rose 964%</span> — the highest in Britain (MSN/PA report). This means:</p>
+    <ul>
+      <li>High demand for multi-occupancy housing across West Bromwich, Smethwick, Oldbury</li>
+      <li>However, <span class="insight">HMO→Flats conversion</span> is a potential exit: if HMO regulation tightens further, converting to self-contained flats via title split could be the escape route</li>
+      <li>Mixed-use high street properties in <span class="highlight">West Bromwich, Smethwick high street</span> are prime targets</li>
+      <li>Sandwell likely to introduce Article 4 direction soon (like Birmingham & Wolverhampton) — creating urgency for conversion plays</li>
+    </ul>
+  </div>
+
+  <div class="split-cols">
+    <div>
+      <h3>🏙️ Birmingham</h3>
+      <ul>
+        <li>Avg price: £234k | Yield: 5.0-5.5%</li>
+        <li>Sparkhill (B11) — best mixed-use corridor on Stratford Road</li>
+        <li><span class="highlight">Office-to-resi conversions surging</span> — CoStar report confirms investor focus</li>
+        <li><span class="highlight">Smithfield regeneration</span> — £2bn, 3,000 homes on 42-acre site. Outline plans approved June 2025</li>
+        <li>Harborne: 3-flat conversion at 1 Milford Rd sold via Bond Wolfe (guide £435k+)</li>
+      </ul>
+      <h3>🏘️ Wolverhampton</h3>
+      <ul>
+        <li><span class="highlight">Former M&S Dudley St → 71 flats</span> — full planning granted Jan 2026. ALB Group bought for £3M+</li>
+        <li><span class="highlight">Eagle Works opposite Molineux → 48 apartments</span> — revised plans submitted</li>
+        <li>Tettenhall Rd WV6: 4 period villas converted into 4-5 flats each — sold via Bond Wolfe March 2026 auction at over-asking prices</li>
+        <li>31 Tettenhall Road (7-bed Vic end-terrace) — guide £49k+ at Feb auction. Potential HMO or 3-4 flats</li>
+        <li><span class="highlight">Wolverhampton's 10% rent growth</span> is the saviour for marginal split deals</li>
+      </ul>
+    </div>
+    <div>
+      <h3>🏘️ Dudley / Sandwell / Walsall</h3>
+      <ul>
+        <li><span class="highlight">Sandwell HMO apps +964%</span> in 6 years — highest in Britain. Creates urgency for title split conversions</li>
+        <li>Bond Wolfe mixed-use highlights: 35-37 High St Pelsall sold prior for £590k (£500k+ guide) — £55.6k/yr income</li>
+        <li>Walsall WS1 yields 7.4% for 1-beds — strongest local rental yields</li>
+        <li>Walsall Council sold Acorn Centre for £134k — shows appetite for asset disposal</li>
+        <li>Dudley Council rejected "Oakwood" Wollaston split — character/amenity grounds. Pre-app essential in DY8</li>
+      </ul>
+      <h3>📝 Key Legal Developments</h3>
+      <ul>
+        <li><span class="highlight">Peppercorn Law</span> — £995/flat fixed fee title splitting. No VAT. £45 LR fee/unit extra. Solicitor Ricky Coleman.</li>
+        <li><span class="highlight">Commonhold Bill</span> — Ban on new long leases for flats. Traditional title splitting has limited window.</li>
+        <li><span class="highlight">Clever Lending</span> (updated 12 May 2026) — Confirms shop+flat title split + non-residential SDLT as strongest model.</li>
+        <li><span class="highlight">Mayfair Studio</span> (April 2026) — Confirms house-to-flat PD right dead; full planning always required.</li>
+        <li><span class="risk">HMLR registration backlog</span> — Foot Forward Properties (March 2026) warns 3-6 month delays. Budget 15-18 month bridging.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- New Opportunities -->
+<div class="section">
+  <h2>🔍 New Opportunities Identified</h2>
+  
+  <h3>1️⃣ Sandwell HMO Saturation Play — HMO→Flats Title Split</h3>
+  <p>With Sandwell HMO applications up <span class="highlight">964%</span>, councils will tighten regulation. Existing HMO properties in <span class="highlight">West Bromwich, Smethwick, Oldbury</span> present a unique opportunity: convert HMO (C4) into self-contained flats (C3) with title splits. This:</p>
+  <ul>
+    <li>Eliminates HMO licensing risk</li>
+    <li>Increases per-unit value (flats worth more than room HMO)</li>
+    <li>Creates individual BTL mortgage-able units</li>
+    <li>Allows exit via sale of individual flats</li>
+  </ul>
+  <p><strong>Target postcodes:</strong> B66 (Smethwick), B70 (West Bromwich), B69 (Oldbury), WS10 (Wednesbury)</p>
+
+  <h3>2️⃣ Wolverhampton City Centre Fringe — M&S/Eagle Works Ripple Effect</h3>
+  <p>The approval of <span class="highlight">71 flats at the former M&S (Dudley St)</span> and <span class="highlight">48 apartments at Eagle Works (Molineux St)</span> signals a major shift toward city-centre residential in Wolverhampton. Immediate ripple effects:</p>
+  <ul>
+    <li>Increased demand for shops/services = stronger mixed-use yields in WV1/WV2</li>
+    <li>Property values in fringe areas likely to rise</li>
+    <li>High-street mixed-use in WV1/WV2 becomes stronger investment case</li>
+  </ul>
+
+  <h3>3️⃣ Peppercorn Law Scalable Strategy — 4-Flat Block Model</h3>
+  <p><strong>Strategy:</strong> Identify 4-flat blocks on single freehold title in Birmingham/Wolverhampton at £200k-£300k. Peppercorn Law splits at £995/flat = £3,980 total legal cost. Each flat valued at £75k-£100k post-split. <span class="highlight">Combined value: £300k-£400k → £100k+ equity gain with £4k legal cost and zero building work.</span></p>
+  <p><strong>Sourcing channels:</strong> Bond Wolfe future auctions (9 July, 10 Sept), Rightmove search "block of flats freehold", direct vendor marketing.</p>
+</div>
+
+<!-- Deep Dive: Commonhold Bill Impact -->
+<div class="section">
+  <h2>🔍 Deep Dive: Commonhold Bill — What Title Splitters Need to Know NOW</h2>
+  <table>
+    <tr><th>Question</th><th>Answer</th></tr>
+    <tr><td>What's changing?</td><td>New residential leases >21 years for flats will be banned. Commonhold replaces leasehold for new flats.</td></tr>
+    <tr><td>When?</td><td>Bill published 27 Jan 2026. Consultation closed 24 Apr 2026. Pre-legislative scrutiny by HCLG Committee report expected Spring 2026. <strong>Unknown commencement date</strong> — but 2027 is realistic estimate.</td></tr>
+    <tr><td>Are existing leases affected?</td><td><span class="highlight">NO.</span> Existing leases already created remain valid indefinitely. This is critical — title splits done before the ban are protected.</td></tr>
+    <tr><td>Can I still do freehold→leasehold title splits?</td><td><span class="highlight">YES, but act now.</span> Traditional model works for splits commenced in 2026. Once ban takes effect, new flats must use commonhold.</td></tr>
+    <tr><td>What is commonhold?</td><td>Each flat owner owns the freehold to their unit outright + shares in a commonhold association that owns common areas. More like US condominium.</td></tr>
+    <tr><td>Does commonhold work for title splitting?</td><td><span class="insight">Unknown — but likely.</span> You'd grant commonhold units instead of leases. Solicitor consultation essential.</td></tr>
+    <tr><td>Best action now?</td><td><span class="highlight">Commence traditional leasehold title splits ASAP.</span> Find unsplit blocks, use Peppercorn Law or specialist solicitor, register before the ban.</td></tr>
+  </table>
+  <p style="margin-top:10px; font-size:0.85rem; color:var(--text2);">Sources: Jones Day (May 2026), TLT LLP, Baker McKenzie, Norton Rose Fulbright, Peppercorn Law</p>
+</div>
+
+<!-- Title Split Checklist -->
+<div class="section">
+  <h2>✅ Title Split Feasibility Checklist</h2>
+  <div class="split-cols">
+    <div>
+      <h3>📐 Physical</h3>
+      <ul>
+        <li><input type="checkbox"> Original GIA ≥120 sqm (house conversion)</li>
+        <li><input type="checkbox"> OR existing flats already physically exist (freehold→leasehold split)</li>
+        <li><input type="checkbox"> Natural division points exist</li>
+        <li><input type="checkbox"> Separate entrances achievable</li>
+        <li><input type="checkbox"> Services separable (£3-10k/unit)</li>
+        <li><input type="checkbox"> Fire escape compliance (Part B)</li>
+        <li><input type="checkbox"> Sound insulation feasible (Part E)</li>
+      </ul>
+      <h3>📋 Legal</h3>
+      <ul>
+        <li><input type="checkbox"> Freehold title (not leasehold)</li>
+        <li><input type="checkbox"> No restrictive covenants vs subdivision</li>
+        <li><input type="checkbox"> CON29M Coal Authority search clear (DY/WV)</li>
+        <li><input type="checkbox"> No conservation area / listed status</li>
+        <li><input type="checkbox"> Lender consent obtained</li>
+        <li><input type="checkbox"> Different legal entities for freehold vs leases</li>
+      </ul>
+    </div>
+    <div>
+      <h3>🏛️ Planning</h3>
+      <ul>
+        <li><input type="checkbox"> House-to-flat = full planning ALWAYS required</li>
+        <li><input type="checkbox"> Existing block split = NO planning needed</li>
+        <li><input type="checkbox"> Pre-application advice positive (if conversion)</li>
+        <li><input type="checkbox"> NDSS compliance achievable (if conversion)</li>
+        <li><input type="checkbox"> CIL/S106 costs quantified</li>
+      </ul>
+      <h3>💰 Financial (Conversion Splits)</h3>
+      <ul>
+        <li><input type="checkbox"> Total cost &lt;70% of GDV</li>
+        <li><input type="checkbox"> GDV uplift ≥25% after all costs</li>
+        <li><input type="checkbox"> Stress test passed (GDV -10%, cost +20%)</li>
+        <li><input type="checkbox"> Bridging facility 15-18 months secured</li>
+        <li><input type="checkbox"> HMLR registration delay budgeted</li>
+      </ul>
+      <h3>💰 Financial (Freehold→Leasehold Splits)</h3>
+      <ul>
+        <li><input type="checkbox"> Peppercorn Law £995/unit or solicitor £1.5-4k</li>
+        <li><input type="checkbox"> Refinance quotes obtained for individual units</li>
+        <li><input type="checkbox"> New lease compliant with lender criteria</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Skill Improvements -->
+<div class="section">
+  <h2>🔄 Hermes Skill Improvements</h2>
+  <ul>
+    <li><span class="highlight">+ Commonhold Bill understanding deepened</span> — Added 4 law firm analyses (Jones Day, TLT, Baker McKenzie, Norton Rose Fulbright) confirming Bill bans new long leases for flats, existing leases unaffected, conversion threshold 50%.</li>
+    <li><span class="highlight">+ Peppercorn Law fixed-fee model documented</span> — £995/flat, no VAT, £45 LR fee, solicitor Ricky Coleman. Best for existing unsplit blocks.</li>
+    <li><span class="highlight">+ Post-auction analysis framework</span> — Added template for tracking auction results (guide vs achieved price, bidder activity, title split relevance). May 14 results pending.</li>
+    <li><span class="highlight">+ Sandwell HMO surge identified</span> — 964% HMO application increase opens new HMO→flats title split play. Target postcodes B66, B70, B69, WS10.</li>
+    <li><span class="highlight">+ Wolverhampton development pipeline</span> — Added M&S→71 flats (approved Jan 2026), Eagle Works→48 apartments pipeline. Creates ripple effect for mixed-use title splits in WV1/WV2.</li>
+    <li><span class="highlight">+ Freehold-to-leasehold positioned as highest-priority strategy</span> — Zero-build-cost, pure legal arbitrage, scalable via Peppercorn Law. 9.5/10 score.</li>
+    <li><span class="highlight">+ 5 new search keywords for next run</span> — 'freehold block of flats for sale West Midlands', 'HMO to flats conversion title split', 'Sandwell Article 4 direction HMO', 'Peppercorn Law title split review', 'Bond Wolfe 14 May results sold prices'.</li>
+    <li><span class="highlight">+ Clever Lending guide integrated</span> — 12 May 2026 update confirms shop+flat split + non-residential SDLT as strongest model. Added as official source.</li>
+  </ul>
+</div>
+
+<!-- Upcoming Auctions -->
+<div class="section">
+  <h2>📅 Upcoming Auction Calendar — Title Split Target</h2>
+  <table>
+    <tr><th>Date</th><th>House</th><th>Region</th><th>Expected Lots</th></tr>
+    <tr><td>9 July 2026</td><td>Bond Wolfe</td><td>West Midlands (livestream)</td><td>~170</td></tr>
+    <tr><td>10 Sept 2026</td><td>Bond Wolfe</td><td>West Midlands (livestream)</td><td>~170</td></tr>
+    <tr><td>22 Oct 2026</td><td>Bond Wolfe</td><td>West Midlands (livestream)</td><td>~165</td></tr>
+    <tr><td>9 Dec 2026</td><td>Bond Wolfe</td><td>West Midlands (livestream)</td><td>~160</td></tr>
+  </table>
+  <p style="margin-top:8px; font-size:0.85rem; color:var(--text2);">📞 Bond Wolfe: 0121 312 1212 | auctions@bondwolfe.com</p>
+</div>
+
+<div class="footer">
+  <p>🏘️ Title Split Intelligence — 15 May 2026 · Generated by Hermes Agent</p>
+  <p>Data from: Bond Wolfe, Clever Lending, Peppercorn Law, Jones Day, TLT LLP, Baker McKenzie, Norton Rose Fulbright</p>
+</div>
+
+</div>
+</body>
+</html>

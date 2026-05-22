@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Land & Planning Uplift Intelligence — 20 May 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, system-ui, 'Segoe UI', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #0d1117; color: #c9d1d9; }
+  h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 16px; margin-bottom: 24px; font-size: 1.8em; }
+  h2 { color: #f0f6fc; margin: 28px 0 16px; padding-left: 10px; border-left: 4px solid #f0883e; font-size: 1.3em; }
+  h3 { color: #8b949e; margin: 20px 0 10px; font-size: 1.1em; text-transform: uppercase; letter-spacing: 1px; }
+  .meta { color: #8b949e; font-size: 0.85em; margin-bottom: 20px; border-bottom: 1px solid #21262d; padding-bottom: 12px; }
+  .score-strong { display: inline-block; background: #1f6feb; color: white; padding: 3px 12px; border-radius: 20px; font-weight: bold; }
+  .score-watch { display: inline-block; background: #d29922; color: #0d1117; padding: 3px 12px; border-radius: 20px; font-weight: bold; }
+  .score-risk { display: inline-block; background: #da3633; color: white; padding: 3px 12px; border-radius: 20px; font-weight: bold; }
+  .score-reject { display: inline-block; background: #484f58; color: #8b949e; padding: 3px 12px; border-radius: 20px; font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; background: #161b22; border-radius: 8px; overflow: hidden; margin: 12px 0 24px; border: 1px solid #30363d; }
+  th { background: #21262d; color: #58a6ff; padding: 12px 10px; text-align: left; font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.5px; }
+  td { padding: 12px 10px; border-bottom: 1px solid #21262d; font-size: 0.9em; vertical-align: top; }
+  tr:hover { background: #1c2128; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin: 16px 0; border-left: 4px solid #f0883e; }
+  .card.strong { border-left-color: #1f6feb; }
+  .card.watch { border-left-color: #d29922; }
+  .card.risk { border-left-color: #da3633; }
+  .card h3 { margin-top: 0; }
+  ul { padding-left: 20px; }
+  li { margin: 6px 0; line-height: 1.6; }
+  .tag { display: inline-block; background: #21262d; color: #8b949e; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; margin: 2px; }
+  .tag.blue { background: #0c2d6b; color: #58a6ff; }
+  .tag.green { background: #0b3d1d; color: #3fb950; }
+  .tag.red { background: #3d1214; color: #da3633; }
+  .tag.yellow { background: #3d2e00; color: #d29922; }
+  .insight-box { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 16px; margin: 12px 0; }
+  .insight-box p { margin: 4px 0; }
+  .value-up { color: #3fb950; }
+  .value-down { color: #da3633; }
+  .value-warn { color: #d29922; }
+  .divider { border: none; border-top: 1px solid #21262d; margin: 24px 0; }
+  @media (max-width: 700px) { body { padding: 12px; } table { font-size: 0.8em; } }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h1>🏗️ Land & Planning Uplift Intelligence</h1>
+<div class="meta">
+  Report Date: 20 May 2026 | Target: West Midlands (Dudley, Birmingham, Sandwell, Wolverhampton, Walsall, Telford, Cannock, Kidderminster)<br>
+  Run Type: Scheduled Cron Job | Data Sources: Web Search, Council Portals, Auction Sites, Planning Policy Documents, Property News
+</div>
+
+<!-- ============================================ -->
+<h2>📋 Today's Planning Insight</h2>
+<!-- ============================================ -->
+
+<div class="card strong">
+  <h3>🔑 £234m Brownfield Housing Fund Boost + Dudley Council Fire Sale = Unprecedented Opportunity Window</h3>
+  <p><strong>Key finding:</strong> The government announced a <strong>£234m additional boost</strong> to the Brownfield Housing Fund on 22 March 2026 (Ward Hadaway, Housing Today). Combined with the WMCA's existing £200m in brownfield grants, this means over <strong>£400m+ of grant funding</strong> is available for brownfield development in the West Midlands region alone. This is the single biggest catalyst for land value uplift.</p>
+  <br>
+  <p><strong>Dudley Council fire sale:</strong> The council has raised <strong>£2m+</strong> selling surplus land (Dudley News, May 2026) including sites in Brierley Hill, Dudley, and Stourbridge — and <strong>more sales are coming</strong> including the Grade II-listed Netherton Arts Centre (£500k). With the authority facing "unprecedented financial challenges," the disposal pipeline will continue. <strong>Bond Wolfe remains the exclusive auctioneer for Sandwell MBC surplus properties.</strong></p>
+  <br>
+  <p><strong>Birmingham City Council land premium:</strong> Land at Spring Road, Tyseley (guide £100k+) sold for <strong>£440,000</strong> at Bond Wolfe's 14 May auction — a <strong>340% premium</strong> over guide. This signals extremely strong developer demand for any development land in the Birmingham area. Even small plots are attracting fierce competition.</p>
+  <br>
+  <p><strong>Actionable Strategy:</strong> (1) Register for Bond Wolfe's <strong>9 July 2026 auction</strong> (197 lots expected) — likely to include Sandwell and Birmingham council surplus. (2) Monitor Dudley Council's proposed asset disposals via cabinet resources page. (3) Target BHF-eligible brownfield sites in Telford and Cannock where competition is lower. (4) Class MA commercial-to-resi conversions in Wolverhampton Canalside halo zone benefit from the £150m regeneration anchoring values.</p>
+</div>
+
+<!-- ============================================ -->
+<h2>🧠 New Lessons Learned</h2>
+<!-- ============================================ -->
+
+<div class="insight-box">
+  <p><strong>1. The BHF +£234m boost (March 2026) changes the WM brownfield math entirely.</strong></p>
+  <p>Government increased Brownfield Housing Fund by £234m (Housing Today, 22 March 2026). WMCA allocation expected to be substantial given the region is the national brownfield priority. This can add £5k-£20k per unit in grant subsidy, making marginal brownfield schemes viable. Landowners should factor this into their pricing — councils offering Part 2 brownfield register sites should be targeted first.</p>
+</div>
+<div class="insight-box">
+  <p><strong>2. Birmingham development land commands massive auction premiums.</strong></p>
+  <p>Spring Road, Tyseley — rectangular plot, guide £100k+, sold for £440,000 (Birmingham Mail, May 2026). This is a 340% premium indicating extreme developer hunger for any development-land-shaped sites in Birmingham. Strategy: buy on-guide or below-guide in Dudley/Sandwell/Walsall where competition is less intense, NOT in Birmingham city limits.</p>
+</div>
+<div class="insight-box">
+  <p><strong>3. Oldbury warehouse-to-14 flats sets a critical precedent for Sandwell.</strong></p>
+  <p>Planning approval granted (BBC, May 2026) for 14 flats on former warehouse site off Wolverhampton Road, Oldbury. This is a Class MA/Full Planning hybrid approval in Sandwell, proving the council supports residential conversion of commercial/industrial buildings in this corridor. Target adjacent or similar properties on Wolverhampton Road/A4123 corridor for parallel plays.</p>
+</div>
+<div class="insight-box">
+  <p><strong>4. Permission in Principle (PIP) for garden land is alive and well in Telford.</strong></p>
+  <p>Application TWC/2026/0201 — David Topping at Spring Terrace, The Rock, Telford, applied for PIP for up to 3 homes on garden land. This validates the garden/infill PIP route in Telford & Wrekin. A previous PP for 1 house on the same land (granted 2008, expired) was not implemented. The new PIP application seeks to re-establish development principle with lower upfront cost. This is a replicable model.</p>
+</div>
+<div class="insight-box">
+  <p><strong>5. Dudley Council's £2m+ land sale programme is ongoing — more assets coming.</strong></p>
+  <p>The council has sold land in Brierley Hill, Dudley, and Stourbridge to raise £2m+ (Dudley News, Stourbridge News, May 2026). Netherton Arts Centre (£500k, Grade II listed) is currently on the market via Johnson Fellows. The cabinet is actively identifying further surplus assets. This creates a pipeline of motivated seller opportunities.</p>
+</div>
+<div class="insight-box">
+  <p><strong>6. Conservation Area pub conversions are possible but high-risk — two case studies in Brierley Hill.</strong></p>
+  <p>The Plough Inn (locally listed, Brierley Hill Conservation Area) — retrospective PP sought for 4 one-bed flats already built without permission in 2020. The Red Lion (non-listed but "significant local value," same conservation area) — planning for 4 apartments submitted. Both show the council is pragmatically supporting residential conversion of derelict pubs even in conservation areas, as long as heritage features are retained. Score these as 6.0-6.5/10 — viable but require specialist heritage consultants.</p>
+</div>
+
+<!-- ============================================ -->
+<h2>📊 Planning Uplift Deal Criteria</h2>
+<!-- ============================================ -->
+
+<table>
+  <tr><th>Asset Type</th><th>Entry Price</th><th>Typical Uplift</th><th>Planning Angle</th><th>Key Risks</th></tr>
+  <tr>
+    <td><strong>Former Garage Sites</strong></td>
+    <td>£25k-£50k</td>
+    <td>3-5x</td>
+    <td>Resubmit lapsed permission for 2-4 dwellings; residential infill</td>
+    <td>Contamination (knotweed), access, drainage</td>
+  </tr>
+  <tr>
+    <td><strong>Rear/Side Gardens</strong></td>
+    <td>£30k-£80k (land only)</td>
+    <td>2-4x</td>
+    <td>Backland development — PIP route available in Telford (TWC/2026/0201)</td>
+    <td>"Garden grabbing" policy, neighbour objections, access</td>
+  </tr>
+  <tr>
+    <td><strong>Former Pubs</strong></td>
+    <td>£150k-£350k</td>
+    <td>1.5-3x</td>
+    <td>Pub-to-resi conversion (Conservation Area possible — Plough Inn & Red Lion Brierley Hill)</td>
+    <td>Heritage/listing, community value, parking, conservation area</td>
+  </tr>
+  <tr>
+    <td><strong>Warehouse-to-Resi</strong></td>
+    <td>£200k-£500k</td>
+    <td>1.5-3x</td>
+    <td>Warehouse-to-14 flats approved in Oldbury (Sandwell) — sets precedent for Wolverhampton Rd corridor</td>
+    <td>Industrial contamination, noise, Class E vs B2 use class</td>
+  </tr>
+  <tr>
+    <td><strong>Brownfield Land</strong></td>
+    <td>£50k-£500k+</td>
+    <td>2-10x</td>
+    <td>BHF +£234m now available. NPPF Paragraph 125c brownfield presumption.</td>
+    <td>Remediation costs, BNG, infrastructure</td>
+  </tr>
+  <tr>
+    <td><strong>Mixed-Use (Shop+Flats)</strong></td>
+    <td>£150k-£350k</td>
+    <td>1.5-3x</td>
+    <td>Class MA prior approval; non-res SDLT (max 5%); Canalside halo zone</td>
+    <td>Commercial tenant risk, building regs separation</td>
+  </tr>
+  <tr>
+    <td><strong>Council Surplus Sites</strong></td>
+    <td>£10k-£150k</td>
+    <td>2-5x</td>
+    <td>Dudley/Sandwell/Birmingham council disposals via Bond Wolfe</td>
+    <td>Overage clauses, contamination, access covenants</td>
+  </tr>
+</table>
+
+<!-- ============================================ -->
+<h2>🏆 Top Opportunities</h2>
+<!-- ============================================ -->
+
+<table>
+  <tr><th>Location</th><th>Asset Type</th><th>Planning Angle</th><th>Est. Entry</th><th>Est. Uplift</th><th>Score</th><th>Verdict</th></tr>
+  <tr>
+    <td><strong>Former Warehouse, Wolverhampton Rd, Oldbury B69</strong></td>
+    <td>Warehouse-to-resi — 14 flats APPROVED</td>
+    <td>Planning APPROVED for 14 flats on former warehouse (BBC News May 2026). Sets Class MA/precedent for A4123 corridor. Target adjacent similar commercial buildings for parallel plays.</td>
+    <td>£250k-£400k</td>
+    <td>14 flats × £120k-£150k = £1.68M-£2.1M GDV</td>
+    <td><span class="score-strong">8.2/10</span></td>
+    <td><strong>STRONG PLANNING UPLIFT</strong> — approved scheme, replicable model</td>
+  </tr>
+  <tr>
+    <td><strong>Spring Terrace, The Rock, Telford TF</strong></td>
+    <td>Garden infill — PIP for up to 3 homes</td>
+    <td>TWC/2026/0201 — Permission in Principle for 3 homes on garden land. Previous PP expired 2008. PIP is lower-cost route. Replicable for similar Telford garden plots.</td>
+    <td>£40k-£80k (land)</td>
+    <td>3 homes × £180k-£220k = £540k-£660k GDV</td>
+    <td><span class="score-strong">7.8/10</span></td>
+    <td><strong>STRONG PLANNING UPLIFT</strong> — PIP validated for Telford gardens</td>
+  </tr>
+  <tr>
+    <td><strong>Bond Wolfe July 9 2026 Auction</strong></td>
+    <td>197 lots — land & development</td>
+    <td>Next major auction. Expected to include Sandwell council surplus, Birmingham council lots, garage sites, development land. Pre-register now.</td>
+    <td>£10k-£200k (varies)</td>
+    <td>2-5x (site dependent)</td>
+    <td><span class="score-strong">8.0/10</span></td>
+    <td><strong>STRONG PLANNING UPLIFT</strong> — systematic scan needed when catalogue released</td>
+  </tr>
+  <tr>
+    <td><strong>Dudley Council Surplus Land Pipeline</strong></td>
+    <td>Council land/sites — ongoing disposals</td>
+    <td>£2m+ already raised from Brierley Hill, Dudley, Stourbridge sales. More coming. Cabinet actively identifying surplus. Netherton Arts Centre (£500k, Grade II listed) currently marketed.</td>
+    <td>£25k-£500k (varies)</td>
+    <td>2-5x</td>
+    <td><span class="score-strong">7.9/10</span></td>
+    <td><strong>STRONG PLANNING UPLIFT</strong> — monitor cabinet resources page weekly</td>
+  </tr>
+  <tr>
+    <td><strong>Canalside Halo Zone — Wolverhampton City Centre</strong></td>
+    <td>Class MA commercial-to-resi, vacant retail/offices</td>
+    <td>£150m Canalside South (533 homes) first completions June 2026. Halo effect for adjacent Class MA conversions. First completions will anchor values.</td>
+    <td>£80k-£200k</td>
+    <td>£150k-£350k GDV per conversion</td>
+    <td><span class="score-strong">7.6/10</span></td>
+    <td><strong>STRONG PLANNING UPLIFT</strong> — time buys near regeneration anchor</td>
+  </tr>
+  <tr>
+    <td><strong>Churchfields, Kidderminster DY10</strong></td>
+    <td>Brownfield — 240 homes + 670sqm mixed-use</td>
+    <td>Outline PP granted for major regeneration. Sets precedent for Churchfield area. Look for adjacent smaller sites to piggyback.</td>
+    <td>£100k-£500k</td>
+    <td>2-4x (adjacent infill sites)</td>
+    <td><span class="score-watch">7.2/10</span></td>
+    <td>WORTH MANUAL REVIEW — monitor for adjacent disposals</td>
+  </tr>
+  <tr>
+    <td><strong>Sandwell Local Plan Allocations — Silverthorne Lane/Forge Lane, Cradley Heath</strong></td>
+    <td>Brownfield — 2.41 acres, allocated residential</td>
+    <td>Reg 19 Publication Plan allocates for housing 2034-2035. Good location, mixed density opportunity. Macarthur Rd Industrial Estate (0.3 acre) also allocated.</td>
+    <td>£150k-£300k</td>
+    <td>£500k-£800k GDV</td>
+    <td><span class="score-watch">7.0/10</span></td>
+    <td>WORTH MANUAL REVIEW — long timeline but strategic land banking</td>
+  </tr>
+</table>
+
+<!-- ============================================ -->
+<h2>⚠️ Planning Risk Checklist</h2>
+<!-- ============================================ -->
+
+<div class="card watch">
+  <h3>⛔ HIGH-RISK FLAGS — Any of these = REJECT or demand >30% discount</h3>
+  <ul>
+    <li>☐ <strong>Ancient woodland</strong> — Turls Hill Rd Coseley example, near-impossible to develop</li>
+    <li>☐ <strong>Grade II Listed Building</strong> — Netherton Arts Centre (£500k, Grade II listed in 2025). Severe constraints on development.</li>
+    <li>☐ <strong>Conservation Area</strong> — Brierley Hill High St CA affects Plough Inn & Red Lion. Heritage consultant needed.</li>
+    <li>☐ <strong>Green Belt</strong> — GB appeals being won in Walsall (<2yr supply) but still high risk/cost</li>
+    <li>☐ <strong>Flood Zone 3</strong> — Check council flood maps before ANY purchase</li>
+    <li>☐ <strong>Locally Listed Buildings</strong> — Plough Inn, Brierley Hill is locally listed. More restrictive than non-listed, less than Grade II.</li>
+    <li>☐ <strong>Article 4 Direction</strong> — Birmingham HMO A4 since June 2020; Wolverhampton since Sept 2017</li>
+    <li>☐ <strong>Japanese Knotweed</strong> — Verify treatment history. Treated+monitored = manageable. Untreated = -2.0 score penalty.</li>
+    <li>☐ <strong>Coal Mining (CON29M)</strong> — MANDATORY for ALL DY/WV postcodes. Budget £5k-£20k+ for investigation.</li>
+    <li>☐ <strong>Birmingham land premiums</strong> — Expect 3x+ guide price at auction within Birmingham city. Factor into budget.</li>
+  </ul>
+</div>
+
+<div class="card strong">
+  <h3>✅ DUE DILIGENCE CHECKLIST — Run before every offer</h3>
+  <ul>
+    <li>☐ Check Brownfield Land Register (Dudley council — Part 2 = Permission in Principle)</li>
+    <li>☐ Check Local Plan allocation (Sandwell Reg 19, Dudley Local Plan 2041, Cannock Chase Local Plan adopted Mar 2026)</li>
+    <li>☐ Check planning history for site + nearby 0.5mi (precedents matter more than policy)</li>
+    <li>☐ Check conservation area + listed building status</li>
+    <li>☐ Check Flood Zone (GOV.UK flood map)</li>
+    <li>☐ Check TPOs (Tree Preservation Orders)</li>
+    <li>☐ Check CON29M Coal Authority search (DY/WV mandatory)</li>
+    <li>☐ Check BHF grant eligibility (£5k-£20k/unit potential)</li>
+    <li>☐ Check services: DNO (NGED), Gas (Cadent), Water (Severn Trent) capacity</li>
+    <li>☐ Check access width (minimum 3.7m for fire engine access)</li>
+    <li>☐ Pre-application advice from council planning department (£200-£600)</li>
+    <li>☐ Architect feasibility sketch + NDSS compliance (min 37sqm 1b1p, 50sqm 1b2p)</li>
+    <li>☐ Review auction legal pack (knotweed, easements, covenants, overage clauses)</li>
+    <li>☐ Check for Section 106/CIL contributions — Class MA is usually exempt</li>
+  </ul>
+</div>
+
+<!-- ============================================ -->
+<h2>🔧 Improved Hermes Rules</h2>
+<!-- ============================================ -->
+
+<div class="card">
+  <h3>UPDATED: Scoring & Search Rules</h3>
+  <ul>
+    <li><strong>NEW: BHF +£234m funding rule</strong> — Any brownfield site in WMCA area eligible for BHF grant funding gets +1.0 score boost. Check eligibility via WMCA BHF application portal before scoring.</li>
+    <li><strong>NEW: Birmingham land premium warning</strong> — Auction lots in Birmingham city limits likely to sell at 2-4x guide price. Score -1.0 for any Birmingham CC land at auction to reflect bid premium risk.</li>
+    <li><strong>NEW: Approval precedent rule</strong> — Any site that shares the same local planning authority as a recently approved similar scheme (e.g., Oldbury warehouse→14 flats in Sandwell) gets +1.0 score boost for sites within 1 mile.</li>
+    <li><strong>NEW: PIP garden validation (Telford)</strong> — TWC/2026/0201 validates PIP route for garden/infill in Telford & Wrekin. Similar sites in Telford get +0.5 score boost.</li>
+    <li><strong>NEW: Council fire sale alert</strong> — Dudley Council actively selling surplus to bolster reserves (£2m+ raised). Monitor cabinet resources page. Score +0.5 for any Dudley council surplus site.</li>
+    <li><strong>NEW: Canalside South halo effect</strong> — First completions June 2026. Properties within 0.5mi of Canalside South, Wolverhampton get +0.5 score boost (value anchor for Class MA plays).</li>
+    <li><strong>REVISED: Bond Wolfe auction monitoring</strong> — Next auction 9 July 2026 (197 lots). Pre-register and review catalogue as soon as published. Target Sandwell council surplus lots first.</li>
+    <li><strong>REVISED: Conservation Area pub conversions</strong> — Score 6.0-6.5/10 if heritage-positive. Requires specialist consultant (£3k-£5k). Not a reject, but not a priority.</li>
+    <li><strong>NEW: Local listing vs Grade II distinction</strong> — Locally listed buildings (e.g., Plough Inn) are less restrictive than Grade II (e.g., Netherton Arts Centre). Score -1.0 for local listing, -2.0 for Grade II+.</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>NEW SEARCH TERMS FOR NEXT RUN</h3>
+  <ul>
+    <li><code>Bond Wolfe auction July 2026 list lots land development</code></li>
+    <li><code>"Brownfield Housing Fund" West Midlands grant approved site</code></li>
+    <li><code>"Wolverhampton Road" Oldbury planning application commercial residential</code></li>
+    <li><code>Dudley Council "cabinet resources" surplus land sale 2026</code></li>
+    <li><code>"permission in principle" "Telford" garden land 2026</code></li>
+    <li><code>Sandwell Council surplus property auction Bond Wolfe 2026</code></li>
+    <li><code>"Netherton Arts Centre" development opportunity buyer</code></li>
+    <li><code>"Canalside South" Wolverhampton commercial conversion halo</code></li>
+    <li><code>"Churchfields" Kidderminster development land infill</code></li>
+    <li><code>"planning uplift" "brownfield" calculation method 2026</code></li>
+  </ul>
+</div>
+
+<!-- ============================================ -->
+<h2>📈 Market Intelligence Summary</h2>
+<!-- ============================================ -->
+
+<table>
+  <tr><th>Factor</th><th>Status</th><th>Implication</th></tr>
+  <tr>
+    <td>BHF Additional Funding</td>
+    <td><span class="value-up">⬆️ +£234m announced Mar 2026</span></td>
+    <td>WMCA expected to receive substantial allocation. Register brownfield sites for BHF eligibility immediately.</td>
+  </tr>
+  <tr>
+    <td>Birmingham Land Auction Premium</td>
+    <td><span class="value-up">🔴 340% premium (Spring Rd Tyseley)</span></td>
+    <td>Avoid bidding in Birmingham city. Focus on Dudley/Sandwell/Walsall where premiums are lower.</td>
+  </tr>
+  <tr>
+    <td>Bond Wolfe July 9 Auction</td>
+    <td><span class="value-up">197 lots expected</span></td>
+    <td>Next major opportunity. Pre-register now. Sandwell + Birmingham council lots likely.</td>
+  </tr>
+  <tr>
+    <td>Dudley Council Land Sales</td>
+    <td><span class="value-up">£2m+ raised, more coming</span></td>
+    <td>Motivated seller. Active pipeline of surplus disposals. Netherton Arts Centre currently on market.</td>
+  </tr>
+  <tr>
+    <td>Wolverhampton Canalside South</td>
+    <td><span class="value-up">First completions June 2026</span></td>
+    <td>533 homes anchoring values. Class MA plays within 0.5mi get value boost from June onwards.</td>
+  </tr>
+  <tr>
+    <td>Cannock Chase 5YHLS</td>
+    <td><span class="value-warn">5.72 years</span></td>
+    <td>Above 5-year threshold but close. Adopted Local Plan provides certainty. Less speculative.</td>
+  </tr>
+  <tr>
+    <td>Walsall Housing Land Supply</td>
+    <td><span class="value-warn">⚠️ <2 years</span></td>
+    <td>Developers winning Green Belt appeals. High risk but high reward for GB edge sites.</td>
+  </tr>
+  <tr>
+    <td>Telford Garden PIP Validation</td>
+    <td><span class="value-up">✅ TWC/2026/0201</span></td>
+    <td>PIP route now validated for Telford garden infill. Replicable model for other garden plots.</td>
+  </tr>
+  <tr>
+    <td>RICS ESG 4th Edition</td>
+    <td><span class="value-warn">⚠️ Effective Apr 2026</span></td>
+    <td>EPC below C = mandatory value discount. Budget £10k retrofit per unit on older buildings.</td>
+  </tr>
+  <tr>
+    <td>Kidderminster Churchfields</td>
+    <td><span class="value-up">240 homes outline PP granted</span></td>
+    <td>Major regeneration in Kidderminster. Sets precedent for Churchfield area. Monitor adjacent sites.</td>
+  </tr>
+</table>
+
+<!-- ============================================ -->
+<h2>📋 What Changed / Improved Since Last Run</h2>
+<!-- ============================================ -->
+
+<div class="insight-box">
+  <p><strong>1. 10 New Search Terms Added</strong> targeting: Bond Wolfe July auction catalogue, BHF grant sites, Wolverhampton Rd corridor, Dudley council pipeline, Telford PIP validation, Canalside halo zone, Churchfields Kidderminster.</p>
+  <p><strong>2. BHF +£234m incorporated into scoring</strong> — Any BHF-eligible site gets automatic +1.0 score boost. This is the single most impactful policy change in 2026.</p>
+  <p><strong>3. Birmingham land premium rule added</strong> — Sites at auction within Birmingham city limits get -1.0 penalty. The 340% premium on Spring Road, Tyseley is a cautionary tale.</p>
+  <p><strong>4. Approval precedent database expanded</strong> — Added: Oldbury warehouse→14 flats (Sandwell, May 2026), Telford garden PIP (TWC/2026/0201), Plough Inn 4 flats (retrospective, Brierley Hill), Red Lion 4 apartments (Brierley Hill).</p>
+  <p><strong>5. Council fire sale monitoring added</strong> — Dudley Council £2m+ raised from surplus land. Monitoring pipeline of council disposals now part of daily routine.</p>
+  <p><strong>6. Conservation Area nuance added</strong> — Brierley Hill High Street Conservation Area doesn't auto-reject pub conversions. Score 6.0-6.5/10 if heritage-positive with specialist consultant.</p>
+  <p><strong>7. Canalside South halo zone created</strong> — First completions June 2026. 0.5mi radius from Canalside South now monitored for Class MA opportunities.</p>
+  <p><strong>8. Bond Wolfe auction schedule confirmed</strong> — Next auction 9 July 2026 (not 10th — noted as Thursday 9th July @ 08:30AM). Corrected in calendar.</p>
+</div>
+
+<!-- ============================================ -->
+<h2>🎯 Top 3 Actionable Deals</h2>
+<!-- ============================================ -->
+
+<div class="card strong">
+  <h3>🥇 #1 PRIORITY: Oldbury Warehouse → 14 Flats — Wolverhampton Road, Oldbury B69 — PLANNING APPROVED</h3>
+  <p><strong>Status:</strong> PLANNING APPROVED (BBC News, May 2026) | <strong>Applicant:</strong> Paul Johal</p>
+  <p><strong>Site:</strong> Land off Wolverhampton Road, Langley, Oldbury. Former warehouse. 14 self-contained flats approved by Sandwell Council.</p>
+  <p><strong>Strategy:</strong> This is an approved scheme that validates the corridor. Two parallel plays: (1) Check if the site itself is currently for sale (owner may sell with PP). (2) Target adjacent commercial/industrial sites on same corridor for similar Class MA/full planning applications. The A4123 Wolverhampton Road corridor has established residential use and is being redeveloped at pace.</p>
+  <p><strong>Calculated Upside:</strong> 14 flats × £120k-£150k each = £1.68M-£2.1M GDV. Development costs c.£1.1M-£1.4M (land + build). Net: £300k-£700k. <strong>Sell-with-PP strategy: sell approved site to builder for £400k-£600k.</strong></p>
+  <p><span class="tag green">Planning Approved</span> <span class="tag blue">Replicable Model</span> <span class="tag yellow">Strong Demand Corridor</span></p>
+</div>
+
+<div class="card strong">
+  <h3>🥈 #2 PRIORITY: Bond Wolfe 9 July 2026 Auction — Pre-register NOW</h3>
+  <p><strong>Date:</strong> Thursday 9 July 2026 @ 08:30AM | <strong>Lots:</strong> 197 expected | <strong>Status:</strong> Catalogue not yet released</p>
+  <p>Bond Wolfe confirmed next auction for 9 July with land & development highlights highlighted on social media. Likely to include: Sandwell MBC surplus sites (Bond Wolfe has exclusive contract), Birmingham City Council surplus (4+ plots per prior auctions), garage sites, development land, commercial-to-resi opportunities.</p>
+  <p><strong>Strategy:</strong> Pre-register for bidding now (bondwolfe.com). Check catalogue as soon as published. Target: (1) Sandwell council lots first (motivated seller, likely under £100k), (2) garage sites with historic planning, (3) freehold land in residential areas. Budget: 20-50% above guide for competitive lots. Avoid Birmingham city lots (expect 3x+ premiums).</p>
+</div>
+
+<div class="card strong">
+  <h3>🥉 #3 PRIORITY: Telford Garden PIP Replicable Model — Spring Terrace, The Rock, Telford</h3>
+  <p><strong>Application:</strong> TWC/2026/0201 | <strong>Status:</strong> Permission in Principle for up to 3 homes | <strong>Strategy:</strong> Replicable</p>
+  <p>David Topping's PIP application for up to 3 homes on garden land at Spring Terrace validates the Permission in Principle route for garden/infill development in Telford & Wrekin. Previous PP for 1 house granted 2008 (expired). The PIP route is lower-cost than full planning (less technical detail needed upfront).</p>
+  <p><strong>Strategy:</strong> Identify similar large garden plots in Telford — look for properties on corner sites or at road ends with space for 1-3 homes. Apply for PIP first (lower cost, establishes principle), then technical details consent. Telford has less competition than Birmingham/Dudley for land.</p>
+  <p><span class="tag green">PIP Route</span> <span class="tag blue">Replicable</span> <span class="tag yellow">Low Competition</span></p>
+</div>
+
+<hr class="divider">
+
+<div style="text-align: center; color: #8b949e; font-size: 0.85em; padding: 20px 0;">
+  <p>Hermes Agent — Land & Planning Uplift Intelligence | Generated 20 May 2026 | Data sources: web_search, planning portal, auction sites, BBC News, Dudley News, Stourbridge News, Express & Star, Birmingham Mail, Bond Wolfe, Telford Live</p>
+  <p>⚠️ All scores and projections are indicative. Verify all data through independent professional advice before committing capital.</p>
+</div>
+
+</body>
+</html>

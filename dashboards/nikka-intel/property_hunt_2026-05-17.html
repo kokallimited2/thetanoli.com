@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏠 Property Hunt — 17 May 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 2rem; line-height: 1.6; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  h1 { font-size: 2rem; color: #f0c040; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem; }
+  .subtitle { color: #8b949e; font-size: 0.95rem; margin-bottom: 2rem; border-bottom: 1px solid #21262d; padding-bottom: 1rem; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; text-align: center; }
+  .stat-card .num { font-size: 2rem; font-weight: 700; color: #58a6ff; }
+  .stat-card .label { color: #8b949e; font-size: 0.85rem; margin-top: 0.25rem; }
+  .stat-card.hot .num { color: #f85149; }
+  .stat-card.warm .num { color: #f0c040; }
+  .stat-card.cool .num { color: #58a6ff; }
+  
+  .section-title { font-size: 1.3rem; color: #f0c040; margin: 2rem 0 1rem; border-left: 3px solid #f0c040; padding-left: 0.75rem; }
+  .deal-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .deal-card.highlight { border-color: #f0c040; box-shadow: 0 0 12px rgba(240,192,64,0.15); }
+  .deal-header { display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+  .deal-title { font-size: 1.15rem; font-weight: 600; color: #f0c040; }
+  .deal-address { color: #8b949e; font-size: 0.9rem; }
+  .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+  .badge.brrr { background: #1f6feb33; color: #58a6ff; border: 1px solid #1f6feb; }
+  .badge.btl { background: #23863633; color: #3fb950; border: 1px solid #238636; }
+  .badge.top { background: #f0c04033; color: #f0c040; border: 1px solid #f0c040; }
+  .badge.pass { background: #30363d; color: #8b949e; border: 1px solid #30363d; }
+  
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+  .metric { background: #0d1117; border-radius: 8px; padding: 0.75rem; text-align: center; }
+  .metric .val { font-size: 1.2rem; font-weight: 700; }
+  .metric .val.green { color: #3fb950; }
+  .metric .val.yellow { color: #f0c040; }
+  .metric .val.red { color: #f85149; }
+  .metric .lbl { font-size: 0.75rem; color: #8b949e; margin-top: 0.2rem; }
+  
+  .score-bar { height: 8px; background: #21262d; border-radius: 4px; margin: 0.75rem 0; overflow: hidden; }
+  .score-fill { height: 100%; border-radius: 4px; }
+  .score-fill.green { background: linear-gradient(90deg, #238636, #3fb950); width: 82%; }
+  .score-fill.yellow { background: linear-gradient(90deg, #9e6a03, #f0c040); width: 78%; }
+  .score-fill.amber { background: linear-gradient(90deg, #9e6a03, #d29922); width: 74%; }
+  
+  .narrative { color: #c9d1d9; font-size: 0.9rem; margin: 0.75rem 0; padding: 0.75rem; background: #0d1117; border-radius: 8px; border-left: 3px solid #30363d; }
+  
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  
+  .risk-flags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
+  .risk-flag { padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; }
+  .risk-flag.high { background: #f8514933; color: #f85149; border: 1px solid #f85149; }
+  .risk-flag.med { background: #d2992233; color: #d29922; border: 1px solid #d29922; }
+  .risk-flag.low { background: #3fb95033; color: #3fb950; border: 1px solid #3fb950; }
+  
+  .viewing-brief { background: #0d1117; border-radius: 8px; padding: 1rem; margin-top: 1rem; border: 1px dashed #30363d; }
+  .viewing-brief h4 { color: #58a6ff; margin-bottom: 0.5rem; }
+  .viewing-brief ul { padding-left: 1.25rem; font-size: 0.9rem; }
+  .viewing-brief li { margin-bottom: 0.3rem; }
+  
+  .honorable { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; }
+  .honorable h4 { color: #8b949e; }
+  
+  .market-summary { background: #161b22; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border: 1px solid #30363d; }
+  .market-summary table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .market-summary th { text-align: left; color: #8b949e; padding: 0.5rem; border-bottom: 1px solid #30363d; }
+  .market-summary td { padding: 0.5rem; border-bottom: 1px solid #21262d; }
+  .market-summary tr:hover td { background: #1c2128; }
+  
+  .footer { text-align: center; color: #484f58; font-size: 0.8rem; margin-top: 3rem; border-top: 1px solid #21262d; padding-top: 1.5rem; }
+  .footer .emoji { font-size: 1.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🏠 Daily Property Hunt</h1>
+<div class="subtitle">📅 Sunday, 17 May 2026 | 🌍 DY + WV + B Postcodes | 🤖 Hermes Autonomous Scan</div>
+
+<!-- Stats -->
+<div class="stats-grid">
+  <div class="stat-card"><div class="num">4,628</div><div class="label">Total Listings Scanned (DY 9, WV 14, B 22)</div></div>
+  <div class="stat-card warm"><div class="num">24</div><div class="label">DY BRRR Candidates (Freehold, 2+ bed, £70-200k)</div></div>
+  <div class="stat-card warm"><div class="num">43</div><div class="label">WV BRRR Candidates (Freehold, 2+ bed, £70-200k)</div></div>
+  <div class="stat-card hot"><div class="num">3</div><div class="label">🔥 Top 3 Deep-Dived Today</div></div>
+</div>
+
+<!-- Market Summary -->
+<div class="market-summary">
+<h3 style="color: #f0c040; margin-bottom: 0.75rem;">📊 Market Pulse Summary</h3>
+<table>
+  <tr><th>Area</th><th>Postcodes</th><th>Total Listings</th><th>Houses 2+ Bed</th><th>BRRR Targets</th><th>Market Health</th></tr>
+  <tr><td>🔵 DY Dudley</td><td>DY1-DY9</td><td>3,408</td><td>188</td><td>24</td><td>🟡 Tight — <1% BRRR targets</td></tr>
+  <tr><td>🟠 WV Wolverhampton</td><td>WV1-WV14</td><td>3,302</td><td>327</td><td>43</td><td>🟡 Moderate — best value in scan</td></tr>
+  <tr><td>🔴 B Birmingham</td><td>B6-B44 (selected)</td><td>5,601</td><td>468</td><td>189</td><td>🟢 Good volume — lots of <£200k inventory</td></tr>
+  <tr><td colspan="3"><strong>Total Scanned</strong></td><td><strong>983</strong></td><td><strong>~256</strong></td><td>🟡 Best hunting: WV1/WV10/WV12 & B6/B21/B23</td></tr>
+</table>
+<p style="color: #8b949e; font-size: 0.8rem; margin-top: 0.75rem;">📌 BRRR Targets = Freehold, houses only (no flats), 2+ bed, £70-200k (DY/WV) or £150-250k (B), not auction, not STC</p>
+</div>
+
+<!-- ===================== DEAL #1 ===================== -->
+<div class="section-title">🏆 Top Pick #1</div>
+<div class="deal-card highlight">
+  <div class="deal-header">
+    <div>
+      <div class="deal-title">🏠 Sandland Road, Willenhall, Wolverhampton WV12</div>
+      <div class="deal-address">Sandland Road, Willenhall, West Midlands, WV12</div>
+    </div>
+    <span class="badge top">#1 BRRR</span>
+  </div>
+
+  <div class="score-bar"><div class="score-fill green"></div></div>
+
+  <div class="metrics">
+    <div class="metric"><div class="val yellow">£150,000</div><div class="lbl">Asking Price</div></div>
+    <div class="metric"><div class="val green">£200k-210k</div><div class="lbl">ARV (After Refurb)</div></div>
+    <div class="metric"><div class="val yellow">33-40%</div><div class="lbl">Gross Profit Margin</div></div>
+    <div class="metric"><div class="val green">£1,050-1,150</div><div class="lbl">Est. Rent/Month</div></div>
+    <div class="metric"><div class="val green">8.8%</div><div class="lbl">Gross Yield (on purchase)</div></div>
+    <div class="metric"><div class="val green">82/100</div><div class="lbl">Deal Score</div></div>
+  </div>
+
+  <div class="narrative">
+    <strong>🎯 Why this is the pick:</strong><br>
+    <strong>"Cash offers preferred due to condition"</strong> — this is the single strongest BRRR signal in today's entire scan across 35+ postcodes. A genuine value-add opportunity in the Willenhall corridor (WV12). 3-bed semi-detached with 2 receptions, spacious kitchen (2.85m×3.56m), and good layout. The agent confirms condition issues mean cash is preferred — exactly what a cash/bridging buyer wants. Listed only 6 days ago (11 May). The local market in Willenhall supports £200k+ for a refurbed 3-bed semi. Refurb estimate: £30k (cosmetic + essentials). BRRR refi at 75% LTV = ~£150k cash-out, leaving ~£45k equity in the deal. Strong rental demand in WV12 for 3-bed semis at £1,050-1,150/mo.
+  </div>
+
+  <div class="risk-flags">
+    <span class="risk-flag med">⚡ Needs full refurb (est. £25-35k)</span>
+    <span class="risk-flag low">✔ Freehold</span>
+    <span class="risk-flag med">⚡ Coal mining area — CON29M needed</span>
+    <span class="risk-flag low">✔ 3 beds — strong rental demand</span>
+    <span class="risk-flag low">✔ Listed <7 days — fresh to market</span>
+  </div>
+
+  <p style="margin-top: 0.75rem;">🔗 <a href="https://www.rightmove.co.uk/properties/88320027#/?channel=RES_BUY">View on Rightmove →</a></p>
+
+  <div class="viewing-brief">
+    <h4>📋 Viewing Brief — Sandland Road</h4>
+    <ul>
+      <li><strong>Check:</strong> Ceiling condition (water damage?), damp at ground level, roof tiles, electrics condition, gas boiler age/service history</li>
+      <li><strong>Measure:</strong> Bedroom 3 (1.78m×2.90m) — measure for compliance with NDSS; total floor area for EPC assessment</li>
+      <li><strong>Photo:</strong> Kitchen condition (full refurb needed?), bathroom condition, rear garden size, any cracks in brickwork</li>
+      <li><strong>Ask agent:</strong> Why cash preferred? Is there a chain? Has anyone else viewed/made offers? Any known structural issues?</li>
+      <li><strong>Strategy:</strong> Offer £130-135k cash/bridging. ARV £200-210k after £30k refurb. Refi to recycle.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== DEAL #2 ===================== -->
+<div class="section-title">🥈 Top Pick #2</div>
+<div class="deal-card">
+  <div class="deal-header">
+    <div>
+      <div class="deal-title">🏠 Lichfield Road, Willenhall, WV12</div>
+      <div class="deal-address">Lichfield Road, Willenhall, West Midlands, WV12 5UJ</div>
+    </div>
+    <span class="badge brrr">BRRR</span>
+  </div>
+
+  <div class="score-bar"><div class="score-fill yellow"></div></div>
+
+  <div class="metrics">
+    <div class="metric"><div class="val yellow">£150,000</div><div class="lbl">Asking Price</div></div>
+    <div class="metric"><div class="val green">£190-205k</div><div class="lbl">ARV</div></div>
+    <div class="metric"><div class="val yellow">27-37%</div><div class="lbl">Gross Profit Margin</div></div>
+    <div class="metric"><div class="val green">£950-1,100</div><div class="lbl">Est. Rent/Month</div></div>
+    <div class="metric"><div class="val green">8.4%</div><div class="lbl">Gross Yield</div></div>
+    <div class="metric"><div class="val yellow">78/100</div><div class="lbl">Deal Score</div></div>
+  </div>
+
+  <div class="narrative">
+    <strong>📌 Textbook BRRR candidate.</strong><br>
+    Listed as "traditional semi-detached home which requires refurbishment" and "offers fantastic potential for a first time buyer or investment buy to let." CHAIN-FREE ✅. Listed 11 May (6 days ago). Agent has NOT inspected internally — less detailed info available but potentially more motivated seller. Adjoining semi also for sale (negotiate both?). Good location on Willenhall/Wednesfield border near Coppice Farm Estate. The "needs refurbishment" language combined with "chain-free" and "investment BTL" makes this a textbook BRRR play. Slightly less info available than Sandland Road but solid fundamentals.
+  </div>
+
+  <div class="risk-flags">
+    <span class="risk-flag med">⚡ Agent hasn't inspected — unknown interior</span>
+    <span class="risk-flag low">✔ Chain-free — quick purchase</span>
+    <span class="risk-flag med">⚡ No floorplan — estimate refurb blind</span>
+    <span class="risk-flag low">✔ Semi-detached — higher ARV potential</span>
+    <span class="risk-flag med">⚡ Coal mining — CON29M needed</span>
+  </div>
+
+  <p style="margin-top: 0.75rem;">🔗 <a href="https://www.rightmove.co.uk/properties/88311831#/?channel=RES_BUY">View on Rightmove →</a></p>
+</div>
+
+<!-- ===================== DEAL #3 ===================== -->
+<div class="section-title">🥉 Top Pick #3</div>
+<div class="deal-card">
+  <div class="deal-header">
+    <div>
+      <div class="deal-title">🏠 Ivanhoe Street, Dudley DY2</div>
+      <div class="deal-address">Ivanhoe Street, Dudley, West Midlands, DY2 0YB</div>
+    </div>
+    <span class="badge btl">BTL / Hold</span>
+  </div>
+
+  <div class="score-bar"><div class="score-fill amber"></div></div>
+
+  <div class="metrics">
+    <div class="metric"><div class="val yellow">£150,000</div><div class="lbl">Asking Price</div></div>
+    <div class="metric"><div class="val green">£165-175k</div><div class="lbl">Current Value</div></div>
+    <div class="metric"><div class="val yellow">£900-950</div><div class="lbl">Est. Rent/Month</div></div>
+    <div class="metric"><div class="val green">7.2%</div><div class="lbl">Gross Yield</div></div>
+    <div class="metric"><div class="val yellow">£180-260</div><div class="lbl">Net Cashflow/Month</div></div>
+    <div class="metric"><div class="val yellow">74/100</div><div class="lbl">Deal Score</div></div>
+  </div>
+
+  <div class="narrative">
+    <strong>📍 Closest to you — Netherton, Dudley.</strong><br>
+    Victorian-style 3-bed mid-terrace in a popular residential location. "Beautifully appointed & deceptively spacious" — already in good decorative order (no major refurb needed). NO UPWARD CHAIN ✅. EPC D (needs upgrade before 2028 MEES deadline). Has gas CH and double glazing, 2 reception rooms, secluded rear garden. Sold by Taylors (Brierley Hill — your local agent!). This is a BTL, not a BRRR — there's no value-add play. But for a straightforward BTL in your backyard: £150k purchase, 25% deposit = £37.5k, ~£950/mo rent = 7.2% gross yield, decent cashflow after 75% LTV BTL mortgage at 5% (£575/mo IO). Not a home run, but a solid single to add to the portfolio.
+  </div>
+
+  <div class="risk-flags">
+    <span class="risk-flag med">⚡ EPC D — £5-8k upgrade needed for 2028 MEES</span>
+    <span class="risk-flag low">✔ No chain — quick completion</span>
+    <span class="risk-flag low">✔ Already well presented — ready to let</span>
+    <span class="risk-flag low">✔ Taylors Brierley Hill — known agent</span>
+  </div>
+
+  <div class="viewing-brief">
+    <h4>📋 Viewing Brief — Ivanhoe Street</h4>
+    <ul>
+      <li><strong>Check:</strong> Damp in rear garden wall, roof condition (Victorian properties can have slipped tiles), gas boiler age, loft insulation depth</li>
+      <li><strong>Measure:</strong> Bedroom 3 (3.68m×1.71m) — this is narrow at 5'7", check if it meets NDSS minimum standards</li>
+      <li><strong>Photo:</strong> Rear garden seclusion level, kitchen condition (is it modern or dated despite being "beautifully appointed"?)</li>
+      <li><strong>Ask agent:</strong> Why are they selling? Any historic damp issues? Has EPC been improved recently?</li>
+      <li><strong>Negotiate:</strong> Listed >30 days? Offer £135-140k cash.</li>
+    </ul>
+  </div>
+
+  <p style="margin-top: 0.75rem;">🔗 <a href="https://www.rightmove.co.uk/properties/166573325#/?channel=RES_BUY">View on Rightmove →</a></p>
+</div>
+
+<!-- Honorable Mentions -->
+<div class="section-title">📌 Honorable Mentions</div>
+
+<div class="honorable">
+  <h4>🔥 Francis Street, Dunstall Hill, Wolverhampton WV1 — £140,000</h4>
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.5rem 0;">
+    <span style="color: #3fb950;">3-bed terraced</span>
+    <span style="color: #8b949e;">|</span>
+    <span>Freehold</span>
+    <span style="color: #8b949e;">|</span>
+    <span>Listed 28 Apr (19 days)</span>
+    <span style="color: #8b949e;">|</span>
+    <span class="badge btl">BTL</span>
+  </div>
+  <p style="font-size: 0.9rem; color: #8b949e;"><strong>Lowest price in today's entire scan.</strong> "Excellent opportunity for investors, offering great potential." Three good-sized bedrooms (largest 3.5×4.3m), kitchen 5.5×2.6m. 2 receptions. Dunstall Hill is a popular Wolverhampton rental area. At £140k, this is the cheapest 3-bed freehold house found today. Est. rent £850-950/mo = 7.5-8.1% gross yield. Needs inspection — "great potential" often means it needs work.</p>
+  <p>🔗 <a href="https://www.rightmove.co.uk/properties/87778377#/?channel=RES_BUY">Rightmove →</a></p>
+</div>
+
+<div class="honorable">
+  <h4>🔥 Woden Road, Park Village, Wolverhampton WV10 — £150,000</h4>
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.5rem 0;">
+    <span style="color: #3fb950;">3-bed terraced</span>
+    <span style="color: #8b949e;">|</span>
+    <span>Freehold</span>
+    <span style="color: #8b949e;">|</span>
+    <span>🟢 Reduced 14 May + No Chain</span>
+    <span style="color: #8b949e;">|</span>
+    <span class="badge brrr">BRRR maybe</span>
+  </div>
+  <p style="font-size: 0.9rem; color: #8b949e;"><strong>Double positive signal:</strong> price REDUCED on 14 May AND no onward chain. 2 reception rooms. "Well presented" — may not need as much work as the top picks, but the reduction suggests seller motivation. Park Village is an up-and-coming Wolverhampton area close to town centre. Quick access to M6. Est. rent £875-950/mo. Good fallback if the WV12 properties sell before you view.</p>
+  <p>🔗 <a href="https://www.rightmove.co.uk/properties/87990288#/?channel=RES_BUY">Rightmove →</a></p>
+</div>
+
+<div class="honorable">
+  <h4>🔥 Blewitt Street, Brierley Hill DY5 — £155,000</h4>
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.5rem 0;">
+    <span style="color: #3fb950;">2-bed semi</span>
+    <span style="color: #8b949e;">|</span>
+    <span>Freehold</span>
+    <span style="color: #8b949e;">|</span>
+    <span>🟢 Tenants In Situ + Chain Free</span>
+    <span style="color: #8b949e;">|</span>
+    <span class="badge btl">BTL</span>
+  </div>
+  <p style="font-size: 0.9rem; color: #8b949e;"><strong>Immediate income — right on your doorstep.</strong> Sold WITH TENANTS IN SITU — you get rent from day one. No forward chain. Off-road driveway. Brierley Hill (your base). 2-bed semi in good area. The agent (Bettermove) says "rental yields can be obtained" — they may offer tenant find. Only downside: 2-bed limits rental growth and BRRR potential. But for a stress-free BTL with immediate cashflow 5 mins from your house — this is compelling.</p>
+  <p>🔗 <a href="https://www.rightmove.co.uk/properties/88373961#/?channel=RES_BUY">Rightmove →</a></p>
+</div>
+
+<div class="honorable">
+  <h4>🔥 Flavell Street, Dudley DY1 — £160,000</h4>
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.5rem 0;">
+    <span style="color: #3fb950;">2-bed terraced</span>
+    <span style="color: #8b949e;">|</span>
+    <span>Freehold</span>
+    <span style="color: #8b949e;">|</span>
+    <span>🟢 No Chain + New Boiler</span>
+    <span style="color: #8b949e;">|</span>
+    <span class="badge btl">BTL</span>
+  </div>
+  <p style="font-size: 0.9rem; color: #8b949e;">No chain, brand new boiler, off-road parking (rare for a terrace). DY1 Dudley area. 2 double beds. Low maintenance rear garden. New boiler = one less thing to fix. Est. rent £700-800/mo = 5.3-6% yield. Not a home run but a solid, low-hassle BTL with good bones.</p>
+  <p>🔗 <a href="https://www.rightmove.co.uk/properties/174367583#/?channel=RES_BUY">Rightmove →</a></p>
+</div>
+
+<div class="honorable">
+  <h4>🔥 Greadier Street, Willenhall WV12 — £170,000</h4>
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.5rem 0;">
+    <span style="color: #3fb950;">3-bed semi</span>
+    <span style="color: #8b949e;">|</span>
+    <span>Freehold</span>
+    <span style="color: #8b949e;">|</span>
+    <span>⚡ "In need of modernisation"</span>
+    <span style="color: #8b949e;">|</span>
+    <span class="badge brrr">BRRR</span>
+  </div>
+  <p style="font-size: 0.9rem; color: #8b949e;"><strong>Your third WV12 BRRR option.</strong> "In need of certain modernisation/refurbishment." Semi-detached with driveway + integral garage, conservatory, 3 beds. Listed 6 May. At £170k this is £20k more than the other Wilenhall BRRR candidates — but it has an integral garage and conservatory, so the ARV is higher (£210-220k after refurb). Bigger project, higher profit potential. Council tax band C. Agent: Fraser Wood (est. 1845 — 170+ years).</p>
+  <p>🔗 <a href="https://www.rightmove.co.uk/properties/88097457#/?channel=RES_BUY">Rightmove →</a></p>
+</div>
+
+<div class="honorable">
+  <h4>🔥 Electric Avenue, Witton, Birmingham B6 — £160,000</h4>
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.5rem 0;">
+    <span style="color: #3fb950;">2-bed terraced</span>
+    <span style="color: #8b949e;">|</span>
+    <span>Freehold</span>
+    <span style="color: #8b949e;">|</span>
+    <span>Near Aston Uni + Villa Park</span>
+    <span style="color: #8b949e;">|</span>
+    <span class="badge btl">BTL</span>
+  </div>
+  <p style="font-size: 0.9rem; color: #8b949e;">Best Birmingham deal in today's scan. £160k, 2-bed terraced in Witton (B6). Close to Aston University, Villa Park, Perry Barr. Strong rental demand zone for professional sharers and students. Est. rent £850-950/mo = 6.4-7.1% yield. 1.5mi from city centre.</p>
+  <p>🔗 <a href="https://www.rightmove.co.uk/properties/88591722#/?channel=RES_BUY">Rightmove →</a></p>
+</div>
+
+<!-- Verdict -->
+<div class="section-title">⚡ Final Verdict</div>
+<div style="background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 1.5rem;">
+
+<h3 style="color: #f0c040;">🔥 Today's Recommendation</h3>
+
+<p style="margin-top: 0.75rem;"><strong style="color: #f0c040;">Visit #1 — Sandland Road, Willenhall</strong> — this is your best BRRR candidate today. "Cash offers preferred due to condition" is the strongest distress signal. At £150k with £30k refurb, the ARV of £200-210k gives genuine equity. Call the agent today and make a cash offer around £130-135k.</p>
+
+<p style="margin-top: 0.5rem;"><strong style="color: #58a6ff;">If that doesn't work — Lichfield Road, Willenhall</strong> — same area, same price, same BRRR play. Chain-free, needs refurb, will take lower offers.</p>
+
+<p style="margin-top: 0.5rem;"><strong style="color: #3fb950;">For quick BTL income — Blewitt Street, Brierley Hill</strong> — tenants already in situ, your backyard, chain-free. Rent from day one.</p>
+
+<h3 style="color: #d29922; margin-top: 1.5rem;">🚗 Suggested Viewing Route</h3>
+<ol style="padding-left: 1.25rem; margin-top: 0.5rem;">
+  <li><strong>Sandland Road, Willenhall WV12</strong> (£150k, BRRR ✅)</li>
+  <li><strong>Lichfield Road, Willenhall WV12</strong> (£150k, BRRR ✅) — 0.8mi from Sandland</li>
+  <li><strong>Greadier Street, Willenhall WV12</strong> (£170k, BRRR) — 0.5mi from Lichfield Rd</li>
+  <li><strong>Francis Street, Dunstall Hill WV1</strong> (£140k, cheapest in scan) — 3.5mi</li>
+  <li><strong>Blewitt Street, Brierley Hill DY5</strong> (£155k, tenants in situ) — on way home</li>
+</ol>
+
+<p style="color: #8b949e; margin-top: 1rem; font-size: 0.9rem;">
+  <strong>⚠️ Risk reminder:</strong> DY/WV postcodes sit on the Staffordshire/Black Country coalfield. Always order a CON29M coal mining search for BRRR purchases. Flood risk is low across all candidates. All properties listed are freehold and not auction.
+</p>
+</div>
+
+<div class="footer">
+  <div class="emoji">🏠🤖</div>
+  <p>Hermes Property Intelligence — Kokal Properties Ltd</p>
+  <p>Automated daily scan: DY × WV × B | Filter: Freehold, 2+ bed, £70-200k/£150-250k | Next scan: Mon 18 May</p>
+</div>
+
+</div>
+</body>
+</html>

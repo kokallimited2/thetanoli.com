@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Deal Sourcer — Daily Report 15 May 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header { border-bottom: 1px solid #30363d; padding-bottom: 20px; margin-bottom: 24px; }
+  .header h1 { font-size: 1.5em; color: #58a6ff; }
+  .header .subtitle { color: #8b949e; font-size: 0.9em; margin-top: 4px; }
+  .header .date { color: #f0883e; font-weight: 600; }
+  .header .area { color: #7ee787; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; text-align: center; }
+  .stat-card .value { font-size: 2em; font-weight: 700; color: #58a6ff; }
+  .stat-card .label { font-size: 0.8em; color: #8b949e; margin-top: 4px; }
+  .stat-card.highlight .value { color: #f0883e; }
+  .stat-card.green .value { color: #7ee787; }
+  .stat-card.red .value { color: #f85149; }
+  .stat-card.purple .value { color: #d2a8ff; }
+  .section { margin-bottom: 24px; }
+  .section h2 { font-size: 1.2em; color: #58a6ff; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #21262d; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; padding: 8px 10px; font-size: 0.8em; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #30363d; }
+  td { padding: 10px; border-bottom: 1px solid #21262d; font-size: 0.9em; }
+  .score-badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-weight: 600; font-size: 0.85em; }
+  .score-high { background: #1a3a2a; color: #7ee787; }
+  .score-mid { background: #3a2a1a; color: #f0883e; }
+  .score-low { background: #3a1a1a; color: #f85149; }
+  .strategy-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 500; font-size: 0.85em; }
+  .strategy-brrr { background: #1a3a5a; color: #79c0ff; }
+  .strategy-flip { background: #3a2a1a; color: #f0883e; }
+  .strategy-btl { background: #1a3a2a; color: #7ee787; }
+  .tag { display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: 0.75em; margin: 1px; }
+  .tag-distress { background: #3a1a1a; color: #f85149; }
+  .tag-probate { background: #2a1a3a; color: #d2a8ff; }
+  .tag-vacant { background: #1a2a3a; color: #79c0ff; }
+  .tag-landlord { background: #3a2a1a; color: #f0883e; }
+  .tag-cashbuyer { background: #1a3a2a; color: #7ee787; }
+  .distress-signals { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+  .status-pill { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 500; }
+  .status-watch { background: #1a3a2a; color: #7ee787; }
+  .status-active { background: #3a2a1a; color: #f0883e; }
+  .status-reject { background: #3a1a1a; color: #f85149; }
+  .footer { border-top: 1px solid #30363d; padding-top: 16px; text-align: center; color: #484f58; font-size: 0.8em; margin-top: 32px; }
+  .green { color: #7ee787; }
+  .orange { color: #f0883e; }
+  .red { color: #f85149; }
+  .blue { color: #58a6ff; }
+  .summary-text { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; line-height: 1.6; }
+  .strategy-breakdown { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .strategy-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; }
+  .strategy-card h3 { font-size: 1em; margin-bottom: 8px; }
+  .strategy-card .count { font-size: 1.5em; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🏠 Property Deal Sourcer — Daily Report</h1>
+  <div class="subtitle"><span class="date">Friday, 15 May 2026</span> | <span class="area">West Midlands</span> | Postcodes: DY5, DY1, B10, WV1, B66</div>
+</div>
+
+<!-- Summary Stats -->
+<div class="stats-grid">
+  <div class="stat-card highlight">
+    <div class="value">80</div>
+    <div class="label">Properties Found</div>
+  </div>
+  <div class="stat-card green">
+    <div class="value">10</div>
+    <div class="label">New to Database</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">46</div>
+    <div class="label">API Credits Used</div>
+  </div>
+  <div class="stat-card purple">
+    <div class="value">0</div>
+    <div class="label">Hot Leads (75+)</div>
+  </div>
+  <div class="stat-card red">
+    <div class="value">£25K</div>
+    <div class="label">Lowest Price</div>
+  </div>
+  <div class="stat-card green">
+    <div class="value">£300K</div>
+    <div class="label">Highest Price</div>
+  </div>
+</div>
+
+<!-- Executive Summary -->
+<div class="section">
+  <h2>📋 Executive Summary</h2>
+  <div class="summary-text">
+    <p><strong>Scan Status:</strong> ✅ Completed</p>
+    <p><strong>Areas Scanned:</strong> DY5 (20), DY1 (20), B10 (20), WV1 (20), B66 (0)</p>
+    <p><strong>Market Verdict:</strong> Quiet market today. No high-scoring leads (75+) identified. All 10 new properties scored below the actionable threshold. Existing watchlist of 3 deals (BRRR at 85, Flip at 72, BTL at 65) remains active.</p>
+    <p><strong>Distress Signals Detected:</strong> All 10 new properties carry distress markers — probate, landlord exit, vacant possession, cash-buyer-preferred, and/or price reductions. These indicate motivated sellers but current scoring suggests pricing is still above actionable levels.</p>
+    <p><strong>Top Today's Score:</strong> <span class="orange">12.0</span> (low — below actionable threshold)</p>
+    <p><strong>Hot Watchlist Total:</strong> <span class="green">3 deals</span> — BRRR (85), Flip (72), BTL (65)</p>
+  </div>
+</div>
+
+<!-- Top Leads from Today's Scan -->
+<div class="section">
+  <h2>🔍 Today's New Leads (Ranked by Score)</h2>
+  <table>
+    <tr>
+      <th>Score</th><th>Address</th><th>Postcode</th><th>Price</th><th>Action</th><th>Signals</th>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-low">12.0</span></td>
+      <td>10, Columbus Avenue</td>
+      <td>DY5 1TW</td>
+      <td>£105,000</td>
+      <td><span class="status-pill status-reject">Reject</span></td>
+      <td><div class="distress-signals"><span class="tag tag-probate">probate</span><span class="tag tag-landlord">landlord exit</span><span class="tag tag-vacant">vacant</span><span class="tag tag-cashbuyer">cash buyer</span></div></td>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-low">12.0</span></td>
+      <td>316, Gayfield Avenue</td>
+      <td>DY5 3JE</td>
+      <td>£280,000</td>
+      <td><span class="status-pill status-reject">Reject</span></td>
+      <td><div class="distress-signals"><span class="tag tag-probate">probate</span><span class="tag tag-landlord">landlord exit</span><span class="tag tag-vacant">vacant</span><span class="tag tag-cashbuyer">cash buyer</span></div></td>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-low">6.9</span></td>
+      <td>167, Willenhall Road</td>
+      <td>WV1 2HU</td>
+      <td>£152,995</td>
+      <td><span class="status-pill status-reject">Reject</span></td>
+      <td><div class="distress-signals"><span class="tag tag-probate">probate</span><span class="tag tag-landlord">landlord exit</span><span class="tag tag-vacant">vacant</span><span class="tag tag-cashbuyer">cash buyer</span></div></td>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-low">5.1</span></td>
+      <td>24, Ashbourne Road</td>
+      <td>WV1 2RX</td>
+      <td>£190,000</td>
+      <td><span class="status-pill status-reject">Reject</span></td>
+      <td><div class="distress-signals"><span class="tag tag-probate">probate</span><span class="tag tag-landlord">landlord exit</span><span class="tag tag-vacant">vacant</span><span class="tag tag-cashbuyer">cash buyer</span></div></td>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-low">3.0</span></td>
+      <td>14, Hawkley Road</td>
+      <td>WV1 2NZ</td>
+      <td>£240,000</td>
+      <td><span class="status-pill status-reject">Reject</span></td>
+      <td><div class="distress-signals"><span class="tag tag-probate">probate</span><span class="tag tag-landlord">landlord exit</span><span class="tag tag-vacant">vacant</span><span class="tag tag-cashbuyer">cash buyer</span></div></td>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-low">0.0</span></td>
+      <td>Queens St Garage Site, Pensnett</td>
+      <td>DY5 4BY</td>
+      <td>£25,000</td>
+      <td><span class="status-pill status-reject">Reject</span></td>
+      <td><div class="distress-signals"><span class="tag tag-probate">probate</span><span class="tag tag-landlord">landlord exit</span><span class="tag tag-vacant">vacant</span><span class="tag tag-cashbuyer">cash buyer</span></div></td>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-low">0.0</span></td>
+      <td>Walker Avenue</td>
+      <td>DY5 2LY</td>
+      <td>£240,000</td>
+      <td><span class="status-pill status-reject">Reject</span></td>
+      <td><div class="distress-signals"><span class="tag tag-probate">probate</span><span class="tag tag-landlord">landlord exit</span><span class="tag tag-vacant">vacant</span><span class="tag tag-cashbuyer">cash buyer</span></div></td>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-low">0.0</span></td>
+      <td>35, The Plantation</td>
+      <td>DY5 4RT</td>
+      <td>£300,000</td>
+      <td><span class="status-pill status-reject">Reject</span></td>
+      <td><div class="distress-signals"><span class="tag tag-probate">probate</span><span class="tag tag-landlord">landlord exit</span><span class="tag tag-vacant">vacant</span><span class="tag tag-cashbuyer">cash buyer</span></div></td>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-low">0.0</span></td>
+      <td>105, Kingswinford Road</td>
+      <td>DY1 2EX</td>
+      <td>£285,000</td>
+      <td><span class="status-pill status-reject">Reject</span></td>
+      <td><div class="distress-signals"><span class="tag tag-probate">probate</span><span class="tag tag-landlord">landlord exit</span><span class="tag tag-vacant">vacant</span><span class="tag tag-cashbuyer">cash buyer</span></div></td>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-low">0.0</span></td>
+      <td>Tudors Close</td>
+      <td>B10 0DY</td>
+      <td>£129,000</td>
+      <td><span class="status-pill status-reject">Reject</span></td>
+      <td><div class="distress-signals"><span class="tag tag-probate">probate</span><span class="tag tag-landlord">landlord exit</span><span class="tag tag-vacant">vacant</span><span class="tag tag-cashbuyer">cash buyer</span></div></td>
+    </tr>
+  </table>
+</div>
+
+<!-- Strategy Breakdown -->
+<div class="section">
+  <h2>📊 Strategy Breakdown — Active Watchlist</h2>
+  <div class="strategy-breakdown">
+    <div class="strategy-card">
+      <h3><span class="strategy-badge strategy-brrr">BRRR</span> Buy Refurb Refinance Rent</h3>
+      <div class="count green">1</div>
+      <div style="font-size:0.85em;color:#8b949e;margin-top:4px;">
+        <strong>3 Victoria Terrace</strong> DY1 1QG<br>
+        Price: £85K | GDV: £160K<br>
+        Profit: £46.8K | Yield: 11.4%<br>
+        Score: <span class="green">85</span> ⭐
+      </div>
+    </div>
+    <div class="strategy-card">
+      <h3><span class="strategy-badge strategy-flip">Flip</span> Renovate & Resell</h3>
+      <div class="count orange">1</div>
+      <div style="font-size:0.85em;color:#8b949e;margin-top:4px;">
+        <strong>45 High St Auction Lot</strong> DY1<br>
+        Price: £90K | GDV: £200K<br>
+        Profit: £30K | ROI: 18.2%<br>
+        Score: <span class="orange">72</span>
+      </div>
+    </div>
+    <div class="strategy-card">
+      <h3><span class="strategy-badge strategy-btl">BTL</span> Buy-to-Let Hold</h3>
+      <div class="count green">1</div>
+      <div style="font-size:0.85em;color:#8b949e;margin-top:4px;">
+        <strong>17 Oak Avenue</strong> WV1<br>
+        Price: £150K | Rent: £900/mo<br>
+        Yield: 7.2% | ROI: 12.5%<br>
+        Score: <span class="orange">65</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Distress Signals Deep Dive -->
+<div class="section">
+  <h2>🚨 Distress Signals Detected</h2>
+  <div class="summary-text">
+    <p><strong>10 of 10 new properties (100%)</strong> carry distress signals. Here's the breakdown:</p>
+    <ul style="margin: 8px 0 0 20px; line-height: 1.8;">
+      <li><span class="tag tag-probate">probate</span> — 10 properties (estate sale / inherited)</li>
+      <li><span class="tag tag-landlord">landlord exit</span> — 10 properties (landlord divesting)</li>
+      <li><span class="tag tag-vacant">vacant</span> — 10 properties (empty, holding costs)</li>
+      <li><span class="tag tag-cashbuyer">cash buyer preferred</span> — 10 properties (chain-free / quick completion)</li>
+      <li><span class="tag tag-distress">price reduction</span> — Several properties showing reductions</li>
+    </ul>
+    <p style="margin-top: 8px; color: #f0883e;"><strong>⚠️ Note:</strong> Despite strong distress signals, scores remain low (max 12.0). This suggests asking prices are still above BMV thresholds. These need price drops or negotiation before becoming actionable.</p>
+  </div>
+</div>
+
+<!-- Historical Top Leads Comparison -->
+<div class="section">
+  <h2>🏆 Top Active Deals (All Time)</h2>
+  <table>
+    <tr>
+      <th>Score</th><th>Strategy</th><th>Address</th><th>Postcode</th><th>Price</th><th>Profit</th><th>Yield</th><th>ROI</th><th>Status</th>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-high">85</span></td>
+      <td><span class="strategy-badge strategy-brrr">BRRR</span></td>
+      <td>3 Victoria Terrace</td>
+      <td>DY1 1QG</td>
+      <td>£85,000</td>
+      <td class="green">£46,800</td>
+      <td class="green">11.4%</td>
+      <td class="green">30.0%</td>
+      <td><span class="status-pill status-watch">Watch</span></td>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-mid">72</span></td>
+      <td><span class="strategy-badge strategy-flip">Flip</span></td>
+      <td>45 High St Auction Lot</td>
+      <td>DY1</td>
+      <td>£90,000</td>
+      <td class="orange">£30,000</td>
+      <td class="red">0.0%</td>
+      <td class="orange">18.2%</td>
+      <td><span class="status-pill status-watch">Watch</span></td>
+    </tr>
+    <tr>
+      <td><span class="score-badge score-mid">65</span></td>
+      <td><span class="strategy-badge strategy-btl">BTL</span></td>
+      <td>17 Oak Avenue</td>
+      <td>WV1</td>
+      <td>£150,000</td>
+      <td class="orange">£23,000</td>
+      <td class="green">7.2%</td>
+      <td class="orange">12.5%</td>
+      <td><span class="status-pill status-watch">Watch</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="footer">
+  Generated 15 May 2026 07:01 | Property Deal Sourcer v1.0 | West Midlands Residential Scan
+</div>
+
+</div>
+</body>
+</html>

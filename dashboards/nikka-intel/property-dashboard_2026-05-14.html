@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<title>Property Dashboard - 14 May 2026</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8fafc;margin:0;padding:20px;color:#1e293b}
+.container{max-width:1200px;margin:0 auto}
+.header{background:linear-gradient(135deg,#0f172a,#1e293b);color:white;padding:24px;border-radius:12px;margin-bottom:20px}
+.header h1{margin:0;font-size:24px}.header p{margin:8px 0 0;font-size:14px;color:#94a3b8}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:20px}
+.stat-card{background:white;border-radius:8px;padding:16px;border:1px solid #e5e7eb;text-align:center}
+.stat-card .num{font-size:28px;font-weight:700;color:#0f172a}
+.stat-card .label{font-size:12px;color:#6b7280;margin-top:4px}
+.sec{background:white;border-radius:8px;padding:20px;margin-bottom:16px;border:1px solid #e5e7eb}
+.sec h2{font-size:16px;font-weight:700;margin:0 0 12px;color:#0f172a;border-bottom:2px solid #f1f5f9;padding-bottom:8px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:8px 4px;border-bottom:2px solid #e5e7eb;color:#6b7280;font-weight:600}
+td{padding:8px 4px;border-bottom:1px solid #f1f5f9}
+.price{font-weight:700;color:#059669}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px}
+.bg-h{background:#dcfce7;color:#166534}.bg-m{background:#fef9c3;color:#854d0e}.bg-l{background:#fee2e2;color:#991b1b}
+.sig{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;margin:1px}
+.sig.auction{background:#fef3c7;color:#92400e}.sig.reduced{background:#fee2e2;color:#991b1b}.sig.chain{background:#dbeafe;color:#1e40af}
+.hot{background:linear-gradient(135deg,#fefce8,#fffbeb);border:2px solid #f59e0b;border-radius:8px;padding:16px;margin-bottom:12px}
+.footer{text-align:center;font-size:11px;color:#94a3b8;margin-top:20px;padding:12px}
+</style></head><body><div class="container"><div class="header"><h1>Property Dashboard &mdash; Dr Ateeq Yousif</h1><p>14 May 2026 | Brierley Hill, W Mids | £50k-£250k | 20mi | OnTheMarket</p></div><div class="stats"><div class="stat-card"><div class="num">86</div><div class="label">Total Properties</div></div><div class="stat-card"><div class="num">15</div><div class="label">Hot Deals (8+)</div></div><div class="stat-card"><div class="num">12</div><div class="label">Auctions</div></div><div class="stat-card"><div class="num">52</div><div class="label">Reductions</div></div><div class="stat-card"><div class="num">12</div><div class="label">BRR Candidates</div></div><div class="stat-card"><div class="num">£50</div><div class="label">From Price</div></div></div><div class="sec"><h2>TOP 3 HOTTEST DEALS &mdash; Immediate Action</h2><div class="hot">
+<span style="background:#f59e0b;color:white;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700">HOT #1</span>
+<div style="display:flex;justify-content:space-between">
+<div><div style="font-size:16px;font-weight:700;margin-top:6px">Dandys Walk, Walsall, West Midlands, WS1</div>
+<div style="font-size:12px;color:#6b7280">Maisonette | Agent: Bairstow Eves - Walsall</div></div>
+<div style="text-align:right"><div style="font-size:24px;font-weight:700;color:#059669">£50,000</div>
+<div style="font-size:12px">MV: £62,500 | <span style="color:#dc2626;font-weight:600">28% below</span></div></div></div>
+<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+<span class="badge bg-h">Score 10/10</span>
+<span class="sig auction">Yield: 7.8%</span>
+<span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </div>
+<div style="margin-top:6px;font-size:11px;color:#6b7280">Strategies: BRR | BMV | Flip</div></div><div class="hot">
+<span style="background:#f59e0b;color:white;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700">HOT #2</span>
+<div style="display:flex;justify-content:space-between">
+<div><div style="font-size:16px;font-weight:700;margin-top:6px">Old Church Road, Harborne, Birmingham</div>
+<div style="font-size:12px;color:#6b7280">Apartment | Agent: Connells - Harborne</div></div>
+<div style="text-align:right"><div style="font-size:24px;font-weight:700;color:#059669">£120,000</div>
+<div style="font-size:12px">MV: £144,000 | <span style="color:#dc2626;font-weight:600">20% below</span></div></div></div>
+<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+<span class="badge bg-h">Score 9/10</span>
+<span class="sig auction">Yield: 6.6%</span>
+<span class="sig chain">no chain</span> <span class="sig reduced">reduced</span> </div>
+<div style="margin-top:6px;font-size:11px;color:#6b7280">Strategies: BRR | BMV | Flip</div></div><div class="hot">
+<span style="background:#f59e0b;color:white;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700">HOT #3</span>
+<div style="display:flex;justify-content:space-between">
+<div><div style="font-size:16px;font-weight:700;margin-top:6px">34 Little Clothier Street, Willenhall, WV13 1BA</div>
+<div style="font-size:12px;color:#6b7280">Semi-detached house | Agent: </div></div>
+<div style="text-align:right"><div style="font-size:24px;font-weight:700;color:#059669">£104,000</div>
+<div style="font-size:12px">MV: £124,800 | <span style="color:#dc2626;font-weight:600">23% below</span></div></div></div>
+<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+<span class="badge bg-h">Score 9/10</span>
+<span class="sig auction">Yield: 6.0%</span>
+<span class="sig chain">vacant</span> <span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </div>
+<div style="margin-top:6px;font-size:11px;color:#6b7280">Strategies: BRR | BMV | Flip</div></div></div><div class="sec"><h2>ALL DEALS &mdash; Scored &amp; Ranked</h2><table><tr><th>Score</th><th>Price</th><th>Address</th><th>Type</th><th>Beds</th><th>Disc.</th><th>Yield</th><th>Signals</th></tr><tr><td><span class="badge bg-h">10</span></td><td class="price">£50,000</td><td>Dandys Walk, Walsall, West Midlands, WS1</td><td>Maisonette</td><td>?</td><td style="color:#dc2626;font-weight:600">28%</td><td>7.8%</td><td style="font-size:10px"><span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-h">9</span></td><td class="price">£120,000</td><td>Old Church Road, Harborne, Birmingham</td><td>Apartment</td><td>?</td><td style="color:#dc2626;font-weight:600">20%</td><td>6.6%</td><td style="font-size:10px"><span class="sig chain">no chain</span> <span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-h">9</span></td><td class="price">£104,000</td><td>34 Little Clothier Street, Willenhall, WV13 1BA</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">23%</td><td>6.0%</td><td style="font-size:10px"><span class="sig chain">vacant</span> <span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-h">9</span></td><td class="price">£80,000</td><td>Howard Road East, Birmingham, West Midlands</td><td>Apartment</td><td>?</td><td style="color:#dc2626;font-weight:600">23%</td><td>7.8%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-h">9</span></td><td class="price">£78,000</td><td>Brereton Road, Willenhall WV12</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">23%</td><td>7.8%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-h">9</span></td><td class="price">£58,000</td><td>Norfolk Road, Birmingham B15</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">23%</td><td>7.8%</td><td style="font-size:10px"><span class="sig chain">vacant</span> <span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-h">8.5</span></td><td class="price">£108,000</td><td>Terret Close, Walsall, West Midlands, WS1</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">20%</td><td>6.6%</td><td style="font-size:10px"><span class="sig auction">auction</span> <span class="sig chain">guide price</span> </td></tr><tr><td><span class="badge bg-h">8.5</span></td><td class="price">£93,000</td><td>Water Croft, Long Meadow WR4</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">18%</td><td>7.8%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> <span class="sig chain">guide price</span> </td></tr><tr><td><span class="badge bg-h">8</span></td><td class="price">£150,000</td><td>Lincoln Green, Wolverhampton WV10</td><td>Detached bungalow</td><td>?</td><td style="color:#dc2626;font-weight:600">20%</td><td>6.0%</td><td style="font-size:10px"><span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-h">8</span></td><td class="price">£120,000</td><td>Hurcott Road, Kidderminster, Worcestershire, DY10</td><td>Terraced house</td><td>?</td><td style="color:#dc2626;font-weight:600">20%</td><td>6.0%</td><td style="font-size:10px"><span class="sig auction">auction</span> </td></tr><tr><td><span class="badge bg-h">8</span></td><td class="price">£115,000</td><td>Pope Street, Birmingham B1</td><td>Studio</td><td>?</td><td style="color:#dc2626;font-weight:600">18%</td><td>6.0%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> <span class="sig chain">cash buyers</span> </td></tr><tr><td><span class="badge bg-h">8</span></td><td class="price">£110,000</td><td>Stanier Drive, Telford TF7</td><td>End of terrace house</td><td>?</td><td style="color:#dc2626;font-weight:600">18%</td><td>6.0%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-h">8</span></td><td class="price">£100,000</td><td>Pershore Road, Birmingham B5</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">18%</td><td>7.8%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-h">8</span></td><td class="price">£83,000</td><td>Waterfront West, Brierley Hill DY5</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">18%</td><td>7.8%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-h">8</span></td><td class="price">£65,000</td><td>Wake Green Road, Birmingham B13</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">20%</td><td>7.8%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-h">8</span></td><td class="price">£50</td><td>Beds</td><td>Property type</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-m">7.5</span></td><td class="price">£130,000</td><td>Tame Crossing, Wednesbury WS10</td><td>Apartment</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> <span class="sig chain">guide price</span> </td></tr><tr><td><span class="badge bg-m">7</span></td><td class="price">£180,000</td><td>Birmingham Road, SUTTON COLDFIELD</td><td>Apartment</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig chain">no chain</span> <span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">7</span></td><td class="price">£150,000</td><td>Gillscroft Road, Kitts Green, Birmingham, West Mid</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">17%</td><td>6.0%</td><td style="font-size:10px"><span class="sig auction">auction</span> </td></tr><tr><td><span class="badge bg-m">7</span></td><td class="price">£149,000</td><td>Yardley Wood Road, Birmingham B14</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">7</span></td><td class="price">£140,000</td><td>Cedarhurst, Birmingham B32</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> <span class="sig chain">cash buyers</span> </td></tr><tr><td><span class="badge bg-m">7</span></td><td class="price">£135,000</td><td>High Street, Amblecote, Stourbridge</td><td>Apartment</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">7</span></td><td class="price">£135,000</td><td>Wake Green Park, Birmingham B13</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">7</span></td><td class="price">£130,000</td><td>Waterfront Way, Walsall, West Midlands, WS2</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">7</span></td><td class="price">£130,000</td><td>Wolverhampton Road, Walsall WS2</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">7</span></td><td class="price">£125,000</td><td>36a Wake Green Road, Birmingham B13</td><td>Apartment</td><td>?</td><td style="color:#dc2626;font-weight:600">20%</td><td>7.8%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-m">7</span></td><td class="price">£95,000</td><td>Loxdale Sidings, Wolverhampton WV14</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-m">7</span></td><td class="price">£82,250</td><td>New House Farm Drive, Northfield, BIRMINGHAM</td><td>Apartment</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-m">6.5</span></td><td class="price">£200,000</td><td>Selmans Hill, Walsall WS3</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> <span class="sig chain">guide price</span> </td></tr><tr><td><span class="badge bg-m">6.5</span></td><td class="price">£190,000</td><td>Perch Road, Walsall, West Midlands, WS2</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> <span class="sig chain">guide price</span> </td></tr><tr><td><span class="badge bg-m">6.5</span></td><td class="price">£180,000</td><td>Grange Road, Kings Heath, Birmingham</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">17%</td><td>6.0%</td><td style="font-size:10px"><span class="sig auction">auction</span> <span class="sig chain">guide price</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£250,000</td><td>Woodstock Drive, Huntington, Cannock, WS12</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">13%</td><td>6.0%</td><td style="font-size:10px"><span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£200,000</td><td>Smithfield Road, Walsall</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£200,000</td><td>Rednal Mill Drive, Rednal, Birmingham, West Midlan</td><td>House</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£200,000</td><td>Smithfield Road, Walsall, West Midlands, WS3</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£200,000</td><td>Ashbourne Road, WALSALL, West Midlands, WS3</td><td>Terraced house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£200,000</td><td>Woods Lane, Quarry Bank, Brierley Hill</td><td>Semi-detached bungal</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£190,000</td><td>Ashbourne Road, Wolverhampton, West Midlands, WV1</td><td>Terraced house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£190,000</td><td>Holcombe Road, BIRMINGHAM, West Midlands, B11</td><td>End of terrace house</td><td>?</td><td style="color:#dc2626;font-weight:600">13%</td><td>6.0%</td><td style="font-size:10px"><span class="sig auction">auction</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£189,000</td><td>Lime Grove, Smethwick</td><td>Terraced house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£180,000</td><td>Brays Road, Birmingham</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">17%</td><td>6.0%</td><td style="font-size:10px"><span class="sig auction">auction</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£180,000</td><td>Cotford Road, Birmingham</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">17%</td><td>6.0%</td><td style="font-size:10px"><span class="sig auction">auction</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£175,000</td><td>Wood Avenue, Wolverhampton WV11</td><td>End of terrace house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig chain">no chain</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£165,000</td><td>Yorklea Croft, Birmingham</td><td>Terraced house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£165,000</td><td>Tividale Street, Tipton DY4</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£160,000</td><td>Bath Road, Worcester WR5</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig chain">vacant</span> <span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£160,000</td><td>Haxby Avenue, Birmingham</td><td>Maisonette</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£152,500</td><td>Navigation Drive, Birmingham B30</td><td>Apartment</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£148,000</td><td>Moorgate, Tamworth, Staffordshire, B79</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£140,000</td><td>Haunch Close, Birmingham, West Midlands</td><td>Apartment</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£135,000</td><td>Chester Road, Sutton Coldfield</td><td>Ground floor flat</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£130,000</td><td>Old College Drive, Wednesbury WS10</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-m">6</span></td><td class="price">£130,000</td><td>York Crescent, BIRMINGHAM</td><td>Flat</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-l">5.5</span></td><td class="price">£230,000</td><td>Cocksmead Croft, BIRMINGHAM</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> <span class="sig chain">guide price</span> </td></tr><tr><td><span class="badge bg-l">5.5</span></td><td class="price">£220,000</td><td>Brooking Close, Great Barr, Birmingham B43 7TY</td><td>End of terrace house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig chain">chain free</span> <span class="sig chain">guide price</span> </td></tr><tr><td><span class="badge bg-l">5.5</span></td><td class="price">£200,000</td><td>Cherry Tree Croft, Birmingham, West Midlands, B27</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig chain">guide price</span> </td></tr><tr><td><span class="badge bg-l">5.5</span></td><td class="price">£190,000</td><td>William Street, WALSALL, West Midlands, WS4</td><td>Terraced house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig chain">guide price</span> </td></tr><tr><td><span class="badge bg-l">5.5</span></td><td class="price">£165,000</td><td>Handley Street, Wednesbury WS10</td><td>Terraced house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig chain">guide price</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£250,000</td><td>Alvin Close, HALESOWEN</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£250,000</td><td>Borough Crescent, Stourbridge</td><td>End of terrace house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£240,000</td><td>Tangmere Road, Wolverhampton, WV2</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£240,000</td><td>Lawnsdale Close, BIRMINGHAM, West Midlands, B46</td><td>End of terrace house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£240,000</td><td>Copperbeech Close, Birmingham</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">10%</td><td>6.0%</td><td style="font-size:10px"><span class="sig auction">auction</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£230,000</td><td>Ennersdale Road, Coleshill, Birmingham, Warwickshi</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£230,000</td><td>Wellcroft Road, Birmingham</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£230,000</td><td>Shard End Crescent, Birmingham</td><td>Terraced bungalow</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£220,000</td><td>Coleman Road, Wednesbury, West Midlands, WS10</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£220,000</td><td>Central Avenue, BIRMINGHAM, West Midlands, B31</td><td>Bungalow</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£220,000</td><td>Kelverley Grove, West Bromwich B71</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£210,000</td><td>Littleworth Road, Cannock, Staffordshire, WS12</td><td>Terraced house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£210,000</td><td>Oak Lane, West Bromwich B70</td><td>End of terrace house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£210,000</td><td>Buttercup Close, KIDDERMINSTER, Worcestershire, DY</td><td>Detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£210,000</td><td>Effingham Road, Billesley, Birmingham</td><td>End of terrace house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£210,000</td><td>Brook Road, Willenhall, West Midlands, WV13</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig reduced">reduced</span> </td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£200,000</td><td>Smithfield Road, Walsall WS3</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£200,000</td><td>Griffiths Road, West Bromwich B71</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£200,000</td><td>Johnson Road, BIRMINGHAM</td><td>End of terrace house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£190,000</td><td>Edward Road, Halesowen</td><td>End of terrace house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£185,000</td><td>Azalea Grove, Birmingham B9</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£180,000</td><td>Solihull Road, Shirley, SOLIHULL</td><td>Apartment</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-l">5</span></td><td class="price">£170,000</td><td>Piccadilly Close, Chelmsley Wood, Birmingham, West</td><td>Terraced house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-l">4.5</span></td><td class="price">£210,000</td><td>Eccleshall Avenue, Wolverhampton, West Midlands, W</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"><span class="sig chain">guide price</span> <span class="sig chain">modernisation</span> </td></tr><tr><td><span class="badge bg-l">4</span></td><td class="price">£250,000</td><td>Duckhouse Road, Wolverhampton WV11</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-l">4</span></td><td class="price">£240,000</td><td>Oxlip Close, Walsall WS5</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-l">4</span></td><td class="price">£230,000</td><td>Brindley Avenue, Wolverhampton WV11</td><td>Semi-detached house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr><tr><td><span class="badge bg-l">4</span></td><td class="price">£220,000</td><td>Rye Croft, BIRMINGHAM</td><td>End of terrace house</td><td>?</td><td style="color:#dc2626;font-weight:600">8%</td><td>6.6%</td><td style="font-size:10px"></td></tr></table></div><div class="sec"><h2>BRR CANDIDATES (Buy Refurb Refinance)</h2><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">34 Little Clothier Street, Willenhall, WV13 1BA</div>
+<div style="font-size:11px;color:#6b7280">Semi-detached house | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£104,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £124,800</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">23% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 9/10</span>
+<span class="sig chain">vacant</span> <span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Lincoln Green, Wolverhampton WV10</div>
+<div style="font-size:11px;color:#6b7280">Detached bungalow | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£150,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £172,500</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">20% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 8/10</span>
+<span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Hurcott Road, Kidderminster, Worcestershire, DY10</div>
+<div style="font-size:11px;color:#6b7280">Terraced house | ? bed | Dixons - Kidderminster</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£120,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £144,000</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">20% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 8/10</span>
+<span class="sig auction">auction</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:white">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Gillscroft Road, Kitts Green, Birmingham, West Midlands, B33</div>
+<div style="font-size:11px;color:#6b7280">Semi-detached house | ? bed | Ferndown Estates - Birmingham</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£150,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £172,500</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">17% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 7/10</span>
+<span class="sig auction">auction</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:white">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Wolverhampton Road, Walsall WS2</div>
+<div style="font-size:11px;color:#6b7280">Semi-detached house | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£130,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £149,500</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">15% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 7/10</span>
+<span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:white">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Grange Road, Kings Heath, Birmingham</div>
+<div style="font-size:11px;color:#6b7280">Semi-detached house | ? bed | Connells - Kings Heath</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£180,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £206,999</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">17% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 6.5/10</span>
+<span class="sig auction">auction</span> <span class="sig chain">guide price</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:white">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Brays Road, Birmingham</div>
+<div style="font-size:11px;color:#6b7280">Semi-detached house | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£180,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £206,999</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">17% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 6/10</span>
+<span class="sig auction">auction</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:white">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Cotford Road, Birmingham</div>
+<div style="font-size:11px;color:#6b7280">Semi-detached house | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£180,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £206,999</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">17% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 6/10</span>
+<span class="sig auction">auction</span> </div></div></div><div class="sec"><h2>Auction Opportunities</h2><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Dandys Walk, Walsall, West Midlands, WS1</div>
+<div style="font-size:11px;color:#6b7280">Maisonette | ? bed | Bairstow Eves - Walsall</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£50,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £62,500</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">28% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 7.8%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 10/10</span>
+<span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">34 Little Clothier Street, Willenhall, WV13 1BA</div>
+<div style="font-size:11px;color:#6b7280">Semi-detached house | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£104,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £124,800</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">23% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 9/10</span>
+<span class="sig chain">vacant</span> <span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Terret Close, Walsall, West Midlands, WS1</div>
+<div style="font-size:11px;color:#6b7280">Flat | ? bed | Bairstow Eves - Walsall</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£108,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £129,600</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">20% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.6%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 8.5/10</span>
+<span class="sig auction">auction</span> <span class="sig chain">guide price</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Lincoln Green, Wolverhampton WV10</div>
+<div style="font-size:11px;color:#6b7280">Detached bungalow | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£150,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £172,500</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">20% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 8/10</span>
+<span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Hurcott Road, Kidderminster, Worcestershire, DY10</div>
+<div style="font-size:11px;color:#6b7280">Terraced house | ? bed | Dixons - Kidderminster</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£120,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £144,000</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">20% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 8/10</span>
+<span class="sig auction">auction</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:white">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Gillscroft Road, Kitts Green, Birmingham, West Midlands, B33</div>
+<div style="font-size:11px;color:#6b7280">Semi-detached house | ? bed | Ferndown Estates - Birmingham</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£150,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £172,500</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">17% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 7/10</span>
+<span class="sig auction">auction</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:white">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Grange Road, Kings Heath, Birmingham</div>
+<div style="font-size:11px;color:#6b7280">Semi-detached house | ? bed | Connells - Kings Heath</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£180,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £206,999</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">17% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 6.5/10</span>
+<span class="sig auction">auction</span> <span class="sig chain">guide price</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:white">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Woodstock Drive, Huntington, Cannock, WS12</div>
+<div style="font-size:11px;color:#6b7280">Semi-detached house | ? bed | Bairstow Eves - Cannock</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£250,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £262,500</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">13% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 6/10</span>
+<span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </div></div></div><div class="sec"><h2>Price Reductions</h2><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Dandys Walk, Walsall, West Midlands, WS1</div>
+<div style="font-size:11px;color:#6b7280">Maisonette | ? bed | Bairstow Eves - Walsall</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£50,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £62,500</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">28% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 7.8%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 10/10</span>
+<span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Old Church Road, Harborne, Birmingham</div>
+<div style="font-size:11px;color:#6b7280">Apartment | ? bed | Connells - Harborne</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£120,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £144,000</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">20% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.6%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 9/10</span>
+<span class="sig chain">no chain</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">34 Little Clothier Street, Willenhall, WV13 1BA</div>
+<div style="font-size:11px;color:#6b7280">Semi-detached house | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£104,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £124,800</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">23% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 9/10</span>
+<span class="sig chain">vacant</span> <span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Howard Road East, Birmingham, West Midlands</div>
+<div style="font-size:11px;color:#6b7280">Apartment | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£80,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £100,000</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">23% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 7.8%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 9/10</span>
+<span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Brereton Road, Willenhall WV12</div>
+<div style="font-size:11px;color:#6b7280">Flat | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£78,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £97,500</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">23% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 7.8%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 9/10</span>
+<span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Norfolk Road, Birmingham B15</div>
+<div style="font-size:11px;color:#6b7280">Flat | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£58,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £72,500</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">23% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 7.8%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 9/10</span>
+<span class="sig chain">vacant</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Water Croft, Long Meadow WR4</div>
+<div style="font-size:11px;color:#6b7280">Flat | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£93,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £111,600</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">18% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 7.8%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 8.5/10</span>
+<span class="sig reduced">reduced</span> <span class="sig chain">guide price</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Lincoln Green, Wolverhampton WV10</div>
+<div style="font-size:11px;color:#6b7280">Detached bungalow | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£150,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £172,500</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">20% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 8/10</span>
+<span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </div></div></div><div class="sec"><h2>Vendor Distress Watch</h2><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Old Church Road, Harborne, Birmingham</div>
+<div style="font-size:11px;color:#6b7280">Apartment | ? bed | Connells - Harborne</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£120,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £144,000</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">20% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.6%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 9/10</span>
+<span class="sig chain">no chain</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">34 Little Clothier Street, Willenhall, WV13 1BA</div>
+<div style="font-size:11px;color:#6b7280">Semi-detached house | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£104,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £124,800</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">23% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 9/10</span>
+<span class="sig chain">vacant</span> <span class="sig auction">auction</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:#fefce8">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Norfolk Road, Birmingham B15</div>
+<div style="font-size:11px;color:#6b7280">Flat | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£58,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £72,500</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">23% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 7.8%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 9/10</span>
+<span class="sig chain">vacant</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:white">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Birmingham Road, SUTTON COLDFIELD</div>
+<div style="font-size:11px;color:#6b7280">Apartment | ? bed | Connells - Sutton Coldfield</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£180,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £206,999</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">17% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.6%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 7/10</span>
+<span class="sig chain">no chain</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:white">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Wood Avenue, Wolverhampton WV11</div>
+<div style="font-size:11px;color:#6b7280">End of terrace house | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£175,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £201,249</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">14% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 6/10</span>
+<span class="sig chain">no chain</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:white">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Bath Road, Worcester WR5</div>
+<div style="font-size:11px;color:#6b7280">Flat | ? bed | </div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£160,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £184,000</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">15% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.6%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 6/10</span>
+<span class="sig chain">vacant</span> <span class="sig reduced">reduced</span> </div></div><div style="border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-bottom:12px;background:white">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Brooking Close, Great Barr, Birmingham B43 7TY</div>
+<div style="font-size:11px;color:#6b7280">End of terrace house | ? bed | Paul Carr - Great Barr</div></div>
+<div style="text-align:right"><div style="font-size:20px;font-weight:700;color:#059669">£220,000</div>
+<div style="font-size:12px;color:#6b7280">MV: £242,000</div>
+<div style="font-size:14px;font-weight:600;color:#dc2626">10% below</div>
+<div style="font-size:12px;color:#6b7280">Yield: 6.0%</div></div></div>
+<div style="margin-top:8px;font-size:12px;color:#374151;display:flex;gap:6px;flex-wrap:wrap">
+<span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:4px;font-weight:600;font-size:11px">Score 5.5/10</span>
+<span class="sig chain">chain free</span> <span class="sig chain">guide price</span> </div></div></div><div class="sec"><h2>Area Statistics</h2><table><tr><td>Total Properties</td><td><strong>86</strong></td></tr><tr><td>Average Price</td><td><strong>£168,893</strong></td></tr><tr><td>Median Price</td><td><strong>£180,000</strong></td></tr><tr><td>Price Range</td><td><strong>£50 &ndash; £250,000</strong></td></tr><tr><td>Hot Deals (8+)</td><td><strong>15</strong></td></tr><tr><td>Auctions</td><td><strong>12</strong></td></tr><tr><td>Reductions</td><td><strong>52</strong></td></tr><tr><td>Chain-Free/Vacant</td><td><strong>7</strong></td></tr><tr><td>BRR Candidates</td><td><strong>12</strong></td></tr><tr><td>Source</td><td><strong>OnTheMarket</strong></td></tr><tr><td>Search</td><td><strong>Brierley Hill + 20mi, £50k-£250k</strong></td></tr></table></div><div class="footer">Generated by Hermes Property Deal Sourcer | 14 May 2026</div></div></body></html>

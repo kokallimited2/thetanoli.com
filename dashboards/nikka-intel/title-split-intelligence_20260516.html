@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Title Split Intelligence — 16 May 2026</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #21262d;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d29922;
+    --red: #f85149;
+    --purple: #bc8cff;
+    --cyan: #39d2c0;
+    --text: #e6edf3;
+    --text2: #8b949e;
+    --border: #30363d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a2332 0%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 24px 24px;
+    text-align: center;
+  }
+  .header h1 { font-size: 2rem; color: var(--cyan); }
+  .header p { color: var(--text2); font-size: 0.95rem; margin-top: 8px; }
+  .header .badge {
+    display: inline-block;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 4px 14px;
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-top: 12px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+  .section {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .section h2 {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section h3 {
+    color: var(--cyan);
+    font-size: 1rem;
+    margin: 14px 0 8px;
+  }
+  .section h4 { color: var(--purple); font-size: 0.95rem; margin: 10px 0 6px; }
+  .section ul, .section ol { margin: 8px 0 8px 20px; }
+  .section li { margin-bottom: 4px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.85rem;
+  }
+  th {
+    background: var(--bg3);
+    color: var(--accent);
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover { background: var(--bg3); }
+  .highlight { color: var(--green); font-weight: 600; }
+  .risk { color: var(--red); }
+  .insight { color: var(--orange); }
+  .info { color: var(--accent); }
+  .score-high { color: var(--green); font-weight: 700; }
+  .score-med { color: var(--orange); font-weight: 700; }
+  .score-low { color: var(--red); font-weight: 700; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .tag-green { background: #1a3a2a; color: var(--green); border: 1px solid #2ea043; }
+  .tag-orange { background: #3a2a1a; color: var(--orange); border: 1px solid #bb8009; }
+  .tag-red { background: #3a1a1a; color: var(--red); border: 1px solid #da3633; }
+  .tag-blue { background: #1a2a3a; color: var(--accent); border: 1px solid #1f6feb; }
+  .tag-purple { background: #2a1a3a; color: var(--purple); border: 1px solid #8957e5; }
+  .split-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .alert-box {
+    background: #3a1a1a;
+    border: 1px solid #da3633;
+    border-radius: 6px;
+    padding: 14px;
+    margin: 12px 0;
+  }
+  .alert-box.breaking {
+    background: #1a2a3a;
+    border: 1px solid #1f6feb;
+  }
+  .alert-box.insight-box {
+    background: #1a3a2a;
+    border: 1px solid #2ea043;
+  }
+  .alert-box.warning-box {
+    background: #3a2a1a;
+    border: 1px solid #bb8009;
+  }
+  .alert-box .alert-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+  .metric-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 8px 0; }
+  .metric-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    min-width: 100px;
+  }
+  .metric-card .value { font-size: 1.2rem; font-weight: 700; color: var(--cyan); }
+  .metric-card .label { font-size: 0.7rem; color: var(--text2); text-transform: uppercase; }
+  @media (max-width: 700px) { .split-cols { grid-template-columns: 1fr; } }
+  .footer { text-align: center; padding: 24px; color: var(--text2); font-size: 0.8rem; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🏘️ Title Split Intelligence — 16 May 2026</h1>
+  <p>UK Title Split &amp; Property Subdivision Analysis · Enforcement Alert Edition</p>
+  <div class="badge">📅 Enforcement: Dudley Tipton Rd 15 flats MUST GO · Bond Wolfe results AWAITING</div>
+</div>
+
+<div class="container">
+
+<!-- Today's Insight -->
+<div class="section">
+  <h2>🔑 Today's Title Split Insight</h2>
+  <p><strong>"The Dudley Enforcement Bombshell — Unauthorised Title Splits Have Teeth"</strong></p>
+  <p>Today's defining story is the <span class="risk">Planning Inspectorate upholding Dudley Council's enforcement notices</span> against Zakir Shah at 10-12 Tipton Road, Dudley — <span class="risk">15 self-contained flats MUST be restored to dwelling houses within 90 days</span>. This is the most significant enforcement case for title splitting we've tracked.</p>
+  <p>Three houses: one converted to <strong>7 flats</strong>, two others to <strong>4 flats each</strong>. The inspector (Simon Hand) found "convincing evidence" of conversion and no evidence of permission. The 90-day restoration period requires removing ALL fixtures, kitchens, bathrooms, internal walls, and electrical supplies. Non-compliance risks unlimited Crown Court fines.</p>
+  <p><span class="insight">The lesson is clear:</span> Unauthorised title splits are <strong>high-risk</strong>. Dudley Council is actively enforcing and the Planning Inspectorate is backing them fully. Any property investor considering title splitting without proper planning permission is taking a bet that could cost them the entire property plus criminal sanctions.</p>
+  <p>Meanwhile, this creates opportunity: the <span class="highlight">freehold-to-leasehold splitting of existing lawfully converted blocks</span> (no planning needed) and <span class="highlight">mixed-use shop+flat splits</span> (clearly lawful) become even more attractive by contrast. Pure legal arbitrage remains <strong>the safest title split strategy</strong>.</p>
+</div>
+
+<!-- BREAKING: Enforcement -->
+<div class="alert-box" style="border-color: #f85149;">
+  <div class="alert-title">🚨 DUDLEY ENFORCEMENT: 15 FLATS MUST BE DEMOLISHED — TIPTON ROAD</div>
+  <p><strong>Full story (Express & Star, May 2026):</strong></p>
+  <ul>
+    <li><span class="risk">10 Tipton Road:</span> Converted to 7 self-contained flats WITHOUT planning permission</li>
+    <li><span class="risk">11 & 12 Tipton Road:</span> Each converted to 4 flats WITHOUT planning permission</li>
+    <li><strong>Appeal REJECTED</strong> by Planning Inspector Simon Hand — "no evidence of permission" and "convincing evidence" of conversion</li>
+    <li><strong>90 DAYS</strong> to comply: remove all kitchens, bathrooms, internal walls, independent electrical supplies, fixtures, debris</li>
+    <li><strong>Penalties:</strong> Magistrates £20K max; Crown Court <span class="risk">UNLIMITED</span>; courts can confiscate income from non-compliance; councils can do the work and recover costs</li>
+  </ul>
+  <p style="margin-top:10px; font-size:0.85rem; color:var(--text2);">Source: Express & Star · Planning Inspectorate ref: (not published in article) · Enforcement notice served August 2025, appeal lodged September 2025, decision May 2026</p>
+</div>
+
+<!-- BREAKING: Commonhold Bill -->
+<div class="alert-box breaking">
+  <div class="alert-title">📜 COMMONHOLD BILL DEEP ANALYSIS — Jones Day Confirms Key Details</div>
+  <p><strong>Jones Day (May 2026):</strong> Comprehensive analysis of the Draft Commonhold & Leasehold Reform Bill (published 27 Jan 2026):</p>
+  <ul>
+    <li><span class="highlight">Ban on new long leases >21 years for flats</span> — all new flats must be commonhold. Exceptions: purpose-built rental blocks (student/BTR).</li>
+    <li><span class="highlight">£250/year ground rent cap for 40 years</span> — then peppercorn. Existing leaseholders protected from aggressive ground rent escalation.</li>
+    <li><span class="highlight">Forfeiture abolished</span> — landlords can no longer terminate a long lease as remedy for breach. Must pursue "lease enforcement claim" in court.</li>
+    <li><span class="highlight">50% conversion threshold</span> — existing leaseholders can convert to commonhold with simple majority (down from 100% unanimity, which made 2002 Act unworkable).</li>
+    <li><span class="risk">Violation of ban = lessee converts at no cost, lessor faces financial penalties</span></li>
+  </ul>
+  <p style="margin-top:8px;"><strong>Implication:</strong> <span class="insight">Window is closing for traditional leasehold splits.</span> If you act in 2026, 999-year peppercorn leases remain valid. Once Bill becomes law (est. 2027), new flats must use commonhold structure. Existing leases are unaffected indefinitely.</p>
+  <p style="margin-top:4px; font-size:0.85rem; color:var(--text2);">Sources: Jones Day (May 2026), Baker McKenzie (Mar 2026), Commons Library CBP-10653, TLT LLP</p>
+</div>
+
+<!-- Metrics -->
+<div class="section">
+  <h2>📊 Today's Metrics</h2>
+  <div class="metric-row">
+    <div class="metric-card"><div class="value">18</div><div class="label">Searches Conducted</div></div>
+    <div class="metric-card"><div class="value">11</div><div class="label">Key Sources Analysed</div></div>
+    <div class="metric-card"><div class="value">6</div><div class="label">Prime Candidate Properties</div></div>
+    <div class="metric-card"><div class="value">3</div><div class="label">Dudley Planning Stories</div></div>
+  </div>
+</div>
+
+<!-- Dudley Planning Pipeline -->
+<div class="section">
+  <h2>🏗️ Dudley Development Pipeline — May 2026</h2>
+  <p>Three significant planning stories affecting the Dudley property market — all published this week:</p>
+
+  <div class="alert-box warning-box">
+    <div class="alert-title">⚠️ 15 Tipton Road flats MUST BE REMOVED (above)</div>
+  </div>
+
+  <table>
+    <tr><th>Project</th><th>Location</th><th>Proposal</th><th>Status</th><th>Title Split Relevance</th></tr>
+    <tr>
+      <td><strong>Claughton Centre</strong></td>
+      <td>Blowers Green Road, Dudley</td>
+      <td>Derelict former school → <strong>30 flats</strong>. Fire-damaged 2020. Structural walls confirmed sound.</td>
+      <td><span class="tag tag-orange">Application submitted May 2026</span></td>
+      <td>Adds 30 flats to Dudley supply. Non-designated heritage asset conversion. Proves council approves flats in right locations.</td>
+    </tr>
+    <tr>
+      <td><strong>Former NatWest Bank</strong></td>
+      <td>Castle Street, Dudley</td>
+      <td><strong>6 one-bed flats</strong> above retained retail. Chris Ralphs Architects. Facade retained.</td>
+      <td><span class="tag tag-orange">Application submitted May 2026</span></td>
+      <td>Classic mixed-use conversion. Shop+flats model. Bank closed March 2024.</td>
+    </tr>
+    <tr>
+      <td><strong>Tennyson Street HMO</strong></td>
+      <td>Tennyson Street, Dudley</td>
+      <td>Semi-detached → HMO for 5 occupants. <strong>Resubmitted</strong> after Nov 2025 refusal (extension was disproportionate). This version has NO extension.</td>
+      <td><span class="tag tag-orange">Resubmitted May 2026</span></td>
+      <td>Monitor: HMO not title split, but signals Dudley council's stance on shared housing.</td>
+    </tr>
+    <tr>
+      <td><strong>Cochrane Road</strong></td>
+      <td>Cochrane Road, Dudley</td>
+      <td>Outline application for <strong>4 new homes</strong>. Trees to be removed (no TPOs).</td>
+      <td><span class="tag tag-orange">Outline application</span></td>
+      <td>Greenfield land development — less relevant to title splitting but shows development appetite.</td>
+    </tr>
+  </table>
+  <p style="margin-top:8px; font-size:0.85rem; color:var(--text2);">Source: Birmingham Mail (Martyn Smith, 15 May 2026) · Express & Star (LDRS, May 2026)</p>
+</div>
+
+<!-- Top Opportunities -->
+<div class="section">
+  <h2>🏆 Top Title Split Opportunities — Live Market Scan</h2>
+  <p>Fresh listings identified from Rightmove, Zoopla, and Bond Wolfe auction catalogue. Prioritised by accessibility and title split potential.</p>
+
+  <h3>🥇 Freehold-to-Leasehold Candidates (Already Converted Flats on Single Title)</h3>
+  <table>
+    <tr><th>Score</th><th>Property</th><th>Price</th><th>Units</th><th>Potential GDV Post-Split</th><th>Strategy</th></tr>
+    <tr>
+      <td><span class="score-high">9.5/10</span></td>
+      <td><strong>38 Handsworth Wood Road, Birmingham B20 2DS</strong> (Bond Wolfe 14/05/26)</td>
+      <td>£550,000</td>
+      <td>8 flats</td>
+      <td>~£800k-£1M (8×£100-125k)</td>
+      <td>Pure freehold→leasehold. £995/unit Peppercorn Law. Est equity gain ~£250-450k. No planning, no building work.</td>
+    </tr>
+    <tr>
+      <td><span class="score-high">9.5/10</span></td>
+      <td><strong>Church Street, Wednesbury WS10</strong> (Auction)</td>
+      <td>£750,000</td>
+      <td>10 studios</td>
+      <td>~£1M-£1.25M (10×£100-125k)</td>
+      <td>Already self-contained. Tenanted at £500pcm each = £60k/yr gross. Straightforward title split.</td>
+    </tr>
+    <tr>
+      <td><span class="score-high">9.0/10</span></td>
+      <td><strong>Jerome Chambers, 30a Bradford St, Walsall WS1</strong> (Auction 28/05/26)</td>
+      <td>£750,000</td>
+      <td>19 letting rooms</td>
+      <td>~£1.14M-£1.43M (conversion + split)</td>
+      <td>HMO→flats conversion + title split. Need full planning + building regs. Higher risk but massive upside.</td>
+    </tr>
+    <tr>
+      <td><span class="score-high">9.0/10</span></td>
+      <td><strong>Three Shires Oak Rd, Smethwick B67 5BT</strong></td>
+      <td>£700,000</td>
+      <td>3 flats + commercial</td>
+      <td>~£900k+</td>
+      <td>Already 3 separate resi units above commercial. Straightforward 3-title split + retain commercial.</td>
+    </tr>
+    <tr>
+      <td><span class="score-high">9.0/10</span></td>
+      <td><strong>Treadwell Court, 342-344 Stratford Rd, Shirley, Solihull</strong></td>
+      <td>POA</td>
+      <td>19 apartments</td>
+      <td>~£2.5M+ (19×~£130k)</td>
+      <td>Largest find. Single-title 19-apartment block. Massive equity unlock potential. Solihull premium location.</td>
+    </tr>
+    <tr>
+      <td><span class="score-high">8.5/10</span></td>
+      <td><strong>90 Victoria Road, Sutton Coldfield B72 1SN</strong> (Auction)</td>
+      <td>£600,000</td>
+      <td>8 flats</td>
+      <td>~£850k-£960k</td>
+      <td>Tenanted block of 8 flats. No chain. Straightforward split.</td>
+    </tr>
+  </table>
+
+  <h3>🥈 Mixed-Use / Shop+Flat Candidates</h3>
+  <table>
+    <tr><th>Score</th><th>Property</th><th>Price</th><th>Structure</th><th>Split Angle</th></tr>
+    <tr>
+      <td><span class="score-high">9.0/10</span></td>
+      <td><strong>300-302 Stratford Road, Sparkbrook B11 1AA</strong> (Bond Wolfe 14/05/26)</td>
+      <td>£650,000</td>
+      <td>Retail + 7 letting rooms above</td>
+      <td>Convert 7 rooms to flats + commercial title split. C3 sui generis. Non-res SDLT on purchase.</td>
+    </tr>
+    <tr>
+      <td><span class="score-high">8.5/10</span></td>
+      <td><strong>Stafford Street, Dudley DY1 1RS</strong> (Modern Auction)</td>
+      <td>£360,000</td>
+      <td>2 commercial units + 3-bed flat</td>
+      <td>3-title split. Commercial + residential on separate titles. Non-res SDLT = ~£4k vs £18k resi.</td>
+    </tr>
+    <tr>
+      <td><span class="score-high">8.5/10</span></td>
+      <td><strong>54 & 54A West Bromwich St, Walsall WS1</strong> (Bond Wolfe 14/05/26)</td>
+      <td>£195,000</td>
+      <td>2 self-contained flats + retail</td>
+      <td>£195k entry. Current income £25,200pa = 12.9% yield. 3-title split.</td>
+    </tr>
+    <tr>
+      <td><span class="score-high">8.0/10</span></td>
+      <td><strong>Park Dale West, Wolverhampton WV1</strong></td>
+      <td>£675,000</td>
+      <td>5-bed period semi + annexe</td>
+      <td>Sever annexe onto separate title. Conservation area (Tettenhall Rd area = proven precedent for splits).</td>
+    </tr>
+    <tr>
+      <td><span class="score-high">8.0/10</span></td>
+      <td><strong>99 High Street, Dudley DY1 1QP</strong></td>
+      <td>POA (development site)</td>
+      <td>PP for 14 flats + retail</td>
+      <td>Buy with existing PP, build out, then title split into 14+1 titles. Larger capital commitment.</td>
+    </tr>
+  </table>
+
+  <h3>🥉 Victorian House Splits (≥120 sqm, Full Planning Required)</h3>
+  <table>
+    <tr><th>Score</th><th>Property</th><th>Price</th><th>Size</th><th>Split Potential</th></tr>
+    <tr>
+      <td><span class="score-med">7.5/10</span></td>
+      <td><strong>St Marys Road, Harborne B17</strong></td>
+      <td>£1,950,000</td>
+      <td>7 beds + 1-bed annexe, 5,900 sq ft</td>
+      <td>Annexe severable. Main house → 3-4 flats. Premium location. High entry cost but high GDV.</td>
+    </tr>
+    <tr>
+      <td><span class="score-med">7.5/10</span></td>
+      <td><strong>Woodbourne Road, Edgbaston</strong></td>
+      <td>£1,275,000</td>
+      <td>6 beds + annexe, 3,477 sq ft</td>
+      <td>Independent annexe severable. Main house → 3 flats. Edgbaston premium.</td>
+    </tr>
+    <tr>
+      <td><span class="score-med">7.0/10</span></td>
+      <td><strong>Halesowen Road, Cradley Heath B64 7JT</strong> (Auction)</td>
+      <td>£450,000</td>
+      <td>5 beds, 5 baths, 4 receptions, 2 cellars</td>
+      <td>Massive property. Solar panels. Large enough for 2-3 flat split at lower entry cost.</td>
+    </tr>
+  </table>
+</div>
+
+<!-- Bond Wolfe Update -->
+<div class="section">
+  <h2>👁️ Bond Wolfe Auction Watch — 14 May Results Still Pending</h2>
+  <div class="alert-box warning-box">
+    <div class="alert-title">⏳ Auction results NOT YET PUBLISHED (2 days post-auction)</div>
+  </div>
+  <p>Bond Wolfe's 50th auction milestone was held on Thursday 14 May 2026 with ~161 lots. Results press release has not been published as of 16 May. Prior results for context:</p>
+  <ul>
+    <li><span class="highlight">Feb 2026:</span> £23.49m raised, 93% success rate (158/170), bidders up 37%</li>
+    <li><span class="highlight">Mar 2026:</span> £26.56m raised, 88% success rate (141/161). YTD >£50M</li>
+    <li><span class="highlight">Mar standout:</span> 3-bed semi Hall Green £270K (guide £125K+), Land in Aston £380K (guide £275K+)</li>
+  </ul>
+  <p><strong>Key lots we're tracking:</strong> 33 Spouthouse Lane B43 (£29k+ retail+flat+land), 54 West Bromwich St WS1 (£195k mixed-use), 914-924 Stratford Road B11 (multiple mixed-use), 40 Valley Road DY9 (£142k detached), 300-302 Stratford Road B11 (£650k retail+7 rooms).</p>
+  <p style="margin-top:10px; font-size:0.85rem; color:var(--text2);">📞 Bond Wolfe: 0121 312 1212 | auctions@bondwolfe.com | Next auction: 9 July 2026</p>
+</div>
+
+<!-- Commonhold Bill Q&A -->
+<div class="section">
+  <h2>📜 Commonhold & Leasehold Reform Bill — Q&A for Title Split Investors</h2>
+  <table>
+    <tr><th>Question</th><th>Answer</th></tr>
+    <tr><td>Will the Bill ban leasehold title splitting?</td><td><span class="insight">Eventually, yes.</span> New long leases (>21 years) for flats will be banned. Newly-created flats must use commonhold structure instead. Existing leases unaffected.</td></tr>
+    <tr><td>Can I still do freehold→leasehold splits in 2026?</td><td><span class="highlight">YES, but act now.</span> Bill is in pre-legislative scrutiny. Transitional period not yet settled. Traditional leasehold model works for splits commenced in 2026.</td></tr>
+    <tr><td>What if I already have a 999-year lease?</td><td><span class="highlight">You're fine.</span> All existing leases remain valid indefinitely. The Bill expressly preserves existing leasehold interests.</td></tr>
+    <tr><td>What would a commonhold title split look like?</td><td><span class="insight">Instead of granting leases, you'd grant commonhold units.</span> Each unit owner owns the freehold of their unit outright + membership in a commonhold association that owns common areas. Similar to US condominium.</td></tr>
+    <tr><td>Ground rent impact?</td><td><span class="highlight">£250/year cap for 40 years</span> on existing leases, then peppercorn. New leases already restricted to peppercorn under 2022 Act.</td></tr>
+    <tr><td>Forfeiture gone?</td><td><span class="highlight">YES</span> — long lease forfeiture abolished. Landlords need court "lease enforcement claim" instead. Major change to landlord-tenant power balance.</td></tr>
+    <tr><td>Best action NOW?</td><td><span class="highlight">Commence traditional leasehold title splits ASAP.</span> Find unsplit blocks (38 Handsworth Wood Rd, Church St Wednesbury, Treadwell Court), use Peppercorn Law £995/unit, register before ban. Consider commonhold as future-proof alternative.</td></tr>
+  </table>
+  <p style="margin-top:10px; font-size:0.85rem; color:var(--text2);">Sources: Jones Day (May 2026), Baker McKenzie (Mar 2026), TLT LLP, Norton Rose Fulbright, Commons Library CBP-10653, Homehold.org</p>
+</div>
+
+<!-- Best Property Types -->
+<div class="section">
+  <h2>🏗️ Best Property Types for Title Splitting — Updated 16 May 2026</h2>
+  <div class="split-cols">
+    <div>
+      <h3>✅ Highest Priority (Score 9.0-9.5)</h3>
+      <ul>
+        <li><span class="highlight">Existing block of flats on single freehold title</span> — <strong>STRONGEST PLAY</strong>. Pure legal split. Zero construction risk. 38 Handsworth Wood Rd (8 flats, £550k) and Church St Wednesbury (10 studios, £750k) are live examples.</li>
+        <li><span class="highlight">Mixed-use retail + flats above</span> — Non-res SDLT (max 5%). Clever Lending guide (12 May 2026) confirms strongest model. 300-302 Stratford Rd B11 (£650k, 7 rooms+retail) is prime example.</li>
+        <li><span class="highlight">Vacant commercial with permitted development for residential</span> — Class MA conversions allow title split of resi from retained commercial. Former NatWest Dudley is template.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>⚠️ Monitor / Caution</h3>
+      <ul>
+        <li><span class="risk">House→flats conversion (full planning required)</span> — Tipton Rd enforcement is a CLEAR warning. Unauthorised conversions = extreme risk.</li>
+        <li><span class="insight">HMO→flats conversion</span> — Full planning + building regs needed. Jerome Chambers Walsall (£750k, 19 letting rooms) is viable but capital-heavy.</li>
+        <li><span class="risk">Conservation area Victorian splits</span> — Can work (Tettenhall Rd precedent) but needs heritage architect + LBC. Timeline 12-18 months.</li>
+        <li><span class="risk">DY8/DY9 splits</span> — Wollaston Oakwood refusal shows higher scrutiny in Stourbridge area. Pre-app essential.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Title Split Checklist -->
+<div class="section">
+  <h2>✅ Title Split Feasibility Checklist</h2>
+  <div class="split-cols">
+    <div>
+      <h3>📐 Physical</h3>
+      <ul>
+        <li><input type="checkbox"> Original GIA ≥120 sqm (house conversion)</li>
+        <li><input type="checkbox"> OR existing flats already physically exist (freehold→leasehold split)</li>
+        <li><input type="checkbox"> Natural division points exist</li>
+        <li><input type="checkbox"> Separate entrances achievable</li>
+        <li><input type="checkbox"> Services separable (£3-10k/unit)</li>
+        <li><input type="checkbox"> Fire escape compliance (Part B)</li>
+        <li><input type="checkbox"> Sound insulation feasible (Part E)</li>
+      </ul>
+      <h3>📋 Legal</h3>
+      <ul>
+        <li><input type="checkbox"> Freehold title (not leasehold)</li>
+        <li><input type="checkbox"> No restrictive covenants vs subdivision</li>
+        <li><input type="checkbox"> CON29M Coal Authority search clear (DY/WV)</li>
+        <li><input type="checkbox"> No conservation area / listed status</li>
+        <li><input type="checkbox"> Lender consent obtained</li>
+        <li><input type="checkbox"> Different legal entities for freehold vs leases</li>
+      </ul>
+    </div>
+    <div>
+      <h3>🏛️ Planning</h3>
+      <ul>
+        <li><input type="checkbox"> House-to-flat = full planning ALWAYS required</li>
+        <li><input type="checkbox"> Existing block split = NO planning needed</li>
+        <li><input type="checkbox"> Pre-application advice positive (if conversion)</li>
+        <li><input type="checkbox"> Tipton Road enforcement WARNING reviewed ✔</li>
+        <li><input type="checkbox"> NDSS compliance achievable (if conversion)</li>
+      </ul>
+      <h3>💰 Financial</h3>
+      <ul>
+        <li><input type="checkbox"> Total cost <70% of GDV</li>
+        <li><input type="checkbox"> GDV uplift ≥25% after all costs</li>
+        <li><input type="checkbox"> Stress test passed (GDV -10%, cost +20%)</li>
+        <li><input type="checkbox"> Bridging facility 15-18 months secured</li>
+        <li><input type="checkbox"> HMLR registration delay budgeted (3-6 months)</li>
+        <li><input type="checkbox"> Peppercorn Law £995/unit or solicitor £1.5-4k</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Hermes Skill Improvements -->
+<div class="section">
+  <h2>🔄 Hermes Skill Improvements — 16 May 2026</h2>
+  <ul>
+    <li><span class="highlight">++ Tipton Road enforcement precedent documented</span> — Added to skill as critical warning: 15 flats must be demolished, 90-day compliance order, unlimited Crown Court fines. This is the most significant Dudley enforcement case for title splitting.</li>
+    <li><span class="highlight">++ Jones Day deep dive on Commonhold Bill</span> — Added £250/yr ground rent cap, forfeiture abolition, 50% conversion threshold, and purpose-built rental exception to skill knowledge.</li>
+    <li><span class="highlight">+ Discovery that Bond Wolfe results take up to 1 week to publish</span> — Added expectation management: results from 14 May auction still not published by 16 May. Wait 3-7 days post-auction.</li>
+    <li><span class="highlight">+ 6 new prime freehold-to-leasehold candidates identified</span> — 38 Handsworth Wood Rd (8 flats, £550k), Church St Wednesbury (10 studios, £750k), Jerome Chambers Walsall (19 rooms, £750k), Three Shires Oak Rd Smethwick (3+commercial, £700k), Treadwell Court Solihull (19 apts, POA), 90 Victoria Road Sutton Coldfield (8 flats, £600k).</li>
+    <li><span class="highlight">+ 5 new mixed-use candidates identified</span> — 300-302 Stratford Rd B11 (£650k), Stafford St Dudley (£360k), 54 West Bromwich St Walsall (£195k), Park Dale West Wolverhampton (£675k), 99 High St Dudley (14 flat PP).</li>
+    <li><span class="highlight">+ Dudley development pipeline tracked</span> — Claughton Centre (30 flats), NatWest Dudley (6 flats), Tennyson St HMO (resubmitted), Cochrane Rd (4 homes). All added to local market intelligence.</li>
+    <li><span class="highlight">+ HMO vs Title Splitting comparator added</span> — Foot Forward Properties guide shows title splitting is exit/flexibility-led while HMO is income-led. Different risk profiles for different investor goals.</li>
+    <li><span class="highlight">+ 5 new search keywords for next run:</span> 'Claughton Centre Dudley 30 flats planning decision', 'Bond Wolfe 14 May results sold prices', 'Dudley council enforcement title split', 'Peppercorn Law commonhold conversion guide', 'HMO to flats conversion planning permission West Midlands'.</li>
+    <li><span class="highlight">+ 7 key market-intelligence sources added</span> — Express & Star (LDRS), Birmingham Mail, Jones Day, Foot Forward Properties, Fox Davidson Finance, PropertySoup, Melvyn Danes WM trends.</li>
+  </ul>
+</div>
+
+<!-- Upcoming Auctions -->
+<div class="section">
+  <h2>📅 Upcoming Auction Calendar — Title Split Target</h2>
+  <table>
+    <tr><th>Date</th><th>House</th><th>Region</th><th>Expected Lots</th><th>Key Properties to Watch</th></tr>
+    <tr>
+      <td><strong>28 May 2026</strong></td>
+      <td>SDL Property Auctions / Various</td>
+      <td>West Midlands</td>
+      <td>~50-80</td>
+      <td><span class="highlight">Jerome Chambers Walsall</span> (19 rooms, £750k) — HIGH priority</td>
+    </tr>
+    <tr>
+      <td><strong>9 July 2026</strong></td>
+      <td>Bond Wolfe</td>
+      <td>West Midlands (livestream)</td>
+      <td>~170</td>
+      <td>Catalogue not yet published. Watch for mixed-use, land lots, large period homes.</td>
+    </tr>
+    <tr>
+      <td><strong>10 Sept 2026</strong></td>
+      <td>Bond Wolfe</td>
+      <td>West Midlands (livestream)</td>
+      <td>~170</td>
+      <td>TBC</td>
+    </tr>
+    <tr>
+      <td><strong>22 Oct 2026</strong></td>
+      <td>Bond Wolfe</td>
+      <td>West Midlands (livestream)</td>
+      <td>~165</td>
+      <td>TBC</td>
+    </tr>
+  </table>
+  <p style="margin-top:8px; font-size:0.85rem; color:var(--text2);">📞 Bond Wolfe: 0121 312 1212 | auctions@bondwolfe.com | SDL: sdlauctions.co.uk</p>
+</div>
+
+<div class="footer">
+  <p>🏘️ Title Split Intelligence — 16 May 2026 · Generated by Hermes Agent</p>
+  <p>Data from: Bond Wolfe, Rightmove, Zoopla, Express & Star, Birmingham Mail, Jones Day, Clever Lending, Foot Forward Properties, Peppercorn Law</p>
+</div>
+
+</div>
+</body>
+</html>

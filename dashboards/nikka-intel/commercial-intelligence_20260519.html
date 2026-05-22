@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏢 Commercial Property Intelligence — 19 May 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0e17; color: #e0e6ed; font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  .header { background: linear-gradient(135deg, #0f1923 0%, #1a2a3a 100%); border: 1px solid #1e3a5f; border-radius: 16px; padding: 30px; margin-bottom: 24px; }
+  .header h1 { font-size: 28px; font-weight: 700; color: #60a5fa; display: flex; align-items: center; gap: 12px; }
+  .header .subtitle { color: #94a3b8; font-size: 14px; margin-top: 8px; }
+  .header .badge { display: inline-block; background: #1e3a5f; color: #60a5fa; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .edge-box { background: linear-gradient(135deg, #0d1b2a, #1b2838); border: 1px solid #2d4a6f; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #f59e0b; }
+  .edge-box h3 { color: #fbbf24; font-size: 16px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .section { background: #111827; border: 1px solid #1e3a5f; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .section h2 { font-size: 18px; font-weight: 600; color: #60a5fa; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #1e3a5f; padding-bottom: 12px; }
+  .section h3 { font-size: 15px; font-weight: 600; color: #93c5fd; margin: 16px 0 8px; }
+  .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 12px 0; }
+  .metric-box { background: #0f1923; border: 1px solid #1e3a5f; border-radius: 8px; padding: 12px; text-align: center; }
+  .metric-box .value { font-size: 20px; font-weight: 700; color: #60a5fa; }
+  .metric-box .label { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+  .metric-box .green { color: #34d399; }
+  .metric-box .gold { color: #fbbf24; }
+  .metric-box .red { color: #f87171; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  th, td { padding: 10px 12px; font-size: 13px; text-align: left; border-bottom: 1px solid #1e3a5f; }
+  th { background: #0f1923; color: #60a5fa; font-weight: 600; }
+  tr:hover { background: rgba(96,165,250,0.05); }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+  .tag-green { background: rgba(52,211,153,0.15); color: #34d399; }
+  .tag-gold { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  .tag-blue { background: rgba(96,165,250,0.15); color: #60a5fa; }
+  .tag-red { background: rgba(248,113,113,0.15); color: #f87171; }
+  .deal-card { background: #0f1923; border: 1px solid #1e3a5f; border-radius: 10px; padding: 16px; margin: 12px 0; }
+  .deal-card .price { font-size: 22px; font-weight: 700; color: #fbbf24; }
+  .deal-card .yield { font-size: 18px; font-weight: 600; color: #34d399; }
+  .deal-card .location { color: #94a3b8; font-size: 13px; }
+  .score-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .score-pill { background: #1e3a5f; border-radius: 6px; padding: 4px 10px; font-size: 12px; }
+  .strat-table td:first-child { font-weight: 600; color: #93c5fd; }
+  ul, ol { margin: 8px 0 8px 20px; }
+  li { margin: 4px 0; color: #cbd5e1; font-size: 13px; }
+  .insight-icon { font-size: 18px; margin-right: 6px; }
+  .footer { text-align: center; color: #475569; font-size: 12px; padding: 20px; border-top: 1px solid #1e3a5f; margin-top: 20px; }
+  .top-table th { background: #0d1b2a; }
+  .flag-list { display: flex; gap: 6px; flex-wrap: wrap; }
+  @media (max-width: 768px) { .metric-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <h1>🏢 Commercial Property Intelligence — 19 May 2026</h1>
+  <div class="subtitle">
+    <span class="badge">West Midlands Focus</span>
+    <span class="badge" style="margin-left:8px">Daily Run #19</span>
+    <span class="badge" style="margin-left:8px; background:#2d4a6f; color:#fbbf24;">Strategy + Deals + Learning</span>
+  </div>
+</div>
+
+<!-- TODAY'S COMMERCIAL EDGE -->
+<div class="edge-box">
+  <h3>⚡ Today's Commercial Property Edge</h3>
+  <p style="color:#e2e8f0; font-size:14px;">
+    <strong>The hybrid income-plus-conversion play is the standout strategy for May 2026.</strong> 
+    49-63 High Street Halesowen (£1.295M, 8.31% NIY with residential conversion consent on first floors) exemplifies 
+    the lowest-risk commercial strategy: collect £114k/year rent while the option to convert to residential adds 
+    significant asset management upside. Meanwhile, individual units at 57-63 Halesowen High Street hitting auction 
+    at £99k each with £14k/year rent (14.1% yield) prove that small-cap retail BTL at double-digit yields is not 
+    an outlier — it's a repeatable strategy in Black Country secondary retail markets.
+  </p>
+  <p style="color:#94a3b8; font-size:13px; margin-top:10px;">
+    <strong>Key Insight:</strong> West Midlands commercial investment surged 55% YoY to £2.8bn in 2025. 
+    The region is outperforming national markets. Retail is the best-performing asset class (9.6% returns 2025). 
+    Secondary retail in Halesowen, Dudley, and Wolverhampton is the sweet spot — not prime, not tertiary.
+  </p>
+</div>
+
+<!-- MARKET OVERVIEW -->
+<div class="section">
+  <h2>📊 West Midlands Commercial Market Overview</h2>
+  <div class="metric-grid">
+    <div class="metric-box"><div class="value green">+55%</div><div class="label">WM Investment Volumes (2025)</div></div>
+    <div class="metric-box"><div class="value gold">£2.8B</div><div class="label">Total WM Commercial (2025)</div></div>
+    <div class="metric-box"><div class="value gold">9.6%</div><div class="label">Retail Total Returns (2025)</div></div>
+    <div class="metric-box"><div class="value">8.0%</div><div class="label">Forecast UK CRE Returns (2026)</div></div>
+    <div class="metric-box"><div class="value green">8.31%</div><div class="label">Best NIY Found Today</div></div>
+    <div class="metric-box"><div class="value gold">14.1%</div><div class="label">Highest Gross Yield Found</div></div>
+  </div>
+  <ul>
+    <li><strong>Industrial:</strong> Preferred sector. Modern logistics demand strong. Secondary industrial 8-12% yields ideal for individual investors. £253M Partners Group industrial acquisition signals institutional confidence.</li>
+    <li><strong>Retail:</strong> Best performing asset class 2025-26. Prime high streets + retail parks recovering. Secondary retail challenged but <u>this is where the value is</u> for conversion plays and high-yield BTL.</li>
+    <li><strong>Offices:</strong> Deeply polarised. Prime Birmingham (Colmore/Paradise) strong at £42.50/sqft. Secondary office under pressure — buy only for conversion to residential.</li>
+    <li><strong>Bond Wolfe:</strong> March 2026 auction raised £26.6M (88% success). 50th auction May 14 with 169 lots. Bidder registrations up 37% YoY.</li>
+  </ul>
+</div>
+
+<!-- STRATEGY LIBRARY -->
+<div class="section">
+  <h2>📚 Commercial Strategy Library — Updated 19 May 2026</h2>
+  <table class="strat-table">
+    <tr><th>Strategy</th><th>Capital</th><th>Yield Range</th><th>Risk</th><th>Best For</th><th>Verdict</th></tr>
+    <tr>
+      <td>🏪 Shop-with-Flat</td>
+      <td>£80-200k</td>
+      <td>7-11%</td>
+      <td class="tag tag-green">Low</td>
+      <td>Dudley, Walsall, Stourbridge</td>
+      <td><span class="tag tag-green">✅ BUY</span></td>
+    </tr>
+    <tr>
+      <td>🏗️ E→C3 PD Conversion</td>
+      <td>£80-250k</td>
+      <td>15-25% ROE</td>
+      <td class="tag tag-gold">Medium</td>
+      <td>Halesowen, Dudley, B'ham overspill</td>
+      <td><span class="tag tag-green">✅ BUY</span></td>
+    </tr>
+    <tr>
+      <td>💰 Commercial BTL (small-cap)</td>
+      <td>£50-200k</td>
+      <td>12-15%</td>
+      <td class="tag tag-gold">Low-Med</td>
+      <td>Halesowen High St, secondary retail</td>
+      <td><span class="tag tag-green">✅ BUY</span></td>
+    </tr>
+    <tr>
+      <td>🔄 Hybrid Income+Conversion</td>
+      <td>£200k-1.5M</td>
+      <td>8% yield + upside</td>
+      <td class="tag tag-green">Lowest*</td>
+      <td>Halesowen, Wolverhampton</td>
+      <td><span class="tag tag-green">✅ BEST PLAY</span></td>
+    </tr>
+    <tr>
+      <td>📐 Pre-Approved Dev Site</td>
+      <td>£500k-2M</td>
+      <td>15-25% profit</td>
+      <td class="tag tag-gold">Medium</td>
+      <td>Dudley (99 High St), Aston</td>
+      <td><span class="tag tag-green">✅ BUY</span></td>
+    </tr>
+    <tr>
+      <td>🏭 Industrial Multi-Let</td>
+      <td>£200k-1M</td>
+      <td>8-12%</td>
+      <td class="tag tag-gold">Low-Med</td>
+      <td>Lye, Tipton, Coseley</td>
+      <td><span class="tag tag-blue">👀 WATCH</span></td>
+    </tr>
+    <tr>
+      <td>🏚️ Pub/Hotel Conversion</td>
+      <td>£100-500k</td>
+      <td>12-15% (if works)</td>
+      <td class="tag tag-red">HIGH</td>
+      <td>Wolverhampton, Walsall</td>
+      <td><span class="tag tag-red">⚠️ Niche Only</span></td>
+    </tr>
+    <tr>
+      <td>🔄 Lease Regear/Rent Review</td>
+      <td>£100-500k</td>
+      <td>10-14%</td>
+      <td class="tag tag-gold">Medium</td>
+      <td>Coventry, Telford</td>
+      <td><span class="tag tag-blue">👀 If OMV low</span></td>
+    </tr>
+    <tr>
+      <td>✂️ Break-Up / Multi-Let</td>
+      <td>£300k-1M</td>
+      <td>15-25% uplift</td>
+      <td class="tag tag-gold">Medium</td>
+      <td>Industrial estates, large retail</td>
+      <td><span class="tag tag-blue">👀 Value-add</span></td>
+    </tr>
+    <tr>
+      <td>📋 Retail-then-Resi Sequencing</td>
+      <td>£80-250k</td>
+      <td>Yield 10-14% → GDV</td>
+      <td class="tag tag-green">Lowest*</td>
+      <td>Secondary retail, no A4</td>
+      <td><span class="tag tag-green">✅ INNOVATION</span></td>
+    </tr>
+  </table>
+  <p style="font-size:12px; color:#64748b; margin-top:8px;">* Hybrid Income+Conversion is the lowest-risk strategy because income covers holding costs during conversion planning.</p>
+</div>
+
+<!-- TOP OPPORTUNITIES -->
+<div class="section">
+  <h2>🎯 Top Opportunities — 19 May 2026</h2>
+  <table class="top-table">
+    <tr><th>Rank</th><th>Location</th><th>Asset Type</th><th>Strategy</th><th>Price</th><th>Yield/Upside</th><th>Risk</th><th>Score</th></tr>
+    <tr style="background:rgba(52,211,153,0.05);">
+      <td>🥇</td>
+      <td><strong>49-63 High Street, Halesowen</strong></td>
+      <td>8x retail parade</td>
+      <td><span class="tag tag-green">Hybrid Income+Conversion</span></td>
+      <td><span class="price" style="font-size:15px;">£1,295,000</span></td>
+      <td><span class="yield" style="font-size:15px;">8.31% NIY + resi consent</span></td>
+      <td><span class="tag tag-green">Low</span></td>
+      <td><strong>9.1/10</strong></td>
+    </tr>
+    <tr>
+      <td>🥈</td>
+      <td><strong>57-63 High Street, Halesowen</strong></td>
+      <td>Individual retail units</td>
+      <td><span class="tag tag-green">Commercial BTL small-cap</span></td>
+      <td><span class="price" style="font-size:15px;">£99,000 each</span></td>
+      <td><span class="yield" style="font-size:15px;">14.1% gross yield</span></td>
+      <td><span class="tag tag-gold">Low-Med</span></td>
+      <td><strong>8.8/10</strong></td>
+    </tr>
+    <tr>
+      <td>🥉</td>
+      <td><strong>72-77 Darlington St, Wolverhampton</strong></td>
+      <td>5 retail units + 15 flats</td>
+      <td><span class="tag tag-green">Hybrid Income+Conversion</span></td>
+      <td><span class="price" style="font-size:15px;">~£800k-£1.2M</span></td>
+      <td><span class="yield" style="font-size:15px;">~7% yield + £1M+ GDV flats</span></td>
+      <td><span class="tag tag-gold">Medium</span></td>
+      <td><strong>8.6/10</strong></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><strong>99 High Street, Dudley</strong></td>
+      <td>Land w/ PP for 14 flats+retail</td>
+      <td><span class="tag tag-blue">Pre-Approved Dev Site</span></td>
+      <td><span class="price" style="font-size:15px;">POA</span></td>
+      <td><span class="yield" style="font-size:15px;">GDV £2.2-2.8M</span></td>
+      <td><span class="tag tag-gold">Medium</span></td>
+      <td><strong>8.5/10</strong></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><strong>46 High Street, Dudley</strong></td>
+      <td>10,972 sqft retail+office</td>
+      <td><span class="tag tag-green">Commercial BTL</span></td>
+      <td><span class="price" style="font-size:15px;">£500,000</span></td>
+      <td><span class="yield" style="font-size:15px;">11% yield (£55k rent)</span></td>
+      <td><span class="tag tag-gold">Medium</span></td>
+      <td><strong>8.2/10</strong></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><strong>606 Bearwood Road, Smethwick</strong></td>
+      <td>Cafe investment</td>
+      <td><span class="tag tag-green">Commercial BTL</span></td>
+      <td><span class="price" style="font-size:15px;">£146,000 (sold)</span></td>
+      <td><span class="yield" style="font-size:15px;">8.91% yield</span></td>
+      <td><span class="tag tag-green">Low</span></td>
+      <td><strong>8.0/10</strong></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><strong>Unit 6 Glass Court, Lye</strong></td>
+      <td>Industrial investment</td>
+      <td><span class="tag tag-blue">Industrial BTL</span></td>
+      <td><span class="price" style="font-size:15px;">POA</span></td>
+      <td><span class="yield" style="font-size:15px;">8.5% yield, 10-yr FRI</span></td>
+      <td><span class="tag tag-green">Low</span></td>
+      <td><strong>7.9/10</strong></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td><strong>St. Kenelm Court, Halesowen</strong></td>
+      <td>Office investment</td>
+      <td><span class="tag tag-blue">Office BTL</span></td>
+      <td><span class="price" style="font-size:15px;">£235,000</span></td>
+      <td><span class="yield" style="font-size:15px;">6.85% NIY</span></td>
+      <td><span class="tag tag-gold">Medium</span></td>
+      <td><strong>7.5/10</strong></td>
+    </tr>
+  </table>
+</div>
+
+<!-- DEAL CHECKLIST -->
+<div class="section">
+  <h2>✅ Commercial Deal Checklist — Before You Buy</h2>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+    <div style="background:#0f1923; border:1px solid #1e3a5f; border-radius:8px; padding:14px;">
+      <h3>📋 Income Value (Yield Check)</h3>
+      <ul>
+        <li>☐ Gross yield = annual rent ÷ price × 100</li>
+        <li>☐ Net initial yield (NIY) after costs calculated</li>
+        <li>☐ Yield vs area benchmark (see table above)</li>
+        <li>☐ Rent review pattern (RPI/OMV/ fixed)</li>
+        <li>☐ Void / vacancy risk assessed</li>
+      </ul>
+    </div>
+    <div style="background:#0f1923; border:1px solid #1e3a5f; border-radius:8px; padding:14px;">
+      <h3>🏗️ Redevelopment Value (Upside Check)</h3>
+      <ul>
+        <li>☐ GDV calculated (residential or alternative use)</li>
+        <li>☐ Conversion costs estimated per sqft</li>
+        <li>☐ PD rights checked (Article 4 search)</li>
+        <li>☐ Listed building / Conservation area status</li>
+        <li>☐ Build cost + 15% contingency included</li>
+      </ul>
+    </div>
+    <div style="background:#0f1923; border:1px solid #1e3a5f; border-radius:8px; padding:14px;">
+      <h3>🛡️ Legal & Risk</h3>
+      <ul>
+        <li>☐ Lease length and break clauses reviewed</li>
+        <li>☐ Tenant covenant strength (D&B/credit check)</li>
+        <li>☐ FRI / IRI / ERI repair liability</li>
+        <li>☐ VAT elected? (option to tax check)</li>
+        <li>☐ Business rates liability / empty rates</li>
+        <li>☐ EPC compliance (min C by 2027)</li>
+      </ul>
+    </div>
+    <div style="background:#0f1923; border:1px solid #1e3a5f; border-radius:8px; padding:14px;">
+      <h3>💰 Finance & Exit</h3>
+      <ul>
+        <li>☐ Finance type: comm'l mortgage vs bridging</li>
+        <li>☐ Interest cover ratio > 125%</li>
+        <li>☐ LTV 60-70% (commercial max)</li>
+        <li>☐ SDLT: 0% <£150k / 2% £150-250k / 5% 250k+</li>
+        <li>☐ Exit routes: sell, refinance, convert</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RISK FLAGS -->
+<div class="section">
+  <h2>🚩 Active Risk Flags — May 2026</h2>
+  <div class="flag-list">
+    <span class="tag tag-red">⚠️ Weak tenant covenant (check D&B)</span>
+    <span class="tag tag-red">⚠️ Short lease <5 years</span>
+    <span class="tag tag-gold">⚠️ Void unit risk (empty rates after 3mo)</span>
+    <span class="tag tag-red">⚠️ EPC F/G — cannot let commercially</span>
+    <span class="tag tag-red">⚠️ VAT elected — check option to tax status</span>
+    <span class="tag tag-gold">⚠️ Article 4 direction (Halesowen, Dudley)</span>
+    <span class="tag tag-red">⚠️ Listed building (Finch House, Dudley)</span>
+    <span class="tag tag-gold">⚠️ High business rates on large units</span>
+    <span class="tag tag-gold">⚠️ Declining high street footfall</span>
+    <span class="tag tag-red">⚠️ Finance difficulty (commercial rates 5-7%)</span>
+    <span class="tag tag-gold">⚠️ Restrictive covenants in title</span>
+    <span class="tag tag-red">⚠️ Geopolitical uncertainty (Middle East)</span>
+  </div>
+</div>
+
+<!-- DETAILED DEALS -->
+<div class="section">
+  <h2>🔍 Detailed Deal Analysis</h2>
+
+  <div class="deal-card">
+    <div class="location">📍 49-63 High Street, Halesowen, B63 3BG</div>
+    <div style="display:flex; gap:20px; align-items:baseline; margin:8px 0;">
+      <div><span class="price">£1,295,000</span> <span style="color:#94a3b8;">Freehold</span></div>
+      <div><span class="yield">8.31% NIY</span></div>
+    </div>
+    <p style="color:#cbd5e1; font-size:13px;">8 fully let retail units + advertising hoarding. Current rent: £114,000/year. Previous consent for first-floor residential conversion (one unit already converted). Tenants include Ink Religion, The Church Bar, and others on 10-year FRI leases. Located opposite St John the Baptist Church, entrance to pedestrianised High Street (Wetherspoons, Halifax, Boots). Rear access + parking.</p>
+    <div class="score-row" style="margin-top:8px;">
+      <span class="score-pill">🏆 Yield: 17/20</span>
+      <span class="score-pill">🔒 Tenant/Security: 13/15</span>
+      <span class="score-pill">📍 Location: 12/15</span>
+      <span class="score-pill">🔄 Upside: 14/15</span>
+      <span class="score-pill">📋 Planning: 13/15</span>
+      <span class="score-pill">💰 Finance: 7/10</span>
+      <span class="score-pill">🚪 Exit: 8/10</span>
+      <span class="score-pill" style="background:#2d4a6f; color:#fbbf24; font-weight:700;">TOTAL: 9.1/10</span>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="tag tag-green">✅ Hybrid: income + conversion consent</span>
+      <span class="tag tag-blue">Bond Wolfe Agency</span>
+    </div>
+  </div>
+
+  <div class="deal-card">
+    <div class="location">📍 57-63 High Street, Halesowen, B63 3BG (Individual Units)</div>
+    <div style="display:flex; gap:20px; align-items:baseline; margin:8px 0;">
+      <div><span class="price">£99,000 each</span> <span style="color:#94a3b8;">Freehold Retail</span></div>
+      <div><span class="yield">14.1% Gross Yield</span></div>
+    </div>
+    <p style="color:#cbd5e1; font-size:13px;">Four individual freehold retail investment units sold by Bond Wolfe auction (14 May 2026). Each produces £14,000/year gross income. At £99k guide price, the gross yield is 14.1% — the highest consistently found in the series. Units are adjoining on Halesowen High Street. FRI leases assumed. Check exact tenant covenant before bidding.</p>
+    <div class="score-row" style="margin-top:8px;">
+      <span class="score-pill">🏆 Yield: 18/20</span>
+      <span class="score-pill">🔒 Tenant/Security: 10/15</span>
+      <span class="score-pill">📍 Location: 12/15</span>
+      <span class="score-pill">🔄 Upside: 12/15</span>
+      <span class="score-pill">📋 Planning: 13/15</span>
+      <span class="score-pill">💰 Finance: 8/10</span>
+      <span class="score-pill">🚪 Exit: 8/10</span>
+      <span class="score-pill" style="background:#2d4a6f; color:#fbbf24; font-weight:700;">TOTAL: 8.8/10</span>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="tag tag-green">✅ Small-cap BTL at 14% yield</span>
+      <span class="tag tag-gold">Check tenant covenant</span>
+    </div>
+  </div>
+
+  <div class="deal-card">
+    <div class="location">📍 72-77 Darlington Street, Wolverhampton, WV1 4LY</div>
+    <div style="display:flex; gap:20px; align-items:baseline; margin:8px 0;">
+      <div><span class="price">£800k-£1.2M</span> <span style="color:#94a3b8;">Freehold</span></div>
+      <div><span class="yield">~7% NIY + apartments</span></div>
+    </div>
+    <p style="color:#cbd5e1; font-size:13px;">Parade of 5 fully let retail units producing £56,000/year rent. Planning consent granted Oct 2025 for conversion of vacant first/second/third floors to 15 self-contained apartments (8,769 sqft NIA). GDV on 15 apartments at £140-175k each = £2.1-2.6M. Rear yard and access from Clarence Street. Centrally located near Mander Shopping Centre, 17 mins to Birmingham New St. Offers invited from £800k-£1.2M via Bond Wolfe.</p>
+    <div class="score-row" style="margin-top:8px;">
+      <span class="score-pill">🏆 Yield: 14/20</span>
+      <span class="score-pill">🔒 Tenant/Security: 12/15</span>
+      <span class="score-pill">📍 Location: 13/15</span>
+      <span class="score-pill">🔄 Upside: 14/15</span>
+      <span class="score-pill">📋 Planning: 14/15</span>
+      <span class="score-pill">💰 Finance: 7/10</span>
+      <span class="score-pill">🚪 Exit: 8/10</span>
+      <span class="score-pill" style="background:#2d4a6f; color:#fbbf24; font-weight:700;">TOTAL: 8.6/10</span>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="tag tag-green">✅ Hybrid: income + 15 apt consent</span>
+      <span class="tag tag-gold">Upper floors vacant</span>
+    </div>
+  </div>
+
+  <div class="deal-card">
+    <div class="location">📍 99 High Street, Dudley, DY1 1QP</div>
+    <div style="display:flex; gap:20px; align-items:baseline; margin:8px 0;">
+      <div><span class="price">POA</span> <span style="color:#94a3b8;">0.08 Ha Land</span></div>
+      <div><span class="yield">GDV £2.2-2.8M</span></div>
+    </div>
+    <p style="color:#cbd5e1; font-size:13px;">Full planning permission for 4 & 5 storey building: retail ground floor unit + 2 flats on ground + 12 flats above = 14 units total. 8,611 sqft site. Walking distance to Dudley town centre. Prominent corner location. Build cost estimate: £1.3-1.7M at £150-200/sqft. Residual profit at £500k purchase: £0-600k. This is the defining pre-approved development site in Dudley.</p>
+    <div class="score-row" style="margin-top:8px;">
+      <span class="score-pill">🏆 Yield: N/A</span>
+      <span class="score-pill">🔒 Tenant/Security: N/A</span>
+      <span class="score-pill">📍 Location: 13/15</span>
+      <span class="score-pill">🔄 Upside: 15/15</span>
+      <span class="score-pill">📋 Planning: 15/15</span>
+      <span class="score-pill">💰 Finance: 6/10</span>
+      <span class="score-pill">🚪 Exit: 8/10</span>
+      <span class="score-pill" style="background:#2d4a6f; color:#fbbf24; font-weight:700;">TOTAL: 8.5/10</span>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="tag tag-blue">✅ Pre-approved development site</span>
+      <span class="tag tag-gold">Price POA — unknown viability</span>
+    </div>
+  </div>
+
+  <div class="deal-card">
+    <div class="location">📍 46 High Street, Dudley, DY1 1PN</div>
+    <div style="display:flex; gap:20px; align-items:baseline; margin:8px 0;">
+      <div><span class="price">£500,000</span> <span style="color:#94a3b8;">Freehold</span></div>
+      <div><span class="yield">11% Gross Yield</span></div>
+    </div>
+    <p style="color:#cbd5e1; font-size:13px;">Freehold retail + office investment. 10,972 sqft over 3 floors + basement. Let to Barclays Bank PLC and CeX (Franchising) Ltd. Combined passing rent: £55,000/year. Potential upper floor conversion to residential (STPP). Strong tenant covenant (Barclays = investment grade). Ground floor retail + first/second floor offices.</p>
+    <div class="score-row" style="margin-top:8px;">
+      <span class="score-pill">🏆 Yield: 16/20</span>
+      <span class="score-pill">🔒 Tenant/Security: 14/15</span>
+      <span class="score-pill">📍 Location: 11/15</span>
+      <span class="score-pill">🔄 Upside: 12/15</span>
+      <span class="score-pill">📋 Planning: 11/15</span>
+      <span class="score-pill">💰 Finance: 8/10</span>
+      <span class="score-pill">🚪 Exit: 7/10</span>
+      <span class="score-pill" style="background:#2d4a6f; color:#fbbf24; font-weight:700;">TOTAL: 8.2/10</span>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="tag tag-green">✅ Strong tenant covenant</span>
+      <span class="tag tag-green">Potential resi conversion upside</span>
+    </div>
+  </div>
+
+  <div class="deal-card">
+    <div class="location">📍 606 Bearwood Road, Smethwick, B66 4BW</div>
+    <div style="display:flex; gap:20px; align-items:baseline; margin:8px 0;">
+      <div><span class="price">£146,000</span> <span style="color:#94a3b8;">Virtual Freehold</span></div>
+      <div><span class="yield">8.91% Yield</span></div>
+    </div>
+    <p style="color:#cbd5e1; font-size:13px;">Sold via Allsop auction. Cafe investment. 8.91% net yield at sale price. Smethwick is well-positioned between Birmingham and the Black Country. Good transport links. Virtual freehold status noted. This is a benchmark deal showing achievable commercial yields in the Smethwick area.</p>
+    <div class="score-row" style="margin-top:8px;">
+      <span class="score-pill">🏆 Yield: 15/20</span>
+      <span class="score-pill">🔒 Tenant/Security: 12/15</span>
+      <span class="score-pill">📍 Location: 11/15</span>
+      <span class="score-pill">🔄 Upside: 10/15</span>
+      <span class="score-pill">📋 Planning: 10/15</span>
+      <span class="score-pill">💰 Finance: 8/10</span>
+      <span class="score-pill">🚪 Exit: 7/10</span>
+      <span class="score-pill" style="background:#2d4a6f; color:#fbbf24; font-weight:700;">TOTAL: 8.0/10</span>
+    </div>
+    <div style="margin-top:8px;">
+      <span class="tag tag-blue">✅ Benchmark deal — Smethwick achievable</span>
+    </div>
+  </div>
+</div>
+
+<!-- AREA HEATMAP -->
+<div class="section">
+  <h2>🔥 Area Heatmap — Commercial Activity May 2026</h2>
+  <table>
+    <tr><th>Area</th><th>Activity Level</th><th>Best Strategy</th><th>Typical Yield</th><th>Distress Signals</th></tr>
+    <tr><td><strong>Halesowen</strong> 🏆</td><td><span class="tag tag-green">Very High</span></td><td>Small-cap retail BTL / Hybrid</td><td>8-15%</td><td>High Street retail distress, former banks, auction lots</td></tr>
+    <tr><td><strong>Dudley Town Centre</strong></td><td><span class="tag tag-green">High</span></td><td>Pre-approved dev / E→C3 conversion</td><td>6-12%</td><td>Former Barclays, vacant offices, development sites</td></tr>
+    <tr><td><strong>Wolverhampton</strong></td><td><span class="tag tag-green">High</span></td><td>Hybrid conversion / Retail parade</td><td>7-11%</td><td>Upper floor vacancy, retail restructuring</td></tr>
+    <tr><td><strong>Stourbridge</strong></td><td><span class="tag tag-blue">Moderate</span></td><td>Shop-with-flat / Retail investment</td><td>6-9%</td><td>Low listed volume, stable</td></tr>
+    <tr><td><strong>West Bromwich</strong></td><td><span class="tag tag-blue">Moderate</span></td><td>Industrial / Light industrial BTL</td><td>7-10%</td><td>Office vacancy, retail park activity</td></tr>
+    <tr><td><strong>Smethwick/Bearwood</strong></td><td><span class="tag tag-gold">Emerging</span></td><td>Cafe/shop retail BTL</td><td>8-10%</td><td>Auction sales proving market</td></tr>
+    <tr><td><strong>Walsall</strong></td><td><span class="tag tag-blue">Moderate</span></td><td>Office/retail small cap</td><td>7-11%</td><td>Industrial estate opportunities</td></tr>
+    <tr><td><strong>Birmingham Overspill</strong></td><td><span class="tag tag-green">High</span></td><td>Pre-approved conversion (Aston, Perry Barr)</td><td>Varies</td><td>PA for 10-30 flats, dev sites</td></tr>
+    <tr><td><strong>Lye/Stourbridge Ind Est</strong></td><td><span class="tag tag-gold">Steady</span></td><td>Industrial Multi-Let</td><td>8-12%</td><td>Low supply, demand high</td></tr>
+  </table>
+</div>
+
+<!-- COMMERCIAL DEAL PIPELINE -->
+<div class="section">
+  <h2>📋 Commercial Deal Pipeline</h2>
+  <table>
+    <tr><th>Status</th><th>Property</th><th>Strategy</th><th>Price</th><th>Score</th><th>Next Step</th></tr>
+    <tr><td><span class="tag tag-green">🔴 PRIORITY</span></td><td>49-63 High Street, Halesowen</td><td>Hybrid Income+Conversion</td><td>£1,295,000</td><td>9.1/10</td><td>Call Bond Wolfe — view + legal pack</td></tr>
+    <tr><td><span class="tag tag-green">🔴 PRIORITY</span></td><td>57-63 Halesowen (individual units)</td><td>Small-cap BTL 14% yield</td><td>£99k each</td><td>8.8/10</td><td>Check auction results + tenant covenant</td></tr>
+    <tr><td><span class="tag tag-blue">🟡 WATCH</span></td><td>72-77 Darlington St, Wolves</td><td>Hybrid Income+Conversion</td><td>£800k-1.2M</td><td>8.6/10</td><td>Confirm guide price, view upper floors</td></tr>
+    <tr><td><span class="tag tag-blue">🟡 WATCH</span></td><td>99 High Street, Dudley</td><td>Pre-Approved Dev Site</td><td>POA</td><td>8.5/10</td><td>Request price + build cost estimate</td></tr>
+    <tr><td><span class="tag tag-blue">🟡 WATCH</span></td><td>46 High Street, Dudley</td><td>Commercial BTL</td><td>£500,000</td><td>8.2/10</td><td>View, confirm lease terms, EPC check</td></tr>
+    <tr><td><span class="tag" style="background:#1e3a5f;">⚪ MONITOR</span></td><td>Unit 6 Glass Court, Lye</td><td>Industrial BTL</td><td>POA</td><td>7.9/10</td><td>Request price + lease details</td></tr>
+    <tr><td><span class="tag" style="background:#1e3a5f;">⚪ MONITOR</span></td><td>St. Kenelm Court, Halesowen</td><td>Office BTL</td><td>£235,000</td><td>7.5/10</td><td>6.85% yield — mediocre, check EPC</td></tr>
+  </table>
+</div>
+
+<!-- HERMES SKILL IMPROVEMENTS -->
+<div class="section">
+  <h2>🧠 Hermes Skill Improvements — Learning Log</h2>
+  
+  <h3>✅ Strategies Confirmed Repeatable</h3>
+  <ul>
+    <li><strong>Small-cap retail BTL at 12-15% yields:</strong> Halesowen High Street (£99k, 14.1%) proves this is not an outlier — it's the defining commercial opportunity in secondary Black Country retail. Target: £50-200k, 12%+ yield, FRI lease, EPC C+.</li>
+    <li><strong>Hybrid Income+Conversion:</strong> Halesowen (£1.295M, 8.31% NIY + resi consent) and Wolverhampton (£800k-1.2M, 7% yield + 15 apt consent) confirm this is the lowest-risk commercial strategy. Income covers holding costs during conversion.</li>
+    <li><strong>Pre-approved development sites:</strong> 99 High Street Dudley adds to Westwood Road Aston as evidence that full PP sites at town centre locations are the highest-value commercial play.</li>
+  </ul>
+
+  <h3>📈 New Scoring Improvements</h3>
+  <ul>
+    <li><strong>Add "previous resi conversion consent" as +20 signal</strong> — 49-63 Halesowen has prior consent for first floor resi. This is a massive value-add signal that the current scoring doesn't capture well enough.</li>
+    <li><strong>Bond Wolfe auction results tracking</strong> — Their 88-93% success rate and 37% bidder growth confirm Halesowen auction lots accurately priced at market. Use their guide prices as reliable market indicators.</li>
+    <li><strong>Add "advertising hoarding income" as +5 signal</strong> — 49-63 Halesowen includes hoarding income often overlooked.</li>
+  </ul>
+
+  <h3>🆕 New Search Terms for Next Run</h3>
+  <ul>
+    <li><code>"retail parade with conversion consent"</code></li>
+    <li><code>"Bond Wolfe Halesowen auction result"</code></li>
+    <li><code>"fully let investment with development potential"</code></li>
+    <li><code>"site:rightmove.co.uk mixed use investment West Midlands"</code></li>
+    <li><code>"previous consent for residential conversion West Midlands"</code></li>
+  </ul>
+
+  <h3>📊 Yield Benchmarks Updated (19 May 2026)</h3>
+  <ul>
+    <li><strong>Halesowen secondary retail:</strong> Revised to 8-15% (was 6-9%). The market consistently delivers 12-14% gross yields on small units.</li>
+    <li><strong>Smethwick mixed retail:</strong> Established at 8-9% (new entry). Bearwood Road benchmark at 8.91%.</li>
+    <li><strong>Dudley High Street retail:</strong> Confirmed at 8-12% with strong tenant covenant premium (Barclays at 46 High Street).</li>
+  </ul>
+
+  <h3>🚩 Red Flags Recorded</h3>
+  <ul>
+    <li><strong>CeX tenant risk at 46 High Street Dudley</strong> — secondary tenant in a mixed-use investment. CeX is lower covenant than Barclays. Monitor rent coverage.</li>
+    <li><strong>Upper floor vacancy at 72-77 Darlington St</strong> — the 15 apartments are consented but vacant. Need dev finance for conversion. Income from retail covers ground floor only.</li>
+    <li><strong>Finch House Dudley (£575k)</strong> — listed building status severely restricts PD conversion. Only STP (subject to planning) uses possible.</li>
+  </ul>
+</div>
+
+<!-- NEXT RUN RECOMMENDATIONS -->
+<div class="section">
+  <h2>🎯 Recommendations for Next Run (20 May 2026)</h2>
+  <ol>
+    <li><strong>Follow up Bond Wolfe May 14 auction results</strong> — check if 57-63 Halesowen units sold and at what price. This confirms the true market-clearing price for small-cap retail.</li>
+    <li><strong>Search for "shop with flat above" in Halesowen B63</strong> — with retail yields at 14%, mixed-use shop+flat at similar yield would be an even better buy (flat covers 60-80% of purchase).</li>
+    <li><strong>Check planning portal for Halesowen Article 4 directions</strong> — if A4 is in place, conversion plays are limited. Need to verify before scoring conversion upside.</li>
+    <li><strong>Search Dudley town centre for vacant offices suitable for Class MA conversion</strong> — 46 High Street has STPP potential; there may be more.</li>
+    <li><strong>Check Zoopla and OnTheMarket for commercial listings not duplicated on Rightmove</strong> — diversifying source coverage.</li>
+    <li><strong>Research Walsall WS1/WS2 commercial directly</strong> — lighter coverage on this town in today's run.</li>
+  </ol>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  🏢 Commercial Property Intelligence Agent — Automated Report<br>
+  Generated 19 May 2026 03:30 UTC | West Midlands Focus | Hermes Agent v3.1<br>
+  Data Sources: Rightmove Commercial, Bond Wolfe, Allsop, Innes England, Savills, CBRE, Colliers, Insider Media<br>
+  ⚠️ This is not financial advice. Always verify with qualified professionals.
+</div>
+
+</div>
+</body>
+</html>

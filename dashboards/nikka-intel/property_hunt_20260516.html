@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Hunt — 16 May 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; padding: 40px 20px; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 2em; color: #58a6ff; margin-bottom: 5px; }
+  .subtitle { color: #8b949e; font-size: 0.95em; margin-bottom: 30px; }
+  .summary-strip { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 20px; }
+  .summary-item { flex: 1; min-width: 120px; }
+  .summary-item .label { color: #8b949e; font-size: 0.85em; }
+  .summary-item .value { font-size: 1.4em; font-weight: 700; }
+  
+  .deal-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 24px; margin-bottom: 24px; }
+  .deal-card.gold { border-color: #d29922; }
+  .deal-card.silver { border-color: #58a6ff; }
+  .deal-card.bronze { border-color: #f78166; }
+  
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.75em; font-weight: 600; text-transform: uppercase; }
+  .badge.brrr { background: #1f6feb22; color: #58a6ff; border: 1px solid #1f6feb; }
+  .badge.flip { background: #d2992222; color: #d29922; border: 1px solid #d29922; }
+  .badge.btl { background: #3fb95022; color: #3fb950; border: 1px solid #3fb950; }
+  .badge.hot { background: #da363322; color: #f85149; border: 1px solid #da3633; }
+  .badge.reduced { background: #d2992222; color: #d29922; border: 1px solid #d29922; }
+  
+  .property-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+  .property-header h2 { font-size: 1.2em; color: #e6edf3; }
+  .property-header h2 small { color: #8b949e; font-weight: 400; font-size: 0.85em; }
+  .price-tag { font-size: 1.3em; font-weight: 700; color: #f0883e; }
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin: 12px 0; }
+  .meta-item .m-label { color: #8b949e; font-size: 0.8em; }
+  .meta-item .m-value { font-weight: 600; }
+  
+  .deal-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 30px; margin: 15px 0; padding: 15px; background: #0d1117; border-radius: 6px; }
+  .deal-numbers .line { display: flex; justify-content: space-between; }
+  .deal-numbers .line.total { border-top: 1px solid #30363d; padding-top: 6px; font-weight: 700; margin-top: 4px; color: #f0883e; }
+  .deal-numbers .line.profit { border-top: 2px solid #3fb950; padding-top: 6px; font-weight: 700; margin-top: 4px; color: #3fb950; }
+  
+  .viewing-brief { background: #0d1117; border-left: 3px solid #58a6ff; padding: 15px; margin: 15px 0; border-radius: 4px; }
+  .viewing-brief h4 { color: #58a6ff; margin-bottom: 8px; }
+  .viewing-brief ul { padding-left: 20px; }
+  .viewing-brief li { margin-bottom: 5px; }
+  
+  .link-btn { display: inline-block; background: #1f6feb; color: #fff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85em; margin-top: 10px; }
+  .link-btn:hover { background: #388bfd; }
+  
+  h3 { color: #58a6ff; margin: 25px 0 15px; }
+  .honor-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+  .honor-card .h-info { flex: 1; }
+  .honor-card .h-price { font-weight: 700; color: #f0883e; }
+  .honor-card .h-badge { font-size: 0.8em; }
+  
+  .risk-flag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; margin-right: 4px; }
+  .risk-flag.high { background: #da363322; color: #f85149; border: 1px solid #da363333; }
+  .risk-flag.med { background: #d2992222; color: #d29922; border: 1px solid #d2992233; }
+  .risk-flag.low { background: #1f6feb22; color: #58a6ff; border: 1px solid #1f6feb33; }
+  
+  .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #30363d; color: #8b949e; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🏠 Daily Property Hunt</h1>
+<p class="subtitle">Saturday, 16 May 2026 — 43 postcodes scanned across DY, WV, B</p>
+
+<div class="summary-strip">
+  <div class="summary-item"><div class="label">Listings Scanned</div><div class="value" style="color:#58a6ff;">1,123</div></div>
+  <div class="summary-item"><div class="label">DY/WV Postcodes</div><div class="value" style="color:#f0883e;">23</div></div>
+  <div class="summary-item"><div class="label">B Postcodes</div><div class="value" style="color:#f0883e;">20</div></div>
+  <div class="summary-item"><div class="label">Candidates Found</div><div class="value" style="color:#3fb950;">287</div></div>
+  <div class="summary-item"><div class="label">Top 3 Deals</div><div class="value" style="color:#f85149;">3</div></div>
+</div>
+
+<!-- ═══ DEAL #1 ═══ -->
+<div class="deal-card gold">
+  <div class="property-header">
+    <div>
+      <h2>#1 — Sandland Road, Willenhall <small>WV13</small></h2>
+      <div style="margin-top:5px;">
+        <span class="badge brrr">BRRR</span>
+        <span class="badge reduced">REDUCED</span>
+        <span class="badge hot">HOT 🔥</span>
+      </div>
+    </div>
+    <div class="price-tag">£150,000</div>
+  </div>
+
+  <p style="color: #f85149; font-weight: 600; margin-bottom: 12px;">
+    ⭐ "CASH OFFERS PREFERRED DUE TO CONDITION" — PRIME BRRR SIGNAL
+  </p>
+
+  <div class="meta-grid">
+    <div><span class="m-label">Type</span><br><span class="m-value">Semi-Detached</span></div>
+    <div><span class="m-label">Beds</span><br><span class="m-value">3</span></div>
+    <div><span class="m-label">Baths</span><br><span class="m-value">1</span></div>
+    <div><span class="m-label">Tenure</span><br><span class="m-value" style="color:#3fb950;">Freehold</span></div>
+    <div><span class="m-label">Added</span><br><span class="m-value">11 May 2026</span></div>
+    <div><span class="m-label">Status</span><br><span class="m-value">Available</span></div>
+    <div><span class="m-label">Location</span><br><span class="m-value">New Invention (Popular)</span></div>
+    <div><span class="m-label">Agent</span><br><span class="m-value">L&amp;S Prestige Estates</span></div>
+  </div>
+
+  <div class="deal-numbers">
+    <div class="line"><span>Purchase Price</span><span>£150,000</span></div>
+    <div class="line"><span>SDLT (3% BTL)</span><span>£4,500</span></div>
+    <div class="line"><span>Legal Fees</span><span>£1,500</span></div>
+    <div class="line"><span>Survey (Level 2)</span><span>£500</span></div>
+    <div class="line"><span>Bridging Interest (8mo)</span><span>£6,750</span></div>
+    <div class="line"><span>Refurb Budget</span><span>£25,000</span></div>
+    <div class="line"><span>Contingency (10%)</span><span>£2,500</span></div>
+    <div class="line total"><span>TOTAL ALL-IN</span><span>£190,750</span></div>
+    <div class="line"><span>GDV (After Refurb)</span><span>£215,000</span></div>
+    <div class="line profit"><span>PROFIT</span><span>£24,250</span></div>
+    <div class="line"><span>Refi 75% LTV</span><span>£161,250</span></div>
+    <div class="line"><span>Cash Left In</span><span>£29,500</span></div>
+    <div class="line" style="grid-column:1/-1;margin-top:8px;font-weight:700;color:#3fb950;font-size:1.1em;">
+      ROCE: 82% | Gross Yield (held): 4.7%
+    </div>
+  </div>
+
+  <h3>Why It's the Top Pick</h3>
+  <ul style="margin-bottom:12px;padding-left:20px;">
+    <li><strong>"Cash offers preferred due to condition"</strong> — admits condition issues, motivated seller, no lender competition</li>
+    <li><strong>"Requires updating and repairs"</strong> — value-add opportunity is real, not cosmetic</li>
+    <li><strong>3-bed semi in popular New Invention</strong> — strong resale market, average semis sell for £223k</li>
+    <li><strong>Block paved driveway</strong> — off-street parking adds value</li>
+    <li><strong>Recently reduced</strong> — seller is motivated</li>
+    <li><strong>Generous room sizes</strong> — Lounge 4.6m, Dining 4.3m, 3 good bedrooms</li>
+  </ul>
+
+  <h3>🏠 Room Measurements</h3>
+  <div class="meta-grid">
+    <div><span class="m-label">Lounge</span><br><span class="m-value">4.62 × 4.24m</span></div>
+    <div><span class="m-label">Dining</span><br><span class="m-value">2.31 × 4.29m</span></div>
+    <div><span class="m-label">Kitchen</span><br><span class="m-value">2.85 × 3.56m</span></div>
+    <div><span class="m-label">BR1</span><br><span class="m-value">4.24 × 3.23m</span></div>
+    <div><span class="m-label">BR2</span><br><span class="m-value">3.02 × 4.24m</span></div>
+    <div><span class="m-label">BR3</span><br><span class="m-value">1.78 × 2.90m</span></div>
+  </div>
+
+  <div class="viewing-brief">
+    <h4>📋 Viewing Brief — Sandland Road</h4>
+    <ul>
+      <li><strong>Check roof condition</strong> — rear hall/storage roof needs replacement (stated in listing)</li>
+      <li><strong>Damp survey</strong> — with overgrown garden, check for penetrating damp in rear walls</li>
+      <li><strong>Check electrics</strong> — age of consumer unit, rewiring likely needed</li>
+      <li><strong>Boiler age</strong> — gas CH is "majority" present, verify boiler service history</li>
+      <li><strong>Window condition</strong> — are they original or double glazed? Not mentioned explicitly</li>
+      <li><strong>Measure rear garden</strong> — currently overgrown, check for extension potential (NDSS 7m rule)</li>
+      <li><strong>Ask agent</strong> — "How long has the vendor owned it? Have any other offers fallen through?"</li>
+      <li><strong>Photo</strong> — front elevation, rear garden (for extension viability), kitchen, bathroom, consumer unit</li>
+    </ul>
+  </div>
+
+  <a class="link-btn" href="https://www.rightmove.co.uk/properties/88320027#/?channel=RES_BUY" target="_blank">🔗 View on Rightmove</a>
+</div>
+
+<!-- ═══ DEAL #2 ═══ -->
+<div class="deal-card silver">
+  <div class="property-header">
+    <div>
+      <h2>#2 — Eccleshall Avenue, Oxley, Wolverhampton <small>WV10</small></h2>
+      <div style="margin-top:5px;">
+        <span class="badge brrr">BRRR</span>
+        <span class="badge reduced">REDUCED YESTERDAY</span>
+      </div>
+    </div>
+    <div class="price-tag">£200,000</div>
+  </div>
+
+  <div class="meta-grid">
+    <div><span class="m-label">Type</span><br><span class="m-value">Semi-Detached</span></div>
+    <div><span class="m-label">Beds</span><br><span class="m-value">3</span></div>
+    <div><span class="m-label">Baths</span><br><span class="m-value">2</span></div>
+    <div><span class="m-label">Tenure</span><br><span class="m-value" style="color:#3fb950;">Freehold</span></div>
+    <div><span class="m-label">Receptions</span><br><span class="m-value">2</span></div>
+    <div><span class="m-label">Key Feature</span><br><span class="m-value">Extended + Utility</span></div>
+  </div>
+
+  <div class="deal-numbers">
+    <div class="line"><span>Purchase Price</span><span>£200,000</span></div>
+    <div class="line"><span>SDLT (3% BTL)</span><span>£6,000</span></div>
+    <div class="line"><span>Legal + Survey</span><span>£2,000</span></div>
+    <div class="line"><span>Bridging Interest</span><span>£8,000</span></div>
+    <div class="line"><span>Refurb Budget</span><span>£25,000</span></div>
+    <div class="line"><span>Contingency (10%)</span><span>£2,500</span></div>
+    <div class="line total"><span>TOTAL ALL-IN</span><span>£243,500</span></div>
+    <div class="line"><span>GDV (After Refurb)</span><span>£275,000</span></div>
+    <div class="line profit"><span>PROFIT</span><span>£31,500</span></div>
+    <div class="line"><span>Refi 75% LTV</span><span>£206,250</span></div>
+    <div class="line"><span>Cash Left In</span><span>£37,250</span></div>
+    <div class="line" style="grid-column:1/-1;margin-top:8px;font-weight:700;color:#3fb950;font-size:1.1em;">
+      ROCE: 84% | 2 Bathrooms = Major Selling Point
+    </div>
+  </div>
+
+  <p>
+    <strong>"Requires modernisation throughout"</strong> — genuine full refurb opportunity in a popular Oxley location.
+    Extended to rear with utility area, 2 bathrooms, driveway parking. Reduced yesterday — seller motivated.
+    Conservative GDV of £275k based on extended 3-bed semis in north Wolverhampton.
+  </p>
+
+  <div class="viewing-brief">
+    <h4>📋 Viewing Brief</h4>
+    <ul>
+      <li>Check the extension quality — is it done to building regs?</li>
+      <li>Boiler/CH system age — modernisation throughout means everything needs updating</li>
+      <li>Roof condition — tiles + felt, any signs of leaks in upper rooms</li>
+      <li>Damp test in all rooms, especially ground floor</li>
+      <li>Verify the extension paperwork exists</li>
+    </ul>
+  </div>
+
+  <a class="link-btn" href="https://www.rightmove.co.uk/properties/87972054#/?channel=RES_BUY" target="_blank">🔗 View on Rightmove</a>
+</div>
+
+<!-- ═══ DEAL #3 ═══ -->
+<div class="deal-card bronze">
+  <div class="property-header">
+    <div>
+      <h2>#3 — Tividale Street, Tipton <small>DY4</small></h2>
+      <div style="margin-top:5px;">
+        <span class="badge btl">BTL (Sitting Tenant)</span>
+        <span class="badge reduced">REDUCED 12/05</span>
+      </div>
+    </div>
+    <div class="price-tag">£165,000</div>
+  </div>
+
+  <div class="meta-grid">
+    <div><span class="m-label">Type</span><br><span class="m-value">Semi-Detached</span></div>
+    <div><span class="m-label">Beds</span><br><span class="m-value">3</span></div>
+    <div><span class="m-label">Size</span><br><span class="m-value">915 sq ft</span></div>
+    <div><span class="m-label">Tenure</span><br><span class="m-value" style="color:#3fb950;">Freehold</span></div>
+    <div><span class="m-label">Tenant Rent</span><br><span class="m-value" style="color:#3fb950;">£895/mo</span></div>
+    <div><span class="m-label">Tenant Since</span><br><span class="m-value">Several years</span></div>
+  </div>
+
+  <div class="deal-numbers">
+    <div class="line"><span>Purchase Price</span><span>£165,000</span></div>
+    <div class="line"><span>SDLT + Fees</span><span>£6,450</span></div>
+    <div class="line total"><span>TOTAL IN (BTL)</span><span>£171,450</span></div>
+    <div class="line"><span>Deposit (25%)</span><span>£41,250</span></div>
+    <div class="line"><span>BTL Mortgage (75%)</span><span>£123,750</span></div>
+    <div class="line"><span>Monthly Interest (4.5%)</span><span>£464</span></div>
+    <div class="line"><span>Annual Rent</span><span>£10,740</span></div>
+    <div class="line profit"><span>GROSS YIELD</span><span>6.5%</span></div>
+    <div class="line"><span>Est. Net Cashflow</span><span>£3,000/yr</span></div>
+    <div class="line" style="grid-column:1/-1;margin-top:8px;font-weight:700;color:#3fb950;font-size:1.1em;">
+      Pro: Day-1 income, long-term tenant, RICS survey available
+    </div>
+  </div>
+
+  <p>
+    Sitting tenant paying £895/mo, long-term occupant who wants to stay, consistent payment history.
+    RICS Level 2 survey already available. "Cash buyers only" is a catch but this is a turnkey income asset.
+    Ideal for portfolio diversification while waiting for the Sandland Road BRRR deal.
+  </p>
+
+  <div class="risk-flag med">Cash buyers only</div>
+  <div class="risk-flag low">Coal mining area (CON29M)</div>
+
+  <a class="link-btn" href="https://www.rightmove.co.uk/properties/173538812#/?channel=RES_BUY" target="_blank">🔗 View on Rightmove</a>
+</div>
+
+<!-- ═══ HONORABLE MENTIONS ═══ -->
+<h3>🏅 Honorable Mentions</h3>
+
+<div class="honor-card">
+  <div class="h-info">
+    <strong>Woden Road, Park Village, Wolverhampton</strong> — 3-bed terraced, £150k, FREEHOLD<br>
+    <span style="color:#8b949e;font-size:0.9em;">No upward chain. Reduced 14/05. Three good beds, two receptions.</span>
+  </div>
+  <div class="h-price">£150k</div>
+  <span class="badge reduced">Reduced</span>
+  <a class="link-btn" href="https://www.rightmove.co.uk/properties/87990288#/?channel=RES_BUY" target="_blank" style="font-size:0.75em;">View</a>
+</div>
+
+<div class="honor-card">
+  <div class="h-info">
+    <strong>Albany Crescent, Bilston, WV14</strong> — 2-bed semi, £150k, FREEHOLD, 744 sq ft<br>
+    <span style="color:#8b949e;font-size:0.9em;">"Tremendous potential to extend & restyle". No chain. Reduced 12/05.</span>
+  </div>
+  <div class="h-price">£150k</div>
+  <span class="badge brrr">Extend</span>
+  <a class="link-btn" href="https://www.rightmove.co.uk/properties/172359101#/?channel=RES_BUY" target="_blank" style="font-size:0.75em;">View</a>
+</div>
+
+<div class="honor-card">
+  <div class="h-info">
+    <strong>Flavell Street, Dudley DY1</strong> — 2-bed terraced, £160k, FREEHOLD<br>
+    <span style="color:#8b949e;font-size:0.9em;">NO CHAIN. Brand new boiler. Driveway. Reduced 09/05.</span>
+  </div>
+  <div class="h-price">£160k</div>
+  <span class="badge btl">BTL</span>
+  <a class="link-btn" href="https://www.rightmove.co.uk/properties/174367583#/?channel=RES_BUY" target="_blank" style="font-size:0.75em;">View</a>
+</div>
+
+<div class="honor-card">
+  <div class="h-info">
+    <strong>Granville Street, Wolverhampton WV2</strong> — 3-bed terraced, £170k, FREEHOLD<br>
+    <span style="color:#8b949e;font-size:0.9em;">35+ days on market (listed 11/04). Practical layout, private rear garden.</span>
+  </div>
+  <div class="h-price">£170k</div>
+  <span class="badge">Motivated?</span>
+  <a class="link-btn" href="https://www.rightmove.co.uk/properties/174342056#/?channel=RES_BUY" target="_blank" style="font-size:0.75em;">View</a>
+</div>
+
+<div class="honor-card">
+  <div class="h-info">
+    <strong>Blewitt Street, Brierley Hill DY5</strong> — 2-bed semi, £155k, FREEHOLD<br>
+    <span style="color:#8b949e;font-size:0.9em;">Tenanted investment. No forward chain. Council Tax A. Driveway.</span>
+  </div>
+  <div class="h-price">£155k</div>
+  <span class="badge btl">BTL</span>
+  <a class="link-btn" href="https://www.rightmove.co.uk/properties/88373961#/?channel=RES_BUY" target="_blank" style="font-size:0.75em;">View</a>
+</div>
+
+<div class="honor-card">
+  <div class="h-info">
+    <strong>Baptist End Road, Netherton DY2</strong> — 2-bed mid-terrace, £175k, FREEHOLD<br>
+    <span style="color:#8b949e;font-size:0.9em;">Peaceful allotment outlook. Coal Mining area. Council Tax A.</span>
+  </div>
+  <div class="h-price">£175k</div>
+  <span class="badge reduced">New</span>
+  <a class="link-btn" href="https://www.rightmove.co.uk/properties/88329240#/?channel=RES_BUY" target="_blank" style="font-size:0.75em;">View</a>
+</div>
+
+<div class="honor-card">
+  <div class="h-info">
+    <strong>John Street, Wordsley, Stourbridge</strong> — 2-bed period terraced, £180k, FREEHOLD<br>
+    <span style="color:#8b949e;font-size:0.9em;">Cellar + generous rear garden. No upward chain. Reduced 15/05!</span>
+  </div>
+  <div class="h-price">£180k</div>
+  <span class="badge reduced">Reduced</span>
+  <a class="link-btn" href="https://www.rightmove.co.uk/properties/172578515#/?channel=RES_BUY" target="_blank" style="font-size:0.75em;">View</a>
+</div>
+
+<!-- ═══ MARKET SNAPSHOT ═══ -->
+<h3>📊 Market Pulse (16 May 2026)</h3>
+<table style="width:100%;border-collapse:collapse;margin-bottom:20px;">
+  <tr style="border-bottom:1px solid #30363d;">
+    <th style="text-align:left;padding:8px 4px;color:#8b949e;">Area</th>
+    <th style="text-align:right;padding:8px 4px;color:#8b949e;">Total Listings</th>
+    <th style="text-align:right;padding:8px 4px;color:#8b949e;">Avg Sold Price</th>
+    <th style="text-align:right;padding:8px 4px;color:#8b949e;">YoY</th>
+  </tr>
+  <tr style="border-bottom:1px solid #21262d;">
+    <td style="padding:6px 4px;">Willenhall</td>
+    <td style="text-align:right;">9420</td>
+    <td style="text-align:right;">£214,381</td>
+    <td style="text-align:right;color:#3fb950;">+5%</td>
+  </tr>
+  <tr style="border-bottom:1px solid #21262d;">
+    <td style="padding:6px 4px;">Tipton</td>
+    <td style="text-align:right;">8610</td>
+    <td style="text-align:right;">£201,649</td>
+    <td style="text-align:right;color:#3fb950;">+6%</td>
+  </tr>
+  <tr>
+    <td style="padding:6px 4px;">Dudley (DY)</td>
+    <td style="text-align:right;">3,399</td>
+    <td style="text-align:right;">~£180k</td>
+    <td style="text-align:right;color:#d29922;">Stable</td>
+  </tr>
+</table>
+
+<div class="footer">
+  <p>Generated by Hermes Agent — Kokal Properties Autonomous Investment System</p>
+  <p>43 postcodes scanned • 1,123 listings • 287 qualified candidates • Top 3 deep-dived</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Property Hunt — 15 May 2026</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #1a1d28;
+    --card2: #222639;
+    --border: #2a2e3f;
+    --accent: #00d4aa;
+    --accent2: #7c5cfc;
+    --red: #ff4757;
+    --orange: #ffa502;
+    --yellow: #ffd32a;
+    --green: #2ed573;
+    --blue: #3498db;
+    --text: #e8e8f0;
+    --muted: #8b8fa3;
+    --danger: #ff6b6b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 20px; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  
+  /* Header */
+  .header { text-align: center; padding: 30px 0 20px; border-bottom: 2px solid var(--border); margin-bottom: 30px; }
+  .header h1 { font-size: 2.2em; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .header .subtitle { color: var(--muted); font-size: 1em; margin-top: 5px; }
+  .header .date-badge { display: inline-block; background: var(--card2); padding: 4px 16px; border-radius: 20px; font-size: 0.85em; color: var(--accent); margin-top: 10px; border: 1px solid var(--border); }
+
+  /* Stats bar */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 30px; }
+  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+  .stat-card .num { font-size: 1.8em; font-weight: 700; }
+  .stat-card .label { color: var(--muted); font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-card.dy .num { color: var(--accent); }
+  .stat-card.wv .num { color: var(--orange); }
+  .stat-card.b .num { color: var(--blue); }
+  .stat-card.targets .num { color: var(--green); }
+
+  /* Section */
+  .section { margin-bottom: 30px; }
+  .section h2 { font-size: 1.4em; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+  .section h2 .badge { background: var(--card2); padding: 2px 10px; border-radius: 10px; font-size: 0.7em; color: var(--muted); }
+
+  /* Deal Card */
+  .deal-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 20px; position: relative; overflow: hidden; }
+  .deal-card.rank1 { border-color: var(--accent); }
+  .deal-card.rank2 { border-color: var(--orange); }
+  .deal-card.rank3 { border-color: var(--blue); }
+  
+  .deal-card .rank-badge { position: absolute; top: 12px; right: 12px; padding: 4px 14px; border-radius: 20px; font-size: 0.8em; font-weight: 600; }
+  .deal-card.rank1 .rank-badge { background: var(--accent); color: #000; }
+  .deal-card.rank2 .rank-badge { background: var(--orange); color: #000; }
+  .deal-card.rank3 .rank-badge { background: var(--blue); color: #fff; }
+  
+  .deal-card .address { font-size: 1.2em; font-weight: 600; margin-bottom: 4px; padding-right: 80px; }
+  .deal-card .address a { color: var(--accent); text-decoration: none; }
+  .deal-card .address a:hover { text-decoration: underline; }
+  .deal-card .meta { color: var(--muted); font-size: 0.9em; margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .deal-card .meta span { background: var(--card2); padding: 2px 10px; border-radius: 6px; }
+  
+  .deal-card .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .deal-card .metric { background: var(--card2); border-radius: 10px; padding: 12px; text-align: center; }
+  .deal-card .metric .value { font-size: 1.2em; font-weight: 700; }
+  .deal-card .metric .value.green { color: var(--green); }
+  .deal-card .metric .value.orange { color: var(--orange); }
+  .deal-card .metric .value.red { color: var(--red); }
+  .deal-card .metric .value.purple { color: var(--accent2); }
+  .deal-card .metric .lbl { font-size: 0.75em; color: var(--muted); }
+  
+  .deal-card .score-bar { height: 6px; background: var(--card2); border-radius: 3px; margin-bottom: 14px; overflow: hidden; }
+  .deal-card .score-bar .fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+  .deal-card.rank1 .score-bar .fill { background: linear-gradient(90deg, var(--accent), var(--green)); }
+  .deal-card.rank2 .score-bar .fill { background: linear-gradient(90deg, var(--orange), var(--yellow)); }
+  .deal-card.rank3 .score-bar .fill { background: linear-gradient(90deg, var(--blue), var(--accent2)); }
+  
+  .deal-card .deal-analysis { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+  .deal-card .deal-analysis .col { background: var(--card2); border-radius: 10px; padding: 14px; }
+  .deal-card .deal-analysis .col h4 { font-size: 0.85em; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .deal-card .deal-analysis .col table { width: 100%; font-size: 0.9em; }
+  .deal-card .deal-analysis .col td { padding: 3px 0; }
+  .deal-card .deal-analysis .col td:last-child { text-align: right; font-weight: 600; }
+  .deal-card .deal-analysis .col .total td { border-top: 1px solid var(--border); padding-top: 6px; font-weight: 700; color: var(--accent); }
+  
+  .deal-card .verdict { display: inline-block; padding: 6px 16px; border-radius: 8px; font-weight: 600; font-size: 0.9em; margin: 10px 0; }
+  .verdict.buy { background: rgba(46, 213, 115, 0.15); color: var(--green); border: 1px solid rgba(46, 213, 115, 0.3); }
+  .verdict.view { background: rgba(255, 165, 2, 0.15); color: var(--orange); border: 1px solid rgba(255, 165, 2, 0.3); }
+  .verdict.monitor { background: rgba(52, 152, 219, 0.15); color: var(--blue); border: 1px solid rgba(52, 152, 219, 0.3); }
+  .verdict.pass { background: rgba(255, 71, 87, 0.15); color: var(--red); border: 1px solid rgba(255, 71, 87, 0.3); }
+  
+  .deal-card .viewing-brief { background: var(--card2); border-radius: 10px; padding: 14px; margin-top: 12px; }
+  .deal-card .viewing-brief h4 { color: var(--orange); font-size: 0.9em; margin-bottom: 8px; }
+  .deal-card .viewing-brief ul { list-style: none; padding: 0; }
+  .deal-card .viewing-brief li { padding: 3px 0; font-size: 0.9em; padding-left: 18px; position: relative; }
+  .deal-card .viewing-brief li::before { content: "•"; position: absolute; left: 4px; color: var(--orange); }
+
+  .deal-card .risk-flags { margin: 10px 0; }
+  .deal-card .risk-flags .flag { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 0.8em; margin: 2px 3px; }
+  .flag.high { background: rgba(255, 71, 87, 0.15); color: var(--red); border: 1px solid rgba(255, 71, 87, 0.3); }
+  .flag.med { background: rgba(255, 165, 2, 0.15); color: var(--orange); border: 1px solid rgba(255, 165, 2, 0.3); }
+  .flag.low { background: rgba(46, 213, 115, 0.15); color: var(--green); border: 1px solid rgba(46, 213, 115, 0.3); }
+  
+  .deal-card .action { margin-top: 12px; }
+  .deal-card .action a { display: inline-block; padding: 8px 20px; background: var(--card2); border: 1px solid var(--border); border-radius: 8px; color: var(--text); text-decoration: none; font-size: 0.9em; transition: 0.2s; }
+  .deal-card .action a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Honourable mentions */
+  .mention-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .mention { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+  .mention .price { font-size: 1.1em; font-weight: 600; color: var(--accent); }
+  .mention .addr { font-size: 0.85em; color: var(--muted); margin: 4px 0; }
+  .mention .info { font-size: 0.8em; color: var(--muted); }
+  .mention .info span { display: inline-block; margin-right: 8px; }
+  .mention a { color: var(--accent); text-decoration: none; font-size: 0.8em; }
+  .mention a:hover { text-decoration: underline; }
+
+  /* Full listings table */
+  .listings-table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+  .listings-table th { text-align: left; padding: 10px 8px; border-bottom: 2px solid var(--border); color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.75em; }
+  .listings-table td { padding: 8px; border-bottom: 1px solid var(--border); }
+  .listings-table tr:hover td { background: var(--card2); }
+  .listings-table .price-cell { font-weight: 600; color: var(--accent); }
+  .listings-table .sale-tag { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: 0.75em; }
+  .sale-tag.added { background: rgba(46, 213, 115, 0.15); color: var(--green); }
+  .sale-tag.reduced { background: rgba(255, 165, 2, 0.15); color: var(--orange); }
+  .sale-tag.stc { background: rgba(52, 152, 219, 0.15); color: var(--blue); }
+
+  .divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+  .footer { text-align: center; padding: 30px 0; color: var(--muted); font-size: 0.8em; border-top: 1px solid var(--border); margin-top: 30px; }
+
+  @media (max-width: 600px) {
+    .deal-card .deal-analysis { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>🏠 Daily Property Hunt</h1>
+  <div class="subtitle">Autonomous Investor System — Kokal Properties Ltd</div>
+  <div class="date-badge">📅 Thursday, 15 May 2026 · 06:00 BST</div>
+</div>
+
+<div class="stats">
+  <div class="stat-card dy">
+    <div class="num">3,399</div>
+    <div class="label">DY Listings Scanned</div>
+  </div>
+  <div class="stat-card wv">
+    <div class="num">3,303</div>
+    <div class="label">WV Listings Scanned</div>
+  </div>
+  <div class="stat-card b">
+    <div class="num">4,452</div>
+    <div class="label">B Listings Scanned</div>
+  </div>
+  <div class="stat-card targets">
+    <div class="num">290</div>
+    <div class="label">BRRR Targets Found</div>
+  </div>
+</div>
+
+<!-- ====== TOP 3 DEEP DIVE ====== -->
+<div class="section">
+  <h2>🔥 Top 3 Deep-Dive Analysis</h2>
+
+  <!-- DEAL 1 -->
+  <div class="deal-card rank1">
+    <div class="rank-badge">#1 PICK</div>
+    <div class="address"><a href="https://www.rightmove.co.uk/properties/166639736" target="_blank">Churchfield Street, Dudley, DY2</a> 🏆</div>
+    <div class="meta">
+      <span>3 Bed End Terrace</span>
+      <span>Freehold</span>
+      <span>🟡 Reduced yesterday</span>
+      <span>Agent: Shipways, Dudley</span>
+    </div>
+
+    <div class="score-bar"><div class="fill" style="width:74%"></div></div>
+
+    <div class="metrics">
+      <div class="metric"><div class="value green">£125,998</div><div class="lbl">Asking Price</div></div>
+      <div class="metric"><div class="value orange">£175-185k</div><div class="lbl">Estimated GDV</div></div>
+      <div class="metric"><div class="value orange">£20-25k</div><div class="lbl">Refurb Budget</div></div>
+      <div class="metric"><div class="value green">~6.0%</div><div class="lbl">Gross Yield</div></div>
+      <div class="metric"><div class="value purple">74/100</div><div class="lbl">Deal Score</div></div>
+    </div>
+
+    <div class="deal-analysis">
+      <div class="col">
+        <h4>💰 BRRR Calculation</h4>
+        <table>
+          <tr><td>Purchase Price</td><td>£125,998</td></tr>
+          <tr><td>SDLT (3% surcharge)</td><td>£3,780</td></tr>
+          <tr><td>Legal &amp; Survey</td><td>£1,700</td></tr>
+          <tr><td>Refurb (medium)</td><td>£22,000</td></tr>
+          <tr><td>Contingency (10%)</td><td>£2,200</td></tr>
+          <tr><td>Bridging (6mo @ 0.75%)</td><td>£5,670</td></tr>
+          <tr class="total"><td>Total All-In</td><td>£161,348</td></tr>
+          <tr><td>GDV (estimated)</td><td>£180,000</td></tr>
+          <tr><td>Refi 75% LTV</td><td>£135,000</td></tr>
+          <tr><td>Cash Left In</td><td>£26,348</td></tr>
+          <tr><td>Est. Rent</td><td>£800/mo</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <h4>📊 Strategies</h4>
+        <table>
+          <tr><td>BRRR Score</td><td class="orange">7/10</td></tr>
+          <tr><td>Flip Profit</td><td>~£8,500</td></tr>
+          <tr><td>Flip ROI</td><td>5.3%</td></tr>
+          <tr><td>BTL Gross Yield</td><td class="green">6.0%</td></tr>
+          <tr><td>BTL Net Yield</td><td>~4.5%</td></tr>
+          <tr><td>ROCE (BRRR)</td><td class="orange">~12%</td></tr>
+          <tr><td>Stress Test Score</td><td class="orange">6/10</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="verdict view">🟡 VIEW — Best lead in today's scan. Negotiate hard.</div>
+
+    <div class="risk-flags">
+      <span class="flag high">⚠ Coal mining area (DY2 — CON29M needed)</span>
+      <span class="flag med">⚠ EPC unknown — check before offer</span>
+      <span class="flag low">✅ End terrace = more value-add options</span>
+    </div>
+
+    <div class="viewing-brief">
+      <h4>📋 Viewing Brief</h4>
+      <ul>
+        <li>Check roof condition — end terrace means more external wall exposure</li>
+        <li>Look for damp in party wall (end terraces prone to penetrating damp)</li>
+        <li>Assess whether rear garden has development potential (extend out?)</li>
+        <li>Check loft access and roof truss type (loft conversion potential adds significant GDV)</li>
+        <li>Measure room sizes for any potential NDSS / HMO conversion</li>
+        <li>Ask agent: original price before reduction? How long on market? Why vendor selling?</li>
+        <li>Photos: roof close-up, rear elevation, all 4 walls internally, damp meter on external walls</li>
+        <li>Negotiation target: £110k-£115k to make BRRR numbers work</li>
+      </ul>
+    </div>
+
+    <div class="action">
+      <a href="https://www.rightmove.co.uk/properties/166639736" target="_blank">🔗 View on Rightmove →</a>
+      <a href="https://www.rightmove.co.uk/house-prices/dy2.html" target="_blank" style="margin-left:8px;">📊 DY2 Area Prices →</a>
+    </div>
+  </div>
+
+  <!-- DEAL 2 -->
+  <div class="deal-card rank2">
+    <div class="rank-badge">#2 PICK</div>
+    <div class="address"><a href="https://www.rightmove.co.uk/properties/87700773" target="_blank">Dudley Road, Wolverhampton, WV2</a></div>
+    <div class="meta">
+      <span>2 Bed House</span>
+      <span>858 sq ft</span>
+      <span>Freehold</span>
+      <span>🟡 Reduced 29/04</span>
+      <span>Agent: Royston &amp; Lund</span>
+    </div>
+
+    <div class="score-bar"><div class="fill" style="width:68%"></div></div>
+
+    <div class="metrics">
+      <div class="metric"><div class="value green">£125,000</div><div class="lbl">Asking Price</div></div>
+      <div class="metric"><div class="value orange">£150-160k</div><div class="lbl">Estimated GDV</div></div>
+      <div class="metric"><div class="value orange">£15-20k</div><div class="lbl">Refurb Budget</div></div>
+      <div class="metric"><div class="value orange">~5.5%</div><div class="lbl">Gross Yield</div></div>
+      <div class="metric"><div class="value purple">68/100</div><div class="lbl">Deal Score</div></div>
+    </div>
+
+    <div class="deal-analysis">
+      <div class="col">
+        <h4>💰 BRRR Calculation</h4>
+        <table>
+          <tr><td>Purchase Price</td><td>£125,000</td></tr>
+          <tr><td>SDLT (3% surcharge)</td><td>£3,750</td></tr>
+          <tr><td>Legal &amp; Survey</td><td>£1,700</td></tr>
+          <tr><td>Refurb (cosmetic)</td><td>£17,000</td></tr>
+          <tr><td>Contingency (10%)</td><td>£1,700</td></tr>
+          <tr><td>Bridging (6mo)</td><td>£5,625</td></tr>
+          <tr class="total"><td>Total All-In</td><td>£154,775</td></tr>
+          <tr><td>GDV (estimated)</td><td>£155,000</td></tr>
+          <tr><td>Refi 75% LTV</td><td>£116,250</td></tr>
+          <tr><td>Cash Left In</td><td>£38,525</td></tr>
+          <tr><td>Est. Rent</td><td>£700/mo</td></tr>
+        </tbody></table>
+      </div>
+      <div class="col">
+        <h4>📊 Strategies</h4>
+        <table>
+          <tr><td>BRRR Score</td><td class="red">5/10</td></tr>
+          <tr><td>Flip Profit</td><td>~-£2k (thin)</td></tr>
+          <tr><td>BTL Gross Yield</td><td class="orange">5.4%</td></tr>
+          <tr><td>BTL Net Yield</td><td>~4.0%</td></tr>
+          <tr><td>Motivated Seller Signal</td><td class="green">✅ Listed >30 days</td></tr>
+          <tr><td>Negotiation Potential</td><td class="green">High — offer £105k</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="verdict view">🟡 VIEW — Strong negotiation play. Been on market 17+ days with a reduction.</div>
+
+    <div class="risk-flags">
+      <span class="flag high">⚠ Only 2 beds — limits rental ceiling and resale pool</span>
+      <span class="flag med">⚠ WV2 area — check school and crime data</span>
+      <span class="flag low">✅ Good size (858 sq ft) — room for side extension?</span>
+    </div>
+
+    <div class="viewing-brief">
+      <h4>📋 Viewing Brief</h4>
+      <ul>
+        <li>Check if 2nd reception room could be 3rd bedroom (adds significant value)</li>
+        <li>Assess loft conversion potential (would make excellent 3-bed BTL)</li>
+        <li>Check EPC — if below C, budget for upgrades (MEES 2028)</li>
+        <li>Ask agent: why has this been on market 17+ days? Any offers fallen through?</li>
+        <li>Negotiation target: £105k-£110k</li>
+      </ul>
+    </div>
+
+    <div class="action">
+      <a href="https://www.rightmove.co.uk/properties/87700773" target="_blank">🔗 View on Rightmove →</a>
+    </div>
+  </div>
+
+  <!-- DEAL 3 -->
+  <div class="deal-card rank3">
+    <div class="rank-badge">#3 PICK</div>
+    <div class="address"><a href="https://www.rightmove.co.uk/properties/88306188" target="_blank">Brick Kiln Street, Quarry Bank, Brierley Hill, DY5</a></div>
+    <div class="meta">
+      <span>3 Bed End Terrace</span>
+      <span>872 sq ft</span>
+      <span>Freehold</span>
+      <span>🆕 Added 11 May</span>
+      <span>Agent: PTN Estates, Brierley Hill</span>
+    </div>
+
+    <div class="score-bar"><div class="fill" style="width:62%"></div></div>
+
+    <div class="metrics">
+      <div class="metric"><div class="value green">£180,000</div><div class="lbl">Asking Price</div></div>
+      <div class="metric"><div class="value orange">£210-225k</div><div class="lbl">Estimated GDV</div></div>
+      <div class="metric"><div class="value orange">£15-20k</div><div class="lbl">Refurb Budget</div></div>
+      <div class="metric"><div class="value green">~6.5%</div><div class="lbl">Gross Yield</div></div>
+      <div class="metric"><div class="value purple">62/100</div><div class="lbl">Deal Score</div></div>
+    </div>
+
+    <div class="deal-analysis">
+      <div class="col">
+        <h4>💰 Flip Calculation</h4>
+        <table>
+          <tr><td>Purchase Price</td><td>£180,000</td></tr>
+          <tr><td>SDLT (3% surcharge)</td><td>£5,400</td></tr>
+          <tr><td>Legal &amp; Survey</td><td>£1,700</td></tr>
+          <tr><td>Refurb (cosmetic)</td><td>£17,000</td></tr>
+          <tr><td>Contingency (10%)</td><td>£1,700</td></tr>
+          <tr><td>Bridging (6mo)</td><td>£5,400</td></tr>
+          <tr class="total"><td>Total All-In</td><td>£211,200</td></tr>
+          <tr><td>GDV (estimated)</td><td>£215,000</td></tr>
+          <tr><td>3% Agent Fee</td><td>£6,450</td></tr>
+          <tr><td>Net Proceeds</td><td>£207,050</td></tr>
+          <tr><td>Flip Profit/(Loss)</td><td class="red">-£4,150</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <h4>📊 Strategies</h4>
+        <table>
+          <tr><td>BRRR Score</td><td class="red">4/10</td></tr>
+          <tr><td>Flip Viability</td><td class="red">❌ Negative at current price</td></tr>
+          <tr><td>BTL Gross Yield</td><td class="green">6.5%</td></tr>
+          <tr><td>BTL Net Yield</td><td>~5.0%</td></tr>
+          <tr><td>Location Perk</td><td class="green">✅ Brierley Hill — home area</td></tr>
+          <tr><td>Negotiation Window</td><td class="orange">Need £165k to flip</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="verdict monitor">🔵 MONITOR — Decent BTL if negotiated down, but too tight for BRRR/flip at £180k.</div>
+
+    <div class="risk-flags">
+      <span class="flag high">⚠ Price too high for value-add — GDV uplift insufficient</span>
+      <span class="flag med">⚠ New listing — vendor may not be negotiable yet</span>
+      <span class="flag low">✅ PTN Estates are local — could be easier to deal with</span>
+    </div>
+
+    <div class="viewing-brief">
+      <h4>📋 Viewing Brief</h4>
+      <ul>
+        <li>If viewing anyway (since it's local): check actual condition — if it needs less work than assumed, flip numbers improve</li>
+        <li>Assess rear garden development potential (end terrace)</li>
+        <li>Ask agent: is vendor flexible? Any chain?</li>
+        <li>Target offer: £165k-£170k to make flip/BRRR viable</li>
+        <li>Best use: BTL hold at negotiated price of £170k with £900/mo rent = 6.4% yield</li>
+      </ul>
+    </div>
+
+    <div class="action">
+      <a href="https://www.rightmove.co.uk/properties/88306188" target="_blank">🔗 View on Rightmove →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ====== MARKET OVERVIEW ====== -->
+<div class="section">
+  <h2>📊 Market Overview — 15 May 2026</h2>
+
+  <div class="stats" style="margin-bottom:20px;">
+    <div class="stat-card"><div class="num" style="color:var(--green)">29</div><div class="label">DY BRRR Targets</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--orange)">43</div><div class="label">WV BRRR Targets</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--blue)">218</div><div class="label">B BRRR Targets</div></div>
+    <div class="stat-card"><div class="num" style="color:var(--red)">~96%</div><div class="label">Filtered Out</div></div>
+  </div>
+
+  <p style="color:var(--muted); margin-bottom:16px; font-size:0.9em;">
+    <strong>Market reality:</strong> Out of <strong>11,154 total listings</strong> scanned across 45 postcodes, only <strong>290 properties (2.6%)</strong> passed initial BRRR screening (freehold, 2+ bed, houses only, price range, not STC, not auction). Of those, fewer than <strong>5</strong> have genuine BRRR/Flip margin potential. The DY market below £130k is virtually non-existent — Churchfield Street at £125,998 is the standout exception.
+  </p>
+</div>
+
+<!-- ====== HONOURABLE MENTIONS ====== -->
+<div class="section">
+  <h2>📌 Honourable Mentions <span class="badge">Also worth knowing about</span></h2>
+  <div class="mention-grid">
+    <div class="mention">
+      <div class="price">£150,000</div>
+      <div class="addr">Ivanhoe Street, Dudley DY2 — 3 bed Terrace</div>
+      <div class="info"><span>🟡 Reduced 11/05</span><span>Agent: Shipways</span></div>
+      <a href="https://www.rightmove.co.uk/properties/166573325" target="_blank">View →</a>
+    </div>
+    <div class="mention">
+      <div class="price">£150,000</div>
+      <div class="addr">Woden Road, Park Village WV10 — 3 bed Terrace</div>
+      <div class="info"><span>🟡 Reduced YESTERDAY</span><span>Agent: Connells</span></div>
+      <a href="https://www.rightmove.co.uk/properties/87990288" target="_blank">View →</a>
+    </div>
+    <div class="mention">
+      <div class="price">£145,000</div>
+      <div class="addr">Charles Street, Willenhall WV13 — 3 bed Terrace</div>
+      <div class="info"><span>🆕 Added 05/05</span><span>Agent: L&amp;S Prestige</span></div>
+      <a href="https://www.rightmove.co.uk/properties/88075329" target="_blank">View →</a>
+    </div>
+    <div class="mention">
+      <div class="price">£150,000</div>
+      <div class="addr">Sandland Road, Willenhall WV12 — 3 bed Semi</div>
+      <div class="info"><span>🆕 Added 11/05</span><span>Agent: L&amp;S Prestige</span></div>
+      <a href="https://www.rightmove.co.uk/properties/88320027" target="_blank">View →</a>
+    </div>
+    <div class="mention">
+      <div class="price">£155,000</div>
+      <div class="addr">Blewitt Street, Brierley Hill DY5 — 2 bed Semi</div>
+      <div class="info"><span>🆕 Added 12/05</span><span>⚠ Tenanted (BTL hold)</span></div>
+      <a href="https://www.rightmove.co.uk/properties/88373961" target="_blank">View →</a>
+    </div>
+    <div class="mention">
+      <div class="price">£165,000</div>
+      <div class="addr">Tividale Street, Tipton DY4 — 3 bed Semi</div>
+      <div class="info"><span>🟡 Reduced 12/05</span><span>Good 3-bed value</span></div>
+      <a href="https://www.rightmove.co.uk/properties/173538812" target="_blank">View →</a>
+    </div>
+    <div class="mention">
+      <div class="price">£145,000</div>
+      <div class="addr">Lime Street, Wolverhampton WV3 — 3 bed Terrace</div>
+      <div class="info"><span>🟡 Reduced 06/05</span><span>Agent: SW&amp;F</span></div>
+      <a href="https://www.rightmove.co.uk/properties/173372123" target="_blank">View →</a>
+    </div>
+    <div class="mention">
+      <div class="price">£140,000</div>
+      <div class="addr">Francis Street, Dunstall Hill WV1 — 3 bed Terrace</div>
+      <div class="info"><span>🆕 Added 28/04</span><span>Agent: DB Roberts</span></div>
+      <a href="https://www.rightmove.co.uk/properties/87778377" target="_blank">View →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ====== STC WATCH ====== -->
+<div class="section">
+  <h2>👀 STC Watch <span class="badge">What's selling in your area</span></h2>
+  <p style="color:var(--muted); margin-bottom:12px; font-size:0.9em;">
+    Sold Subject to Contract properties tracked across DY postcodes. Only <strong>3 STC</strong> found in the top 24 per postcode — confirms slow market movement.
+  </p>
+  
+  <table class="listings-table">
+    <thead><tr><th>Postcode</th><th>Price</th><th>Beds</th><th>Type</th><th>Area</th></tr></thead>
+    <tbody>
+      <tr><td>DY3</td><td class="price-cell">£190,000</td><td>3</td><td>Semi-Detached</td><td>Sedgley</td></tr>
+      <tr><td>DY7</td><td class="price-cell">£185,000</td><td>2</td><td>End Terrace</td><td>Kinver</td></tr>
+      <tr><td>DY7</td><td class="price-cell">£195,000</td><td>2</td><td>Detached</td><td>Kinver</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ====== ACTION PLAN ====== -->
+<div class="section">
+  <h2>🎯 Recommended Actions</h2>
+  <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px;">
+    <div style="display:flex; gap:16px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:200px;">
+        <h3 style="color:var(--accent); margin-bottom:8px;">⚡ Immediate</h3>
+        <ul style="list-style:none; color:var(--muted); font-size:0.9em;">
+          <li style="padding:4px 0;">1. Call Shipways about <strong>Churchfield Street</strong> — test the reduction</li>
+          <li style="padding:4px 0;">2. Offer script: "If I offered £110k, would I be close or miles off?"</li>
+          <li style="padding:4px 0;">3. Check EPC for Churchfield Street on gov.uk register</li>
+          <li style="padding:4px 0;">4. Book viewing for this week</li>
+        </ul>
+      </div>
+      <div style="flex:1; min-width:200px;">
+        <h3 style="color:var(--orange); margin-bottom:8px;">📅 This Week</h3>
+        <ul style="list-style:none; color:var(--muted); font-size:0.9em;">
+          <li style="padding:4px 0;">5. Call Royston &amp; Lund re: <strong>Dudley Road WV2</strong></li>
+          <li style="padding:4px 0;">6. Group viewing trip — see Churchfield St + Dudley Road same day</li>
+          <li style="padding:4px 0;">7. Check CHAPS/completion costs for Churchfield (bridging or cash?)</li>
+          <li style="padding:4px 0;">8. Monitor Brick Kiln St for first reduction</li>
+        </ul>
+      </div>
+      <div style="flex:1; min-width:200px;">
+        <h3 style="color:var(--blue); margin-bottom:8px;">📋 Pipeline</h3>
+        <ul style="list-style:none; color:var(--muted); font-size:0.9em;">
+          <li style="padding:4px 0;">Francis Street WV1 @ £140k — strong 3-bed value</li>
+          <li style="padding:4px 0;">Charles Street WV13 @ £145k — good Willenhall option</li>
+          <li style="padding:4px 0;">Woden Road WV10 @ £150k — check if reduced further</li>
+          <li style="padding:4px 0;">Lime Street WV3 @ £145k — reduced, could be motivated</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Kokal Properties Ltd · Autonomous Investment System · Generated 15 May 2026 06:00 BST<br>
+  Scanned 45 postcodes (DY1-9, WV1-14, B6-B44) via CloakBrowser · 11,154 listings analysed
+</div>
+
+</div>
+</body>
+</html>

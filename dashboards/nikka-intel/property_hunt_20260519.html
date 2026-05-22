@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Property Hunt — 19 May 2026</title>
+<style>
+  :root {
+    --bg: #0f0f14;
+    --card: #1a1a24;
+    --card-hover: #222233;
+    --accent: #00d4aa;
+    --accent2: #ff6b6b;
+    --accent3: #ffd93d;
+    --accent4: #6c5ce7;
+    --text: #e0e0e0;
+    --text-dim: #8888aa;
+    --border: #2a2a3a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.8em; color: var(--accent); margin-bottom: 5px; }
+  h2 { font-size: 1.3em; color: var(--accent3); margin: 25px 0 15px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  h3 { font-size: 1.1em; color: var(--accent4); margin: 15px 0 8px; }
+  .date { color: var(--text-dim); font-size: 0.9em; margin-bottom: 20px; }
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px; margin-bottom: 25px;
+  }
+  .stat {
+    background: var(--card); border-radius: 10px; padding: 12px 15px;
+    text-align: center; border: 1px solid var(--border);
+  }
+  .stat .num { font-size: 1.4em; font-weight: bold; color: var(--accent); }
+  .stat .label { font-size: 0.8em; color: var(--text-dim); margin-top: 3px; }
+
+  .deal-card {
+    background: var(--card); border-radius: 12px; padding: 20px;
+    margin-bottom: 20px; border: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .deal-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+  }
+  .deal-card.hot::before { background: var(--accent2); }
+  .deal-card.warm::before { background: var(--accent3); }
+  .deal-card.monitor::before { background: var(--accent4); }
+
+  .deal-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 10px; margin-bottom: 12px;
+  }
+  .deal-title { font-size: 1.15em; font-weight: bold; }
+  .deal-price { font-size: 1.3em; font-weight: bold; color: var(--accent); }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.75em; font-weight: bold; margin-left: 6px;
+  }
+  .badge-reduced { background: #ff6b6b33; color: #ff6b6b; }
+  .badge-nchain { background: #00d4aa33; color: #00d4aa; }
+  .badge-hot { background: #ff6b6b44; color: #ff6b6b; }
+  .badge-warm { background: #ffd93d44; color: #ffd93d; }
+  .badge-tenants { background: #6c5ce744; color: #6c5ce7; }
+  .score {
+    display: inline-block; width: 36px; height: 36px; line-height: 36px;
+    text-align: center; border-radius: 50%; font-size: 0.85em; font-weight: bold;
+  }
+  .score-high { background: #00d4aa44; color: #00d4aa; }
+  .score-med { background: #ffd93d44; color: #ffd93d; }
+
+  .metrics-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px; margin: 12px 0;
+  }
+  .metric {
+    background: var(--bg); border-radius: 6px; padding: 8px 10px;
+    font-size: 0.85em;
+  }
+  .metric .val { color: var(--accent); font-weight: bold; }
+  .metric .val.red { color: var(--accent2); }
+  .metric .val.yellow { color: var(--accent3); }
+
+  .comps-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.85em; }
+  .comps-table th, .comps-table td { padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  .comps-table th { color: var(--text-dim); font-weight: normal; font-size: 0.8em; text-transform: uppercase; }
+
+  .viewing-brief { background: var(--bg); border-radius: 8px; padding: 12px 15px; margin: 10px 0; border-left: 3px solid var(--accent4); }
+  .viewing-brief li { margin-bottom: 5px; font-size: 0.9em; }
+
+  .risk-flag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; margin: 2px; background: #ff6b6b22; color: #ff6b6b; }
+
+  .all-deals-table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+  .all-deals-table th { padding: 8px 10px; text-align: left; border-bottom: 2px solid var(--border); color: var(--text-dim); font-size: 0.8em; text-transform: uppercase; }
+  .all-deals-table td { padding: 7px 10px; border-bottom: 1px solid var(--border); }
+  .all-deals-table tr:hover { background: var(--card-hover); }
+  .all-deals-table a { color: var(--accent); text-decoration: none; }
+  .all-deals-table a:hover { text-decoration: underline; }
+
+  .area-breakdown { margin: 15px 0; }
+  .area-bar { display: flex; align-items: center; gap: 8px; margin: 4px 0; font-size: 0.85em; }
+  .area-bar-fill { height: 18px; border-radius: 4px; background: var(--accent); min-width: 4px; }
+  .area-bar-fill.dy { background: #00d4aa; }
+  .area-bar-fill.wv { background: #ffd93d; }
+  .area-bar-fill.b { background: #6c5ce7; }
+
+  a { color: var(--accent); word-break: break-all; }
+  .stc-tag { color: var(--accent3); font-size: 0.85em; }
+  
+  .summary-box {
+    background: var(--card); border: 1px solid var(--accent); border-radius: 10px;
+    padding: 15px 20px; margin: 15px 0;
+  }
+  .summary-box h3 { color: var(--accent); margin-top: 0; }
+  
+  @media (max-width: 600px) {
+    .deal-header { flex-direction: column; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<h1>🏠 Daily Property Hunt</h1>
+<p class="date">Tuesday, 19 May 2026 | 06:00 BST | Brierley Hill DY5 Base</p>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat"><div class="num">42</div><div class="label">Postcodes Scanned</div></div>
+  <div class="stat"><div class="num">~276</div><div class="label">Candidates Found</div></div>
+  <div class="stat"><div class="num">~6,900</div><div class="label">Total Listings Scanned</div></div>
+  <div class="stat"><div class="num">~4%</div><div class="label">Filter Pass Rate</div></div>
+  <div class="stat"><div class="num">3</div><div class="label">Deep-Dived Today</div></div>
+</div>
+
+<!-- Executive Summary -->
+<div class="summary-box">
+  <h3>📊 Executive Summary</h3>
+  <p>Today's scan across <strong>42 postcodes</strong> (DY, WV, B areas) found <strong>~276 candidates</strong> — houses with 2+ beds, freehold, not auction, in price range. The DY market remains <strong>exceptionally thin</strong> for BRRR targets under £150k (only ~14% of DY candidates). The WV area is <strong>more productive</strong> for sub-£150k BRRR opportunities. B area has volume but higher entry prices.</p>
+  <p style="margin-top: 8px;"><strong>Market temperature:</strong> DY: 🔴 Tight | WV: 🟡 Mixed | B: 🟢 Volume</p>
+  <p style="margin-top: 8px;"><strong>⚠️ Key finding:</strong> The £80k end-terrace (Mostyn St, WV1) was LEASEHOLD — confirming the pattern that genuinely cheap freehold BRRR targets under £130k remain extremely rare in this market cycle.</p>
+</div>
+
+<!-- TOP 1 -->
+<h2>🏆 Top Pick — Ready to View</h2>
+
+<div class="deal-card hot">
+  <div class="deal-header">
+    <div>
+      <div class="deal-title">Flavell Street, Dudley DY1 4NU</div>
+      <div>
+        <span class="badge badge-reduced">⬇ REDUCED 09/05</span>
+        <span class="badge badge-nchain">NO CHAIN</span>
+        <span class="score score-high">78</span>
+      </div>
+    </div>
+    <div class="deal-price">£160,000</div>
+  </div>
+  <p style="color: var(--text-dim); font-size: 0.9em;">2 bed · Terraced · Freehold · Council Tax B · EPC: Pending</p>
+  <p style="font-size: 0.9em;">Reduced from higher price on 09/05/2026. Brand new boiler, driveway parking, gas CH, double glazing. "No upward chain" — ready to go immediately.</p>
+
+  <div class="metrics-grid">
+    <div class="metric">Est ARV: <span class="val">£175k–£185k</span></div>
+    <div class="metric">Refurb: <span class="val yellow">£12k–£18k</span></div>
+    <div class="metric">Est All-in: <span class="val">£178k–£184k</span></div>
+    <div class="metric">Flip ROI: <span class="val red">~1-4%</span></div>
+    <div class="metric">BRRR Score: <span class="val yellow">68/100</span></div>
+    <div class="metric">BTL Yield: <span class="val yellow">~5.6%</span></div>
+  </div>
+
+  <h3>📈 Comparable Sales</h3>
+  <table class="comps-table">
+    <tr><th>Address</th><th>Date Sold</th><th>Price</th></tr>
+    <tr><td>54 Flavell Street, DY1 4NU</td><td>Mar 2025</td><td>£175,500</td></tr>
+    <tr><td>51 Flavell Street, DY1 4NU</td><td>Jul 2020</td><td>£155,000</td></tr>
+    <tr><td>57 Flavell Street, DY1 4NU</td><td>Oct 2020</td><td>£109,950</td></tr>
+  </table>
+  <p style="font-size: 0.8em; color: var(--text-dim);">54 Flavell St sold at £175.5k (2025) — likely a similar or slightly better condition. Subject property at £160k is priced below that comp, suggesting room for value.</p>
+
+  <h3>📋 Viewing Brief</h3>
+  <div class="viewing-brief">
+    <ol>
+      <li><strong>Check:</strong> Condition of kitchen & bathroom — listing suggests these may need updating. Look for signs of damp in the rear extension wall.</li>
+      <li><strong>Measure:</strong> Living room (3.5m?) and bedrooms for potential layout changes. Check if dining room can be incorporated into kitchen for open-plan.</li>
+      <li><strong>Inspect:</strong> Roof condition, chimney stack stability, window frames (listed as double glazed — check age/condition).</li>
+      <li><strong>Ask Agent:</strong> "What was the original list price before reduction?" and "Any other offers?" Also ask about EPC certificate availability.</li>
+      <li><strong>Photo:</strong> Rear garden size, alleyway access, driveway width, boiler make/model/install date.</li>
+    </ol>
+  </div>
+
+  <p><a href="https://www.rightmove.co.uk/properties/174367583#/?channel=RES_BUY" target="_blank">🔗 Rightmove Link</a></p>
+</div>
+
+<!-- TOP 2 -->
+<h2>🥈 Strong BRRR Candidate</h2>
+
+<div class="deal-card warm">
+  <div class="deal-header">
+    <div>
+      <div class="deal-title">Gipsy Lane, Willenhall WV13</div>
+      <div>
+        <span class="badge badge-reduced">⬇ REDUCED</span>
+        <span class="score score-high">74</span>
+      </div>
+    </div>
+    <div class="deal-price">£150,000</div>
+  </div>
+  <p style="color: var(--text-dim); font-size: 0.9em;">2 bed · Terraced · Freehold · New boiler (2025) · Double glazing</p>
+  <p style="font-size: 0.9em;">Hot market (+38% YoY price growth on this street). New boiler fitted in 2025, front wall rebuilt by vendor. Low-maintenance rear garden. Gas CH and double glazing throughout.</p>
+
+  <div class="metrics-grid">
+    <div class="metric">Est ARV: <span class="val">£170k–£180k</span></div>
+    <div class="metric">Refurb: <span class="val yellow">£10k–£15k</span></div>
+    <div class="metric">Est All-in: <span class="val">£165k–£170k</span></div>
+    <div class="metric">Flip Profit: <span class="val yellow">£5k–£15k</span></div>
+    <div class="metric">BRRR Score: <span class="val yellow">72/100</span></div>
+    <div class="metric">Yield (BTL): <span class="val">~6.2%</span></div>
+  </div>
+
+  <h3>📈 Comparable Sales — Gipsy Lane</h3>
+  <table class="comps-table">
+    <tr><th>Address</th><th>Date Sold</th><th>Price</th></tr>
+    <tr><td>122 Gipsy Lane, WV13</td><td>Sep 2025</td><td>£180,000</td></tr>
+    <tr><td>17 Gipsy Lane, WV13</td><td>Apr 2024</td><td>£142,000</td></tr>
+    <tr><td>99 Gipsy Lane, WV13</td><td>Mar 2025</td><td>£118,000</td></tr>
+  </table>
+  <p style="font-size: 0.8em; color: var(--text-dim);">Strong market trajectory — average £180k last year, +38% YoY. Street is clearly in demand. New boiler (2025) is a major plus — saves £3-4k immediately.</p>
+
+  <h3>📋 Viewing Brief</h3>
+  <div class="viewing-brief">
+    <ol>
+      <li><strong>Check:</strong> Kitchen condition — described as having fitted units but tight (2.12m × 2.05m). Check if there's room to extend into dining area.</li>
+      <li><strong>Measure:</strong> Both bedrooms (bed 2 listed at 3.67m × 3.57m = very spacious for a 2-bed terrace). Verify dimensions.</li>
+      <li><strong>Ask Agent:</strong> "Why is the vendor selling?" and "Have there been any other reductions?" Since it's reduced, test with: "If I offered £135k, would I be in the ballpark?"</li>
+      <li><strong>Photo:</strong> The rear garden, bathroom condition, and loft space (potential for conversion?).</li>
+    </ol>
+  </div>
+
+  <p><a href="https://www.rightmove.co.uk/properties/87928647#/?channel=RES_BUY" target="_blank">🔗 Rightmove Link</a></p>
+</div>
+
+<!-- TOP 3 -->
+<h2>🥉 Value Play</h2>
+
+<div class="deal-card monitor">
+  <div class="deal-header">
+    <div>
+      <div class="deal-title">Temple Street, Dudley DY3 2PE</div>
+      <div>
+        <span class="score score-med">72</span>
+      </div>
+    </div>
+    <div class="deal-price">£150,000</div>
+  </div>
+  <p style="color: var(--text-dim); font-size: 0.9em;">2 bed · Terraced · Freehold · 646 sq ft (60 sqm) · Council Tax B</p>
+  <p style="font-size: 0.9em;">Local to base (DY3). PTN Estates in Brierley Hill. #4 Temple Street last sold Jan 2023 for £138,000 — now marketed at £150,000. 646 sq ft is workable for a 2-bed BRRR.</p>
+
+  <div class="metrics-grid">
+    <div class="metric">Est ARV: <span class="val">£155k–£165k</span></div>
+    <div class="metric">Refurb: <span class="val yellow">£10k–£20k</span></div>
+    <div class="metric">Est All-in: <span class="val yellow">£165k–£175k</span></div>
+    <div class="metric">Flip Profit: <span class="val red">Tight</span></div>
+    <div class="metric">BRRR Score: <span class="val yellow">65/100</span></div>
+    <div class="metric">Yield (BTL): <span class="val yellow">~5.8%</span></div>
+  </div>
+
+  <h3>📈 Comparable Sales — Temple Street</h3>
+  <table class="comps-table">
+    <tr><th>Address</th><th>Date Sold</th><th>Price</th></tr>
+    <tr><td>5 Temple Street, DY3</td><td>Jan 2026</td><td>£132,000</td></tr>
+    <tr><td>1a Temple Street, DY3</td><td>Aug 2023</td><td>£140,000</td></tr>
+    <tr><td>4 Temple Street, DY3</td><td>Jan 2023</td><td>£138,000</td></tr>
+  </table>
+  <p style="font-size: 0.8em; color: var(--text-dim);">⚠️ #4 Temple St (this property) last sold £138k in Jan 2023. Current asking £150k = £12k uplift in 3 years. Street average is £132k (Jan 2026 sale of #5 at £132k). This looks overpriced at £150k.</p>
+
+  <h3>📋 Viewing Brief</h3>
+  <div class="viewing-brief">
+    <ol>
+      <li><strong>Vendor motivation:</strong> Ask why selling and how long on market. If >60 days, offer £132-135k based on comps.</li>
+      <li><strong>Check:</strong> Condition of kitchen & bathroom. The lack of description suggests it might need work.</li>
+      <li><strong>Strategy:</strong> At £135k purchase + £15k refurb + £5k fees = £155k all-in. ARV £155k = ₤0 profit. Only works if bought below £135k.</li>
+    </ol>
+  </div>
+
+  <p><a href="https://www.rightmove.co.uk/properties/88482390#/?channel=RES_BUY" target="_blank">🔗 Rightmove Link</a></p>
+</div>
+
+<!-- HONORABLE MENTIONS -->
+<h2>👁️ Also Worth Watching</h2>
+
+<div style="overflow-x: auto;">
+<table class="all-deals-table">
+  <tr>
+    <th>Property</th><th>Price</th><th>Type</th><th>Beds</th><th>Notable</th><th>Score</th><th>Link</th>
+  </tr>
+  <tr>
+    <td>Blewitt St, Brierley Hill DY5</td>
+    <td>£155,000</td>
+    <td>Semi-Detached</td>
+    <td>2</td>
+    <td><span class="badge badge-tenants">Tenants In Situ</span> No chain, local</td>
+    <td class="score score-med" style="display: inline-block;">75</td>
+    <td><a href="https://www.rightmove.co.uk/properties/88373961" target="_blank">🔗</a></td>
+  </tr>
+  <tr>
+    <td>Langstone Rd, Russells Hall DY1</td>
+    <td>£165,000</td>
+    <td>Semi-Detached</td>
+    <td>2</td>
+    <td><span class="badge badge-reduced">⬇ REDUCED</span> <span class="badge badge-nchain">NO CHAIN</span> EPC D</td>
+    <td class="score score-med" style="display: inline-block;">70</td>
+    <td><a href="https://www.rightmove.co.uk/properties/163283222" target="_blank">🔗</a></td>
+  </tr>
+  <tr>
+    <td>Woden Rd, Park Village WV10</td>
+    <td>£150,000</td>
+    <td>Terraced</td>
+    <td>3</td>
+    <td><span class="badge badge-reduced">⬇ REDUCED</span> 3-bed terrace</td>
+    <td class="score score-med" style="display: inline-block;">70</td>
+    <td><a href="https://www.rightmove.co.uk/properties/87990288" target="_blank">🔗</a></td>
+  </tr>
+  <tr>
+    <td>Willenhall Rd, Wolverhampton WV1</td>
+    <td>£150,000</td>
+    <td>Terraced</td>
+    <td>3</td>
+    <td>Freehold, 3-bed, central WV</td>
+    <td class="score score-med" style="display: inline-block;">68</td>
+    <td><a href="https://www.rightmove.co.uk/properties/88436337" target="_blank">🔗</a></td>
+  </tr>
+  <tr>
+    <td>Tividale St, Tipton DY4</td>
+    <td>£165,000</td>
+    <td>Semi-Detached</td>
+    <td>3</td>
+    <td><span class="badge badge-reduced">⬇ REDUCED</span> 915 sq ft</td>
+    <td class="score score-med" style="display: inline-block;">68</td>
+    <td><a href="https://www.rightmove.co.uk/properties/173538812" target="_blank">🔗</a></td>
+  </tr>
+  <tr>
+    <td>Francis St, Dunstall Hill WV1</td>
+    <td>£140,000</td>
+    <td>Terraced</td>
+    <td>3</td>
+    <td><span class="badge badge-hot">SOLD STC ⚠️</span> "Full modernisation" ideal BRRR</td>
+    <td class="score score-med" style="display: inline-block;">76</td>
+    <td><a href="https://www.rightmove.co.uk/properties/87778377" target="_blank">🔗</a></td>
+  </tr>
+</table>
+</div>
+
+<!-- B POSTCODE STANDOUTS -->
+<h2>🏙️ B Postcode Highlights (£150k–£250k)</h2>
+
+<div style="overflow-x: auto;">
+<table class="all-deals-table">
+  <tr>
+    <th>Area</th><th>Address</th><th>Price</th><th>Beds</th><th>Type</th><th>Notes</th>
+  </tr>
+  <tr><td>B6</td><td>Electric Avenue, Witton</td><td>£160,000</td><td>2</td><td>Terraced</td><td>Lowest price in B6 Aston area</td></tr>
+  <tr><td>B6</td><td>Deykin Avenue, Aston</td><td>£165,000</td><td>2</td><td>Terraced</td><td><span class="badge badge-reduced">⬇ REDUCED</span></td></tr>
+  <tr><td>B21</td><td>Uplands Rd, Handsworth</td><td>£160,000</td><td>2</td><td>Terraced</td><td>Good price for Handsworth</td></tr>
+  <tr><td>B29</td><td>Wallace Rd, Selly Park</td><td>£160,000</td><td>2</td><td>Terraced</td><td><span class="badge badge-reduced">⬇ REDUCED</span> Selly Oak area</td></tr>
+  <tr><td>B35</td><td>Farnborough Rd, Castle Vale</td><td>£170,000</td><td>3</td><td>End Terrace</td><td><span class="badge badge-reduced">⬇ REDUCED</span></td></tr>
+  <tr><td>B31</td><td>Ingoldsby Rd, Northfield</td><td>£170,000</td><td>2</td><td>Terraced</td><td><span class="badge badge-reduced">⬇ REDUCED</span></td></tr>
+  <tr><td>B37</td><td>Yorklea Croft, Chelmsley Wood</td><td>£165,000</td><td>3</td><td>Terraced</td><td><span class="badge badge-reduced">⬇ REDUCED</span></td></tr>
+  <tr><td>B19</td><td>Hamstead Rd, Handsworth</td><td>£175,000</td><td>2</td><td>Terraced</td><td>Freehold, lowest in B19</td></tr>
+  <tr><td>B19</td><td>Lozells St, Lozells</td><td>£225,000</td><td>4</td><td>Terraced</td><td><span class="badge badge-reduced">⬇ REDUCED</span> 4-bed</td></tr>
+  <tr><td>B32</td><td>Ridgacre Rd West, Quinton</td><td>£180,000</td><td>2</td><td>Terraced</td><td>Lowest price in B32</td></tr>
+</table>
+</div>
+
+<!-- AREA BREAKDOWN -->
+<h2>📊 Area Breakdown</h2>
+
+<h3>DY Postcodes (£70k–£200k)</h3>
+<div class="area-breakdown">
+  <div class="area-bar"><span style="width:50px">DY1</span><div class="area-bar-fill dy" style="width:60px"></div><span>5 candidates / 297 total</span></div>
+  <div class="area-bar"><span style="width:50px">DY2</span><div class="area-bar-fill dy" style="width:48px"></div><span>4 candidates / 331 total</span></div>
+  <div class="area-bar"><span style="width:50px">DY3</span><div class="area-bar-fill dy" style="width:60px"></div><span>5 candidates / 392 total</span></div>
+  <div class="area-bar"><span style="width:50px">DY4</span><div class="area-bar-fill dy" style="width:72px"></div><span>6 candidates / 338 total</span></div>
+  <div class="area-bar"><span style="width:50px">DY5</span><div class="area-bar-fill dy" style="width:12px"></div><span>1 candidate / 439 total</span></div>
+  <div class="area-bar"><span style="width:50px">DY6</span><div class="area-bar-fill dy" style="width:12px"></div><span>1 candidate / 396 total</span></div>
+  <div class="area-bar"><span style="width:50px">DY8</span><div class="area-bar-fill dy" style="width:24px"></div><span>2 candidates / 688 total</span></div>
+  <div class="area-bar"><span style="width:50px">DY9</span><div class="area-bar-fill dy" style="width:36px"></div><span>3 candidates / 362 total</span></div>
+  <p style="color: var(--text-dim); font-size: 0.8em;">DY total: 27 candidates across 3,399 listings (0.8% pass rate)</p>
+</div>
+
+<h3>WV Postcodes (£70k–£200k)</h3>
+<div class="area-breakdown">
+  <div class="area-bar"><span style="width:70px">WV1</span><div class="area-bar-fill wv" style="width:60px"></div><span>5 candidates / 119 total</span></div>
+  <div class="area-bar"><span style="width:70px">WV2</span><div class="area-bar-fill wv" style="width:120px"></div><span>10 candidates / 102 total</span></div>
+  <div class="area-bar"><span style="width:70px">WV10</span><div class="area-bar-fill wv" style="width:48px"></div><span>4 candidates / 419 total</span></div>
+  <div class="area-bar"><span style="width:70px">WV11</span><div class="area-bar-fill wv" style="width:84px"></div><span>7 candidates / 247 total</span></div>
+  <div class="area-bar"><span style="width:70px">WV12</span><div class="area-bar-fill wv" style="width:72px"></div><span>6 candidates / 192 total</span></div>
+  <div class="area-bar"><span style="width:70px">WV14</span><div class="area-bar-fill wv" style="width:60px"></div><span>5 candidates / 319 total</span></div>
+  <p style="color: var(--text-dim); font-size: 0.8em;">WV total: 56 candidates across 3,300+ listings (1.7% pass rate — better than DY)</p>
+</div>
+
+<!-- B Postcodes Scan Summary -->
+<h3>B Postcodes (£150k–£250k) — 19 Scanned</h3>
+<div class="area-breakdown">
+  <div class="area-bar"><span style="width:70px">B6 Aston</span><div class="area-bar-fill b" style="width:120px"></div><span>16 candidates</span></div>
+  <div class="area-bar"><span style="width:70px">B8 Alum Rock</span><div class="area-bar-fill b" style="width:140px"></div><span>17 candidates</span></div>
+  <div class="area-bar"><span style="width:70px">B9 Small Heath</span><div class="area-bar-fill b" style="width:110px"></div><span>14 candidates</span></div>
+  <div class="area-bar"><span style="width:70px">B11 Sparkhill</span><div class="area-bar-fill b" style="width:130px"></div><span>16 candidates</span></div>
+  <div class="area-bar"><span style="width:70px">B35 Castle Vale</span><div class="area-bar-fill b" style="width:110px"></div><span>14 candidates</span></div>
+  <div class="area-bar"><span style="width:70px">B37 Chelmsley Wood</span><div class="area-bar-fill b" style="width:110px"></div><span>14 candidates</span></div>
+  <p style="color: var(--text-dim); font-size: 0.8em;">B total: ~193 candidates across ~2,500 listings (7.7% pass rate — highest volume)</p>
+</div>
+
+<!-- Action Items -->
+<h2>✅ Action Items</h2>
+<div class="summary-box">
+  <ol style="margin-left: 20px;">
+    <li><strong>Call agent for #1 (Flavell St):</strong> Tonks Property People (0121 221 2204) — ask about viewing availability. Use the "offer without offering" technique: "If I offered £150k, would I be in the ballpark?"</li>
+    <li><strong>Check EPC for Flavell St:</strong> The listing says "Pending" — get the actual rating from the agent. Essential for BRRR planning.</li>
+    <li><strong>Book viewing for Gipsy Lane (WV13):</strong> Dixons, Willenhall. Low-ball test at £130k given market comps show £118k-£142k for terraces on the street.</li>
+    <li><strong>Reject Temple St at £150k:</strong> Street comps average £132k. Only worth pursuing if negotiated down to £130-135k.</li>
+    <li><strong>Check Blewitt St (DY5):</strong> £155k with tenants in situ — ask about the actual rent being achieved for BTL yield calculation.</li>
+    <li><strong>Track the STC properties:</strong> Francis St WV1 was ideal BRRR material ("full modernisation required") at £140k — find out who bought it and whether it fell through.</li>
+  </ol>
+</div>
+
+<!-- Footer -->
+<p style="color: var(--text-dim); font-size: 0.8em; margin-top: 30px; text-align: center; border-top: 1px solid var(--border); padding-top: 15px;">
+  Generated 19 May 2026 06:00 BST · Hermes Property Intelligence · Kokal Properties Ltd<br>
+  Data from Rightmove via CloakBrowser (42 postcodes) + HM Land Registry comparables<br>
+  Next scan: Tomorrow 06:00 — including WV3-WV9, B42-B44, and deeper B coverage
+</p>
+
+</body>
+</html>
