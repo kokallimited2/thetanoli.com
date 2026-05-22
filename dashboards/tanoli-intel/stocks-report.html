@@ -1,148 +1,385 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><title>Stock Analysis — 2026-05-21 22:52 UK</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Stocks Daily Report — 2026-05-21</title>
 <style>
-body { background:#0d1117; color:#c9d1d9; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; margin:0; padding:20px; }
-h1,h2,h3 { color:#f0f6fc; }
-table { width:100%; border-collapse:collapse; margin:10px 0 20px; }
-th,td { padding:8px 12px; text-align:left; border-bottom:1px solid #30363d; font-size:13px; }
-th { background:#161b22; color:#8b949e; font-weight:600; text-transform:uppercase; font-size:11px; }
-tr:hover { background:#1c2128; }
-.stats { display:flex; gap:16px; margin:20px 0; flex-wrap:wrap; }
-.stat { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:12px 20px; text-align:center; }
-.stat .num { font-size:24px; font-weight:700; }
-.stat .label { font-size:11px; color:#8b949e; text-transform:uppercase; }
-code { color:#58a6ff; }
-.green { color:#3fb950; }
-.yellow { color:#d29922; }
-</style></head><body>
-<h1>📈 Stocks Self-Learning Report</h1>
-<p style="color:#8b949e">2026-05-21 22:52 UK — Market: <span class="green">Favourable</span></p>
-<div class="stats">
-<div class="stat"><div class="num green">0</div><div class="label">BUY</div></div>
-<div class="stat"><div class="num yellow">2</div><div class="label">WATCH</div></div>
-<div class="stat"><div class="num">13</div><div class="label">AVOID</div></div>
+:root{--bg:#0d1117;--card:#161b22;--border:#30363d;--text:#e6edf3;--text2:#8b949e;--green:#3fb950;--yellow:#d29922;--red:#f85149;--orange:#d97706}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);padding:20px}
+.c{max-width:1200px;margin:0 auto}
+.hdr{text-align:center;padding:30px 0;border-bottom:1px solid var(--border);margin-bottom:30px}
+.hdr h1{font-size:28px;color:var(--green)}
+.hdr .dt{color:var(--text2);font-size:14px;margin-top:5px}
+.hdr .ms{display:inline-block;background:#1a3a2a;color:var(--green);padding:6px 16px;border-radius:20px;font-size:14px;font-weight:600;margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:30px}
+.ic{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 16px}
+.ic .nm{font-size:13px;color:var(--text2)}
+.ic .vl{font-size:22px;font-weight:700;margin:4px 0}
+.ic .ch{font-size:14px}
+.pos{color:var(--green)}.neg{color:var(--red)}
+.rat{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin-bottom:30px;line-height:1.7;font-size:14px}
+.rat h3{margin-bottom:10px;color:var(--green);font-size:16px}
+.sc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:20px}
+.sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.ss{font-size:22px;font-weight:700}
+.st{font-size:12px;color:var(--text2);background:#21262d;padding:2px 8px;border-radius:4px}
+.pr{display:flex;gap:20px;margin-bottom:12px;flex-wrap:wrap}
+.pr .lb{font-size:12px;color:var(--text2)}
+.pr .vv{font-size:20px;font-weight:600}
+.sb{font-size:28px;font-weight:800}
+.buy{color:var(--green)}.watch{color:var(--orange)}.avoid{color:var(--red)}
+.dtag{display:inline-block;padding:4px 12px;border-radius:6px;font-size:13px;font-weight:600;margin-left:10px}
+.bd{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:12px 0;padding:12px;background:#0d1117;border-radius:6px}
+.bi{text-align:center}.bi .bl{font-size:11px;color:var(--text2)}.bi .bv{font-size:16px;font-weight:700}
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.ab{background:#0d1117;border:1px solid var(--border);border-radius:6px;padding:12px}
+.ab h4{font-size:12px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.ab p{font-size:13px;line-height:1.5}
+.nt{margin-top:10px;padding:10px;background:#1a2a1a;border-left:3px solid var(--green);border-radius:4px;font-size:13px;line-height:1.5}
+.ntw{background:#2a1a1a;border-left-color:var(--orange)}
+.nta{background:#2a1010;border-left-color:var(--red)}
+.ah{font-size:13px;color:var(--text2);margin-bottom:8px}
+.ah .au{color:var(--green)}.ah .ad{color:var(--red)}
+.ft{text-align:center;padding:30px 0;color:var(--text2);font-size:12px;border-top:1px solid var(--border);margin-top:30px}
+@media(max-width:768px){.ag{grid-template-columns:1fr}.pr{gap:12px}}
+</style></head><body><div class="c">
+<div class="hdr">
+<h1>📈 Stocks Daily Report</h1>
+<div class="dt">2026-05-21 (Thursday) — Post-Market Analysis</div>
+<div class="ms">Market Status: FAVOURABLE</div></div>
+<h3 style="margin-bottom:10px">Market Indices</h3><div class="grid">
+<div class="ic"><div class="nm">S&P 500</div><div class="vl">7,445.72</div><div class="ch pos">+12.75 (+0.17%)</div></div>
+<div class="ic"><div class="nm">NASDAQ Comp</div><div class="vl">26,293.10</div><div class="ch pos">+22.74 (+0.09%)</div></div>
+<div class="ic"><div class="nm">DJIA 🏆 NEW RECORD</div><div class="vl">50,285.66</div><div class="ch pos">+276.31 (+0.55%)</div></div>
+<div class="ic"><div class="nm">VIX</div><div class="vl">16.76</div><div class="ch pos">-0.68 (-3.90%)</div></div>
+<div class="ic"><div class="nm">30-Year Yield</div><div class="vl">5.09%</div><div class="ch pos">Easing from 5.19% peak</div></div>
+<div class="ic"><div class="nm">Oil (WTI)</div><div class="vl">$96.35</div><div class="ch pos">-2% (Iran deal hopes)</div></div>
 </div>
-<h2>Analysis Results</h2>
-<table><tr><th>Signal</th><th>Price</th><th>Score</th><th>Bar</th><th>Decision</th><th>Type</th><th>Notes</th></tr><tr>
-            <td>⚪ NVDA</td>
-            <td>$219.51</td>
-            <td>6.6</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="font-size:12px;color:#8b949e">RSI(67) neutral | trend up | mega-cap $5317B</td>
-        </tr><tr>
-            <td>⚪ AAPL</td>
-            <td>$304.99</td>
-            <td>5.6</td>
-            <td><code>█████░░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="font-size:12px;color:#8b949e">RSI(82) overbought | trend up | mega-cap $4479B</td>
-        </tr><tr>
-            <td>⚪ MSFT</td>
-            <td>$419.09</td>
-            <td>6.7</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="font-size:12px;color:#8b949e">RSI(54) neutral | below 52w high | mega-cap $3113B</td>
-        </tr><tr>
-            <td>⚪ GOOGL</td>
-            <td>$387.66</td>
-            <td>6.7</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="font-size:12px;color:#8b949e">RSI(51) neutral | trend up | mega-cap $4697B</td>
-        </tr><tr>
-            <td>⚪ AMZN</td>
-            <td>$268.46</td>
-            <td>6.3</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="font-size:12px;color:#8b949e">RSI(50) neutral | trend up | mega-cap $2888B</td>
-        </tr><tr>
-            <td>⚪ META</td>
-            <td>$607.38</td>
-            <td>6.2</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="font-size:12px;color:#8b949e">RSI(49) neutral | below 52w high | mega-cap $1542B</td>
-        </tr><tr>
-            <td>⚪ TSLA</td>
-            <td>$417.85</td>
-            <td>6.2</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="font-size:12px;color:#8b949e">RSI(60) neutral | trend up | below 52w high | mega-cap $1569B</td>
-        </tr><tr>
-            <td>🟡 AMD</td>
-            <td>$449.59</td>
-            <td>7.0</td>
-            <td><code>███████░░░</code></td>
-            <td>WATCH</td>
-            <td>Large Cap</td>
-            <td style="font-size:12px;color:#8b949e">RSI(68) neutral | trend up | mega-cap $733B</td>
-        </tr><tr>
-            <td>⚪ PLTR</td>
-            <td>$137.41</td>
-            <td>6.7</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Wildcard</td>
-            <td style="font-size:12px;color:#8b949e">RSI(40) neutral | below 52w high</td>
-        </tr><tr>
-            <td>⚪ COIN</td>
-            <td>$193.56</td>
-            <td>4.8</td>
-            <td><code>████░░░░░░</code></td>
-            <td>AVOID</td>
-            <td>Wildcard</td>
-            <td style="font-size:12px;color:#8b949e">RSI(51) neutral | below 52w high</td>
-        </tr><tr>
-            <td>⚪ RKLB</td>
-            <td>$125.45</td>
-            <td>5.1</td>
-            <td><code>█████░░░░░</code></td>
-            <td>AVOID</td>
-            <td>Wildcard</td>
-            <td style="font-size:12px;color:#8b949e">RSI(73) overbought | trend up</td>
-        </tr><tr>
-            <td>⚪ ASTS</td>
-            <td>$96.23</td>
-            <td>6.2</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Wildcard</td>
-            <td style="font-size:12px;color:#8b949e">RSI(68) neutral | below 52w high</td>
-        </tr><tr>
-            <td>🟡 IONQ</td>
-            <td>$58.89</td>
-            <td>7.9</td>
-            <td><code>███████░░░</code></td>
-            <td>WATCH</td>
-            <td>Wildcard</td>
-            <td style="font-size:12px;color:#8b949e">RSI(64) neutral | trend up | below 52w high</td>
-        </tr><tr>
-            <td>⚪ HOOD</td>
-            <td>$75.92</td>
-            <td>4.8</td>
-            <td><code>████░░░░░░</code></td>
-            <td>AVOID</td>
-            <td>Wildcard</td>
-            <td style="font-size:12px;color:#8b949e">RSI(54) neutral | below 52w high</td>
-        </tr><tr>
-            <td>⚪ SOFI</td>
-            <td>$15.65</td>
-            <td>5.0</td>
-            <td><code>█████░░░░░</code></td>
-            <td>AVOID</td>
-            <td>Wildcard</td>
-            <td style="font-size:12px;color:#8b949e">RSI(42) neutral | below 52w high</td>
-        </tr></table>
-<p style="color:#8b949e;font-size:12px;margin-top:30px">Generated by Hermes • Stocks Self-Learning Agent • 2026-05-21 22:52 UK</p>
-</body></html>
+<div class="rat"><h3>📊 Market Assessment</h3>
+<p>DJIA 50,285.66 NEW RECORD CLOSE (+0.55%). S&P 500 7,445.72 (+0.17%) — heading for 8th straight weekly gain (+0.5% WTD). NASDAQ 26,293.10 (+0.09%). VIX 16.76 (-3.90%). 30-year bond yield spiked to 5.19% (highest since pre-2008 financial crisis) before easing to 5.09%. Oil falling ~2% to $96.35 (WTI) on Iran deal hopes. Kevin Warsh to be sworn in as Fed chair Friday.
+
+NVDA Q1 FY2027: Revenue $81.62B (+92% YoY DC) vs $78.86B est (BEAT). EPS $1.87 vs $1.76 est (BEAT). Q2 guidance $91B vs $86.84B est (SIGNIFICANT BEAT). $80B buyback. Vera CPU opens $200B new TAM. "Constrained throughout entire life of Vera Rubin."
+
+WMT -7.27% (priced for perfection). ROST +5.88% AH on earnings beat + raised guidance. After-hours: EL +12%, WDAY +11%, ZM +7%, ROST +7%, TTWO +7% (GTA VI on track).
+
+SpaceX S-1 filed. Eli Lilly weight loss drug clears crucial trial. Anthropic, Microsoft in talks for AI chip deal.
+
+Market: FAVOURABLE — record DJIA, 8th straight weekly gain, low VIX, oil falling. Bond yields elevated but easing. BUY threshold: 8.0/10.</p></div>
+<h2 style="margin-bottom:16px">10-Stock Analysis</h2>
+<div class="sc">
+<div class="sh"><div><span class="ss">AAPL</span><span class="st">Large Cap</span></div>
+<div><span class="sb watch">7.1</span><span class="dtag" style="background:#ff980022;color:#ff9800;border:1px solid #ff980044">WATCH</span></div></div>
+<div class="pr">
+<div><div class="lb">Close</div><div class="vv">$304.99</div></div>
+<div><div class="lb">Change</div><div class="vv pos">+0.91%</div></div>
+<div><div class="lb">Volume</div><div class="vv">31.4M</div></div>
+<div><div class="lb">52W High</div><div class="vv">$305.54</div></div>
+<div><div class="lb">52W Low</div><div class="vv">$193.46</div></div>
+</div>
+<div class="ah">After Hours: <span class="au">$305.19 (+0.07%)</span></div>
+<div class="bd">
+<div class="bi"><div class="bl">Technical structure</div><div class="bv">1.7</div></div>
+<div class="bi"><div class="bl">Fundamental strength</div><div class="bv">1.7</div></div>
+<div class="bi"><div class="bl">Catalyst quality</div><div class="bv">1.0</div></div>
+<div class="bi"><div class="bl">Risk/reward attractiveness</div><div class="bv">0.9</div></div>
+<div class="bi"><div class="bl">Relative strength vs market</div><div class="bv">0.7</div></div>
+<div class="bi"><div class="bl">Volume/liquidity</div><div class="bv">0.5</div></div>
+<div class="bi"><div class="bl">Valuation reasonableness</div><div class="bv">0.6</div></div>
+<div class="bi" style="border-top:1px solid var(--border);padding-top:4px"><div class="bl" style="font-weight:700">TOTAL</div><div class="bv watch">7.1</div></div>
+</div>
+<div class="ag">
+<div class="ab"><h4>📈 Technical Context</h4><p>New 52-week high at $305.54 today! Closed at $304.99 (+0.91%). Volume 31.4M (normal). After-hours $305.19 (+0.07%). Strong uptrend breaking out to new highs. Bull flag breakout confirmed on daily chart. Moving averages bullish alignment. RSI rising but not yet overbought (est ~65). Major resistance cleared.</p></div>
+<div class="ab"><h4>🏢 Fundamental Quality</h4><p>Apple remains the most valuable company globally. Services revenue growing at 15%+ with high margins. $100B+ annual buyback. Cash pile >$150B. Strong ecosystem lock-in with 2B+ active devices. PEG ~2.8x — elevated but justified by cash flow generation. AI features (Apple Intelligence) rolling out gradually.</p></div>
+<div class="ab"><h4>🔥 Catalyst / Narrative</h4><p>New 52-week high creates momentum. WWDC in June expected to showcase deeper AI integration. Services growth narrative. However, no specific imminent product catalyst. AI features are rolling out gradually rather than in a single transformative event. China demand remains a question mark.</p></div>
+<div class="ab"><h4>⚠️ Risk Profile</h4><p>Near ATH — buying at highs. Valuation already reflects premium. China headwinds (local competition from Huawei, Xiaomi). No clear near-term product catalyst beyond WWDC. Regulatory pressure from EU DMA. AI monetization path uncertain.</p></div>
+</div>
+<div class="nt ntw"><strong>Analysis:</strong> New 52-week high is significant — the thesis has completely changed from last report's AVOID at 5.9. However, no specific near-term catalyst and valuation at ATH limits upside conviction. WWDC in June could be the next trigger. The breakout is legitimate but needs catalyst confirmation.</div>
+</div>
+<div class="sc">
+<div class="sh"><div><span class="ss">GOOGL</span><span class="st">Large Cap</span></div>
+<div><span class="sb watch">6.9</span><span class="dtag" style="background:#ffc10722;color:#ffc107;border:1px solid #ffc10744">WATCH</span></div></div>
+<div class="pr">
+<div><div class="lb">Close</div><div class="vv">$387.66</div></div>
+<div><div class="lb">Change</div><div class="vv neg">-0.32%</div></div>
+<div><div class="lb">Volume</div><div class="vv">21.2M</div></div>
+<div><div class="lb">52W High</div><div class="vv">$408.61</div></div>
+<div><div class="lb">52W Low</div><div class="vv">$162.00</div></div>
+</div>
+<div class="ah">After Hours: <span class="au">$388.50 (+0.22%)</span></div>
+<div class="bd">
+<div class="bi"><div class="bl">Technical structure</div><div class="bv">1.5</div></div>
+<div class="bi"><div class="bl">Fundamental strength</div><div class="bv">1.7</div></div>
+<div class="bi"><div class="bl">Catalyst quality</div><div class="bv">1.1</div></div>
+<div class="bi"><div class="bl">Risk/reward attractiveness</div><div class="bv">0.9</div></div>
+<div class="bi"><div class="bl">Relative strength vs market</div><div class="bv">0.5</div></div>
+<div class="bi"><div class="bl">Volume/liquidity</div><div class="bv">0.5</div></div>
+<div class="bi"><div class="bl">Valuation reasonableness</div><div class="bv">0.7</div></div>
+<div class="bi" style="border-top:1px solid var(--border);padding-top:4px"><div class="bl" style="font-weight:700">TOTAL</div><div class="bv watch">6.9</div></div>
+</div>
+<div class="ag">
+<div class="ab"><h4>📈 Technical Context</h4><p>Closed $387.66 (-0.32%), 5% below ATH $408.61 (set 05/18). Volume 21.1M (light). Orderly pullback from ATH — constructive consolidation. After-hours +0.22%. Short-term MA still sloping up. 20-day SMA support at ~$380. Key level: $380 support, $408.61 resistance.</p></div>
+<div class="ab"><h4>🏢 Fundamental Quality</h4><p>Google Cloud accelerating ($38B hyperscaler contribution). YouTube ad revenue growing. Search remains dominant with >90% market share. DeepMind/AI leadership with Gemini. $2T market cap. Strong balance sheet with $110B+ cash. Improving operating margins through efficiency drive.</p></div>
+<div class="ab"><h4>🔥 Catalyst / Narrative</h4><p>Blackstone $5B AI infrastructure venture with Google TPU chips (published Tue May 19 — now Day 3). Per Fresh Catalyst Day 1 boost rule: boost reduced by 50%. Google I/O upcoming (AI announcements). Was previously 4 converging catalysts but list has thinned.</p></div>
+<div class="ab"><h4>⚠️ Risk Profile</h4><p>Anti-trust trial outcomes uncertain. DOJ may seek remedies including potential breakup. Near ATH caps upside. Blackstone catalyst aging. AI search competition from ChatGPT/Perplexity. Bond yield sensitivity as mega-cap tech.</p></div>
+</div>
+<div class="nt ntw"><strong>Analysis:</strong> Score dropped from 8.3 (BUY last report) to 6.9 (WATCH). The Blackstone catalyst is now Day 3+ (-50% boost). GOOGL declined -0.32% today vs market up. With no fresh catalysts arriving today and bond yield headwinds, the 4-catalyst ATH thesis has weakened. Re-check if fresh catalysts emerge at Google I/O.</div>
+</div>
+<div class="sc">
+<div class="sh"><div><span class="ss">MSFT</span><span class="st">Large Cap</span></div>
+<div><span class="sb watch">7.4</span><span class="dtag" style="background:#ff980022;color:#ff9800;border:1px solid #ff980044">WATCH</span></div></div>
+<div class="pr">
+<div><div class="lb">Close</div><div class="vv">$419.09</div></div>
+<div><div class="lb">Change</div><div class="vv neg">-0.25%</div></div>
+<div><div class="lb">Volume</div><div class="vv">24.4M</div></div>
+<div><div class="lb">52W High</div><div class="vv">$555.45</div></div>
+<div><div class="lb">52W Low</div><div class="vv">$356.28</div></div>
+</div>
+<div class="ah">After Hours: <span class="au">$420.40 (+0.31%)</span></div>
+<div class="bd">
+<div class="bi"><div class="bl">Technical structure</div><div class="bv">1.3</div></div>
+<div class="bi"><div class="bl">Fundamental strength</div><div class="bv">1.8</div></div>
+<div class="bi"><div class="bl">Catalyst quality</div><div class="bv">1.4</div></div>
+<div class="bi"><div class="bl">Risk/reward attractiveness</div><div class="bv">1.1</div></div>
+<div class="bi"><div class="bl">Relative strength vs market</div><div class="bv">0.6</div></div>
+<div class="bi"><div class="bl">Volume/liquidity</div><div class="bv">0.5</div></div>
+<div class="bi"><div class="bl">Valuation reasonableness</div><div class="bv">0.7</div></div>
+<div class="bi" style="border-top:1px solid var(--border);padding-top:4px"><div class="bl" style="font-weight:700">TOTAL</div><div class="bv watch">7.4</div></div>
+</div>
+<div class="ag">
+<div class="ab"><h4>📈 Technical Context</h4><p>Closed $419.09 (-0.25%). Ex-dividend today (mechanical ~$0.84/share adjustment + dip). After-hours +0.31% recovering. 24% below ATH $555.45. Volume 24.4M (normal). The ex-div dip is temporary — normally fills within 1-3 sessions. Key level: $415 support, $430 resistance.</p></div>
+<div class="ab"><h4>🏢 Fundamental Quality</h4><p>Azure growth accelerating on AI workloads. Copilot monetization expanding (M365, GitHub, Azure). OpenAI partnership ($13B+ invested). $3T market cap. 35%+ operating margins. $70B+ annual FCF. Strongest balance sheet in tech. Anthropic deepening (secure compute deal).</p></div>
+<div class="ab"><h4>🔥 Catalyst / Narrative</h4><p>FRESH CATALYST: 'Anthropic, Microsoft in talks for AI chip deal after $5B investment' — 4 hours ago. Full +0.3 boost (within 24 hours). Ackman 13F buy (Day 3 — boost reduced 50%). Software sector rotation (mini bull market in software). 24% below ATH = deep value for MSFT. Kevin Warsh sworn in as Fed chair Friday may benefit mega-cap tech.</p></div>
+<div class="ab"><h4>⚠️ Risk Profile</h4><p>Ex-div noise creates short-term confusion. 24% below ATH suggests structural growth concerns. OpenAI relationship complex (partners with multiple clouds). CapEx spend on AI infrastructure rising. Regulatory scrutiny of AI partnerships. Bond yield sensitivity.</p></div>
+</div>
+<div class="nt ntw"><strong>Analysis:</strong> Highest score in today's basket. The Anthropic chip deal talks (FRESH, 4 hours) + Ackman 13F (Day 3, reduced) + 24% below ATH + software rotation creates the strongest multi-catalyst setup in mega-caps. Ex-div noise is temporary. Needs 8.0+ for BUY in favourable market. Best risk/reward in the S&P 500. Strongest BUY candidate when market reopens.</div>
+</div>
+<div class="sc">
+<div class="sh"><div><span class="ss">META</span><span class="st">Large Cap</span></div>
+<div><span class="sb watch">6.1</span><span class="dtag" style="background:#ffc10722;color:#ffc107;border:1px solid #ffc10744">WATCH</span></div></div>
+<div class="pr">
+<div><div class="lb">Close</div><div class="vv">$607.38</div></div>
+<div><div class="lb">Change</div><div class="vv pos">+0.38%</div></div>
+<div><div class="lb">Volume</div><div class="vv">12.1M</div></div>
+<div><div class="lb">52W High</div><div class="vv">$796.25</div></div>
+<div><div class="lb">52W Low</div><div class="vv">$520.26</div></div>
+</div>
+<div class="ah">After Hours: <span class="au">$607.61 (+0.04%)</span></div>
+<div class="bd">
+<div class="bi"><div class="bl">Technical structure</div><div class="bv">1.2</div></div>
+<div class="bi"><div class="bl">Fundamental strength</div><div class="bv">1.5</div></div>
+<div class="bi"><div class="bl">Catalyst quality</div><div class="bv">0.7</div></div>
+<div class="bi"><div class="bl">Risk/reward attractiveness</div><div class="bv">1.0</div></div>
+<div class="bi"><div class="bl">Relative strength vs market</div><div class="bv">0.5</div></div>
+<div class="bi"><div class="bl">Volume/liquidity</div><div class="bv">0.5</div></div>
+<div class="bi"><div class="bl">Valuation reasonableness</div><div class="bv">0.7</div></div>
+<div class="bi" style="border-top:1px solid var(--border);padding-top:4px"><div class="bl" style="font-weight:700">TOTAL</div><div class="bv watch">6.1</div></div>
+</div>
+<div class="ag">
+<div class="ab"><h4>📈 Technical Context</h4><p>Closed $607.38 (+0.38%). Volume 12M (normal). 24% below ATH $796.25. Range-bound between $580-$630 for past month. No breakout/breakdown. Lateral consolidation. After-hours flat. Moving averages neutral.</p></div>
+<div class="ab"><h4>🏢 Fundamental Quality</h4><p>Strong ad revenue recovery. AI investments (LLaMA 4, Meta AI). Massive $50B+ buyback. Reels monetization closing TikTok gap. $1.5T market cap. CapEx for AI infrastructure elevated.</p></div>
+<div class="ab"><h4>🔥 Catalyst / Narrative</h4><p>No specific near-term catalyst. Reels monetization already priced. LLaMA open-source = differentiation but no monetization trigger. No earnings until late July.</p></div>
+<div class="ab"><h4>⚠️ Risk Profile</h4><p>No catalyst = drift. CapEx overhang. Regulatory pressure (EU, FTC). TikTok ban uncertainty. 24% below ATH suggests structural concerns. AI CapEx ROI uncertain near-term.</p></div>
+</div>
+<div class="nt ntw"><strong>Analysis:</strong> Good company, no catalyst. Range-bound with no breakout imminent. 24% discount to ATH provides value but absence of catalyst means no reason to expect near-term outperformance. Waiting for earnings or product catalyst before re-rating.</div>
+</div>
+<div class="sc">
+<div class="sh"><div><span class="ss">NVDA</span><span class="st">Momentum</span></div>
+<div><span class="sb watch">7.4</span><span class="dtag" style="background:#ff980022;color:#ff9800;border:1px solid #ff980044">WATCH</span></div></div>
+<div class="pr">
+<div><div class="lb">Close</div><div class="vv">$219.51</div></div>
+<div><div class="lb">Change</div><div class="vv neg">-1.77%</div></div>
+<div><div class="lb">Volume</div><div class="vv">185.7M</div></div>
+<div><div class="lb">52W High</div><div class="vv">$236.54</div></div>
+<div><div class="lb">52W Low</div><div class="vv">$129.16</div></div>
+</div>
+<div class="ah">After Hours: <span class="au">$219.63 (+0.05%)</span></div>
+<div class="bd">
+<div class="bi"><div class="bl">Technical structure</div><div class="bv">1.4</div></div>
+<div class="bi"><div class="bl">Fundamental strength</div><div class="bv">1.9</div></div>
+<div class="bi"><div class="bl">Catalyst quality</div><div class="bv">1.7</div></div>
+<div class="bi"><div class="bl">Risk/reward attractiveness</div><div class="bv">0.9</div></div>
+<div class="bi"><div class="bl">Relative strength vs market</div><div class="bv">0.5</div></div>
+<div class="bi"><div class="bl">Volume/liquidity</div><div class="bv">0.5</div></div>
+<div class="bi"><div class="bl">Valuation reasonableness</div><div class="bv">0.5</div></div>
+<div class="bi" style="border-top:1px solid var(--border);padding-top:4px"><div class="bl" style="font-weight:700">TOTAL</div><div class="bv watch">7.4</div></div>
+</div>
+<div class="ag">
+<div class="ab"><h4>📈 Technical Context</h4><p>Closed $219.51 (-1.77%) on earnings day. Volume 185.7M (massive — earnings day). After-hours +0.05%. 7% below ATH $236.54. Classic buy-the-rumor-sell-the-news on earnings day despite beat. After-hours stabilizing — no post-earnings collapse. Key level: $215 support, $236.54 ATH resistance.</p></div>
+<div class="ab"><h4>🏢 Fundamental Quality</h4><p>Revenue $81.62B (+92% YoY DC, beat $78.86B). EPS $1.87 beat $1.76. Q2 guidance $91B vs $86.84B est (SIGNIFICANT BEAT). $80B buyback (up from $60B). DC revenue $75.2B (92% total, +92% YoY). Gross margins 75%. FCF $48.6B. Vera CPU $200B new TAM. 'Constrained throughout Vera Rubin.' H100 prices up 20% YTD.</p></div>
+<div class="ab"><h4>🔥 Catalyst / Narrative</h4><p>POST-EARNINGS: Pre-earnings binary cap REMOVED. Analyst upgrades flowing (Bernstein raised PT). Street loves $200B Vera CPU opportunity. Anthropic new secure compute customer. Agentic AI 'has arrived' (Jensen). Physical AI next wave. New $80B buyback. Only platform running every frontier model.</p></div>
+<div class="ab"><h4>⚠️ Risk Profile</h4><p>Earnings gap: -1.77% on beat — market wanted more. Custom ASIC competition (Google TPU, Amazon Trainium, Cerebras IPO ~$100B). China export controls. PE >50x. Post-earnings, next catalyst is a quarter away.</p></div>
+</div>
+<div class="nt ntw"><strong>Analysis:</strong> PRE-EARNINGS CAP REMOVED. NVDA earnings beat on revenue, EPS, and especially guidance ($91B vs $86.84B). Vera CPU $200B TAM is transformative — Nvidia evolving from GPU supplier to full-system AI platform. But 50x+ PE, custom ASIC threat, and sell-the-news pattern require caution. Stock worth BUY if tomorrow shows strong follow-through above $225.</div>
+</div>
+<div class="sc">
+<div class="sh"><div><span class="ss">CSCO</span><span class="st">Momentum</span></div>
+<div><span class="sb watch">6.4</span><span class="dtag" style="background:#ffc10722;color:#ffc107;border:1px solid #ffc10744">WATCH</span></div></div>
+<div class="pr">
+<div><div class="lb">Close</div><div class="vv">$118.20</div></div>
+<div><div class="lb">Change</div><div class="vv pos">+3.37%</div></div>
+<div><div class="lb">Volume</div><div class="vv">21.8M</div></div>
+<div><div class="lb">52W High</div><div class="vv">$119.39</div></div>
+<div><div class="lb">52W Low</div><div class="vv">$62.30</div></div>
+</div>
+<div class="ah">After Hours: <span class="au">$118.61 (+0.35%)</span></div>
+<div class="bd">
+<div class="bi"><div class="bl">Technical structure</div><div class="bv">1.2</div></div>
+<div class="bi"><div class="bl">Fundamental strength</div><div class="bv">1.4</div></div>
+<div class="bi"><div class="bl">Catalyst quality</div><div class="bv">1.0</div></div>
+<div class="bi"><div class="bl">Risk/reward attractiveness</div><div class="bv">0.8</div></div>
+<div class="bi"><div class="bl">Relative strength vs market</div><div class="bv">0.8</div></div>
+<div class="bi"><div class="bl">Volume/liquidity</div><div class="bv">0.5</div></div>
+<div class="bi"><div class="bl">Valuation reasonableness</div><div class="bv">0.7</div></div>
+<div class="bi" style="border-top:1px solid var(--border);padding-top:4px"><div class="bl" style="font-weight:700">TOTAL</div><div class="bv watch">6.4</div></div>
+</div>
+<div class="ag">
+<div class="ab"><h4>📈 Technical Context</h4><p>Strong +3.37% bounce today. Volume 21.8M (elevated). After-hours +0.35%. Near ATH $119.39. Bounce after several days of pullback from 'most overbought' flag signals uptrend intact. Pullback found support. RSI likely resetting but not yet below 75.</p></div>
+<div class="ab"><h4>🏢 Fundamental Quality</h4><p>AI networking supercycle thesis intact. MS: cheap. Strong FCF. 3%+ dividend yield. Data center networking demand accelerating (Vera Rubin = 10x more networking). Enterprise refresh cycle beginning.</p></div>
+<div class="ab"><h4>🔥 Catalyst / Narrative</h4><p>AI infrastructure theme (Vera Rubin needs massive networking). Today's strong bounce suggests overbought sell-off concluded. Near ATH with momentum re-accelerating. +3.37% volume-backed bounce is bullish reversal signal.</p></div>
+<div class="ab"><h4>⚠️ Risk Profile</h4><p>Overbought flag persists (CNBC 'most overbought'). No 2%+ decline occurred to reset RSI penalty. Near ATH = limited upside to nearest resistance. AI networking thesis may be fully priced.</p></div>
+</div>
+<div class="nt ntw"><strong>Analysis:</strong> Overbought RSI penalty (-0.3) applied reducing technical score. Score would be 6.7 without it. Today's +3.37% volume-backed bounce is bullish but at near ATH with RSI likely >75, the penalty stays. If CSCO breaks above $119.39 (ATH) tomorrow, re-evaluate immediately.</div>
+</div>
+<div class="sc">
+<div class="sh"><div><span class="ss">AMZN</span><span class="st">Momentum</span></div>
+<div><span class="sb watch">6.5</span><span class="dtag" style="background:#ffc10722;color:#ffc107;border:1px solid #ffc10744">WATCH</span></div></div>
+<div class="pr">
+<div><div class="lb">Close</div><div class="vv">$268.46</div></div>
+<div><div class="lb">Change</div><div class="vv pos">+1.30%</div></div>
+<div><div class="lb">Volume</div><div class="vv">35.1M</div></div>
+<div><div class="lb">52W High</div><div class="vv">$278.56</div></div>
+<div><div class="lb">52W Low</div><div class="vv">$196.00</div></div>
+</div>
+<div class="ah">After Hours: <span class="au">$268.76 (+0.11%)</span></div>
+<div class="bd">
+<div class="bi"><div class="bl">Technical structure</div><div class="bv">1.3</div></div>
+<div class="bi"><div class="bl">Fundamental strength</div><div class="bv">1.6</div></div>
+<div class="bi"><div class="bl">Catalyst quality</div><div class="bv">0.9</div></div>
+<div class="bi"><div class="bl">Risk/reward attractiveness</div><div class="bv">0.9</div></div>
+<div class="bi"><div class="bl">Relative strength vs market</div><div class="bv">0.6</div></div>
+<div class="bi"><div class="bl">Volume/liquidity</div><div class="bv">0.5</div></div>
+<div class="bi"><div class="bl">Valuation reasonableness</div><div class="bv">0.7</div></div>
+<div class="bi" style="border-top:1px solid var(--border);padding-top:4px"><div class="bl" style="font-weight:700">TOTAL</div><div class="bv watch">6.5</div></div>
+</div>
+<div class="ag">
+<div class="ab"><h4>📈 Technical Context</h4><p>Solid +1.30% day. Volume 35.1M (normal). 4% below ATH $278.56. After-hours +0.11%. Constructive consolidation just below ATH. 20-day SMA support ~$260. Key level: $260 support, $278.56 ATH resistance.</p></div>
+<div class="ab"><h4>🏢 Fundamental Quality</h4><p>AWS cloud leader (35%+ share) with AI workloads accelerating. Retail margins improving. Advertising $50B+ run-rate. FCF strong post-CapEx normalization. $2T+ market cap.</p></div>
+<div class="ab"><h4>🔥 Catalyst / Narrative</h4><p>Anthropic talks involve AWS (multi-cloud). AWS re:Invent later this year. No near-term earnings catalyst (late July). Consumer resilience theme benefits from trade-down behavior.</p></div>
+<div class="ab"><h4>⚠️ Risk Profile</h4><p>No immediate catalyst. FTC antitrust. Retail margins pressured. AWS growth may moderate. No fresh 13F revelations (unlike MSFT/Ackman). Bond yield sensitivity.</p></div>
+</div>
+<div class="nt ntw"><strong>Analysis:</strong> Strong company, decent day (+1.30%), but no specific catalyst for BUY. 4% discount to ATH is modest. Needs fresh catalyst (AWS deal, earnings, 13F) to break to new highs.</div>
+</div>
+<div class="sc">
+<div class="sh"><div><span class="ss">LLY</span><span class="st">Momentum</span></div>
+<div><span class="sb watch">7.1</span><span class="dtag" style="background:#ff980022;color:#ff9800;border:1px solid #ff980044">WATCH</span></div></div>
+<div class="pr">
+<div><div class="lb">Close</div><div class="vv">$1041.65</div></div>
+<div><div class="lb">Change</div><div class="vv pos">+2.24%</div></div>
+<div><div class="lb">Volume</div><div class="vv">2.4M</div></div>
+<div><div class="lb">52W High</div><div class="vv">$1133.95</div></div>
+<div><div class="lb">52W Low</div><div class="vv">$623.78</div></div>
+</div>
+<div class="ah">After Hours: <span class="au">$1043.11 (+0.14%)</span></div>
+<div class="bd">
+<div class="bi"><div class="bl">Technical structure</div><div class="bv">1.4</div></div>
+<div class="bi"><div class="bl">Fundamental strength</div><div class="bv">1.5</div></div>
+<div class="bi"><div class="bl">Catalyst quality</div><div class="bv">1.6</div></div>
+<div class="bi"><div class="bl">Risk/reward attractiveness</div><div class="bv">0.9</div></div>
+<div class="bi"><div class="bl">Relative strength vs market</div><div class="bv">0.8</div></div>
+<div class="bi"><div class="bl">Volume/liquidity</div><div class="bv">0.4</div></div>
+<div class="bi"><div class="bl">Valuation reasonableness</div><div class="bv">0.5</div></div>
+<div class="bi" style="border-top:1px solid var(--border);padding-top:4px"><div class="bl" style="font-weight:700">TOTAL</div><div class="bv watch">7.1</div></div>
+</div>
+<div class="ag">
+<div class="ab"><h4>📈 Technical Context</h4><p>Strong +2.24% day. Volume 2.4M (elevated on catalyst). After-hours +0.14%. 8% below ATH $1,133.95. Moving towards ATH on drug trial news. Strong uptrend. Key level: $1,000 support, $1,133.95 ATH resistance.</p></div>
+<div class="ab"><h4>🏢 Fundamental Quality</h4><p>Dominant GLP-1 weight loss player. Zepbound/Mounjaro $50B+ revenue. Next-gen pipeline extending growth runway 5-10 years. Strong margins, massive cash. PE ~50x but earnings growth justifies premium.</p></div>
+<div class="ab"><h4>🔥 Catalyst / Narrative</h4><p>FRESH (today): 'Eli Lilly next-gen weight loss drug clears crucial obesity trial' — trending #2 CNBC. Major pipeline catalyst. Weight loss market $100B+. First-mover advantage with tirzepatide complex.</p></div>
+<div class="ab"><h4>⚠️ Risk Profile</h4><p>PE ~50x — rich. Novo Nordisk competition. Drug pricing regulation. Clinical trial risk for next-gen drugs. Single-product concentration. Binary trial outcome risk even for positive results.</p></div>
+</div>
+<div class="nt ntw"><strong>Analysis:</strong> FRESH weight loss drug catalyst (today, trending #2 CNBC). Full +0.3 boost. Next-gen drug clearing crucial trial is major pipeline validation. 8% below ATH provides room to run. PE ~50x, Novo competition, and drug pricing risk cap score at 7.1. Pharma diversification valuable in tech-heavy portfolio.</div>
+</div>
+<div class="sc">
+<div class="sh"><div><span class="ss">NOW</span><span class="st">Wildcard</span></div>
+<div><span class="sb avoid">5.7</span><span class="dtag" style="background:#f4433622;color:#f44336;border:1px solid #f4433644">AVOID</span></div></div>
+<div class="pr">
+<div><div class="lb">Close</div><div class="vv">$99.69</div></div>
+<div><div class="lb">Change</div><div class="vv neg">-3.49%</div></div>
+<div><div class="lb">Volume</div><div class="vv">24.2M</div></div>
+<div><div class="lb">52W High</div><div class="vv">$211.48</div></div>
+<div><div class="lb">52W Low</div><div class="vv">$81.24</div></div>
+</div>
+<div class="ah">After Hours: <span class="au">$102.09 (+2.41%)</span></div>
+<div class="bd">
+<div class="bi"><div class="bl">Technical structure</div><div class="bv">0.9</div></div>
+<div class="bi"><div class="bl">Fundamental strength</div><div class="bv">1.3</div></div>
+<div class="bi"><div class="bl">Catalyst quality</div><div class="bv">1.1</div></div>
+<div class="bi"><div class="bl">Risk/reward attractiveness</div><div class="bv">1.0</div></div>
+<div class="bi"><div class="bl">Relative strength vs market</div><div class="bv">0.3</div></div>
+<div class="bi"><div class="bl">Volume/liquidity</div><div class="bv">0.5</div></div>
+<div class="bi"><div class="bl">Valuation reasonableness</div><div class="bv">0.6</div></div>
+<div class="bi" style="border-top:1px solid var(--border);padding-top:4px"><div class="bl" style="font-weight:700">TOTAL</div><div class="bv avoid">5.7</div></div>
+</div>
+<div class="ag">
+<div class="ab"><h4>📈 Technical Context</h4><p>Pulled back -3.49% after massive +14% two-day surge. Volume 24.2M (elevated profit-taking). After-hours recovering +2.41% to $102.09 — strong bounce suggesting profit-taking not trend reversal. Key level: $95 support, $110 resistance after breakout.</p></div>
+<div class="ab"><h4>🏢 Fundamental Quality</h4><p>Enterprise AI workflow platform leader. ITSM leader expanding into AI ops. 98%+ renewal rates. 20%+ revenue growth.</p></div>
+<div class="ab"><h4>🔥 Catalyst / Narrative</h4><p>Software mini bull market (CNBC). Sector rotation from AI hardware to software/enterprise AI. NOW was breakout leader (+14%). Pullback provides entry. Enterprise AI agent workflow automation theme.</p></div>
+<div class="ab"><h4>⚠️ Risk Profile</h4><p>53% below ATH $211.48 suggests structural concerns. High volatility. Pullback could continue. Low $99 price can attract retail but suggests value trap risk. Competition (Salesforce, ServiceTitan). Negative GAAP earnings.</p></div>
+</div>
+<div class="nt nta"><strong>Analysis:</strong> Below 6/10 = AVOID on day's close. However, +2.41% after-hours recovery to $102.09 is notable. If scoring on AH data, score would be ~6.3 (WATCH). Software rotation thesis valid but -3.49% day erodes conviction. Recommended: re-check Friday pre-market. If NOW holds $100+, upgrade to WATCH.</div>
+</div>
+<div class="sc">
+<div class="sh"><div><span class="ss">ROST</span><span class="st">Wildcard</span></div>
+<div><span class="sb watch">7.1</span><span class="dtag" style="background:#ff980022;color:#ff9800;border:1px solid #ff980044">WATCH</span></div></div>
+<div class="pr">
+<div><div class="lb">Close</div><div class="vv">$217.19</div></div>
+<div><div class="lb">Change</div><div class="vv neg">-0.28%</div></div>
+<div><div class="lb">Volume</div><div class="vv">3.3M</div></div>
+<div><div class="lb">52W High</div><div class="vv">$231.16</div></div>
+<div><div class="lb">52W Low</div><div class="vv">$124.49</div></div>
+</div>
+<div class="ah">After Hours: <span class="au">$229.95 (+5.88%)</span></div>
+<div class="bd">
+<div class="bi"><div class="bl">Technical structure</div><div class="bv">1.5</div></div>
+<div class="bi"><div class="bl">Fundamental strength</div><div class="bv">1.4</div></div>
+<div class="bi"><div class="bl">Catalyst quality</div><div class="bv">1.6</div></div>
+<div class="bi"><div class="bl">Risk/reward attractiveness</div><div class="bv">0.9</div></div>
+<div class="bi"><div class="bl">Relative strength vs market</div><div class="bv">0.7</div></div>
+<div class="bi"><div class="bl">Volume/liquidity</div><div class="bv">0.4</div></div>
+<div class="bi"><div class="bl">Valuation reasonableness</div><div class="bv">0.6</div></div>
+<div class="bi" style="border-top:1px solid var(--border);padding-top:4px"><div class="bl" style="font-weight:700">TOTAL</div><div class="bv watch">7.1</div></div>
+</div>
+<div class="ag">
+<div class="ab"><h4>📈 Technical Context</h4><p>Close: $217.19 (-0.28%) quiet regular session. AFTER-HOURS: $229.95 (+$12.76, +5.88%)! Massive AH move on earnings beat. Near ATH $231.16. Key level: $231.16 ATH resistance, $218 support.</p></div>
+<div class="ab"><h4>🏢 Fundamental Quality</h4><p>Leading off-price retailer (TJX competitor). Consumer earnings week: WMT -7.27%, HD beat but macro headwinds. ROST Q2 earnings beat + raised guidance + raised comp sales. Off-price thrives in value-conscious environment. Strong margins, consistent growth, $15B+ market cap.</p></div>
+<div class="ab"><h4>🔥 Catalyst / Narrative</h4><p>FRESH POST-EARNINGS: Q2 earnings beat + raised guidance + raised comp sales. +5.88% after-hours. Consumer earnings week continued: WMT missed, ROST beat — diverging consumer signals. Off-price winning as consumers trade down. Near ATH, breakout imminent.</p></div>
+<div class="ab"><h4>⚠️ Risk Profile</h4><p>AH move may not hold to Friday open. Retail sector sensitive to consumer data. Walmart -7.27% suggests consumer caution. Post-earnings gap risk: +5.88% AH means easy trade already made. Binary now resolved.</p></div>
+</div>
+<div class="nt ntw"><strong>Analysis:</strong> POST-EARNINGS: earnings beat resolved binary. +5.88% after-hours on beat + raised guidance is strong signal. Consumer earnings week protocol brought in this wildcard. Off-price winning in trade-down environment. WMT -7.27% vs ROST +5.88% AH highlights divergence. Pre-earnings cap removed. If AH holds to Friday open, strong Friday candidate.</div>
+</div>
+
+<div class="rat">
+<h3>🔄 Review of Past Decisions (05/19 Report)</h3>
+<p>
+<strong>GOOGL 8.3 (BUY → 6.9 WATCH):</strong> Dropped from $400.30 to $387.66 (-3.2%). BUY was justified at the time (4 catalysts at ATH) but the Blackstone catalyst aged fast and bond yields spiked. Lesson: ATH stocks with catalyst-dense setups still face macro headwinds (bond yields). The favorable rounding rule was correct in principle but bond yield risk was underweighted.<br><br>
+<strong>MSFT 8.3 (WATCH → 7.4 WATCH):</strong> From $428.15 to $419.09 (-2.1%) but ex-div today explains ~$0.84 of the drop. Ackman 13F + software rotation thesis holding up. New Anthropic chip deal catalyst emerged today. Best risk/reward in basket remains correct assessment.<br><br>
+<strong>NOW 8.2 (WATCH → 5.7 AVOID):</strong> Surged to ~$103 on Tuesday (software rotation) then pulled back -3.49% today. WATCH decision was correct — momentum real but pullback confirms need for confirmation. AH recovery +2.41% suggests thesis continues.<br><br>
+<strong>BX 8.1 (WATCH):</strong> From $118.18 to $118.57 (+0.3%). Catalyst Day 3 — boost correctly reducing. Replaced in today's universe by LLY (pharma diversification).<br><br>
+<strong>NVDA 6.7 (WATCH → 7.4 WATCH):</strong> From $220.55 to $219.51 (-0.5%). Earnings clean beat. Pre-earnings binary cap was correct. Now post-earnings — cap removed. AH flat suggests market digesting.<br><br>
+<strong>AAPL 5.9 (AVOID → 7.1 WATCH):</strong> From $295.78 to $304.99 (+3.1%). NEW 52-week high. AVOID was wrong — missed the breakout. Lesson: In FAVOURABLE market with 8th straight weekly S&P 500 gain, near-ATH mega-caps can break out without specific catalyst (just market momentum).<br><br>
+<strong>CSCO 5.3 (AVOID → 6.4 WATCH):</strong> From $117.36 to $118.20 (+0.7%). Overbought penalty was correct — stock bounced rather than breaking out. AVOID correct as risk/reward from overbought levels was poor.
+</p>
+</div>
+
+<div class="rat">
+<h3>🎯 Self-Learning & Lessons</h3>
+<p>
+<strong>1. AAPL AVOID at 5.9 was wrong — missed 52-week high breakout.</strong> In FAVOURABLE market with S&P 500 heading for 8th straight weekly gain, near-ATH mega-caps can break out without individual catalysts. Market momentum itself is a catalyst. Rule update: In FAVOURABLE market conditions with 5+ consecutive weekly gains, reduce catalyst requirement for mega-cap ATH breakouts.<br><br>
+<strong>2. NVDA post-earnings: beat but stock -1.77%.</strong> Market treating NVDA as 'buy rumor, sell news' despite strong guidance. $200B Vera CPU opportunity is multi-year thesis — not 1-day trade. Post-earnings gap risk for mega-caps requires watching Monday's open, not just after-hours.<br><br>
+<strong>3. Fresh catalyst Day 1 boost rule validated.</strong> Anthropic/MSFT chip deal (4 hours ago) earned full +0.3 boost. BX/GOOGL $5B deal (Day 3) boost correctly reduced 50%. Decay pattern working well.<br><br>
+<strong>4. Consumer earnings divergence: WMT vs ROST.</strong> WMT -7.27% (mass retail cautious) vs ROST +5.88% AH (off-price thrives). Consumer is bifurcated. Future: include both mass AND off-price retailer during consumer earnings weeks.<br><br>
+<strong>5. Bond yields at 30-year highs still the macro wildcard.</strong> 30-year hit 5.19% (highest since pre-2008 crisis). Market absorbed it (record DJIA) but caps multiple expansion for mega-cap tech.<br><br>
+<strong>6. SpaceX S-1 filing: ecosystem catalyst for space/AI.</strong> Biggest IPO catalyst in years. Indirectly boosts AI infrastructure narratives (Starlink compute, Tesla/DOJO).<br><br>
+<strong>7. ROST after-hours earnings beat: pre-market watch.</strong> Best new stock entering universe — post-earnings beat (+5.88% AH) with off-price retail tailwind.
+</p>
+</div>
+
+<div class="ft">Stocks Self-Learning Agent — Auto-Generated Report for 2026-05-21<br>Market Status: FAVOURABLE | BUY Threshold: 8.0/10 | Analysis Time: 23:15 UK (6:15 PM ET)</div>
+</div></body></html>
