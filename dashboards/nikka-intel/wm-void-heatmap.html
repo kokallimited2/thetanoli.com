@@ -4,7 +4,7 @@
 <title>WM Void Heatmap — 18 May 2026</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f0f13;color:#e0e0e0;padding:40px 20px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f0f13;color:#e0e0e0;padding:40px 20pxoverflow-wrap:break-word;word-break:break-word;}
 h1{font-size:28px;margin-bottom:8px;color:#fff}
 .sub{color:#888;font-size:14px;margin-bottom:30px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;max-width:1200px;margin:0 auto}
@@ -25,8 +25,11 @@ h1{font-size:28px;margin-bottom:8px;color:#fff}
 .ov-item .num{font-size:24px;font-weight:700}
 .ov-item .lbl{font-size:11px;color:#888;margin-top:4px}
 .footer{text-align:center;margin-top:30px;color:#555;font-size:12px}
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style></head>
 <body>
+<div class="page-wrap">
 <h1>🏘 West Midlands Void Heatmap</h1>
 <p class="sub">Rightmove rental listings analysis — 18 May 2026<br>🟢 LOW ≤14d avg &lt;10% over 30d &nbsp;|&nbsp; 🟡 MODERATE ≤30d &nbsp;|&nbsp; 🟠 ELEVATED ≤60d &nbsp;|&nbsp; 🔴 HIGH &gt;60d</p>
 <div class="overview"><h2>📊 Overview</h2><div class="ov-grid"><div class="ov-item"><div class="num">39</div><div class="lbl">Postcodes Scanned</div></div><div class="ov-item"><div class="num">22</div><div class="lbl">🟢 LOW Void</div></div><div class="ov-item"><div class="num">13</div><div class="lbl">🟡 MODERATE</div></div><div class="ov-item"><div class="num">4</div><div class="lbl">🟠 ELEVATED</div></div><div class="ov-item"><div class="num">0</div><div class="lbl">🔴 HIGH</div></div><div class="ov-item"><div class="num">14d</div><div class="lbl">WM Avg Days on Market</div></div><div class="ov-item"><div class="num">3d</div><div class="lbl">Best (B35 Castle Bromwich)</div></div><div class="ov-item"><div class="num">56d</div><div class="lbl">Worst (CV1 City Centre)</div></div></div></div><div class="grid">
@@ -380,4 +383,5 @@ h1{font-size:28px;margin-bottom:8px;color:#fff}
   <div class="stat">Max days on market: <span>5d</span></div>
   <div class="stat">Over 30 days: <span>0%</span></div>
   <div class="stat" style="color:#555;font-size:11px;margin-top:6px">146 rentals</div>
-</div></div><div class="footer">Data from Rightmove rental listings via CloakBrowser • Methodology: "Added on" date parsed from __NEXT_DATA__ JSON, first 20 properties per postcode • Generated 18 May 2026</div></body></html>
+</div></div><div class="footer">Data from Rightmove rental listings via CloakBrowser • Methodology: "Added on" date parsed from __NEXT_DATA__ JSON, first 20 properties per postcode • Generated 18 May 2026</div></div>
+</body></html>

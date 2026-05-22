@@ -13,7 +13,7 @@
     color: #e2e8f0;
     line-height: 1.6;
     min-height: 100vh;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
   
   /* Header */
@@ -233,9 +233,12 @@
     .kpi-grid { grid-template-columns: repeat(2, 1fr); }
     .verdict-grid { grid-template-columns: 1fr; }
   }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
   <!-- HEADER -->
@@ -305,7 +308,8 @@
     <h2><span class="icon">👥</span> Demographics &amp; Population</h2>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
       <div>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><th>Metric</th><th>Value</th></tr>
           <tr><td>Total Population (WV12)</td><td>15,362</td></tr>
           <tr><td>Willenhall Built-Up Area</td><td>49,587</td></tr>
@@ -316,9 +320,11 @@
           <tr><td>Unemployment Rate</td><td>6.0%</td></tr>
           <tr><td>Economically Inactive</td><td>42.3%</td></tr>
         </table>
+</div>
       </div>
       <div>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><th>Age Band</th><th>%</th></tr>
           <tr><td>0–17</td><td>21.2%</td></tr>
           <tr><td>18–29</td><td>13.6%</td></tr>
@@ -326,13 +332,16 @@
           <tr><td>45–64</td><td>25.6% (largest)</td></tr>
           <tr><td>65+</td><td>21.2%</td></tr>
         </table>
+</div>
         <div style="margin-top: 12px;">
-          <table>
+          <div class="table-scroll">
+<table>
             <tr><th>Ethnicity</th><th>%</th></tr>
             <tr><td>White</td><td>83.3%</td></tr>
             <tr><td>Asian / Asian British</td><td>12.5%</td></tr>
             <tr><td>Mixed / Black / Other</td><td>4.2%</td></tr>
           </table>
+</div>
         </div>
       </div>
     </div>
@@ -343,7 +352,8 @@
     <h2><span class="icon">🏠</span> Sold Prices &amp; Property Market</h2>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
       <div>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><th>Metric</th><th>Value</th></tr>
           <tr><td>Avg Price WV12 (12m, Zoopla)</td><td><strong>£218,688</strong></td></tr>
           <tr><td>Avg Price Willenhall (12m, Zoopla)</td><td>£203,601</td></tr>
@@ -353,15 +363,18 @@
           <tr><td>Avg Terraced</td><td>~£220,000</td></tr>
           <tr><td>Avg Time on Market</td><td>8 weeks</td></tr>
         </table>
+</div>
       </div>
       <div>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><th>Property Type Mix</th><th>%</th></tr>
           <tr><td>Semi-Detached</td><td>52%</td></tr>
           <tr><td>Terraced</td><td>33%</td></tr>
           <tr><td>Detached</td><td>13%</td></tr>
           <tr><td>Other (flats, etc.)</td><td>3%</td></tr>
         </table>
+</div>
         <div style="margin-top: 14px; background: #0f172a; border-radius: 10px; padding: 14px;">
           <p style="color: #94a3b8; font-size: 13px;">
             <strong style="color: #e2e8f0;">📈 Trend:</strong> House prices in WV12 have shown 
@@ -378,7 +391,8 @@
     <h2><span class="icon">🔑</span> Rental Market &amp; Yields</h2>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
       <div>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><th>Metric</th><th>Value</th></tr>
           <tr><td>Avg House Rent (Willenhall)</td><td><strong>£1,214 pcm</strong></td></tr>
           <tr><td>Avg Rent WV12 (houses)</td><td><strong>£1,079 pcm</strong></td></tr>
@@ -389,15 +403,18 @@
           <tr><td>1-bed Flat</td><td>£699 pcm</td></tr>
           <tr><td>2-bed Flat</td><td>£830 pcm</td></tr>
         </table>
+</div>
       </div>
       <div>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><th>Yield Metric</th><th>Estimate</th></tr>
           <tr><td>Gross Yield (3-bed house)</td><td><strong>~6.1%</strong></td></tr>
           <tr><td>Gross Yield (2-bed house)</td><td><strong>~5.9%</strong></td></tr>
           <tr><td>Gross Yield (1-bed flat)</td><td><strong>~6.5%</strong></td></tr>
           <tr><td>Reported Range (WV12)</td><td>6.6% – 8.9%</td></tr>
         </table>
+</div>
         <div style="margin-top: 14px; background: #0f172a; border-radius: 10px; padding: 14px;">
           <p style="color: #94a3b8; font-size: 13px;">
             <strong style="color: #e2e8f0;">💡 Note:</strong> WV12 is the <strong>cheapest area</strong> for 
@@ -414,7 +431,8 @@
     <h2><span class="icon">🚔</span> Crime &amp; Safety</h2>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
       <div>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><th>Metric</th><th>WV12 / Walsall</th></tr>
           <tr><td>Walsall Crime Rate (per 1,000)</td><td><strong>151</strong> (2022, overall)</td></tr>
           <tr><td>Violent Crime Rate (WV area)</td><td>43.4 per 1,000</td></tr>
@@ -422,6 +440,7 @@
           <tr><td>Most Common Crime</td><td>Violence &amp; Sexual Offences</td></tr>
           <tr><td>Annual Trend</td><td><span class="tag green">-2.7% YoY (declining)</span></td></tr>
         </table>
+</div>
       </div>
       <div>
         <p style="color: #94a3b8; font-size: 13px; line-height: 1.7;">
@@ -444,7 +463,8 @@
   <!-- SCHOOLS -->
   <div class="card">
     <h2><span class="icon">📚</span> Nearby Schools (Ofsted Ratings)</h2>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>School</th><th>Phase</th><th>Ofsted Rating</th><th>Snobe Grade</th><th>Student:Teacher</th></tr>
       <tr>
         <td>Beacon Primary School</td>
@@ -503,6 +523,7 @@
         <td>20:1</td>
       </tr>
     </table>
+</div>
     <div style="margin-top: 14px; background: #0f172a; border-radius: 10px; padding: 14px;">
       <p style="color: #94a3b8; font-size: 13px;">
         <strong style="color: #e2e8f0;">Summary:</strong> 1 Outstanding, 5 Good, 2 Requires Improvement. 
@@ -692,6 +713,7 @@
     <p style="margin-top: 4px;">WV12 · Willenhall · Metropolitan Borough of Walsall</p>
   </div>
 
+</div>
 </div>
 </body>
 </html>

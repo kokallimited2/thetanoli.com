@@ -23,7 +23,7 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
-}
+overflow-wrap:break-word;word-break:break-word;}
 .hero {
   background: linear-gradient(135deg, #0a0f1e 0%, #1e293b 50%, #0f172a 100%);
   padding: 40px 20px 28px;
@@ -156,9 +156,12 @@ footer .live-date { color: #64748b; font-size: 10px; margin-top: 4px; }
   .postcode-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
   .hero h1 { font-size: 1.4rem; }
 }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <div class="hero">
   <h1>🗺️ <span>Nikka's</span> Intel Hub</h1>
@@ -473,5 +476,6 @@ async function loadTimestamps() {
 loadTimestamps();
 </script>
 
+</div>
 </body>
 </html>

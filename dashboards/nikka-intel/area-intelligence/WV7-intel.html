@@ -12,7 +12,7 @@
     background: #0a0a0f;
     color: #e0e0e0;
     line-height: 1.6;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
   
   /* Header */
@@ -272,9 +272,12 @@
     .header h1 { font-size: 28px; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
   }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
   <!-- HEADER -->
@@ -347,7 +350,8 @@
     <p style="margin-top: 8px; font-size: 13px; color: #99aa77;">⬇ Below national average — 83.4 crimes per 1,000 vs 100.0 national</p>
 
     <h3>WV7 Top Streets by Crime (last 12 months)</h3>
-    <table class="data-table">
+    <div class="table-scroll">
+<table class="data-table">
       <tr><th>Street</th><th>Incidents</th></tr>
       <tr><td>High Street</td><td>54</td></tr>
       <tr><td>Abney Avenue</td><td>33</td></tr>
@@ -355,9 +359,11 @@
       <tr><td>Austin Drive</td><td>20</td></tr>
       <tr><td>St Cuthberts Crescent</td><td>20</td></tr>
     </table>
+</div>
 
     <h3>Most Common Crime Types (WV7)</h3>
-    <table class="data-table">
+    <div class="table-scroll">
+<table class="data-table">
       <tr><th>Crime Type</th><th>Count</th></tr>
       <tr><td>Violence & Sexual Offences</td><td>242</td></tr>
       <tr><td>Shoplifting</td><td>60</td></tr>
@@ -367,13 +373,15 @@
       <tr><td>Vehicle Crime</td><td>30</td></tr>
       <tr><td>Burglary</td><td>24</td></tr>
     </table>
+</div>
     <p style="font-size: 12px; color: #667788;">Compared to Wolverhampton city (102.3 per 1,000), Albrighton is notably safer. Shropshire is rated <strong>83% of national crime rate</strong> — one of the safest counties in the West Midlands region.</p>
   </div>
 
   <!-- DEMOGRAPHICS -->
   <div class="section">
     <h2><span class="emoji">👥</span> Demographics & Income</h2>
-    <table class="data-table">
+    <div class="table-scroll">
+<table class="data-table">
       <tr><th>Metric</th><th>Value</th></tr>
       <tr><td>Population (WV7 district)</td><td>7,669 (2021 Census)</td></tr>
       <tr><td>Wolverhampton city population</td><td>~263,700 (2021, +5.7% since 2011)</td></tr>
@@ -382,13 +390,15 @@
       <tr><td>Unemployment rate (Wolverhampton)</td><td>4.7% (down from 7.1% in 2011)</td></tr>
       <tr><td>Retired population (Wolverhampton)</td><td>19.2% (down from 21.2% in 2011)</td></tr>
     </table>
+</div>
     <p style="margin-top: 10px;">WV7 (Albrighton) is more affluent than Wolverhampton city average, with a household income of ~£47,800 reflecting its semi-rural commuter profile. The population is relatively settled with a mix of families and retirees.</p>
   </div>
 
   <!-- SCHOOLS -->
   <div class="section">
     <h2><span class="emoji">🏫</span> Schools & Education</h2>
-    <table class="data-table">
+    <div class="table-scroll">
+<table class="data-table">
       <tr><th>School</th><th>Phase</th><th>Ofsted Rating</th><th>Location</th></tr>
       <tr>
         <td>St Mary's CofE Primary School</td>
@@ -403,6 +413,7 @@
         <td>Newhouse Lane, Albrighton WV7 3QS</td>
       </tr>
     </table>
+</div>
     <p style="margin-top: 10px;">There are <strong>no secondary schools within the WV7 district</strong>. Secondary-aged children typically travel to schools in nearby Wolverhampton, Codsall, or Telford. Popular secondary options include <strong>Codsall Community High School</strong> and schools in the Wolverhampton LEA. This is a consideration for families — travel to secondary school is necessary.</p>
   </div>
 
@@ -433,7 +444,8 @@
     </ul>
 
     <h3>Travel Times to Key Locations</h3>
-    <table class="data-table">
+    <div class="table-scroll">
+<table class="data-table">
       <tr><th>Destination</th><th>Distance</th><th>Drive</th><th>Train</th></tr>
       <tr><td>Wolverhampton</td><td>6.8 mi</td><td>~15 min</td><td>~8 min</td></tr>
       <tr><td>Telford</td><td>8.0 mi</td><td>~12 min</td><td>~10 min</td></tr>
@@ -441,13 +453,15 @@
       <tr><td>Dudley (Dudley town)</td><td>~14 mi</td><td>~30 min</td><td>~50 min (via Wolverhampton)</td></tr>
       <tr><td>Shrewsbury</td><td>~19 mi</td><td>~30 min</td><td>~35 min</td></tr>
     </table>
+</div>
   </div>
 
   <!-- PROPERTY / SOLD PRICES -->
   <div class="section">
     <h2><span class="emoji">🏠</span> Sold Prices (Last 12 Months)</h2>
     
-    <table class="data-table">
+    <div class="table-scroll">
+<table class="data-table">
       <tr><th>Property Type</th><th>Avg Price (2025)</th><th>Sales Volume</th></tr>
       <tr><td>Detached</td><td>£453,834</td><td>31</td></tr>
       <tr><td>Semi-detached</td><td>£295,163</td><td>26</td></tr>
@@ -455,9 +469,11 @@
       <tr><td>Flats</td><td>£174,400</td><td>5</td></tr>
       <tr style="background: #111122;"><td><strong>Overall Average</strong></td><td><strong>£337,501</strong></td><td><strong>+8% YoY</strong></td></tr>
     </table>
+</div>
 
     <h3>Recent Transaction Examples (Dec 2025 – Mar 2026)</h3>
-    <table class="data-table">
+    <div class="table-scroll">
+<table class="data-table">
       <tr><th>Property</th><th>Sold Price</th><th>Date</th></tr>
       <tr><td>30 Anvil Close, WV7 3JP</td><td>£562,500</td><td>Feb 2026</td></tr>
       <tr><td>3 The Courts, WV7 3QA</td><td>£480,000</td><td>Feb 2026</td></tr>
@@ -472,6 +488,7 @@
       <tr><td>16 Pitchford Road, WV7 3LS</td><td>£187,950</td><td>Nov 2025</td></tr>
       <tr><td>1 Beechurst Gardens, WV7 3LT</td><td>£176,000</td><td>Dec 2025</td></tr>
     </table>
+</div>
     <p style="font-size: 12px; color: #667788; margin-top: 8px;">Source: Rightmove / HM Land Registry data (Open Government Licence v3.0). Prices range from £176k (flats) to £677k (large detached).</p>
   </div>
 
@@ -479,7 +496,8 @@
   <div class="section">
     <h2><span class="emoji">🔑</span> Rental Market</h2>
     
-    <table class="data-table">
+    <div class="table-scroll">
+<table class="data-table">
       <tr><th>Property Type</th><th>Avg Rent (pcm)</th></tr>
       <tr><td>House (overall avg in WV7)</td><td>£1,312</td></tr>
       <tr><td>2-bed house</td><td>£1,074</td></tr>
@@ -489,6 +507,7 @@
       <tr><td>1-bed flat</td><td>£732</td></tr>
       <tr><td>2-bed flat</td><td>£896</td></tr>
     </table>
+</div>
 
     <h3>Yield Analysis</h3>
     <ul>
@@ -504,7 +523,8 @@
     <h2><span class="emoji">🏗️</span> Planning & Development</h2>
     
     <h3>Active Major Developments</h3>
-    <table class="data-table">
+    <div class="table-scroll">
+<table class="data-table">
       <tr><th>Development</th><th>Homes</th><th>Developer</th><th>Status</th></tr>
       <tr>
         <td>Kingswood Road, Albrighton</td>
@@ -519,6 +539,7 @@
         <td><span class="badge badge-ok">Outline application being prepared</span></td>
       </tr>
     </table>
+</div>
     <p style="margin-top: 10px;"><strong>Total planned new homes: 265+</strong> — a significant increase for a village of ~7,700 people (roughly +8-10% housing stock). Combined with M54 Growth Corridor employment sites (38 ha Shifnal East/i54), this signals strong population and economic growth for the area.</p>
     <p>The Shropshire Local Plan identifies Albrighton as a sustainable settlement for growth, with ~31,000 homes planned across the county up to 2038. The M54 corridor is a primary focus for both housing and employment development.</p>
   </div>
@@ -605,6 +626,7 @@
     <p>⚠️ This report is for informational purposes only. Verify all data independently before making investment decisions.</p>
   </div>
 
+</div>
 </div>
 </body>
 </html>

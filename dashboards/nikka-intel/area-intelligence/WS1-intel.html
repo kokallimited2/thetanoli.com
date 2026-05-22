@@ -13,7 +13,7 @@
     color: #e2e8f0;
     line-height: 1.7;
     min-height: 100vh;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
 
   /* Header */
@@ -287,9 +287,12 @@
     gap: 0.5rem;
   }
   .list-item .bullet { color: #3b82f6; flex-shrink: 0; }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
   <!-- HEADER -->
@@ -366,7 +369,8 @@
   <!-- DEMOGRAPHICS -->
   <div class="card">
     <div class="card-title"><span class="icon">👥</span> Demographics &amp; Population</div>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Metric</th><th>WS1 / Walsall</th><th>UK Average</th></tr>
       <tr><td>Population (WS1 district)</td><td>~28,000</td><td>—</td></tr>
       <tr><td>Borough Population (2021)</td><td>284,100</td><td>—</td></tr>
@@ -382,13 +386,15 @@
       <tr><td>Private Renting</td><td>16.4%</td><td>20.7%</td></tr>
       <tr><td>Social Renting</td><td>20.1%</td><td>17.1%</td></tr>
     </table>
+</div>
     <div class="data-source-note">Source: ONS Census 2021, postcodearea.co.uk, Nomis</div>
   </div>
 
   <!-- CRIME -->
   <div class="card">
     <div class="card-title"><span class="icon">🚔</span> Crime &amp; Safety</div>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Metric</th><th>Value</th></tr>
       <tr><td>Crime Rate vs National Avg</td><td>111% (29th highest of 99 postcode areas)</td></tr>
       <tr><td>Annual "Other Crime" Rate</td><td>2.4 per 1,000 people</td></tr>
@@ -398,6 +404,7 @@
       <tr><td>Walsall Rank (West Midlands)</td><td>2nd most dangerous major town</td></tr>
       <tr><td>National Rank (England/Wales)</td><td>45th most dangerous major town</td></tr>
     </table>
+</div>
     <div style="margin-top:0.8rem;">
       <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:#94a3b8;">
         <span>Anti-Social Behaviour (Jan 2026)</span>
@@ -413,7 +420,8 @@
   <!-- SCHOOLS -->
   <div class="card">
     <div class="card-title"><span class="icon">🏫</span> Nearby Schools — Ofsted Ratings</div>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>School</th><th>Rating</th><th>Location</th></tr>
       <tr>
         <td>Queen Mary's Grammar School</td>
@@ -466,13 +474,15 @@
         <td>Bloxwich Road (nearby)</td>
       </tr>
     </table>
+</div>
     <div class="data-source-note">Source: Ofsted reports, MyLittleEyes, postcodearea.co.uk</div>
   </div>
 
   <!-- TRANSPORT -->
   <div class="card">
     <div class="card-title"><span class="icon">🚆</span> Transport &amp; Connectivity</div>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Mode</th><th>Details</th></tr>
       <tr><td>🚂 Rail</td><td><strong>Walsall Station</strong> — direct services to Birmingham New Street (25 min), Rugeley, and Wolverhampton (via Bescot). New Willenhall &amp; Darlaston stations opening 2026.</td></tr>
       <tr><td>🚌 Bus</td><td><strong>Walsall Bus Station</strong> — extensive network across the borough and to Birmingham, Wolverhampton, West Bromwich.</td></tr>
@@ -481,6 +491,7 @@
       <tr><td>🚶 Walking</td><td>7.3% commute on foot. Town centre is compact and walkable.</td></tr>
       <tr><td>🛤️ Future</td><td>Connected Gateway scheme improving bus-rail interchange. Tram-like electric bus (Walsall–Birmingham–Solihull) approved.</td></tr>
     </table>
+</div>
     <div style="margin-top:1rem; padding:0.8rem; background:#0f172a; border-radius:10px;">
       <div style="font-size:0.9rem; color:#94a3b8;">
         <strong>Commute Breakdown:</strong> Car/Van 61.4% · Work from Home 20% · On Foot 7.3% · Passenger 6.4% · Bus 1.1% · Train 0.7% · Bicycle 0.9%
@@ -492,7 +503,8 @@
   <!-- SOLD PRICES -->
   <div class="card">
     <div class="card-title"><span class="icon">🏠</span> Sold Prices &amp; Property Market</div>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Metric</th><th>WS1</th><th>Walsall Borough</th></tr>
       <tr><td>Avg Sold Price (WS1)</td><td>£195,162</td><td>£212,000</td></tr>
       <tr><td>Avg Detached</td><td>—</td><td>£355,066</td></tr>
@@ -504,6 +516,7 @@
       <tr><td>5-Year Price Change</td><td><strong>+47.0%</strong></td><td>+33.9%</td></tr>
       <tr><td>Discount vs England Avg</td><td>—</td><td>−26.1%</td></tr>
     </table>
+</div>
     <div style="margin-top:1rem;">
       <div style="display:flex; justify-content:space-between; font-size:0.85rem; color:#94a3b8; margin-bottom:0.3rem;">
         <span>Price Growth — WS1 (5 years)</span>
@@ -519,7 +532,8 @@
   <!-- RENTAL -->
   <div class="card">
     <div class="card-title"><span class="icon">💰</span> Rental Market &amp; Yield</div>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Metric</th><th>WS1 / Walsall</th></tr>
       <tr><td>Avg Rent (WS1 area)</td><td>~£800–£900 PCM</td></tr>
       <tr><td>Avg Rent (Borough)</td><td>£906 PCM (+7.6% YoY)</td></tr>
@@ -531,6 +545,7 @@
       <tr><td>Tenant Demand</td><td>Young professionals, key workers, families</td></tr>
       <tr><td>Private Renting Share</td><td>16.4% (growing)</td></tr>
     </table>
+</div>
     <div class="data-source-note">Source: RW Invest, Belvoir, GetGround, PropertyInvestmentsUK, ONS Private Rent Statistics</div>
   </div>
 
@@ -599,6 +614,7 @@
     <p style="margin-top:0.5rem;">📍 WS1 is ~10 miles from Dudley · Next scheduled run: Next unprocessed postcode in target list</p>
   </div>
 
+</div>
 </div>
 </body>
 </html>

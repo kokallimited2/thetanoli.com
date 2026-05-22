@@ -13,7 +13,7 @@
     color: #e0e4ec; 
     line-height: 1.7;
     padding: 0;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1100px; margin: 0 auto; padding: 40px 30px; }
   
   /* Hero */
@@ -168,9 +168,12 @@
     .hero h1 { font-size: 32px; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
   }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
 <!-- Hero -->
@@ -483,6 +486,7 @@
   Data sources: HM Land Registry, CrimeRate, ONS Census 2021, Ofsted, NX Bus West Midlands, Wikipedia, REalyse Pulse, Property Solvers, GetAgent, Snobe
 </div>
 
+</div>
 </div>
 </body>
 </html>

@@ -13,7 +13,7 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
 
   /* HEADER */
@@ -212,9 +212,12 @@
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: #0a0a0f; }
   ::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 3px; }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <div class="container">
 
@@ -505,5 +508,6 @@
 
 </div>
 
+</div>
 </body>
 </html>

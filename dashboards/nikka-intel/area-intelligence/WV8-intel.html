@@ -12,7 +12,7 @@
     background: #0a0e17;
     color: #e0e6f0;
     line-height: 1.6;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
 
   /* Header */
@@ -290,9 +290,12 @@
   }
   .highlight-box p { margin-bottom: 4px; color: #b0c0dd; }
   .highlight-box strong { color: #ffffff; }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
   <!-- Header -->
@@ -364,7 +367,8 @@
 
     <div class="section">
       <h2><span class="icon">📊</span> Demographics</h2>
-      <table>
+      <div class="table-scroll">
+<table>
         <tr><th>Metric</th><th>WV8</th><th>UK Avg</th></tr>
         <tr><td>Average Age</td><td>42.7</td><td>40.7</td></tr>
         <tr><td>Largest Age Band</td><td>45-64 (26.6%)</td><td>—</td></tr>
@@ -377,6 +381,7 @@
         <tr><td>Level 4+ Qualifications</td><td>30.5%</td><td>—</td></tr>
         <tr><td>Work from Home</td><td>29.9%</td><td>—</td></tr>
       </table>
+</div>
     </div>
   </div>
 
@@ -398,7 +403,8 @@
       </div>
       <div>
         <p class="section-intro"><strong>Crime Comparison — WV Postcode Sectors</strong></p>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><th>Sector</th><th>Rate/1k</th><th>vs National</th></tr>
           <tr><td>WV8 2 (Codsall)</td><td>12</td><td style="color:#22c55e;">34% ✓</td></tr>
           <tr><td>WV7 3</td><td>15</td><td style="color:#22c55e;">42% ✓</td></tr>
@@ -406,6 +412,7 @@
           <tr><td>WV1 3 (City centre)</td><td>84</td><td style="color:#ef4444;">238% ✗</td></tr>
           <tr><td>WV14 7</td><td>82</td><td style="color:#ef4444;">231% ✗</td></tr>
         </table>
+</div>
       </div>
     </div>
   </div>
@@ -462,7 +469,8 @@
       </div>
       <div>
         <p class="section-intro"><strong>Yield Comparison — Wolverhampton Postcodes</strong></p>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><th>Postcode</th><th>Avg Price</th><th>Rent pcm</th><th>Yield</th></tr>
           <tr><td><strong>WV8</strong></td><td>£332,897</td><td>£867</td><td style="color:#f59e0b;">2.7%</td></tr>
           <tr><td>WV10</td><td>£207,271</td><td>£1,178</td><td style="color:#22c55e;">6.8%</td></tr>
@@ -471,6 +479,7 @@
           <tr><td>WV4</td><td>£235,811</td><td>£850</td><td>4.3%</td></tr>
           <tr><td>WV6</td><td>£286,698</td><td>£799</td><td>3.3%</td></tr>
         </table>
+</div>
       </div>
     </div>
   </div>
@@ -479,7 +488,8 @@
   <div class="section">
     <h2><span class="icon">🏫</span> Schools & Education</h2>
     <p class="section-intro">WV8 is well-served by schools rated <strong>Good</strong> by Ofsted, making it particularly attractive for families. The Codsall "pyramid" system (First → Middle → High School) is well-regarded.</p>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>School</th><th>Phase</th><th>Ofsted</th><th>Distance</th></tr>
       <tr>
         <td>Codsall Community High School</td>
@@ -524,6 +534,7 @@
         <td>Bilbrook</td>
       </tr>
     </table>
+</div>
     <p style="margin-top: 12px; font-size: 13px; color: #667799;">📘 <strong>Note:</strong> Codsall operates a unique three-tier system: First School (5-9), Middle School (9-13), High School (13-18).</p>
   </div>
 
@@ -556,7 +567,8 @@
           <li><strong>Cycling:</strong> 1.2% — limited cycling infrastructure</li>
         </ul>
         <p class="section-intro" style="margin-top: 16px;"><strong>Travel Times</strong></p>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><th>Destination</th><th>Car</th><th>Train</th></tr>
           <tr><td>Wolverhampton</td><td>12-15 min</td><td>12 min</td></tr>
           <tr><td>Dudley</td><td>18-22 min</td><td>—</td></tr>
@@ -564,6 +576,7 @@
           <tr><td>Birmingham Airport</td><td>40 min</td><td>55 min</td></tr>
           <tr><td>Telford</td><td>20 min</td><td>25 min</td></tr>
         </table>
+</div>
       </div>
     </div>
   </div>
@@ -651,7 +664,8 @@
   <!-- Recent Sales Table -->
   <div class="section">
     <h2><span class="icon">📋</span> Recent Sales (Jan-Mar 2026) — Land Registry</h2>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Address</th><th>Price</th><th>Date</th></tr>
       <tr><td>14 Warner Road, WV8 1SA</td><td>£285,000</td><td>Mar 2026</td></tr>
       <tr><td>11 Oaken Lanes, Codsall WV8 2AQ</td><td>£260,000</td><td>Mar 2026</td></tr>
@@ -664,6 +678,7 @@
       <tr><td>109 Oaken Park, Codsall WV8 2BW</td><td>£338,000</td><td>Jan 2026</td></tr>
       <tr><td>10 The Covert, WV8 1UF</td><td>£140,000</td><td>Jan 2026</td></tr>
     </table>
+</div>
     <p style="margin-top: 10px; font-size: 12px; color: #445566;">Source: HM Land Registry via Rightmove. Contains public sector information licensed under the Open Government Licence v3.0.</p>
   </div>
 
@@ -680,6 +695,7 @@
     Data may not be fully comprehensive. Always verify with local professionals before making investment decisions.
   </div>
 
+</div>
 </div>
 </body>
 </html>

@@ -12,7 +12,7 @@
     color: #d1d5db;
     line-height: 1.7;
     padding: 2rem 1rem;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 960px; margin: 0 auto; }
   .header {
     background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
@@ -153,9 +153,12 @@
     .stat-grid { grid-template-columns: repeat(2, 1fr); }
     .verdict-box { grid-template-columns: 1fr; }
   }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
   <!-- HEADER -->
@@ -230,7 +233,8 @@
   <!-- CRIME -->
   <div class="section">
     <h2><span class="icon">🚔</span> Crime & Safety</h2>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Metric</th><th>Smethwick / Sandwell</th><th>England & Wales</th></tr>
       <tr><td>Annual crime rate (West Midlands region)</td><td><strong>41.4 per 1,000</strong></td><td>35.4 per 1,000</td></tr>
       <tr><td>Regional vs national</td><td><strong>117%</strong> of national rate</td><td>100%</td></tr>
@@ -238,6 +242,7 @@
       <tr><td>West Midlands county rate</td><td><strong>133%</strong> of national (highest in region)</td><td>—</td></tr>
       <tr><td>Income deprivation</td><td><strong>27%</strong> of residents income-deprived</td><td>17.1%</td></tr>
     </table>
+</div>
     <p style="margin-top:0.8rem;">⚠️ <strong>Crime is a significant concern.</strong> The West Midlands region has the <strong>2nd highest violent crime rate</strong> among all 9 English regions. Sandwell/specific B67 areas see elevated levels of crime, particularly in the more deprived wards (Soho & Victoria, St Pauls). However, <strong>total crime dropped 6%</strong> across the West Midlands in the year to October 2025. Abbey ward (south Bearwood) is more affluent and safer.</p>
   </div>
 
@@ -245,7 +250,8 @@
   <div class="section">
     <h2><span class="icon">👥</span> Demographics</h2>
     <div class="table-wrap">
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Indicator</th><th>Smethwick</th><th>Sandwell</th><th>England</th></tr>
       <tr><td>Population (2021)</td><td><strong>64,007</strong></td><td>342,536</td><td>56.5M</td></tr>
       <tr><td>Growth 2011–2021</td><td><strong>+16.0%</strong></td><td>+11.1%</td><td>+6.6%</td></tr>
@@ -260,6 +266,7 @@
       <tr><td>Avg household income</td><td><strong>£28,978</strong></td><td>—</td><td>£37,863</td></tr>
       <tr><td>Unemployment rate</td><td><strong>5.4%</strong></td><td>4.5%</td><td>3.4%</td></tr>
     </table>
+</div>
     </div>
     <p style="margin-top:0.8rem;">💡 <strong>Key insight:</strong> Bearwood has a much younger profile than national average. The area is a <strong>landlord hotspot</strong> — over a quarter of households are privately rented. Abbey ward stands out with higher incomes, more qualifications, and life expectancy exceeding the national average.</p>
   </div>
@@ -268,7 +275,8 @@
   <div class="section">
     <h2><span class="icon">🏫</span> Nearby Schools & Ofsted Ratings</h2>
     <div class="table-wrap">
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>School</th><th>Type</th><th>Ofsted</th><th>Location</th></tr>
       <tr>
         <td>St Gregory's Catholic Primary</td>
@@ -325,6 +333,7 @@
         <td>Smethwick</td>
       </tr>
     </table>
+</div>
     </div>
     <p style="margin-top:0.8rem;">📚 Bearwood is well-served by <strong>Good and Outstanding</strong> schools. Bearwood Primary (rated Good, May 2023) has a <strong>reading-first approach</strong> and a Forest School area. St Gregory's is <strong>Outstanding</strong>. Secondary options include <strong>Holly Lodge</strong> and <strong>George Dixon Academy</strong>. Family buyers are well catered for.</p>
   </div>
@@ -351,7 +360,8 @@
   <div class="section">
     <h2><span class="icon">💰</span> Sold Prices & Market Analysis</h2>
     <div class="table-wrap">
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Metric</th><th>B67 (Smethwick)</th><th>Notes</th></tr>
       <tr><td>Average house price</td><td><strong>£214,666</strong></td><td>HM Land Registry data</td></tr>
       <tr><td>Price change (12 months)</td><td><strong>+3.53%</strong> (+£8,182)</td><td>Modest growth</td></tr>
@@ -363,6 +373,7 @@
       <tr><td>Most expensive street</td><td><strong>Lightwoods Hill</strong> — £513,375</td><td>Premium area</td></tr>
       <tr><td>Least expensive street</td><td><strong>Rawlings Road / Beakes Road</strong> — ~£210/sqft</td><td>Terraced housing</td></tr>
     </table>
+</div>
     </div>
     <p style="margin-top:0.8rem;">📊 <strong>Market commentary:</strong> The B67 market is <strong>slowing</strong> — fewer sales, longer selling times, and most properties selling below asking. However, the 5-year trajectory is positive (+20.6%). In real (inflation-adjusted) terms, prices fell -2.7% nominally last year (-5.7% real). The market has softened with higher interest rates.</p>
     <p><strong>Typical property profile:</strong> Victorian terraced houses (2-3 bed) are the dominant stock — many have been renovated/extended. Semi-detached homes in the £250k-£350k range. Larger detached properties around Lightwoods Park exceed £500k.</p>
@@ -372,7 +383,8 @@
   <div class="section">
     <h2><span class="icon">🏠</span> Rental Demand & Yields</h2>
     <div class="table-wrap">
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Property Type</th><th>Typical Rent (pcm)</th><th>Typical Price</th><th>Est. Gross Yield</th></tr>
       <tr><td>1-bed flat</td><td>£700-800</td><td>£120,000-150,000</td><td>5.6-6.4%</td></tr>
       <tr><td>2-bed terrace</td><td>£1,000-1,200</td><td>£180,000-220,000</td><td>5.9-6.7%</td></tr>
@@ -380,6 +392,7 @@
       <tr><td>3-bed semi</td><td>£1,400-1,700</td><td>£280,000-350,000</td><td>5.8-6.4%</td></tr>
       <tr><td>HMO (7-bed)</td><td>£500-600/room</td><td>£350,000-450,000</td><td>8-12%</td></tr>
     </table>
+</div>
     </div>
     <p style="margin-top:0.8rem;">🔥 <strong>Strong rental demand.</strong> The <strong>28.4% private rented sector</strong> is well above the national average (20.3%). With a young, mobile population and significant BME communities requiring larger family homes, demand for rental properties is robust. The <strong>HMO market is highly active</strong> — numerous planning applications for HMO conversions (e.g., 81 Vicarage Road: dwelling → 7-bed HMO).</p>
     <p>Gross yields of <strong>5.5-6.5%</strong> are healthy for the West Midlands, well above central Birmingham yields (~4%) and the national average (~5.6%). Abbey ward commands slightly lower yields but better capital growth prospects.</p>
@@ -486,6 +499,7 @@
     <p>Generated: Tuesday, 19 May 2026 03:00 UTC</p>
   </div>
 
+</div>
 </div>
 </body>
 </html>

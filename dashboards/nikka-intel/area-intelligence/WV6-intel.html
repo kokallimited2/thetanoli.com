@@ -13,7 +13,7 @@
     color: #e8edf5;
     line-height: 1.7;
     padding: 0;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
   
   /* Hero */
@@ -260,9 +260,12 @@
     .hero h1 { font-size: 32px; }
     .kpi-grid { grid-template-columns: repeat(2, 1fr); margin-top: -20px; }
   }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <!-- HERO -->
 <div class="hero">
@@ -454,7 +457,8 @@
   <div class="grid-2">
     <div class="card">
       <h3>Sold Prices &amp; Trends</h3>
-      <table class="data-table">
+      <div class="table-scroll">
+<table class="data-table">
         <tr><th>Metric</th><th>Value</th></tr>
         <tr><td>Avg. asking price (WV6)</td><td><strong>£346,717</strong></td></tr>
         <tr><td>Avg. sold (W'ton overall)</td><td>£214,304</td></tr>
@@ -465,11 +469,13 @@
         <tr><td>Sales/month (WV6)</td><td>~39</td></tr>
         <tr><td>Turnover rate</td><td>48%</td></tr>
       </table>
+</div>
       <p style="margin-top:10px;font-size:13px;color:#5a6e8e;">WV6 has the highest property values in Wolverhampton but the slowest growth rate over 5 years (+18.9% vs WV11's +31.6%).</p>
     </div>
     <div class="card">
       <h3>Prices by Property Type (Wolverhampton)</h3>
-      <table class="data-table">
+      <div class="table-scroll">
+<table class="data-table">
         <tr><th>Type</th><th>Avg Price</th><th>vs National</th></tr>
         <tr><td>Detached</td><td>£383k</td><td>-28.3%</td></tr>
         <tr><td>Semi-detached</td><td>£234k</td><td>-21.1%</td></tr>
@@ -477,6 +483,7 @@
         <tr><td>Flat</td><td>£114k</td><td>-48.9%</td></tr>
         <tr><td><strong>All types</strong></td><td><strong>£214k</strong></td><td><strong>-26.9%</strong></td></tr>
       </table>
+</div>
       <p style="margin-top:10px;font-size:13px;color:#5a6e8e;">In WV6 specifically, a typical 3-bed semi costs £280k–£350k. Executive detached homes reach £500k–£1M+ in prime Tettenhall.</p>
     </div>
   </div>
@@ -488,7 +495,8 @@
   <div class="grid-2">
     <div class="card">
       <h3>Rental Prices</h3>
-      <table class="data-table">
+      <div class="table-scroll">
+<table class="data-table">
         <tr><th>Property Type</th><th>Typical Rent (pcm)</th></tr>
         <tr><td>1-bed flat</td><td>£550–£700</td></tr>
         <tr><td>2-bed flat</td><td>£670–£833</td></tr>
@@ -496,6 +504,7 @@
         <tr><td>3-bed house (family)</td><td><strong>£1,100–£1,400</strong></td></tr>
         <tr><td>4-bed detached</td><td>£1,500–£2,200</td></tr>
       </table>
+</div>
       <p style="margin-top:10px;font-size:13px;color:#5a6e8e;">Family homes in Tettenhall command premium rents due to school catchments. University of Wolverhampton (30,200+ students) supports lower-end demand.</p>
     </div>
     <div class="card">
@@ -587,7 +596,8 @@
 <div class="section">
   <div class="section-title"><span class="icon">🏗️</span> Planning &amp; Regeneration</div>
   <div class="card">
-    <table class="data-table">
+    <div class="table-scroll">
+<table class="data-table">
       <tr><th>Project</th><th>Value</th><th>Impact on WV6</th></tr>
       <tr>
         <td><strong>Smithgate (city centre)</strong></td>
@@ -615,6 +625,7 @@
         <td>Extensions, conversions, infill — limited new supply due to green belt constraints</td>
       </tr>
     </table>
+</div>
     <p style="margin-top:12px;font-size:13px;color:#5a6e8e;">Supply constraints (green belt, conservation area) support existing property values. New large-scale development is limited within WV6 itself, but city centre regeneration improves overall Wolverhampton prospects.</p>
   </div>
 </div>
@@ -674,6 +685,7 @@
   <p>WV6 — Tettenhall, Whitmore Reans, Aldersley, Compton · May 2026</p>
 </div>
 
+</div>
 </div>
 </body>
 </html>

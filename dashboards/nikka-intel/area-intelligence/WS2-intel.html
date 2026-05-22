@@ -13,7 +13,7 @@
     color: #e2e8f0;
     line-height: 1.6;
     min-height: 100vh;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1100px; margin: 0 auto; padding: 30px 24px; }
   
   /* Header */
@@ -239,9 +239,12 @@
     color: #fbbf24;
     margin-bottom: 16px;
   }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
   <!-- HEADER -->
@@ -558,6 +561,7 @@
     Built with data from ONS, Land Registry, Ofsted, Zoopla, and local council sources
   </div>
 
+</div>
 </div>
 </body>
 </html>

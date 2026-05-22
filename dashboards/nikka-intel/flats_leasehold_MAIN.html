@@ -24,7 +24,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   line-height: 1.6;
   padding: 40px 20px;
-}
+overflow-wrap:break-word;word-break:break-word;}
 .container { max-width: 960px; margin: 0 auto; }
 h1 {
   font-size: 2em;
@@ -89,10 +89,13 @@ h2 {
 .alert.red { border-left-color: var(--red); }
 .alert.green { border-left-color: var(--green); }
 .alert.blue { border-left-color: var(--accent); }
-@media (max-width: 600px) { body { padding: 20px 12px; } }
+@media (max-width: 600px) { body { padding: 20px 12px; overflow-wrap:break-word;word-break:break-word;} }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
 <h1>🏢 Flats & Leasehold Research — Master Log</h1>
@@ -130,6 +133,7 @@ h2 {
 </div>
 
 <h3>💡 Best Investment Locations (Flat Yield Data)</h3>
+<div class="table-scroll">
 <table>
   <tr><th>City</th><th>Gross Yield</th><th>30% Deposit</th><th>Profile</th></tr>
   <tr><td><strong>Newcastle</strong></td><td>9.7%</td><td>£76,065</td><td>Highest yield, top spot for 3 refreshes</td></tr>
@@ -139,6 +143,7 @@ h2 {
   <tr><td><strong>Aberdeen</strong></td><td>8.6%</td><td>£46,932</td><td>Lowest entry cost UK-wide, LBTT not SDLT</td></tr>
   <tr><td><strong>Birmingham</strong></td><td>7.2%</td><td>~£65k</td><td>Local option but yield below northern peers</td></tr>
 </table>
+</div>
 
 <h3>⚠️ Risk Flags for Flat Investment (2026)</h3>
 <ol>
@@ -184,6 +189,7 @@ REalyse/Nationwide HPI (May 2026) · Property Investments UK (Mar 2026) · RealY
 </p>
 </div>
 
+</div>
 </div>
 </body>
 </html>

@@ -13,7 +13,7 @@
     font-family: 'Inter', -apple-system, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1100px; margin:0 auto; padding: 2rem 1.5rem; }
   .header {
     background: linear-gradient(135deg, #1a1e2e 0%, #0f1923 100%);
@@ -105,9 +105,12 @@
     .grid { grid-template-columns: 1fr; }
     .header h1 { font-size: 2rem; }
   }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
   <!-- Header -->
@@ -219,6 +222,7 @@
     Nikka's Intel Hub • Property Intelligence Engine • Data from PropertyData
   </div>
 
+</div>
 </div>
 </body>
 </html>

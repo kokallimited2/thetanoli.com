@@ -6,7 +6,7 @@
 <title>UK Property Postcode Intelligence Dashboard</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 2rem; }
+  body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 2rem; overflow-wrap:break-word;word-break:break-word;}
   h1 { color: #58a6ff; font-size: 2rem; margin-bottom: 0.3rem; }
   h2 { color: #79c0ff; font-size: 1.4rem; margin: 1.5rem 0 0.8rem 0; border-bottom: 1px solid #30363d; padding-bottom: 0.3rem; }
   h3 { color: #d2a8ff; font-size: 1.1rem; margin: 1rem 0 0.5rem 0; }
@@ -26,14 +26,18 @@
   .score-low { color: #f85149; font-weight: 700; }
   .strategy-tag { display: inline-block; background: #1f6feb22; color: #58a6ff; border: 1px solid #1f6feb44; border-radius: 4px; padding: 0 6px; font-size: 0.8rem; }
   .footer { margin-top: 2rem; color: #8b949e; font-size: 0.8rem; text-align: center; }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <h1>🏠 UK Property Postcode Intelligence Dashboard</h1>
 <p class="meta">Last updated: 2026-05-18 | Postcodes analysed: <strong>11</strong> (WV1, WV2, WV3, DY1, DY2, DY3, DY4, DY5, DY6, DY8, DY9)</p>
 
 <h2>📊 Top Performing Areas</h2>
+<div class="table-scroll">
 <table>
 <tr><th>Rank</th><th>Postcode</th><th>Area</th><th>Best Strategy</th><th>Score</th><th>Yield</th><th>Demand</th><th>Growth (5yr)</th><th>Verdict</th></tr>
 <tr>
@@ -158,11 +162,13 @@
   <td><span class="badge selective">SELECTIVE (low)</span></td>
 </tr>
 </table>
+</div>
 
 <h2>🗺️ Area Breakdown</h2>
 
 <div class="area-card" id="dy2">
 <h3>📍 DY2 — Netherton, Woodside, Quarry Bank (Dudley)</h3>
+<div class="table-scroll">
 <table>
 <tr><td><strong>Best Strategy</strong></td><td>BRRR — <span class="score-high">8.0/10</span></td></tr>
 <tr><td><strong>BTL Score</strong></td><td>6.8/10</td></tr>
@@ -180,9 +186,11 @@
 <tr><td><strong>Last Updated</strong></td><td>2026-05-13</td></tr>
 </table>
 </div>
+</div>
 
 <div class="area-card" id="dy1">
 <h3>📍 DY1 — Dudley Town Centre</h3>
+<div class="table-scroll">
 <table>
 <tr><td><strong>Best Strategy</strong></td><td>BRRR — <span class="score-med">7.2/10</span></td></tr>
 <tr><td><strong>BTL Score</strong></td><td>6.2/10</td></tr>
@@ -201,9 +209,11 @@
 <tr><td><strong>Last Updated</strong></td><td>2026-05-13</td></tr>
 </table>
 </div>
+</div>
 
 <div class="area-card" id="dy4">
 <h3>📍 DY4 — Tipton, Great Bridge, Princes End, Ocker Hill (Sandwell)</h3>
+<div class="table-scroll">
 <table>
 <tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-high">7.0/10</span></td></tr>
 <tr><td><strong>BRRR Score</strong></td><td>5.5/10</td></tr>
@@ -222,9 +232,11 @@
 <tr><td><strong>Last Updated</strong></td><td>2026-05-14</td></tr>
 </table>
 </div>
+</div>
 
 <div class="area-card" id="dy3">
 <h3>📍 DY3 — Sedgley, Upper Gornal, Lower Gornal (Dudley)</h3>
+<div class="table-scroll">
 <table>
 <tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-med">6.5/10</span></td></tr>
 <tr><td><strong>BRRR Score</strong></td><td>4.5/10 <span style="color:#8b949e;">(zero BRRR targets today)</span></td></tr>
@@ -244,9 +256,11 @@
 <tr><td><strong>Last Updated</strong></td><td>2026-05-14</td></tr>
 </table>
 </div>
+</div>
 
 <div class="area-card" id="dy5">
 <h3>📍 DY5 — Brierley Hill, Merry Hill, Quarry Bank, Pensnett (Dudley)</h3>
+<div class="table-scroll">
 <table>
 <tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-high">7.5/10</span></td></tr>
 <tr><td><strong>BRRR Score</strong></td><td>6.5/10</td></tr>
@@ -267,9 +281,11 @@
 <tr><td><strong>Last Updated</strong></td><td>2026-05-15</td></tr>
 </table>
 </div>
+</div>
 
 <div class="area-card" id="dy6">
 <h3>📍 DY6 — Kingswinford, Wall Heath, Wordsley (Dudley)</h3>
+<div class="table-scroll">
 <table>
 <tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-med">5.5/10</span></td></tr>
 <tr><td><strong>BRRR Score</strong></td><td><span class="score-low">3.0/10</span></td></tr>
@@ -288,9 +304,11 @@
 <tr><td><strong>Last Updated</strong></td><td>2026-05-15</td></tr>
 </table>
 </div>
+</div>
 
 <div class="area-card" id="dy9">
 <h3>📍 DY9 — Lye & Hagley (Dudley) — Bimodal Market</h3>
+<div class="table-scroll">
 <table>
 <tr><td><strong>Best Strategy</strong></td><td>BTL (Lye sector only) — <span class="score-med">6.5/10</span></td></tr>
 <tr><td><strong>BTL Score (Lye)</strong></td><td>6.5/10</td></tr>
@@ -315,9 +333,11 @@
 <tr><td><strong>Last Updated</strong></td><td>2026-05-16</td></tr>
 </table>
 </div>
+</div>
 
 <div class="area-card" id="dy8">
 <h3>📍 DY8 — Stourbridge Town, Wollaston, Wordsley, Oldswinford, Pedmore (Dudley)</h3>
+<div class="table-scroll">
 <table>
 <tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-med">5.5/10</span></td></tr>
 <tr><td><strong>BRRR Score</strong></td><td><span class="score-low">3.5/10</span> — 1 candidate in 20 listings</td></tr>
@@ -343,9 +363,11 @@
 <tr><td><strong>Last Updated</strong></td><td>2026-05-16</td></tr>
 </table>
 </div>
+</div>
 
 <div class="area-card" id="wv1">
 <h3>📍 WV1 — Wolverhampton City Centre, Whitmore Reans, Dunstall Hill, East Park, Horseley Fields</h3>
+<div class="table-scroll">
 <table>
 <tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-high">7.0/10</span></td></tr>
 <tr><td><strong>BRRR Score</strong></td><td><span class="score-med">5.5/10</span></td></tr>
@@ -373,9 +395,11 @@
 <tr><td><strong>Last Updated</strong></td><td>2026-05-17</td></tr>
 </table>
 </div>
+</div>
 
 <div class="area-card" id="wv2">
 <h3>📍 WV2 — Blakenhall, Penn Fields, Ettingshall, All Saints, Parkfields (Wolverhampton South)</h3>
+<div class="table-scroll">
 <table>
 <tr><td><strong>Best Strategy</strong></td><td>BTL — <span class="score-med">6.0/10</span></td></tr>
 <tr><td><strong>BRRR Score</strong></td><td><span class="score-low">3.5/10</span></td></tr>
@@ -405,9 +429,11 @@
 <tr><td><strong>Last Updated</strong></td><td>2026-05-18</td></tr>
 </table>
 </div>
+</div>
 
 <div class="area-card" id="wv3">
 <h3>📍 WV3 — Penn Fields, Whitmore Reans, Finchfield, Bradmore, Castlecroft, Compton, Merridale (Wolverhampton West)</h3>
+<div class="table-scroll">
 <table>
 <tr><td><strong>Best Strategy</strong></td><td>BTL (affordable tier only) — <span class="score-med">5.5/10</span></td></tr>
 <tr><td><strong>BRRR Score</strong></td><td><span class="score-low">2.0/10 — DEAD. Zero BRRR targets.</span></td></tr>
@@ -434,8 +460,10 @@
 <tr><td><strong>Last Updated</strong></td><td>2026-05-18</td></tr>
 </table>
 </div>
+</div>
 
 <h2>🔥 Strategy Heatmap</h2>
+<div class="table-scroll">
 <table>
 <tr><th>Postcode</th><th>BRRR</th><th>BTL</th><th>Flip</th><th>HMO</th><th>SA</th><th>Dominant</th></tr>
 <tr>
@@ -538,6 +566,7 @@
   <td><span class="badge selective">BTL (low)</span></td>
 </tr>
 </table>
+</div>
 <p style="margin-top:1rem;color:#8b949e;">📌 DY2 dominates BRRR (8.0). WV1 leads BTL for entry yield (7-8.5%) with lowest entry cost (£120k). DY5 leads established BTL with metro catalyst. DY4 has highest pure BTL yield (6.7%). WV2 and WV3 are backup BTL zones — higher entry, lower yield, limited stock. BRRR dead across ALL Wolverhampton postcodes (WV1/WV2/WV3). WV3 is a bimodal lifestyle market — premium tier not investable, affordable tier has very limited stock. HMO dead across ALL 11 postcodes.</p>
 
 <h2>🎯 Action Plan</h2>
@@ -556,6 +585,7 @@
 
 <div class="footer">
 UK Property Postcode Strategy Intelligence — Kokal Properties Ltd — Generated 18 May 2026
+</div>
 </div>
 </body>
 </html>

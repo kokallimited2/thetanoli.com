@@ -12,7 +12,7 @@
     color: #e6edf3;
     line-height: 1.6;
     padding: 0;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 960px; margin: 0 auto; padding: 20px; }
   
   /* Header */
@@ -183,9 +183,12 @@
     .header h1 { font-size: 1.8rem; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
   }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <div class="header">
   <h1>🏘️ WV13 — Willenhall</h1>
@@ -241,7 +244,8 @@
   <!-- Demographics -->
   <div class="card">
     <h2><span class="emoji">👥</span>Demographics & Population</h2>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Metric</th><th>Value</th></tr>
       <tr><td>Total Population (Willenhall, 2024 est.)</td><td>51,492</td></tr>
       <tr><td>Population Density</td><td>4,694/km²</td></tr>
@@ -255,13 +259,15 @@
       <tr><td>No Religion</td><td>36.6%</td></tr>
       <tr><td>Median Age</td><td>~34 (younger than national average)</td></tr>
     </table>
+</div>
     <p style="margin-top:12px; color:#8b949e;">Willenhall has a younger-than-average demographic profile, significant Sikh community, and above-average population growth driven by affordable housing and regeneration.</p>
   </div>
 
   <!-- Property Market -->
   <div class="card">
     <h2><span class="emoji">🏠</span>Property Market — Sold Prices & Rental</h2>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Property Type</th><th>Median Sold (12mo)</th><th>Sales Volume</th></tr>
       <tr><td>Detached</td><td>£242,000</td><td>28</td></tr>
       <tr><td>Semi-Detached</td><td>£211,000</td><td>48</td></tr>
@@ -269,8 +275,10 @@
       <tr><td>Flat / Maisonette</td><td>£77,000</td><td>12</td></tr>
       <tr style="border-top: 2px solid #30363d;"><td><strong>Overall Average</strong></td><td><strong>£185,000 (median)</strong></td><td><strong>139 total</strong></td></tr>
     </table>
+</div>
     <div style="margin-top:16px;">
-      <table>
+      <div class="table-scroll">
+<table>
         <tr><th>Rental Metric</th><th>Value</th></tr>
         <tr><td>Average Monthly Rent</td><td>£1,135 pcm</td></tr>
         <tr><td>Gross Rental Yield</td><td><span style="color:#3fb950;">6.3%</span></td></tr>
@@ -281,6 +289,7 @@
         <tr><td>Wolverhampton Avg Rent</td><td>£928 pcm (Mar 2026)</td></tr>
         <tr><td>Wolverhampton Rent Inflation (YoY)</td><td><span class="trend-up">+11.9%</span></td></tr>
       </table>
+</div>
     </div>
     <p style="margin-top:12px; color:#8b949e;">WV13 offers some of the most affordable entry points in the West Midlands. Terraced houses dominate sales volume (37%). The rental yield of 6.3% significantly outperforms many West Midlands areas and the UK average (~5%).</p>
   </div>
@@ -288,7 +297,8 @@
   <!-- Crime -->
   <div class="card">
     <h2><span class="emoji">🚔</span>Crime & Safety</h2>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Metric</th><th>Value</th></tr>
       <tr><td>Overall Crime Rate (Willenhall, 2026)</td><td>93 crimes / 1,000 population</td></tr>
       <tr><td>vs West Midlands Average</td><td><span class="tag tag-red">4.0% HIGHER</span></td></tr>
@@ -296,6 +306,7 @@
       <tr><td>Anti-Social Behaviour (peak month)</td><td>94 crimes (May 2024 — worst in WM)</td></tr>
       <tr><td>Wolverhampton Postcode Area Crime Rate</td><td>43.4 / 1,000 (123% of national)</td></tr>
     </table>
+</div>
     <p style="margin-top:12px; color:#8b949e;">Crime is above average for the West Midlands, which is a consideration for investment. However, new station opening and regeneration investment may help improve the area over time. Standard landlord insurance and tenant screening are recommended.</p>
   </div>
 
@@ -331,7 +342,8 @@
   <!-- Transport -->
   <div class="card">
     <h2><span class="emoji">🚆</span>Transport Links</h2>
-    <table>
+    <div class="table-scroll">
+<table>
       <tr><th>Mode</th><th>Details</th></tr>
       <tr>
         <td>🚄 Rail</td>
@@ -350,6 +362,7 @@
         <td>New segregated cycle paths being built along A454 corridor (completed Mar 2026) as part of station regeneration.</td>
       </tr>
     </table>
+</div>
     <p style="margin-top:12px; color:#8b949e;">The <strong>new Willenhall railway station</strong> (opened March 2026) is a game-changer. It's the first rail connection in 60 years and will significantly boost property demand and values in the area.</p>
   </div>
 
@@ -493,5 +506,6 @@
   Report date: May 2026 · Next area: WV14
 </div>
 
+</div>
 </body>
 </html>
