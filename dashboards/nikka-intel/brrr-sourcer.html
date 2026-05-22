@@ -104,6 +104,36 @@
         .tag-dom { background: #2e1a1a; color: #f87171; }
         .tag-a4 { background: #3a1a1a; color: #ef4444; }
         .card-meta { display: flex; gap: 16px; font-size: 13px; color: var(--text-dim); }
+        .card-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(48,54,61,0.5);
+        }
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+        .action-btn:hover { transform: translateY(-1px); }
+        .action-rightmove { background: #1a3a2e; color: #22c55e; }
+        .action-rightmove:hover { background: #1e4a3e; }
+        .action-sold { background: #1e293b; color: #58a6ff; }
+        .action-sold:hover { background: #273548; }
+        .action-comps { background: #1e293b; color: #f59e0b; }
+        .action-comps:hover { background: #273548; }
+        .action-maps { background: #1e293b; color: #ef4444; }
+        .action-maps:hover { background: #273548; }
+        .action-land { background: #1e293b; color: #d946ef; }
+        .action-land:hover { background: #273548; }
         
         .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
         table { width: 100%; border-collapse: collapse; font-size: 15px; }
@@ -151,7 +181,7 @@
 <body>
 <div class="page-wrap">
     <h1>🔵 BRRR Daily Sourcer</h1>
-    <div class="subtitle">PropAI Deals · 20 miles from DY5 · Nikka Khan — 22 May 2026 02:59</div>
+    <div class="subtitle">PropAI Deals · 20 miles from DY5 · Nikka Khan — 22 May 2026 03:05</div>
     
     <div class="stats-row">
         <div class="stat-card"><div class="num accent">160</div><div class="label">Total Properties Scanned</div></div>
@@ -190,6 +220,13 @@
                         <span>🤝 Belvoir - Wolverhampton</span>
                         <span>📅 2026-05-21</span>
                     </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73241674.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=WV14%207EH" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EWV147EH&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/113%2C%20Oxford%20Street%2C%20Wolverhampton" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=WV14%207EH" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
+                    </div>
                 </div>
             </div>
         </a>
@@ -217,6 +254,13 @@
                     <div class="card-meta">
                         <span>🤝 DB Roberts</span>
                         <span>📅 2026-05-21</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73243149.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=TF2%209QQ" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5ETF29QQ&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/24%2C%20Snedshill%20Way%2C%20Telford" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=TF2%209QQ" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
                     </div>
                 </div>
             </div>
@@ -246,6 +290,13 @@
                         <span>🤝 Samuel Makepeace Bespoke Estat</span>
                         <span>📅 2026-05-21</span>
                     </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-68797535.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=ST6%206AL" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EST66AL&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/Apartment%2035%2C%20Palace%20Court%2C%20Stoke-on-Trent" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=ST6%206AL" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
+                    </div>
                 </div>
             </div>
         </a>
@@ -273,6 +324,13 @@
                     <div class="card-meta">
                         <span>🤝 DB Roberts</span>
                         <span>📅 2026-05-21</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73246170.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=TF7%204HA" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5ETF74HA&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/114%2C%20Summerhill%2C%20Telford" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=TF7%204HA" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
                     </div>
                 </div>
             </div>
@@ -302,6 +360,13 @@
                         <span>🤝 Purplebricks</span>
                         <span>📅 2026-05-21</span>
                     </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73245615.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=ST4%205EY" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EST45EY&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/42%2C%20Shelburne%20Street%2C%20Stoke-on-Trent" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=ST4%205EY" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
+                    </div>
                 </div>
             </div>
         </a>
@@ -329,6 +394,13 @@
                     <div class="card-meta">
                         <span>🤝 Heywoods</span>
                         <span>📅 2026-05-21</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73247078.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=ST5%207BE" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EST57BE&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/5%20Blackthorn%20Place%2C%20Newcastle" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=ST5%207BE" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
                     </div>
                 </div>
             </div>
@@ -358,6 +430,13 @@
                         <span>🤝 Shaw's & Company Estate Agents</span>
                         <span>📅 2026-05-21</span>
                     </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73251409.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=ST6%205PH" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EST65PH&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/642%2C%20High%20Street%2C%20Stoke%20On%20Trent" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=ST6%205PH" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
+                    </div>
                 </div>
             </div>
         </a>
@@ -386,6 +465,13 @@
                         <span>🤝 Apple Property Solutions</span>
                         <span>📅 2026-05-21</span>
                     </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73251661.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=B43%206BY" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EB436BY&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/9%2C%20Hailwood%20Drive%2C%20Birmingham" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=B43%206BY" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
+                    </div>
                 </div>
             </div>
         </a>
@@ -413,6 +499,13 @@
                     <div class="card-meta">
                         <span>🤝 Apple Property Solutions</span>
                         <span>📅 2026-05-21</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73251661.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=B43%206BY" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EB436BY&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/9%2C%20Hailwood%20Drive%2C%20Birmingham" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=B43%206BY" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
                     </div>
                 </div>
             </div>
@@ -442,6 +535,13 @@
                         <span>🤝 Arden Estates</span>
                         <span>📅 2026-05-21</span>
                     </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73245116.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=B31%203LA" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EB313LA&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/108%20Redhill%20Road%2C%20Birmingham" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=B31%203LA" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
+                    </div>
                 </div>
             </div>
         </a>
@@ -469,6 +569,13 @@
                     <div class="card-meta">
                         <span>🤝 Purplebricks</span>
                         <span>📅 2026-05-21</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73247411.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=ST4%202EH" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EST42EH&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/11%2C%20Ashford%20Street%2C%20Stoke-on-Trent" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=ST4%202EH" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
                     </div>
                 </div>
             </div>
@@ -498,6 +605,13 @@
                         <span>🤝 Hunters - Sutton Coldfield</span>
                         <span>📅 2026-05-21</span>
                     </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73249715.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=B44%209HR" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EB449HR&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/15%2C%20Netherhouse%20Close%2C%20Birmingham" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=B44%209HR" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
+                    </div>
                 </div>
             </div>
         </a>
@@ -525,6 +639,13 @@
                     <div class="card-meta">
                         <span>🤝 Auction House London</span>
                         <span>📅 2026-05-21</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73242245.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=WV14%209NY" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EWV149NY&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/27%2C%20Kenelm%20Road%2C%20Bilston" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=WV14%209NY" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
                     </div>
                 </div>
             </div>
@@ -554,6 +675,13 @@
                         <span>🤝 Martin & Co, Worcester</span>
                         <span>📅 2026-05-21</span>
                     </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-88719885.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=WR1%202BX" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EWR12BX&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/Apartment%2025%20Austin%20Court%2C%20Mill%20Street%2C%20Worcester" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=WR1%202BX" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
+                    </div>
                 </div>
             </div>
         </a>
@@ -581,6 +709,13 @@
                     <div class="card-meta">
                         <span>🤝 LV PROPERTY ®</span>
                         <span>📅 2026-05-21</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73254152.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=B15%202DS" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EB152DS&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/85%2C%20Lincoln%20Apartments%2C%203%2C%20Lexington%20Gardens%2C%20West%20Midlands" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=B15%202DS" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
                     </div>
                 </div>
             </div>
@@ -610,6 +745,13 @@
                         <span>🤝 Connells - West Bromwich</span>
                         <span>📅 2026-05-21</span>
                     </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73243475.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=B21%200HZ" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EB210HZ&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/9%2C%20Nuttall%20Grove%2C%20BIRMINGHAM" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=B21%200HZ" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
+                    </div>
                 </div>
             </div>
         </a>
@@ -637,6 +779,13 @@
                     <div class="card-meta">
                         <span>🤝 Connells - West Bromwich</span>
                         <span>📅 2026-05-21</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73243475.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=B21%200HZ" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EB210HZ&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/9%2C%20Nuttall%20Grove%2C%20BIRMINGHAM" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=B21%200HZ" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
                     </div>
                 </div>
             </div>
@@ -666,6 +815,13 @@
                         <span>🤝 Dixons Estate Agents - Kingsta</span>
                         <span>📅 2026-05-21</span>
                     </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73246004.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=B44%209QH" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EB449QH&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/17%2C%20Anerley%20Grove%2C%20West%20Midlands" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=B44%209QH" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
+                    </div>
                 </div>
             </div>
         </a>
@@ -694,6 +850,13 @@
                         <span>🤝 Priory Property Services</span>
                         <span>📅 2026-05-21</span>
                     </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73247432.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=ST6%205UU" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EST65UU&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/6%2C%20Elkstone%20Close%2C%20Stoke-On-Trent" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=ST6%205UU" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
+                    </div>
                 </div>
             </div>
         </a>
@@ -721,6 +884,13 @@
                     <div class="card-meta">
                         <span>🤝 G & T Properties</span>
                         <span>📅 2026-05-21</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://www.rightmove.co.uk/property-for-sale/property-73249502.html" target="_blank" class="action-btn action-rightmove" title="Rightmove Listing">📋 Listing</a>
+                        <a href="https://nethouseprices.com/house-prices/search?search=DY5%201AY" target="_blank" class="action-btn action-sold" title="Sold Prices on Nethouseprices">📊 Sold</a>
+                        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchType=SALE&locationIdentifier=POSTCODE%5EDY51AY&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps" title="Comparable properties nearby">🏡 Comps</a>
+                        <a href="https://www.google.com/maps/place/14%20Bath%20Road%2C%20Brierley%20Hill" target="_blank" class="action-btn action-maps" title="Google Maps">🗺️ Map</a>
+                        <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=DY5%201AY" target="_blank" class="action-btn action-land" title="Land Registry / Building Check">🏗️ Land</a>
                     </div>
                 </div>
             </div>
@@ -853,7 +1023,7 @@
     </div>
     
     <div class="footer">
-        ⚡ Generated by Nikka Khan · 22 May 2026 02:59<br>
+        ⚡ Generated by Nikka Khan · 22 May 2026 03:05<br>
         <span style="font-size:12px;color:var(--text-dim)">Data from PropAI Deals API · Rightmove links auto-generated · Verify before viewing</span><br>
         <span style="font-size:11px;color:#475569">🏠 <a href="index.html" style="color:#58a6ff">Dashboard Home</a> · 🛠️ <a href="power-team.html" style="color:#58a6ff">Power Team</a> · 📋 <a href="strategy-brrr-hmo-playbook.html" style="color:#58a6ff">Strategy</a> · 📡 <a href="market_signals_MAIN.html" style="color:#58a6ff">Market Signals</a></span>
     </div>
