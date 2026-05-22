@@ -18,7 +18,7 @@
     --purple: #bc8cff;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.6; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); padding: 20px; line-height: 1.6; overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1200px; margin: 0 auto; }
   h1 { font-size: 2rem; margin-bottom: 4px; color: var(--accent); }
   .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; }
@@ -59,9 +59,12 @@
   @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
   .header-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
   .price-change { color: var(--amber); font-weight: 600; }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
 <div class="header-bar">
@@ -89,7 +92,8 @@
 <h2>📊 Auction Results — Bond Wolfe 14 May 2026 (Post-Auction Analysis)</h2>
 <div class="card">
   <h3>🎯 Sold Lots — Title Split Relevance</h3>
-  <table>
+  <div class="table-scroll">
+<table>
     <thead>
       <tr>
         <th>Lot</th>
@@ -143,11 +147,13 @@
       </tr>
     </tbody>
   </table>
+</div>
   <p style="color:var(--muted); font-size:0.85rem; margin-top:8px;"><strong>Key takeaway:</strong> 33 Spouthouse Lane sold at £138,500 — far above £29k guide. The market is pricing in the split potential. However, the flat alone (£600 PCM rent = £7,200 PA) still gives a 5.2% yield on purchase price — viable BTL even without the split.</p>
 </div>
 
 <!-- ==================== TOP OPPORTUNITIES ==================== -->
 <h2>🏆 Top Opportunities — Current Market (18 May 2026)</h2>
+<div class="table-scroll">
 <table>
   <thead>
     <tr>
@@ -275,6 +281,7 @@
     </tr>
   </tbody>
 </table>
+</div>
 
 <!-- ==================== MARKET ANALYSIS ==================== -->
 <h2>📈 Market Context — 18 May 2026</h2>
@@ -306,6 +313,7 @@
 
 <!-- ==================== UPCOMING AUCTIONS ==================== -->
 <h2>📅 Upcoming Auctions — Watchlist</h2>
+<div class="table-scroll">
 <table>
   <thead>
     <tr>
@@ -336,6 +344,7 @@
     </tr>
   </tbody>
 </table>
+</div>
 
 <!-- ==================== TITLE SPLIT CHECKLIST ==================== -->
 <h2>✅ Title Split Checklist — Updated May 2026</h2>
@@ -454,6 +463,7 @@
   <p style="margin-top:8px;">Generated: 18 May 2026 04:30 BST | Data sources: Bond Wolfe, Rightmove, Zoopla, BTG Eddisons, Under The Hammer</p>
 </div>
 
+</div>
 </div>
 </body>
 </html>

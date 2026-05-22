@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercial Property Strategy Intelligence — 22 May 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    background: #0b0d11;
+    color: #e2e8f0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0f1729 0%, #1a2332 100%);
+    border: 1px solid #1e2d3d;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  
+  .header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #f59e0b, #ec4899, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .header .subtitle {
+    font-size: 14px;
+    color: #94a3b8;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .header .badge-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .badge-blue { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+  .badge-amber { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+  .badge-green { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+  .badge-purple { background: rgba(139,92,246,0.15); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+  .badge-red { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+  /* Section */
+  .section {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .section h2 .icon { font-size: 20px; }
+  .section h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #cbd5e1;
+    margin: 16px 0 10px;
+  }
+
+  /* Edge Card */
+  .edge-card {
+    background: linear-gradient(135deg, #1e293b, #0f1729);
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .edge-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #64748b;
+    margin-bottom: 6px;
+  }
+  
+  .edge-card .value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fbbf24;
+  }
+  
+  .edge-card p { color: #94a3b8; font-size: 13px; margin-top: 8px; }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .stat-card {
+    background: #1a2332;
+    border: 1px solid #1e2d3d;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .stat-card .number {
+    font-size: 28px;
+    font-weight: 800;
+    color: #f1f5f9;
+  }
+  
+  .stat-card .label { font-size: 12px; color: #64748b; margin-top: 4px; }
+
+  /* Table */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #1e293b;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  
+  thead {
+    background: #1a2332;
+  }
+  
+  th {
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #94a3b8;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #1e293b;
+    white-space: nowrap;
+  }
+  
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #1a2332;
+    color: #cbd5e1;
+  }
+  
+  tr:hover td { background: rgba(59,130,246,0.04); }
+  
+  .price { color: #4ade80; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+  .type-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .type-retail { background: rgba(59,130,246,0.12); color: #60a5fa; }
+  .type-mixed { background: rgba(139,92,246,0.12); color: #a78bfa; }
+  .type-dev { background: rgba(245,158,11,0.12); color: #fbbf24; }
+  .type-office { background: rgba(99,102,241,0.12); color: #818cf8; }
+  .type-industrial { background: rgba(34,197,94,0.12); color: #4ade80; }
+  .type-land { background: rgba(107,114,128,0.12); color: #9ca3af; }
+  .type-other { background: rgba(239,68,68,0.12); color: #f87171; }
+
+  .buy-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .buy-high { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+  .buy-medium { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+  .buy-low { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+  /* Strategy Grid */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+  }
+  
+  .strategy-card {
+    background: #1a2332;
+    border: 1px solid #1e2d3d;
+    border-radius: 10px;
+    padding: 20px;
+    transition: border-color 0.2s;
+  }
+  
+  .strategy-card:hover { border-color: #334155; }
+  
+  .strategy-card h4 { font-size: 15px; font-weight: 700; color: #f1f5f9; margin-bottom: 8px; }
+  .strategy-card .meta { font-size: 12px; color: #64748b; margin-bottom: 10px; }
+  .strategy-card p { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+  .strategy-card .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  
+  .risk-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .risk-low { color: #4ade80; }
+  .risk-medium { color: #fbbf24; }
+  .risk-high { color: #f87171; }
+
+  /* Area map */
+  .area-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  
+  /* Bar chart helpers */
+  .bar-container { width: 100%; background: #1e293b; border-radius: 6px; height: 10px; overflow: hidden; margin: 6px 0; }
+  .bar-fill { height: 100%; border-radius: 6px; transition: width 0.3s; }
+
+  /* Risk flags */
+  .flags { display: flex; gap: 4px; flex-wrap: wrap; }
+  .flag {
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .flag-warning { background: rgba(245,158,11,0.15); color: #fbbf24; }
+  .flag-danger { background: rgba(239,68,68,0.15); color: #f87171; }
+  .flag-info { background: rgba(59,130,246,0.15); color: #60a5fa; }
+  .flag-success { background: rgba(34,197,94,0.15); color: #4ade80; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: #475569;
+    font-size: 12px;
+    border-top: 1px solid #1e293b;
+    margin-top: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 12px; }
+    .header h1 { font-size: 22px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .strategy-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <h1>🏢 Commercial Property Strategy Intelligence</h1>
+  <div class="subtitle">22 May 2026 · West Midlands Coverage · 14 Areas Scanned</div>
+  <div class="badge-row">
+    <span class="badge badge-blue">📊 199 Listings Analysed</span>
+    <span class="badge badge-amber">💰 £35M+ Total Market Value</span>
+    <span class="badge badge-green">🎯 39 Sub-£200k Targets</span>
+    <span class="badge badge-purple">🏗️ 51 Investment Grade</span>
+    <span class="badge badge-red">⚠️ Tavily/Firecrawl Down</span>
+  </div>
+</div>
+
+<!-- TODAY'S EDGE -->
+<div class="section">
+  <h2><span class="icon">⚡</span> Today's Commercial Edge</h2>
+  <div class="edge-card">
+    <div class="label">Data Source Alert</div>
+    <div class="value" style="color: #f87171;">Tavily & Firecrawl Unavailable</div>
+    <p>All data sourced via direct HTTP requests to Rightmove Commercial. 199 listings parsed across 14 target areas. Broader strategy research (YouTube, forums, EG Property) unavailable due to API limitations.</p>
+  </div>
+  <div class="edge-card">
+    <div class="label">Key Finding #1 — Walsall Emerges as Best Affordability Play</div>
+    <div class="value" style="color: #4ade80;">Walsall WS1: Avg £276k · Most Listings Sub-£200k</div>
+    <p>Walsall has the most affordable commercial market in the West Midlands with 24 listings averaging just £276k. Multiple investment-grade opportunities under £150k including 27 Bridge Street (£87k), 63 George Street (£95k), and the mixed-use 54 West Bromwich Street auction lot (£195k). Strong conversion and investment play area.</p>
+  </div>
+  <div class="edge-card">
+    <div class="label">Key Finding #2 — Vacant & Distressed Properties Under-Supplied in Market</div>
+    <div class="value" style="color: #fbbf24;">Only ~12% Listings Show Vacancy Signals</div>
+    <p>The current Rightmove commercial stock shows relatively low distress levels. Main distressed signals are concentrated in auction lots (Cannock, Kidderminster, Walsall) and former pub/leisure assets. Commercial investors should watch Bond Wolfe auction results for unsold lots that may reappear at reduced prices.</p>
+  </div>
+  <div class="edge-card">
+    <div class="label">Key Finding #3 — Halesowen Yield Market Confirmed</div>
+    <div class="value" style="color: #60a5fa;">£8k Entry Point — 17 Listings from £8k to £3M</div>
+    <p>Halesowen continues to show the widest price spectrum of any West Midlands market. Entry-level opportunities at £8k (land), £120k (fish & chip takeaway), and office investments at £235k (St Kenelm Court). Strong independent retail sector supports commercial letting demand.</p>
+  </div>
+</div>
+
+<!-- MARKET OVERVIEW -->
+<div class="section">
+  <h2><span class="icon">📊</span> Market Overview</h2>
+  
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="number">199</div>
+      <div class="label">Total Listings</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">39</div>
+      <div class="label">Sub-£200k Targets</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">58</div>
+      <div class="label">£200k–£500k</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">84</div>
+      <div class="label">£500k+ Premium</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">36</div>
+      <div class="label">Land / Development Sites</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">29</div>
+      <div class="label">Office Properties</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">25</div>
+      <div class="label">Retail / Shops</div>
+    </div>
+    <div class="stat-card">
+      <div class="number">38</div>
+      <div class="label">Industrial / Warehousing</div>
+    </div>
+  </div>
+  
+  <h3>Price Distribution</h3>
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-top: 8px;">
+
+    <div class="stat-card" style="text-align: left;">
+      <div class="number" style="font-size: 18px; color: #4ade80;">35</div>
+      <div class="label">Under £100k</div>
+      <div class="bar-container"><div class="bar-fill" style="width: 17.587939698492463%; background: #4ade80;"></div></div>
+    </div>
+    <div class="stat-card" style="text-align: left;">
+      <div class="number" style="font-size: 18px; color: #60a5fa;">36</div>
+      <div class="label">£100k-£250k</div>
+      <div class="bar-container"><div class="bar-fill" style="width: 18.090452261306535%; background: #60a5fa;"></div></div>
+    </div>
+    <div class="stat-card" style="text-align: left;">
+      <div class="number" style="font-size: 18px; color: #fbbf24;">44</div>
+      <div class="label">£250k-£500k</div>
+      <div class="bar-container"><div class="bar-fill" style="width: 22.110552763819097%; background: #fbbf24;"></div></div>
+    </div>
+    <div class="stat-card" style="text-align: left;">
+      <div class="number" style="font-size: 18px; color: #f97316;">37</div>
+      <div class="label">£500k-£1M</div>
+      <div class="bar-container"><div class="bar-fill" style="width: 18.592964824120603%; background: #f97316;"></div></div>
+    </div>
+    <div class="stat-card" style="text-align: left;">
+      <div class="number" style="font-size: 18px; color: #f87171;">47</div>
+      <div class="label">£1M+</div>
+      <div class="bar-container"><div class="bar-fill" style="width: 23.618090452261306%; background: #f87171;"></div></div>
+    </div>
+  </div>
+  
+  <h3>Coverage by Area</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Area</th>
+          <th>Listings</th>
+          <th>Avg Price</th>
+          <th>Price Range</th>
+          <th>Opportunity Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td><strong>Telford TF1</strong></td>
+          <td>29</td>
+          <td class="price">£4,584,319</td>
+          <td>£1 – £45,000,000</td>
+          <td>🔵 Premium / Institutional</td>
+        </tr>
+        <tr>
+          <td><strong>Walsall WS1</strong></td>
+          <td>24</td>
+          <td class="price">£275,790</td>
+          <td>£1 – £1,495,000</td>
+          <td>🟢 Best Value Play</td>
+        </tr>
+        <tr>
+          <td><strong>Brierley Hill DY5</strong></td>
+          <td>24</td>
+          <td class="price">£1,123,498</td>
+          <td>£1 – £6,500,000</td>
+          <td>🟡 Established Market</td>
+        </tr>
+        <tr>
+          <td><strong>Kidderminster DY10</strong></td>
+          <td>24</td>
+          <td class="price">£580,208</td>
+          <td>£1 – £3,750,000</td>
+          <td>🟡 Distressed High Street</td>
+        </tr>
+        <tr>
+          <td><strong>Wolverhampton WV1</strong></td>
+          <td>20</td>
+          <td class="price">£1,124,500</td>
+          <td>£245,000 – £5,000,000</td>
+          <td>🟡 Established Market</td>
+        </tr>
+        <tr>
+          <td><strong>Halesowen</strong></td>
+          <td>17</td>
+          <td class="price">£756,350</td>
+          <td>£8,000 – £3,000,000</td>
+          <td>🟢 Yield Capital</td>
+        </tr>
+        <tr>
+          <td><strong>Dudley DY1</strong></td>
+          <td>15</td>
+          <td class="price">£569,000</td>
+          <td>£1 – £2,000,000</td>
+          <td>🟡 Established Market</td>
+        </tr>
+        <tr>
+          <td><strong>West Bromwich B70</strong></td>
+          <td>12</td>
+          <td class="price">£1,088,325</td>
+          <td>£120,000 – £3,200,000</td>
+          <td>🟡 Established Market</td>
+        </tr>
+        <tr>
+          <td><strong>Stourbridge DY8</strong></td>
+          <td>8</td>
+          <td class="price">£276,238</td>
+          <td>£60,000 – £550,000</td>
+          <td>🔵 Niche / Premium</td>
+        </tr>
+        <tr>
+          <td><strong>Birmingham B1</strong></td>
+          <td>8</td>
+          <td class="price">£912,500</td>
+          <td>£450,000 – £1,500,000</td>
+          <td>🔵 Niche / Premium</td>
+        </tr>
+        <tr>
+          <td><strong>Sandwell B66</strong></td>
+          <td>6</td>
+          <td class="price">£1,190,833</td>
+          <td>£595,000 – £2,000,000</td>
+          <td>🔵 Niche / Premium</td>
+        </tr>
+        <tr>
+          <td><strong>Wolverhampton WV2</strong></td>
+          <td>5</td>
+          <td class="price">£719,990</td>
+          <td>£99,950 – £1,200,000</td>
+          <td>🔵 Niche / Premium</td>
+        </tr>
+        <tr>
+          <td><strong>Cannock WS11</strong></td>
+          <td>5</td>
+          <td class="price">£325,000</td>
+          <td>£135,000 – £450,000</td>
+          <td>🔵 Niche / Premium</td>
+        </tr>
+        <tr>
+          <td><strong>Birmingham B4</strong></td>
+          <td>2</td>
+          <td class="price">£1</td>
+          <td>£1 – £1</td>
+          <td>🔵 Niche / Premium</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- STRATEGY LIBRARY -->
+<div class="section">
+  <h2><span class="icon">📚</span> Strategy Library — West Midlands Commercial</h2>
+  <div class="strategy-grid">
+    
+    <div class="strategy-card">
+      <h4>💰 Commercial BTL (Retail)</h4>
+      <div class="meta">Capital: £50k–£250k · Yield Target: 8–14%</div>
+      <p>Buy secondary retail (high street) at 8–14% gross yield. Let on FRI lease — tenant pays rates, insurance, repairs. Low management burden. Best in Halesowen, Walsall, Kidderminster. EPC compliance essential (min C from 2027).</p>
+      <div class="tags">
+        <span class="flag flag-success">Halesowen</span>
+        <span class="flag flag-success">Walsall</span>
+        <span class="flag flag-info">FRI lease</span>
+        <span class="flag flag-warning">EPC check</span>
+      </div>
+    </div>
+    
+    <div class="strategy-card">
+      <h4>🏗️ Class E → C3 Conversion</h4>
+      <div class="meta">Capital: £80k–£300k · GDV Uplift: 30–80%</div>
+      <p>Convert retail/office (Class E) to residential (C3) under Permitted Development. Prior Approval 8–16 weeks. Target 1–3 flats per unit. Check Article 4 directions! Best in Dudley, Brierley Hill, Wolverhampton where commercial/residential price gap is widest.</p>
+      <div class="tags">
+        <span class="flag flag-success">PD rights</span>
+        <span class="flag flag-warning">Article 4</span>
+        <span class="flag flag-danger">Listed buildings</span>
+      </div>
+    </div>
+    
+    <div class="strategy-card">
+      <h4>🏪 Shop-with-Flat (Mixed Use)</h4>
+      <div class="meta">Capital: £150k–£400k · Yield: 7–11%</div>
+      <p>Buy building with shop (ground) + flat(s) (upper). Sell flat to recoup 60–80% of purchase cost, leaving commercial at heavily discounted basis. Alternatively, keep both for combined yield. Lower risk than pure conversion.</p>
+      <div class="tags">
+        <span class="flag flag-success">Dual income</span>
+        <span class="flag flag-success">Split value</span>
+        <span class="flag flag-info">Separate access</span>
+      </div>
+    </div>
+    
+    <div class="strategy-card">
+      <h4>🏢 Development Sites (Full PP)</h4>
+      <div class="meta">Capital: £200k–£1.5M · Timeline: 12–24 months</div>
+      <p>Buy cleared site with full planning permission. Known build volume, no conversion risk. Build new-build apartments/ houses. GDV known upfront. Best for developer-builders. Birmingham satellite towns (Aston, Perry Barr) and Walsall showing most activity.</p>
+      <div class="tags">
+        <span class="flag flag-success">Full PP</span>
+        <span class="flag flag-success">Known costs</span>
+        <span class="flag flag-warning">Build finance</span>
+      </div>
+    </div>
+    
+    <div class="strategy-card">
+      <h4>🔴 Post-Auction Distress Play</h4>
+      <div class="meta">Capital: £100k–£250k · Discount: 10–20% below guide</div>
+      <p>Track unsold auction lots (Bond Wolfe, SDL). Wait 4–6 weeks, then approach vendor below failed guide. Vendor has paid auction fees (£2,700+) and faces empty rates ticking. Target 12–15% yield post-offer.</p>
+      <div class="tags">
+        <span class="flag flag-success">Bond Wolfe</span>
+        <span class="flag flag-danger">Time-sensitive</span>
+        <span class="flag flag-info">Income check</span>
+      </div>
+    </div>
+    
+    <div class="strategy-card">
+      <h4>🏭 Industrial Multi-Let</h4>
+      <div class="meta">Capital: £250k–£1M · Yield: 8–12%</div>
+      <p>Buy secondary industrial, split into smaller units. Each smaller unit commands higher £/sqft. Aggregated yield 15–25% above single-let yield. Best in Telford, Brierley Hill, Sandwell. Institutional demand driving prime yields tighter (5–5.25%), making secondary the sweet spot.</p>
+      <div class="tags">
+        <span class="flag flag-success">Telford</span>
+        <span class="flag flag-success">Sandwell</span>
+        <span class="flag flag-info">Yield uplift</span>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- TOP OPPORTUNITIES -->
+<div class="section">
+  <h2><span class="icon">🎯</span> Top Investment Opportunities</h2>
+  
+  <h3>🏆 Best Value — Under £150k</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Price</th>
+          <th>Area</th>
+          <th>Type</th>
+          <th>Address</th>
+          <th>Play</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="price">£8,000</td>
+          <td>Halesowen</td>
+          <td><span class="type-tag type-land">Land</span></td>
+          <td style="font-size: 12px;">FGR's, 1, 5 & 6 & Land at 3 High Leasowes, Halesowen, W</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£25,000</td>
+          <td>Brierley Hill DY5</td>
+          <td><span class="type-tag type-land">Land</span></td>
+          <td style="font-size: 12px;">Former Queens Street/Consort Crescent Garage Site, Pens</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£25,000</td>
+          <td>Halesowen</td>
+          <td><span class="type-tag type-land">Land</span></td>
+          <td style="font-size: 12px;">Hawne Lane, Halesowen, B63</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£49,950</td>
+          <td>Walsall WS1</td>
+          <td><span class="type-tag type-retail">Cafe</span></td>
+          <td style="font-size: 12px;">Cafe & Sandwich Bars, West Midlands</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£55,000</td>
+          <td>Kidderminster DY10</td>
+          <td><span class="type-tag type-land">Land</span></td>
+          <td style="font-size: 12px;">Sugarloaf Lane, Iverley</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£60,000</td>
+          <td>Stourbridge DY8</td>
+          <td><span class="type-tag type-retail">Shop</span></td>
+          <td style="font-size: 12px;">West Midlands, DY8</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£60,000</td>
+          <td>Stourbridge DY8</td>
+          <td><span class="type-tag type-retail">Shop</span></td>
+          <td style="font-size: 12px;">West Midlands, DY8</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£60,000</td>
+          <td>Telford TF1</td>
+          <td><span class="type-tag type-land">Land</span></td>
+          <td style="font-size: 12px;">Haybridge Road, Hadley, Telford</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£70,000</td>
+          <td>Kidderminster DY10</td>
+          <td><span class="type-tag type-land">Land</span></td>
+          <td style="font-size: 12px;">Land at Comberton Hill, Comberton Hill, Kidderminster</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£75,000</td>
+          <td>Walsall WS1</td>
+          <td><span class="type-tag type-retail">Commercial Propert</span></td>
+          <td style="font-size: 12px;">13 Bridge Street, Walsall, West Midlands, WS1 1DP</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£75,000</td>
+          <td>Halesowen</td>
+          <td><span class="type-tag type-land">Land</span></td>
+          <td style="font-size: 12px;">Land to rear of Long Lane, Halesowen</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£87,000</td>
+          <td>Walsall WS1</td>
+          <td><span class="type-tag type-retail">Commercial Propert</span></td>
+          <td style="font-size: 12px;">27 Bridge Street, Walsall, West Midlands, WS1 1DP</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£87,000</td>
+          <td>Walsall WS1</td>
+          <td><span class="type-tag type-retail">Commercial Propert</span></td>
+          <td style="font-size: 12px;">27 Bridge Street, Walsall, West Midlands, WS1 1DP</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£95,000</td>
+          <td>Walsall WS1</td>
+          <td><span class="type-tag type-retail">Commercial Propert</span></td>
+          <td style="font-size: 12px;">63 George Street, Walsall, West Midlands WS1 1RS</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+        <tr>
+          <td class="price">£95,000</td>
+          <td>Walsall WS1</td>
+          <td><span class="type-tag type-retail">Commercial Propert</span></td>
+          <td style="font-size: 12px;">63 George Street, Walsall, West Midlands WS1 1RS</td>
+          <td><span class="buy-tag buy-high">🎯 Entry Level</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <h3>🏗️ Development & Conversion Plays — Land & Development Sites</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Price</th>
+          <th>Area</th>
+          <th>Type</th>
+          <th>Address</th>
+          <th>Potential</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="price">£1</td>
+          <td>Dudley DY1</td>
+          <td>Land</td>
+          <td style="font-size: 12px;">99 High Street, Dudley, West Midlands, DY1 1QP</td>
+          <td><span class="buy-tag buy-medium">🔨 Needs Review</span></td>
+        </tr>
+        <tr>
+          <td class="price">£1</td>
+          <td>Dudley DY1</td>
+          <td>Land</td>
+          <td style="font-size: 12px;">99 High Street, Dudley, West Midlands, DY1 1QP</td>
+          <td><span class="buy-tag buy-medium">🔨 Needs Review</span></td>
+        </tr>
+        <tr>
+          <td class="price">£1</td>
+          <td>Kidderminster DY10</td>
+          <td>Land</td>
+          <td style="font-size: 12px;">19.5 Acres South of Walton Road, Hartlebury, DY10 4JE</td>
+          <td><span class="buy-tag buy-medium">🔨 Needs Review</span></td>
+        </tr>
+        <tr>
+          <td class="price">£250</td>
+          <td>Telford TF1</td>
+          <td>Land</td>
+          <td style="font-size: 12px;">Land in Yew Tree Meadow, Hadley, Telford, Shropshire, T</td>
+          <td><span class="buy-tag buy-medium">🔨 Needs Review</span></td>
+        </tr>
+        <tr>
+          <td class="price">£8,000</td>
+          <td>Halesowen</td>
+          <td>Land</td>
+          <td style="font-size: 12px;">FGR's, 1, 5 & 6 & Land at 3 High Leasowes, Halesowen, W</td>
+          <td><span class="buy-tag buy-medium">🔨 Needs Review</span></td>
+        </tr>
+        <tr>
+          <td class="price">£25,000</td>
+          <td>Brierley Hill DY5</td>
+          <td>Land</td>
+          <td style="font-size: 12px;">Former Queens Street/Consort Crescent Garage Site, Pens</td>
+          <td><span class="buy-tag buy-medium">🔨 Needs Review</span></td>
+        </tr>
+        <tr>
+          <td class="price">£25,000</td>
+          <td>Halesowen</td>
+          <td>Land</td>
+          <td style="font-size: 12px;">Hawne Lane, Halesowen, B63</td>
+          <td><span class="buy-tag buy-medium">🔨 Needs Review</span></td>
+        </tr>
+        <tr>
+          <td class="price">£55,000</td>
+          <td>Kidderminster DY10</td>
+          <td>Land</td>
+          <td style="font-size: 12px;">Sugarloaf Lane, Iverley</td>
+          <td><span class="buy-tag buy-medium">🔨 Needs Review</span></td>
+        </tr>
+        <tr>
+          <td class="price">£60,000</td>
+          <td>Telford TF1</td>
+          <td>Land</td>
+          <td style="font-size: 12px;">Haybridge Road, Hadley, Telford</td>
+          <td><span class="buy-tag buy-medium">🔨 Needs Review</span></td>
+        </tr>
+        <tr>
+          <td class="price">£70,000</td>
+          <td>Kidderminster DY10</td>
+          <td>Land</td>
+          <td style="font-size: 12px;">Land at Comberton Hill, Comberton Hill, Kidderminster</td>
+          <td><span class="buy-tag buy-medium">🔨 Needs Review</span></td>
+        </tr>
+        <tr>
+          <td class="price">£75,000</td>
+          <td>Halesowen</td>
+          <td>Land</td>
+          <td style="font-size: 12px;">Land to rear of Long Lane, Halesowen</td>
+          <td><span class="buy-tag buy-medium">🔨 Needs Review</span></td>
+        </tr>
+        <tr>
+          <td class="price">£99,000</td>
+          <td>Telford TF1</td>
+          <td>Land</td>
+          <td style="font-size: 12px;">Arleston, Wellington, Telford, Shropshire, TF1 2JD</td>
+          <td><span class="buy-tag buy-medium">🔨 Needs Review</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PROPERTY TYPES BREAKDOWN -->
+<div class="section">
+  <h2><span class="icon">📋</span> Property Type Distribution</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Property Type</th>
+          <th>Count</th>
+          <th>% of Market</th>
+          <th>Typical Price Range</th>
+          <th>Strategy Fit</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td><span class="type-tag type-land">Land / Development</span></td>
+          <td>36</td>
+          <td>18.1%</td>
+          <td>£50k–£500k+</td>
+          <td>🏗️ Dev/Conversion</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-other">General Commercial</span></td>
+          <td>38</td>
+          <td>19.1%</td>
+          <td>£100k–£1M</td>
+          <td>💰 BTL / Yield</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-office">Office</span></td>
+          <td>29</td>
+          <td>14.6%</td>
+          <td>£100k–£1M</td>
+          <td>🔄 Conversion</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-industrial">Light Industrial</span></td>
+          <td>24</td>
+          <td>12.1%</td>
+          <td>£100k–£1M</td>
+          <td>🏭 Multi-let</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-mixed">Mixed Use</span></td>
+          <td>7</td>
+          <td>3.5%</td>
+          <td>£200k–£2M+</td>
+          <td>🏪 Shop+Flat</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-dev">Residential Dev</span></td>
+          <td>7</td>
+          <td>3.5%</td>
+          <td>£200k–£2M+</td>
+          <td>🏗️ Build</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-industrial">Distribution</span></td>
+          <td>6</td>
+          <td>3.0%</td>
+          <td>£200k–£2M+</td>
+          <td>🏭 Institutional</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-industrial">Warehouse</span></td>
+          <td>5</td>
+          <td>2.5%</td>
+          <td>£200k–£2M+</td>
+          <td>🏭 Storage</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-retail">Shop</span></td>
+          <td>4</td>
+          <td>2.0%</td>
+          <td>£200k–£2M+</td>
+          <td>💰 BTL / Conversion</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-other">Leisure</span></td>
+          <td>3</td>
+          <td>1.5%</td>
+          <td>£200k–£2M+</td>
+          <td>🔄 Reposition</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-other">Restaurant</span></td>
+          <td>3</td>
+          <td>1.5%</td>
+          <td>£200k–£2M+</td>
+          <td>🔄 Reposition</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-other">Takeaway</span></td>
+          <td>2</td>
+          <td>1.0%</td>
+          <td>£200k–£2M+</td>
+          <td>🔄 Reposition</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-industrial">Industrial Park</span></td>
+          <td>3</td>
+          <td>1.5%</td>
+          <td>£200k–£2M+</td>
+          <td>🏭 Multi-let</td>
+        </tr>
+        <tr>
+          <td><span class="type-tag type-dev">Commercial Dev</span></td>
+          <td>6</td>
+          <td>3.0%</td>
+          <td>£200k–£2M+</td>
+          <td>🏗️ Build</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- DEAL CHECKLIST -->
+<div class="section">
+  <h2><span class="icon">✅</span> Commercial Deal Checklist</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px;">
+    <div style="background: #1a2332; border: 1px solid #1e2d3d; border-radius: 8px; padding: 16px;">
+      <h4 style="color: #4ade80; margin-bottom: 8px; font-size: 14px;">✔️ Essential Checks</h4>
+      <ul style="list-style: none; font-size: 13px; color: #94a3b8; line-height: 2;">
+        <li>✓ EPC rating (min C from 2027 for commercial)</li>
+        <li>✓ Article 4 direction check (PD conversion blocker)</li>
+        <li>✓ Lease terms: FRI vs IR, break clauses, rent review</li>
+        <li>✓ VAT election status (option to tax)</li>
+        <li>✓ Rateable value + empty rates liability</li>
+        <li>✓ Tenant covenant strength</li>
+      </ul>
+    </div>
+    <div style="background: #1a2332; border: 1px solid #1e2d3d; border-radius: 8px; padding: 16px;">
+      <h4 style="color: #fbbf24; margin-bottom: 8px; font-size: 14px;">⚠️ Risk Flags</h4>
+      <ul style="list-style: none; font-size: 13px; color: #94a3b8; line-height: 2;">
+        <li>⚠️ Listed building = severely restricted PD</li>
+        <li>⚠️ Conservation area adds complexity</li>
+        <li>⚠️ Weak tenant covenant = income risk</li>
+        <li>⚠️ Short lease (< 5 years) = renewal risk</li>
+        <li>⚠️ Poor EPC (F/G) = cannot let from 2023</li>
+        <li>⚠️ Flood risk zones 2/3</li>
+      </ul>
+    </div>
+    <div style="background: #1a2332; border: 1px solid #1e2d3d; border-radius: 8px; padding: 16px;">
+      <h4 style="color: #60a5fa; margin-bottom: 8px; font-size: 14px;">📐 Key Metrics</h4>
+      <ul style="list-style: none; font-size: 13px; color: #94a3b8; line-height: 2;">
+        <li>• Net Initial Yield (NIY) = Rent ÷ Price × 100</li>
+        <li>• Reversionary Yield = MRV ÷ Price × 100</li>
+        <li>• Rent psf = Annual Rent ÷ Floor Area</li>
+        <li>• Price psf = Purchase Price ÷ Floor Area</li>
+        <li>• Cover ratio = Rent ÷ (Mortgage × 125%)</li>
+        <li>• GDV uplift = Resi GDV - All-in Costs</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SKILL IMPROVEMENTS -->
+<div class="section">
+  <h2><span class="icon">🧠</span> Hermes Skill Improvements — {date_str}</h2>
+  <div class="edge-card">
+    <div class="label">Improvement #1 — Data Source Fallback</div>
+    <div class="value" style="color: #60a5fa; font-size: 16px;">Direct HTTP Fetching Restored</div>
+    <p>Both Tavily (HTTP 432) and Firecrawl (HTTP 402 Pay Required) were down. Direct requests with proper browser headers successfully fetched Rightmove Commercial pages (14/14 areas). This is now a validated fallback path that should be the primary scraping method going forward.</p>
+  </div>
+  <div class="edge-card">
+    <div class="label">Improvement #2 — CloakBrowser Limitations Added</div>
+    <div class="value" style="color: #fbbf24; font-size: 16px;">30s Timeout on Google Search Pages</div>
+    <p>CloakBrowser timed out navigating to Google search pages. The script uses 30s timeout which is insufficient for Google's load time through residential proxy. Recommend either increasing timeout to 60s or bypassing Google altogether and targeting Rightmove directly.</p>
+  </div>
+  <div class="edge-card">
+    <div class="label">Improvement #3 — Property Detail Page Challenge</div>
+    <div class="value" style="color: #f87171; font-size: 16px;">Most Property IDs Return 404/410</div>
+    <p>Individual Rightmove property detail pages for commercial listings often return 404 or 410. The search result pages (with __NEXT_DATA__) are the most reliable data source. All pricing, type, and tenure data can be extracted from the aggregated search results.</p>
+  </div>
+  <div class="edge-card">
+    <div class="label">Improvement #4 — New Search Term Added</div>
+    <div class="value" style="color: #4ade80; font-size: 16px;">Rightmove Direct URL Pattern Discovered</div>
+    <p>Rightmove commercial search URLs follow pattern: <code>https://www.rightmove.co.uk/commercial-property-for-sale/{POSTCODE}.html</code>. Data extraction via __NEXT_DATA__ JSON script tag works reliably. Property detail URLs need <code>#/?channel=COM_BUY</code> suffix to display correctly.</p>
+  </div>
+</div>
+
+<!-- AREA INTEL -->
+<div class="section">
+  <h2><span class="icon">🗺️</span> Area Intelligence Summary</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Area</th>
+          <th>Best For</th>
+          <th>Entry Range</th>
+          <th>Strategy</th>
+          <th>Risk Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Walsall WS1</strong></td>
+          <td>Best value, high volume</td>
+          <td>£75k–£275k</td>
+          <td>Retail BTL, development, conversion</td>
+          <td><span class="risk-indicator risk-low">● Low-Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong>Halesowen</strong></td>
+          <td>Yield capital, wide spread</td>
+          <td>£8k–£235k</td>
+          <td>Retail BTL, office, takeaway</td>
+          <td><span class="risk-indicator risk-low">● Low-Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong>Dudley DY1</strong></td>
+          <td>Conversion play, town centre</td>
+          <td>£55k–£575k</td>
+          <td>E→C3 conversion, office-to-resi</td>
+          <td><span class="risk-indicator risk-medium">● Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong>Wolverhampton WV1</strong></td>
+          <td>Development + investments</td>
+          <td>£245k–£5M</td>
+          <td>Mixed-use redevelopment, bank investments</td>
+          <td><span class="risk-indicator risk-medium">● Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong>Kidderminster DY10</strong></td>
+          <td>Distressed high street</td>
+          <td>£55k–£1.5M</td>
+          <td>Retail BTL, high street reposition</td>
+          <td><span class="risk-indicator risk-high">● Medium-High</span></td>
+        </tr>
+        <tr>
+          <td><strong>West Bromwich B70</strong></td>
+          <td>Development potential</td>
+          <td>£120k–£3.2M</td>
+          <td>Retail unit investments, development</td>
+          <td><span class="risk-indicator risk-medium">● Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong>Brierley Hill DY5</strong></td>
+          <td>Industrial, land, conversion</td>
+          <td>£25k–£3M</td>
+          <td>Industrial multi-let, land development</td>
+          <td><span class="risk-indicator risk-medium">● Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong>Stourbridge DY8</strong></td>
+          <td>Small volume, shop plays</td>
+          <td>£60k–£550k</td>
+          <td>Shop BTL, fish & chip shops</td>
+          <td><span class="risk-indicator risk-low">● Low</span></td>
+        </tr>
+        <tr>
+          <td><strong>Telford TF1</strong></td>
+          <td>Industrial, logistics premium</td>
+          <td>£60k–£45M</td>
+          <td>Industrial, distribution, warehousing</td>
+          <td><span class="risk-indicator risk-medium">● Medium</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cannock WS11</strong></td>
+          <td>Niche opportunities</td>
+          <td>£135k–£450k</td>
+          <td>Auction plays, development</td>
+          <td><span class="risk-indicator risk-high">● Medium-High</span></td>
+        </tr>
+        <tr>
+          <td><strong>Birmingham B1/B4</strong></td>
+          <td>Prime office, mixed-use</td>
+          <td>£450k–£1.5M</td>
+          <td>Prime commercial, institutional</td>
+          <td><span class="risk-indicator risk-low">● Low (but capital intensive)</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>Hermes Commercial Property Strategy Intelligence Agent · {date_str}</p>
+  <p>Data sourced from Rightmove Commercial · Tavily (432) & Firecrawl (402) unavailable</p>
+  <p>All data is indicative — always verify with agent, planning portal, and solicitor before proceeding</p>
+</div>
+
+</div>
+</body>
+</html>

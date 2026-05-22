@@ -12,7 +12,7 @@
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
             padding: 20px;
-        }
+        overflow-wrap:break-word;word-break:break-word;}
         .container { max-width: 1200px; margin: 0 auto; }
         .header {
             background: linear-gradient(135deg, #1a1f3a 0%, #0d1b2a 100%);
@@ -178,9 +178,12 @@
             table { font-size: 12px; }
             th, td { padding: 8px 6px; }
         }
-    </style>
+    .page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
+</style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
     <!-- HEADER -->
@@ -243,7 +246,8 @@
 
     <!-- TOP OPPORTUNITIES TABLE -->
     <h3 class="section-title">🎯 Top Title Split Opportunities — May 2026</h3>
-    <table>
+    <div class="table-scroll">
+<table>
         <thead>
             <tr>
                 <th>🏠 Property</th>
@@ -309,13 +313,15 @@
             </tr>
         </tbody>
     </table>
+</div>
 
     <!-- DEAL ANALYSIS: TOP OPPORTUNITY -->
     <h3 class="section-title">🔬 Deal Deep-Dive: 197-198 Wolverhampton Street, Dudley DY1</h3>
     <div class="card-grid">
         <div class="card" style="grid-column: span 2;">
             <h4>📋 Property Summary</h4>
-            <table style="background:transparent; margin:0;">
+            <div class="table-scroll">
+<table style="background:transparent; margin:0;">
                 <tr><td style="width:200px; border:none; padding:4px 0;"><strong>Address:</strong></td><td style="border:none; padding:4px 0;">197-198 Wolverhampton Street, Dudley DY1 1DU</td></tr>
                 <tr><td style="border:none; padding:4px 0;"><strong>Auction:</strong></td><td style="border:none; padding:4px 0;">Under The Hammer — 10 June 2026</td></tr>
                 <tr><td style="border:none; padding:4px 0;"><strong>Guide Price:</strong></td><td style="border:none; padding:4px 0;">£350,000</td></tr>
@@ -323,6 +329,7 @@
                 <tr><td style="border:none; padding:4px 0;"><strong>Current Income:</strong></td><td style="border:none; padding:4px 0;">£41,640 pa (net yield 12.09%)</td></tr>
                 <tr><td style="border:none; padding:4px 0;"><strong>Tenure:</strong></td><td style="border:none; padding:4px 0;">Freehold</td></tr>
             </table>
+</div>
         </div>
     </div>
 
@@ -364,7 +371,8 @@
     <!-- DEAL VIABILITY CALCULATION -->
     <h3 class="section-title">🧮 Financial Projection — 197-198 Wolverhampton Street</h3>
     <div class="section-box">
-        <table style="background:transparent; margin:0;">
+        <div class="table-scroll">
+<table style="background:transparent; margin:0;">
             <tr><td style="width:300px; border:none;"><strong>Purchase Price (guide):</strong></td><td style="border:none;">£350,000</td></tr>
             <tr><td style="border:none;"><strong>SDLT (6+ dwellings = commercial rates):</strong></td><td style="border:none;">£17,500</td></tr>
             <tr><td style="border:none;"><strong>Legal (Peppercorn Law 6 × £995):</strong></td><td style="border:none;">£5,970</td></tr>
@@ -380,6 +388,7 @@
             <tr><td style="border:none;"><strong>Current net yield (refinance hold):</strong></td><td style="border:none; color: #6fcf97;">12.09% — exceptional</td></tr>
             <tr><td style="border:none; color:#8ab4f8;"><strong>✅ STRESS TEST PASSES at -10% GDV, +20% costs, +6 months delay</strong></td><td style="border:none;"></td></tr>
         </table>
+</div>
     </div>
 
     <!-- MARKET TRENDS -->
@@ -571,7 +580,8 @@
 
     <!-- SUCCESSFUL CASE PATTERNS -->
     <h3 class="section-title">📋 Best Property Types for Title Splits — Ranked</h3>
-    <table>
+    <div class="table-scroll">
+<table>
         <thead>
             <tr>
                 <th>Rank</th>
@@ -649,6 +659,7 @@
             </tr>
         </tbody>
     </table>
+</div>
 
     <!-- HERMES SKILL IMPROVEMENTS -->
     <h3 class="section-title">🤖 Hermes Skill Improvements — This Run</h3>
@@ -681,6 +692,7 @@
         <p>⚠️ This is general investor guidance, not legal, tax, planning or financial advice</p>
     </div>
 
+</div>
 </div>
 </body>
 </html>

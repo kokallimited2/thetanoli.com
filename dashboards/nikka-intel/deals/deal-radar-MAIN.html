@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Deal Radar — 22 May 2026 | Nikka Intel</title>
+<meta name="description" content="West Midlands property deals sourced daily: BRRR, flip, and BMV opportunities in Dudley, Wolverhampton, Walsall, and Birmingham. AI-scored distress signals.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #0d1117;
+  color: #c9d1d9;
+  overflow-wrap: break-word;
+  word-break: break-word;
+overflow-wrap:break-word;word-break:break-word;}
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+h1 { font-size: 2rem; color: #58a6ff; margin: 24px 0 4px; }
+h2 { font-size: 1.5rem; color: #e6edf3; border-bottom: 2px solid #30363d; padding-bottom: 6px; margin: 28px 0 14px; }
+h3 { font-size: 1.1rem; color: #58a6ff; margin: 10px 0; }
+.subtitle { color: #8b949e; font-size: 0.95rem; margin-bottom: 20px; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 18px 0; }
+.stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px; text-align: center; }
+.stat-num { font-size: 28px; font-weight: 700; color: #58a6ff; }
+.stat-label { font-size: 13px; color: #8b949e; margin-top: 4px; }
+
+.deal-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px; margin: 10px 0; }
+.deal-card.priority { border-left: 4px solid #f85149; }
+.deal-card.audit { border-left: 4px solid #d29922; }
+.deal-card.watch { border-left: 4px solid #3fb950; }
+.deal-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.deal-price { font-size: 1.3em; font-weight: 700; color: #f0883e; }
+.deal-score { padding: 4px 12px; border-radius: 15px; font-size: 0.85em; font-weight: 700; }
+.deal-score.hot { background: #f85149; color: #fff; }
+.deal-score.warm { background: #d29922; color: #000; }
+.deal-score.mild { background: #3fb950; color: #000; }
+.deal-address { color: #e6edf3; margin: 6px 0; font-size: 16px; }
+.deal-address a { color: #58a6ff; text-decoration: none; }
+.deal-address a:hover { text-decoration: underline; }
+.deal-address .no-link { color: #8b949e; font-size: 11px; }
+.deal-meta { color: #8b949e; font-size: 0.85em; margin-top: 4px; }
+.deal-desc { color: #8b949e; font-size: 13px; margin-top: 8px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.deal-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #21262d; }
+.deal-detail-item { text-align: center; }
+.deal-detail-label { font-size: 11px; color: #484f58; text-transform: uppercase; }
+.deal-detail-value { font-size: 15px; font-weight: 700; color: #e6edf3; }
+
+.signal-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.signal-tag { font-size: 10px; padding: 2px 8px; border-radius: 10px; background: #21262d; color: #8b949e; }
+
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th { background: #161b22; color: #58a6ff; padding: 10px; text-align: left; font-size: 0.85em; border-bottom: 2px solid #30363d; }
+td { padding: 8px 10px; border-bottom: 1px solid #21262d; }
+tr:hover td { background: #1a2332; }
+td a { color: #58a6ff; text-decoration: none; }
+td a:hover { text-decoration: underline; }
+
+.related-section { margin-top: 36px; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 24px; }
+.related-card { display: flex; flex-direction: column; gap: 4px; background: #1e293b; border: 1px solid #30363d; border-radius: 10px; padding: 14px; text-decoration: none; transition: all 0.2s; }
+.related-card:hover { border-color: #58a6ff; background: #273548; transform: translateY(-2px); }
+.related-icon { font-size: 24px; }
+.related-title { font-size: 15px; font-weight: 600; color: #e6edf3; }
+.related-desc { font-size: 12px; color: #8b949e; }
+
+.strategy-section { margin-top: 24px; }
+.strategy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+
+.footer { margin-top: 40px; text-align: center; color: #484f58; font-size: 14px; padding: 20px; border-top: 1px solid #21262d; }
+.footer-links { font-size: 11px; color: #475569; margin-top: 8px; }
+
+.empty-state { color: #484f58; font-style: italic; padding: 24px; text-align: center; background: #161b22; border-radius: 10px; }
+
+.keyword-list { font-size: 13px; color: #8b949e; line-height: 1.6; background: #161b22; padding: 12px 16px; border-radius: 8px; margin: 8px 0; }
+.keyword-list strong { color: #58a6ff; }
+
+.top-metric { font-size: 14px; color: #f0883e; }
+.top-metric small { color: #8b949e; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<h1>🏠 Daily Deal Radar</h1>
+<p class="subtitle">Friday, 22 May 2026 · Dudley + 2hr radius · West Midlands</p>
+
+<!-- STATS -->
+<div class="stats-grid">
+    <div class="stat-card"><div class="stat-num">431</div><div class="stat-label">Total Properties in DB</div></div>
+    <div class="stat-card"><div class="stat-num">279</div><div class="stat-label">New Today</div></div>
+    <div class="stat-card"><div class="stat-num">1</div><div class="stat-label">Full Audit (75+)</div></div>
+    <div class="stat-card"><div class="stat-num">17</div><div class="stat-label">Watchlist (40–74)</div></div>
+    <div class="stat-card"><div class="stat-num">25</div><div class="stat-label">Areas Scanned</div></div>
+    <div class="stat-card"><div class="stat-num">135</div><div class="stat-label">API Credits Used</div></div>
+</div>
+
+<!-- TOP DISTRESS SIGNALS FOUND TODAY -->
+<div class="keyword-list">
+    <strong>🔑 Top distress signals:</strong> no upward chain · requires modernisation · auction · chain free · investment opportunity · no onward chain · viewing essential · great potential · priced to reflect condition · vacant possession
+</div>
+
+<!-- ====== PRIORITY REVIEW (85+) ====== -->
+<h2>🔴 Priority Review (85+)</h2>
+<p class="empty-state">No priority leads today. Top score: 78.</p>
+
+<!-- ====== FULL AUDIT (75–84) ====== -->
+<h2>🟠 Full Audit — Requires Immediate Attention (75–84)</h2>
+
+<div class="deal-card audit">
+    <div class="deal-header">
+        <span class="deal-price">£144,000</span>
+        <span class="deal-score warm">Score 78</span>
+    </div>
+    <div class="deal-address">
+        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5E1707898&maxPrice=150000&minBedrooms=2" target="_blank" rel="noopener">19 Broad Lane, Walsall WS3 2TF</a>
+        <span class="no-link">🔗 RM search link · Zoopla ID: 73203615</span>
+    </div>
+    <div class="deal-meta">2 bed house · Walsall · <strong>NO CHAIN · LARGE PLOT · NEEDS MODERNISATION · AUCTION</strong></div>
+    <div class="deal-desc">Large plot with perfect development opportunity. Two bedroom home, heavily extended, in need of modernisation. No chain. Two bedrooms, three reception rooms, detached garage and out buildings. Sold via modern method of auction. Viewing essential. Generously extended with substantial plot — ideal for investor or developer.</div>
+    <div class="deal-details">
+        <div class="deal-detail-item"><div class="deal-detail-label">BRRR</div><div class="deal-detail-value">78</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">Flip</div><div class="deal-detail-value">62</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">BMV</div><div class="deal-detail-value">54</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">Risk</div><div class="deal-detail-value">0</div></div>
+    </div>
+    <div class="signal-tags">
+        <span class="signal-tag">no chain</span><span class="signal-tag">auction</span><span class="signal-tag">modernisation</span><span class="signal-tag">large plot</span><span class="signal-tag">development</span>
+    </div>
+</div>
+
+<!-- ====== LIGHT AUDIT (60–74) ====== -->
+<h2>🟡 Light Audit — Worth Investigating (60–74)</h2>
+
+<div class="deal-card watch">
+    <div class="deal-header">
+        <span class="deal-price">£150,000</span>
+        <span class="deal-score mild">Score 74</span>
+    </div>
+    <div class="deal-address">
+        <a href="https://www.rightmove.co.uk/properties/88497771" target="_blank" rel="noopener">Pruden Avenue, Lanesfield, Wolverhampton WV4 6PT</a>
+        <span class="no-link">🔗 Verified RM listing</span>
+    </div>
+    <div class="deal-meta">2 bed semi-detached bungalow · Wolverhampton · <strong>NO UPWARD CHAIN · REQUIRES MODERNISATION · INVESTMENT OPPORTUNITY</strong></div>
+    <div class="deal-desc">Semi-detached bungalow in quiet residential area. Requires modernisation and improvement throughout, offered with no upward chain. Central heating, well-proportioned accommodation. Ideal investment or home to personalise. Interior viewing highly recommended.</div>
+    <div class="deal-details">
+        <div class="deal-detail-item"><div class="deal-detail-label">BRRR</div><div class="deal-detail-value">74</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">Flip</div><div class="deal-detail-value">59</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">BMV</div><div class="deal-detail-value">52</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">Risk</div><div class="deal-detail-value">0</div></div>
+    </div>
+    <div class="signal-tags">
+        <span class="signal-tag">no chain</span><span class="signal-tag">modernisation</span><span class="signal-tag">bungalow</span><span class="signal-tag">investment</span>
+    </div>
+</div>
+
+<div class="deal-card watch">
+    <div class="deal-header">
+        <span class="deal-price">£160,000</span>
+        <span class="deal-score mild">Score 61</span>
+    </div>
+    <div class="deal-address">
+        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5E956949&maxPrice=165000&minBedrooms=2&sortType=2" target="_blank" rel="noopener">12 Lister Close, Walsall WS2 7HP</a>
+        <span class="no-link">🔗 RM search link · (listing may have been removed)</span>
+    </div>
+    <div class="deal-meta">2 bed end-terrace · Walsall · <strong>NO CHAIN · KITCHEN DINER · GENEROUS PLOT · FIRST TIME BUY/INVESTMENT</strong></div>
+    <div class="deal-desc">End-terrace house with no onward chain. Two double bedrooms, fitted kitchen, fitted bathroom. Generous plot in popular area close to amenities. Perfect first time buy or investment. Viewing essential.</div>
+    <div class="deal-details">
+        <div class="deal-detail-item"><div class="deal-detail-label">BRRR</div><div class="deal-detail-value">37</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">Flip</div><div class="deal-detail-value">73</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">BMV</div><div class="deal-detail-value">43</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">Risk</div><div class="deal-detail-value">0</div></div>
+    </div>
+    <div class="signal-tags">
+        <span class="signal-tag">no chain</span><span class="signal-tag">investment</span><span class="signal-tag">generous plot</span>
+    </div>
+</div>
+
+<!-- ====== WATCHLIST — BEST OF THE REST (50–59) ====== -->
+<h2>🟢 Watchlist — Monitor for Price Drops (50–59)</h2>
+
+<div class="deal-card">
+    <div class="deal-header">
+        <span class="deal-price">£90,000</span>
+        <span class="deal-score mild">Score 55</span>
+    </div>
+    <div class="deal-address">
+        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5E956989&maxPrice=95000&minBedrooms=2&sortType=2" target="_blank" rel="noopener">31 Hannah Road, Bilston WV14 8ET</a>
+        <span class="no-link">🔗 RM search link</span>
+    </div>
+    <div class="deal-meta">3 bed semi-detached · Bilston · <strong>ONLINE AUCTION 26 MAY · BIDDING OPENS 25 MAY</strong></div>
+    <div class="deal-desc">Three bedroom semi-detached house offered via online auction. Entrance hallway, lounge, kitchen, three bedrooms, bathroom, rear garden. Ideal investment opportunity. Auction ends 26 May 2026.</div>
+    <div class="deal-details">
+        <div class="deal-detail-item"><div class="deal-detail-label">BRRR</div><div class="deal-detail-value">33</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">Flip</div><div class="deal-detail-value">44</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">BMV</div><div class="deal-detail-value">38</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">Risk</div><div class="deal-detail-value">0</div></div>
+    </div>
+    <div class="signal-tags">
+        <span class="signal-tag">auction</span><span class="signal-tag">investment</span><span class="signal-tag">vacant</span>
+    </div>
+</div>
+
+<div class="deal-card">
+    <div class="deal-header">
+        <span class="deal-price">£185,000</span>
+        <span class="deal-score mild">Score 53</span>
+    </div>
+    <div class="deal-address">
+        <a href="https://www.rightmove.co.uk/properties/88501290" target="_blank" rel="noopener">Wrens Hill Road, Dudley DY1 3SD</a>
+        <span class="no-link">🔗 Verified RM listing</span>
+    </div>
+    <div class="deal-meta">4 bed semi-detached · Dudley · <strong>NO ONWARD CHAIN · INVESTMENT/REFURB PROJECT · HIGH YIELDAREA</strong></div>
+    <div class="deal-desc">Substantial four-bedroom semi-detached, no onward chain. Prime opportunity for investors seeking capital appreciation or high-yield rental. Near Priory Park and Dudley Castle. DY1 postcode seeing strong rental demand.</div>
+    <div class="deal-details">
+        <div class="deal-detail-item"><div class="deal-detail-label">BRRR</div><div class="deal-detail-value">32</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">Flip</div><div class="deal-detail-value">63</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">BMV</div><div class="deal-detail-value">37</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">Risk</div><div class="deal-detail-value">0</div></div>
+    </div>
+    <div class="signal-tags">
+        <span class="signal-tag">no chain</span><span class="signal-tag">investment</span><span class="signal-tag">4 beds</span><span class="signal-tag">high yield area</span>
+    </div>
+</div>
+
+<div class="deal-card">
+    <div class="deal-header">
+        <span class="deal-price">£110,000</span>
+        <span class="deal-score mild">Score 50</span>
+    </div>
+    <div class="deal-address">
+        <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5E956977&maxPrice=115000&minBedrooms=2&sortType=2" target="_blank" rel="noopener">15 Fellows Street, Wolverhampton WV2 4ND</a>
+        <span class="no-link">🔗 RM search link</span>
+    </div>
+    <div class="deal-meta">2 bed mid-terrace · Wolverhampton · <strong>NO UPWARD CHAIN · PARK VIEWS · FANTASTIC POTENTIAL</strong></div>
+    <div class="deal-desc">Traditional two bedroom bay fronted mid-terrace with no upward chain. Two reception rooms, kitchen, two double bedrooms, bathroom, generous garden with patio. Park views to front. Fantastic potential.</div>
+    <div class="deal-details">
+        <div class="deal-detail-item"><div class="deal-detail-label">BRRR</div><div class="deal-detail-value">30</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">Flip</div><div class="deal-detail-value">40</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">BMV</div><div class="deal-detail-value">35</div></div>
+        <div class="deal-detail-item"><div class="deal-detail-label">Risk</div><div class="deal-detail-value">0</div></div>
+    </div>
+    <div class="signal-tags">
+        <span class="signal-tag">no chain</span><span class="signal-tag">potential</span><span class="signal-tag">garden</span>
+    </div>
+</div>
+
+<!-- ====== STRATEGY TABLES ====== -->
+<div class="strategy-section">
+<h2>📊 Strategy Rankings</h2>
+
+<div class="strategy-grid">
+<div>
+<h3>🔥 Top BRRR Candidates</h3>
+<div class="table-scroll">
+<div class="table-scroll">
+<table>
+<tr><th>#</th><th>Area</th><th>Price</th><th>Score</th><th>Address</th></tr>
+<tr><td>1</td><td>WS3</td><td>£144,000</td><td>78</td><td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5E1707898&maxPrice=150000&minBedrooms=2" target="_blank">19 Broad Lane, Walsall</a></td></tr>
+<tr><td>2</td><td>WV4</td><td>£150,000</td><td>74</td><td><a href="https://www.rightmove.co.uk/properties/88497771" target="_blank">Pruden Ave, Wolverhampton</a></td></tr>
+<tr><td>3</td><td>WS2</td><td>£160,000</td><td>37</td><td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5E956949&maxPrice=165000&minBedrooms=2" target="_blank">12 Lister Close, Walsall</a></td></tr>
+<tr><td>4</td><td>WS2</td><td>£90,000</td><td>30</td><td><span style="color:#8b949e">Flat 5 Stonebeech Ct, WS2</span></td></tr>
+<tr><td>5</td><td>DY3</td><td>£120,000</td><td>30</td><td><span style="color:#8b949e">2 Redhall Road, Dudley</span></td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<div>
+<h3>🔄 Top Flip Candidates</h3>
+<div class="table-scroll">
+<div class="table-scroll">
+<table>
+<tr><th>#</th><th>Area</th><th>Price</th><th>Score</th><th>Address</th></tr>
+<tr><td>1</td><td>WS2</td><td>£160,000</td><td>73</td><td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5E956949&maxPrice=165000&minBedrooms=2" target="_blank">12 Lister Close, Walsall</a></td></tr>
+<tr><td>2</td><td>DY1</td><td>£185,000</td><td>63</td><td><a href="https://www.rightmove.co.uk/properties/88501290" target="_blank">Wrens Hill Rd, Dudley</a></td></tr>
+<tr><td>3</td><td>WS3</td><td>£144,000</td><td>62</td><td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5E1707898&maxPrice=150000&minBedrooms=2" target="_blank">19 Broad Lane, Walsall</a></td></tr>
+<tr><td>4</td><td>WV4</td><td>£150,000</td><td>59</td><td><a href="https://www.rightmove.co.uk/properties/88497771" target="_blank">Pruden Ave, Wolverhampton</a></td></tr>
+<tr><td>5</td><td>DY2</td><td>£50,000</td><td>55</td><td><span style="color:#8b949e">15 Gammage St, Dudley</span></td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ====== NOTABLE MENTIONS ====== -->
+<h2>📋 Notable Mentions — Auction & Distressed</h2>
+<div class="table-scroll">
+<div class="table-scroll">
+<table>
+<tr><th>Price</th><th>Beds</th><th>Type</th><th>Address</th><th>Distress Signal</th><th>Score</th></tr>
+<tr><td>£50,000</td><td>3</td><td>Terraced</td><td>15 Gammage Street, Dudley DY2</td><td>Online Unconditional Auction · 11 May</td><td>46</td></tr>
+<tr><td>£90,000</td><td>3</td><td>Semi-detached</td><td>31 Hannah Road, Bilston WV14</td><td>Online Auction · 26 May · Vacant</td><td>55</td></tr>
+<tr><td>£120,000</td><td>2</td><td>End-terrace</td><td>2 Redhall Road, Dudley DY3</td><td>Modern Method Auction · No Chain</td><td>49</td></tr>
+<tr><td>£120,000</td><td>2</td><td>Semi-detached</td><td>26 Lancaster Place, Walsall WS3</td><td>Auction 3 June · Vacant</td><td>41</td></tr>
+<tr><td>£130,000</td><td>3</td><td>Semi-detached</td><td>27 Kenelm Road, Bilston WV14</td><td>Public Auction 10 June</td><td>41</td></tr>
+<tr><td>£150,000</td><td>2</td><td>Semi-detached</td><td>Water Street, Kingswinford DY6</td><td>Auction · Needs Improvement</td><td>43</td></tr>
+<tr><td>£177,000</td><td>3</td><td>Semi-detached</td><td>25 Manor Road, Tipton DY4</td><td>Auction 3 June</td><td>34</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ====== AREA BREAKDOWN ====== -->
+<h2>🗺️ Area Activity — Last 7 Days</h2>
+<div class="table-scroll">
+<div class="table-scroll">
+<table>
+<tr><th>Area</th><th>Deals Found</th><th>Max Score</th><th>Avg Score</th><th>Hot Zone?</th></tr>
+<tr><td>DY5 (Brierley Hill)</td><td>27</td><td>44</td><td>7</td><td>🟡 Watch</td></tr>
+<tr><td>DY1 (Dudley)</td><td>16</td><td>53</td><td>6</td><td>🟡 Watch</td></tr>
+<tr><td>WS3 (Walsall North)</td><td>14</td><td>78</td><td>18</td><td>🔴 Active</td></tr>
+<tr><td>WS2 (Walsall Central)</td><td>18</td><td>61</td><td>14</td><td>🟠 Emerging</td></tr>
+<tr><td>WV1 (Wolverhampton)</td><td>7</td><td>38</td><td>10</td><td>🟡 Watch</td></tr>
+<tr><td>WV14 (Bilston)</td><td>7</td><td>55</td><td>14</td><td>🟠 Emerging</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ====== SEO INTERLINKING ====== -->
+<div class="related-section">
+    <h2 class="section-title">Related Resources</h2>
+    <div class="related-grid">
+        <a href="../index.html" class="related-card">
+            <span class="related-icon">🏠</span>
+            <span class="related-title">Dashboard Home</span>
+            <span class="related-desc">Nikka Intel overview</span>
+        </a>
+        <a href="../brrr-sourcer.html" class="related-card">
+            <span class="related-icon">🔥</span>
+            <span class="related-title">BRRR Daily Sourcer</span>
+            <span class="related-desc">Daily BRRR deals via PropAI</span>
+        </a>
+        <a href="../power-team.html" class="related-card">
+            <span class="related-icon">🛠️</span>
+            <span class="related-title">Power Team</span>
+            <span class="related-desc">Contractors & professionals</span>
+        </a>
+        <a href="../strategy-brrr-hmo-playbook.html" class="related-card">
+            <span class="related-icon">📋</span>
+            <span class="related-title">BRRR/HMO Strategy</span>
+            <span class="related-desc">Investment playbook</span>
+        </a>
+        <a href="../market_signals_MAIN.html" class="related-card">
+            <span class="related-icon">📡</span>
+            <span class="related-title">Market Signals</span>
+            <span class="related-desc">West Midlands trends</span>
+        </a>
+        <a href="../area-intelligence/" class="related-card">
+            <span class="related-icon">🗺️</span>
+            <span class="related-title">Area Intelligence</span>
+            <span class="related-desc">Neighbourhood deep dives</span>
+        </a>
+    </div>
+</div>
+
+<div class="footer">
+    <p>Generated by Hermes Property Deal Sourcer v1.0 · 22 May 2026 07:08 BST</p>
+    <p class="footer-links">Home · BRRR Deals · Power Team · Strategy · Market Signals · Area Intel · Deal Radar</p>
+    <p class="footer-links" style="margin-top:4px;">Source: PropAI API · 25 postcodes scanned · 360 properties analysed · 135 credits used</p>
+</div>
+
+</div>
+</body>
+</html>

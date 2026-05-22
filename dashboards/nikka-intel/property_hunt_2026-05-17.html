@@ -6,7 +6,7 @@
 <title>🏠 Property Hunt — 17 May 2026</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 2rem; line-height: 1.6; }
+  body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 2rem; line-height: 1.6; overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1000px; margin: 0 auto; }
   h1 { font-size: 2rem; color: #f0c040; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem; }
   .subtitle { color: #8b949e; font-size: 0.95rem; margin-bottom: 2rem; border-bottom: 1px solid #21262d; padding-bottom: 1rem; }
@@ -71,9 +71,12 @@
   
   .footer { text-align: center; color: #484f58; font-size: 0.8rem; margin-top: 3rem; border-top: 1px solid #21262d; padding-top: 1.5rem; }
   .footer .emoji { font-size: 1.5rem; }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
 <h1>🏠 Daily Property Hunt</h1>
@@ -90,6 +93,7 @@
 <!-- Market Summary -->
 <div class="market-summary">
 <h3 style="color: #f0c040; margin-bottom: 0.75rem;">📊 Market Pulse Summary</h3>
+<div class="table-scroll">
 <table>
   <tr><th>Area</th><th>Postcodes</th><th>Total Listings</th><th>Houses 2+ Bed</th><th>BRRR Targets</th><th>Market Health</th></tr>
   <tr><td>🔵 DY Dudley</td><td>DY1-DY9</td><td>3,408</td><td>188</td><td>24</td><td>🟡 Tight — <1% BRRR targets</td></tr>
@@ -97,6 +101,7 @@
   <tr><td>🔴 B Birmingham</td><td>B6-B44 (selected)</td><td>5,601</td><td>468</td><td>189</td><td>🟢 Good volume — lots of <£200k inventory</td></tr>
   <tr><td colspan="3"><strong>Total Scanned</strong></td><td><strong>983</strong></td><td><strong>~256</strong></td><td>🟡 Best hunting: WV1/WV10/WV12 & B6/B21/B23</td></tr>
 </table>
+</div>
 <p style="color: #8b949e; font-size: 0.8rem; margin-top: 0.75rem;">📌 BRRR Targets = Freehold, houses only (no flats), 2+ bed, £70-200k (DY/WV) or £150-250k (B), not auction, not STC</p>
 </div>
 
@@ -360,6 +365,7 @@
   <p>Automated daily scan: DY × WV × B | Filter: Freehold, 2+ bed, £70-200k/£150-250k | Next scan: Mon 18 May</p>
 </div>
 
+</div>
 </div>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <title>Daily R2R & SA Intelligence — 2026-05-21</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 24px; background: #f5f6fa; color: #1a1a2e; }
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 24px; background: #f5f6fa; color: #1a1a2e; overflow-wrap:break-word;word-break:break-word;}
   h1 { color: #0f3460; border-bottom: 3px solid #e94560; padding-bottom: 12px; margin-bottom: 24px; }
   h2 { color: #16213e; margin: 28px 0 12px; padding-left: 8px; border-left: 4px solid #e94560; }
   .section { background: white; border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.06); }
@@ -25,10 +25,13 @@
   table { width: 100%; border-collapse: collapse; margin: 12px 0; }
   th { background: #0f3460; color: white; padding: 8px; text-align: left; border: 1px solid #ddd; }
   td { padding: 8px; border: 1px solid #ddd; }
-  @media (max-width: 600px) { body { padding: 12px; } }
+  @media (max-width: 600px) { body { padding: 12px; overflow-wrap:break-word;word-break:break-word;} }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <h1>Daily R2R & Serviced Accommodation Intelligence — 2026-05-21</h1>
 
@@ -86,12 +89,14 @@
 
 <div class="section">
 <h2>📈 Financial Comparison: Three Models on Same Property (Nottingham Case Study)</h2>
+<div class="table-scroll">
 <table>
   <tr><th>Model</th><th>Gross Revenue</th><th>Operating Costs</th><th>Net Yield</th><th>OTA Fees</th><th>Avg Stay</th></tr>
   <tr><td>Short-Term Let (Airbnb)</td><td>£30,082</td><td>£13,364 (44.4%)</td><td>10.13%</td><td>15-20%</td><td>1-14 days</td></tr>
   <tr><td>Buy-to-Let (AST)</td><td>£12,000</td><td>£2,196 (18.3%)</td><td>5.94%</td><td>0%</td><td>6-12 months</td></tr>
   <tr><td><strong>Mid-Term Corporate Let 🏆</strong></td><td><strong>£25k-£30k</strong></td><td><strong>£3k-£5k (12-20%)</strong></td><td><strong>12%+ stable</strong></td><td><strong>0%</strong></td><td><strong>83 days</strong></td></tr>
 </table>
+</div>
 <p class="note">Source: Adam Lawrence, LinkedIn — "The Strategic Rise of UK Mid-Term Corporate Lettings" (May 2026). Same 4-bed property, same location.</p>
 </div>
 
@@ -137,5 +142,6 @@
 <p class="note"><strong>Files:</strong> r2r_sa_intelligence_20260521.html | Sources: 12 new this session | Total: 34+ across 9 daily runs</p>
 </div>
 
+</div>
 </body>
 </html>

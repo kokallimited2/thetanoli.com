@@ -25,7 +25,7 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .header {
     background: linear-gradient(135deg, #1a2332 0%, #0d1117 100%);
     border-bottom: 1px solid var(--border);
@@ -137,9 +137,12 @@
   .metric-card .label { font-size: 0.7rem; color: var(--text2); text-transform: uppercase; }
   @media (max-width: 700px) { .split-cols { grid-template-columns: 1fr; } }
   .footer { text-align: center; padding: 24px; color: var(--text2); font-size: 0.8rem; border-top: 1px solid var(--border); }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <div class="header">
   <h1>🏘️ Title Split Intelligence — 16 May 2026</h1>
@@ -208,7 +211,8 @@
     <div class="alert-title">⚠️ 15 Tipton Road flats MUST BE REMOVED (above)</div>
   </div>
 
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Project</th><th>Location</th><th>Proposal</th><th>Status</th><th>Title Split Relevance</th></tr>
     <tr>
       <td><strong>Claughton Centre</strong></td>
@@ -239,6 +243,7 @@
       <td>Greenfield land development — less relevant to title splitting but shows development appetite.</td>
     </tr>
   </table>
+</div>
   <p style="margin-top:8px; font-size:0.85rem; color:var(--text2);">Source: Birmingham Mail (Martyn Smith, 15 May 2026) · Express & Star (LDRS, May 2026)</p>
 </div>
 
@@ -248,7 +253,8 @@
   <p>Fresh listings identified from Rightmove, Zoopla, and Bond Wolfe auction catalogue. Prioritised by accessibility and title split potential.</p>
 
   <h3>🥇 Freehold-to-Leasehold Candidates (Already Converted Flats on Single Title)</h3>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Score</th><th>Property</th><th>Price</th><th>Units</th><th>Potential GDV Post-Split</th><th>Strategy</th></tr>
     <tr>
       <td><span class="score-high">9.5/10</span></td>
@@ -299,9 +305,11 @@
       <td>Tenanted block of 8 flats. No chain. Straightforward split.</td>
     </tr>
   </table>
+</div>
 
   <h3>🥈 Mixed-Use / Shop+Flat Candidates</h3>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Score</th><th>Property</th><th>Price</th><th>Structure</th><th>Split Angle</th></tr>
     <tr>
       <td><span class="score-high">9.0/10</span></td>
@@ -339,9 +347,11 @@
       <td>Buy with existing PP, build out, then title split into 14+1 titles. Larger capital commitment.</td>
     </tr>
   </table>
+</div>
 
   <h3>🥉 Victorian House Splits (≥120 sqm, Full Planning Required)</h3>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Score</th><th>Property</th><th>Price</th><th>Size</th><th>Split Potential</th></tr>
     <tr>
       <td><span class="score-med">7.5/10</span></td>
@@ -366,6 +376,7 @@
     </tr>
   </table>
 </div>
+</div>
 
 <!-- Bond Wolfe Update -->
 <div class="section">
@@ -386,7 +397,8 @@
 <!-- Commonhold Bill Q&A -->
 <div class="section">
   <h2>📜 Commonhold & Leasehold Reform Bill — Q&A for Title Split Investors</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Question</th><th>Answer</th></tr>
     <tr><td>Will the Bill ban leasehold title splitting?</td><td><span class="insight">Eventually, yes.</span> New long leases (>21 years) for flats will be banned. Newly-created flats must use commonhold structure instead. Existing leases unaffected.</td></tr>
     <tr><td>Can I still do freehold→leasehold splits in 2026?</td><td><span class="highlight">YES, but act now.</span> Bill is in pre-legislative scrutiny. Transitional period not yet settled. Traditional leasehold model works for splits commenced in 2026.</td></tr>
@@ -396,6 +408,7 @@
     <tr><td>Forfeiture gone?</td><td><span class="highlight">YES</span> — long lease forfeiture abolished. Landlords need court "lease enforcement claim" instead. Major change to landlord-tenant power balance.</td></tr>
     <tr><td>Best action NOW?</td><td><span class="highlight">Commence traditional leasehold title splits ASAP.</span> Find unsplit blocks (38 Handsworth Wood Rd, Church St Wednesbury, Treadwell Court), use Peppercorn Law £995/unit, register before ban. Consider commonhold as future-proof alternative.</td></tr>
   </table>
+</div>
   <p style="margin-top:10px; font-size:0.85rem; color:var(--text2);">Sources: Jones Day (May 2026), Baker McKenzie (Mar 2026), TLT LLP, Norton Rose Fulbright, Commons Library CBP-10653, Homehold.org</p>
 </div>
 
@@ -489,7 +502,8 @@
 <!-- Upcoming Auctions -->
 <div class="section">
   <h2>📅 Upcoming Auction Calendar — Title Split Target</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Date</th><th>House</th><th>Region</th><th>Expected Lots</th><th>Key Properties to Watch</th></tr>
     <tr>
       <td><strong>28 May 2026</strong></td>
@@ -520,6 +534,7 @@
       <td>TBC</td>
     </tr>
   </table>
+</div>
   <p style="margin-top:8px; font-size:0.85rem; color:var(--text2);">📞 Bond Wolfe: 0121 312 1212 | auctions@bondwolfe.com | SDL: sdlauctions.co.uk</p>
 </div>
 
@@ -528,6 +543,7 @@
   <p>Data from: Bond Wolfe, Rightmove, Zoopla, Express & Star, Birmingham Mail, Jones Day, Clever Lending, Foot Forward Properties, Peppercorn Law</p>
 </div>
 
+</div>
 </div>
 </body>
 </html>

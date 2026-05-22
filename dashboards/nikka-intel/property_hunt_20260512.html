@@ -6,7 +6,7 @@
 <title>🏠 Property Hunt — 12 May 2026</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; }
+body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; overflow-wrap:break-word;word-break:break-word;}
 .header { max-width: 1400px; margin: 0 auto 30px; }
 h1 { font-size: 2rem; color: #58a6ff; margin-bottom: 5px; }
 .subtitle { color: #8b949e; font-size: 0.9rem; }
@@ -44,9 +44,12 @@ h1 { font-size: 2rem; color: #58a6ff; margin-bottom: 5px; }
 .notes li { padding: 4px 0; color: #8b949e; font-size: 0.85rem; }
 .notes li::before { content: "• "; color: #58a6ff; }
 @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .stats { flex-direction: column; } }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="header">
 <h1>🏠 Daily Property Hunt — Dr Ateeq Yousif</h1>
 <div class="subtitle">12 May 2026 | Brierley Hill DY5 · 50-mile radius · Freehold houses £60k–£200k</div>
@@ -209,6 +212,7 @@ h1 { font-size: 2rem; color: #58a6ff; margin-bottom: 5px; }
 
 <div class="footer">
 Generated {datetime.now().strftime("%Y-%m-%d %H:%M")} · PropAI Deals API · Hermes Agent · Kokal Properties Ltd
+</div>
 </div>
 </body>
 </html>

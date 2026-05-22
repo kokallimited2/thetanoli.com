@@ -6,7 +6,7 @@
 <title>Daily Property Deal Analysis Intelligence — 2026-05-16</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 24px; background: #0d1117; color: #c9d1d9; }
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 24px; background: #0d1117; color: #c9d1d9; overflow-wrap:break-word;word-break:break-word;}
   h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 12px; margin-bottom: 24px; }
   h2 { color: #f0f6fc; margin: 28px 0 12px; padding-left: 8px; border-left: 4px solid #58a6ff; }
   h3 { color: #8b949e; margin: 16px 0 8px; }
@@ -24,9 +24,12 @@
   .improvement-box h3 { color: #3fb950; margin-top: 0; }
   hr { border: none; border-top: 1px solid #30363d; margin: 24px 0; }
   a { color: #58a6ff; }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <h1>📊 Daily Property Deal Analysis Intelligence — 2026-05-16</h1>
 
@@ -73,6 +76,7 @@
 <div class="insight-box">
 <h3>🔑 2. Gross Yield ≠ Net Yield ≠ ROI — The Three Layers of Profitability</h3>
 <p>DealSheet AI's worked example of a Newcastle terraced house demonstrates exactly why conflating these metrics is dangerous:</p>
+<div class="table-scroll">
 <table>
 <tr><th>Metric</th><th>Value</th><th>What It Tells You</th></tr>
 <tr><td>Gross Yield</td><td>6.33%</td><td>"On paper, this looks decent." (ignores all costs)</td></tr>
@@ -80,6 +84,7 @@
 <tr><td>ROI (at 5% mortgage)</td><td>2.1%</td><td>"Your cash earns this." (the real return on your £56k investment)</td></tr>
 <tr><td>ROI (at 3.5% mortgage)</td><td>5.8%</td><td>"Rate sensitivity dominates." (2.8× swing from 1.5% rate change)</td></tr>
 </table>
+</div>
 <p><strong>Critical insight:</strong> A property that looks like a solid 6.33% gross yield can deliver just 2.1% return on capital when you account for leverage, costs, and tax. And a 1.5% change in mortgage rate more than DOUBLES the ROI.</p>
 <p><strong>Application:</strong> Every Deal Card must now show ALL three metrics side by side. Gross yield alone is a dangerous shortcut. Always calculate ROI using total cash invested, not just the headline price.</p>
 </div>
@@ -87,6 +92,7 @@
 <div class="insight-box">
 <h3>🔑 3. Hidden Cost Waterfall — What Most Investors Skip</h3>
 <p>Flat Fee Landlord's analysis quantifies what most UK deal calculators ignore:</p>
+<div class="table-scroll">
 <table>
 <tr><th>Hidden Cost</th><th>Annual Impact (Self-Managed)</th><th>Impact on ROI</th></tr>
 <tr><td>Extended vacancy (>30 days)</td><td>£1,900–£3,900</td><td>Kills ~2 months of annual profit</td></tr>
@@ -95,6 +101,7 @@
 <tr><td>Legal/compliance errors</td><td>£0–£7,600+</td><td>One mistake = year of profit gone</td></tr>
 <tr><td>Owner time (opportunity cost)</td><td>£1,800–£4,600</td><td>At £50/hr, easily 40-90 hours/year</td></tr>
 </table>
+</div>
 <p><strong>Application:</strong> Every analysis needs a "Hidden Cost Buffer" section — factoring latent vacancy, professional management (£1,200–£2,400/yr), and maintenance escalation before presenting net cashflow. A deal that works on paper but breaks under real costs is a trap.</p>
 </div>
 
@@ -182,12 +189,14 @@
 <h2>📈 Financial Models — New Insights</h2>
 
 <h3>Three-Layer Profitability Benchmark</h3>
+<div class="table-scroll">
 <table>
 <tr><th>Metric</th><th>What It Measures</th><th>WM Target</th><th>Key Question</th></tr>
 <tr><td>Gross Yield</td><td>Headline rent ÷ price</td><td>≥ 6%</td><td>"Looks good on first glance?"</td></tr>
 <tr><td>Net Yield</td><td>Asset profitability after costs</td><td>≥ 4%</td><td>"Is the asset itself profitable?"</td></tr>
 <tr><td>ROI (Cash-on-Cash)</td><td>Your cash efficiency</td><td>≥ 15%</td><td>"Is your money working hard enough?"</td></tr>
 </table>
+</div>
 
 <h3>Mortgage Rate Sensitivity Factor (New)</h3>
 <div class="formula-box">
@@ -266,5 +275,6 @@
   <li>✅ Log deal count at each funnel stage: triaged → analysed → passed</li>
 </ul>
 
+</div>
 </body>
 </html>

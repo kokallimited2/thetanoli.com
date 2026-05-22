@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Property Strategy — BRRR & HMO Playbook</title>
 <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0c10;color:#e8eaed;font-family:'Inter',-apple-system,sans-serif;line-height:1.6;min-height:100vh;overflow-wrap:break-word;word-break:break-word}
+body{background:#0a0c10;color:#e8eaed;font-family:'Inter',-apple-system,sans-serif;line-height:1.6;min-height:100vh;overflow-wrap:break-word;word-break:break-wordoverflow-wrap:break-word;word-break:break-word;}
 .wrap{max-width:1100px;margin:0 auto;padding:2rem}
 h1{font-size:2.5rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .subtitle{color:#9ca3af;font-size:1.1rem;margin-bottom:2rem}
@@ -22,7 +22,10 @@ td{color:#9ca3af}
 .code{background:#0d1117;border:1px solid #1e293b;border-radius:6px;padding:.8rem;font-family:monospace;font-size:.8rem;color:#d1d5db;margin:.5rem 0;overflow-x:auto}
 .footer{text-align:center;padding:2rem;color:#4b5563;font-size:.8rem;border-top:1px solid #1e293b}
 @media(max-width:600px){h1{font-size:1.8rem}.wrap{padding:1rem}}
-</style></head><body><div class="wrap">
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
+</style></head><body>
+<div class="page-wrap"><div class="wrap">
 
 <h1>🏗️ BRRR & HMO Strategy — Dudley & Surrounds</h1>
 <p class="subtitle">Using PropAI Deals API for targeted deal finding • Article 4 analysis • R2R/HMO playbook</p>
@@ -77,6 +80,7 @@ python3 ~/.hermes/scripts/propaideals_tools.py search "DY2,DY4,DY5" 80000 150000
 
 <p style="color:#f87171;font-size:.9rem;margin-bottom:.8rem;padding:.8rem;background:#3b1f1f;border-radius:8px;"><strong>⚠️ UPDATE:</strong> Earlier version of this document incorrectly stated Dudley had no Article 4. Confirmed from Dudley Council's planning policy (DLP17): <strong>Dudley has a borough-wide Article 4 since 15 September 2023</strong> removing PD rights for C3→C4 HMO conversions.</p>
 
+<div class="table-scroll">
 <table>
 <tr><th>Council</th><th>Article 4 Status</th><th>Impact on HMO</th><th>R2R Opportunity</th></tr>
 <tr><td><strong>Dudley</strong></td><td><span class="tag tag-red">Borough-wide</span></td><td>Planning permission needed for ALL C3→C4 HMO conversions</td><td class="amber">⚠️ R2R only (you rent, no change of use)</td></tr>
@@ -85,6 +89,7 @@ python3 ~/.hermes/scripts/propaideals_tools.py search "DY2,DY4,DY5" 80000 150000
 <tr><td><strong>Walsall</strong></td><td><span class="tag tag-green">No known Article 4</span></td><td>C3→C4 still PD (verify before buying)</td><td class="green">✅ Best HMO option nearby</td></tr>
 <tr><td><strong>Wolverhampton</strong></td><td><span class="tag tag-amber">Partial</span></td><td>Some wards affected</td><td class="amber">⚠️ Outer areas may be free</td></tr>
 </table>
+</div>
 
 <h3 style="color:#fbbf24;margin:.8rem 0;">What This Actually Means</h3>
 <div class="strat-grid">
@@ -173,6 +178,7 @@ python3 ~/.hermes/scripts/propaideals_tools.py search "DY2,DY4,DY5" 80000 150000
 </div>
 <div class="strat-card">
 <h4>Cash Flow Per Strategy</h4>
+<div class="table-scroll">
 <table>
 <tr><th>Property</th><th>Strategy</th><th>Setup Cost</th><th>Monthly Profit</th><th>ROI</th></tr>
 <tr><td>3-bed £120k terrace</td><td>BRRR</td><td>£35k (£15k dep + £20k ref)</td><td>£150-250</td><td>5-8%</td></tr>
@@ -180,6 +186,7 @@ python3 ~/.hermes/scripts/propaideals_tools.py search "DY2,DY4,DY5" 80000 150000
 <tr><td>3-bed terrace</td><td>R2R</td><td>£3k (furnish)</td><td>£300-500</td><td>120-200%</td></tr>
 <tr><td>3-bed terrace</td><td>HMO buy+licence</td><td>£35k</td><td>£400-600</td><td>14-20%</td></tr>
 </table>
+</div>
 <p style="color:#fbbf24;font-size:.8rem;margin-top:.5rem">⚠️ R2R has highest ROI but no capital appreciation & more management</p>
 </div>
 </div>
@@ -256,4 +263,5 @@ python3 ~/.hermes/scripts/propaideals_tools.py calc brrr 120000 25 5.0 700
 <div class="footer" style="margin-top:28px;padding-top:14px;border-top:1px solid #334155;font-size:13px;color:#8b949e;text-align:center">
     🔵 Nikka's Intel Hub • Strategy Playbook • 22 May 2026 • 18,764 PropAI credits remaining<br>
     <span style="font-size:11px;color:#475569">🏠 <a href="index.html" style="color:#58a6ff">Home</a> · 🔥 <a href="brrr-sourcer.html" style="color:#58a6ff">BRRR Deals</a> · 🛠️ <a href="power-team.html" style="color:#58a6ff">Power Team</a> · 📡 <a href="market_signals_MAIN.html" style="color:#58a6ff">Signals</a></span>
-</div></body></html>
+</div></div>
+</body></html>

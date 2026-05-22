@@ -26,7 +26,7 @@
     padding: 20px;
     max-width: 1100px;
     margin: 0 auto;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   h1 { font-size: 1.8em; color: var(--accent); margin-bottom: 5px; }
   h2 { font-size: 1.3em; color: var(--accent3); margin: 25px 0 15px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
   h3 { font-size: 1.1em; color: var(--accent4); margin: 15px 0 8px; }
@@ -125,9 +125,12 @@
     .deal-header { flex-direction: column; }
     .stats-bar { grid-template-columns: repeat(2, 1fr); }
   }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <h1>🏠 Daily Property Hunt</h1>
 <p class="date">Tuesday, 19 May 2026 | 06:00 BST | Brierley Hill DY5 Base</p>
@@ -177,12 +180,14 @@
   </div>
 
   <h3>📈 Comparable Sales</h3>
-  <table class="comps-table">
+  <div class="table-scroll">
+<table class="comps-table">
     <tr><th>Address</th><th>Date Sold</th><th>Price</th></tr>
     <tr><td>54 Flavell Street, DY1 4NU</td><td>Mar 2025</td><td>£175,500</td></tr>
     <tr><td>51 Flavell Street, DY1 4NU</td><td>Jul 2020</td><td>£155,000</td></tr>
     <tr><td>57 Flavell Street, DY1 4NU</td><td>Oct 2020</td><td>£109,950</td></tr>
   </table>
+</div>
   <p style="font-size: 0.8em; color: var(--text-dim);">54 Flavell St sold at £175.5k (2025) — likely a similar or slightly better condition. Subject property at £160k is priced below that comp, suggesting room for value.</p>
 
   <h3>📋 Viewing Brief</h3>
@@ -226,12 +231,14 @@
   </div>
 
   <h3>📈 Comparable Sales — Gipsy Lane</h3>
-  <table class="comps-table">
+  <div class="table-scroll">
+<table class="comps-table">
     <tr><th>Address</th><th>Date Sold</th><th>Price</th></tr>
     <tr><td>122 Gipsy Lane, WV13</td><td>Sep 2025</td><td>£180,000</td></tr>
     <tr><td>17 Gipsy Lane, WV13</td><td>Apr 2024</td><td>£142,000</td></tr>
     <tr><td>99 Gipsy Lane, WV13</td><td>Mar 2025</td><td>£118,000</td></tr>
   </table>
+</div>
   <p style="font-size: 0.8em; color: var(--text-dim);">Strong market trajectory — average £180k last year, +38% YoY. Street is clearly in demand. New boiler (2025) is a major plus — saves £3-4k immediately.</p>
 
   <h3>📋 Viewing Brief</h3>
@@ -273,12 +280,14 @@
   </div>
 
   <h3>📈 Comparable Sales — Temple Street</h3>
-  <table class="comps-table">
+  <div class="table-scroll">
+<table class="comps-table">
     <tr><th>Address</th><th>Date Sold</th><th>Price</th></tr>
     <tr><td>5 Temple Street, DY3</td><td>Jan 2026</td><td>£132,000</td></tr>
     <tr><td>1a Temple Street, DY3</td><td>Aug 2023</td><td>£140,000</td></tr>
     <tr><td>4 Temple Street, DY3</td><td>Jan 2023</td><td>£138,000</td></tr>
   </table>
+</div>
   <p style="font-size: 0.8em; color: var(--text-dim);">⚠️ #4 Temple St (this property) last sold £138k in Jan 2023. Current asking £150k = £12k uplift in 3 years. Street average is £132k (Jan 2026 sale of #5 at £132k). This looks overpriced at £150k.</p>
 
   <h3>📋 Viewing Brief</h3>
@@ -297,6 +306,7 @@
 <h2>👁️ Also Worth Watching</h2>
 
 <div style="overflow-x: auto;">
+<div class="table-scroll">
 <table class="all-deals-table">
   <tr>
     <th>Property</th><th>Price</th><th>Type</th><th>Beds</th><th>Notable</th><th>Score</th><th>Link</th>
@@ -357,11 +367,13 @@
   </tr>
 </table>
 </div>
+</div>
 
 <!-- B POSTCODE STANDOUTS -->
 <h2>🏙️ B Postcode Highlights (£150k–£250k)</h2>
 
 <div style="overflow-x: auto;">
+<div class="table-scroll">
 <table class="all-deals-table">
   <tr>
     <th>Area</th><th>Address</th><th>Price</th><th>Beds</th><th>Type</th><th>Notes</th>
@@ -377,6 +389,7 @@
   <tr><td>B19</td><td>Lozells St, Lozells</td><td>£225,000</td><td>4</td><td>Terraced</td><td><span class="badge badge-reduced">⬇ REDUCED</span> 4-bed</td></tr>
   <tr><td>B32</td><td>Ridgacre Rd West, Quinton</td><td>£180,000</td><td>2</td><td>Terraced</td><td>Lowest price in B32</td></tr>
 </table>
+</div>
 </div>
 
 <!-- AREA BREAKDOWN -->
@@ -438,5 +451,6 @@
   Next scan: Tomorrow 06:00 — including WV3-WV9, B42-B44, and deeper B coverage
 </p>
 
+</div>
 </body>
 </html>

@@ -6,7 +6,7 @@
 <title>Property Deal Sourcer — Daily Report 15 May 2026</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 900px; margin: 0 auto; }
   .header { border-bottom: 1px solid #30363d; padding-bottom: 20px; margin-bottom: 24px; }
   .header h1 { font-size: 1.5em; color: #58a6ff; }
@@ -55,9 +55,12 @@
   .strategy-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; }
   .strategy-card h3 { font-size: 1em; margin-bottom: 8px; }
   .strategy-card .count { font-size: 1.5em; font-weight: 700; }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
 <div class="header">
@@ -109,7 +112,8 @@
 <!-- Top Leads from Today's Scan -->
 <div class="section">
   <h2>🔍 Today's New Leads (Ranked by Score)</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr>
       <th>Score</th><th>Address</th><th>Postcode</th><th>Price</th><th>Action</th><th>Signals</th>
     </tr>
@@ -195,6 +199,7 @@
     </tr>
   </table>
 </div>
+</div>
 
 <!-- Strategy Breakdown -->
 <div class="section">
@@ -252,7 +257,8 @@
 <!-- Historical Top Leads Comparison -->
 <div class="section">
   <h2>🏆 Top Active Deals (All Time)</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr>
       <th>Score</th><th>Strategy</th><th>Address</th><th>Postcode</th><th>Price</th><th>Profit</th><th>Yield</th><th>ROI</th><th>Status</th>
     </tr>
@@ -291,11 +297,13 @@
     </tr>
   </table>
 </div>
+</div>
 
 <div class="footer">
   Generated 15 May 2026 07:01 | Property Deal Sourcer v1.0 | West Midlands Residential Scan
 </div>
 
+</div>
 </div>
 </body>
 </html>

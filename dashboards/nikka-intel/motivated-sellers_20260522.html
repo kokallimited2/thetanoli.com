@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motivated Sellers Scan — Dudley 20mi — 22 May 2026</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --card: #1e293b;
+  --border: #30363d;
+  --accent: #58a6ff;
+  --green: #3fb950;
+  --red: #f85149;
+  --gold: #d29922;
+  --text: #c9d1d9;
+  --text2: #8b949e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.page-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.header {
+  background: linear-gradient(135deg, #0d1117 0%, #1e293b 50%, #0d1117 100%);
+  padding: 32px 20px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.header h1 { font-size: 32px; color: var(--accent); margin-bottom: 6px; }
+.header .subtitle { font-size: 14px; color: var(--text2); }
+.section-title {
+  font-size: 26px;
+  color: #f0f6fc;
+  margin: 28px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--accent); }
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.card-title { font-size: 18px; font-weight: 600; color: #f0f6fc; margin-bottom: 4px; }
+.card-address { font-size: 14px; color: var(--text2); margin-bottom: 12px; }
+.card-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.stat { display: flex; flex-direction: column; }
+.stat-value { font-size: 28px; font-weight: 700; }
+.stat-value.gold { color: var(--gold); }
+.stat-value.green { color: var(--green); }
+.stat-value.red { color: var(--red); }
+.stat-value.blue { color: var(--accent); }
+.stat-label { font-size: 13px; color: var(--text2); }
+.signals { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0; }
+.signal {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.signal-chainfree { background: #1a3a2a; color: var(--green); }
+.signal-reduced { background: #3d1f00; color: #d29922; }
+.signal-refurb { background: #1a2a3a; color: var(--accent); }
+.signal-investment { background: #2a1a3a; color: #c084fc; }
+.signal-cashbuyers { background: #3a1a1a; color: var(--red); }
+.signal-other { background: #1a2a2a; color: #7ee787; }
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.score-high { background: #1a3a2a; color: var(--green); border: 2px solid var(--green); }
+.score-mid { background: #3d2a00; color: var(--gold); border: 2px solid var(--gold); }
+.score-low { background: #2a1a1a; color: var(--red); border: 2px solid var(--red); }
+.summary-text { font-size: 14px; color: var(--text2); line-height: 1.5; margin: 8px 0; }
+.property-link {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+.property-link:hover { opacity: 0.9; }
+.score-bar {
+  height: 6px;
+  border-radius: 3px;
+  margin: 8px 0;
+}
+.score-bar.high { background: linear-gradient(90deg, var(--green), #2ea043); }
+.score-bar.mid { background: linear-gradient(90deg, var(--gold), #bb8009); }
+.score-bar.low { background: linear-gradient(90deg, var(--red), #da3633); }
+.rank-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.rank-1 { background: var(--gold); color: #000; }
+.rank-2 { background: #9ea7b0; color: #000; }
+.rank-3 { background: #a4875a; color: #000; }
+.rank-other { background: var(--bg2); color: var(--text2); }
+.score-detail { font-size: 12px; color: var(--text2); margin-top: 6px; }
+.score-detail span { display: inline-block; margin-right: 12px; }
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { background: var(--bg2); color: var(--text2); font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+tr:hover td { background: rgba(88,166,255,0.04); }
+.motivation-high { color: var(--green); font-weight: 600; }
+.motivation-med { color: var(--gold); font-weight: 500; }
+.motivation-low { color: var(--text2); }
+.dom-very-high { color: var(--red); font-weight: 600; }
+.dom-high { color: var(--gold); font-weight: 500; }
+.dom-med { color: var(--text); }
+.updated-badge {
+  display: inline-block;
+  font-size: 9px;
+  color: #64748b;
+  margin-top: 4px;
+}
+.updated-badge::before { content: "🕐 "; }
+.related-section { margin-top: 36px; }
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.related-card {
+  display: flex; flex-direction: column; gap: 4px;
+  background: #1e293b; border: 1px solid #30363d;
+  border-radius: 10px; padding: 14px;
+  text-decoration: none; transition: all 0.2s;
+}
+.related-card:hover {
+  border-color: #58a6ff; background: #273548;
+  transform: translateY(-2px);
+}
+.related-icon { font-size: 24px; }
+.related-title { font-size: 15px; font-weight: 600; color: #e6edf3; }
+.related-desc { font-size: 12px; color: #8b949e; }
+.footer {
+  text-align: center;
+  padding: 24px 0;
+  font-size: 14px;
+  color: #475569;
+  border-top: 1px solid var(--border);
+  margin-top: 36px;
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="header">
+  <h1>Motivated Sellers Scan</h1>
+  <div class="subtitle">Dudley, West Midlands — 20 mile radius | Houses 2+ beds | Max GBP 200,000 | Sorted by oldest first</div>
+  <div class="subtitle" style="margin-top:4px">Scan date: 22 May 2026</div>
+</div>
+
+<div class="summary-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:24px">
+  <div class="card" style="text-align:center"><div class="stat-value blue">35</div><div class="stat-label">Qualified Candidates</div></div>
+  <div class="card" style="text-align:center"><div class="stat-value gold">GBP 155,183</div><div class="stat-label">Avg Price</div></div>
+  <div class="card" style="text-align:center"><div class="stat-value red">27</div><div class="stat-label">1+ Year on Market</div></div>
+  <div class="card" style="text-align:center"><div class="stat-value green">8</div><div class="stat-label">Chain Free</div></div>
+  <div class="card" style="text-align:center"><div class="stat-value gold">16</div><div class="stat-label">Price Reduced</div></div>
+  <div class="card" style="text-align:center"><div class="stat-value blue">5</div><div class="stat-label">Refurb Required</div></div>
+</div>
+<h2 class="section-title">Top 5 Deals — Full Analysis</h2>
+<div class="card">
+  <div class="card-top">
+    <div>
+      <div class="card-title"><span class="rank-number rank-1">#1</span>Within Lane, Hopton, ST18</div>
+      <div class="card-address">Listed: Reduced on 07/01/2025 | LEASEHOLD</div>
+    </div>
+    <div class="score-badge score-high">74</div>
+  </div>
+  <div class="score-bar high" style="width:74%"></div>
+  <div class="card-stats">
+    <div class="stat"><span class="stat-value gold">GBP 160,000</span><span class="stat-label">Price</span></div>
+    <div class="stat"><span class="stat-value">2</span><span class="stat-label">Bedrooms</span></div>
+    <div class="stat"><span class="stat-value dom-very-high">393d</span><span class="stat-label">Days on Market</span></div>
+    <div class="stat"><span class="stat-value">1.1y</span><span class="stat-label">Stagnation</span></div>
+  </div>
+  <div class="signals"><span class="signal signal-chainfree">Chain Free</span><span class="signal signal-reduced">Reduced</span><span class="signal signal-refurb">Refurb Req.</span>
+  </div>
+  <div class="score-detail">
+    <span>DOM bonus: +35</span>
+    <span>Signal bonus: +39</span>
+  </div>
+  <div class="summary-text">Call us 9AM - 9PM -7 days a week, 365 days a year to arrange your viewing!!Stunning modern, two bedroom park home situated in a semi rural location, having easy access into Stafford Town Centre and nearby rural walks and specifically for those over t</div>
+  <a href="https://www.rightmove.co.uk/properties/161016416" target="_blank" class="property-link">View on Rightmove</a>
+</div>
+<div class="card">
+  <div class="card-top">
+    <div>
+      <div class="card-title"><span class="rank-number rank-2">#2</span>Dollery Drive, Birmingham, West Midlands, B5</div>
+      <div class="card-address">Listed: Reduced on 22/04/2025 | LEASEHOLD</div>
+    </div>
+    <div class="score-badge score-high">70</div>
+  </div>
+  <div class="score-bar high" style="width:70%"></div>
+  <div class="card-stats">
+    <div class="stat"><span class="stat-value gold">GBP 160,000</span><span class="stat-label">Price</span></div>
+    <div class="stat"><span class="stat-value">3</span><span class="stat-label">Bedrooms</span></div>
+    <div class="stat"><span class="stat-value dom-very-high">562d</span><span class="stat-label">Days on Market</span></div>
+    <div class="stat"><span class="stat-value">1.5y</span><span class="stat-label">Stagnation</span></div>
+  </div>
+  <div class="signals"><span class="signal signal-chainfree">Chain Free</span><span class="signal signal-reduced">Reduced</span><span class="signal signal-cashbuyers">Cash Buyers</span>
+  </div>
+  <div class="score-detail">
+    <span>DOM bonus: +35</span>
+    <span>Signal bonus: +35</span>
+  </div>
+  <div class="summary-text">*Available for sale with no onward chain* *Cash buyers only due to a short lease* Dixons Moseley are pleased to present this modern-build, mid-terrace family home located between the Pershore Road & Bristol Road which provides great easy access in to</div>
+  <a href="https://www.rightmove.co.uk/properties/154626851" target="_blank" class="property-link">View on Rightmove</a>
+</div>
+<div class="card">
+  <div class="card-top">
+    <div>
+      <div class="card-title"><span class="rank-number rank-3">#3</span>Corbett Road, Brierley Hill, DY5</div>
+      <div class="card-address">Listed: Reduced on 05/03/2024 | FREEHOLD</div>
+    </div>
+    <div class="score-badge score-mid">62</div>
+  </div>
+  <div class="score-bar mid" style="width:62%"></div>
+  <div class="card-stats">
+    <div class="stat"><span class="stat-value gold">GBP 165,000</span><span class="stat-label">Price</span></div>
+    <div class="stat"><span class="stat-value">3</span><span class="stat-label">Bedrooms</span></div>
+    <div class="stat"><span class="stat-value dom-very-high">877d</span><span class="stat-label">Days on Market</span></div>
+    <div class="stat"><span class="stat-value">2.4y</span><span class="stat-label">Stagnation</span></div>
+  </div>
+  <div class="signals"><span class="signal signal-chainfree">Chain Free</span><span class="signal signal-reduced">Reduced</span>
+  </div>
+  <div class="score-detail">
+    <span>DOM bonus: +35</span>
+    <span>Signal bonus: +27</span>
+  </div>
+  <div class="summary-text">** AVAILABLE WTH NO CHAIN, BOOK YOUR VIEWING ONLINE OR BY PHONE TODAY ** Traditional terrace home within walking distance to local amenities and Merry Hill shopping centre. Benefiting from Lounge, Kitchen diner, Three bedrooms, Family bathroom and do</div>
+  <a href="https://www.rightmove.co.uk/properties/143198579" target="_blank" class="property-link">View on Rightmove</a>
+</div>
+<div class="card">
+  <div class="card-top">
+    <div>
+      <div class="card-title"><span class="rank-number rank-other">#4</span>Haden Road, Cradley Heath</div>
+      <div class="card-address">Listed: Reduced on 19/05/2025 | FREEHOLD</div>
+    </div>
+    <div class="score-badge score-mid">62</div>
+  </div>
+  <div class="score-bar mid" style="width:62%"></div>
+  <div class="card-stats">
+    <div class="stat"><span class="stat-value gold">GBP 165,000</span><span class="stat-label">Price</span></div>
+    <div class="stat"><span class="stat-value">2</span><span class="stat-label">Bedrooms</span></div>
+    <div class="stat"><span class="stat-value dom-very-high">797d</span><span class="stat-label">Days on Market</span></div>
+    <div class="stat"><span class="stat-value">2.2y</span><span class="stat-label">Stagnation</span></div>
+  </div>
+  <div class="signals"><span class="signal signal-chainfree">Chain Free</span><span class="signal signal-reduced">Reduced</span>
+  </div>
+  <div class="score-detail">
+    <span>DOM bonus: +35</span>
+    <span>Signal bonus: +27</span>
+  </div>
+  <div class="summary-text">G&T Properties Are Delighted To Offer This SPACIOUS, WELL PRESENTED 2 Bed Property, With NO CHAIN, Country Style KITCHEN/DINER, 2 DOUBLE BEDROOMS, And Private REAR GARDEN. In A DESIRABLE Area, Close To All Amenities, Walking Distance Of Quality Schoo</div>
+  <a href="https://www.rightmove.co.uk/properties/145807238" target="_blank" class="property-link">View on Rightmove</a>
+</div>
+<div class="card">
+  <div class="card-top">
+    <div>
+      <div class="card-title"><span class="rank-number rank-other">#5</span>Darlaston Lane, Bilston</div>
+      <div class="card-address">Listed: Added on 13/02/2025 | FREEHOLD</div>
+    </div>
+    <div class="score-badge score-mid">62</div>
+  </div>
+  <div class="score-bar mid" style="width:62%"></div>
+  <div class="card-stats">
+    <div class="stat"><span class="stat-value gold">GBP 195,000</span><span class="stat-label">Price</span></div>
+    <div class="stat"><span class="stat-value">3</span><span class="stat-label">Bedrooms</span></div>
+    <div class="stat"><span class="stat-value dom-very-high">787d</span><span class="stat-label">Days on Market</span></div>
+    <div class="stat"><span class="stat-value">2.2y</span><span class="stat-label">Stagnation</span></div>
+  </div>
+  <div class="signals"><span class="signal signal-chainfree">Chain Free</span><span class="signal signal-refurb">Refurb Req.</span>
+  </div>
+  <div class="score-detail">
+    <span>DOM bonus: +35</span>
+    <span>Signal bonus: +27</span>
+  </div>
+  <div class="summary-text">"A FANTASTIC AND RARE OPPORTUNITY TO PURCHASE THIS MOSTLY COMPLETE REFURBISHMENT OPPORTUNITY" Comprising of entrance porch, entrance hall, lounge, dining room, kitchen, utility, 3 bedrooms and a family bathroom. Large gravel driveway to front and a l</div>
+  <a href="https://www.rightmove.co.uk/properties/146098013" target="_blank" class="property-link">View on Rightmove</a>
+</div><h2 class="section-title">Candidates 6-20</h2><div class="table-scroll"><table><tr><th>#</th><th>Address</th><th>Beds</th><th>Price</th><th>DOM</th><th>Score</th><th>Signals</th><th>Tenure</th></tr><tr><td>6</td><td>Frederick Road, Oldbury, West Midlands, B68</td><td>2</td><td>GBP 175,000</td><td class="dom-very-high">441d</td><td>62</td><td>Chain Free, Reduced</td><td>FREEHOLD</td></tr><tr><td>7</td><td>Maple Road, Pelsall, Walsall, WS3 4JJ </td><td>2</td><td>GBP 200,000</td><td class="dom-very-high">569d</td><td>59</td><td>Reduced, Refurb Req.</td><td>FREEHOLD</td></tr><tr><td>8</td><td>Whetstone Grove, Wolverhampton WV10 9UB</td><td>2</td><td>GBP 159,950</td><td class="dom-very-high">447d</td><td>55</td><td>Chain Free, Investment</td><td>FREEHOLD</td></tr><tr><td>9</td><td>Boulton Grange, Randlay, TF3</td><td>2</td><td>GBP 159,995</td><td class="dom-very-high">456d</td><td>52</td><td>Reduced, Investment</td><td>FREEHOLD</td></tr><tr><td>10</td><td>Premier Court, Monyhull Hall Road, Kings Nort</td><td>2</td><td>GBP 100,000</td><td class="dom-very-high">792d</td><td>50</td><td>Chain Free</td><td>LEASEHOLD</td></tr><tr><td>11</td><td>Eldon Drive, Walmley</td><td>2</td><td>GBP 185,000</td><td class="dom-very-high">946d</td><td>47</td><td>Reduced</td><td>LEASEHOLD</td></tr><tr><td>12</td><td>Weston Street, Walsall, WS1</td><td>3</td><td>GBP 155,000</td><td class="dom-very-high">895d</td><td>47</td><td>Reduced</td><td>FREEHOLD</td></tr><tr><td>13</td><td>Blackham Drive, Sutton Coldfield, B73 5HG</td><td>2</td><td>GBP 200,000</td><td class="dom-very-high">664d</td><td>47</td><td>Reduced</td><td>None</td></tr><tr><td>14</td><td>Union Road, Shirley, Solihull</td><td>2</td><td>GBP 112,500</td><td class="dom-very-high">651d</td><td>47</td><td>Reduced</td><td>LEASEHOLD</td></tr><tr><td>15</td><td>Lake Street, Dudley</td><td>2</td><td>GBP 195,000</td><td class="dom-very-high">618d</td><td>47</td><td>Reduced</td><td>FREEHOLD</td></tr><tr><td>16</td><td>Upper Holland Road, Sutton Coldfield</td><td>2</td><td>GBP 115,000</td><td class="dom-very-high">444d</td><td>47</td><td>Reduced</td><td>LEASEHOLD</td></tr><tr><td>17</td><td>Fifth Avenue, Wolverhampton, West Midlands, W</td><td>3</td><td>GBP 180,000</td><td class="dom-very-high">430d</td><td>47</td><td>Refurb Req.</td><td>FREEHOLD</td></tr><tr><td>18</td><td>St. Marks Road, Tipton</td><td>2</td><td>GBP 105,000</td><td class="dom-very-high">602d</td><td>40</td><td>Investment</td><td>LEASEHOLD</td></tr><tr><td>19</td><td>Phoenix Street, Wolverhampton</td><td>3</td><td>GBP 199,000</td><td class="dom-very-high">430d</td><td>40</td><td>Investment</td><td>FREEHOLD</td></tr><tr><td>20</td><td>Hampton Lane, Solihull</td><td>2</td><td>GBP 50,000</td><td class="dom-very-high">1008d</td><td>35</td><td>—</td><td>LEASEHOLD</td></tr></table></div><h2 class="section-title">Additional Candidates (21-35)</h2><div class="table-scroll"><table><tr><th>#</th><th>Address</th><th>Beds</th><th>Price</th><th>DOM</th><th>Score</th><th>Signals</th></tr><tr><td>21</td><td>Yorkshire Grove, Walsall, WS2</td><td>2</td><td>GBP 185,000</td><td>657d</td><td>35</td><td>—</td></tr><tr><td>22</td><td>Southfield, Sutton Hill, TF7</td><td>2</td><td>GBP 99,995</td><td>566d</td><td>35</td><td>—</td></tr><tr><td>23</td><td>Building Plot, Grimley, Worcester.  WR2 6LU</td><td>3</td><td>GBP 180,000</td><td>541d</td><td>35</td><td>—</td></tr><tr><td>24</td><td>Solihull Retirement Village, Victoria Crescent</td><td>2</td><td>GBP 172,500</td><td>507d</td><td>35</td><td>—</td></tr><tr><td>25</td><td>Alfred Road, Handsworth, West Midlands, B21</td><td>3</td><td>GBP 180,000</td><td>429d</td><td>35</td><td>—</td></tr><tr><td>26</td><td>Grange Road, Ketley Bank, Telford, Shropshire, TF2</td><td>3</td><td>GBP 187,500</td><td>422d</td><td>35</td><td>—</td></tr><tr><td>27</td><td>Caterham Crescent,
+Streethay,
+Lichfield,
+WS13 8</td><td>2</td><td>GBP 122,000</td><td>391d</td><td>35</td><td>—</td></tr><tr><td>28</td><td>Spring Meadow, Sutton Hill, TF7</td><td>4</td><td>GBP 130,000</td><td>363d</td><td>30</td><td>Investment</td></tr><tr><td>29</td><td>Cranage Crescent, Wellington, Telford, Shropshire,</td><td>3</td><td>GBP 108,000</td><td>119d</td><td>30</td><td>Auction, Guide Price</td></tr><tr><td>30</td><td>Woodfield Crescent, Kidderminster</td><td>3</td><td>GBP 180,000</td><td>147d</td><td>27</td><td>Reduced</td></tr><tr><td>31</td><td>Wilkinson Avenue, Broseley</td><td>3</td><td>GBP 169,950</td><td>114d</td><td>27</td><td>Reduced</td></tr><tr><td>32</td><td>, Telford, TF8 7BS</td><td>2</td><td>GBP 119,000</td><td>234d</td><td>25</td><td>—</td></tr><tr><td>33</td><td>90 Wrekin Road, Telford, TF1 1RJ</td><td>2</td><td>GBP 175,000</td><td>44d</td><td>12</td><td>Reduced</td></tr><tr><td>34</td><td>Deercote, Hollinswood, Telford, Shropshire, TF3</td><td>3</td><td>GBP 195,000</td><td>2d</td><td>12</td><td>Refurb Req.</td></tr><tr><td>35</td><td>36 Old Lane, Walsall, West Midlands WS3 2DD</td><td>2</td><td>GBP 91,000</td><td>1d</td><td>10</td><td>Auction</td></tr></table></div><h2 class="section-title">Scan Methodology</h2>
+<div class="card" style="font-size:14px;color:var(--text2);line-height:1.7">
+  <p><strong>Scoring System (max 100 pts):</strong></p>
+  <ul style="padding-left:20px;margin:8px 0">
+    <li><strong>Chain Free / No Chain</strong> — 15 pts (strong motivation signal)</li>
+    <li><strong>Probate Sale</strong> — 20 pts (highest individual signal)</li>
+    <li><strong>Vacant Possession</strong> — 15 pts</li>
+    <li><strong>Price Reduced</strong> — 12 pts (vendor adjusting expectations)</li>
+    <li><strong>Auction Property</strong> — 10 pts</li>
+    <li><strong>Refurbishment Required</strong> — 12 pts (deferred maintenance)</li>
+    <li><strong>Investment Opportunity</strong> — 5 pts (supplementary)</li>
+    <li><strong>Cash Buyers Only</strong> — 8 pts (chain complexity)</li>
+    <li><strong>Days on Market:</strong> 90+ days = +15, 180+ days = +10, 365+ days = +10</li>
+  </ul>
+  <p style="margin-top:8px"><strong>Search parameters:</strong> Rightmove — Dudley (REGION^443), 20 mile radius, houses only (excl. flats/apartments), 2+ beds, max GBP 200,000, sorted oldest first (SortType=10). Scanned 125 properties across 5 pages.</p>
+</div>
+
+<div class="related-section">
+  <h2 class="section-title">Related Resources</h2>
+  <div class="related-grid">
+    <a href="../index.html" class="related-card">
+      <span class="related-icon">&#x1F3E0;</span>
+      <span class="related-title">Dashboard Home</span>
+      <span class="related-desc">Property intelligence hub</span>
+    </a>
+    <a href="../brrr-sourcer.html" class="related-card">
+      <span class="related-icon">&#x1F525;</span>
+      <span class="related-title">BRRR Daily Sourcer</span>
+      <span class="related-desc">Daily BRRR deals via PropAI</span>
+    </a>
+    <a href="../power-team.html" class="related-card">
+      <span class="related-icon">&#x1F6E0;&#xFE0F;</span>
+      <span class="related-title">Power Team</span>
+      <span class="related-desc">Vetted tradespeople</span>
+    </a>
+    <a href="../strategy-brrr-hmo-playbook.html" class="related-card">
+      <span class="related-icon">&#x1F4CB;</span>
+      <span class="related-title">BRRR/HMO Strategy</span>
+      <span class="related-desc">Investment playbook</span>
+    </a>
+    <a href="../market_signals_MAIN.html" class="related-card">
+      <span class="related-icon">&#x1F4E1;</span>
+      <span class="related-title">Market Signals</span>
+      <span class="related-desc">Market intelligence</span>
+    </a>
+    <a href="../area-intelligence/" class="related-card">
+      <span class="related-icon">&#x1F5FA;&#xFE0F;</span>
+      <span class="related-title">Area Intelligence</span>
+      <span class="related-desc">Location analysis</span>
+    </a>
+    <a href="../vendor-distress-intelligence.html" class="related-card">
+      <span class="related-icon">&#x1F50D;</span>
+      <span class="related-title">Vendor Distress Intel</span>
+      <span class="related-desc">Motivated seller leads</span>
+    </a>
+  </div>
+</div>
+
+<div class="footer">
+  <div style="margin-bottom:8px">
+    <span style="font-size:11px;color:#475569">
+      Home · BRRR Deals · Power Team · Strategy · Market Signals · Area Intel · Vendor Distress
+    </span>
+  </div>
+  Page generated: 22 May 2026 06:24 BST
+  <span class="updated-badge"></span>
+</div>
+
+</div>
+</body>
+</html>

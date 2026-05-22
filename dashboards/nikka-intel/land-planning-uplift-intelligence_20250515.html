@@ -6,7 +6,7 @@
 <title>🏗️ Land & Planning Uplift Intelligence — West Midlands | 15 May 2026</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, system-ui, sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #0a0e1a; color: #e8edf5; }
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #0a0e1a; color: #e8edf5; overflow-wrap:break-word;word-break:break-word;}
   h1 { color: #00d4aa; border-bottom: 3px solid #00d4aa; padding-bottom: 12px; margin-bottom: 24px; font-size: 1.8em; }
   h2 { color: #4fc3f7; margin: 28px 0 12px; padding-left: 10px; border-left: 4px solid #00d4aa; }
   h3 { color: #81c784; margin: 20px 0 10px; }
@@ -37,10 +37,13 @@
   .price-up { color: #00d4aa; }
   .price-down { color: #e94560; }
   .section-divider { border: none; height: 1px; background: linear-gradient(to right, transparent, #1e2740, transparent); margin: 30px 0; }
-  @media (max-width: 600px) { body { padding: 12px; } .checklist { columns: 1; } table { font-size: 0.75em; } }
+  @media (max-width: 600px) { body { padding: 12px; overflow-wrap:break-word;word-break:break-word;} .checklist { columns: 1; } table { font-size: 0.75em; } }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <h1>🏗️ Land & Planning Uplift Intelligence Report</h1>
 
@@ -85,6 +88,7 @@
 <h2>📊 Planning Uplift Deal Criteria (Refined for West Midlands)</h2>
 
 <div class="card">
+<div class="table-scroll">
 <table>
 <tr><th>Criteria</th><th>Weight</th><th>What to Assess</th><th>Target</th></tr>
 <tr><td>Planning Likelihood</td><td>/20</td><td>Local plan allocation, nearby approved schemes, 5-year supply, NPPF compliance, policy alignment</td><td>≥14/20</td></tr>
@@ -95,6 +99,7 @@
 <tr><td>Cost Control</td><td>/10</td><td>Acquisition cost + fees + consultant costs (planning, architect, surveys) + holding costs + CIL/BNG</td><td>≥7/10</td></tr>
 <tr><td>Time Risk</td><td>/10</td><td>Planning timeline, appeal risk, S106 negotiation, CPO risk, infrastructure delays</td><td>≤3 years to exit</td></tr>
 </table>
+</div>
 <p style="margin-top: 10px; color: #90a4ae;"><strong>Threshold:</strong> Only flag ≥7.5/10 (75+ points). Below that: add to watchlist or reject.</p>
 </div>
 
@@ -102,6 +107,7 @@
 <h2>🎯 Top Opportunities Scan</h2>
 
 <div class="card">
+<div class="table-scroll">
 <table>
 <tr><th>#</th><th>Location</th><th>Asset Type</th><th>Planning Angle</th><th>Est. Uplift</th><th>Score</th><th>Verdict</th></tr>
 
@@ -196,6 +202,7 @@
 </tr>
 </table>
 </div>
+</div>
 
 <!-- ===== PLANNING RISK CHECKLIST ===== -->
 <h2>⚠️ Planning Risk Checklist</h2>
@@ -276,5 +283,6 @@
 <p style="margin-top: 6px;"><em>All opportunities flagged require manual due diligence. Do not proceed without independent legal and planning advice.</em></p>
 </div>
 
+</div>
 </body>
 </html>

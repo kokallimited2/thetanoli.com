@@ -25,7 +25,7 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .header {
     background: linear-gradient(135deg, #1a2332 0%, #0d1117 100%);
     border-bottom: 1px solid var(--border);
@@ -133,9 +133,12 @@
   .metric-card .label { font-size: 0.7rem; color: var(--text2); text-transform: uppercase; }
   @media (max-width: 700px) { .split-cols { grid-template-columns: 1fr; } }
   .footer { text-align: center; padding: 24px; color: var(--text2); font-size: 0.8rem; border-top: 1px solid var(--border); }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <div class="header">
   <h1>🏘️ Title Split Intelligence — 15 May 2026</h1>
@@ -191,7 +194,8 @@
     <li><span class="highlight">14 May:</span> Anticipated £25-28m based on catalogue size</li>
   </ul>
   <h4>Key Lots Watched (from yesterday's pre-auction analysis):</h4>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Address</th><th>Guide Price</th><th>Type</th><th>Title Split Potential</th><th>Status</th></tr>
     <tr>
       <td>33 Spouthouse Lane, Great Barr B43</td>
@@ -229,13 +233,15 @@
       <td><span class="tag tag-orange">AWAITING RESULT</span></td>
     </tr>
   </table>
+</div>
   <p style="margin-top:10px; font-size:0.85rem; color:var(--text2);">📞 Bond Wolfe: 0121 312 1212 | auctions@bondwolfe.com | Next auction: 9 July 2026</p>
 </div>
 
 <!-- Top Strategies Table -->
 <div class="section">
   <h2>🏆 Top Title Split Strategies — May 2026</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr>
       <th>Score</th><th>Strategy</th><th>Risk Level</th><th>Capital Required</th><th>Timeline</th><th>Typical Return</th>
     </tr>
@@ -280,6 +286,7 @@
       <td>Variable</td>
     </tr>
   </table>
+</div>
 </div>
 
 <!-- Best Property Types -->
@@ -392,7 +399,8 @@
 <!-- Deep Dive: Commonhold Bill Impact -->
 <div class="section">
   <h2>🔍 Deep Dive: Commonhold Bill — What Title Splitters Need to Know NOW</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Question</th><th>Answer</th></tr>
     <tr><td>What's changing?</td><td>New residential leases >21 years for flats will be banned. Commonhold replaces leasehold for new flats.</td></tr>
     <tr><td>When?</td><td>Bill published 27 Jan 2026. Consultation closed 24 Apr 2026. Pre-legislative scrutiny by HCLG Committee report expected Spring 2026. <strong>Unknown commencement date</strong> — but 2027 is realistic estimate.</td></tr>
@@ -402,6 +410,7 @@
     <tr><td>Does commonhold work for title splitting?</td><td><span class="insight">Unknown — but likely.</span> You'd grant commonhold units instead of leases. Solicitor consultation essential.</td></tr>
     <tr><td>Best action now?</td><td><span class="highlight">Commence traditional leasehold title splits ASAP.</span> Find unsplit blocks, use Peppercorn Law or specialist solicitor, register before the ban.</td></tr>
   </table>
+</div>
   <p style="margin-top:10px; font-size:0.85rem; color:var(--text2);">Sources: Jones Day (May 2026), TLT LLP, Baker McKenzie, Norton Rose Fulbright, Peppercorn Law</p>
 </div>
 
@@ -475,13 +484,15 @@
 <!-- Upcoming Auctions -->
 <div class="section">
   <h2>📅 Upcoming Auction Calendar — Title Split Target</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Date</th><th>House</th><th>Region</th><th>Expected Lots</th></tr>
     <tr><td>9 July 2026</td><td>Bond Wolfe</td><td>West Midlands (livestream)</td><td>~170</td></tr>
     <tr><td>10 Sept 2026</td><td>Bond Wolfe</td><td>West Midlands (livestream)</td><td>~170</td></tr>
     <tr><td>22 Oct 2026</td><td>Bond Wolfe</td><td>West Midlands (livestream)</td><td>~165</td></tr>
     <tr><td>9 Dec 2026</td><td>Bond Wolfe</td><td>West Midlands (livestream)</td><td>~160</td></tr>
   </table>
+</div>
   <p style="margin-top:8px; font-size:0.85rem; color:var(--text2);">📞 Bond Wolfe: 0121 312 1212 | auctions@bondwolfe.com</p>
 </div>
 
@@ -490,6 +501,7 @@
   <p>Data from: Bond Wolfe, Clever Lending, Peppercorn Law, Jones Day, TLT LLP, Baker McKenzie, Norton Rose Fulbright</p>
 </div>
 
+</div>
 </div>
 </body>
 </html>

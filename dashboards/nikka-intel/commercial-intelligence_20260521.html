@@ -7,7 +7,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #0a0e17; color: #e0e6ed; font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; }
+body { background: #0a0e17; color: #e0e6ed; font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; overflow-wrap:break-word;word-break:break-word;}
 .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 .header { background: linear-gradient(135deg, #0f1923 0%, #1a2a3a 100%); border: 1px solid #1e3a5f; border-radius: 16px; padding: 30px; margin-bottom: 24px; }
 .header h1 { font-size: 28px; font-weight: 700; color: #60a5fa; display: flex; align-items: center; gap: 12px; }
@@ -47,9 +47,12 @@ li { margin: 4px 0; color: #cbd5e1; font-size: 13px; }
 .flag-list { display: flex; gap: 6px; flex-wrap: wrap; }
 .new-badge { background: #fbbf2433; color: #fbbf24; }
 @media (max-width: 768px) { .metric-grid { grid-template-columns: repeat(2, 1fr); } }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
 <!-- HEADER -->
@@ -115,7 +118,8 @@ li { margin: 4px 0; color: #cbd5e1; font-size: 13px; }
 <!-- STRATEGY LIBRARY -->
 <div class="section">
   <h2>📚 Commercial Strategy Library — Updated 21 May 2026</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Strategy</th><th>Capital</th><th>Yield Range</th><th>Risk</th><th>Best For</th><th>Verdict</th></tr>
     <tr>
       <td>🏪 Shop-with-Flat</td><td>£80-250k</td><td>7-12%</td>
@@ -172,13 +176,15 @@ li { margin: 4px 0; color: #cbd5e1; font-size: 13px; }
       <td><span class="tag tag-red">✅ INNOVATION</span></td>
     </tr>
   </table>
+</div>
   <p style="font-size:12px; color:#64748b; margin-top:8px;">* Hybrid Income+Conversion and Retail-then-Resi Sequencing are lowest-risk because income covers holding costs.</p>
 </div>
 
 <!-- TOP OPPORTUNITIES -->
 <div class="section">
   <h2>🎯 Top Opportunities — 21 May 2026</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Rank</th><th>Location</th><th>Asset Type</th><th>Strategy</th><th>Price</th><th>Yield/Upside</th><th>Risk</th><th>Score</th></tr>
     <tr style="background:rgba(52,211,153,0.05);">
       <td>🥇</td>
@@ -261,6 +267,7 @@ li { margin: 4px 0; color: #cbd5e1; font-size: 13px; }
       <td><strong>7.5/10</strong></td>
     </tr>
   </table>
+</div>
 </div>
 
 <!-- DETAILED DEAL ANALYSIS -->
@@ -453,7 +460,8 @@ li { margin: 4px 0; color: #cbd5e1; font-size: 13px; }
 <!-- AREA HEATMAP -->
 <div class="section">
   <h2>🔥 Area Heatmap — 21 May 2026</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Area</th><th>Activity</th><th>Best Strategy</th><th>Yield Range</th><th>New This Run</th></tr>
     <tr><td><strong>Halesowen</strong> 🏆</td><td><span class="tag tag-green">Very High</span></td><td>Small-cap retail BTL / Pre-approved dev</td><td>8-15%</td><td>130 Colley Gate (7-unit PP), Windmill Hill (£82.5k income)</td></tr>
     <tr><td><strong>Walsall</strong> 🆕</td><td><span class="tag tag-gold">Rising</span></td><td>Mixed-use BTL / Post-auction distress</td><td>8-13%</td><td>54 West Bromwich St (UNSOLD, 12.9% yield)</td></tr>
@@ -464,11 +472,13 @@ li { margin: 4px 0; color: #cbd5e1; font-size: 13px; }
     <tr><td><strong>Smethwick/Bearwood</strong></td><td><span class="tag tag-gold">Emerging</span></td><td>Cafe/shop retail BTL</td><td>8-10%</td><td>Auction sales proving market</td></tr>
   </table>
 </div>
+</div>
 
 <!-- PIPELINE -->
 <div class="section">
   <h2>📋 Commercial Deal Pipeline</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Status</th><th>Property</th><th>Strategy</th><th>Price</th><th>Score</th><th>Next Step</th></tr>
     <tr><td><span class="tag tag-green">🔴 PRIORITY</span></td><td>54 West Bromwich St, Walsall</td><td>Post-auction BTL</td><td>£225k (neg. below £195k)</td><td>8.8/10</td><td>Track listing, approach agent with below-guide offer in 4 weeks</td></tr>
     <tr><td><span class="tag tag-green">🔴 PRIORITY</span></td><td>49-63 High St, Halesowen</td><td>Hybrid Income+Conversion</td><td>£1,295,000</td><td>9.1/10</td><td>Call Bond Wolfe — view + legal pack (ongoing)</td></tr>
@@ -479,6 +489,7 @@ li { margin: 4px 0; color: #cbd5e1; font-size: 13px; }
     <tr><td><span class="tag" style="background:#1e3a5f;">⚪ MONITOR</span></td><td>58 Tower St, Dudley</td><td>Auction lot (Sep)</td><td>£120-130k</td><td>7.8/10</td><td>Set auction reminder, pre-register</td></tr>
     <tr><td><span class="tag" style="background:#1e3a5f;">⚪ MONITOR</span></td><td>Key Industrial Est., Wednesfield</td><td>Industrial BTL</td><td>~£500k</td><td>7.5/10</td><td>Check EPC upgrade cost (E → C by 2027)</td></tr>
   </table>
+</div>
 </div>
 
 <!-- HERMES SKILL IMPROVEMENTS -->
@@ -554,6 +565,7 @@ li { margin: 4px 0; color: #cbd5e1; font-size: 13px; }
   ⚠️ This is not financial advice. Always verify with qualified professionals.
 </div>
 
+</div>
 </div>
 </body>
 </html>

@@ -25,7 +25,7 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .header {
     background: linear-gradient(135deg, #1a2332 0%, #0d1117 100%);
     border-bottom: 1px solid var(--border);
@@ -118,9 +118,12 @@
   .score-high { color: var(--green); font-weight: 700; }
   .score-med { color: var(--orange); font-weight: 700; }
   .score-low { color: var(--red); font-weight: 700; }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="header">
   <h1>🏘️ Title Split Intelligence — 13 May 2026</h1>
   <p>UK Title Split &amp; Property Subdivision Analysis · Run 2</p>
@@ -146,7 +149,8 @@
   <h2>🏆 Top Title Split Candidates — Scored & Ranked</h2>
   <p>Scored across 7 dimensions: Physical Split (/20), Planning Likelihood (/20), GDV Uplift (/20), Legal Simplicity (/15), Financeability (/10), Exit Demand (/10), Risk (/5). <strong>Only ≥7.5/10 listed.</strong></p>
 
-  <table>
+  <div class="table-scroll">
+<table>
     <tr>
       <th>Score</th><th>Verdict</th><th>Location</th><th>Type</th><th>Price</th><th>Split Angle</th><th>Est. GDV</th><th>Key Risk</th>
     </tr>
@@ -242,12 +246,14 @@
     </tr>
   </table>
 </div>
+</div>
 
 <div class="section">
   <h2>🔍 Live Market — 4+ Bed Properties with Split Potential</h2>
 
   <h3>📌 Dudley (DY1-DY4) — £200k-£600k Range</h3>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Price</th><th>Type</th><th>Address</th><th>Yield</th><th>Split Score</th><th>Notes</th></tr>
     <tr><td>£225k</td><td>5-bed detached</td><td>Withymoor Rd, Netherton DY2 9JZ</td><td>7.2%</td><td class="score-high">8.5/10</td><td>Best value play. Sub-£250k, 5 beds</td></tr>
     <tr><td>£250k</td><td>4-bed house</td><td>Worcester Rd, DY2 9LN</td><td>7.7%</td><td class="score-high">8.3/10</td><td>Strong yield + 4 beds at low entry</td></tr>
@@ -260,9 +266,11 @@
     <tr><td>£475k</td><td>5-bed</td><td>Bath St, DY3 1LR</td><td>3.8%</td><td>7.2/10</td><td>Sedgley area, check GIA</td></tr>
     <tr><td>£425k</td><td>4-bed</td><td>Boscobel Cl, DY1 2GA</td><td>5.4%</td><td>7.3/10</td><td>Dudley town fringe</td></tr>
   </table>
+</div>
 
   <h3>📌 Birmingham South (B13 B14 B15 B17) — £400k-£1M</h3>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Price</th><th>Type</th><th>Address</th><th>Yield</th><th>Split Score</th><th>Notes</th></tr>
     <tr><td>£475k</td><td>4-bed semi</td><td>Osmaston Rd, B17 0TN</td><td>5.3%</td><td>7.5/10</td><td>Harborne — strong resale market</td></tr>
     <tr><td>£475k</td><td>4-bed</td><td>Westridge Rd, B13 0DU</td><td>4.7%</td><td>7.3/10</td><td>Kings Heath, good location</td></tr>
@@ -274,9 +282,11 @@
     <tr><td>£880k</td><td>6-bed</td><td>Greenhill Rd, B13 9SS</td><td>4.6%</td><td>7.4/10</td><td>6-bed = 3-4 unit potential</td></tr>
     <tr><td>£975k</td><td>7-bed</td><td>14A Russell Rd, B13 8RD</td><td>4.7%</td><td>7.3/10</td><td>7-bed — 4-5 unit potential</td></tr>
   </table>
+</div>
 
   <h3>📌 Wolverhampton (WV1-WV4) — £200k-£600k</h3>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Price</th><th>Type</th><th>Address</th><th>Yield</th><th>Split Score</th><th>Notes</th></tr>
     <tr><td>£200k</td><td>4-bed</td><td>Newhampton Rd E, WV1 4BB</td><td>8.1%</td><td class="score-high">8.0/10</td><td>Best value — sub-£200k, 4-bed</td></tr>
     <tr><td>£265k</td><td>4-bed</td><td>Greenock Cres, WV4 6BH</td><td>6.8%</td><td>7.5/10</td><td>Solid entry price</td></tr>
@@ -287,6 +297,7 @@
     <tr><td>£550k</td><td>4-bed detached</td><td>York Ave, WV3 9BX</td><td>4.6%</td><td>7.2/10</td><td>Finchfield premium</td></tr>
     <tr><td>£600k</td><td>5-bed detached</td><td>Uplands Ave, WV3 8AA</td><td>2.3%</td><td>7.0/10</td><td>5-bed but very low yield</td></tr>
   </table>
+</div>
 </div>
 
 <div class="section">
@@ -364,13 +375,15 @@
 <div class="section">
   <h2>⚡ Auction Watch — 14 May 2026</h2>
   <p>Bond Wolfe's auction <strong>TOMORROW</strong> has 162 lots — rich hunting ground for title split deals:</p>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Lot Type</th><th>Examples Found</th><th>Title Split Angle</th></tr>
     <tr><td>Land parcels</td><td>Land rear Soho Rd, Handsworth B21; Land Codsall WV8</td><td>Garden/land split → new build plots</td></tr>
     <tr><td>Vacant houses</td><td>53 Bowling Green Rd, Dudley DY2 (£99k+ guide)</td><td>Bungalow + garage → 2-unit split</td></tr>
     <tr><td>Investment properties</td><td>Unsold from previous auctions</td><td>Already converted but unsplit title</td></tr>
     <tr><td>Commercial</td><td>635 Kingstanding Rd, Birmingham (£190k guide)</td><td>Commercial + resi conversion potential</td></tr>
   </table>
+</div>
   <p><span class="insight">Action: Review Bond Wolfe lot catalogue before 08:30AM 14 May. Focus on: (1) multi-unit blocks on single titles, (2) houses with outbuildings/annexes, (3) mixed-use properties.</span></p>
 </div>
 
@@ -398,7 +411,8 @@
 
 <div class="section">
   <h2>✅ Title Split Checklist (Updated 13 May 2026)</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>#</th><th>Item</th><th>Status</th><th>Notes</th></tr>
     <tr><td>1</td><td>Original GIA ≥120 sqm</td><td><span class="risk">⚠ Hard rule</span></td><td>Verify from EPC register or measured survey, NOT agent description</td></tr>
     <tr><td>2</td><td>Freehold title</td><td><span class="risk">⚠ Non-negotiable</span></td><td>Check for restrictive covenants against subdivision</td></tr>
@@ -413,6 +427,7 @@
     <tr><td>11</td><td>Freehold+lease in different entities</td><td><span class="risk">⚠ Legal structure</span></td><td>Freehold in personal name, leases to SPV (or vice versa)</td></tr>
     <tr><td>12</td><td>999-year peppercorn leases</td><td><span class="highlight">✅ LRA 2022</span></td><td>Standard, ground rent = peppercorn</td></tr>
   </table>
+</div>
 </div>
 
 <div class="section">
@@ -444,6 +459,7 @@
 <div class="footer">
   <p>🏘️ Title Split Intelligence · Hermes Agent · Kokal Properties Ltd · 13 May 2026</p>
   <p>Data from: PropAI Deals API · Web Search · Bond Wolfe Auctions · Clever Lending · PIN · Foot Forward Properties</p>
+</div>
 </div>
 </body>
 </html>

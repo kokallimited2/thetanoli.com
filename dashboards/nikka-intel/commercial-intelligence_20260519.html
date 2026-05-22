@@ -7,7 +7,7 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0a0e17; color: #e0e6ed; font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; }
+  body { background: #0a0e17; color: #e0e6ed; font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
   .header { background: linear-gradient(135deg, #0f1923 0%, #1a2a3a 100%); border: 1px solid #1e3a5f; border-radius: 16px; padding: 30px; margin-bottom: 24px; }
   .header h1 { font-size: 28px; font-weight: 700; color: #60a5fa; display: flex; align-items: center; gap: 12px; }
@@ -48,9 +48,12 @@
   .top-table th { background: #0d1b2a; }
   .flag-list { display: flex; gap: 6px; flex-wrap: wrap; }
   @media (max-width: 768px) { .metric-grid { grid-template-columns: repeat(2, 1fr); } }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
 <!-- HEADER -->
@@ -103,7 +106,8 @@
 <!-- STRATEGY LIBRARY -->
 <div class="section">
   <h2>📚 Commercial Strategy Library — Updated 19 May 2026</h2>
-  <table class="strat-table">
+  <div class="table-scroll">
+<table class="strat-table">
     <tr><th>Strategy</th><th>Capital</th><th>Yield Range</th><th>Risk</th><th>Best For</th><th>Verdict</th></tr>
     <tr>
       <td>🏪 Shop-with-Flat</td>
@@ -186,13 +190,15 @@
       <td><span class="tag tag-green">✅ INNOVATION</span></td>
     </tr>
   </table>
+</div>
   <p style="font-size:12px; color:#64748b; margin-top:8px;">* Hybrid Income+Conversion is the lowest-risk strategy because income covers holding costs during conversion planning.</p>
 </div>
 
 <!-- TOP OPPORTUNITIES -->
 <div class="section">
   <h2>🎯 Top Opportunities — 19 May 2026</h2>
-  <table class="top-table">
+  <div class="table-scroll">
+<table class="top-table">
     <tr><th>Rank</th><th>Location</th><th>Asset Type</th><th>Strategy</th><th>Price</th><th>Yield/Upside</th><th>Risk</th><th>Score</th></tr>
     <tr style="background:rgba(52,211,153,0.05);">
       <td>🥇</td>
@@ -275,6 +281,7 @@
       <td><strong>7.5/10</strong></td>
     </tr>
   </table>
+</div>
 </div>
 
 <!-- DEAL CHECKLIST -->
@@ -489,7 +496,8 @@
 <!-- AREA HEATMAP -->
 <div class="section">
   <h2>🔥 Area Heatmap — Commercial Activity May 2026</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Area</th><th>Activity Level</th><th>Best Strategy</th><th>Typical Yield</th><th>Distress Signals</th></tr>
     <tr><td><strong>Halesowen</strong> 🏆</td><td><span class="tag tag-green">Very High</span></td><td>Small-cap retail BTL / Hybrid</td><td>8-15%</td><td>High Street retail distress, former banks, auction lots</td></tr>
     <tr><td><strong>Dudley Town Centre</strong></td><td><span class="tag tag-green">High</span></td><td>Pre-approved dev / E→C3 conversion</td><td>6-12%</td><td>Former Barclays, vacant offices, development sites</td></tr>
@@ -502,11 +510,13 @@
     <tr><td><strong>Lye/Stourbridge Ind Est</strong></td><td><span class="tag tag-gold">Steady</span></td><td>Industrial Multi-Let</td><td>8-12%</td><td>Low supply, demand high</td></tr>
   </table>
 </div>
+</div>
 
 <!-- COMMERCIAL DEAL PIPELINE -->
 <div class="section">
   <h2>📋 Commercial Deal Pipeline</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Status</th><th>Property</th><th>Strategy</th><th>Price</th><th>Score</th><th>Next Step</th></tr>
     <tr><td><span class="tag tag-green">🔴 PRIORITY</span></td><td>49-63 High Street, Halesowen</td><td>Hybrid Income+Conversion</td><td>£1,295,000</td><td>9.1/10</td><td>Call Bond Wolfe — view + legal pack</td></tr>
     <tr><td><span class="tag tag-green">🔴 PRIORITY</span></td><td>57-63 Halesowen (individual units)</td><td>Small-cap BTL 14% yield</td><td>£99k each</td><td>8.8/10</td><td>Check auction results + tenant covenant</td></tr>
@@ -516,6 +526,7 @@
     <tr><td><span class="tag" style="background:#1e3a5f;">⚪ MONITOR</span></td><td>Unit 6 Glass Court, Lye</td><td>Industrial BTL</td><td>POA</td><td>7.9/10</td><td>Request price + lease details</td></tr>
     <tr><td><span class="tag" style="background:#1e3a5f;">⚪ MONITOR</span></td><td>St. Kenelm Court, Halesowen</td><td>Office BTL</td><td>£235,000</td><td>7.5/10</td><td>6.85% yield — mediocre, check EPC</td></tr>
   </table>
+</div>
 </div>
 
 <!-- HERMES SKILL IMPROVEMENTS -->
@@ -581,6 +592,7 @@
   ⚠️ This is not financial advice. Always verify with qualified professionals.
 </div>
 
+</div>
 </div>
 </body>
 </html>

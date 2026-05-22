@@ -6,7 +6,7 @@
 <title>Land & Planning Uplift Intelligence — 19 May 2026</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, system-ui, 'Segoe UI', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #0d1117; color: #c9d1d9; }
+  body { font-family: -apple-system, system-ui, 'Segoe UI', sans-serif; max-width: 1100px; margin: 0 auto; padding: 24px; background: #0d1117; color: #c9d1d9; overflow-wrap:break-word;word-break:break-word;}
   h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 16px; margin-bottom: 24px; font-size: 1.8em; }
   h2 { color: #f0f6fc; margin: 28px 0 16px; padding-left: 10px; border-left: 4px solid #f0883e; font-size: 1.3em; }
   h3 { color: #8b949e; margin: 20px 0 10px; font-size: 1.1em; text-transform: uppercase; letter-spacing: 1px; }
@@ -37,12 +37,15 @@
   .value-down { color: #da3633; }
   .value-warn { color: #d29922; }
   .divider { border: none; border-top: 1px solid #21262d; margin: 24px 0; }
-  @media (max-width: 700px) { body { padding: 12px; } table { font-size: 0.8em; } }
+  @media (max-width: 700px) { body { padding: 12px; overflow-wrap:break-word;word-break:break-word;} table { font-size: 0.8em; } }
   a { color: #58a6ff; text-decoration: none; }
   a:hover { text-decoration: underline; }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <h1>🏗️ Land & Planning Uplift Intelligence</h1>
 <div class="meta">
@@ -96,6 +99,7 @@
 <h2>📊 Planning Uplift Deal Criteria</h2>
 <!-- ============================================ -->
 
+<div class="table-scroll">
 <table>
   <tr><th>Asset Type</th><th>Entry Price</th><th>Typical Uplift</th><th>Planning Angle</th><th>Key Risks</th></tr>
   <tr>
@@ -148,11 +152,13 @@
     <td>Access, neighbours, contamination</td>
   </tr>
 </table>
+</div>
 
 <!-- ============================================ -->
 <h2>🏆 Top Opportunities</h2>
 <!-- ============================================ -->
 
+<div class="table-scroll">
 <table>
   <tr><th>Location</th><th>Asset Type</th><th>Planning Angle</th><th>Est. Entry</th><th>Est. Uplift</th><th>Score</th><th>Verdict</th></tr>
   <tr>
@@ -228,6 +234,7 @@
     <td>WORTH MANUAL REVIEW — high entry but PP in place</td>
   </tr>
 </table>
+</div>
 
 <!-- ============================================ -->
 <h2>⚠️ Planning Risk Checklist</h2>
@@ -307,6 +314,7 @@
 <h2>📈 Market Intelligence Summary</h2>
 <!-- ============================================ -->
 
+<div class="table-scroll">
 <table>
   <tr><th>Factor</th><th>Status</th><th>Implication</th></tr>
   <tr>
@@ -345,6 +353,7 @@
     <td>Surveyors must quantify ESG gaps. EPC below C = mandatory value discount. Budget £10k retrofit.</td>
   </tr>
 </table>
+</div>
 
 <!-- ============================================ -->
 <h2>📋 What Changed / Improved Since Last Run</h2>
@@ -393,5 +402,6 @@
   <p>⚠️ All scores and projections are indicative. Verify all data through independent professional advice before committing capital.</p>
 </div>
 
+</div>
 </body>
 </html>

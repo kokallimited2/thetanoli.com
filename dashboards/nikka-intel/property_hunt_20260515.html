@@ -22,7 +22,7 @@
     --danger: #ff6b6b;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 20px; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 20px; overflow-wrap:break-word;word-break:break-word;}
   .container { max-width: 1000px; margin: 0 auto; }
   
   /* Header */
@@ -137,9 +137,12 @@
     .deal-card .deal-analysis { grid-template-columns: 1fr; }
     .stats { grid-template-columns: repeat(2, 1fr); }
   }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 <div class="container">
 
 <div class="header">
@@ -195,7 +198,8 @@
     <div class="deal-analysis">
       <div class="col">
         <h4>💰 BRRR Calculation</h4>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><td>Purchase Price</td><td>£125,998</td></tr>
           <tr><td>SDLT (3% surcharge)</td><td>£3,780</td></tr>
           <tr><td>Legal &amp; Survey</td><td>£1,700</td></tr>
@@ -208,10 +212,12 @@
           <tr><td>Cash Left In</td><td>£26,348</td></tr>
           <tr><td>Est. Rent</td><td>£800/mo</td></tr>
         </table>
+</div>
       </div>
       <div class="col">
         <h4>📊 Strategies</h4>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><td>BRRR Score</td><td class="orange">7/10</td></tr>
           <tr><td>Flip Profit</td><td>~£8,500</td></tr>
           <tr><td>Flip ROI</td><td>5.3%</td></tr>
@@ -220,6 +226,7 @@
           <tr><td>ROCE (BRRR)</td><td class="orange">~12%</td></tr>
           <tr><td>Stress Test Score</td><td class="orange">6/10</td></tr>
         </table>
+</div>
       </div>
     </div>
 
@@ -276,7 +283,8 @@
     <div class="deal-analysis">
       <div class="col">
         <h4>💰 BRRR Calculation</h4>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><td>Purchase Price</td><td>£125,000</td></tr>
           <tr><td>SDLT (3% surcharge)</td><td>£3,750</td></tr>
           <tr><td>Legal &amp; Survey</td><td>£1,700</td></tr>
@@ -289,10 +297,12 @@
           <tr><td>Cash Left In</td><td>£38,525</td></tr>
           <tr><td>Est. Rent</td><td>£700/mo</td></tr>
         </tbody></table>
+</div>
       </div>
       <div class="col">
         <h4>📊 Strategies</h4>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><td>BRRR Score</td><td class="red">5/10</td></tr>
           <tr><td>Flip Profit</td><td>~-£2k (thin)</td></tr>
           <tr><td>BTL Gross Yield</td><td class="orange">5.4%</td></tr>
@@ -300,6 +310,7 @@
           <tr><td>Motivated Seller Signal</td><td class="green">✅ Listed >30 days</td></tr>
           <tr><td>Negotiation Potential</td><td class="green">High — offer £105k</td></tr>
         </table>
+</div>
       </div>
     </div>
 
@@ -352,7 +363,8 @@
     <div class="deal-analysis">
       <div class="col">
         <h4>💰 Flip Calculation</h4>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><td>Purchase Price</td><td>£180,000</td></tr>
           <tr><td>SDLT (3% surcharge)</td><td>£5,400</td></tr>
           <tr><td>Legal &amp; Survey</td><td>£1,700</td></tr>
@@ -365,10 +377,12 @@
           <tr><td>Net Proceeds</td><td>£207,050</td></tr>
           <tr><td>Flip Profit/(Loss)</td><td class="red">-£4,150</td></tr>
         </table>
+</div>
       </div>
       <div class="col">
         <h4>📊 Strategies</h4>
-        <table>
+        <div class="table-scroll">
+<table>
           <tr><td>BRRR Score</td><td class="red">4/10</td></tr>
           <tr><td>Flip Viability</td><td class="red">❌ Negative at current price</td></tr>
           <tr><td>BTL Gross Yield</td><td class="green">6.5%</td></tr>
@@ -376,6 +390,7 @@
           <tr><td>Location Perk</td><td class="green">✅ Brierley Hill — home area</td></tr>
           <tr><td>Negotiation Window</td><td class="orange">Need £165k to flip</td></tr>
         </table>
+</div>
       </div>
     </div>
 
@@ -482,7 +497,8 @@
     Sold Subject to Contract properties tracked across DY postcodes. Only <strong>3 STC</strong> found in the top 24 per postcode — confirms slow market movement.
   </p>
   
-  <table class="listings-table">
+  <div class="table-scroll">
+<table class="listings-table">
     <thead><tr><th>Postcode</th><th>Price</th><th>Beds</th><th>Type</th><th>Area</th></tr></thead>
     <tbody>
       <tr><td>DY3</td><td class="price-cell">£190,000</td><td>3</td><td>Semi-Detached</td><td>Sedgley</td></tr>
@@ -490,6 +506,7 @@
       <tr><td>DY7</td><td class="price-cell">£195,000</td><td>2</td><td>Detached</td><td>Kinver</td></tr>
     </tbody>
   </table>
+</div>
 </div>
 
 <!-- ====== ACTION PLAN ====== -->
@@ -533,6 +550,7 @@
   Scanned 45 postcodes (DY1-9, WV1-14, B6-B44) via CloakBrowser · 11,154 listings analysed
 </div>
 
+</div>
 </div>
 </body>
 </html>

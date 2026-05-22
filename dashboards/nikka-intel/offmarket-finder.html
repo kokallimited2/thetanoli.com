@@ -7,7 +7,7 @@
 <style>
 :root { --bg: #0a0f1e; --card: #1e293b; --border: #30363d; --accent: #58a6ff; --green: #22c55e; --amber: #f59e0b; --red: #ef4444; --text: #c9d1d9; --text-dim: #8b949e; --text-bright: #e6edf3; }
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; background:var(--bg); color:var(--text); overflow-wrap:break-word; word-break:break-word; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; background:var(--bg); color:var(--text); overflow-wrap:break-word; word-break:break-word; overflow-wrap:break-word;word-break:break-word;}
 .page-wrap { max-width:1100px; margin:0 auto; padding:24px 16px 60px; }
 h1 { font-size:28px; color:var(--text-bright); margin-bottom:4px; }
 .subtitle { color:var(--text-dim); font-size:14px; margin-bottom:24px; }
@@ -57,7 +57,7 @@ tr:hover td { background:rgba(88,166,255,0.04); }
 <div class="page-wrap">
 
 <h1>🎯 Off-Market Property Finder</h1>
-<div class="subtitle">Daily scan — auction unsold + stale listings + agent outreach pipeline · 22 May 2026 03:25</div>
+<div class="subtitle">Daily scan — auction unsold + stale listings + agent outreach pipeline · 22 May 2026 06:04</div>
 
 <div class="stats-row">
     <div class="stat-card"><div class="num amber">0</div><div class="label">Auction Unsold</div></div>
@@ -76,7 +76,8 @@ tr:hover td { background:rgba(88,166,255,0.04); }
 <div class="section">
     <h2 class="section-title">📞 Agents to Call Today (2)</h2>
     <div class="table-scroll">
-        <table>
+        <div class="table-scroll">
+<table>
             <thead><tr><th>Agent</th><th>Stale Count</th><th>Areas</th><th>Priority</th><th>Suggested Approach</th></tr></thead>
             <tbody>
         <tr>
@@ -94,6 +95,7 @@ tr:hover td { background:rgba(88,166,255,0.04); }
             <td style="font-size:12px;color:#8b949e">Call and ask: 'You have X properties that have been listed a while — is the vendor open to an off-market offer?'</td>
         </tr></tbody>
         </table>
+</div>
     </div>
 </div>
 
@@ -102,10 +104,12 @@ tr:hover td { background:rgba(88,166,255,0.04); }
     <h2 class="section-title">🏛️ Auction Unsold Lots (0)</h2>
     <p style="color:var(--text-dim);font-size:13px;margin-bottom:10px">Post-auction offers accepted. Budget £50/legal pack for top candidates. Check for buyer's fees (3-5%).</p>
     <div class="table-scroll">
-        <table>
+        <div class="table-scroll">
+<table>
             <thead><tr><th>Postcode</th><th>Area</th><th>Status</th><th>Source</th><th>Contact</th><th>Notes</th></tr></thead>
             <tbody><tr><td colspan="6" style="color:#8b949e;text-align:center;padding:24px;font-size:13px">No auction unsold found today — check back after next auction day</td></tr></tbody>
         </table>
+</div>
     </div>
 </div>
 
@@ -114,7 +118,8 @@ tr:hover td { background:rgba(88,166,255,0.04); }
     <h2 class="section-title">📋 Stale On-Market Listings (60d+) (12)</h2>
     <p style="color:var(--text-dim);font-size:13px;margin-bottom:10px">Properties on market 60+ days = motivated sellers. Starred = 180+ days.</p>
     <div class="table-scroll">
-        <table>
+        <div class="table-scroll">
+<table>
             <thead><tr><th>Address</th><th>Postcode</th><th>Price</th><th>Agent</th><th>Days</th><th>Stale Meter</th><th>Link</th></tr></thead>
             <tbody>
         <tr>
@@ -200,12 +205,21 @@ tr:hover td { background:rgba(88,166,255,0.04); }
         </tr>
         <tr>
             <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis"></td>
-            <td>WR12BX</td>
-            <td>£157,500</td>
-            <td>Martin & Co, Worcester</td>
+            <td>CV66LF</td>
+            <td>£60,000</td>
+            <td>Belvoir - Coventry</td>
             <td>?</td>
             <td><span style="color:#22c55e">█░░░</span> Fresh</td>
-            <td><a href="https://www.rightmove.co.uk/property-for-sale/property-88719885.html" target="_blank" class="tiny-link">📋 Listing</a></td>
+            <td><a href="https://www.rightmove.co.uk/property-for-sale/property-73255209.html" target="_blank" class="tiny-link">📋 Listing</a></td>
+        </tr>
+        <tr>
+            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis"></td>
+            <td>CV65EQ</td>
+            <td>£95,000</td>
+            <td>Evans Estate Agents Coven</td>
+            <td>?</td>
+            <td><span style="color:#22c55e">█░░░</span> Fresh</td>
+            <td><a href="https://www.rightmove.co.uk/property-for-sale/property-73258885.html" target="_blank" class="tiny-link">📋 Listing</a></td>
         </tr>
         <tr>
             <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis"></td>
@@ -215,17 +229,9 @@ tr:hover td { background:rgba(88,166,255,0.04); }
             <td>?</td>
             <td><span style="color:#22c55e">█░░░</span> Fresh</td>
             <td><a href="https://www.rightmove.co.uk/property-for-sale/property-73247432.html" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis"></td>
-            <td>DY51AY</td>
-            <td>£185,000</td>
-            <td>G & T Properties</td>
-            <td>?</td>
-            <td><span style="color:#22c55e">█░░░</span> Fresh</td>
-            <td><a href="https://www.rightmove.co.uk/property-for-sale/property-73249502.html" target="_blank" class="tiny-link">📋 Listing</a></td>
         </tr></tbody>
         </table>
+</div>
     </div>
 </div>
 
@@ -257,7 +263,7 @@ tr:hover td { background:rgba(88,166,255,0.04); }
 </div>
 
 <div class="footer">
-    🔵 Generated by Nikka Khan · 22 May 2026 03:25<br>
+    🔵 Generated by Nikka Khan · 22 May 2026 06:04<br>
     <span style="font-size:11px;color:#475569">Sources: SDL Auctions, Auction House UK, BRRR Sourcer · Cross-ref daily at 6AM</span><br>
     <span style="font-size:11px;color:#475569">🏠 <a href="index.html" style="color:#58a6ff">Home</a> · 🔥 <a href="brrr-sourcer.html" style="color:#58a6ff">BRRR</a> · 🛠️ <a href="power-team.html" style="color:#58a6ff">Power Team</a> · 📋 <a href="strategy-brrr-hmo-playbook.html" style="color:#58a6ff">Strategy</a></span>
 </div>

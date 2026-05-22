@@ -25,7 +25,7 @@
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-  }
+  overflow-wrap:break-word;word-break:break-word;}
   .header {
     background: linear-gradient(135deg, #1a2332 0%, #0d1117 100%);
     border-bottom: 1px solid var(--border);
@@ -129,9 +129,12 @@
   .alert-box .alert-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
   @media (max-width: 700px) { .split-cols { grid-template-columns: 1fr; } }
   .footer { text-align: center; padding: 24px; color: var(--text2); font-size: 0.8rem; border-top: 1px solid var(--border); }
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
+<div class="page-wrap">
 
 <div class="header">
   <h1>🏘️ Title Split Intelligence — 14 May 2026</h1>
@@ -182,7 +185,8 @@
 <!-- Top Opportunities Table -->
 <div class="section">
   <h2>🏆 Top Title Split Opportunities — 14 May 2026</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr>
       <th>Score</th><th>Verdict</th><th>Location</th><th>Property Type</th><th>Price</th><th>Split Angle</th><th>Est. GDV Uplift</th>
     </tr>
@@ -242,6 +246,7 @@
     </tr>
   </table>
 </div>
+</div>
 
 <!-- Best Property Types Section -->
 <div class="section">
@@ -276,7 +281,8 @@
     <div class="alert-title" style="color: var(--orange);">🚨 Auction Running NOW — 162+ Lots</div>
     <p>Key title-split-relevant lots that should be monitored for sold prices:</p>
   </div>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Lot</th><th>Address</th><th>Type</th><th>Guide Price</th><th>Title Split Potential</th></tr>
     <tr>
       <td>—</td>
@@ -314,6 +320,7 @@
       <td>7.8/10 — Detached house with annexe conversion potential + title split. Updated guide 13 May.</td>
     </tr>
   </table>
+</div>
   <p style="margin-top:10px; font-size:0.85rem; color:var(--text2);">📞 Bond Wolfe: 0121 312 1212 | auctions@bondwolfe.com | 75-77 Colmore Row, Birmingham B3 2AP</p>
 </div>
 
@@ -323,7 +330,8 @@
   <div class="alert-box breaking">
     <div class="alert-title">⭐ DEAL OF THE AUCTION: £29k Mixed-Use + Development Land</div>
   </div>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Detail</th><th>Value</th></tr>
     <tr><td>Address</td><td>33 Spouthouse Lane, Great Barr, Birmingham B43 5PX</td></tr>
     <tr><td>Guide Price</td><td><span class="highlight">£29,000+</span></td></tr>
@@ -334,9 +342,11 @@
     <tr><td>B43 Avg House Price</td><td>~£245,000</td></tr>
     <tr><td>B43 Avg Yield</td><td>3.7% (low — B43 is more owner-occupier than investor)</td></tr>
   </table>
+</div>
 
   <h4>📐 Strike Price Modeling</h4>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Scenario</th><th>Bid Price</th><th>Total Cost (inc fees)</th><th>GDV Potential</th><th>Net Profit</th><th>ROI</th></tr>
     <tr>
       <td>Conservative</td>
@@ -363,6 +373,7 @@
       <td>182%</td>
     </tr>
   </table>
+</div>
 
   <h4>🎯 Title Split Strategy</h4>
   <ol>
@@ -384,7 +395,8 @@
 <!-- Deep Dive: Walsall -->
 <div class="section">
   <h2>🔍 Deep Dive: 54 West Bromwich St, Walsall — 12.9% Yield Title Split Play</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Detail</th><th>Value</th></tr>
     <tr><td>Address</td><td>54 & 54A West Bromwich St & 1a Windsor St, Walsall WS1 4DB</td></tr>
     <tr><td>Guide Price</td><td><span class="highlight">£195,000+</span></td></tr>
@@ -394,9 +406,11 @@
     <tr><td>Location</td><td>'V' junction West Bromwich St / Windsor St, near University of Wolverhampton Walsall Campus</td></tr>
     <tr><td>Status</td><td>External viewing only</td></tr>
   </table>
+</div>
 
   <h4>📐 Title Split Financial Model</h4>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Item</th><th>Value</th></tr>
     <tr><td>Purchase price (est. successful bid)</td><td>~£220,000</td></tr>
     <tr><td>SDLT (mixed-use non-residential rates)</td><td>~£4,500</td></tr>
@@ -412,6 +426,7 @@
     <tr><td>Yield on cost</td><td><span class="highlight">11.0%</span></td></tr>
     <tr><td>Refinance at 75% LTV</td><td>~£183,750 → £36,250 equity recovered</td></tr>
   </table>
+</div>
   <p><strong>Verdict:</strong> <span class="tag tag-green">STRONG TITLE SPLIT</span> — Best played as hold-to-refinance. 12.9% gross yield at guide makes the numbers work even if bidding pushes to £240k+ (10%+ yield). The 4-bed flat has strong student demand due to Walsall Campus proximity.</p>
 </div>
 
@@ -532,7 +547,8 @@
 <!-- Hermes Skill Improvements -->
 <div class="section">
   <h2>🔄 Hermes Skill Improvements</h2>
-  <table>
+  <div class="table-scroll">
+<table>
     <tr><th>Change</th><th>Detail</th><th>Source</th></tr>
     <tr>
       <td><span class="highlight">+ Commonhold Bill impact analysis</span></td>
@@ -570,6 +586,7 @@
       <td>Today's analysis</td>
     </tr>
   </table>
+</div>
 
   <h3>📚 New Keywords for Next Run</h3>
   <ul>
@@ -599,6 +616,7 @@
   <p style="font-size:0.75rem; color:var(--text2);">This is general investor guidance, not legal, tax, planning or financial advice. Always commission professional due diligence before proceeding with any title split.</p>
 </div>
 
+</div>
 </div>
 </body>
 </html>
