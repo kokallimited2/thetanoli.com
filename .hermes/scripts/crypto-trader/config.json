@@ -1,0 +1,44 @@
+{
+  "portfolio": {
+    "initial_capital": 10000,
+    "currency": "GBP",
+    "risk_per_trade": 0.01,
+    "max_concurrent_positions": 3
+  },
+  "scoring": {
+    "min_execution_score": 8,
+    "max_score": 10
+  },
+  "timeframes": {
+    "primary": "4H",
+    "secondary": "1H",
+    "tertiary": "15M",
+    "quaternary": "5M"
+  },
+  "pairs": [
+    "BTC/USDT",
+    "ETH/USDT",
+    "SOL/USDT",
+    "XRP/USDT",
+    "ADA/USDT",
+    "LINK/USDT",
+    "DOGE/USDT",
+    "AVAX/USDT"
+  ],
+  "indicators": {
+    "ema_periods": [9, 21, 50, 200],
+    "rsi_period": 14,
+    "rsi_overbought": 70,
+    "rsi_oversold": 30,
+    "macd_fast": 12,
+    "macd_slow": 26,
+    "macd_signal": 9,
+    "bb_period": 20,
+    "bb_std": 2.0,
+    "volume_ma_period": 20
+  },
+  "output": {
+    "report_dir": "reports",
+    "report_prefix": "crypto-trading-daily"
+  }
+}
