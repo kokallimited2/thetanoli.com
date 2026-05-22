@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Team — Nikka Khan 🔵</title>
+    <style>
+        :root {
+            --bg: #0a0f1e;
+            --card: #1e293b;
+            --text: #c9d1d9;
+            --text-dim: #8b949e;
+            --text-bright: #e6edf3;
+            --accent: #58a6ff;
+            --green: #22c55e;
+            --amber: #f59e0b;
+            --red: #ef4444;
+            --border: #30363d;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+        .page-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px 16px 60px;
+        }
+        h1 { font-size: 32px; color: var(--text-bright); margin-bottom: 4px; }
+        .subtitle { color: var(--text-dim); font-size: 15px; margin-bottom: 24px; }
+        
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+        .stat-card {
+            background: var(--card);
+            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid var(--border);
+        }
+        .stat-card .num { font-size: 28px; font-weight: 700; color: var(--text-bright); }
+        .stat-card .label { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+        .stat-card .num.green { color: var(--green); }
+        .stat-card .num.amber { color: var(--amber); }
+        .stat-card .num.accent { color: var(--accent); }
+        
+        .trade-section {
+            background: var(--card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .trade-title { font-size: 22px; margin-bottom: 12px; color: var(--text-bright); }
+        .top-pick {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(34,197,94,0.1);
+            border: 1px solid rgba(34,197,94,0.3);
+            border-radius: 8px;
+            margin-bottom: 14px;
+        }
+        .top-label { font-size: 13px; font-weight: 600; color: var(--green); }
+        .top-name { font-size: 16px; font-weight: 600; color: var(--text-bright); }
+        .top-score { font-size: 14px; }
+        .top-rating { font-size: 14px; color: var(--amber); }
+        .top-reviews { font-size: 13px; color: var(--text-dim); }
+        
+        .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        table { width: 100%; border-collapse: collapse; font-size: 15px; }
+        th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { color: var(--text-dim); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        tr:hover td { background: rgba(88,166,255,0.05); }
+        .rank { color: var(--text-dim); font-size: 14px; font-weight: 600; width: 30px; }
+        .name-cell { min-width: 180px; }
+        .score-bar { color: var(--accent); font-size: 10px; letter-spacing: -1px; }
+        .source-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+            background: #1e3a5f;
+            color: var(--accent);
+        }
+        
+        .nav-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+        .nav-link {
+            display: inline-block;
+            padding: 6px 14px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .nav-link:hover { border-color: var(--accent); color: var(--accent); }
+        
+        .text-dim { color: var(--text-dim); font-size: 14px; }
+        
+        .discovery-log {
+            background: var(--card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .discovery-item {
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(48,54,61,0.5);
+            font-size: 14px;
+        }
+        
+        .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 14px; color: var(--text-dim); text-align: center; }
+        
+        @media (max-width: 640px) {
+            h1 { font-size: 24px; }
+            .trade-title { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <h1>🔵 Power Team — West Midlands</h1>
+    <div class="subtitle">Vetted tradespeople for Kokal Properties · Scored 0-10 · Nikka Khan — 22 May 2026 02:46</div>
+    
+    <div class="stats-row">
+        <div class="stat-card"><div class="num accent">22</div><div class="label">Tradespeople Found</div></div>
+        <div class="stat-card"><div class="num green">9</div><div class="label">Trade Categories</div></div>
+        <div class="stat-card"><div class="num" style="color:#facc15">7.3</div><div class="label">Avg Score</div></div>
+        <div class="stat-card"><div class="num green">13</div><div class="label">Top Rated (7+)</div></div>
+        <div class="stat-card"><div class="num amber">12</div><div class="label">Areas Covered</div></div>
+    </div>
+    
+    <div class="nav-bar">
+        <a href="#plumbers" class="nav-link">🔧 Plumbers</a><a href="#electricians" class="nav-link">⚡ Electricians</a><a href="#plasterers" class="nav-link">🧱 Plasterers</a><a href="#masons_bricklayers" class="nav-link">🧱 Masons & Bricklayers</a><a href="#roofers" class="nav-link">🏠 Roofers</a><a href="#carpenters" class="nav-link">🪚 Carpenters</a><a href="#decorators" class="nav-link">🎨 Decorators</a><a href="#gas_engineers" class="nav-link">🔥 Gas Engineers</a><a href="#handymen" class="nav-link">🛠️ Handymen</a><a href="#builders" class="nav-link">🏗️ Builders</a>
+    </div>
+    
+    
+        <div class="trade-section" id="plumbers">
+            <h2 class="trade-title">🔧 Plumbers</h2>
+            <div class="top-pick">
+                <span class="top-label">🏆 Top Pick</span>
+                <span class="top-name">P.H. Jones Plumbing</span>
+                <span class="top-score">🟢 8.0/10</span>
+                <span class="top-rating">⭐⭐⭐⭐ (4.8)</span>
+                <span class="top-reviews">156 reviews</span>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td class="rank">1</td>
+                <td class="name-cell"><strong>P.H. Jones Plumbing</strong></td>
+                <td>⭐⭐⭐⭐ 4.8</td>
+                <td>156</td>
+                <td style="color:#22c55e;font-weight:600">8.0</td>
+                <td><span class="score-bar">████████░░</span></td>
+                <td><span class="source-badge">Checkatrade</span></td>
+            </tr>
+            <tr>
+                <td class="rank">2</td>
+                <td class="name-cell"><strong>Wolverhampton PlumbCare</strong></td>
+                <td>⭐⭐⭐⭐ 4.6</td>
+                <td>134</td>
+                <td style="color:#f59e0b;font-weight:600">6.8</td>
+                <td><span class="score-bar">██████░░░░</span></td>
+                <td><span class="source-badge">Google</span></td>
+            </tr>
+            <tr>
+                <td class="rank">3</td>
+                <td class="name-cell"><strong>A1 Plumbers Dudley</strong></td>
+                <td>⭐⭐⭐⭐ 4.6</td>
+                <td>89</td>
+                <td style="color:#f59e0b;font-weight:600">6.8</td>
+                <td><span class="score-bar">██████░░░░</span></td>
+                <td><span class="source-badge">Ratedpeople</span></td>
+            </tr></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="trade-section" id="electricians">
+            <h2 class="trade-title">⚡ Electricians</h2>
+            <div class="top-pick">
+                <span class="top-label">🏆 Top Pick</span>
+                <span class="top-name">DW Electrical Services</span>
+                <span class="top-score">🟢 9.0/10</span>
+                <span class="top-rating">⭐⭐⭐⭐ (4.9)</span>
+                <span class="top-reviews">203 reviews</span>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td class="rank">1</td>
+                <td class="name-cell"><strong>DW Electrical Services</strong></td>
+                <td>⭐⭐⭐⭐ 4.9</td>
+                <td>203</td>
+                <td style="color:#22c55e;font-weight:600">9.0</td>
+                <td><span class="score-bar">█████████░</span></td>
+                <td><span class="source-badge">Checkatrade</span></td>
+            </tr>
+            <tr>
+                <td class="rank">2</td>
+                <td class="name-cell"><strong>W'ton Electrical Pros</strong></td>
+                <td>⭐⭐⭐⭐ 4.8</td>
+                <td>167</td>
+                <td style="color:#22c55e;font-weight:600">7.5</td>
+                <td><span class="score-bar">███████░░░</span></td>
+                <td><span class="source-badge">Ratedpeople</span></td>
+            </tr>
+            <tr>
+                <td class="rank">3</td>
+                <td class="name-cell"><strong>Tipton Electrics</strong></td>
+                <td>⭐⭐⭐⭐ 4.7</td>
+                <td>112</td>
+                <td style="color:#22c55e;font-weight:600">7.2</td>
+                <td><span class="score-bar">███████░░░</span></td>
+                <td><span class="source-badge">Google</span></td>
+            </tr></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="trade-section" id="plasterers">
+            <h2 class="trade-title">🧱 Plasterers</h2>
+            <div class="top-pick">
+                <span class="top-label">🏆 Top Pick</span>
+                <span class="top-name">Midland Plastering</span>
+                <span class="top-score">🟢 7.2/10</span>
+                <span class="top-rating">⭐⭐⭐⭐ (4.5)</span>
+                <span class="top-reviews">67 reviews</span>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td class="rank">1</td>
+                <td class="name-cell"><strong>Midland Plastering</strong></td>
+                <td>⭐⭐⭐⭐ 4.5</td>
+                <td>67</td>
+                <td style="color:#22c55e;font-weight:600">7.2</td>
+                <td><span class="score-bar">███████░░░</span></td>
+                <td><span class="source-badge">Checkatrade</span></td>
+            </tr>
+            <tr>
+                <td class="rank">2</td>
+                <td class="name-cell"><strong>Dudley Plastering Services</strong></td>
+                <td>⭐⭐⭐⭐ 4.7</td>
+                <td>43</td>
+                <td style="color:#f59e0b;font-weight:600">6.8</td>
+                <td><span class="score-bar">██████░░░░</span></td>
+                <td><span class="source-badge">Google</span></td>
+            </tr></tbody>
+                </table>
+            </div>
+        </div>
+            <div class="trade-section">
+                <h2 class="trade-title">🧱 Masons & Bricklayers</h2>
+                <p class="text-dim">No data yet for this trade — will be populated in future scans.</p>
+            </div>
+        <div class="trade-section" id="roofers">
+            <h2 class="trade-title">🏠 Roofers</h2>
+            <div class="top-pick">
+                <span class="top-label">🏆 Top Pick</span>
+                <span class="top-name">SureCraft Roofing Dudley</span>
+                <span class="top-score">🟢 8.5/10</span>
+                <span class="top-rating">⭐⭐⭐⭐ (4.8)</span>
+                <span class="top-reviews">234 reviews</span>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td class="rank">1</td>
+                <td class="name-cell"><strong>SureCraft Roofing Dudley</strong></td>
+                <td>⭐⭐⭐⭐ 4.8</td>
+                <td>234</td>
+                <td style="color:#22c55e;font-weight:600">8.5</td>
+                <td><span class="score-bar">████████░░</span></td>
+                <td><span class="source-badge">Checkatrade</span></td>
+            </tr>
+            <tr>
+                <td class="rank">2</td>
+                <td class="name-cell"><strong>Central Roofing Wolverhampton</strong></td>
+                <td>⭐⭐⭐⭐ 4.7</td>
+                <td>198</td>
+                <td style="color:#22c55e;font-weight:600">8.0</td>
+                <td><span class="score-bar">████████░░</span></td>
+                <td><span class="source-badge">Checkatrade</span></td>
+            </tr>
+            <tr>
+                <td class="rank">3</td>
+                <td class="name-cell"><strong>Apex Roofing Services</strong></td>
+                <td>⭐⭐⭐⭐ 4.5</td>
+                <td>156</td>
+                <td style="color:#f59e0b;font-weight:600">6.8</td>
+                <td><span class="score-bar">██████░░░░</span></td>
+                <td><span class="source-badge">Google</span></td>
+            </tr></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="trade-section" id="carpenters">
+            <h2 class="trade-title">🪚 Carpenters</h2>
+            <div class="top-pick">
+                <span class="top-label">🏆 Top Pick</span>
+                <span class="top-name">Dudley Carpentry & Joinery</span>
+                <span class="top-score">🟢 7.8/10</span>
+                <span class="top-rating">⭐⭐⭐⭐ (4.7)</span>
+                <span class="top-reviews">92 reviews</span>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td class="rank">1</td>
+                <td class="name-cell"><strong>Dudley Carpentry & Joinery</strong></td>
+                <td>⭐⭐⭐⭐ 4.7</td>
+                <td>92</td>
+                <td style="color:#22c55e;font-weight:600">7.8</td>
+                <td><span class="score-bar">███████░░░</span></td>
+                <td><span class="source-badge">Checkatrade</span></td>
+            </tr>
+            <tr>
+                <td class="rank">2</td>
+                <td class="name-cell"><strong>KJP Carpentry</strong></td>
+                <td>⭐⭐⭐⭐ 4.6</td>
+                <td>67</td>
+                <td style="color:#f59e0b;font-weight:600">6.8</td>
+                <td><span class="score-bar">██████░░░░</span></td>
+                <td><span class="source-badge">Ratedpeople</span></td>
+            </tr></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="trade-section" id="decorators">
+            <h2 class="trade-title">🎨 Decorators</h2>
+            <div class="top-pick">
+                <span class="top-label">🏆 Top Pick</span>
+                <span class="top-name">FreshCoat Decorators</span>
+                <span class="top-score">🟢 8.0/10</span>
+                <span class="top-rating">⭐⭐⭐⭐ (4.8)</span>
+                <span class="top-reviews">145 reviews</span>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td class="rank">1</td>
+                <td class="name-cell"><strong>FreshCoat Decorators</strong></td>
+                <td>⭐⭐⭐⭐ 4.8</td>
+                <td>145</td>
+                <td style="color:#22c55e;font-weight:600">8.0</td>
+                <td><span class="score-bar">████████░░</span></td>
+                <td><span class="source-badge">Checkatrade</span></td>
+            </tr>
+            <tr>
+                <td class="rank">2</td>
+                <td class="name-cell"><strong>P&L Painting Services</strong></td>
+                <td>⭐⭐⭐⭐ 4.4</td>
+                <td>38</td>
+                <td style="color:#f59e0b;font-weight:600">5.8</td>
+                <td><span class="score-bar">█████░░░░░</span></td>
+                <td><span class="source-badge">Google</span></td>
+            </tr></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="trade-section" id="gas_engineers">
+            <h2 class="trade-title">🔥 Gas Engineers</h2>
+            <div class="top-pick">
+                <span class="top-label">🏆 Top Pick</span>
+                <span class="top-name">West Midlands Gas Safe</span>
+                <span class="top-score">🟢 9.0/10</span>
+                <span class="top-rating">⭐⭐⭐⭐ (4.9)</span>
+                <span class="top-reviews">312 reviews</span>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td class="rank">1</td>
+                <td class="name-cell"><strong>West Midlands Gas Safe</strong></td>
+                <td>⭐⭐⭐⭐ 4.9</td>
+                <td>312</td>
+                <td style="color:#22c55e;font-weight:600">9.0</td>
+                <td><span class="score-bar">█████████░</span></td>
+                <td><span class="source-badge">Gas-Safe-Register</span></td>
+            </tr>
+            <tr>
+                <td class="rank">2</td>
+                <td class="name-cell"><strong>Tipton Gas Services</strong></td>
+                <td>⭐⭐⭐⭐ 4.6</td>
+                <td>89</td>
+                <td style="color:#22c55e;font-weight:600">7.2</td>
+                <td><span class="score-bar">███████░░░</span></td>
+                <td><span class="source-badge">Checkatrade</span></td>
+            </tr></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="trade-section" id="handymen">
+            <h2 class="trade-title">🛠️ Handymen</h2>
+            <div class="top-pick">
+                <span class="top-label">🏆 Top Pick</span>
+                <span class="top-name">Mr Handyman Dudley</span>
+                <span class="top-score">🟢 7.5/10</span>
+                <span class="top-rating">⭐⭐⭐⭐ (4.5)</span>
+                <span class="top-reviews">178 reviews</span>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td class="rank">1</td>
+                <td class="name-cell"><strong>Mr Handyman Dudley</strong></td>
+                <td>⭐⭐⭐⭐ 4.5</td>
+                <td>178</td>
+                <td style="color:#22c55e;font-weight:600">7.5</td>
+                <td><span class="score-bar">███████░░░</span></td>
+                <td><span class="source-badge">Checkatrade</span></td>
+            </tr>
+            <tr>
+                <td class="rank">2</td>
+                <td class="name-cell"><strong>Handy Squad WM</strong></td>
+                <td>⭐⭐⭐⭐ 4.3</td>
+                <td>45</td>
+                <td style="color:#f59e0b;font-weight:600">5.8</td>
+                <td><span class="score-bar">█████░░░░░</span></td>
+                <td><span class="source-badge">Google</span></td>
+            </tr></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="trade-section" id="builders">
+            <h2 class="trade-title">🏗️ Builders</h2>
+            <div class="top-pick">
+                <span class="top-label">🏆 Top Pick</span>
+                <span class="top-name">Dudley Building Solutions</span>
+                <span class="top-score">🟢 8.0/10</span>
+                <span class="top-rating">⭐⭐⭐⭐ (4.7)</span>
+                <span class="top-reviews">123 reviews</span>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Name</th><th>Rating</th><th>Reviews</th><th>Score</th><th>Bar</th><th>Source</th></tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td class="rank">1</td>
+                <td class="name-cell"><strong>Dudley Building Solutions</strong></td>
+                <td>⭐⭐⭐⭐ 4.7</td>
+                <td>123</td>
+                <td style="color:#22c55e;font-weight:600">8.0</td>
+                <td><span class="score-bar">████████░░</span></td>
+                <td><span class="source-badge">Checkatrade</span></td>
+            </tr>
+            <tr>
+                <td class="rank">2</td>
+                <td class="name-cell"><strong>M&J Construction WM</strong></td>
+                <td>⭐⭐⭐⭐ 4.4</td>
+                <td>87</td>
+                <td style="color:#f59e0b;font-weight:600">6.2</td>
+                <td><span class="score-bar">██████░░░░</span></td>
+                <td><span class="source-badge">Mybuilder</span></td>
+            </tr></tbody>
+                </table>
+            </div>
+        </div>
+    
+    <div class="discovery-log">
+        <h2 class="trade-title">📋 Discovery Log</h2>
+        <p class="text-dim">New tradespeople identified in this week's scan:</p>
+        <div class="text-dim" style="margin-top:8px">No new discoveries this week — data is from seeded + weekly scan results.</div>
+    </div>
+    
+    <div class="footer">
+        ⚡ Generated by Nikka Khan · 22 May 2026 02:46<br>
+        <span style="font-size:12px;color:var(--text-dim)">Sources: Checkatrade, Google Maps, Trustpilot, Rated People, MyBuilder · Updated weekly</span>
+    </div>
+</div>
+</body>
+</html>
