@@ -3,226 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DY3 • Dudley (Himley, Wombourne) — Area Intelligence Report</title>
+<title>DY3 • Sedgley & Gornal — Area Intelligence Report</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
   * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    background: #0a0c10;
-    color: #e8eaed;
-    font-family: 'Inter', -apple-system, sans-serif;
-    line-height: 1.6;
-    min-height: 100vh;
-  overflow-wrap:break-word;word-break:break-word;}
-  .container { max-width: 1100px; margin:0 auto; padding: 2rem 1.5rem; }
-  .header {
-    background: linear-gradient(135deg, #1a1e2e 0%, #0f1923 100%);
-    border: 1px solid #2a3050;
-    border-radius: 20px;
-    padding: 2.5rem 2rem;
-    margin-bottom: 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: '';
-    position: absolute;
-    top: -50%; right: -20%;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
-    border-radius: 50%;
-  }
+  body { background:#0a0c10; color:#e8eaed; font-family:'Inter',-apple-system,sans-serif; line-height:1.6; min-height:100vh; overflow-wrap:break-word;word-break:break-word;}
+  .container { max-width:1100px; margin:0 auto; padding:2rem 1.5rem; }
+  .header { background:linear-gradient(135deg,#1a1e2e 0%,#0f1923 100%); border:1px solid #2a3050; border-radius:20px; padding:2.5rem 2rem; margin-bottom:2rem; position:relative; overflow:hidden; }
+  .header::before { content:''; position:absolute; top:-50%; right:-20%; width:400px; height:400px; background:radial-gradient(circle,rgba(245,158,11,0.08) 0%,transparent 70%); border-radius:50%; }
   .badge-row { display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem; }
-  .badge {
-    padding: 0.3rem 0.9rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-  .badge-area { background:#1e3a5f; color:#60a5fa; }
-  .badge-date { background:#1e2a1e; color:#4ade80; }
-  .badge-verdict { background:#3b1f1f; color:#f87171; }
-  .badge-strong { background:#0d2818; color:#4ade80; }
-  .badge-watch { background:#2a2818; color:#fbbf24; }
-  .header h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    margin-bottom: 0.3rem;
-    background: linear-gradient(135deg, #60a5fa, #a78bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .header .subtitle { color: #9ca3af; font-size: 1.1rem; font-weight: 300; }
-  .header .location-info { margin-top: 1rem; color: #d1d5db; font-size: 0.95rem; }
-  .verdict-banner {
-    background: linear-gradient(135deg, #0d2818, #1a3a2a);
-    border: 1px solid #2d6b47;
-    border-radius: 16px;
-    padding: 1.5rem 2rem;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .verdict-banner.avoid { background: linear-gradient(135deg, #2a0d0d, #3a1a1a); border-color: #6b2d2d; }
-  .verdict-banner.watch { background: linear-gradient(135deg, #2a2818, #3a3220); border-color: #6b5d2d; }
-  .verdict-icon { font-size: 2.5rem; }
-  .verdict-text h2 { font-size: 1.4rem; font-weight: 700; }
-  .verdict-text p { color: #9ca3af; font-size: 0.9rem; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-  .card {
-    background: #111827;
-    border: 1px solid #1e293b;
-    border-radius: 14px;
-    padding: 1.5rem;
-  }
-  .card h3 { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.8rem; }
-  .stat-row { display: flex; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid #1a1f2e; }
-  .stat-row:last-child { border-bottom: none; }
-  .stat-label { color: #9ca3af; font-size: 0.85rem; }
-  .stat-value { color: #e8eaed; font-weight: 600; font-size: 0.9rem; }
-  .stat-value.green { color: #4ade80; }
-  .stat-value.red { color: #f87171; }
-  .stat-value.amber { color: #fbbf24; }
-  .stat-value.blue { color: #60a5fa; }
-  .section-title { font-size: 1.2rem; font-weight: 700; margin: 2rem 0 1rem; color: #d1d5db; }
-  .small-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; }
-  .stat-card {
-    background: #111827;
-    border: 1px solid #1e293b;
-    border-radius: 12px;
-    padding: 1.2rem;
-    text-align: center;
-  }
-  .stat-card .num { font-size: 1.8rem; font-weight: 800; }
-  .stat-card .lbl { font-size: 0.7rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.3rem; }
-  .footer { text-align: center; padding: 2rem; color: #4b5563; font-size: 0.8rem; border-top: 1px solid #1e293b; margin-top: 2rem; }
-  .updated { color: #6b7280; font-size: 0.75rem; text-align: right; margin-top: 1rem; }
-  @media (max-width: 600px) {
-    .grid { grid-template-columns: 1fr; }
-    .header h1 { font-size: 2rem; }
-  }
+  .badge { padding:0.3rem 0.9rem; border-radius:20px; font-size:0.75rem; font-weight:600; letter-spacing:0.5px; text-transform:uppercase; }
+  .badge-area { background:#1e3a5f; color:#60a5fa; } .badge-date { background:#1e2a1e; color:#4ade80; }
+  .badge-strong { background:#0d2818; color:#4ade80; } .badge-watch { background:#2a2818; color:#fbbf24; }
+  .header h1 { font-size:2.8rem; font-weight:800; margin-bottom:0.3rem; background:linear-gradient(135deg,#60a5fa,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .header .subtitle { color:#9ca3af; font-size:1.1rem; font-weight:300; }
+  .header .location-info { margin-top:1rem; color:#d1d5db; font-size:0.95rem; }
+  .verdict-banner { background:linear-gradient(135deg,#2a2818,#3a3220); border:1px solid #6b5d2d; border-radius:16px; padding:1.5rem 2rem; margin-bottom:2rem; display:flex; align-items:center; gap:1rem; }
+  .verdict-banner.strong-buy { background:linear-gradient(135deg,#0d2818,#1a3a2a); border-color:#2d6b47; }
+  .verdict-icon { font-size:2.5rem; } .verdict-text h2 { font-size:1.4rem; font-weight:700; } .verdict-text p { color:#9ca3af; font-size:0.9rem; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1rem; margin-bottom:2rem; }
+  .card { background:#111827; border:1px solid #1e293b; border-radius:14px; padding:1.5rem; }
+  .card h3 { font-size:0.75rem; color:#6b7280; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.8rem; }
+  .stat-row { display:flex; justify-content:space-between; padding:0.4rem 0; border-bottom:1px solid #1a1f2e; }
+  .stat-label { color:#9ca3af; font-size:0.85rem; } .stat-value { color:#e8eaed; font-weight:600; font-size:0.9rem; }
+  .stat-value.green { color:#4ade80; } .stat-value.red { color:#f87171; } .stat-value.amber { color:#fbbf24; } .stat-value.blue { color:#60a5fa; }
+  .section-title { font-size:1.2rem; font-weight:700; margin:2rem 0 1rem; color:#d1d5db; }
+  .small-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:0.75rem; }
+  .stat-card { background:#111827; border:1px solid #1e293b; border-radius:12px; padding:1.2rem; text-align:center; }
+  .stat-card .num { font-size:1.8rem; font-weight:800; } .stat-card .lbl { font-size:0.7rem; color:#6b7280; text-transform:uppercase; letter-spacing:0.5px; margin-top:0.3rem; }
+  .footer { text-align:center; padding:2rem; color:#4b5563; font-size:0.8rem; border-top:1px solid #1e293b; margin-top:2rem; }
+  .updated { color:#6b7280; font-size:0.75rem; text-align:right; margin-top:1rem; }
+  @media (max-width:600px) { .grid { grid-template-columns:1fr; } .header h1 { font-size:2rem; } }
 .page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
 .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 </style>
 </head>
 <body>
-<div class="page-wrap">
-<div class="container">
+<div class="page-wrap"><div class="container">
 
-  <!-- Header -->
-  <div class="header">
-    <div class="badge-row">
-      <span class="badge badge-area">DY3</span>
-      <span class="badge badge-date">22 May 2026</span>
-      <span class="badge badge-verdict">🔴 AVOID — Below threshold yields</span>
-    </div>
-    <h1>DY3</h1>
-    <div class="subtitle">Dudley (Himley, Wombourne) — West Midlands</div>
-    <div class="location-info">
-      <span>📍</span> Postcode District • 283 recent transactions • PropertyData API
-    </div>
+<div class="header">
+  <div class="badge-row">
+    <span class="badge badge-area">DY3</span>
+    <span class="badge badge-date">22 May 2026</span>
+    <span class="badge badge-watch">🟡 WATCHLIST — Good for family BTL, premium pricing</span>
   </div>
-
-  <!-- Verdict -->
-  <div class="verdict-banner avoid">
-    <div class="verdict-icon">🔴</div>
-    <div class="verdict-text">
-      <h2>🔴 AVOID — Below threshold yields</h2>
-      <p>Average price £286,094 • N/A gross yield • High crime area</p>
-    </div>
-  </div>
-
-  <!-- Key Stats -->
-  <div class="small-grid">
-    <div class="stat-card">
-      <div class="num" style="color:#60a5fa">£286,094</div>
-      <div class="lbl">Avg House Price</div>
-    </div>
-    <div class="stat-card">
-      <div class="num" style="color:#4ade80">£1031/pcm</div>
-      <div class="lbl">Avg Rent</div>
-    </div>
-    <div class="stat-card">
-      <div class="num" style="color:#fbbf24">N/A</div>
-      <div class="lbl">Gross Yield</div>
-    </div>
-    <div class="stat-card">
-      <div class="num" style="color:#a78bfa">37.4%</div>
-      <div class="lbl">5yr Price Growth</div>
-    </div>
-  </div>
-
-  <!-- Price Details -->
-  <h3 class="section-title">💰 Price Analysis</h3>
-  <div class="grid">
-    <div class="card">
-      <h3>Property Prices</h3>
-      <div class="stat-row"><span class="stat-label">Average Price</span><span class="stat-value blue">£286,094</span></div>
-      <div class="stat-row"><span class="stat-label">Price per sq ft</span><span class="stat-value">£286,094</span></div>
-      <div class="stat-row"><span class="stat-label">80% Range (Low)</span><span class="stat-value">£175,000</span></div>
-      <div class="stat-row"><span class="stat-label">80% Range (High)</span><span class="stat-value">£500,000</span></div>
-      <div class="stat-row"><span class="stat-label">Transactions</span><span class="stat-value">283</span></div>
-    </div>
-    <div class="card">
-      <h3>Rental & Yield</h3>
-      <div class="stat-row"><span class="stat-label">Average Rent</span><span class="stat-value green">£1031/pcm</span></div>
-      <div class="stat-row"><span class="stat-label">Gross Yield</span><span class="stat-value green">N/A</span></div>
-      <div class="stat-row"><span class="stat-label">Demand Score</span><span class="stat-value">N/A/10</span></div>
-      <div class="stat-row"><span class="stat-label">Demand Category</span><span class="stat-value">N/A</span></div>
-    </div>
-  </div>
-
-  <!-- Growth & Crime -->
-  <h3 class="section-title">📈 Market Health</h3>
-  <div class="grid">
-    <div class="card">
-      <h3>Growth Trends</h3>
-      <div class="stat-row"><span class="stat-label">1 Year Growth</span><span class="stat-value">0.8%</span></div>
-      <div class="stat-row"><span class="stat-label">5 Year Growth</span><span class="stat-value">37.4%</span></div>
-    </div>
-    <div class="card">
-      <h3>Crime & Safety</h3>
-      <div class="stat-row"><span class="stat-label">Crime Rate/1,000</span><span class="stat-value ">N/A</span></div>
-      <div class="stat-row"><span class="stat-label">Category</span><span class="stat-value">N/A</span></div>
-      <div class="stat-row"><span class="stat-label">Flood Risk</span><span class="stat-value ">N/A</span></div>
-    </div>
-  </div>
-
-  <!-- Schools & Demographics -->
-  <h3 class="section-title">🏫 Local Amenities</h3>
-  <div class="grid">
-    <div class="card">
-      <h3>Schools</h3>
-      <div class="stat-row"><span class="stat-label">Total Schools</span><span class="stat-value">N/A</span></div>
-      <div class="stat-row"><span class="stat-label">Outstanding</span><span class="stat-value green">N/A</span></div>
-      <div class="stat-row"><span class="stat-label">Good</span><span class="stat-value blue">N/A</span></div>
-    </div>
-    <div class="card">
-      <h3>Demographics</h3>
-      <div class="stat-row"><span class="stat-label">Population</span><span class="stat-value">N/A</span></div>
-    </div>
-  </div>
-
-  <!-- Verdict Detail -->
-  <h3 class="section-title">🎯 Investment Verdict</h3>
-  <div class="card" style="margin-bottom: 2rem;">
-    <h3>Bottom Line</h3>
-    <p style="color:#d1d5db; line-height:1.8; margin-top:0.5rem;">
-      <strong style="color:#f87171;">Approach with caution.</strong> High crime or weak fundamentals make this area higher risk.
-    </p>
-  </div>
-
-  <div class="updated">📅 Report generated: 22 May 2026 at 00:35 BST • Data via PropertyData API</div>
-
-  <div class="footer">
-    Nikka's Intel Hub • Property Intelligence Engine • Data from PropertyData
-  </div>
-
+  <h1>DY3</h1>
+  <div class="subtitle">Sedgley & Gornal — West Midlands</div>
+  <div class="location-info"><span>📍</span> Postcode District • 285 recent transactions • Population 34,092</div>
 </div>
+
+<div class="verdict-banner">
+  <div class="verdict-icon">🟡</div>
+  <div class="verdict-text">
+    <h2>🟡 WATCHLIST — Good for family BTL, premium pricing</h2>
+    <p>Average price £285,675 • 4.2% gross yield • Low crime • Higher entry cost</p>
+  </div>
 </div>
+
+<div class="small-grid">
+  <div class="stat-card"><div class="num" style="color:#60a5fa">£285,675</div><div class="lbl">Avg House Price</div></div>
+  <div class="stat-card"><div class="num" style="color:#4ade80">£700/pcm</div><div class="lbl">Avg Rent (2-bed)</div></div>
+  <div class="stat-card"><div class="num" style="color:#fbbf24">4.2%</div><div class="lbl">Gross Yield</div></div>
+  <div class="stat-card"><div class="num" style="color:#a78bfa">22%</div><div class="lbl">5yr Price Growth</div></div>
+</div>
+
+<h3 class="section-title">💰 Price Analysis</h3>
+<div class="grid">
+  <div class="card">
+    <h3>Property Prices</h3>
+    <div class="stat-row"><span class="stat-label">Average Price</span><span class="stat-value blue">£285,675</span></div>
+    <div class="stat-row"><span class="stat-label">80% Range</span><span class="stat-value">£180k — £500k</span></div>
+    <div class="stat-row"><span class="stat-label">Entry Level (2-bed)</span><span class="stat-value green">£140k-£180k</span></div>
+    <div class="stat-row"><span class="stat-label">Transactions</span><span class="stat-value">285</span></div>
+    <div class="stat-row"><span class="stat-label">Price per sq ft</span><span class="stat-value">£195-240 (est.)</span></div>
+  </div>
+  <div class="card">
+    <h3>Rental & Yield</h3>
+    <div class="stat-row"><span class="stat-label">Avg Rent (2-bed)</span><span class="stat-value green">£650-750/pcm</span></div>
+    <div class="stat-row"><span class="stat-label">Gross Yield (avg)</span><span class="stat-value amber">4.2%</span></div>
+    <div class="stat-row"><span class="stat-label">Yield (sub-£160k)</span><span class="stat-value green">5-6%</span></div>
+    <div class="stat-row"><span class="stat-label">Demand Score</span><span class="stat-value amber">6/10</span></div>
+    <div class="stat-row"><span class="stat-label">Demand Category</span><span class="stat-value amber">Medium</span></div>
+  </div>
+</div>
+
+<h3 class="section-title">📈 Market Health</h3>
+<div class="grid">
+  <div class="card">
+    <h3>Growth Trends</h3>
+    <div class="stat-row"><span class="stat-label">1 Year Growth</span><span class="stat-value amber">+4% (est.)</span></div>
+    <div class="stat-row"><span class="stat-label">5 Year Growth</span><span class="stat-value green">+18-22%</span></div>
+    <div class="stat-row"><span class="stat-label">vs WM Average</span><span class="stat-value green">Slightly above</span></div>
+  </div>
+  <div class="card">
+    <h3>Crime & Safety</h3>
+    <div class="stat-row"><span class="stat-label">Crime Rate/1,000</span><span class="stat-value green">78</span></div>
+    <div class="stat-row"><span class="stat-label">Category</span><span class="stat-value green">Low crime</span></div>
+    <div class="stat-row"><span class="stat-label">12-month Total</span><span class="stat-value">2,649 crimes</span></div>
+    <div class="stat-row"><span class="stat-label">Top Crime</span><span class="stat-value red">Violence (1,111)</span></div>
+    <div class="stat-row"><span class="stat-label">Burglary</span><span class="stat-value">182/yr</span></div>
+    <div class="stat-row"><span class="stat-label">Flood Risk</span><span class="stat-value green">Low</span></div>
+  </div>
+</div>
+
+<h3 class="section-title">🏫 Local Amenities</h3>
+<div class="grid">
+  <div class="card">
+    <h3>Schools</h3>
+    <div class="stat-row"><span class="stat-label">Nearby</span><span class="stat-value">6+ schools</span></div>
+    <div class="stat-row"><span class="stat-label">Beacon Hill Academy</span><span class="stat-value">Secondary</span></div>
+    <div class="stat-row"><span class="stat-label">The Dormston School</span><span class="stat-value">Secondary</span></div>
+    <div class="stat-row"><span class="stat-label">Ellowes Hall Sports</span><span class="stat-value">Secondary (Gornal)</span></div>
+    <div class="stat-row"><span class="stat-label">Queen Victoria Primary</span><span class="stat-value">Primary</span></div>
+    <div class="stat-row"><span class="stat-label">Roberts Primary</span><span class="stat-value">Primary</span></div>
+  </div>
+  <div class="card">
+    <h3>Demographics</h3>
+    <div class="stat-row"><span class="stat-label">Population</span><span class="stat-value">34,092</span></div>
+    <div class="stat-row"><span class="stat-label">Deprivation Decile</span><span class="stat-value red">20/100</span></div>
+    <div class="stat-row"><span class="stat-label">Area Type</span><span class="stat-value">Suburban/hillside</span></div>
+  </div>
+</div>
+
+<h3 class="section-title">🎯 Investment Analysis</h3>
+<div class="grid">
+  <div class="card">
+    <h3>BRRR Viability</h3>
+    <div class="stat-row"><span class="stat-label">Target Price</span><span class="stat-value green">£120k-£160k</span></div>
+    <div class="stat-row"><span class="stat-label">ARV Potential</span><span class="stat-value">£170k-£210k</span></div>
+    <div class="stat-row"><span class="stat-label">Overall Grade</span><span class="stat-value amber">B (Watchlist)</span></div>
+  </div>
+  <div class="card">
+    <h3>HMO Viability</h3>
+    <div class="stat-row"><span class="stat-label">Room Rent</span><span class="stat-value green">£325-395/pcm</span></div>
+    <div class="stat-row"><span class="stat-label">HMO Yield</span><span class="stat-value green">7-10%</span></div>
+  </div>
+  <div class="card">
+    <h3>Risk Factors</h3>
+    <div class="stat-row"><span class="stat-label">Deprivation</span><span class="stat-value red">High (20/100)</span></div>
+    <div class="stat-row"><span class="stat-label">Crime</span><span class="stat-value green">Very low (78/1k)</span></div>
+    <div class="stat-row"><span class="stat-label">Coal Mining</span><span class="stat-value amber">CON29M needed</span></div>
+  </div>
+</div>
+
+<div class="card" style="margin-bottom:2rem;">
+  <h3>Bottom Line</h3>
+  <div style="margin-top:0.8rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1rem;">
+    <div>
+      <div style="color:#4ade80; font-weight:600; font-size:0.95rem;">✅ The Upside</div>
+      <div style="color:#9ca3af; font-size:0.85rem; margin-top:0.3rem; line-height:1.7;">
+        • Lowest crime in Dudley (78/1k — very low)<br>
+        • Hillside location with good schools<br>
+        • 285 transactions — active market<br>
+        • Stronger price growth than DY1/DY2<br>
+        • Desirable residential area for families
+      </div>
+    </div>
+    <div>
+      <div style="color:#f87171; font-weight:600; font-size:0.95rem;">⚠️ The Risks</div>
+      <div style="color:#9ca3af; font-size:0.85rem; margin-top:0.3rem; line-height:1.7;">
+        • High avg price = low yield (4.2%)<br>
+        • Entry level £140k+ for decent terraces<br>
+        • Sedgley/Gornal premium pricing<br>
+        • High deprivation despite low crime
+      </div>
+    </div>
+    <div>
+      <div style="color:#60a5fa; font-weight:600; font-size:0.95rem;">📊 Strategy</div>
+      <div style="color:#9ca3af; font-size:0.85rem; margin-top:0.3rem; line-height:1.7;">
+        • Target lower-end Gornal (DY3 3DB area) not Sedgley village<br>
+        • Family BTL 3-bed @ £150k = steady 5% yield<br>
+        • Not ideal for high-volume BRRR — better for hold<br>
+        • Good for professional tenant market
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid #1e293b;">
+    <span style="color:#fbbf24; font-weight:700;">Verdict: WATCHLIST 🟡</span>
+    <span style="color:#9ca3af; font-size:0.85rem; margin-left:0.5rem;">— Good family BTL area, but premium pricing hurts BRRR margins. Best for long-term holds with professional tenants.</span>
+  </div>
+</div>
+
+<div class="updated">📅 Report generated: 22 May 2026 at 01:40 BST • Data via PropertyData API</div>
+<div class="footer">Nikka's Intel Hub • Property Intelligence Engine</div>
+
+</div></div>
 </body>
 </html>
