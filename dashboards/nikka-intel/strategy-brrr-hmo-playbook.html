@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Property Strategy — BRRR & HMO Playbook</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0c10;color:#e8eaed;font-family:'Inter',-apple-system,sans-serif;line-height:1.6;min-height:100vh;overflow-wrap:break-word;word-break:break-word}
+.wrap{max-width:1100px;margin:0 auto;padding:2rem}
+h1{font-size:2.5rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:#9ca3af;font-size:1.1rem;margin-bottom:2rem}
+.section{background:#111827;border:1px solid #1e293b;border-radius:14px;padding:1.5rem;margin-bottom:1.5rem}
+.section h2{font-size:1.3rem;font-weight:700;color:#60a5fa;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid #1e293b}
+.section h3{font-size:1rem;font-weight:600;color:#d1d5db;margin:1rem 0 .5rem}
+.strat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin:1rem 0}
+.strat-card{background:#0d1117;border:1px solid #1e293b;border-radius:10px;padding:1.2rem}
+.strat-card h4{color:#f0f0f0;font-size:.9rem;font-weight:600;margin-bottom:.5rem}
+.strat-card p,.strat-card li{color:#9ca3af;font-size:.85rem;line-height:1.6}
+.strat-card ul{padding-left:1.2rem;margin-top:.3rem}
+.tag{display:inline-block;padding:.15rem .6rem;border-radius:10px;font-size:.7rem;font-weight:600;margin-right:.3rem}
+.tag-green{background:#0d2818;color:#4ade80}.tag-amber{background:#2a2818;color:#fbbf24}.tag-blue{background:#1e3a5f;color:#60a5fa}.tag-red{background:#3b1f1f;color:#f87171}
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:.8rem 0}
+td,th{padding:.5rem .6rem;text-align:left;border-bottom:1px solid #1e293b}
+th{color:#60a5fa;font-weight:600;background:#0d1117}
+td{color:#9ca3af}
+.code{background:#0d1117;border:1px solid #1e293b;border-radius:6px;padding:.8rem;font-family:monospace;font-size:.8rem;color:#d1d5db;margin:.5rem 0;overflow-x:auto}
+.footer{text-align:center;padding:2rem;color:#4b5563;font-size:.8rem;border-top:1px solid #1e293b}
+@media(max-width:600px){h1{font-size:1.8rem}.wrap{padding:1rem}}
+</style></head><body><div class="wrap">
+
+<h1>🏗️ BRRR & HMO Strategy — Dudley & Surrounds</h1>
+<p class="subtitle">Using PropAI Deals API for targeted deal finding • Article 4 analysis • R2R/HMO playbook</p>
+
+<div class="section">
+<h2>📡 Using PropAI Deals API for BRRR</h2>
+<p style="color:#9ca3af;font-size:.9rem;margin-bottom:.8rem">PropAI Deals API has <strong>18,764 credits remaining</strong> (of 20,000). Each search costs 1 credit. It's our primary deal-finding tool.</p>
+
+<h3>🔍 BRRR Search Filters</h3>
+<div class="code">
+# Search lower-end DY area for BRRR potential houses
+python3 ~/.hermes/scripts/propaideals_tools.py search "DY2,DY4,DY5" 80000 150000 2 4 "house"</div>
+
+<div class="strat-grid">
+<div class="strat-card">
+<h4>🎯 Target Parameters</h4>
+<ul>
+<li><strong>Price:</strong> £80k-£150k (BRRR sweet spot)</li>
+<li><strong>Type:</strong> House only (exclude flats)</li>
+<li><strong>Beds:</strong> 2-4 beds</li>
+<li><strong>Areas:</strong> DY2 (Netherton), DY4 (Tipton), DY5 (Brierley Hill)</li>
+<li><strong>Status:</strong> Active (not STC/auction)</li>
+</ul>
+</div>
+<div class="strat-card">
+<h4>📊 Key Indicators in API Response</h4>
+<ul>
+<li><code>bmv_discount_percentage</code> → Positive = below market value (BRRR)</li>
+<li><code>estimated_rental_yield</code> → 6%+ target for BRRR</li>
+<li><code>chain_free</code> → Faster completion, motivated seller</li>
+<li><code>needs_modernisation</code> → Value-add potential (refurb)</li>
+<li><code>days_on_market</code> → 90+ = motivated seller</li>
+<li><code>price_qualifier</code> = "reduced" → Price dropped</li>
+</ul>
+</div>
+<div class="strat-card">
+<h4>⚡ BRRR Strategy — Sub-£150k</h4>
+<ul>
+<li>Buy at <strong>£100k-£130k</strong> (distressed/dated terrace)</li>
+<li><strong>Refurb budget:</strong> £15k-£25k (cosmetic + essential)</li>
+<li><strong>ARV target:</strong> £150k-£190k (post-refurb value)</li>
+<li><strong>Refinance at 75% LTV:</strong> £112k-£142k</li>
+<li><strong>Equity left in:</strong> £8k-£20k (or ideally £0)</li>
+<li><strong>Target rent:</strong> £675-775/pcm = 6-7% yield</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>🏘️ Article 4 — What's Covered Around Dudley</h2>
+
+<table>
+<tr><th>Council</th><th>Article 4 Status</th><th>Impact on HMO</th><th>R2R Opportunity</th></tr>
+<tr><td><strong>Dudley</strong></td><td><span class="tag tag-green">No Article 4</span></td><td>C3→C4 conversions still PD</td><td class="green">✅ Strong — no additional planning needed</td></tr>
+<tr><td><strong>Birmingham</strong></td><td><span class="tag tag-red">Article 4 in place</span></td><td>Planning permission needed for HMO</td><td class="red">❌ Limited — most wards covered</td></tr>
+<tr><td><strong>Sandwell</strong></td><td><span class="tag tag-amber">Partial</span></td><td>Some wards affected</td><td class="amber">⚠️ Check specific wards</td></tr>
+<tr><td><strong>Wolverhampton</strong></td><td><span class="tag tag-amber">Partial</span></td><td>City centre & some suburbs</td><td class="amber">⚠️ Outer areas may be free</td></tr>
+<tr><td><strong>Walsall</strong></td><td><span class="tag tag-green">No Article 4</span></td><td>C3→C4 still PD</td><td class="green">✅ Good — WS postcodes worth exploring</td></tr>
+</table>
+
+<p style="color:#9ca3af;font-size:.85rem;margin-top:.8rem"><strong>Note:</strong> Dudley currently has <strong>Additional HMO licensing</strong> (not Article 4). This means HMOs need a license but don't need planning permission for C3→C4 change of use. Article 4 <em>removes permitted development rights</em> — different from licensing.</p>
+</div>
+
+<div class="section">
+<h2>🏘️ R2R / HMO — Best Areas Outside Article 4</h2>
+
+<div class="strat-grid">
+<div class="strat-card">
+<h4>🥇 DY2 Netherton <span class="tag tag-green">BEST</span></h4>
+<ul>
+<li>No Article 4 — no planning needed for HMO</li>
+<li>Low crime (112/1k) — best tenant retention</li>
+<li>Terrace houses: £110k-£150k</li>
+<li>Room rent potential: <strong>£325-400/pcm</strong></li>
+<li>3-bed HMO gross yield: <strong>8-11%</strong></li>
+<li>R2R: 3-bed @ £600/m → let by room @ £1,050/m</li>
+<li>R2R profit: <strong>£350-450/mo</strong> after rent</li>
+</ul>
+</div>
+<div class="strat-card">
+<h4>🥇 DY4 Tipton <span class="tag tag-green">BEST</span></h4>
+<ul>
+<li>No Article 4 — cheapest entry cost</li>
+<li>Entry from £110k for 3-bed terrace</li>
+<li>Room rent potential: <strong>£300-375/pcm</strong></li>
+<li>3-bed HMO yield: <strong>8-12%</strong></li>
+<li>R2R: 3-bed @ £650/m → let @ £975/m</li>
+<li>R2R profit: <strong>£275-350/mo</strong></li>
+<li>Strong tenant demand from industrial workers</li>
+</ul>
+</div>
+<div class="strat-card">
+<h4>🥇 DY5 Brierley Hill <span class="tag tag-green">BEST</span></h4>
+<ul>
+<li>No Article 4 — most liquid market</li>
+<li>Merry Hill retail = worker demand</li>
+<li>Room rent: <strong>£325-400/pcm</strong></li>
+<li>3-bed HMO yield: <strong>8-11%</strong></li>
+<li>R2R: 3-bed @ £700/m → let @ £1,125/m</li>
+<li>R2R profit: <strong>£325-425/mo</strong></li>
+<li>Best blend of price + demand + yield</li>
+</ul>
+</div>
+</div>
+
+<div class="strat-grid" style="margin-top:.5rem">
+<div class="strat-card">
+<h4>🥈 WS Walsall <span class="tag tag-amber">SECONDARY</span></h4>
+<ul>
+<li>No Article 4 — good backup area</li>
+<li>WS1-WS10 postcodes to explore</li>
+<li>Room rent: <strong>£300-350/pcm</strong></li>
+<li>HMO yield: <strong>7-10%</strong></li>
+<li>Near M6 — good for commuter tenants</li>
+</ul>
+</div>
+<div class="strat-card">
+<h4>🥈 WV Wolverhampton (Outer)</h4>
+<ul>
+<li>Wards outside city centre may be free</li>
+<li>WV10-WV14 best bets (Bushbury, Bilston)</li>
+<li>Room rent: <strong>£325-400/pcm</strong></li>
+<li>HMO yield: <strong>7-10%</strong></li>
+<li>Need to verify specific ward boundaries</li>
+</ul>
+</div>
+<div class="strat-card">
+<h4>🔴 AVOID for HMO</h4>
+<ul>
+<li>Birmingham city centre (Article 4 everywhere)</li>
+<li>DY6 Kingswinford (too premium, low yield)</li>
+<li>DY7 Kinver (rural, no tenant demand)</li>
+<li>DY8 Stourbridge (premium, owner-occupier market)</li>
+<li>DY9 Hagley (green belt, £500k+)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>💡 R2R (Rent-to-Rent) Strategy</h2>
+<div class="strat-grid">
+<div class="strat-card">
+<h4>How R2R Works in Dudley</h4>
+<ul>
+<li>Find a 3-4 bed terrace: rent from landlord at <strong>£600-750/mo</strong></li>
+<li>Refurb if needed (furnish, redecorate): <strong>£2k-£5k</strong></li>
+<li>Let by room to 3-4 tenants: <strong>£325-400/room</strong></li>
+<li>Gross rent: <strong>£975-£1,600/mo</strong></li>
+<li>Your profit after rent: <strong>£275-£600/mo</strong></li>
+<li>No deposit needed (unlike buying)</li>
+</ul>
+</div>
+<div class="strat-card">
+<h4>Cash Flow Per Strategy</h4>
+<table>
+<tr><th>Property</th><th>Strategy</th><th>Setup Cost</th><th>Monthly Profit</th><th>ROI</th></tr>
+<tr><td>3-bed £120k terrace</td><td>BRRR</td><td>£35k (£15k dep + £20k ref)</td><td>£150-250</td><td>5-8%</td></tr>
+<tr><td>3-bed terrace</td><td>BTL room let</td><td>£30k deposit</td><td>£200-350</td><td>8-12%</td></tr>
+<tr><td>3-bed terrace</td><td>R2R</td><td>£3k (furnish)</td><td>£300-500</td><td>120-200%</td></tr>
+<tr><td>3-bed terrace</td><td>HMO buy+licence</td><td>£35k</td><td>£400-600</td><td>14-20%</td></tr>
+</table>
+<p style="color:#fbbf24;font-size:.8rem;margin-top:.5rem">⚠️ R2R has highest ROI but no capital appreciation & more management</p>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h2>🎯 Daily Deal-Finding Workflow</h2>
+<div class="code">
+# Step 1: Search DY area for BRRR targets
+python3 ~/.hermes/scripts/propaideals_tools.py search "DY2,DY4,DY5" 80000 150000 2 4 "house"
+
+# Step 2: Filter results manually for:
+# - bmv_discount_percentage > 0 (below market value)
+# - needs_modernisation = true
+# - chain_free = true  
+# - days_on_market > 60
+# - estimated_rental_yield > 6%
+
+# Step 3: Run deal calculator for top picks
+python3 ~/.hermes/scripts/propaideals_tools.py calc brrr 120000 25 5.0 700
+
+# Step 4: For HMO/R2R search, look for 3-4 bed terraces
+# Filter for: within_article_4 = false (check API returns)
+# Filter for: property_type = house, 3+ beds
+# Range: £110k-£160k (bigger houses for HMO)
+</div>
+</div>
+
+<div class="section">
+<h2>🎯 Priority Action Plan</h2>
+<div style="color:#9ca3af;font-size:.9rem">
+<ol style="padding-left:1.2rem;line-height:2">
+<li><strong style="color:#4ade80">Immediate:</strong> Run PropAI search for DY2/DY4/DY5 £80k-£150k houses with BRRR indicators</li>
+<li><strong style="color:#4ade80">Immediate:</strong> Run PropAI search for 3-4 bed houses in DY area for HMO/R2R potential</li>
+<li><strong style="color:#fbbf24">Short-term:</strong> Verify Dudley Council's exact Article 4 boundaries (check specific wards)</li>
+<li><strong style="color:#fbbf24">Short-term:</strong> Explore WS postcodes (Walsall) as secondary HMO market</li>
+<li><strong style="color:#60a5fa">Medium-term:</strong> Build automated daily cron that searches PropAI and scores deals</li>
+<li><strong style="color:#60a5fa">Medium-term:</strong> Integrate Article 4 filtering directly into the deal-sourcer script</li>
+</ol>
+</div>
+</div>
+
+<div class="footer">Nikka's Intel Hub • Strategy Playbook • 22 May 2026 • 18,764 PropAI credits remaining</div>
+</div></body></html>
