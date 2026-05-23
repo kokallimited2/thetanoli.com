@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper Trading — Strategy Report</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #020617; color: #e2e8f0; font-family: system-ui, -apple-system, sans-serif; padding: 2rem; max-width: 1200px; margin: 0 auto; }
+  h1 { color: #facc15; font-size: 1.4rem; margin-bottom: 0.25rem; }
+  .sub { color: #64748b; font-size: 0.85rem; margin-bottom: 1.5rem; }
+  h2 { color: #facc15; font-size: 1.1rem; margin: 2rem 0 1rem; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin-bottom: 1.5rem; }
+  .stat-card { background: #1e293b; border: 1px solid #334155; border-radius: 0.5rem; padding: 1rem; text-align: center; }
+  .stat-card .num { font-size: 1.8rem; font-weight: 700; }
+  .stat-card .label { font-size: 0.75rem; color: #64748b; margin-top: 0.25rem; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 0.5rem; padding: 1rem; margin-bottom: 1rem; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { text-align: left; padding: 0.5rem 0.75rem; color: #94a3b8; border-bottom: 1px solid #334155; font-weight: 600; }
+  td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #1e293b; }
+  tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.7rem; font-weight: 600; }
+  .badge-green { background: #166534; color: #bbf7d0; }
+  .badge-red { background: #7f1d1d; color: #fecaca; }
+  .badge-yellow { background: #713f12; color: #fef08a; }
+  .footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #334155; font-size: 0.75rem; color: #475569; text-align: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<h1>📝 Paper Trading Strategy Report</h1>
+<p class="sub">2026-05-23 01:51 · Spot (Bullish) & Futures (Bearish) Strategy Testing</p>
+
+<div class="stats">
+  <div class="stat-card">
+    <div class="num" style="color:#34d399">$+0.00</div>
+    <div class="label">Total P&L</div>
+  </div>
+  <div class="stat-card">
+    <div class="num" style="color:#e2e8f0;">0</div>
+    <div class="label">Total Trades</div>
+  </div>
+  <div class="stat-card">
+    <div class="num" style="color:#fbbf24">0.0%</div>
+    <div class="label">Win Rate</div>
+  </div>
+  <div class="stat-card">
+    <div class="num" style="color:#34d399;">0</div>
+    <div class="label">Wins</div>
+  </div>
+  <div class="stat-card">
+    <div class="num" style="color:#fb7185;">0</div>
+    <div class="label">Losses</div>
+  </div>
+  <div class="stat-card">
+    <div class="num" style="color:#e2e8f0;">0</div>
+    <div class="label">Open</div>
+  </div>
+</div>
+
+<div class="grid-2">
+  <div class="card">
+    <h3 style="color:#facc15;font-size:0.95rem;margin-bottom:0.75rem;">📊 Regime Distribution</h3>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+      <span class="badge badge-green">🟢 Bullish: 0 days</span>
+      <span class="badge badge-red">🔴 Bearish: 0 days</span>
+      <span class="badge badge-yellow">🟡 Sideways: 2 days</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="color:#facc15;font-size:0.95rem;margin-bottom:0.75rem;">💰 Capital</h3>
+    <div style="font-size:1.5rem;font-weight:700;color:#e2e8f0;">$10,000</div>
+    <div style="color:#64748b;font-size:0.8rem;">Risk per trade: 1% · Max open: 3</div>
+  </div>
+</div>
+
+<h2>📋 Strategy Performance</h2>
+<div class="card">
+<table>
+<tr><th>Strategy</th><th>Best For</th><th>Trades</th><th>Win Rate</th><th>PnL</th><th>Avg Conf</th></tr>
+<tr><td colspan="6" style="color:#475569;text-align:center;">No trades yet — data accumulates from tomorrow's run</td></tr>
+</table>
+</div>
+
+<h2>🔄 Open Positions</h2>
+<div class="card">
+<table>
+<tr><th>Coin</th><th>Type</th><th>Strategy</th><th>Entry</th><th>PnL</th><th>Target</th><th>Stop</th><th>Conf</th></tr>
+<tr><td colspan="8" style="color:#475569;text-align:center;">No open positions</td></tr>
+</table>
+</div>
+
+<h2>📅 Regime History (Last 14 Days)</h2>
+<div class="card">
+<table>
+<tr><th>Date</th><th>Regime</th><th>Strength</th><th>Signals</th><th>Trades</th></tr>
+<tr>
+            <td style="color:#64748b;font-size:12px;">2026-05-23</td>
+            <td style="color:#fbbf24;font-weight:600;">SIDEWAYS</td>
+            <td>0%</td>
+            <td>0</td>
+            <td>3</td>
+        </tr><tr>
+            <td style="color:#64748b;font-size:12px;">2026-05-23</td>
+            <td style="color:#fbbf24;font-weight:600;">SIDEWAYS</td>
+            <td>0%</td>
+            <td>0</td>
+            <td>3</td>
+        </tr>
+</table>
+</div>
+
+<h2>🎯 Strategy Guide</h2>
+<div class="card">
+<table>
+<tr><th>Strategy</th><th>Type</th><th>Best Market</th><th>Entry Trigger</th></tr>
+<tr><td>dip_buy</td><td><span class="badge badge-green">SPOT_LONG</span></td><td>BULLISH</td><td>Price at EMA20, RSI < 50 in uptrend</td></tr>
+<tr><td>breakout_long</td><td><span class="badge badge-green">SPOT_LONG</span></td><td>BULLISH</td><td>Near 15M high, score ≥ 7</td></tr>
+<tr><td>trend_continuation</td><td><span class="badge badge-green">SPOT_LONG</span></td><td>BULLISH</td><td>Aligned 4H+1H uptrend, score ≥ 6</td></tr>
+<tr><td>short_break</td><td><span class="badge badge-red">FUTURES_SHORT</span></td><td>BEARISH</td><td>Near 15M low, downtrend confirmed</td></tr>
+<tr><td>breakdown_continuation</td><td><span class="badge badge-red">FUTURES_SHORT</span></td><td>BEARISH</td><td>Aligned 4H+1H downtrend, score ≥ 6</td></tr>
+<tr><td>range_top_fade</td><td><span class="badge badge-red">FUTURES_SHORT</span></td><td>BEARISH</td><td>Price at 4H range high in bearish market</td></tr>
+<tr><td>mean_reversion_long</td><td><span class="badge badge-yellow">SPOT_SCALP</span></td><td>SIDEWAYS</td><td>RSI 15M < 30, RSI 1H < 40</td></tr>
+</table>
+</div>
+
+<div class="footer">
+Paper trading · $10,000 simulated capital · 1% risk per trade · Data from Binance API · Not financial advice
+</div>
+</body>
+</html>
