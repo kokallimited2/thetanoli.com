@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motivated Sellers Scan — 23 May 2026 | Nikka Intel</title>
+<meta name="description" content="Daily scan of distressed properties within 20 miles of Dudley. Houses only, 2+ beds, max £200k, listed 90+ days.">
+<style>
+/* Base body */
+body {
+  background: #0d1117;
+  color: #c9d1d9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Page width container */
+.page-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Scrollable tables */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 12px 0;
+}
+
+/* Updated badge */
+.updated-badge {
+  display: inline-block;
+  font-size: 9px;
+  color: #64748b;
+  margin-top: 4px;
+}
+.updated-badge::before { content: "🕐 "; }
+.updated-badge.loading { opacity: 0.5; }
+.updated-badge.loading::before { content: "⏳ "; }
+.updated-badge.stale { color: #ef4444; }
+.updated-badge.stale::before { content: "⚠️ "; }
+
+/* Typography */
+h1 { font-size: 2rem; color: #e6edf3; margin: 24px 0 8px; }
+h2 { font-size: 1.5rem; color: #e6edf3; margin: 28px 0 12px; border-bottom: 1px solid #30363d; padding-bottom: 8px; }
+h3 { font-size: 1.1rem; color: #e6edf3; margin: 20px 0 8px; }
+p { font-size: 15px; line-height: 1.5; color: #c9d1d9; }
+
+/* Cards */
+.card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #e6edf3;
+}
+.card-rank {
+  display: inline-block;
+  background: #238636;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.card-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: #58a6ff;
+  margin: 4px 0;
+}
+.card-address {
+  font-size: 15px;
+  color: #8b949e;
+  margin-bottom: 8px;
+}
+.card-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+}
+.detail-item {
+  background: #1c2128;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.detail-label {
+  font-size: 11px;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.detail-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e6edf3;
+  margin-top: 2px;
+}
+.detail-value.good { color: #3fb950; }
+.detail-value.warn { color: #d29922; }
+.detail-value.bad { color: #f85149; }
+.card-summary {
+  font-size: 14px;
+  color: #b1bac4;
+  margin: 8px 0;
+  line-height: 1.5;
+}
+.card-link {
+  display: inline-block;
+  color: #58a6ff;
+  font-size: 14px;
+  text-decoration: none;
+  margin-top: 6px;
+}
+.card-link:hover { text-decoration: underline; }
+
+/* Score bar */
+.score-bar-wrap {
+  margin: 10px 0 4px;
+}
+.score-bar {
+  height: 8px;
+  background: #30363d;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.score-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s;
+}
+.score-fill.high { background: linear-gradient(90deg, #3fb950, #56d364); }
+.score-fill.medium { background: linear-gradient(90deg, #d29922, #e3b341); }
+.score-fill.low { background: linear-gradient(90deg, #f85149, #ff6b6b); }
+.score-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #8b949e;
+  margin-top: 2px;
+}
+
+/* Score breakdown table */
+.score-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 14px; }
+.score-table th { text-align: left; padding: 6px 8px; color: #8b949e; font-size: 12px; border-bottom: 1px solid #30363d; }
+.score-table td { padding: 4px 8px; border-bottom: 1px solid #21262d; }
+.score-table .cat { color: #b1bac4; }
+.score-table .pts { color: #58a6ff; font-weight: 600; text-align: right; }
+
+/* Verdict box */
+.verdict-box {
+  background: #1c2128;
+  border-left: 3px solid;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+}
+.verdict-box.buy { border-color: #3fb950; }
+.verdict-box.consider { border-color: #d29922; }
+.verdict-box.pass { border-color: #f85149; }
+.verdict-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.verdict-body { font-size: 14px; color: #b1bac4; line-height: 1.5; }
+
+/* Tables */
+th, td { padding: 8px 10px; font-size: 15px; }
+th { background: #1c2128; color: #8b949e; font-weight: 600; text-align: left; border-bottom: 2px solid #30363d; }
+td { border-bottom: 1px solid #21262d; color: #c9d1d9; }
+tr:hover td { background: #1c2128; }
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.stat-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #e6edf3;
+}
+.stat-label {
+  font-size: 13px;
+  color: #8b949e;
+  margin-top: 4px;
+}
+
+/* Related section */
+.related-section { margin-top: 36px; }
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.related-card {
+  display: flex; flex-direction: column; gap: 4px;
+  background: #1e293b; border: 1px solid #30363d;
+  border-radius: 10px; padding: 14px;
+  text-decoration: none; transition: all 0.2s;
+}
+.related-card:hover {
+  border-color: #58a6ff; background: #273548;
+  transform: translateY(-2px);
+}
+.related-icon { font-size: 24px; }
+.related-title { font-size: 15px; font-weight: 600; color: #e6edf3; }
+.related-desc { font-size: 12px; color: #8b949e; }
+
+/* Footer */
+.footer {
+  margin-top: 28px;
+  padding: 16px 0;
+  border-top: 1px solid #30363d;
+  font-size: 14px;
+  color: #475569;
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<h1>🏚️ Motivated Sellers Scan</h1>
+<p style="font-size:15px;color:#8b949e;margin:0 0 20px">
+  Distressed properties within 20 miles of Dudley · Houses only · 2+ beds · Max £200k · Listed 90+ days
+</p>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-number">8,575</div>
+    <div class="stat-label">Total Properties in Area</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">11</div>
+    <div class="stat-label">Houses 90+ Days Old</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">5</div>
+    <div class="stat-label">Top Candidates Shortlisted</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">23 May 2026</div>
+    <div class="stat-label">Scan Date</div>
+  </div>
+</div>
+
+<!-- Summary table -->
+<h2>📋 All Candidates (90+ Days on Market)</h2>
+<div class="table-scroll">
+<table>
+<thead>
+<tr>
+  <th>Rank</th>
+  <th>Address</th>
+  <th>Price</th>
+  <th>Beds</th>
+  <th>Type</th>
+  <th>DOM</th>
+  <th>Chain</th>
+  <th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>#1</strong></td>
+  <td>Bellefield Road, Birmingham B18</td>
+  <td>£150,000</td>
+  <td>2</td>
+  <td>Terraced</td>
+  <td>499 days</td>
+  <td>Quick Sale</td>
+  <td><span style="color:#3fb950;font-weight:700;">85</span></td>
+</tr>
+<tr>
+  <td><strong>#2</strong></td>
+  <td>Snowshill Close, Worcester</td>
+  <td>£140,000</td>
+  <td>3</td>
+  <td>Terraced</td>
+  <td>165 days</td>
+  <td>✅ NO CHAIN</td>
+  <td><span style="color:#3fb950;font-weight:700;">78</span></td>
+</tr>
+<tr>
+  <td><strong>#3</strong></td>
+  <td>Brierley Hill Road, Brierley Hill DY5</td>
+  <td>£200,000</td>
+  <td>3</td>
+  <td>End Terrace</td>
+  <td>~120 days</td>
+  <td>Not Specified</td>
+  <td><span style="color:#d29922;font-weight:700;">70</span></td>
+</tr>
+<tr>
+  <td><strong>#4</strong></td>
+  <td>Florence Road, Smethwick B66</td>
+  <td>£200,000</td>
+  <td>3</td>
+  <td>Terraced</td>
+  <td>123 days</td>
+  <td>✅ NO UPWARD CHAIN</td>
+  <td><span style="color:#d29922;font-weight:700;">68</span></td>
+</tr>
+<tr>
+  <td><strong>#5</strong></td>
+  <td>Burton Crescent, Wolverhampton</td>
+  <td>£180,000</td>
+  <td>2</td>
+  <td>Terraced</td>
+  <td>159 days</td>
+  <td>✅ NO CHAIN</td>
+  <td><span style="color:#d29922;font-weight:700;">65</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- TOP 5 DETAIL -->
+<h2>🏆 Top 5 Deals — Full Analysis</h2>
+
+<!-- #1 -->
+<div class="card">
+  <div class="card-header">
+    <span class="card-rank">#1 · BEST DEAL</span>
+    <span style="font-size:13px;color:#8b949e;">Score: 85/100</span>
+  </div>
+  <div class="card-price">£150,000</div>
+  <div class="card-address">Bellefield Road, Birmingham B18 — Terraced · 2 bed · 1 bath</div>
+  <div class="card-details">
+    <div class="detail-item">
+      <div class="detail-label">Days on Market</div>
+      <div class="detail-value bad">499 days</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Price vs Area Avg</div>
+      <div class="detail-value good">19% below</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Chain Status</div>
+      <div class="detail-value warn">Quick Sale</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Refurb Potential</div>
+      <div class="detail-value good">FULL — Needs complete modernisation</div>
+    </div>
+  </div>
+  <p class="card-summary">"Reduced for a Quick Sale — Two bedroom mid-terraced family in need of complete modernisation." This is the standout motivated seller. On market for <strong>over 16 months (499 days)</strong>, reduced multiple times, needing full refurbishment. Huge value-add potential for BRRR investor. In the B18 area (Hockley, Birmingham) — popular with young professionals, near city centre, good rental demand.</p>
+  <div class="score-bar-wrap">
+    <div class="score-bar">
+      <div class="score-fill high" style="width:85%"></div>
+    </div>
+    <div class="score-label"><span>Score: 85/100</span><span>Strong BUY signal</span></div>
+  </div>
+  <div class="score-table" style="margin-top:8px;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <tr><td style="padding:2px 8px;color:#8b949e;">Discount vs Area Avg (30pts)</td><td style="padding:2px 8px;text-align:right;color:#3fb950;">25/30</td>
+          <td style="padding:2px 8px;color:#8b949e;">Days on Market (20pts)</td><td style="padding:2px 8px;text-align:right;color:#3fb950;">20/20</td></tr>
+      <tr><td style="padding:2px 8px;color:#8b949e;">Refurb Potential (20pts)</td><td style="padding:2px 8px;text-align:right;color:#3fb950;">18/20</td>
+          <td style="padding:2px 8px;color:#8b949e;">Location Demand (15pts)</td><td style="padding:2px 8px;text-align:right;color:#d29922;">12/15</td></tr>
+      <tr><td style="padding:2px 8px;color:#8b949e;">Chain Status (15pts)</td><td style="padding:2px 8px;text-align:right;color:#d29922;">10/15</td>
+          <td style="padding:2px 8px;color:#8b949e;"></td><td style="padding:2px 8px;"></td></tr>
+    </table>
+  </div>
+  <div class="verdict-box buy">
+    <div class="verdict-title">✅ BUY — Strong Motivated Seller Opportunity</div>
+    <div class="verdict-body">
+      Exceptional BRRR candidate. 16+ months on market, seller is clearly motivated. "Reduced for Quick Sale" is a direct signal. Full refurb needed means instant equity creation. B18 has strong rental demand (near Jewellery Quarter, city centre). Approach with offer at £110-120k, budget £25-35k for full refurb, target ARV of £190-210k.
+    </div>
+  </div>
+  <a href="https://www.rightmove.co.uk/properties/156681515" class="card-link" target="_blank">🔗 View on Rightmove →</a>
+</div>
+
+<!-- #2 -->
+<div class="card">
+  <div class="card-header">
+    <span class="card-rank">#2 · VALUE PICK</span>
+    <span style="font-size:13px;color:#8b949e;">Score: 78/100</span>
+  </div>
+  <div class="card-price">£140,000</div>
+  <div class="card-address">Snowshill Close, Worcester — Terraced · 3 bed</div>
+  <div class="card-details">
+    <div class="detail-item">
+      <div class="detail-label">Days on Market</div>
+      <div class="detail-value bad">165 days</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Price vs Area Avg</div>
+      <div class="detail-value good">~30% below</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Chain Status</div>
+      <div class="detail-value good">✅ NO CHAIN</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Refurb Potential</div>
+      <div class="detail-value good">MODERATE — "plenty of potential"</div>
+    </div>
+  </div>
+  <p class="card-summary">"NO CHAIN — This deceptively large family home offers plenty of potential. Liveable condition including open plan kitchen/diner, downstairs toilet and three good sized bedrooms. Being Sold via S..." At just £140k for a 3-bed terrace, this is exceptional value in the Worcester market. "Liveable condition" but with "plenty of potential" suggests cosmetic modernisation needed rather than full gut. No chain = quick completion.</p>
+  <div class="score-bar-wrap">
+    <div class="score-bar">
+      <div class="score-fill high" style="width:78%"></div>
+    </div>
+    <div class="score-label"><span>Score: 78/100</span><span>Strong BUY signal</span></div>
+  </div>
+  <div class="score-table" style="margin-top:8px;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <tr><td style="padding:2px 8px;color:#8b949e;">Discount vs Area Avg (30pts)</td><td style="padding:2px 8px;text-align:right;color:#3fb950;">28/30</td>
+          <td style="padding:2px 8px;color:#8b949e;">Days on Market (20pts)</td><td style="padding:2px 8px;text-align:right;color:#d29922;">14/20</td></tr>
+      <tr><td style="padding:2px 8px;color:#8b949e;">Refurb Potential (20pts)</td><td style="padding:2px 8px;text-align:right;color:#d29922;">14/20</td>
+          <td style="padding:2px 8px;color:#8b949e;">Location Demand (15pts)</td><td style="padding:2px 8px;text-align:right;color:#8b949e;">7/15</td></tr>
+      <tr><td style="padding:2px 8px;color:#8b949e;">Chain Status (15pts)</td><td style="padding:2px 8px;text-align:right;color:#3fb950;">15/15</td>
+          <td style="padding:2px 8px;"></td><td style="padding:2px 8px;"></td></tr>
+    </table>
+  </div>
+  <div class="verdict-box buy">
+    <div class="verdict-title">✅ BUY — Excellent Value Opportunity</div>
+    <div class="verdict-body">
+      At £140k for a 3-bed terrace with no chain, this is significantly undervalued vs the Worcester market (~£190-220k for similar). 165 days on market suggests motivated seller. "Plenty of potential" indicates cosmetic work needed. Worcester has strong commuter demand (London trains ~2hrs). Budget £15-20k for modernisation, target ARV £180-200k.
+    </div>
+  </div>
+  <a href="https://www.rightmove.co.uk/properties/165907718" class="card-link" target="_blank">🔗 View on Rightmove →</a>
+</div>
+
+<!-- #3 -->
+<div class="card">
+  <div class="card-header">
+    <span class="card-rank">#3 · LOCAL PICK (Nearest Dudley)</span>
+    <span style="font-size:13px;color:#8b949e;">Score: 70/100</span>
+  </div>
+  <div class="card-price">£200,000</div>
+  <div class="card-address">Brierley Hill Road, Brierley Hill DY5 — End of Terrace · 3 bed</div>
+  <div class="card-details">
+    <div class="detail-item">
+      <div class="detail-label">Days on Market</div>
+      <div class="detail-value warn">~120 days est.</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Price vs Area Avg</div>
+      <div class="detail-value warn">At market</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Chain Status</div>
+      <div class="detail-value warn">Not Specified</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Refurb Potential</div>
+      <div class="detail-value good">HIGH — "IN NEED OF TLC"</div>
+    </div>
+  </div>
+  <p class="card-summary">"** A CHARMING HOME IN NEED OF TLC ** This three bedroom end of terrace offers spacious accommodation & is conveniently surrounded by superb amenities. Having been a loving home for many years, Brierley Hill Road is truly ideal for those looking to put their own stamp on their next purchase." Located in Brierley Hill (DY5) — literally just a few miles from Dudley town centre. Clear distress signal: "IN NEED OF TLC". End of terrace with 3 beds. Reduced on 23/04/2026.</p>
+  <div class="score-bar-wrap">
+    <div class="score-bar">
+      <div class="score-fill medium" style="width:70%"></div>
+    </div>
+    <div class="score-label"><span>Score: 70/100</span><span>Consider — good local option</span></div>
+  </div>
+  <div class="score-table" style="margin-top:8px;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <tr><td style="padding:2px 8px;color:#8b949e;">Discount vs Area Avg (30pts)</td><td style="padding:2px 8px;text-align:right;color:#8b949e;">5/30</td>
+          <td style="padding:2px 8px;color:#8b949e;">Days on Market (20pts)</td><td style="padding:2px 8px;text-align:right;color:#d29922;">10/20</td></tr>
+      <tr><td style="padding:2px 8px;color:#8b949e;">Refurb Potential (20pts)</td><td style="padding:2px 8px;text-align:right;color:#3fb950;">18/20</td>
+          <td style="padding:2px 8px;color:#8b949e;">Location Demand (15pts)</td><td style="padding:2px 8px;text-align:right;color:#3fb950;">14/15</td></tr>
+      <tr><td style="padding:2px 8px;color:#8b949e;">Chain Status (15pts)</td><td style="padding:2px 8px;text-align:right;color:#8b949e;">5/15</td>
+          <td style="padding:2px 8px;"></td><td style="padding:2px 8px;"></td></tr>
+    </table>
+  </div>
+  <div class="verdict-box consider">
+    <div class="verdict-title">⚠️ CONSIDER — Best location, needs price negotiation</div>
+    <div class="verdict-body">
+      At £200k, it's at market price even needing TLC. However, being in Brierley Hill (DY5) right next to Dudley makes it the most locally-relevant option. 3 beds, end terrace, spacious. The "IN NEED OF TLC" description is a classic motivated seller signal. Negotiate hard — offer £165-170k given the condition. Recent reduction on 23/04 suggests price may be softening. Budget £20-30k for refurb, target ARV £220-240k.
+    </div>
+  </div>
+  <a href="https://www.rightmove.co.uk/properties/168512276" class="card-link" target="_blank">🔗 View on Rightmove →</a>
+</div>
+
+<!-- #4 -->
+<div class="card">
+  <div class="card-header">
+    <span class="card-rank">#4 · NO CHAIN · POTENTIAL</span>
+    <span style="font-size:13px;color:#8b949e;">Score: 68/100</span>
+  </div>
+  <div class="card-price">£200,000</div>
+  <div class="card-address">Florence Road, Smethwick B66 — Terraced · 3 bed</div>
+  <div class="card-details">
+    <div class="detail-item">
+      <div class="detail-label">Days on Market</div>
+      <div class="detail-value warn">123 days</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Price vs Area Avg</div>
+      <div class="detail-value warn">At market</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Chain Status</div>
+      <div class="detail-value good">✅ NO UPWARD CHAIN</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Refurb Potential</div>
+      <div class="detail-value good">MODERATE — "wealth of potential"</div>
+    </div>
+  </div>
+  <p class="card-summary">"** NO UPWARD CHAIN ** WEALTH OF POTENTIAL ** CONVENIENTLY LOCATED ** Oakmans offer a well presented, three bedroom home situated on Florence road. This property boasts a wealth of potential and no upward chain..." Smethwick B66 is well-positioned between Birmingham and Dudley, with good transport links. "Wealth of potential" suggests work needed despite being described as "well presented." No chain = quick and clean transaction.</p>
+  <div class="score-bar-wrap">
+    <div class="score-bar">
+      <div class="score-fill medium" style="width:68%"></div>
+    </div>
+    <div class="score-label"><span>Score: 68/100</span><span>Consider — good chain-free option</span></div>
+  </div>
+  <div class="score-table" style="margin-top:8px;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <tr><td style="padding:2px 8px;color:#8b949e;">Discount vs Area Avg (30pts)</td><td style="padding:2px 8px;text-align:right;color:#8b949e;">5/30</td>
+          <td style="padding:2px 8px;color:#8b949e;">Days on Market (20pts)</td><td style="padding:2px 8px;text-align:right;color:#d29922;">12/20</td></tr>
+      <tr><td style="padding:2px 8px;color:#8b949e;">Refurb Potential (20pts)</td><td style="padding:2px 8px;text-align:right;color:#d29922;">12/20</td>
+          <td style="padding:2px 8px;color:#8b949e;">Location Demand (15pts)</td><td style="padding:2px 8px;text-align:right;color:#3fb950;">14/15</td></tr>
+      <tr><td style="padding:2px 8px;color:#8b949e;">Chain Status (15pts)</td><td style="padding:2px 8px;text-align:right;color:#3fb950;">15/15</td>
+          <td style="padding:2px 8px;"></td><td style="padding:2px 8px;"></td></tr>
+    </table>
+  </div>
+  <div class="verdict-box consider">
+    <div class="verdict-title">⚠️ CONSIDER — Strong chain-free candidate</div>
+    <div class="verdict-body">
+      No upward chain is a big plus — quick completion, motivated seller. 123 days on market, 3 beds. Smethwick B66 is well-connected (A456, M5 J1, trains to Birmingham in <10 mins). "Wealth of potential" hints at value-add opportunity. Needs viewing to assess refurb scope. Offer around £175-180k if work needed.
+    </div>
+  </div>
+  <a href="https://www.rightmove.co.uk/properties/171228464" class="card-link" target="_blank">🔗 View on Rightmove →</a>
+</div>
+
+<!-- #5 -->
+<div class="card">
+  <div class="card-header">
+    <span class="card-rank">#5 · NO CHAIN · WOLVERHAMPTON</span>
+    <span style="font-size:13px;color:#8b949e;">Score: 65/100</span>
+  </div>
+  <div class="card-price">£180,000</div>
+  <div class="card-address">Burton Crescent, Wolverhampton — Terraced · 2 bed</div>
+  <div class="card-details">
+    <div class="detail-item">
+      <div class="detail-label">Days on Market</div>
+      <div class="detail-value warn">159 days</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Price vs Area Avg</div>
+      <div class="detail-value warn">At market</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Chain Status</div>
+      <div class="detail-value good">✅ NO CHAIN</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Refurb Potential</div>
+      <div class="detail-value warn">LOW — "Well presented"</div>
+    </div>
+  </div>
+  <p class="card-summary">"NO CHAIN — Well presented two bedroom terraced home situated in an extremely popular location close to a range of amenities including schools, shops and access to public transport..." 159 days on market with no chain indicates a motivated seller despite the property being well presented. Good for a buy-to-let investor looking for a turnkey property in Wolverhampton with immediate rental income potential.</p>
+  <div class="score-bar-wrap">
+    <div class="score-bar">
+      <div class="score-fill medium" style="width:65%"></div>
+    </div>
+    <div class="score-label"><span>Score: 65/100</span><span>Decent option — BTL candidate</span></div>
+  </div>
+  <div class="score-table" style="margin-top:8px;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <tr><td style="padding:2px 8px;color:#8b949e;">Discount vs Area Avg (30pts)</td><td style="padding:2px 8px;text-align:right;color:#8b949e;">5/30</td>
+          <td style="padding:2px 8px;color:#8b949e;">Days on Market (20pts)</td><td style="padding:2px 8px;text-align:right;color:#d29922;">14/20</td></tr>
+      <tr><td style="padding:2px 8px;color:#8b949e;">Refurb Potential (20pts)</td><td style="padding:2px 8px;text-align:right;color:#8b949e;">5/20</td>
+          <td style="padding:2px 8px;color:#8b949e;">Location Demand (15pts)</td><td style="padding:2px 8px;text-align:right;color:#3fb950;">11/15</td></tr>
+      <tr><td style="padding:2px 8px;color:#8b949e;">Chain Status (15pts)</td><td style="padding:2px 8px;text-align:right;color:#3fb950;">15/15</td>
+          <td style="padding:2px 8px;"></td><td style="padding:2px 8px;"></td></tr>
+    </table>
+  </div>
+  <div class="verdict-box consider">
+    <div class="verdict-title">ℹ️ CONSIDER — Good BTL, less refurb upside</div>
+    <div class="verdict-body">
+      Already well presented so limited forced appreciation through refurb. However, 159 days + no chain = motivated seller who may accept below asking. Good for buy-to-let: Wolverhampton 2-bed rents at £700-850pcm. Offer £165-170k for a decent yield. Low refurb spend means quicker time to rent.
+    </div>
+  </div>
+  <a href="https://www.rightmove.co.uk/properties/168918845" class="card-link" target="_blank">🔗 View on Rightmove →</a>
+</div>
+
+<!-- Market Context -->
+<h2>📊 Market Context</h2>
+<p style="font-size:15px;color:#b1bac4;">
+  Scanned Rightmove for properties within 20 miles of Dudley (DY1) using the REGION^443 identifier. Total properties found in the area with 2+ beds, under £200k: <strong>8,575</strong>.
+  Sorted by oldest listed first and filtered for houses (Terraced, Semi-Detached, Detached, End of Terrace). Screened 75+ properties across 3 pages of results.
+</p>
+<p style="font-size:15px;color:#b1bac4;">
+  <strong>11 houses</strong> were identified as being on the market for 90+ days. The top 5 are featured above with full scoring analysis.
+</p>
+
+<!-- Search Coverage -->
+<h2>🔍 Search Methodology</h2>
+<div class="table-scroll">
+<table>
+<thead>
+<tr><th>Search Parameter</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Location</td><td>20 miles from Dudley (REGION^443)</td></tr>
+<tr><td>Sort Order</td><td>Oldest listed first (sortType=4)</td></tr>
+<tr><td>Keywords Searched</td><td>"reduced", "probate", "vacant possession", "chain free", "no chain"</td></tr>
+<tr><td>Filters Applied</td><td>Min 2 beds · Max £200k · Houses only (no flats)</td></tr>
+<tr><td>Pages Scanned</td><td>3 pages (75+ property cards)</td></tr>
+<tr><td>Data Source</td><td>Rightmove.co.uk — scraped via direct API extraction</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- Honourable Mentions -->
+<h2>📌 Honourable Mentions</h2>
+<div class="table-scroll">
+<table>
+<thead>
+<tr><th>Property</th><th>Price</th><th>Why Not Top 5</th><th>Link</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td>Hodnet Drive, Pensnett DY5</td>
+  <td>£180,000</td>
+  <td>"Beautifully presented" — no refurb potential</td>
+  <td><a href="https://www.rightmove.co.uk/properties/169414487" style="color:#58a6ff;" target="_blank">View →</a></td>
+</tr>
+<tr>
+  <td>Hordern Road, Wolverhampton</td>
+  <td>£200,000</td>
+  <td>At max budget, no clear distress signal</td>
+  <td><a href="https://www.rightmove.co.uk/properties/171463541" style="color:#58a6ff;" target="_blank">View →</a></td>
+</tr>
+<tr>
+  <td>Quinton Close, Redditch B98</td>
+  <td>£190,000</td>
+  <td>Further from Dudley, well presented</td>
+  <td><a href="https://www.rightmove.co.uk/properties/172308332" style="color:#58a6ff;" target="_blank">View →</a></td>
+</tr>
+<tr>
+  <td>Kendrick Avenue, Birmingham</td>
+  <td>£190,000</td>
+  <td>No chain but no clear distress; 101 days</td>
+  <td><a href="https://www.rightmove.co.uk/properties/172070585" style="color:#58a6ff;" target="_blank">View →</a></td>
+</tr>
+<tr>
+  <td>Baker Street, Tipton</td>
+  <td>£200,000</td>
+  <td>Only 81 days on market (just under 90)</td>
+  <td><a href="https://www.rightmove.co.uk/properties/172811315" style="color:#58a6ff;" target="_blank">View →</a></td>
+</tr>
+<tr>
+  <td>Glenmore Avenue, Burntwood</td>
+  <td>£175,000</td>
+  <td>254 days but well presented, limited upside</td>
+  <td><a href="https://www.rightmove.co.uk/properties/164391623" style="color:#58a6ff;" target="_blank">View →</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- Related Resources -->
+<div class="related-section">
+  <h2 class="section-title">Related Resources</h2>
+  <div class="related-grid">
+    <a href="index.html" class="related-card">
+      <span class="related-icon">🏠</span>
+      <span class="related-title">Dashboard Home</span>
+      <span class="related-desc">Nikka Intel dashboard</span>
+    </a>
+    <a href="brrr-sourcer.html" class="related-card">
+      <span class="related-icon">🔥</span>
+      <span class="related-title">BRRR Daily Sourcer</span>
+      <span class="related-desc">Daily BRRR deals via PropAI</span>
+    </a>
+    <a href="power-team.html" class="related-card">
+      <span class="related-icon">🛠️</span>
+      <span class="related-title">Power Team</span>
+      <span class="related-desc">Tradespeople network</span>
+    </a>
+    <a href="strategy-brrr-hmo-playbook.html" class="related-card">
+      <span class="related-icon">📋</span>
+      <span class="related-title">BRRR/HMO Strategy</span>
+      <span class="related-desc">Investment playbook</span>
+    </a>
+    <a href="market_signals_MAIN.html" class="related-card">
+      <span class="related-icon">📡</span>
+      <span class="related-title">Market Signals</span>
+      <span class="related-desc">Property market intel</span>
+    </a>
+    <a href="area-intelligence/" class="related-card">
+      <span class="related-icon">🗺️</span>
+      <span class="related-title">Area Intelligence</span>
+      <span class="related-desc">Postcode-level analysis</span>
+    </a>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <span style="font-size:11px;color:#475569">
+    Home · BRRR Deals · Power Team · Strategy · Market Signals · Area Intelligence
+  </span>
+  <br>
+  <span style="font-size:12px;color:#30363d;">
+    Page generated: 23 May 2026 07:08 BST · Data sourced from Rightmove.co.uk · Nikka Property Intelligence
+  </span>
+</div>
+
+</div>
+</body>
+</html>
