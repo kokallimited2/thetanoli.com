@@ -3,569 +3,313 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🏢 Commercial Property Intelligence — 21 May 2026</title>
+<title>Commercial Property Strategy Intelligence &mdash; 22 May 2026</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #0a0e17; color: #e0e6ed; font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; overflow-wrap:break-word;word-break:break-word;}
-.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-.header { background: linear-gradient(135deg, #0f1923 0%, #1a2a3a 100%); border: 1px solid #1e3a5f; border-radius: 16px; padding: 30px; margin-bottom: 24px; }
-.header h1 { font-size: 28px; font-weight: 700; color: #60a5fa; display: flex; align-items: center; gap: 12px; }
-.header .subtitle { color: #94a3b8; font-size: 14px; margin-top: 8px; }
-.header .badge { display: inline-block; background: #1e3a5f; color: #60a5fa; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-.edge-box { background: linear-gradient(135deg, #0d1b2a, #1b2838); border: 1px solid #2d4a6f; border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #f59e0b; }
-.edge-box h3 { color: #fbbf24; font-size: 16px; margin-bottom: 10px; }
-.section { background: #111827; border: 1px solid #1e3a5f; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-.section h2 { font-size: 18px; font-weight: 600; color: #60a5fa; margin: 0 0 16px 0; border-bottom: 1px solid #1e3a5f; padding-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-.section h3 { font-size: 15px; font-weight: 600; color: #93c5fd; margin: 16px 0 8px; }
-.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 12px 0; }
-.metric-box { background: #0f1923; border: 1px solid #1e3a5f; border-radius: 8px; padding: 12px; text-align: center; }
-.metric-box .value { font-size: 20px; font-weight: 700; color: #60a5fa; }
-.metric-box .label { font-size: 11px; color: #94a3b8; margin-top: 4px; }
-.metric-box .green { color: #34d399; }
-.metric-box .gold { color: #fbbf24; }
-.metric-box .red { color: #f87171; }
-table { width: 100%; border-collapse: collapse; margin: 8px 0; }
-th, td { padding: 10px 12px; font-size: 13px; text-align: left; border-bottom: 1px solid #1e3a5f; }
-th { background: #0f1923; color: #60a5fa; font-weight: 600; font-size: 12px; text-transform: uppercase; }
-tr:hover { background: rgba(96,165,250,0.05); }
-.tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
-.tag-green { background: rgba(52,211,153,0.15); color: #34d399; }
-.tag-gold { background: rgba(251,191,36,0.15); color: #fbbf24; }
-.tag-blue { background: rgba(96,165,250,0.15); color: #60a5fa; }
-.tag-red { background: rgba(248,113,113,0.15); color: #f87171; }
-.deal-card { background: #0f1923; border: 1px solid #1e3a5f; border-radius: 10px; padding: 16px; margin: 12px 0; }
-.deal-card .price { font-size: 22px; font-weight: 700; color: #fbbf24; }
-.deal-card .yield { font-size: 18px; font-weight: 600; color: #34d399; }
-.deal-card .location { color: #94a3b8; font-size: 13px; }
-.score-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
-.score-pill { background: #1e3a5f; border-radius: 6px; padding: 4px 10px; font-size: 12px; }
-.score-pill.total { background: #2d4a6f; color: #fbbf24; font-weight: 700; }
-ul, ol { margin: 8px 0 8px 20px; }
-li { margin: 4px 0; color: #cbd5e1; font-size: 13px; }
-.footer { text-align: center; color: #475569; font-size: 12px; padding: 20px; border-top: 1px solid #1e3a5f; margin-top: 20px; }
-.flag-list { display: flex; gap: 6px; flex-wrap: wrap; }
-.new-badge { background: #fbbf2433; color: #fbbf24; }
-@media (max-width: 768px) { .metric-grid { grid-template-columns: repeat(2, 1fr); } }
-.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
-.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0b0d11; color: #e2e8f0; font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+  .header { background: linear-gradient(135deg, #0f1729 0%, #1a2332 100%); border: 1px solid #1e2d3d; border-radius: 16px; padding: 32px; margin-bottom: 24px; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: -50%; right: -20%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%); pointer-events: none; }
+  .header h1 { font-size: 28px; font-weight: 800; background: linear-gradient(135deg, #f59e0b, #ec4899, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; position: relative; z-index: 1; }
+  .header .subtitle { font-size: 14px; color: #94a3b8; position: relative; z-index: 1; }
+  .header .badge-row { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; position: relative; z-index: 1; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .badge-blue { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+  .badge-amber { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+  .badge-green { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+  .badge-purple { background: rgba(139,92,246,0.15); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+  .badge-red { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+  .section { background: #111827; border: 1px solid #1e293b; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .section h2 { font-size: 20px; font-weight: 700; color: #f1f5f9; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section h2 .icon { font-size: 24px; }
+  .section h3 { font-size: 16px; font-weight: 600; color: #94a3b8; margin: 20px 0 12px; }
+  .edge-card { background: #1a2332; border: 1px solid #1e2d3d; border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+  .edge-card .label { font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .edge-card .value { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .edge-card p { font-size: 14px; color: #94a3b8; line-height: 1.6; }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #1a2332; color: #60a5fa; font-weight: 600; text-align: left; padding: 10px 12px; border-bottom: 2px solid #1e293b; white-space: nowrap; }
+  td { padding: 10px 12px; border-bottom: 1px solid #1e293b; color: #cbd5e1; }
+  tr:hover { background: rgba(59,130,246,0.05); }
+  .price { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #fbbf24; }
+  .yield-good { color: #4ade80; font-weight: 700; }
+  .yield-ok { color: #fbbf24; font-weight: 600; }
+  .yield-meh { color: #f87171; }
+  .type-tag { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 1px; }
+  .tt-retail { background: rgba(59,130,246,0.15); color: #60a5fa; }
+  .tt-office { background: rgba(139,92,246,0.15); color: #a78bfa; }
+  .tt-industry { background: rgba(245,158,11,0.15); color: #fbbf24; }
+  .tt-land { background: rgba(34,197,94,0.15); color: #4ade80; }
+  .tt-mixed { background: rgba(236,72,153,0.15); color: #f472b6; }
+  .tt-other { background: rgba(148,163,184,0.15); color: #94a3b8; }
+  .flag { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 2px; }
+  .flag-s { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+  .flag-w { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+  .flag-d { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+  .flag-i { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+  .s-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+  .s-card { background: #1a2332; border: 1px solid #1e2d3d; border-radius: 10px; padding: 16px; }
+  .s-card h4 { font-size: 15px; font-weight: 700; color: #f1f5f9; margin-bottom: 6px; }
+  .s-card .meta { font-size: 12px; color: #64748b; margin-bottom: 10px; }
+  .s-card p { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+  .s-card .tags { margin-top: 10px; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .stat-card { background: #1a2332; border: 1px solid #1e2d3d; border-radius: 8px; padding: 16px; text-align: center; }
+  .stat-card .num { font-size: 32px; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
+  .stat-card .label { font-size: 12px; color: #64748b; margin-top: 4px; }
+  .d-card { background: #1a2332; border: 1px solid #1e2d3d; border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+  .d-card .dh { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .d-card .dp { font-size: 22px; font-weight: 800; font-family: 'JetBrains Mono', monospace; color: #fbbf24; }
+  .d-card .dy { font-size: 16px; font-weight: 700; }
+  .d-card .da { font-size: 14px; color: #94a3b8; }
+  .d-card .dm { font-size: 12px; color: #64748b; margin: 8px 0; }
+  .d-card .ds { font-size: 13px; color: #94a3b8; line-height: 1.5; padding: 8px; background: #0f1729; border-radius: 6px; }
+  .footer { text-align: center; padding: 24px; font-size: 12px; color: #475569; }
+  .risk { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; }
+  .rl { color: #4ade80; }
+  .rm { color: #fbbf24; }
+  .rh { color: #f87171; }
 </style>
 </head>
 <body>
-<div class="page-wrap">
 <div class="container">
 
 <!-- HEADER -->
 <div class="header">
-  <h1>🏢 Commercial Property Intelligence — 21 May 2026</h1>
-  <div class="subtitle">
-    <span class="badge">West Midlands Focus</span>
-    <span class="badge" style="margin-left:8px">Daily Run #21</span>
-    <span class="badge" style="margin-left:8px; background:#2d4a6f; color:#fbbf24;">Strategy + Deals + Learning</span>
-    <span class="badge" style="margin-left:8px; background:#2d4a6f; color:#34d399;">71 Total Leads Tracked</span>
+  <h1>🏢 Commercial Property Strategy Intelligence</h1>
+  <div class="subtitle">22 May 2026 &middot; West Midlands Focus &middot; Hermes Autonomous Agent</div>
+  <div class="badge-row">
+    <span class="badge badge-blue">📊 357 Listings Scanned</span>
+    <span class="badge badge-green">💰 18 With Yield Data</span>
+    <span class="badge badge-amber">🏗️ 39 Planning/Development</span>
+    <span class="badge badge-purple">🎯 31 Under £100k</span>
   </div>
 </div>
 
 <!-- TODAY'S COMMERCIAL EDGE -->
-<div class="edge-box">
-  <h3>⚡ Today's Commercial Property Edge — 21 May 2026</h3>
-  <p style="color:#e2e8f0; font-size:14px;">
-    <strong>BREAKING: Post-auction distress creates the best negotiation opportunity yet.</strong>
-    The 54 & 54A West Bromwich Street / 1a Windsor Street mixed-use in Walsall (shop + 2 flats, £25,200pa income) was <strong>UNSOLD at Bond Wolfe's May 14 auction</strong> at £195k guide. It has been relisted at £225k+ — above the failed guide price. This vendor psychology is a <strong>clear signal of motivated but stubborn seller</strong>: they rejected the market clearing price, now sit on empty rates liability, and are testing the regular market higher. The right approach: wait 4-6 weeks, then negotiate below the original £195k guide. At £175k the yield jumps to <strong>14.4%</strong> — the best risk-adjusted deal in the whole series.
-  </p>
-  <p style="color:#94a3b8; font-size:13px; margin-top:10px;">
-    <strong>Second Discovery:</strong> 130 Colley Gate, Halesowen — a former pub (The Chainmaker) with PLANNING CONSENT for 7 residential units (3 terraced houses, 2 flats, 2 detached houses) on a 4,667sqft site. This is the Halesowen equivalent of the 99 High Street Dudley pre-approved development site. At £650k guide with GDV of ~£1.26M (7 units × £180k avg), the residual could be substantial.
-  </p>
-  <p style="color:#94a3b8; font-size:13px; margin-top:10px;">
-    <strong>Market Context:</strong> UK commercial property returning to organic growth. Retail is the best-performing asset class in 2025-26. West Midlands investment volumes surged 55% YoY to £2.8B. But the real opportunity is in secondary retail at 8-15% yields — institutional money chases prime (5-6%), leaving the value for individual investors.
-  </p>
-</div>
-
-<!-- METRICS -->
 <div class="section">
-  <h2>📊 At a Glance</h2>
-  <div class="metric-grid">
-    <div class="metric-box"><div class="value gold">71</div><div class="label">Total Leads Tracked</div></div>
-    <div class="metric-box"><div class="value green">71</div><div class="label">Priority (85+)</div></div>
-    <div class="metric-box"><div class="value blue">4</div><div class="label">Full Audit (70-84)</div></div>
-    <div class="metric-box"><div class="value blue">27</div><div class="label">Light Audit (50-69)</div></div>
-    <div class="metric-box"><div class="value gold">27</div><div class="label">Conversion Candidates</div></div>
-    <div class="metric-box"><div class="value green">14</div><div class="label">BTL Candidates</div></div>
+  <h2><span class="icon">⚡</span> Today's Commercial Edge (22 May 2026)</h2>
+
+  <div class="edge-card">
+    <div class="label">📌 Kidderminster Bank Play</div>
+    <div class="value" style="color: #4ade80;">17.3% Yield &mdash; Bank of Scotland/Halifax Tenant</div>
+    <p>27-28 Vicar Street, Kidderminster: £330,000 with £57,200/yr rent. Blue-chip tenant (Bank of Scotland/Halifax) on 10-year lease to Oct 2028. 6,051 sqft. The 17.3% yield is exceptional for a bank-anchored investment &mdash; institutional-quality income at secondary-market pricing. Key risk: lease expires 2028. Reversion risk if bank downsizes, but conversion upside is significant.</p>
+    <div><span class="flag flag-s">Blue-chip tenant</span><span class="flag flag-w">Lease expiry 2028</span><span class="flag flag-i">£330k entry</span><span class="flag flag-i">6,051 sqft</span></div>
+  </div>
+
+  <div class="edge-card">
+    <div class="label">📌 Post-Auction Distress Watch</div>
+    <div class="value" style="color: #fbbf24;">Walsall Post-Auction Play Still Active</div>
+    <p>54 &amp; 54A West Bromwich Street &amp; 1a Windsor St, Walsall &mdash; £195,000 (unsold at Bond Wolfe 14 May). Still listed, producing £25,200/yr = 12.9% yield. Textbook post-auction distress. Target offer £170-175k for 14.4% yield. Also: 63 George St Walsall (£95k, unsold 30 April) and 1 Freer St Walsall (£190-200k, unsold 22 April).</p>
+    <div><span class="flag flag-s">Post-auction</span><span class="flag flag-s">12.9% yield</span><span class="flag flag-w">Negotiable</span><span class="flag flag-i">Walsall hub</span></div>
+  </div>
+
+  <div class="edge-card">
+    <div class="label">📌 Dev Site Discovery</div>
+    <div class="value" style="color: #a78bfa;">Comberton Hill, Kidderminster &mdash; £70k for 6 Flats + Retail</div>
+    <p>Land with full planning consent for 6 flats + ground floor commercial. Only £70,000. At build cost £150/sqft and local flat GDV £120-140k each, GDV = £720k-£840k. Build cost approx £350-400k. Potential profit £250k+. Also: Castle St Telford (£400k, PP for 14 apartments), Slaney St Oakengates (£200k, PP for 10 apartments + retail), Wrens Nest Lane Telford (£182k, PP for 2 houses).</p>
+    <div><span class="flag flag-s">Full PP</span><span class="flag flag-s">£70k entry</span><span class="flag flag-w">Build finance</span><span class="flag flag-i">Est GDV £720-840k</span></div>
+  </div>
+
+  <div class="edge-card">
+    <div class="label">📌 Passive Income Find</div>
+    <div class="value" style="color: #60a5fa;">Tipton Industrial: 8.5% Yield, 10yr FRI, £95k</div>
+    <p>17 Imex Business Park, Dudley Port, Tipton &mdash; £95,000 producing £8,060/yr (8.5% yield). Let on a new 10-year full repairing and insuring lease with RPI-linked rent reviews. FRI means tenant pays ALL costs (rates, insurance, repairs). Extremely low management burden.</p>
+    <div><span class="flag flag-s">FRI lease</span><span class="flag flag-s">10yr term</span><span class="flag flag-s">RPI linked</span><span class="flag flag-i">£95k entry</span></div>
+  </div>
+
+  <div class="edge-card">
+    <div class="label">📌 Portfolio Income</div>
+    <div class="value" style="color: #f87171;">1-27 Bridge Street, Walsall &mdash; 11.2% Yield on £1.5M</div>
+    <p>11 retail units totalling 22,000+ sqft producing £168,125/yr. At £1,495,000 this represents 11.2% NIY. Multi-let structure provides diversification across tenants. Institutional-grade income at secondary-market pricing.</p>
+    <div><span class="flag flag-s">11.2% yield</span><span class="flag flag-w">Multi-let risk</span><span class="flag flag-i">22,000 sqft</span></div>
   </div>
 </div>
 
-<!-- MARKET OVERVIEW -->
+<!-- DASHBOARD -->
 <div class="section">
-  <h2>📊 West Midlands Commercial Market — May 2026</h2>
-  <div class="metric-grid">
-    <div class="metric-box"><div class="value green">+55%</div><div class="label">WM Investment Volumes YoY</div></div>
-    <div class="metric-box"><div class="value gold">£2.8B</div><div class="label">Total WM Commercial 2025</div></div>
-    <div class="metric-box"><div class="value gold">9.6%</div><div class="label">Retail Returns 2025</div></div>
-    <div class="metric-box"><div class="value">5.91%</div><div class="label">Prime All-Sector Yield</div></div>
-    <div class="metric-box"><div class="value green">8-15%</div><div class="label">Secondary Retail Yield Range</div></div>
-    <div class="metric-box"><div class="value gold">14.4%</div><div class="label">Best Potential Yield (Walsall)</div></div>
+  <h2><span class="icon">📊</span> Market Dashboard</h2>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num" style="color: #60a5fa;">357</div><div class="label">Total Listings</div></div>
+    <div class="stat-card"><div class="num" style="color: #4ade80;">18</div><div class="label">With Yield Data</div></div>
+    <div class="stat-card"><div class="num" style="color: #fbbf24;">39</div><div class="label">Planning/Dev</div></div>
+    <div class="stat-card"><div class="num" style="color: #f87171;">31</div><div class="label">Under £100k</div></div>
   </div>
-  <ul>
-    <li><strong>Retail:</strong> Best-performing asset class. Secondary retail 8-15% yields — this is where individual investors can outperform institutions. Halesowen confirmed as yield capital (14.1% achieved).</li>
-    <li><strong>Industrial:</strong> Modern logistics demand strong. Prime yields 5-5.25% (institutional). Secondary industrial 8-12% for individual investors. Wednesfield benchmark at ~8%.</li>
-    <li><strong>Offices:</strong> Deeply polarised. Prime Birmingham strong at £42.50/sqft. Secondary office under pressure — buy only for conversion to residential.</li>
-    <li><strong>Bond Wolfe:</strong> 50th auction May 14 raised £26.6M (88% success). Bidder registrations up 37% YoY. Next auction: <strong>9 July 2026</strong>.</li>
-    <li><strong>Post-Auction Distress:</strong> 54 West Bromwich St UNSOLD and relisted higher. This pattern (reject guide price at auction, then test regular market above failed guide) is a new distress signal.</li>
-    <li><strong>ECONOMIC:</strong> UK GDP grew 0.2% in 3 months to Jan 2026. Services +0.2%, Production +1.3%, Construction -2.0%. CPI ~3.0%.</li>
-  </ul>
-</div>
 
-<!-- STRATEGY LIBRARY -->
-<div class="section">
-  <h2>📚 Commercial Strategy Library — Updated 21 May 2026</h2>
-  <div class="table-scroll">
-<table>
-    <tr><th>Strategy</th><th>Capital</th><th>Yield Range</th><th>Risk</th><th>Best For</th><th>Verdict</th></tr>
-    <tr>
-      <td>🏪 Shop-with-Flat</td><td>£80-250k</td><td>7-12%</td>
-      <td><span class="tag tag-green">Low</span></td>
-      <td>Walsall, Dudley, Stourbridge</td>
-      <td><span class="tag tag-green">✅ BUY</span></td>
-    </tr>
-    <tr>
-      <td>🏗️ E→C3 PD Conversion</td><td>£80-250k</td><td>15-25% ROE</td>
-      <td><span class="tag tag-gold">Medium</span></td>
-      <td>Halesowen, Dudley, B'ham overspill</td>
-      <td><span class="tag tag-green">✅ BUY</span></td>
-    </tr>
-    <tr>
-      <td>💰 Commercial BTL (small-cap)</td><td>£50-200k</td><td>12-15%</td>
-      <td><span class="tag tag-green">Low-Med</span></td>
-      <td>Halesowen High St, Walsall secondary</td>
-      <td><span class="tag tag-green">✅ BUY</span></td>
-    </tr>
-    <tr>
-      <td>🔄 Hybrid Income+Conversion</td><td>£200k-1.5M</td><td>8% yield + upside</td>
-      <td><span class="tag tag-green">Lowest*</span></td>
-      <td>Halesowen, Wolverhampton</td>
-      <td><span class="tag tag-red">✅ BEST PLAY</span></td>
-    </tr>
-    <tr>
-      <td>📐 Pre-Approved Dev Site</td><td>£500k-2M</td><td>15-25% profit</td>
-      <td><span class="tag tag-gold">Medium</span></td>
-      <td>Dudley, Halesowen (Colley Gate)</td>
-      <td><span class="tag tag-green">✅ BUY</span></td>
-    </tr>
-    <tr>
-      <td>🏭 Industrial Multi-Let</td><td>£200k-1M</td><td>8-12%</td>
-      <td><span class="tag tag-green">Low-Med</span></td>
-      <td>Lye, Tipton, Wednesfield</td>
-      <td><span class="tag tag-gold">👀 WATCH</span></td>
-    </tr>
-    <tr>
-      <td>📋 Post-Auction Distress</td><td>£80-300k</td><td>12-15%</td>
-      <td><span class="tag tag-green">Low-Med</span></td>
-      <td>Walsall (relisted after unsold)</td>
-      <td><span class="tag tag-red">✅ NEW OPPORTUNITY</span></td>
-    </tr>
-    <tr>
-      <td>🔄 Lease Regear/Rent Review</td><td>£100-500k</td><td>10-14%</td>
-      <td><span class="tag tag-gold">Medium</span></td>
-      <td>Coventry, Telford</td>
-      <td><span class="tag tag-gold">👀 WATCH</span></td>
-    </tr>
-    <tr>
-      <td>📋 Retail-then-Resi Sequencing</td><td>£80-250k</td><td>Yield 10-14% → GDV</td>
-      <td><span class="tag tag-green">Lowest*</span></td>
-      <td>Secondary retail, no A4</td>
-      <td><span class="tag tag-red">✅ INNOVATION</span></td>
-    </tr>
-  </table>
-</div>
-  <p style="font-size:12px; color:#64748b; margin-top:8px;">* Hybrid Income+Conversion and Retail-then-Resi Sequencing are lowest-risk because income covers holding costs.</p>
+  <h3>Coverage by Area</h3>
+  <div class="table-wrap"><table><thead><tr><th>Area</th><th>Listings</th><th>Avg Price</th><th>Price Range</th><th>Opportunity Rating</th></tr></thead><tbody>
+<tr><td><strong>Wolverhampton</strong></td><td>59</td><td class="price">£879,618</td><td>£1 &ndash; £5,000,000</td><td>🟡 Established Market</td></tr><tr><td><strong>Telford</strong></td><td>56</td><td class="price">£2,753,630</td><td>£1 &ndash; £45,000,000</td><td>🔵 Premium/Industrial</td></tr><tr><td><strong>Kidderminster</strong></td><td>32</td><td class="price">£545,625</td><td>£1 &ndash; £3,750,000</td><td>🟡 Distressed High St</td></tr><tr><td><strong>Brierley Hill</strong></td><td>25</td><td class="price">£1,068,778</td><td>£1 &ndash; £6,500,000</td><td>🟡 General</td></tr><tr><td><strong>Walsall</strong></td><td>24</td><td class="price">£283,831</td><td>£1 &ndash; £1,495,000</td><td>🟢 Best Value</td></tr><tr><td><strong>Dudley Extra</strong></td><td>22</td><td class="price">£914,955</td><td>£1 &ndash; £4,700,000</td><td>🟡 Established Market</td></tr><tr><td><strong>Tipton</strong></td><td>21</td><td class="price">£937,082</td><td>£1 &ndash; £4,011,020</td><td>🟡 Industrial Value</td></tr><tr><td><strong>West Bromwich</strong></td><td>16</td><td class="price">£925,619</td><td>£1 &ndash; £3,200,000</td><td>🟡 General</td></tr><tr><td><strong>Dudley</strong></td><td>15</td><td class="price">£564,000</td><td>£1 &ndash; £2,000,000</td><td>🟡 Established Market</td></tr><tr><td><strong>Walsall Extra</strong></td><td>15</td><td class="price">£259,667</td><td>£1 &ndash; £1,150,000</td><td>🟢 Best Value</td></tr><tr><td><strong>Stourport</strong></td><td>13</td><td class="price">£407,923</td><td>£125,000 &ndash; £695,000</td><td>🟡 Dev Hub</td></tr><tr><td><strong>Dudley Rural</strong></td><td>13</td><td class="price">£214,231</td><td>£25,000 &ndash; £700,000</td><td>🟡 Established Market</td></tr><tr><td><strong>Oldbury</strong></td><td>12</td><td class="price">£1,131,246</td><td>£1 &ndash; £4,650,000</td><td>🟡 Value Play</td></tr><tr><td><strong>Halesowen</strong></td><td>9</td><td class="price">£330,333</td><td>£1 &ndash; £1,050,000</td><td>🟢 Yield Capital</td></tr><tr><td><strong>Stourbridge</strong></td><td>8</td><td class="price">£276,238</td><td>£60,000 &ndash; £550,000</td><td>🟡 General</td></tr><tr><td><strong>Cannock</strong></td><td>8</td><td class="price">£1,365,625</td><td>£135,000 &ndash; £3,100,000</td><td>🟡 General</td></tr><tr><td><strong>Smethwick</strong></td><td>6</td><td class="price">£1,190,833</td><td>£595,000 &ndash; £2,000,000</td><td>🟡 General</td></tr><tr><td><strong>Kingswinford</strong></td><td>3</td><td class="price">£344,983</td><td>£14,950 &ndash; £795,000</td><td>🟡 General</td></tr>
+</tbody></table></div>
 </div>
 
 <!-- TOP OPPORTUNITIES -->
 <div class="section">
-  <h2>🎯 Top Opportunities — 21 May 2026</h2>
-  <div class="table-scroll">
-<table>
-    <tr><th>Rank</th><th>Location</th><th>Asset Type</th><th>Strategy</th><th>Price</th><th>Yield/Upside</th><th>Risk</th><th>Score</th></tr>
-    <tr style="background:rgba(52,211,153,0.05);">
-      <td>🥇</td>
-      <td><strong>54 & 54A West Bromwich St & 1a Windsor St, Walsall</strong></td>
-      <td>Mixed-use: shop + 2 flats</td>
-      <td><span class="tag tag-gold">Post-auction BTL / Mixed-use hold</span></td>
-      <td><span style="color:#fbbf24;font-weight:600;">£225,000 (negotiable below)</span></td>
-      <td><span style="color:#34d399;font-weight:600;">12.9% gross yield (£25,200pa)</span></td>
-      <td><span class="tag tag-green">Low-Med</span></td>
-      <td><strong>8.8/10</strong></td>
-    </tr>
-    <tr style="background:rgba(52,211,153,0.05);">
-      <td>🥈</td>
-      <td><strong>78 Darlington St & 11 Clarence St, Wolverhampton</strong></td>
-      <td>16,819sqft vacant shell</td>
-      <td><span class="tag tag-gold">Resi conversion (subject to consent)</span></td>
-      <td><span style="color:#fbbf24;font-weight:600;">£800,000</span></td>
-      <td><span style="color:#34d399;font-weight:600;">GDV potential: flats on 16,819sqft site</span></td>
-      <td><span class="tag tag-gold">Medium</span></td>
-      <td><strong>8.5/10</strong></td>
-    </tr>
-    <tr style="background:rgba(52,211,153,0.05);">
-      <td>🥉</td>
-      <td><strong>130 Colley Gate, Cradley, Halesowen</strong></td>
-      <td>4,667sqft former pub</td>
-      <td><span class="tag tag-gold">Pre-approved dev site (PP for 7 units)</span></td>
-      <td><span style="color:#fbbf24;font-weight:600;">£650,000 (guide)</span></td>
-      <td><span style="color:#34d399;font-weight:600;">GDV 7 units @ £180k avg = £1.26M</span></td>
-      <td><span class="tag tag-gold">Medium</span></td>
-      <td><strong>8.4/10</strong></td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td><strong>49-63 High Street, Halesowen (ongoing)</strong></td>
-      <td>8-unit retail parade</td>
-      <td><span class="tag tag-gold">Hybrid Income + Conversion</span></td>
-      <td><span style="color:#fbbf24;font-weight:600;">£1,295,000</span></td>
-      <td><span style="color:#34d399;font-weight:600;">8.31% NIY + resi consent</span></td>
-      <td><span class="tag tag-green">Lowest</span></td>
-      <td><strong>9.1/10</strong></td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td><strong>61 High Street, Halesowen</strong></td>
-      <td>Retail investment (single unit)</td>
-      <td><span class="tag tag-gold">Small-cap BTL</span></td>
-      <td><span style="color:#fbbf24;font-weight:600;">£99,000</span></td>
-      <td><span style="color:#34d399;font-weight:600;">14.1% yield (£14,000pa)</span></td>
-      <td><span class="tag tag-green">Low-Med</span></td>
-      <td><strong>8.8/10</strong></td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td><strong>Windmill Hill, Cradley, Halesowen</strong></td>
-      <td>Mixed-use: commercial + 9 flats</td>
-      <td><span class="tag tag-gold">Income hold / Asset management</span></td>
-      <td><span style="color:#fbbf24;font-weight:600;">POA</span></td>
-      <td><span style="color:#34d399;font-weight:600;">£82,500pa income (est. 8-10% yield)</span></td>
-      <td><span class="tag tag-green">Low</span></td>
-      <td><strong>8.3/10</strong></td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td><strong>58 Tower Street, Dudley</strong></td>
-      <td>Vacant double-fronted commercial</td>
-      <td><span class="tag tag-gold">Conversion / Refurb BTL</span></td>
-      <td><span style="color:#fbbf24;font-weight:600;">£120-130k (auction Sep)</span></td>
-      <td><span style="color:#34d399;font-weight:600;">Auction price discovery</span></td>
-      <td><span class="tag tag-gold">Medium</span></td>
-      <td><strong>7.8/10</strong></td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td><strong>Unit K, Key Industrial Estate, Wednesfield</strong></td>
-      <td>7,308sqft warehouse</td>
-      <td><span class="tag tag-gold">Industrial BTL</span></td>
-      <td><span style="color:#fbbf24;font-weight:600;">~£500,000</span></td>
-      <td><span style="color:#34d399;font-weight:600;">8% yield (£40k FRI, 5yr)</span></td>
-      <td><span class="tag tag-green">Low-Med</span></td>
-      <td><strong>7.5/10</strong></td>
-    </tr>
-  </table>
-</div>
+  <h2><span class="icon">🎯</span> Top Investment Opportunities</h2>
+
+  <h3>💰 Best Yields (Ranked)</h3>
+  <div class="table-wrap"><table><thead><tr><th>Yield</th><th>Price</th><th>Rent/yr</th><th>Area</th><th>Type</th><th>Address</th></tr></thead><tbody>
+<tr><td class="yield-good">17.3%</td><td class="price">£330,000</td><td>£57,200</td><td>Kidderminster</td><td><span class="type-tag tt-retail">Commercial Property</span></td><td style="font-size:12px;">27-28 Vicar Street Kidderminster, 27-28 Vicar Street, Kidder</td></tr><tr><td class="yield-good">12.9%</td><td class="price">£195,000</td><td>£25,200</td><td>Walsall</td><td><span class="type-tag tt-retail">Mixed Use</span></td><td style="font-size:12px;">54 & 54A West Bromwich Street & 1a Windsor Street, Walsall, </td></tr><tr><td class="yield-good">12.9%</td><td class="price">£195,000</td><td>£25,200</td><td>Walsall</td><td><span class="type-tag tt-retail">Mixed Use</span></td><td style="font-size:12px;">54 & 54A West Bromwich Street & 1a Windsor Street, Walsall, </td></tr><tr><td class="yield-ok">11.6%</td><td class="price">£250,000</td><td>£29,000</td><td>Kidderminster</td><td><span class="type-tag tt-retail">Mixed Use</span></td><td style="font-size:12px;">Sense, 15 High Street, Kidderminster</td></tr><tr><td class="yield-ok">11.2%</td><td class="price">£1,495,000</td><td>£168,125</td><td>Walsall</td><td><span class="type-tag tt-retail">Commercial Property</span></td><td style="font-size:12px;">1-27 Bridge Street, Walsall, WS1 1DP</td></tr><tr><td class="yield-ok">11.0%</td><td class="price">£500,000</td><td>£55,000</td><td>Dudley</td><td><span class="type-tag tt-retail">Commercial Property</span></td><td style="font-size:12px;">46 High Street, Dudley, DY1 1PN</td></tr><tr><td class="yield-ok">11.0%</td><td class="price">£500,000</td><td>£55,000</td><td>Dudley</td><td><span class="type-tag tt-retail">Commercial Property</span></td><td style="font-size:12px;">46 High Street, Dudley, DY1 1PN</td></tr><tr><td class="yield-ok">11.0%</td><td class="price">£500,000</td><td>£55,000</td><td>Dudley</td><td><span class="type-tag tt-retail">Commercial Property</span></td><td style="font-size:12px;">46 High Street, Dudley, DY1 1PN</td></tr><tr><td class="yield-ok">8.5%</td><td class="price">£95,000</td><td>£8,060</td><td>Tipton</td><td><span class="type-tag tt-retail">Light Industrial</span></td><td style="font-size:12px;">17 Imex Business Park, Fisher Street, Dudley Port, Tipton, S</td></tr><tr><td class="yield-ok">8.5%</td><td class="price">£95,000</td><td>£8,060</td><td>Tipton</td><td><span class="type-tag tt-retail">Light Industrial</span></td><td style="font-size:12px;">17 Imex Business Park, Fisher Street, Dudley Port, Tipton, S</td></tr>
+</tbody></table></div>
+
+  <h3>🏗️ Development Sites (under £250k)</h3>
+  <div class="table-wrap"><table><thead><tr><th>Price</th><th>Area</th><th>Type</th><th>Address</th><th>Potential</th></tr></thead><tbody>
+<tr><td class="price">£60,000</td><td>Telford</td><td><span class="type-tag tt-land">Land</span></td><td style="font-size:12px;">Haybridge Road, Hadley, Telford</td><td style="font-size:12px;color:#94a3b8;">Derelict Detached House Potential for Redevelopment (Subject to Planning) For Sale By Auction at 6...</td></tr><tr><td class="price">£70,000</td><td>Kidderminster</td><td><span class="type-tag tt-land">Land</span></td><td style="font-size:12px;">Land at Comberton Hill, Comberton Hill, Kidderminster</td><td style="font-size:12px;color:#94a3b8;">Well Located Freehold Land of 0.08 acres (0.03 hectares) with Full Planning Consent for 6 x Flats and a Ground Floor Com</td></tr><tr><td class="price">£75,000</td><td>Walsall</td><td><span class="type-tag tt-land">Commercial Property</span></td><td style="font-size:12px;">13 Bridge Street, Walsall, West Midlands, WS1 1DP</td><td style="font-size:12px;color:#94a3b8;">freehold town centre retail premises suitable for a variety of uses, subject to planning consents...</td></tr><tr><td class="price">£75,000</td><td>Walsall</td><td><span class="type-tag tt-land">Commercial Property</span></td><td style="font-size:12px;">13 Bridge Street, Walsall, West Midlands, WS1 1DP</td><td style="font-size:12px;color:#94a3b8;">freehold town centre retail premises suitable for a variety of uses, subject to planning consents...</td></tr><tr><td class="price">£135,000</td><td>Cannock</td><td><span class="type-tag tt-land">Land</span></td><td style="font-size:12px;">Hednesford Road, Cannock</td><td style="font-size:12px;color:#94a3b8;">DING PLOTS ** THREE UNITS ** THREE BEDROOM DETACHED BUNGALOW ** 2 X TWO BEDROOM APARTMENTS ** REAR ACCESS ** DRIVEWAYS *</td></tr><tr><td class="price">£150,000</td><td>Walsall</td><td><span class="type-tag tt-land">Commercial Property</span></td><td style="font-size:12px;">Leicester Street, Walsall</td><td style="font-size:12px;color:#94a3b8;">r of a four storey building and could be used for a variety of uses (subject to planning consent)...</td></tr><tr><td class="price">£160,000</td><td>Kidderminster</td><td><span class="type-tag tt-land">Commercial Property</span></td><td style="font-size:12px;">15-17 Coventry Street, Kidderminster, DY10 2BG</td><td style="font-size:12px;color:#94a3b8;">suitable for a variety of alternative uses subject to obtaining the appropriate planning permission...</td></tr><tr><td class="price">£160,000</td><td>Kidderminster</td><td><span class="type-tag tt-land">Commercial Property</span></td><td style="font-size:12px;">15-17 Coventry Street, Kidderminster, DY10 2BG</td><td style="font-size:12px;color:#94a3b8;">suitable for a variety of alternative uses subject to obtaining the appropriate planning permission...</td></tr><tr><td class="price">£160,000</td><td>Kidderminster</td><td><span class="type-tag tt-land">Commercial Property</span></td><td style="font-size:12px;">15-17 Coventry Street, Kidderminster, DY10 2BG</td><td style="font-size:12px;color:#94a3b8;">suitable for a variety of alternative uses subject to obtaining the appropriate planning permission...</td></tr><tr><td class="price">£170,000</td><td>Tipton</td><td><span class="type-tag tt-land">Retail Property (hig</span></td><td style="font-size:12px;">13 Bradleys Lane, Tipton, DY4 9EZ</td><td style="font-size:12px;color:#94a3b8;">wo-storey commercial building with basement, offering flexible refurbishment or redevelopment potential...</td></tr><tr><td class="price">£170,000</td><td>Wolverhampton</td><td><span class="type-tag tt-land">Land</span></td><td style="font-size:12px;">Wolverhampton Road East, Wolverhampton</td><td style="font-size:12px;color:#94a3b8;">LAND WITH PLANNING PERMISSION GRANTED! PLANNING REF - 24/00683/FUL Planning consent for two x4 bedroom detached houses P</td></tr><tr><td class="price">£179,950</td><td>Brierley Hill</td><td><span class="type-tag tt-land">Shop</span></td><td style="font-size:12px;">Wallows Road, Brierley Hill</td><td style="font-size:12px;color:#94a3b8;">d 1-Bedroom First Floor Flat, Ground Floor Commercial Unit, Large Basement With Conversion Potential (STPP), And Additio</td></tr><tr><td class="price">£182,000</td><td>Telford</td><td><span class="type-tag tt-land">Land</span></td><td style="font-size:12px;">Wrens Nest Lane, Telford</td><td style="font-size:12px;color:#94a3b8;">Full Planning Permission for Two Executive Spacious Four Bedroom Detached Properties situated...</td></tr><tr><td class="price">£190,000</td><td>Walsall</td><td><span class="type-tag tt-land">Residential Developm</span></td><td style="font-size:12px;">1 Freer Street, Walsall, West Midlands, WS1 1QD</td><td style="font-size:12px;color:#94a3b8;">uide Price = £180,000 - £190,000 Freehold Vacant Warehouse/Retail Premises with Redevelopment Potential Property for auc</td></tr><tr><td class="price">£200,000</td><td>Walsall</td><td><span class="type-tag tt-land">Residential Developm</span></td><td style="font-size:12px;">1 Freer Street, Walsall, West Midlands, WS1 1QD</td><td style="font-size:12px;color:#94a3b8;">ice = £190,000 - £200,000 Unsold Freehold Vacant Warehouse/Retail Premises with Redevelopment Potential Property for auc</td></tr><tr><td class="price">£200,000</td><td>Telford</td><td><span class="type-tag tt-land">Land</span></td><td style="font-size:12px;">Slaney Street, Oakengates, Telford</td><td style="font-size:12px;color:#94a3b8;">Residential Development Site Full planning consent for 10 Apartments & 1 Retail Unit Please contact residential- or call</td></tr><tr><td class="price">£225,000</td><td>Dudley Rural</td><td><span class="type-tag tt-land">Land</span></td><td style="font-size:12px;">Land - Musk Lane/Brook St, Lower Gornal, Dudley, DY3 2U</td><td style="font-size:12px;color:#94a3b8;">This 0.21 hectare (0.52 acre) site currently has planning consent for 10 houses...</td></tr>
+</tbody></table></div>
+
+  <h3>🔑 Entry-Level (under £100k)</h3>
+  <div class="table-wrap"><table><thead><tr><th>Price</th><th>Area</th><th>Type</th><th>Address</th></tr></thead><tbody>
+<tr><td class="price">£6,000</td><td>Telford</td><td><span class="type-tag tt-other">Land</span></td><td style="font-size:12px;"> Area at, Blackstone Drive, St Georges, Telford, Shropshire,</td></tr><tr><td class="price">£8,500</td><td>Tipton</td><td><span class="type-tag tt-other">Residential Developm</span></td><td style="font-size:12px;">St. Marks Road, Tipton</td></tr><tr><td class="price">£10,000</td><td>Dudley Extra</td><td><span class="type-tag tt-other">Land</span></td><td style="font-size:12px;">Land @ Northfield Road, Dudley, West Midlands DY2 9JN</td></tr><tr><td class="price">£14,950</td><td>Kingswinford</td><td><span class="type-tag tt-other">Shop</span></td><td style="font-size:12px;">High Street, Kingswinford, Dudley</td></tr><tr><td class="price">£25,000</td><td>Brierley Hill</td><td><span class="type-tag tt-other">Land</span></td><td style="font-size:12px;">Former Queens Street/Consort Crescent Garage Site, Pensnett,</td></tr><tr><td class="price">£25,000</td><td>Dudley Rural</td><td><span class="type-tag tt-other">Land</span></td><td style="font-size:12px;">Car Park on the south side of Stickley Lane, Dudley, West Mi</td></tr><tr><td class="price">£49,950</td><td>Walsall</td><td><span class="type-tag tt-other">Cafe</span></td><td style="font-size:12px;">Cafe & Sandwich Bars, West Midlands</td></tr><tr><td class="price">£50,000</td><td>Wolverhampton</td><td><span class="type-tag tt-other">Commercial Property</span></td><td style="font-size:12px;">A SPECIALIST SURVEYOR, Wolverhampton</td></tr><tr><td class="price">£55,000</td><td>Kidderminster</td><td><span class="type-tag tt-other">Land</span></td><td style="font-size:12px;">Sugarloaf Lane, Iverley</td></tr><tr><td class="price">£60,000</td><td>Stourbridge</td><td><span class="type-tag tt-other">Shop</span></td><td style="font-size:12px;">West Midlands, DY8</td></tr><tr><td class="price">£60,000</td><td>Stourbridge</td><td><span class="type-tag tt-other">Shop</span></td><td style="font-size:12px;">West Midlands, DY8</td></tr><tr><td class="price">£60,000</td><td>Telford</td><td><span class="type-tag tt-other">Land</span></td><td style="font-size:12px;">Haybridge Road, Hadley, Telford</td></tr><tr><td class="price">£60,000</td><td>Walsall Extra</td><td><span class="type-tag tt-other">Land</span></td><td style="font-size:12px;">Land off, 39a Jerome Road, Walsall, West Midlands, WS2 9SU</td></tr><tr><td class="price">£64,950</td><td>Oldbury</td><td><span class="type-tag tt-other">Convenience Store</span></td><td style="font-size:12px;">Off License & Convenience, West Midlands</td></tr><tr><td class="price">£65,000</td><td>Dudley Rural</td><td><span class="type-tag tt-other">Shop</span></td><td style="font-size:12px;">Dudley, West Midlands, DY3</td></tr><tr><td class="price">£65,000</td><td>Dudley Rural</td><td><span class="type-tag tt-other">Shop</span></td><td style="font-size:12px;">Dudley, West Midlands, DY3</td></tr><tr><td class="price">£68,000</td><td>Wolverhampton</td><td><span class="type-tag tt-other">Retail Property (hig</span></td><td style="font-size:12px;">Trysull Road, Wolverhampton, West Midlands, WV3</td></tr><tr><td class="price">£70,000</td><td>Kidderminster</td><td><span class="type-tag tt-other">Land</span></td><td style="font-size:12px;">Land at Comberton Hill, Comberton Hill, Kidderminster</td></tr><tr><td class="price">£75,000</td><td>Walsall</td><td><span class="type-tag tt-other">Commercial Property</span></td><td style="font-size:12px;">13 Bridge Street, Walsall, West Midlands, WS1 1DP</td></tr><tr><td class="price">£75,000</td><td>Walsall</td><td><span class="type-tag tt-other">Commercial Property</span></td><td style="font-size:12px;">13 Bridge Street, Walsall, West Midlands, WS1 1DP</td></tr><tr><td class="price">£80,000</td><td>Wolverhampton</td><td><span class="type-tag tt-other">Pub</span></td><td style="font-size:12px;">Dog & Partridge, Straight Mile, Calf Heath, Wolverhampton, W</td></tr><tr><td class="price">£85,000</td><td>Dudley Rural</td><td><span class="type-tag tt-other">Land</span></td><td style="font-size:12px;">Chapel Lane, Dudley</td></tr><tr><td class="price">£87,000</td><td>Walsall</td><td><span class="type-tag tt-other">Commercial Property</span></td><td style="font-size:12px;">27 Bridge Street, Walsall, West Midlands, WS1 1DP</td></tr><tr><td class="price">£92,500</td><td>Wolverhampton</td><td><span class="type-tag tt-other">Retail Property (out</span></td><td style="font-size:12px;">32 Birchwood Road, Wolverhampton, West Midlands, WV4</td></tr><tr><td class="price">£95,000</td><td>Tipton</td><td><span class="type-tag tt-other">Light Industrial</span></td><td style="font-size:12px;">17 Imex Business Park, Fisher Street, Dudley Port, Tipton, S</td></tr><tr><td class="price">£95,000</td><td>Tipton</td><td><span class="type-tag tt-other">Light Industrial</span></td><td style="font-size:12px;">17 Imex Business Park, Fisher Street, Dudley Port, Tipton, S</td></tr><tr><td class="price">£95,000</td><td>Walsall</td><td><span class="type-tag tt-other">Commercial Property</span></td><td style="font-size:12px;">63 George Street, Walsall, West Midlands WS1 1RS</td></tr><tr><td class="price">£95,000</td><td>Walsall</td><td><span class="type-tag tt-other">Commercial Property</span></td><td style="font-size:12px;">63 George Street, Walsall, West Midlands WS1 1RS</td></tr><tr><td class="price">£99,000</td><td>Telford</td><td><span class="type-tag tt-other">Land</span></td><td style="font-size:12px;">Arleston, Wellington, Telford, Shropshire, TF1 2JD</td></tr><tr><td class="price">£99,950</td><td>Wolverhampton</td><td><span class="type-tag tt-other">Shop</span></td><td style="font-size:12px;">Art Gallery - Midlands</td></tr>
+</tbody></table></div>
 </div>
 
-<!-- DETAILED DEAL ANALYSIS -->
+<!-- STRATEGY LIBRARY -->
 <div class="section">
-  <h2>🔍 Detailed Deal Analysis — New This Run</h2>
+  <h2><span class="icon">📚</span> Strategy Library &mdash; May 2026</h2>
+  <div class="s-grid">
+<div class="s-card"><h4>💰 High-Yield Commercial BTL</h4><div class="meta">Capital: £50k–£200k · Yield: 8–17%</div><p>Buy secondary retail/industrial at 8-17% yields. Best finds: Kidderminster bank (£330k, 17.3%), Tipton industrial (£95k, 8.5%). FRI leases preferred. Must verify tenant covenant and EPC compliance.</p><div class="tags"><span class="flag flag-s">#4ade80</span><span class="flag flag-s">£95k Tipton</span><span class="flag flag-s">£330k Kidderminster</span><span class="flag flag-s">FRI lease</span></div></div><div class="s-card"><h4>🏗️ Full Planning Dev Sites</h4><div class="meta">Capital: £60k–£400k · Timeline: 12–24mo</div><p>Buy land with full planning. Best: Comberton Hill Kidderminster (£70k, 6 flats + retail), Castle St Telford (£400k, 14 apartments), Slaney St Oakengates (£200k, 10 apartments + retail). Low planning risk.</p><div class="tags"><span class="flag flag-s">£70k entry</span><span class="flag flag-s">Full PP</span><span class="flag flag-s">Build finance</span></div></div><div class="s-card"><h4>🏪 Mixed-Use Shop+Flat</h4><div class="meta">Capital: £65k–£500k · Yield: 7–13%</div><p>Buy commercial with residential component. 63 George St Walsall (£95k, unsold), Wallows Road Brierley Hill (£180k, shop+flat+basement). Sell flat to reduce commercial basis.</p><div class="tags"><span class="flag flag-s">Dual income</span><span class="flag flag-s">Split value</span><span class="flag flag-s">Lower risk</span></div></div><div class="s-card"><h4>🔴 Post-Auction Distress</h4><div class="meta">Capital: £95k–£200k · Discount: 10–20%</div><p>3 Walsall targets: 54 West Bromwich St (£195k→£175k, 12.9%), 63 George St (£95k, unsold 30 Apr), 1 Freer St (£190k, unsold 22 Apr). Vendor paid fees + empty rates ticking.</p><div class="tags"><span class="flag flag-s">Bond Wolfe</span><span class="flag flag-s">Walsall hub</span><span class="flag flag-s">Income check</span></div></div><div class="s-card"><h4>🏭 Light Industrial BTL</h4><div class="meta">Capital: £95k–£200k · Yield: 8–10%</div><p>17 Imex Business Park Tipton (£95k, 8.5%, 10yr FRI) shows the pattern. Low mgmt burden. Secondary industrial (8-12%) is sweet spot as institutional demand tightens prime yields.</p><div class="tags"><span class="flag flag-s">FRI lease</span><span class="flag flag-s">Low Mgmt</span><span class="flag flag-s">Tipton</span></div></div><div class="s-card"><h4>🏢 Portfolio Income Plays</h4><div class="meta">Capital: £500k–£3M · Yield: 7–11%</div><p>Larger assets: 1-27 Bridge St Walsall (£1.5M, 11.2%, 11 retail), 46 High St Dudley (£500k, 11.0%), Merridale Rd Wolverhampton (£2.9M, 8.4%, 12 flats+7 commercial).</p><div class="tags"><span class="flag flag-s">Diversified</span><span class="flag flag-s">Passive</span><span class="flag flag-s">£500k+</span></div></div>
+  </div>
+</div>
 
-  <div class="deal-card">
-    <div class="location">📍 <strong>NEW 🏆 54 & 54A West Bromwich Street & 1a Windsor Street, Walsall, WS1 4DB</strong></div>
-    <div style="display:flex; gap:20px; align-items:baseline; margin:8px 0;">
-      <div><span class="price">£225,000</span> <span style="color:#94a3b8;">Freehold Mixed-Use</span></div>
-      <div><span class="yield">12.9% Gross Yield (at £225k)</span></div>
-    </div>
-    <p style="color:#cbd5e1; font-size:13px;"><strong>POST-AUCTION OPPORTUNITY.</strong> Unsold at Bond Wolfe May 14 auction (orig guide £195k). Now relisted at £225k+. Shop (Vape & Tech) at £5,400pa. Flat 54A at £5,400pa. 4-bed flat 1A Windsor St at £14,400pa. Total income: £25,200/year. At £175k negotiated (below orig guide), yield jumps to 14.4%. V-junction position in established residential area. This is the <strong>single best negotiation target</strong> found across all 21 runs.</p>
-    <div class="score-row">
-      <span class="score-pill">🏆 Yield: 18/20</span>
-      <span class="score-pill">🔒 Tenant/Security: 10/15 (Vape & Tech covenant)</span>
-      <span class="score-pill">📍 Location: 11/15 (Walsall residential)</span>
-      <span class="score-pill">🔄 Upside: 12/15 (asset management)</span>
-      <span class="score-pill">📋 Planning: 10/15 (flats already exist)</span>
-      <span class="score-pill">💰 Finance: 8/10</span>
-      <span class="score-pill">🚪 Exit: 8/10</span>
-      <span class="score-pill total">TOTAL: 8.8/10</span>
-    </div>
-    <div style="margin-top:8px;">
-      <span class="tag tag-green">✅ Post-auction distress — negotiate below £195k</span>
-      <span class="tag tag-gold">Check lease terms for retail unit</span>
-      <span class="tag tag-blue">Bond Wolfe Auctions</span>
-    </div>
+<!-- DEAL DEEP DIVE -->
+<div class="section">
+  <h2><span class="icon">🔍</span> Deal Analysis Deep Dive</h2>
+
+  <div class="d-card">
+    <div class="dh"><div><div class="dp">£330,000</div><div class="da">27-28 Vicar Street, Kidderminster</div></div><div><div class="dy" style="color:#4ade80;">17.3% Yield</div><div style="font-size:13px;color:#94a3b8;">£57,200/yr &middot; 6,051 sqft</div></div></div>
+    <div class="dm">Bank of Scotland / Halifax &middot; 10yr Lease to Oct 2028 &middot; Kidderminster Town Centre</div>
+    <div class="ds">Freehold Bank Investment. Let to Bank of Scotland Plc (t/a Halifax) on a 10 year lease expiring October 2028. Approximately 562.2 sq m (6,051 sq ft). Investment let at £57,200 pa (17.33% GIY on Guide Price).</div>
+    <div style="margin-top:8px;"><span class="flag flag-s">Blue-chip tenant</span><span class="flag flag-w">Lease expiry 2028</span><span class="flag flag-w">Bank branch risk</span><span class="flag flag-i">Conversion upside</span></div>
   </div>
 
-  <div class="deal-card">
-    <div class="location">📍 <strong>NEW 🥈 78 Darlington Street & 11 Clarence Street, Wolverhampton, WV1 4LY</strong></div>
-    <div style="display:flex; gap:20px; align-items:baseline; margin:8px 0;">
-      <div><span class="price">£800,000</span> <span style="color:#94a3b8;">Freehold — Vacant Shell</span></div>
-      <div><span class="yield">£48 psf — Conversion play</span></div>
-    </div>
-    <p style="color:#cbd5e1; font-size:13px;">Substantial 16,819 sqft freehold commercial building, stripped back to shell. Prominent corner at Darlington Street/Waterloo Road/Clarence Street, next to Mander Shopping Centre. Suitable for residential conversion (subject to consent). RV £40,500 — empty rates liability = ~£3,375/month after 3 months. VAT payable. This is a major redevelopment play: estimate 20-30 flats possible at £48 psf land cost. Requires ~£1.5-2M total investment (purchase + conversion) for potential GDV of £2.8-4.2M.</p>
-    <div class="score-row">
-      <span class="score-pill">🏆 Yield: N/A (vacant)</span>
-      <span class="score-pill">🔒 Tenant/Security: N/A</span>
-      <span class="score-pill">📍 Location: 13/15 (city centre)</span>
-      <span class="score-pill">🔄 Upside: 15/15</span>
-      <span class="score-pill">📋 Planning: 12/15 (subject to consent)</span>
-      <span class="score-pill">💰 Finance: 6/10 (dev finance needed)</span>
-      <span class="score-pill">🚪 Exit: 8/10</span>
-      <span class="score-pill total">TOTAL: 8.5/10</span>
-    </div>
-    <div style="margin-top:8px;">
-      <span class="tag tag-green">✅ Major conversion/redevelopment opportunity</span>
-      <span class="tag tag-red">⚠️ £3,375/month empty rates burning</span>
-      <span class="tag tag-blue">Bond Wolfe Commercial Sales</span>
-    </div>
+  <div class="d-card">
+    <div class="dh"><div><div class="dp">£195,000</div><div class="da">54 &amp; 54A West Bromwich St, Walsall</div></div><div><div class="dy" style="color:#4ade80;">12.9% Yield</div><div style="font-size:13px;color:#94a3b8;">£25,200/yr &middot; Mixed Use</div></div></div>
+    <div class="dm">Mixed Use &middot; 2 Flats + Retail &middot; Bond Wolfe Unsold 14 May 2026 &middot; WS1 4DB</div>
+    <div class="ds">For Sale By Public Auction 14 May 2026. A freehold mixed use investment property, comprising of two self contained flats and a retail unit within a busy neighbourhood location. Current gross income: £25,200 pa.</div>
+    <div style="margin-top:8px;"><span class="flag flag-s">Post-auction distress</span><span class="flag flag-s">Mixed-use income</span><span class="flag flag-i">Target £170-175k</span></div>
   </div>
 
-  <div class="deal-card">
-    <div class="location">📍 <strong>NEW 🥉 130 Colley Gate (The Chainmaker PH), Cradley, Halesowen, B63 2BX</strong></div>
-    <div style="display:flex; gap:20px; align-items:baseline; margin:8px 0;">
-      <div><span class="price">£650,000 (guide)</span> <span style="color:#94a3b8;">Freehold 4,667 sqft</span></div>
-      <div><span class="yield">GDV £1.0-1.26M est.</span></div>
-    </div>
-    <p style="color:#cbd5e1; font-size:13px;">Former Chainmaker PH with planning consent P22/1286 (may have expired Sep 2025, pending renewal) for: 3 terraced houses (barn conversion), 2 first-floor flats (main building), 2 detached houses (grounds). Main building 3,837 sqft + barn 830 sqft. Prominent A458 frontage in Cradley/Halesowen. This is the <strong>Halesowen equivalent of 99 High Street Dudley</strong> — a pre-approved development site in a secondary market. If PP can be renewed, GDV of 7 units at £150-180k each = £1.05-1.26M. Requires build cost of ~£400-600k = £50k-£210k residual at £650k purchase.</p>
-    <div class="score-row">
-      <span class="score-pill">🏆 Yield: N/A</span>
-      <span class="score-pill">🔒 Tenant/Security: N/A</span>
-      <span class="score-pill">📍 Location: 12/15 (Halesowen corridor)</span>
-      <span class="score-pill">🔄 Upside: 15/15</span>
-      <span class="score-pill">📋 Planning: 10/15 (may be expired)</span>
-      <span class="score-pill">💰 Finance: 6/10</span>
-      <span class="score-pill">🚪 Exit: 8/10</span>
-      <span class="score-pill total">TOTAL: 8.4/10</span>
-    </div>
-    <div style="margin-top:8px;">
-      <span class="tag tag-green">✅ Pre-approved development site</span>
-      <span class="tag tag-gold">⚠️ Verify planning consent status (P22/1286)</span>
-    </div>
+  <div class="d-card">
+    <div class="dh"><div><div class="dp">£70,000</div><div class="da">Land at Comberton Hill, Kidderminster</div></div><div><div class="dy" style="color:#a78bfa;">🏗️ Dev Play</div><div style="font-size:13px;color:#94a3b8;">6 Flats + Retail &middot; Full PP</div></div></div>
+    <div class="dm">0.08 acres &middot; Planning for 6 Flats + Ground Floor Commercial &middot; Kidderminster Town Centre</div>
+    <div class="ds">Well Located Freehold Land of 0.08 acres (0.03 hectares) with Full Planning Consent for 6 x Flats and a ground floor commercial unit located in an established mixed-use location in central Kidderminster.</div>
+    <div style="margin-top:8px;"><span class="flag flag-s">£70k entry</span><span class="flag flag-s">Full PP granted</span><span class="flag flag-w">Build finance</span><span class="flag flag-i">Est GDV £720-840k</span></div>
   </div>
 
-  <div class="deal-card">
-    <div class="location">📍 <strong>NEW 58 Tower Street, Dudley, DY1 1ND</strong></div>
-    <div style="display:flex; gap:20px; align-items:baseline; margin:8px 0;">
-      <div><span class="price">£120,000 - £130,000</span> <span style="color:#94a3b8;">Freehold — Auction 10 Sep</span></div>
-      <div><span class="yield">Auction price discovery</span></div>
-    </div>
-    <p style="color:#cbd5e1; font-size:13px;">Freehold vacant double fronted commercial premises. For auction 10 September 2026 via Town & Country Property Auctions. Guide price £120k-£130k. Dudley town centre location. Suitable for refurbishment or conversion (STPP). Low entry price for a town centre commercial asset — ideal for first-time commercial investors or small-scale conversion play.</p>
-    <div class="score-row">
-      <span class="score-pill">🏆 Yield: N/A (vacant)</span>
-      <span class="score-pill">📍 Location: 11/15</span>
-      <span class="score-pill">🔄 Upside: 13/15</span>
-      <span class="score-pill">📋 Planning: 10/15 (STPP)</span>
-      <span class="score-pill">💰 Finance: 8/10</span>
-      <span class="score-pill total">TOTAL: 7.8/10</span>
-    </div>
-    <div style="margin-top:8px;">
-      <span class="tag tag-gold">👀 Low-entry commercial auction lot</span>
-      <span class="tag tag-blue">Town & Country Auctions</span>
-    </div>
+  <div class="d-card">
+    <div class="dh"><div><div class="dp">£95,000</div><div class="da">17 Imex Business Park, Dudley Port, Tipton</div></div><div><div class="dy" style="color:#4ade80;">8.5% Yield</div><div style="font-size:13px;color:#94a3b8;">£8,060/yr &middot; 10yr FRI</div></div></div>
+    <div class="dm">Light Industrial &middot; FRI &middot; 10-year lease &middot; RPI-linked rent reviews &middot; Dudley Port</div>
+    <div class="ds">FOR SALE &ndash; FREEHOLD INDUSTRIAL INVESTMENT producing £8,060 per annum, let on a new 10-year full repairing lease with rent reviews linked to the greater of RPI or market rent. Purchase price £95,000 reflecting an attractive 8.5% yield.</div>
+    <div style="margin-top:8px;"><span class="flag flag-s">FRI &mdash; low mgmt</span><span class="flag flag-s">10yr term</span><span class="flag flag-s">RPI linked</span><span class="flag flag-i">£95k entry</span></div>
   </div>
 
-  <div class="deal-card">
-    <div class="location">📍 <strong>NEW Windmill Hill, Cradley / Halesowen, B63</strong></div>
-    <div style="display:flex; gap:20px; align-items:baseline; margin:8px 0;">
-      <div><span class="price">POA</span> <span style="color:#94a3b8;">Mixed-use Freehold</span></div>
-      <div><span class="yield">£82,500pa income (est. 8-10% yield)</span></div>
-    </div>
-    <p style="color:#cbd5e1; font-size:13px;">Mixed-use investment producing £82,500 per annum comprising commercial unit and 9 flats. Units from 1,474 to 2,172 sqft. This is a significant income-producing asset in the Halesowen area. At a yield of 8%, value ~£1.03M. At 9%, value ~£917k. Strong cashflow asset for portfolio investors. Price not disclosed — requires agent enquiry.</p>
-    <div class="score-row">
-      <span class="score-pill">🏆 Yield: 16/20 (est.)</span>
-      <span class="score-pill">🔒 Tenant/Security: 12/15</span>
-      <span class="score-pill">📍 Location: 12/15</span>
-      <span class="score-pill">🔄 Upside: 10/15</span>
-      <span class="score-pill">📋 Planning: 10/15</span>
-      <span class="score-pill">💰 Finance: 8/10</span>
-      <span class="score-pill">🚪 Exit: 7/10</span>
-      <span class="score-pill total">TOTAL: 8.3/10</span>
-    </div>
-    <div style="margin-top:8px;">
-      <span class="tag tag-green">✅ High income, mixed-use</span>
-      <span class="tag tag-gold">⏸️ Price on application</span>
-    </div>
+  <div class="d-card">
+    <div class="dh"><div><div class="dp">£1,495,000</div><div class="da">1-27 Bridge Street, Walsall, WS1 1DP</div></div><div><div class="dy" style="color:#4ade80;">11.2% Yield</div><div style="font-size:13px;color:#94a3b8;">£168,125/yr &middot; 11 Retail Units</div></div></div>
+    <div class="dm">Portfolio &middot; 22,000+ sqft &middot; Multi-let retail &middot; Walsall Town Centre</div>
+    <div class="ds">Freehold investment comprising of 11 retail units, totalling over 22,000 sq. ft. producing £168,125 per annum. Centrally located in Walsall town centre.</div>
+    <div style="margin-top:8px;"><span class="flag flag-s">11.2% yield</span><span class="flag flag-s">Multi-let diversification</span><span class="flag flag-w">Check tenant quality</span></div>
   </div>
+</div>
+
+<!-- AREA INTEL -->
+<div class="section">
+  <h2><span class="icon">🗺️</span> Area Intelligence Summary</h2>
+  <div class="table-wrap"><table><thead><tr><th>Area</th><th>Best For</th><th>Entry Range</th><th>Strategy</th><th>Risk</th></tr></thead><tbody>
+<tr><td><strong>Walsall WS1</strong></td><td>Best value, high volume</td><td>£75k–£275k</td><td>Retail BTL, post-auction, mixed-use</td><td><span class="risk rl">● Low-Medium</span></td></tr><tr><td><strong>Kidderminster DY10</strong></td><td>Ultra-high yield, dev sites</td><td>£70k–£475k</td><td>Bank BTL, dev land, high-street BTL</td><td><span class="risk rm">● Medium</span></td></tr><tr><td><strong>Oldbury B68/B69</strong></td><td>Mixed-use value plays</td><td>£65k–£170k</td><td>Shop+flat, retail BTL, auction</td><td><span class="risk rm">● Medium</span></td></tr><tr><td><strong>Tipton DY4</strong></td><td>Industrial value, dev land</td><td>£8.5k–£170k</td><td>Industrial BTL, dev land, refurb</td><td><span class="risk rl">● Low-Medium</span></td></tr><tr><td><strong>Dudley DY1</strong></td><td>Conversion, town centre</td><td>£55k–£575k</td><td>E→C3 conversion, retail BTL</td><td><span class="risk rm">● Medium</span></td></tr><tr><td><strong>Halesowen</strong></td><td>Yield capital</td><td>£8k–£235k</td><td>Retail BTL, office</td><td><span class="risk rl">● Low</span></td></tr><tr><td><strong>Wolverhampton WV</strong></td><td>Dev + mixed-use investments</td><td>£50k–£5M</td><td>Mixed-use, office convert, portfolio</td><td><span class="risk rm">● Medium</span></td></tr><tr><td><strong>Telford TF1-3</strong></td><td>Dev land, industrial premium</td><td>£6k–£45M</td><td>Dev land, industrial, warehousing</td><td><span class="risk rm">● Medium</span></td></tr><tr><td><strong>Stourport DY13</strong></td><td>Development hub</td><td>£125k–£695k</td><td>Dev land, plot, mixed-use</td><td><span class="risk rm">● Medium</span></td></tr><tr><td><strong>Stourbridge DY8</strong></td><td>Shop BTL, niche</td><td>£60k–£550k</td><td>Shop BTL, fish & chips</td><td><span class="risk rl">● Low</span></td></tr><tr><td><strong>Brierley Hill DY5</strong></td><td>Industrial, land, conversion</td><td>£25k–£6.5M</td><td>Industrial multi-let, conversion</td><td><span class="risk rm">● Medium</span></td></tr><tr><td><strong>West Brom B70</strong></td><td>Dev potential</td><td>£120k–£3.2M</td><td>Retail, development</td><td><span class="risk rm">● Medium</span></td></tr>
+</tbody></table></div>
+</div>
+
+<!-- PROPERTY TYPES -->
+<div class="section">
+  <h2><span class="icon">📋</span> Property Type Distribution</h2>
+  <div class="table-wrap"><table><thead><tr><th>Type</th><th>Count</th><th>%</th><th>Strategy</th></tr></thead><tbody>
+<tr><td>🏭 Light Industrial</td><td>75</td><td>21.0%</td><td style="font-size:12px;">💰 BTL / Yield</td></tr><tr><td>🏗️ Land</td><td>67</td><td>18.8%</td><td style="font-size:12px;">🏗️ Dev/Conversion</td></tr><tr><td>📦 Commercial Property</td><td>46</td><td>12.9%</td><td style="font-size:12px;">💰 BTL / Yield</td></tr><tr><td>🏢 Office</td><td>34</td><td>9.5%</td><td style="font-size:12px;">🔄 Reposition</td></tr><tr><td>🛍️ Retail Property (high street)</td><td>29</td><td>8.1%</td><td style="font-size:12px;">💰 BTL / Yield</td></tr><tr><td>🏗️ Commercial Development</td><td>13</td><td>3.6%</td><td style="font-size:12px;">🏗️ Dev/Conversion</td></tr><tr><td>🏭 Warehouse</td><td>12</td><td>3.4%</td><td style="font-size:12px;">💰 BTL / Yield</td></tr><tr><td>🏗️ Residential Development</td><td>9</td><td>2.5%</td><td style="font-size:12px;">🏗️ Dev/Conversion</td></tr><tr><td>🏭 Distribution Warehouse</td><td>9</td><td>2.5%</td><td style="font-size:12px;">💰 BTL / Yield</td></tr><tr><td>🛍️ Shop</td><td>9</td><td>2.5%</td><td style="font-size:12px;">💰 BTL / Yield</td></tr><tr><td>🔄 Pub</td><td>8</td><td>2.2%</td><td style="font-size:12px;">🔄 Reposition</td></tr><tr><td>🔄 Mixed Use</td><td>8</td><td>2.2%</td><td style="font-size:12px;">🔄 Reposition</td></tr><tr><td>🏭 Industrial Park</td><td>6</td><td>1.7%</td><td style="font-size:12px;">💰 BTL / Yield</td></tr><tr><td>🏗️ Plot</td><td>5</td><td>1.4%</td><td style="font-size:12px;">🏗️ Dev/Conversion</td></tr><tr><td>📦 Healthcare Facility</td><td>4</td><td>1.1%</td><td style="font-size:12px;">🔄 Reposition</td></tr><tr><td>🔄 Restaurant</td><td>4</td><td>1.1%</td><td style="font-size:12px;">🔄 Reposition</td></tr><tr><td>🔄 Leisure Facility</td><td>3</td><td>0.8%</td><td style="font-size:12px;">🔄 Reposition</td></tr><tr><td>🔄 Bar / Nightclub</td><td>3</td><td>0.8%</td><td style="font-size:12px;">🔄 Reposition</td></tr><tr><td>🛍️ Retail Property (out of town)</td><td>3</td><td>0.8%</td><td style="font-size:12px;">💰 BTL / Yield</td></tr><tr><td>🛍️ Takeaway</td><td>2</td><td>0.6%</td><td style="font-size:12px;">🔄 Reposition</td></tr>
+</tbody></table></div>
 </div>
 
 <!-- DEAL CHECKLIST -->
 <div class="section">
-  <h2>✅ Commercial Deal Checklist</h2>
-  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
-    <div style="background:#0f1923; border:1px solid #1e3a5f; border-radius:8px; padding:14px;">
-      <h3>📋 Income Value (Yield Check)</h3>
-      <ul>
-        <li>☐ Gross yield = annual rent ÷ price × 100</li>
-        <li>☐ Net initial yield (NIY) after costs calculated</li>
-        <li>☐ Yield vs area benchmark checked</li>
-        <li>☐ Rent review pattern (RPI/OMV/fixed)</li>
-        <li>☐ Void/vacancy risk assessed</li>
+  <h2><span class="icon">✅</span> Commercial Deal Checklist</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px;">
+    <div style="background: #1a2332; border: 1px solid #1e2d3d; border-radius: 8px; padding: 16px;">
+      <h4 style="color: #4ade80; margin-bottom: 8px; font-size: 14px;">✔️ Essential Checks</h4>
+      <ul style="list-style: none; font-size: 13px; color: #94a3b8; line-height: 2;">
+        <li>✓ EPC rating (min C from 2027)</li>
+        <li>✓ Article 4 direction check</li>
+        <li>✓ Lease terms: FRI vs IR, break clauses</li>
+        <li>✓ VAT election status (option to tax)</li>
+        <li>✓ Rateable value + empty rates</li>
+        <li>✓ Tenant covenant strength</li>
       </ul>
     </div>
-    <div style="background:#0f1923; border:1px solid #1e3a5f; border-radius:8px; padding:14px;">
-      <h3>🏗️ Redevelopment Value (Upside Check)</h3>
-      <ul>
-        <li>☐ GDV calculated (residential or alternative use)</li>
-        <li>☐ Conversion costs estimated per sqft</li>
-        <li>☐ PD rights checked (Article 4 search)</li>
-        <li>☐ Listed building / Conservation area status</li>
-        <li>☐ Build cost + 15% contingency included</li>
+    <div style="background: #1a2332; border: 1px solid #1e2d3d; border-radius: 8px; padding: 16px;">
+      <h4 style="color: #fbbf24; margin-bottom: 8px; font-size: 14px;">⚠️ Risk Flags</h4>
+      <ul style="list-style: none; font-size: 13px; color: #94a3b8; line-height: 2;">
+        <li>⚠️ Weak/unknown tenant covenant</li>
+        <li>⚠️ Short lease under 5 years</li>
+        <li>⚠️ Poor EPC (F/G) = cannot let</li>
+        <li>⚠️ Ultra-high yield = check why</li>
+        <li>⚠️ Lease expiry within 3 years</li>
+        <li>⚠️ Listed bldg = restricted PD</li>
       </ul>
     </div>
-    <div style="background:#0f1923; border:1px solid #1e3a5f; border-radius:8px; padding:14px;">
-      <h3>🛡️ Legal & Risk</h3>
-      <ul>
-        <li>☐ Lease length and break clauses reviewed</li>
-        <li>☐ Tenant covenant strength (D&B/credit check)</li>
-        <li>☐ FRI / IRI / ERI repair liability</li>
-        <li>☐ VAT elected? (option to tax check)</li>
-        <li>☐ Business rates liability / empty rates</li>
-        <li>☐ EPC compliance (min C by 2027)</li>
-      </ul>
-    </div>
-    <div style="background:#0f1923; border:1px solid #1e3a5f; border-radius:8px; padding:14px;">
-      <h3>💰 Finance & Exit</h3>
-      <ul>
-        <li>☐ Finance type: comm'l mortgage vs bridging</li>
-        <li>☐ Interest cover ratio > 125%</li>
-        <li>☐ LTV 60-70% (commercial max)</li>
-        <li>☐ SDLT: 0% <£150k / 2% £150-250k / 5% 250k+</li>
-        <li>☐ Exit routes: sell, refinance, convert</li>
+    <div style="background: #1a2332; border: 1px solid #1e2d3d; border-radius: 8px; padding: 16px;">
+      <h4 style="color: #60a5fa; margin-bottom: 8px; font-size: 14px;">📐 Key Metrics</h4>
+      <ul style="list-style: none; font-size: 13px; color: #94a3b8; line-height: 2;">
+        <li>&bull; NIY = Rent ÷ Price × 100</li>
+        <li>&bull; Reversionary Yield = MRV ÷ Price</li>
+        <li>&bull; Rent psf = Annual Rent ÷ Area</li>
+        <li>&bull; Cover ratio = Rent ÷ (Mortgage × 125%)</li>
+        <li>&bull; GDV uplift = Resi GDV - All-in Costs</li>
+        <li>&bull; Price psf = Price ÷ Floor Area</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- RISK FLAGS -->
+<!-- SKILL IMPROVEMENTS -->
 <div class="section">
-  <h2>🚩 Active Risk Flags — 21 May 2026</h2>
-  <div class="flag-list">
-    <span class="tag tag-red">⚠️ Post-auction relisted above guide (new signal)</span>
-    <span class="tag tag-red">⚠️ Weak tenant covenant — Vape & Tech (Walsall)</span>
-    <span class="tag tag-gold">⚠️ Short lease <5 years</span>
-    <span class="tag tag-gold">⚠️ Void unit risk (empty rates after 3mo)</span>
-    <span class="tag tag-red">⚠️ EPC F/G — cannot let commercially</span>
-    <span class="tag tag-red">⚠️ VAT elected — check option to tax status</span>
-    <span class="tag tag-gold">⚠️ Article 4 direction (Halesowen, Dudley)</span>
-    <span class="tag tag-gold">⚠️ High business rates on large units</span>
-    <span class="tag tag-gold">⚠️ Declining high street footfall</span>
-    <span class="tag tag-red">⚠️ Empty rates £3,375/mo (78 Darlington St)</span>
-    <span class="tag tag-gold">⚠️ Planning consent may be expired (130 Colley Gate)</span>
-    <span class="tag tag-red">⚠️ Construction activity declining (-2.0% GDP)</span>
+  <h2><span class="icon">🧠</span> Hermes Skill Improvements &mdash; 22 May 2026</h2>
+
+  <div class="edge-card">
+    <div class="label">Improvement #1</div>
+    <div class="value" style="color: #4ade80;">Rent Extraction Now Works &mdash; 18 Properties with Yield Data</div>
+    <p>Rightmove search results do NOT include rent in structured data. This run validated 8 regex extraction patterns that successfully pulled rent data from descriptions. Key patterns: "producing £X per annum", "let at £X pa", "passing rent of £X", "current income: £X pa", "investment let at £X pa". All 18 yield properties verified against their descriptions.</p>
   </div>
-</div>
 
-<!-- AREA HEATMAP -->
-<div class="section">
-  <h2>🔥 Area Heatmap — 21 May 2026</h2>
-  <div class="table-scroll">
-<table>
-    <tr><th>Area</th><th>Activity</th><th>Best Strategy</th><th>Yield Range</th><th>New This Run</th></tr>
-    <tr><td><strong>Halesowen</strong> 🏆</td><td><span class="tag tag-green">Very High</span></td><td>Small-cap retail BTL / Pre-approved dev</td><td>8-15%</td><td>130 Colley Gate (7-unit PP), Windmill Hill (£82.5k income)</td></tr>
-    <tr><td><strong>Walsall</strong> 🆕</td><td><span class="tag tag-gold">Rising</span></td><td>Mixed-use BTL / Post-auction distress</td><td>8-13%</td><td>54 West Bromwich St (UNSOLD, 12.9% yield)</td></tr>
-    <tr><td><strong>Wolverhampton</strong></td><td><span class="tag tag-green">High</span></td><td>Conversion / Large shell redevelopment</td><td>7-11%</td><td>78 Darlington St (16,819sqft shell, £800k)</td></tr>
-    <tr><td><strong>Dudley Town Centre</strong></td><td><span class="tag tag-blue">Moderate</span></td><td>Small auction lots / Conversion plays</td><td>6-12%</td><td>58 Tower St (auction Sep, £120-130k)</td></tr>
-    <tr><td><strong>Wednesfield</strong></td><td><span class="tag tag-blue">Steady</span></td><td>Industrial BTL</td><td>8-10%</td><td>Key Industrial Estate (7,308sqft, £40k rent)</td></tr>
-    <tr><td><strong>Stourbridge</strong></td><td><span class="tag tag-blue">Moderate</span></td><td>Shop-with-flat / Retail investment</td><td>6-9%</td><td>Low listed volume, stable</td></tr>
-    <tr><td><strong>Smethwick/Bearwood</strong></td><td><span class="tag tag-gold">Emerging</span></td><td>Cafe/shop retail BTL</td><td>8-10%</td><td>Auction sales proving market</td></tr>
-  </table>
-</div>
-</div>
+  <div class="edge-card">
+    <div class="label">Improvement #2</div>
+    <div class="value" style="color: #fbbf24;">Kidderminster Confirmed as Top Yield Market</div>
+    <p>5 of Top 10 yield properties are in Kidderminster: Vicar Street (17.3%), High Street/Sense (11.6%), New Road (8.7% and 7.3%), plus Comberton Hill dev site. The distressed high street creates pricing arbitrage. Recommending Kidderminster as Tier 1 target alongside Halesowen and Walsall.</p>
+  </div>
 
-<!-- PIPELINE -->
-<div class="section">
-  <h2>📋 Commercial Deal Pipeline</h2>
-  <div class="table-scroll">
-<table>
-    <tr><th>Status</th><th>Property</th><th>Strategy</th><th>Price</th><th>Score</th><th>Next Step</th></tr>
-    <tr><td><span class="tag tag-green">🔴 PRIORITY</span></td><td>54 West Bromwich St, Walsall</td><td>Post-auction BTL</td><td>£225k (neg. below £195k)</td><td>8.8/10</td><td>Track listing, approach agent with below-guide offer in 4 weeks</td></tr>
-    <tr><td><span class="tag tag-green">🔴 PRIORITY</span></td><td>49-63 High St, Halesowen</td><td>Hybrid Income+Conversion</td><td>£1,295,000</td><td>9.1/10</td><td>Call Bond Wolfe — view + legal pack (ongoing)</td></tr>
-    <tr><td><span class="tag tag-blue">🟡 WATCH</span></td><td>78 Darlington St, Wolves</td><td>Large shell conversion</td><td>£800,000</td><td>8.5/10</td><td>Request brochure, check planning feasibility</td></tr>
-    <tr><td><span class="tag tag-blue">🟡 WATCH</span></td><td>130 Colley Gate, Halesowen</td><td>Pre-approved dev site</td><td>£650k (guide)</td><td>8.4/10</td><td>Verify P22/1286 consent status with DMPA</td></tr>
-    <tr><td><span class="tag tag-blue">🟡 WATCH</span></td><td>Windmill Hill, Cradley</td><td>Mixed-income hold</td><td>POA</td><td>8.3/10</td><td>Request price + due diligence pack</td></tr>
-    <tr><td><span class="tag tag-blue">🟡 WATCH</span></td><td>61 High Street, Halesowen</td><td>Small-cap BTL 14%</td><td>£99,000</td><td>8.8/10</td><td>Check auction result — sold or unsold?</td></tr>
-    <tr><td><span class="tag" style="background:#1e3a5f;">⚪ MONITOR</span></td><td>58 Tower St, Dudley</td><td>Auction lot (Sep)</td><td>£120-130k</td><td>7.8/10</td><td>Set auction reminder, pre-register</td></tr>
-    <tr><td><span class="tag" style="background:#1e3a5f;">⚪ MONITOR</span></td><td>Key Industrial Est., Wednesfield</td><td>Industrial BTL</td><td>~£500k</td><td>7.5/10</td><td>Check EPC upgrade cost (E → C by 2027)</td></tr>
-  </table>
-</div>
-</div>
+  <div class="edge-card">
+    <div class="label">Improvement #3</div>
+    <div class="value" style="color: #60a5fa;">Post-Auction: Walsall is the Capital &mdash; 3 Unsold Lots Tracked</div>
+    <p>This run identified THREE unsold auction properties simultaneously, all in Walsall: (1) 54 West Bromwich St (£195k), (2) 63 George St (£95k), (3) 1 Freer St (£190k). Recommendation: create a dedicated "Post-Auction Track" that cross-references Bond Wolfe results with Rightmove listings.</p>
+  </div>
 
-<!-- HERMES SKILL IMPROVEMENTS -->
-<div class="section">
-  <h2>🧠 Hermes Skill Improvements — Learning Log 21 May 2026</h2>
+  <div class="edge-card">
+    <div class="label">Improvement #4</div>
+    <div class="value" style="color: #f87171;">Tavily Still Down &mdash; Direct HTTP Now Default</div>
+    <p>Tavily (web_search/web_extract) continues to return HTTP 432. CloakBrowser timed out. Direct HTTP requests to Rightmove with browser headers are now the validated primary method. Fetched 357 listings across 25 postcodes in under 3 minutes total.</p>
+  </div>
 
-  <h3>🆕 New Strategy Discovery: Post-Auction Distress Play</h3>
-  <p style="color:#cbd5e1; font-size:13px; margin-bottom:10px;">
-    <strong>54 West Bromwich Street, Walsall</strong> is the first confirmed "unsold at auction, relisted above guide" pattern discovered. This creates a <strong>new strategy class</strong>: post-auction distress. When a property fails to sell at auction, the vendor faces:
-  </p>
-  <ul>
-    <li>Wasted auction fees (£2,700+)</li>
-    <li>Continued empty rates liability ticking</li>
-    <li>Psychological stress of failed sale + having to re-list</li>
-    <li>Testing the market higher = denial phase. After 4-6 weeks of no interest, price drops</li>
-  </ul>
-  <p style="color:#cbd5e1; font-size:13px; margin-top:8px;">
-    <strong>Rule:</strong> Track Bond Wolfe auction catalogues for UNSOLD lots. Wait 4 weeks, then approach agent with an offer 10-15% below original guide price. For 54 West Bromwich St: target £170k, max £185k.
-  </p>
-
-  <h3>📈 Scoring Improvements</h3>
-  <ul>
-    <li><strong>Add "post-auction unsold" as +15 distress signal</strong> — this is vendor motivation that the current engine doesn't capture.</li>
-    <li><strong>Add "relisted above failed guide" as +10 opportunity signal</strong> — vendor in denial, will eventually accept below guide.</li>
-    <li><strong>130 Colley Gate expired-consent scoring</strong> — add -15 deduction for expired planning vs -25 for none at all. Some residual value remains in the expired approval.</li>
-    <li><strong>EPC E (114) for industrial</strong> — at Key Industrial Estate, upgrade cost to reach C (~£20k-40k) should be factored. Current engine doesn't estimate EPC upgrade costs.</li>
-  </ul>
-
-  <h3>🆕 New Search Terms for Next Run</h3>
-  <ul>
-    <li><code>"Bond Wolfe unsold lots" "post auction" "after auction" West Midlands</code></li>
-    <li><code>"expired planning consent" "to be renewed" commercial West Midlands</code></li>
-    <li><code>"planning consent for flats" "commercial" Halesowen Dudley Walsall</code></li>
-    <li><code>"mixed use" "commercial" "nine flats" "eight flats" West Midlands</code></li>
-    <li><code>"vacant shell" "conversion opportunity" Wolverhampton Dudley</code></li>
-    <li><code>"relisted" "commercial" "West Midlands" "price"</code></li>
-  </ul>
-
-  <h3>📊 Yield Benchmarks Updated (21 May 2026)</h3>
-  <ul>
-    <li><strong>Walsall mixed-use:</strong> Established at 11-13% (new entry — 54 West Bromwich St benchmark at 12.9%)</li>
-    <li><strong>Wolverhampton shell/city centre:</strong> £48 psf for vacant shell. Established benchmark for conversion land cost.</li>
-    <li><strong>Halesowen pre-approved dev:</strong> 130 Colley Gate at £650k/4,667sqft = £139 psf. Compare: 99 High Street Dudley at unknown £/sqft. Establish benchmark: £100-150 psf for pre-approved dev sites in secondary markets.</li>
-  </ul>
-
-  <h3>🚩 New Red Flags</h3>
-  <ul>
-    <li><strong>Post-auction relisting above guide price</strong> — this is a new distress pattern. The vendor rejected the market clearing price. They will eventually accept less but may take 4-8 weeks to adjust.</li>
-    <li><strong>Vape & Tech tenant at 54 West Bromwich St</strong> — single-shop retail tenant in the volatile vape sector. Check their covenant before proceeding. If weak, the 2 flats (£19,800pa) cover 79% of income.</li>
-    <li><strong>EPC E (114) on industrial unit</strong> — Key Industrial Estate unit needs upgrade to C by 2027. Estimated cost £20k-40k for new heating, lighting, insulation.</li>
-    <li><strong>Construction sector declining (-2.0%)</strong> — means build costs may moderate but contractor availability tightens for conversion projects.</li>
-  </ul>
-</div>
-
-<!-- NEXT RUN -->
-<div class="section">
-  <h2>🎯 Recommendations for Next Run (22 May 2026)</h2>
-  <ol>
-    <li><strong>FOLLOW UP Bond Wolfe May 14 auction results</strong> — check what sold and what didn't. Specifically: 61 High Street Halesowen (£99k, 14.1% yield) and the 63 High Street Halesowen unit. If unsold, add to post-auction pipeline.</li>
-    <li><strong>Check 54 West Bromwich Street listing status daily</strong> — price drop or new agent = time to make offer. Set up a search alert.</li>
-    <li><strong>Search Dudley planning portal for P22/1286 expiry status</strong> — verify whether 130 Colley Gate consent is renewable or needs fresh application.</li>
-    <li><strong>Request Windmill Hill, Cradley brochure/price</strong> — this £82.5k income mixed-use is a major cashflow candidate. Contact agent.</li>
-    <li><strong>Search Rightmove for "post-auction" or "unsold" commercial listings</strong> — new search strategy for finding motivated vendors.</li>
-    <li><strong>Research Telford and Cannock commercial markets</strong> — under-covered by previous runs.</li>
-  </ol>
+  <div class="edge-card">
+    <div class="label">Improvement #5</div>
+    <div class="value" style="color: #a78bfa;">New Search Terms Added to Pipeline</div>
+    <p>New effective patterns discovered: "bank investment" finds blue-chip tenant properties, "industrial investment" with "FRI" finds passive income plays, "multi-let retail" finds portfolio assets. Add to standard queries: "FRI lease", "bank investment", "multi-let", "retail investment".</p>
+  </div>
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-  🏢 Commercial Property Intelligence Agent — Automated Report<br>
-  Generated 21 May 2026 03:30 UTC | West Midlands Focus | Hermes Agent v3.1 | Daily Run #21<br>
-  Data Sources: Rightmove Commercial, Bond Wolfe, OnTheMarket, Zoopla, LoopNet, Fraser Wood, Savills, Innes England, Anderson Strathern<br>
-  ⚠️ This is not financial advice. Always verify with qualified professionals.
+  <p>Hermes Commercial Property Strategy Intelligence Agent &middot; 22 May 2026</p>
+  <p>Data sourced from Rightmove Commercial via direct HTTP extraction &middot; 25 postcodes &middot; 357 total listings</p>
+  <p>All data is indicative &mdash; always verify with agent, planning portal, and solicitor before proceeding</p>
 </div>
 
-</div>
 </div>
 </body>
 </html>
