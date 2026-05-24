@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PropIQ — Intelligent Property Analysis | dfordeals.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0f1e;
+  --bg-alt: #0d1325;
+  --card: #1e293b;
+  --card-hover: #253349;
+  --accent: #f59e0b;
+  --accent-glow: rgba(245,158,11,0.25);
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --border: #2a3a55;
+  --border-glow: rgba(245,158,11,0.15);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  --shadow-glow: 0 8px 40px rgba(245,158,11,0.12);
+  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;line-height:1.6;min-height:100vh;overflow-x:hidden}
+::selection{background:var(--accent);color:#0a0f1e}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--text-dim)}
+
+/* ─── ANIMATED BACKGROUND ─── */
+.bg-ambient{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.bg-ambient .orb{position:absolute;border-radius:50%;filter:blur(100px);opacity:0.12}
+.bg-ambient .orb:nth-child(1){width:600px;height:600px;background:#f59e0b;top:-200px;right:-100px;animation:orbFloat 20s ease-in-out infinite}
+.bg-ambient .orb:nth-child(2){width:500px;height:500px;background:#3b82f6;bottom:-200px;left:-150px;animation:orbFloat 25s ease-in-out infinite reverse}
+.bg-ambient .orb:nth-child(3){width:400px;height:400px;background:#8b5cf6;top:50%;left:50%;transform:translate(-50%,-50%);animation:orbFloat 30s ease-in-out infinite 5s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-40px) scale(1.05)}66%{transform:translate(-20px,25px) scale(0.95)}}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 1.5rem;background:rgba(10,15,30,0.72);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid rgba(42,58,85,0.4)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-brand .logo{width:32px;height:32px;background:linear-gradient(135deg,#f59e0b,#f97316);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#0a0f1e;box-shadow:0 0 20px var(--accent-glow)}
+.nav-brand span{font-size:1.2rem;font-weight:700;color:var(--text);letter-spacing:-.5px}
+.nav-brand small{font-size:.7rem;color:var(--text-dim);font-weight:400;margin-left:2px}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:.85rem;font-weight:500;transition:var(--transition);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:var(--transition);border-radius:1px}
+.nav-links a:hover{color:var(--text)}.nav-links a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0f1e;border:none;padding:8px 20px;border-radius:8px;font-weight:600;font-size:.85rem;cursor:pointer;transition:var(--transition);text-decoration:none}
+.nav-cta:hover{transform:scale(1.04);box-shadow:0 4px 20px var(--accent-glow)}
+
+/* ─── LAYOUT ─── */
+.page-wrap{position:relative;z-index:1}
+.container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+
+/* ─── HERO ─── */
+.hero{padding:8rem 0 4rem;text-align:center;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:100px;padding:6px 16px 6px 8px;font-size:.75rem;color:var(--accent);font-weight:500;margin-bottom:1.5rem;letter-spacing:.3px}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulseDot 2s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{font-size:4rem;font-weight:900;letter-spacing:-2px;line-height:1.1;margin-bottom:.75rem}
+.hero h1 .gradient{background:linear-gradient(135deg,#fbbf24,#f59e0b,#f97316);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .tagline{font-size:1.2rem;color:var(--text-muted);font-weight:400;max-width:600px;margin:0 auto 2.5rem;line-height:1.5}
+
+/* ─── INPUT SECTION ─── */
+.input-section{max-width:720px;margin:0 auto 3rem}
+.input-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow);transition:var(--transition);position:relative;overflow:hidden}
+.input-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0.4}
+.input-card:hover{border-color:var(--border-glow);box-shadow:var(--shadow-glow)}
+.input-tabs{display:flex;gap:4px;background:var(--bg);border-radius:var(--radius-sm);padding:4px;margin-bottom:1.5rem}
+.input-tab{flex:1;padding:10px 16px;border:none;background:transparent;color:var(--text-muted);font-size:.85rem;font-weight:500;border-radius:8px;cursor:pointer;transition:var(--transition);font-family:'Inter',sans-serif;text-align:center}
+.input-tab.active{background:var(--card);color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+.input-tab:hover:not(.active){color:var(--text)}
+.input-tab .icon{font-size:1.1rem;margin-right:6px}
+.input-group{position:relative;margin-bottom:1rem}
+.input-group .icon-left{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.1rem;opacity:0.5;pointer-events:none}
+.input-group input,.input-group textarea{width:100%;padding:14px 14px 14px 44px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:.95rem;font-family:'Inter',sans-serif;transition:var(--transition);outline:none}
+.input-group input:focus,.input-group textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+.input-group input::placeholder,.input-group textarea::placeholder{color:var(--text-dim)}
+.input-group textarea{resize:vertical;min-height:60px;padding-top:14px}
+.input-panel{display:none;animation:fadeSlideIn 0.35s ease}
+.input-panel.active{display:block}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.input-hint{font-size:.75rem;color:var(--text-dim);margin-top:.5rem;display:flex;align-items:center;gap:4px}
+
+/* ─── CTA BUTTON ─── */
+.cta-wrap{text-align:center;margin-top:1.5rem}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 40px;background:linear-gradient(135deg,#f59e0b,#f97316);border:none;border-radius:var(--radius-sm);color:#0a0f1e;font-size:1.05rem;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;transition:var(--transition);box-shadow:0 4px 20px var(--accent-glow);position:relative;overflow:hidden;letter-spacing:-0.3px}
+.btn-primary:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 8px 32px var(--accent-glow)}
+.btn-primary:active{transform:translateY(0) scale(0.98)}
+.btn-primary .spinner{width:20px;height:20px;border:2.5px solid rgba(10,15,30,0.2);border-top-color:#0a0f1e;border-radius:50%;animation:spin 0.7s linear infinite;display:none}
+.btn-primary.loading{cursor:wait;pointer-events:none}
+.btn-primary.loading .spinner{display:inline-block}
+.btn-primary.loading .btn-text{opacity:0.7}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ─── HOW IT WORKS ─── */
+.section{padding:4rem 0}
+.section-label{text-align:center;font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:.5rem}
+.section-title{text-align:center;font-size:2.2rem;font-weight:800;letter-spacing:-1px;margin-bottom:1rem}
+.section-sub{text-align:center;color:var(--text-muted);font-size:1rem;max-width:600px;margin:0 auto 3rem}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:900px;margin:0 auto}
+.step-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;text-align:center;position:relative;transition:var(--transition)}
+.step-card:hover{border-color:var(--border-glow);transform:translateY(-3px);box-shadow:var(--shadow-glow)}
+.step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(245,158,11,0.05));border:1px solid rgba(245,158,11,0.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;font-size:1.2rem;font-weight:800;color:var(--accent)}
+.step-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+.step-card p{font-size:.85rem;color:var(--text-muted);line-height:1.5}
+
+/* ─── FEATURES ─── */
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+.feature-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;transition:var(--transition);position:relative;overflow:hidden}
+.feature-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:var(--transition)}
+.feature-card:hover{transform:translateY(-4px);border-color:var(--border-glow);box-shadow:var(--shadow-glow)}
+.feature-card:hover::after{opacity:1}
+.feature-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(245,158,11,0.04));border:1px solid rgba(245,158,11,0.15);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem}
+.feature-card h3{font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.feature-card p{font-size:.82rem;color:var(--text-muted);line-height:1.5}
+
+/* ─── PRICING ─── */
+.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:720px;margin:0 auto}
+.pricing-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:var(--transition);position:relative}
+.pricing-card.featured{border-color:var(--accent);background:linear-gradient(135deg,var(--card),rgba(245,158,11,0.04));box-shadow:0 0 30px rgba(245,158,11,0.06)}
+.pricing-card.featured::before{content:'POPULAR';position:absolute;top:-10px;right:20px;background:var(--accent);color:#0a0f1e;font-size:.65rem;font-weight:800;padding:3px 12px;border-radius:4px;letter-spacing:1px}
+.pricing-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-glow)}
+.pricing-name{font-size:.75rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-dim);font-weight:600;margin-bottom:.5rem}
+.pricing-price{font-size:2.8rem;font-weight:900;letter-spacing:-2px;margin-bottom:.3rem;color:var(--text)}
+.pricing-price .curr{font-size:1.2rem;font-weight:500;color:var(--text-dim);vertical-align:super}
+.pricing-price .per{font-size:.85rem;font-weight:400;color:var(--text-dim);vertical-align:super}
+.pricing-desc{font-size:.85rem;color:var(--text-muted);margin-bottom:1.5rem}
+.pricing-features{list-style:none;margin-bottom:1.5rem}
+.pricing-features li{font-size:.85rem;color:var(--text-muted);padding:.4rem 0;display:flex;align-items:center;gap:8px}
+.pricing-features li::before{content:'✓';color:var(--accent);font-weight:700;font-size:.9rem}
+.pricing-features li.muted::before{content:'—';color:var(--text-dim)}
+.pricing-features li.muted{color:var(--text-dim)}
+.pricing-btn{display:block;width:100%;padding:12px;border-radius:var(--radius-sm);font-weight:600;font-size:.9rem;font-family:'Inter',sans-serif;cursor:pointer;transition:var(--transition);text-align:center;text-decoration:none}
+.pricing-btn.primary{background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0f1e;border:none}
+.pricing-btn.primary:hover{transform:scale(1.02);box-shadow:0 4px 20px var(--accent-glow)}
+.pricing-btn.secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
+.pricing-btn.secondary:hover{background:var(--border);border-color:var(--text-dim)}
+
+/* ─── FOOTER ─── */
+.footer{text-align:center;padding:2.5rem 1.5rem;border-top:1px solid var(--border);margin-top:2rem}
+.footer-brand{font-weight:700;font-size:1rem;color:var(--text);margin-bottom:.3rem}
+.footer-text{font-size:.78rem;color:var(--text-dim);max-width:500px;margin:0 auto;line-height:1.6}
+
+/* ─── TOAST / VALIDATION ─── */
+.input-error{border-color:#ef4444 !important;box-shadow:0 0 0 3px rgba(239,68,68,0.15) !important}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);padding:14px 28px;border-radius:var(--radius-sm);font-size:.9rem;font-weight:500;z-index:999;opacity:0;transition:all 0.5s cubic-bezier(0.4,0,0.2,1);pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.error{background:#3b1a1a;border:1px solid #7f1d1d;color:#fca5a5}
+.toast.success{background:#0d2818;border:1px solid #166534;color:#86efac}
+
+/* ─── SCROLL INDICATOR ─── */
+.scroll-indicator{text-align:center;padding:2rem 0 0;color:var(--text-dim);font-size:.75rem;animation:bounceUp 2s ease-in-out infinite}
+.scroll-indicator span{display:block;margin-top:4px;font-size:1.2rem}
+@keyframes bounceUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  .hero h1{font-size:2.4rem}
+  .hero{padding:6rem 0 2.5rem}
+  .hero .tagline{font-size:1rem}
+  .steps-grid{grid-template-columns:1fr;max-width:400px}
+  .features-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr;max-width:400px}
+  .section-title{font-size:1.6rem}
+  .nav-links a:not(.nav-cta){display:none}
+  .input-card{padding:1.25rem}
+}
+@media(max-width:480px){
+  .hero h1{font-size:1.8rem}
+  .btn-primary{padding:14px 28px;font-size:.95rem;width:100%}
+  .container{padding:1.5rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Ambient Background -->
+<div class="bg-ambient"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <div class="logo">P</div>
+      <span>PropIQ</span><small>™</small>
+    </a>
+    <div class="nav-links">
+      <a href="#how">How It Works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="report.html" class="nav-cta">View Demo</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-badge"><span class="dot"></span> UK Property Intelligence Engine</div>
+      <h1>Prop<span class="gradient">IQ</span></h1>
+      <p class="tagline">Intelligent Property Analysis — BTL, BRRR, Flip in Seconds</p>
+
+      <!-- Input Card -->
+      <div class="input-section" id="analyse">
+        <div class="input-card">
+          <div class="input-tabs">
+            <button class="input-tab active" data-tab="address-tab">
+              <span class="icon">🔍</span> Address / Postcode
+            </button>
+            <button class="input-tab" data-tab="rightmove-tab">
+              <span class="icon">🔗</span> Rightmove Link
+            </button>
+          </div>
+
+          <div class="input-panel active" id="address-tab">
+            <div class="input-group">
+              <span class="icon-left">📍</span>
+              <input type="text" id="address-input" placeholder="e.g. 44 High Street, DY5 1LZ or just DY5" autocomplete="off">
+            </div>
+            <div class="input-hint">📌 Enter a full address, postcode, or street name</div>
+          </div>
+
+          <div class="input-panel" id="rightmove-tab">
+            <div class="input-group">
+              <textarea id="rightmove-input" placeholder="Paste a Rightmove property URL here..."></textarea>
+            </div>
+            <div class="input-hint">🔗 Supports rightmove.co.uk/properties/... and /property-... links</div>
+          </div>
+
+          <div class="cta-wrap">
+            <button class="btn-primary" id="analyse-btn">
+              <span class="spinner"></span>
+              <span class="btn-text">⚡ Analyse Property</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        Scroll for more
+        <span>↓</span>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="how">
+      <div class="section-label">Process</div>
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-sub">Three simple steps to get intelligent property analysis powered by real market data.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>🔍 Enter Property</h3>
+          <p>Paste a Rightmove URL or type any UK postcode or address. Our engine instantly pulls the listing.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>🧠 AI Analysis</h3>
+          <p>We crunch yield data, sold prices, rental demand, crime stats, and market trends through our scoring model.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>📊 Scored Verdicts</h3>
+          <p>Get 0–10 scores for BTL, BRRR, and Flip — each with a clear verdict, key metrics, and area intelligence.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="section-label">Capabilities</div>
+      <h2 class="section-title">What PropIQ Delivers</h2>
+      <p class="section-sub">Every analysis covers the four core strategies UK investors need to make informed decisions.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>BTL Analysis</h3>
+          <p>Gross &amp; net yield calculations, monthly cashflow projection, mortgage affordability check, and a BTL score (0–10) with verdict.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>BRRR Calculator</h3>
+          <p>After-repair value estimate, refinance cash-out amounts, maximum purchase price, and ROI projections for the full BRRR cycle.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏗️</div>
+          <h3>Flip Calculator</h3>
+          <p>Profit margin analysis, holding &amp; renovation cost estimates, breakeven sale price, and timeline-based ROI scoring.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>Area Intelligence</h3>
+          <p>Median prices, rental yields by property type, crime rates, sold price history, and local market liquidity scores.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Simple, Transparent</h2>
+      <p class="section-sub">Get an instant property check for free, or unlock the full deep-dive with a detailed PDF report.</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-name">Instant Check</div>
+          <div class="pricing-price"><span class="curr">£</span>0</div>
+          <div class="pricing-desc">Quick property scores and strategy verdicts in seconds.</div>
+          <ul class="pricing-features">
+            <li>BTL / BRRR / Flip scores</li>
+            <li>Key metrics &amp; verdicts</li>
+            <li>Area intelligence overview</li>
+            <li class="muted">Deep market breakdown</li>
+            <li class="muted">PDF report export</li>
+          </ul>
+          <button class="pricing-btn primary" onclick="document.getElementById('address-input').focus()">Try Free</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-name">Deep Analysis</div>
+          <div class="pricing-price"><span class="curr">£</span>4<span class="per">.99</span></div>
+          <div class="pricing-desc">Full deep-dive with detailed PDF report and expanded data.</div>
+          <ul class="pricing-features">
+            <li>Everything in Instant Check</li>
+            <li>Deep market &amp; trend breakdown</li>
+            <li>Full sold price history</li>
+            <li>Mortgage &amp; cashflow modelling</li>
+            <li>📄 PDF report export</li>
+          </ul>
+          <button class="pricing-btn primary" onclick="document.getElementById('address-input').focus()">Get Deep Analysis</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-brand">PropIQ<sup>™</sup></div>
+    <p class="footer-text">PropIQ · Kokal Properties Ltd · Data from PropertyData.co.uk · Built for UK property investors</p>
+  </footer>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  // ── Tab switching ──
+  const tabs = document.querySelectorAll('.input-tab');
+  const panels = {
+    'address-tab': document.getElementById('address-tab'),
+    'rightmove-tab': document.getElementById('rightmove-tab')
+  };
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function(){
+      tabs.forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      Object.keys(panels).forEach(k => panels[k].classList.remove('active'));
+      const panel = panels[this.dataset.tab];
+      if(panel) panel.classList.add('active');
+    });
+  });
+
+  // ── Toast ──
+  const toastEl = document.getElementById('toast');
+  function showToast(msg, type){
+    toastEl.textContent = msg;
+    toastEl.className = 'toast ' + type;
+    toastEl.classList.add('show');
+    clearTimeout(toastEl._hide);
+    toastEl._hide = setTimeout(() => toastEl.classList.remove('show'), 3500);
+  }
+
+  // ── Validation + Analysis ──
+  const btn = document.getElementById('analyse-btn');
+  const addrInput = document.getElementById('address-input');
+  const rmInput = document.getElementById('rightmove-input');
+
+  function getActiveInput(){
+    const activeTab = document.querySelector('.input-tab.active');
+    if(!activeTab) return null;
+    if(activeTab.dataset.tab === 'address-tab') return addrInput;
+    return rmInput;
+  }
+
+  function validateActiveInput(){
+    const input = getActiveInput();
+    if(!input) return false;
+    const val = input.value.trim();
+    if(!val){
+      input.classList.add('input-error');
+      showToast('Please enter an address, postcode, or Rightmove URL', 'error');
+      setTimeout(() => input.classList.remove('input-error'), 2000);
+      return false;
+    }
+    input.classList.remove('input-error');
+
+    const isRMTab = document.querySelector('.input-tab.active').dataset.tab === 'rightmove-tab';
+    if(isRMTab && !val.includes('rightmove.co.uk')){
+      showToast('Please paste a valid Rightmove URL', 'error');
+      input.classList.add('input-error');
+      setTimeout(() => input.classList.remove('input-error'), 2000);
+      return false;
+    }
+    return true;
+  }
+
+  btn.addEventListener('click', function(){
+    if(this.classList.contains('loading')) return;
+    if(!validateActiveInput()) return;
+
+    // Loading state
+    this.classList.add('loading');
+    const origText = this.querySelector('.btn-text').textContent;
+    this.querySelector('.btn-text').textContent = 'Analysing...';
+
+    // Simulate analysis (will be replaced with real backend call)
+    setTimeout(() => {
+      this.classList.remove('loading');
+      this.querySelector('.btn-text').textContent = '⚡ Analyse Property';
+
+      // For demo: redirect to report page
+      const input = getActiveInput();
+      const val = encodeURIComponent(input.value.trim());
+      window.location.href = 'report.html?q=' + val;
+    }, 1800);
+  });
+
+  // Enter key in inputs triggers analysis
+  [addrInput, rmInput].forEach(el => {
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' && !btn.classList.contains('loading')){
+        btn.click();
+      }
+    });
+    el.addEventListener('focus', function(){ this.classList.remove('input-error'); });
+  });
+
+  // ── Smooth scroll (already native via CSS) ──
+  // Legacy anchor support
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e){
+      const href = this.getAttribute('href');
+      if(href === '#') return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  console.log('🔍 PropIQ — Ready to analyse properties');
+})();
+</script>
+
+</body>
+</html>

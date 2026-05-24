@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PropIQ Report — 3-Bed Terrace, DY5 | dfordeals.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0f1e;
+  --bg-alt: #0d1325;
+  --card: #1e293b;
+  --card-hover: #253349;
+  --accent: #f59e0b;
+  --accent-glow: rgba(245,158,11,0.25);
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --border: #2a3a55;
+  --border-glow: rgba(245,158,11,0.15);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  --shadow-glow: 0 8px 40px rgba(245,158,11,0.12);
+  --transition: 0.4s cubic-bezier(0.4,0,0.2,1);
+  --score-green: #22c55e;
+  --score-amber: #f59e0b;
+  --score-red: #ef4444;
+  --score-blue: #3b82f6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;line-height:1.6;min-height:100vh;overflow-x:hidden}
+::selection{background:var(--accent);color:#0a0f1e}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--text-dim)}
+
+/* ─── ANIMATED BG ─── */
+.bg-ambient{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.bg-ambient .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.08}
+.bg-ambient .orb:nth-child(1){width:500px;height:500px;background:#f59e0b;top:-150px;right:-80px;animation:orbFloat 22s ease-in-out infinite}
+.bg-ambient .orb:nth-child(2){width:450px;height:450px;background:#3b82f6;bottom:-150px;left:-120px;animation:orbFloat 28s ease-in-out infinite reverse}
+.bg-ambient .orb:nth-child(3){width:350px;height:350px;background:#10b981;top:40%;left:60%;animation:orbFloat 32s ease-in-out infinite 5s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-40px) scale(1.05)}66%{transform:translate(-20px,25px) scale(0.95)}}
+
+/* ─── NAV ─── */
+nav{position:sticky;top:0;left:0;right:0;z-index:100;padding:0 1.5rem;background:rgba(10,15,30,0.8);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid rgba(42,58,85,0.4)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-brand .logo{width:30px;height:30px;background:linear-gradient(135deg,#f59e0b,#f97316);border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#0a0f1e;box-shadow:0 0 16px var(--accent-glow)}
+.nav-brand span{font-size:1.1rem;font-weight:700;color:var(--text);letter-spacing:-.5px}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.nav-actions .btn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:8px;font-weight:600;font-size:.8rem;font-family:'Inter',sans-serif;cursor:pointer;transition:var(--transition);text-decoration:none}
+.nav-actions .btn-outline{background:transparent;color:var(--text-muted);border:1px solid var(--border)}
+.nav-actions .btn-outline:hover{color:var(--text);border-color:var(--text-dim);background:var(--border)}
+.nav-actions .btn-primary{background:linear-gradient(135deg,#f59e0b,#f97316);color:#0a0f1e;border:none}
+.nav-actions .btn-primary:hover{box-shadow:0 4px 16px var(--accent-glow)}
+
+/* ─── LAYOUT ─── */
+.page-wrap{position:relative;z-index:1}
+.container{max-width:1100px;margin:0 auto;padding:1.5rem 1.5rem 3rem}
+
+/* ─── METADATA BAR ─── */
+.meta-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;padding:1rem 0;margin-bottom:.5rem}
+.meta-left{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.meta-badge{padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:600;letter-spacing:.3px;text-transform:uppercase}
+.meta-badge.date{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:#60a5fa}
+.meta-badge.id{background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);color:#a78bfa}
+.meta-badge.rm{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:#34d399}
+.meta-source{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--text-muted)}
+
+/* ─── PROPERTY STATS ─── */
+.property-banner{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.property-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0.5}
+.property-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.25rem;flex-wrap:wrap}
+.property-title{font-size:1.4rem;font-weight:800;letter-spacing:-.5px}
+.property-title small{font-weight:400;color:var(--text-muted);font-size:1rem}
+.property-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.property-stat{text-align:center;padding:1rem;background:var(--bg);border-radius:var(--radius-sm);border:1px solid var(--border);transition:var(--transition)}
+.property-stat:hover{border-color:var(--border-glow)}
+.property-stat .val{font-size:1.5rem;font-weight:800;letter-spacing:-.5px}
+.property-stat .val.gold{color:var(--accent)}
+.property-stat .lbl{font-size:.68rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.6px;margin-top:4px;font-weight:500}
+
+/* ─── BEST STRATEGY ─── */
+.best-strategy{background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(245,158,11,0.02));border:1px solid rgba(245,158,11,0.25);border-radius:var(--radius);padding:2rem;margin-bottom:1.5rem;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.best-strategy::before{content:'BEST STRATEGY';position:absolute;top:12px;right:16px;background:var(--accent);color:#0a0f1e;font-size:.6rem;font-weight:800;padding:3px 10px;border-radius:4px;letter-spacing:1px}
+.best-strategy .bs-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+.best-strategy .bs-badge{font-size:2rem;line-height:1}
+.best-strategy .bs-name{font-size:1.4rem;font-weight:800;letter-spacing:-.5px}
+.best-strategy .bs-score{font-size:1rem;color:var(--text-muted);font-weight:500}
+.best-strategy .bs-score strong{font-size:1.3rem;color:var(--text)}
+.verdict-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px 5px 10px;border-radius:20px;font-size:.8rem;font-weight:600;letter-spacing:.3px}
+.verdict-badge.strong-buy{background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);color:var(--score-green)}
+.verdict-badge.consider{background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);color:var(--score-amber)}
+.verdict-badge.watchlist{background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.3);color:var(--score-blue)}
+.verdict-badge.reject{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:var(--score-red)}
+.best-strategy .bs-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1rem}
+.bs-metric{background:rgba(0,0,0,0.15);border-radius:var(--radius-xs);padding:.75rem 1rem;border:1px solid rgba(255,255,255,0.03)}
+.bs-metric .lbl{font-size:.68rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.4px}
+.bs-metric .val{font-size:1rem;font-weight:700;margin-top:2px}
+
+/* ─── SCORE BAR ─── */
+.score-bar-wrap{margin-top:.75rem;width:100%}
+.score-bar-bg{height:8px;background:var(--bg);border-radius:4px;overflow:hidden;position:relative}
+.score-bar-fill{height:100%;border-radius:4px;width:0;transition:width 1.2s cubic-bezier(0.22,1,0.36,1);position:relative}
+.score-bar-fill::after{content:'';position:absolute;top:0;right:-4px;width:8px;height:8px;border-radius:50%;background:inherit;filter:brightness(1.4)}
+.score-bar-fill.green{background:linear-gradient(90deg,#16a34a,var(--score-green))}
+.score-bar-fill.amber{background:linear-gradient(90deg,#d97706,var(--score-amber))}
+.score-bar-fill.blue{background:linear-gradient(90deg,#2563eb,var(--score-blue))}
+.score-bar-fill.red{background:linear-gradient(90deg,#dc2626,var(--score-red))}
+.score-bar-label{display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-dim);margin-top:4px}
+
+/* ─── STRATEGY CARDS ─── */
+.strategies-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+.strategy-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:var(--transition);position:relative;box-shadow:var(--shadow)}
+.strategy-card:hover{transform:translateY(-3px);border-color:var(--border-glow);box-shadow:var(--shadow-glow)}
+.strategy-card .s-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.strategy-card .s-name{font-size:1rem;font-weight:700}
+.strategy-card .s-icon{font-size:1.3rem}
+.strategy-card .s-score-num{font-size:2rem;font-weight:900;letter-spacing:-1px;line-height:1}
+.strategy-card .s-score-num small{font-size:.85rem;font-weight:500;color:var(--text-dim)}
+.strategy-card .s-metrics{margin-top:.75rem;display:grid;gap:.35rem}
+.strategy-card .s-metric{display:flex;justify-content:space-between;font-size:.78rem;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+.strategy-card .s-metric:last-child{border-bottom:none}
+.strategy-card .s-metric .l{color:var(--text-dim)}
+.strategy-card .s-metric .v{font-weight:600}
+.strategy-card .s-verdict{margin-top:.75rem;text-align:center}
+
+/* ─── AREA INTELLIGENCE ─── */
+.section-title{font-size:1.2rem;font-weight:700;margin:1.5rem 0 1rem;letter-spacing:-.3px;display:flex;align-items:center;gap:8px}
+.area-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.5rem}
+.area-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow);transition:var(--transition)}
+.area-card:hover{border-color:var(--border-glow)}
+.area-card h4{font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.6px;margin-bottom:.75rem}
+.area-stat{display:flex;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,0.03);font-size:.82rem}
+.area-stat:last-child{border-bottom:none}
+.area-stat .l{color:var(--text-muted)}
+.area-stat .v{font-weight:600}
+.area-stat .v.green{color:var(--score-green)}
+.area-stat .v.amber{color:var(--score-amber)}
+.area-stat .v.red{color:var(--score-red)}
+
+/* ─── AI SUMMARY ─── */
+.ai-summary{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;margin-bottom:1.5rem;position:relative;box-shadow:var(--shadow);transition:var(--transition)}
+.ai-summary:hover{border-color:var(--border-glow)}
+.ai-summary .ai-header{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.ai-summary .ai-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(139,92,246,0.1));border:1px solid rgba(245,158,11,0.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.ai-summary h3{font-size:.9rem;font-weight:700}
+.ai-summary p{font-size:.88rem;color:var(--text-muted);line-height:1.7}
+.ai-summary .ai-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+.ai-tag{padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:600;border:1px solid var(--border)}
+.ai-tag.green{border-color:rgba(34,197,94,0.25);color:var(--score-green);background:rgba(34,197,94,0.06)}
+.ai-tag.amber{border-color:rgba(245,158,11,0.25);color:var(--score-amber);background:rgba(245,158,11,0.06)}
+.ai-tag.blue{border-color:rgba(59,130,246,0.25);color:var(--score-blue);background:rgba(59,130,246,0.06)}
+
+/* ─── FOOTER ─── */
+.footer{text-align:center;padding:2rem 1.5rem;border-top:1px solid var(--border);margin-top:2rem}
+.footer small{font-size:.75rem;color:var(--text-dim);display:block;margin-top:.2rem}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .strategies-grid{grid-template-columns:1fr;max-width:500px;margin-left:auto;margin-right:auto}
+  .property-strip{grid-template-columns:repeat(2,1fr)}
+  .best-strategy .bs-metrics{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .property-strip{grid-template-columns:repeat(2,1fr)}
+  .area-grid{grid-template-columns:1fr}
+  .property-stat .val{font-size:1.2rem}
+  .best-strategy .bs-header{flex-direction:column;align-items:flex-start}
+  .container{padding:1rem 1rem 2rem}
+  .nav-actions .btn-outline span{display:none}
+}
+@media print {
+  nav{display:none}
+  .bg-ambient{display:none}
+  body{background:#fff;color:#000}
+  .best-strategy,.strategy-card,.area-card,.ai-summary,.property-banner{background:#f9fafb;border-color:#e5e7eb;color:#111;box-shadow:none}
+  .verdict-badge{background:#f3f4f6 !important;border-color:#d1d5db !important;color:#111 !important}
+  .btn-primary{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Ambient Background -->
+<div class="bg-ambient"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="logo">P</div>
+      <span>PropIQ</span>
+    </a>
+    <div class="nav-actions">
+      <a href="index.html" class="btn btn-outline">← <span>New Analysis</span></a>
+      <button class="btn btn-primary" id="save-pdf-btn">📄 Save as PDF</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="container">
+
+    <!-- Metadata -->
+    <div class="meta-bar">
+      <div class="meta-left">
+        <span class="meta-badge date">📅 24 May 2026</span>
+        <span class="meta-badge id">🆔 PIQ-DY5-2405-001</span>
+        <span class="meta-badge rm">🟢 Rightmove Verified</span>
+      </div>
+      <div class="meta-source">🔗 <a href="#" style="color:var(--text-muted);text-decoration:none;border-bottom:1px dashed var(--border)">rightmove.co.uk/properties/173277575</a></div>
+    </div>
+
+    <!-- Property Banner -->
+    <div class="property-banner">
+      <div class="property-header">
+        <div>
+          <h1 class="property-title">3-Bed Terrace <small>· DY5, Brierley Hill</small></h1>
+          <div style="font-size:.82rem;color:var(--text-muted);margin-top:4px">📍 44 High Street, Brierley Hill, West Midlands</div>
+        </div>
+      </div>
+      <div class="property-strip">
+        <div class="property-stat">
+          <div class="val gold">£185,000</div>
+          <div class="lbl">Asking Price</div>
+        </div>
+        <div class="property-stat">
+          <div class="val" style="color:var(--score-green)">£1,200</div>
+          <div class="lbl">Est. Rent /mo</div>
+        </div>
+        <div class="property-stat">
+          <div class="val" style="color:var(--score-blue)">3</div>
+          <div class="lbl">Bedrooms</div>
+        </div>
+        <div class="property-stat">
+          <div class="val">Terraced</div>
+          <div class="lbl">Property Type</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best Strategy -->
+    <div class="best-strategy">
+      <div class="bs-header">
+        <div class="bs-badge">🏆</div>
+        <div>
+          <div class="bs-name">BTL — Buy-to-Let</div>
+          <div class="bs-score">Score: <strong>7.2</strong> / 10</div>
+        </div>
+        <span class="verdict-badge consider">⚡ Consider</span>
+      </div>
+      <div class="score-bar-wrap" id="best-score-bar">
+        <div class="score-bar-bg">
+          <div class="score-bar-fill amber" style="width:72%"></div>
+        </div>
+        <div class="score-bar-label"><span>0</span><span>10</span></div>
+      </div>
+      <div class="bs-metrics">
+        <div class="bs-metric"><div class="lbl">Gross Yield</div><div class="val">7.8%</div></div>
+        <div class="bs-metric"><div class="lbl">Net Monthly</div><div class="val" style="color:var(--score-green)">+£246</div></div>
+        <div class="bs-metric"><div class="lbl">ROI</div><div class="val">11.2%</div></div>
+      </div>
+    </div>
+
+    <!-- Strategy Cards -->
+    <h2 class="section-title">📊 Strategy Breakdown</h2>
+    <div class="strategies-grid">
+
+      <!-- BTL -->
+      <div class="strategy-card">
+        <div class="s-header">
+          <span class="s-name">BTL</span>
+          <span class="s-icon">💰</span>
+        </div>
+        <div class="s-score-num" style="color:var(--score-amber)">7.2<small>/10</small></div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-bg">
+            <div class="score-bar-fill amber" style="width:72%"></div>
+          </div>
+        </div>
+        <div class="s-metrics">
+          <div class="s-metric"><span class="l">Gross Yield</span><span class="v">7.8%</span></div>
+          <div class="s-metric"><span class="l">Net Monthly</span><span class="v" style="color:var(--score-green)">+£246</span></div>
+          <div class="s-metric"><span class="l">Mortgage £</span><span class="v">£788/mo</span></div>
+          <div class="s-metric"><span class="l">Cashflow/yr</span><span class="v" style="color:var(--score-green)">+£2,952</span></div>
+        </div>
+        <div class="s-verdict"><span class="verdict-badge consider">⚡ Consider</span></div>
+      </div>
+
+      <!-- BRRR -->
+      <div class="strategy-card">
+        <div class="s-header">
+          <span class="s-name">BRRR</span>
+          <span class="s-icon">🔄</span>
+        </div>
+        <div class="s-score-num" style="color:var(--score-blue)">5.8<small>/10</small></div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-bg">
+            <div class="score-bar-fill blue" style="width:58%"></div>
+          </div>
+        </div>
+        <div class="s-metrics">
+          <div class="s-metric"><span class="l">ARV</span><span class="v">£210,000</span></div>
+          <div class="s-metric"><span class="l">Refinance 75%</span><span class="v">£157,500</span></div>
+          <div class="s-metric"><span class="l">Total Cost</span><span class="v">£198,000</span></div>
+          <div class="s-metric"><span class="l">Cash-Out</span><span class="v" style="color:var(--score-green)">£13,500</span></div>
+        </div>
+        <div class="s-verdict"><span class="verdict-badge watchlist">👁️ Watchlist</span></div>
+      </div>
+
+      <!-- Flip -->
+      <div class="strategy-card">
+        <div class="s-header">
+          <span class="s-name">Flip</span>
+          <span class="s-icon">🏗️</span>
+        </div>
+        <div class="s-score-num" style="color:var(--score-red)">4.1<small>/10</small></div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-bg">
+            <div class="score-bar-fill red" style="width:41%"></div>
+          </div>
+        </div>
+        <div class="s-metrics">
+          <div class="s-metric"><span class="l">Est. Profit</span><span class="v">£12,500</span></div>
+          <div class="s-metric"><span class="l">Renovation</span><span class="v">£18,000</span></div>
+          <div class="s-metric"><span class="l">Holding Costs</span><span class="v">£4,200</span></div>
+          <div class="s-metric"><span class="l">Margin</span><span class="v" style="color:var(--score-red)">5.9%</span></div>
+        </div>
+        <div class="s-verdict"><span class="verdict-badge reject">✕ Reject</span></div>
+      </div>
+
+    </div>
+
+    <!-- Area Intelligence -->
+    <h2 class="section-title">📈 Area Intelligence · DY5</h2>
+    <div class="area-grid">
+      <div class="area-card">
+        <h4>🏠 Property Prices</h4>
+        <div class="area-stat"><span class="l">Average Price</span><span class="v" style="color:var(--accent)">£228,666</span></div>
+        <div class="area-stat"><span class="l">80% Range</span><span class="v">£135k – £340k</span></div>
+        <div class="area-stat"><span class="l">Entry Terrace</span><span class="v green">£110k – £150k</span></div>
+        <div class="area-stat"><span class="l">Transactions (12mo)</span><span class="v green">318</span></div>
+      </div>
+      <div class="area-card">
+        <h4>💷 Rental &amp; Yields</h4>
+        <div class="area-stat"><span class="l">Avg Rent (2-bed)</span><span class="v green">£675–775/pcm</span></div>
+        <div class="area-stat"><span class="l">Gross Yield (avg)</span><span class="v green">4.7%</span></div>
+        <div class="area-stat"><span class="l">Yield (sub-£150k)</span><span class="v green">5.5–7%</span></div>
+        <div class="area-stat"><span class="l">Rental Demand</span><span class="v green">High (7/10)</span></div>
+      </div>
+      <div class="area-card">
+        <h4>🛡️ Crime &amp; Safety</h4>
+        <div class="area-stat"><span class="l">Crime Rate /1k</span><span class="v green">116</span></div>
+        <div class="area-stat"><span class="l">Category</span><span class="v green">Low Crime</span></div>
+        <div class="area-stat"><span class="l">12-month Total</span><span class="v">4,893 crimes</span></div>
+        <div class="area-stat"><span class="l">Note</span><span class="v amber">High shoplifting (Merry Hill)</span></div>
+      </div>
+      <div class="area-card">
+        <h4>📊 Market Health</h4>
+        <div class="area-stat"><span class="l">Growth (1yr)</span><span class="v amber">+4% (est.)</span></div>
+        <div class="area-stat"><span class="l">Growth (5yr)</span><span class="v green">+18–22%</span></div>
+        <div class="area-stat"><span class="l">Liquidity Score</span><span class="v green">#1 in Dudley</span></div>
+        <div class="area-stat"><span class="l">Deprivation</span><span class="v red">24/100</span></div>
+      </div>
+    </div>
+
+    <!-- AI Summary -->
+    <div class="ai-summary">
+      <div class="ai-header">
+        <div class="ai-icon">🧠</div>
+        <div><h3>AI-Generated Analysis Summary</h3></div>
+      </div>
+      <p>
+        <strong>BTL (7.2/10 — Consider):</strong> This 3-bed terrace in DY5 offers a solid BTL proposition.
+        At £185,000 with an estimated rent of £1,200/mo, the gross yield sits at a healthy <strong>7.8%</strong>,
+        well above the DY5 average of 4.7%. Net monthly cashflow of +£246 after mortgage costs gives an
+        11.2% ROI — ideal for a buy-and-hold investor seeking steady income in a liquid market.
+      </p>
+      <p style="margin-top:.8rem">
+        <strong>BRRR (5.8/10 — Watchlist):</strong> The ARV of £210k allows a refinance cash-out of ~£13.5k,
+        but the margin is tight. With estimated refurb costs of £18k and total acquisition near £198k, the
+        cash-out only recovers ~68% of the initial investment. This works better if you can negotiate
+        below £175k or find value-add opportunities through cosmetic improvements.
+      </p>
+      <p style="margin-top:.8rem">
+        <strong>Flip (4.1/10 — Reject):</strong> The numbers don't favour a flip here. Estimated net profit
+        of £12,500 against a total cost base of £210k yields only a 5.9% margin — below the 10–15% threshold
+        we look for. Holding costs of £4,200 over a typical 6-month timeline eat into already thin returns.
+        Look for distressed sales or probate properties in this area to make flipping viable.
+      </p>
+      <div class="ai-tags">
+        <span class="ai-tag green">✔ Strong rental demand</span>
+        <span class="ai-tag amber">📊 Moderate capital growth</span>
+        <span class="ai-tag blue">🏆 #1 liquidity in Dudley</span>
+        <span class="ai-tag green">💰 Above-average yield</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:4px">
+      <span style="font-weight:700;font-size:.9rem">PropIQ<sup>™</sup></span>
+      <span style="color:var(--text-dim)">·</span>
+      <span style="font-size:.78rem;color:var(--text-dim)">Kokal Properties Ltd</span>
+    </div>
+    <small>Data from PropertyData.co.uk · Report generated 24 May 2026 · DY5, Brierley Hill</small>
+  </footer>
+</div>
+
+<script>
+(function(){
+  // ── Animate all score bars on load ──
+  function animateScoreBars(){
+    const fills = document.querySelectorAll('.score-bar-fill');
+    fills.forEach(bar => {
+      const targetWidth = bar.style.width;
+      bar.style.width = '0%';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          bar.style.width = targetWidth;
+        });
+      });
+    });
+  }
+
+  // ── Handle page load ──
+  document.addEventListener('DOMContentLoaded', function(){
+    // Stagger animation
+    setTimeout(animateScoreBars, 250);
+
+    // ── Save as PDF ──
+    const pdfBtn = document.getElementById('save-pdf-btn');
+    if(pdfBtn){
+      pdfBtn.addEventListener('click', function(){
+        const orig = this.textContent;
+        this.textContent = '⏳ Generating PDF...';
+        this.disabled = true;
+        this.style.opacity = '0.7';
+
+        setTimeout(() => {
+          window.print();
+          this.textContent = orig;
+          this.disabled = false;
+          this.style.opacity = '1';
+        }, 300);
+      });
+    }
+
+    // ── Get query param for display ──
+    const urlParams = new URLSearchParams(window.location.search);
+    const q = urlParams.get('q');
+    if(q){
+      // Optionally could update the UI with the searched value
+      console.log('Analysed query:', decodeURIComponent(q));
+    }
+
+    // ── Source link ──
+    const sourceLink = document.querySelector('.meta-source a');
+    if(sourceLink){
+      sourceLink.addEventListener('click', function(e){
+        e.preventDefault();
+        window.open('https://www.rightmove.co.uk/properties/173277575', '_blank');
+      });
+    }
+
+    console.log('📊 PropIQ Report — Ready');
+  });
+})();
+</script>
+
+</body>
+</html>

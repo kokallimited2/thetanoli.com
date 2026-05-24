@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motivated Sellers Scan — Dudley 20mi | 24 May 2026</title>
+  <style>
+    /* === Dashboard Page Format === */
+    body {
+      background: #0d1117;
+      color: #c9d1d9;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      margin: 0;
+      padding: 24px;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 12px 0;
+    }
+    .updated-badge {
+      display: inline-block;
+      font-size: 9px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+    .updated-badge::before { content: "🕐 "; }
+    .updated-badge.loading { opacity: 0.5; }
+    .updated-badge.loading::before { content: "⏳ "; }
+    .updated-badge.stale { color: #ef4444; }
+    .updated-badge.stale::before { content: "⚠️ "; }
+
+    /* Typography */
+    h1 { font-size: 32px; color: #e6edf3; margin-bottom: 4px; }
+    h2 { font-size: 26px; color: #e6edf3; margin: 28px 0 14px; }
+    h3 { font-size: 20px; color: #e6edf3; margin: 18px 0 10px; }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Cards */
+    .deal-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 18px;
+      transition: border-color 0.2s;
+    }
+    .deal-card:hover { border-color: #58a6ff; }
+    .deal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .deal-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #e6edf3;
+      flex: 1;
+    }
+    .deal-price {
+      font-size: 22px;
+      font-weight: 700;
+      color: #22c55e;
+      white-space: nowrap;
+    }
+    .deal-score {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #1a3a2e;
+      color: #22c55e;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .deal-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0;
+    }
+    .meta-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .meta-tag.reduced { background: #3b1a1a; color: #f87171; }
+    .meta-tag.auction { background: #1a1a3b; color: #a78bfa; }
+    .meta-tag.nochain { background: #1a2e1a; color: #4ade80; }
+    .meta-tag.cashonly { background: #2e1a1a; color: #fb923c; }
+    .meta-tag.cheap { background: #1a2e3b; color: #60a5fa; }
+    .meta-tag.mod { background: #2e2e1a; color: #fbbf24; }
+    .meta-tag.days { background: #2e1a2e; color: #e879f9; }
+    .meta-tag.invest { background: #1a2e2e; color: #34d399; }
+
+    .deal-summary {
+      font-size: 14px;
+      color: #8b949e;
+      line-height: 1.6;
+      margin: 8px 0;
+    }
+    .deal-postcode {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    /* Action Buttons */
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(48,54,61,0.5);
+    }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .action-btn:hover { transform: translateY(-1px); text-decoration: none; }
+    .action-rightmove { background: #1a3a2e; color: #22c55e; }
+    .action-sold { background: #1e293b; color: #58a6ff; }
+    .action-comps { background: #1e293b; color: #f59e0b; }
+    .action-maps { background: #1e293b; color: #ef4444; }
+    .action-land { background: #1e293b; color: #d946ef; }
+
+    /* Area Watchout */
+    .watchout-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 12px 0;
+    }
+    .watchout-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .watchout-card h4 {
+      font-size: 15px;
+      color: #e6edf3;
+      margin: 0 0 6px;
+    }
+    .risk-low { color: #4ade80; font-size: 12px; }
+    .risk-med { color: #fbbf24; font-size: 12px; }
+    .risk-high { color: #f87171; font-size: 12px; }
+
+    /* Stats */
+    .scan-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .stat-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: #e6edf3;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+
+    /* Signals Grid */
+    .signals-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    /* Related Resources */
+    .related-section { margin-top: 36px; }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .related-card {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      background: #1e293b;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      padding: 14px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .related-card:hover {
+      border-color: #58a6ff;
+      background: #273548;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .related-icon { font-size: 24px; }
+    .related-title { font-size: 15px; font-weight: 600; color: #e6edf3; }
+    .related-desc { font-size: 12px; color: #8b949e; }
+
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #30363d;
+      text-align: center;
+      font-size: 14px;
+      color: #475569;
+    }
+
+    th, td { padding: 8px 10px; font-size: 15px; }
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; color: #8b949e; border-bottom: 1px solid #30363d; }
+    td { border-bottom: 1px solid #21262d; }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- Header -->
+  <h1>🎯 Motivated Sellers Scan</h1>
+  <p style="color:#8b949e;font-size:14px;margin-top:0">
+    Daily distressed property scan · Within 20 miles of Dudley · Max £200k · 2+ beds · Houses only
+    <br><span class="updated-badge" style="font-size:11px">Generated 24 May 2026, 07:12 BST</span>
+  </p>
+
+  <!-- Scan Stats -->
+  <div class="scan-stats">
+    <div class="stat-card">
+      <div class="stat-number">125</div>
+      <div class="stat-label">Houses Scanned</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">12</div>
+      <div class="stat-label">90+ Days on Market</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">7</div>
+      <div class="stat-label">Auction Properties</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">18</div>
+      <div class="stat-label">No Chain / Chain Free</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">£133k</div>
+      <div class="stat-label">Avg Top Deal Price</div>
+    </div>
+  </div>
+
+  <!-- Area Watchout -->
+  <h2>📍 Area Watchout — West Midlands Risk Context</h2>
+  <div class="watchout-grid">
+    <div class="watchout-card">
+      <h4>🏴 Dudley (DY1-DY9)</h4>
+      <span class="risk-high">⚠️ Article 4: Borough-wide since 15 Sep 2023</span><br>
+      <span class="risk-med">Void Risk: Medium (4.2%)</span><br>
+      <span class="risk-med">Avg Yield: 5.8%</span><br>
+      <span class="risk-med">Crime: Moderate</span>
+    </div>
+    <div class="watchout-card">
+      <h4>🏴 Walsall (WS1-WS3)</h4>
+      <span class="risk-high">⚠️ Article 4: Partial coverage</span><br>
+      <span class="risk-med">Void Risk: Medium (3.9%)</span><br>
+      <span class="risk-med">Avg Yield: 6.1%</span><br>
+      <span class="risk-med">Crime: Moderate-High</span>
+    </div>
+    <div class="watchout-card">
+      <h4>🏴 Wolverhampton (WV1-WV6)</h4>
+      <span class="risk-high">⚠️ Article 4: Partial (wards vary)</span><br>
+      <span class="risk-med">Void Risk: Medium (4.5%)</span><br>
+      <span class="risk-med">Avg Yield: 6.3%</span><br>
+      <span class="risk-high">Crime: High (city centre)</span>
+    </div>
+    <div class="watchout-card">
+      <h4>🏴 Birmingham (B31-B44)</h4>
+      <span class="risk-high">⚠️ Article 4: Partial wards</span><br>
+      <span class="risk-med">Void Risk: Low-Med (3.1%)</span><br>
+      <span class="risk-med">Avg Yield: 5.5%</span><br>
+      <span class="risk-high">Crime: Variable by ward</span>
+    </div>
+  </div>
+
+  <!-- Top Deals Section -->
+  <h2>🏆 Top 5 Motivated Seller Deals</h2>
+
+  <!-- Deal 1 -->
+  <div class="deal-card">
+    <div class="deal-header">
+      <div class="deal-title">3bed Terraced · Buxton Road, Walsall</div>
+      <div>
+        <span class="deal-score">⭐ 9/10</span>
+        <span class="deal-price">£130,000</span>
+      </div>
+    </div>
+    <div class="deal-meta">
+      <span class="meta-tag reduced">Price Reduced</span>
+      <span class="meta-tag auction">Modern Auction</span>
+      <span class="meta-tag nochain">No Chain</span>
+      <span class="meta-tag cheap">Under £150k</span>
+    </div>
+    <div class="deal-postcode">📍 Walsall, West Midlands</div>
+    <div class="deal-summary">
+      Three-bedroom terraced home offered via the Modern Method of Auction with no chain. Deceptively spacious throughout with two reception rooms, fitted kitchen and bathroom, front and rear gardens. Reduced price and auction route strongly suggest motivated vendor. Ideal BRRR candidate requiring updating.
+    </div>
+    <div class="card-actions">
+      <a href="https://www.rightmove.co.uk/properties/174763292#/?channel=RES_BUY" target="_blank" class="action-btn action-rightmove">📋 Listing</a>
+      <a href="https://nethouseprices.com/house-prices/search?search=Walsall" target="_blank" class="action-btn action-sold">📊 Sold</a>
+      <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EWS1%5EPOSTCODE&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps">🏡 Comps</a>
+      <a href="https://www.google.com/maps/place/Buxton+Road,+Walsall" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+      <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=Walsall" target="_blank" class="action-btn action-land">🏗️ Land</a>
+    </div>
+  </div>
+
+  <!-- Deal 2 -->
+  <div class="deal-card">
+    <div class="deal-header">
+      <div class="deal-title">3bed Semi-Detached · Thompson Avenue, Wolverhampton WV2</div>
+      <div>
+        <span class="deal-score">⭐ 7/10</span>
+        <span class="deal-price">£100,000</span>
+      </div>
+    </div>
+    <div class="deal-meta">
+      <span class="meta-tag auction">Modern Auction</span>
+      <span class="meta-tag cashonly">Cash Buyers Preferred</span>
+      <span class="meta-tag cheap">Under £120k</span>
+      <span class="meta-tag mod">Needs Cosmetic Improvement</span>
+    </div>
+    <div class="deal-postcode">📍 Thompson Avenue, Wolverhampton, WV2</div>
+    <div class="deal-summary">
+      Freehold semi-detached house, EPC rated D, council tax band A. Cash offers preferred. For sale by Modern Method of Auction — "in need of some cosmetic improvement." At just £100k for a 3-bed semi in a popular Wolverhampton area, this is a prime BRRR target with strong equity potential post-refurb.
+    </div>
+    <div class="card-actions">
+      <a href="https://www.rightmove.co.uk/properties/88857390#/?channel=RES_BUY" target="_blank" class="action-btn action-rightmove">📋 Listing</a>
+      <a href="https://nethouseprices.com/house-prices/search?search=WV2" target="_blank" class="action-btn action-sold">📊 Sold</a>
+      <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EWV2%5EPOSTCODE&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps">🏡 Comps</a>
+      <a href="https://www.google.com/maps/place/Thompson+Avenue,+Wolverhampton,+WV2" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+      <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=WV2" target="_blank" class="action-btn action-land">🏗️ Land</a>
+    </div>
+  </div>
+
+  <!-- Deal 3 -->
+  <div class="deal-card">
+    <div class="deal-header">
+      <div class="deal-title">3bed Semi-Detached · Wilton Avenue, Kidderminster DY11</div>
+      <div>
+        <span class="deal-score">⭐ 6/10</span>
+        <span class="deal-price">£99,000</span>
+      </div>
+    </div>
+    <div class="deal-meta">
+      <span class="meta-tag auction">Auction</span>
+      <span class="meta-tag cheap">Under £100k</span>
+      <span class="meta-tag days">62 Days on Market</span>
+    </div>
+    <div class="deal-postcode">📍 15, Wilton Avenue, Kidderminster, DY11 5PR</div>
+    <div class="deal-summary">
+      Three-bedroom semi-detached house listed via auction at just £99k. Listed since 23 March 2026 (62 days). AuctionHouse South Yorkshire listing. At under £100k for a 3-bed semi, this offers exceptional value with significant refurb-to-sell or BRRR potential. Closing in on the 90-day mark — ideal time to approach.
+    </div>
+    <div class="card-actions">
+      <a href="https://www.rightmove.co.uk/properties/88627458#/?channel=RES_BUY" target="_blank" class="action-btn action-rightmove">📋 Listing</a>
+      <a href="https://nethouseprices.com/house-prices/search?search=DY11" target="_blank" class="action-btn action-sold">📊 Sold</a>
+      <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EDY11%5EPOSTCODE&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps">🏡 Comps</a>
+      <a href="https://www.google.com/maps/place/Wilton+Avenue,+Kidderminster,+DY11+5PR" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+      <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=DY11+5PR" target="_blank" class="action-btn action-land">🏗️ Land</a>
+    </div>
+  </div>
+
+  <!-- Deal 4 -->
+  <div class="deal-card">
+    <div class="deal-header">
+      <div class="deal-title">2bed Semi-Detached · Oakridge Drive, Willenhall WV12</div>
+      <div>
+        <span class="deal-score">⭐ 6/10</span>
+        <span class="deal-price">£125,000</span>
+      </div>
+    </div>
+    <div class="deal-meta">
+      <span class="meta-tag reduced">Price Reduced</span>
+      <span class="meta-tag cashonly">Cash Buyers Only</span>
+      <span class="meta-tag cheap">Under £150k</span>
+    </div>
+    <div class="deal-postcode">📍 Oakridge Drive, Willenhall, West Midlands, WV12</div>
+    <div class="deal-summary">
+      Semi-detached property restricted to cash purchasers due to lease length issues. Price reduced (09/04/2026). Features driveway parking, double gates, entrance hallway. Cash-only restriction limits buyer pool significantly — motivated seller likely. Lease length issue means discounted purchase price opportunity.
+    </div>
+    <div class="card-actions">
+      <a href="https://www.rightmove.co.uk/properties/172766957#/?channel=RES_BUY" target="_blank" class="action-btn action-rightmove">📋 Listing</a>
+      <a href="https://nethouseprices.com/house-prices/search?search=WV12" target="_blank" class="action-btn action-sold">📊 Sold</a>
+      <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EWV12%5EPOSTCODE&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps">🏡 Comps</a>
+      <a href="https://www.google.com/maps/place/Oakridge+Drive,+Willenhall,+WV12" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+      <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=WV12" target="_blank" class="action-btn action-land">🏗️ Land</a>
+    </div>
+  </div>
+
+  <!-- Deal 5 -->
+  <div class="deal-card">
+    <div class="deal-header">
+      <div class="deal-title">2bed Terraced · Harleston Road, Great Barr, Birmingham B44</div>
+      <div>
+        <span class="deal-score">⭐ 6/10</span>
+        <span class="deal-price">£170,000</span>
+      </div>
+    </div>
+    <div class="deal-meta">
+      <span class="meta-tag reduced">Price Reduced</span>
+      <span class="meta-tag nochain">No Chain</span>
+      <span class="meta-tag mod">Scope to Improve</span>
+    </div>
+    <div class="deal-postcode">📍 Harleston Road, Great Barr, Birmingham B44 8RP</div>
+    <div class="deal-summary">
+      End terraced property offered with no upward chain and great scope to improve. Reduced on 30/04/2026. Large lounge, kitchen, two double bedrooms. Located in Great Barr — popular Birmingham suburb with good schools and transport links. Ideal for first-time buyers or investors willing to add value through cosmetic improvements.
+    </div>
+    <div class="card-actions">
+      <a href="https://www.rightmove.co.uk/properties/173534177#/?channel=RES_BUY" target="_blank" class="action-btn action-rightmove">📋 Listing</a>
+      <a href="https://nethouseprices.com/house-prices/search?search=B44+8RP" target="_blank" class="action-btn action-sold">📊 Sold</a>
+      <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EB44%5EPOSTCODE&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps">🏡 Comps</a>
+      <a href="https://www.google.com/maps/place/Harleston+Road,+Great+Barr,+Birmingham+B44+8RP" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+      <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=B44+8RP" target="_blank" class="action-btn action-land">🏗️ Land</a>
+    </div>
+  </div>
+
+  <!-- Additional Long-Standing Listings -->
+  <h2>⏳ Long-Standing Listings (90+ Days)</h2>
+  <p style="color:#8b949e;font-size:14px">These properties have been on the market for 90+ days — vendors may be increasingly motivated.</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Address</th><th>Type</th><th>Price</th><th>On Market</th><th>Signals</th><th>Listing</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://www.rightmove.co.uk/properties/173985364" target="_blank" style="color:#58a6ff">Anson Road, Alrewas, Burton-On-Trent</a></td>
+          <td>Terraced</td>
+          <td>£140,000</td>
+          <td>136 days</td>
+          <td><span class="meta-tag days">90+ Days</span></td>
+          <td><a href="https://www.rightmove.co.uk/properties/173985364#/?channel=RES_BUY" target="_blank" style="color:#22c55e">📋 View</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.rightmove.co.uk/properties/168889657" target="_blank" style="color:#58a6ff">Bennetts Hill, Dudley, DY2</a></td>
+          <td>Semi-Detached</td>
+          <td>£140,000</td>
+          <td>251 days</td>
+          <td><span class="meta-tag days">90+ Days</span></td>
+          <td><a href="https://www.rightmove.co.uk/properties/168889657#/?channel=RES_BUY" target="_blank" style="color:#22c55e">📋 View</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.rightmove.co.uk/properties/170976127" target="_blank" style="color:#58a6ff">Evesham Road, Redditch, B97</a></td>
+          <td>Terraced</td>
+          <td>£200,000</td>
+          <td>94 days</td>
+          <td><span class="meta-tag days">90+ Days</span></td>
+          <td><a href="https://www.rightmove.co.uk/properties/170976127#/?channel=RES_BUY" target="_blank" style="color:#22c55e">📋 View</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.rightmove.co.uk/properties/168247026" target="_blank" style="color:#58a6ff">James Close, Smethwick</a></td>
+          <td>Terraced</td>
+          <td>£135,000</td>
+          <td>88 days</td>
+          <td><span class="meta-tag mod">Scope to Improve</span><span class="meta-tag nochain">No Chain</span></td>
+          <td><a href="https://www.rightmove.co.uk/properties/168247026#/?channel=RES_BUY" target="_blank" style="color:#22c55e">📋 View</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://www.rightmove.co.uk/properties/171617474" target="_blank" style="color:#58a6ff">Commonside, Brierley Hill</a></td>
+          <td>Terraced</td>
+          <td>£175,000</td>
+          <td>60 days</td>
+          <td><span class="meta-tag nochain">No Chain</span><span class="meta-tag invest">Investment</span></td>
+          <td><a href="https://www.rightmove.co.uk/properties/171617474#/?channel=RES_BUY" target="_blank" style="color:#22c55e">📋 View</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Strategy Section -->
+  <h2>💡 Acquisition Strategies</h2>
+  <div class="watchout-grid">
+    <div class="watchout-card">
+      <h4>🏆 Buxton Road, Walsall</h4>
+      <p style="font-size:13px;color:#8b949e">
+        <strong>Strategy:</strong> Below-market offer + auction bid<br>
+        <strong>Angle:</strong> "Reduced and on market via auction — test with a pre-auction offer at £110k"<br>
+        <strong>Risk:</strong> Low — auction reserve likely around £110-115k
+      </p>
+    </div>
+    <div class="watchout-card">
+      <h4>🏆 Thompson Avenue, Wolverhampton</h4>
+      <p style="font-size:13px;color:#8b949e">
+        <strong>Strategy:</strong> Auction bid or pre-auction offer<br>
+        <strong>Angle:</strong> "Cosmetic improvement needed — offer £85-90k with quick completion"<br>
+        <strong>Risk:</strong> Medium — cash-only limits exit options
+      </p>
+    </div>
+    <div class="watchout-card">
+      <h4>🏆 Wilton Avenue, Kidderminster</h4>
+      <p style="font-size:13px;color:#8b949e">
+        <strong>Strategy:</strong> Auction bid<br>
+        <strong>Angle:</strong> "62 days listed — approaching 90. Test with £85k guide"<br>
+        <strong>Risk:</strong> Low-Med — under £100k, significant upside
+      </p>
+    </div>
+    <div class="watchout-card">
+      <h4>🏆 Oakridge Drive, Willenhall</h4>
+      <p style="font-size:13px;color:#8b949e">
+        <strong>Strategy:</strong> Below-market cash offer<br>
+        <strong>Angle:</strong> "Cash-only limits buyers drastically. Offer £95-100k factoring lease extension"<br>
+        <strong>Risk:</strong> Medium — lease length needs assessment
+      </p>
+    </div>
+    <div class="watchout-card">
+      <h4>🏆 Harleston Road, Great Barr</h4>
+      <p style="font-size:13px;color:#8b949e">
+        <strong>Strategy:</strong> Below-market offer<br>
+        <strong>Angle:</strong> "Reduced, no chain, scope to improve — offer £150-155k"<br>
+        <strong>Risk:</strong> Low — Great Barr strong rental demand
+      </p>
+    </div>
+    <div class="watchout-card">
+      <h4>🏆 Bennetts Hill, Dudley</h4>
+      <p style="font-size:13px;color:#8b949e">
+        <strong>Strategy:</strong> Soft offer approach<br>
+        <strong>Angle:</strong> "251 days on market! Strong leverage. Offer £110-115k"<br>
+        <strong>Risk:</strong> Low — directly in Dudley, long on market
+      </p>
+    </div>
+  </div>
+
+  <!-- Warning -->
+  <div style="background:#1a1a2e;border:1px solid #30363d;border-radius:10px;padding:14px;margin:24px 0">
+    <h3 style="margin:0 0 8px;color:#fbbf24">⚠️ Important Notes</h3>
+    <ul style="font-size:14px;color:#8b949e;line-height:1.7;padding-left:20px">
+      <li><strong>Article 4:</strong> Dudley MBC has a council-wide Article 4 direction since 15 Sep 2023 covering ALL DY postcodes. Walsall, Wolverhampton, and Birmingham have partial/granular coverage.</li>
+      <li><strong>Data Source:</strong> Rightmove search results — property data may be incomplete. Verify all details with the listing agent.</li>
+      <li><strong>Lease Issues:</strong> Oakridge Drive requires cash purchase due to lease length. Factor £5-10k for lease extension into offer.</li>
+      <li><strong>Auction Properties:</strong> Buxton Road, Thompson Avenue, and Wilton Avenue are modern auction listings. Check terms — buyer pays non-refundable reservation fee.</li>
+      <li><strong>90+ Day Listings:</strong> Only 12 out of 125 houses (9.6%) were listed 90+ days. The market is fairly liquid at this price point — don't lowball excessively.</li>
+      <li><strong>Refurb Budgets:</strong> Most of these need cosmetic improvement. Budget £15-30k for a full refurb depending on property condition.</li>
+    </ul>
+  </div>
+
+  <!-- Related Resources -->
+  <div class="related-section">
+    <h2 style="color:#e6edf3;font-size:22px;margin:28px 0 14px">🔗 Related Resources</h2>
+    <div class="related-grid">
+      <a href="index.html" class="related-card">
+        <span class="related-icon">🏠</span>
+        <span class="related-title">Dashboard Home</span>
+        <span class="related-desc">All Nikka Intel reports & tools</span>
+      </a>
+      <a href="brrr-sourcer.html" class="related-card">
+        <span class="related-icon">🔥</span>
+        <span class="related-title">BRRR Daily Sourcer</span>
+        <span class="related-desc">Daily BRRR deals scanned via Rightmove</span>
+      </a>
+      <a href="property-dashboard_MAIN.html" class="related-card">
+        <span class="related-icon">🏠</span>
+        <span class="related-title">Property Dashboard</span>
+        <span class="related-desc">Full deal pipeline & portfolio view</span>
+      </a>
+      <a href="power-team.html" class="related-card">
+        <span class="related-icon">🛠️</span>
+        <span class="related-title">Power Team</span>
+        <span class="related-desc">Vetted tradespeople in the West Midlands</span>
+      </a>
+      <a href="strategy-brrr-hmo-playbook.html" class="related-card">
+        <span class="related-icon">📋</span>
+        <span class="related-title">BRRR / HMO Strategy</span>
+        <span class="related-desc">Full playbook for Dudley & West Midlands</span>
+      </a>
+      <a href="market_signals_MAIN.html" class="related-card">
+        <span class="related-icon">📡</span>
+        <span class="related-title">Market Signals</span>
+        <span class="related-desc">Daily property market intelligence</span>
+      </a>
+      <a href="area-intelligence/" class="related-card">
+        <span class="related-icon">🗺️</span>
+        <span class="related-title">Area Intelligence</span>
+        <span class="related-desc">DY1–DY9 postcode analysis reports</span>
+      </a>
+      <a href="offmarket-finder.html" class="related-card">
+        <span class="related-icon">🎯</span>
+        <span class="related-title">Off-Market Finder</span>
+        <span class="related-desc">Off-market lead generation & sourcing</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span style="font-size:11px;color:#475569">
+      🏠 <a href="index.html" style="color:#58a6ff">Dashboard Home</a> ·
+      🔥 <a href="brrr-sourcer.html" style="color:#58a6ff">BRRR Deals</a> ·
+      🛠️ <a href="power-team.html" style="color:#58a6ff">Power Team</a> ·
+      📋 <a href="strategy-brrr-hmo-playbook.html" style="color:#58a6ff">Strategy</a> ·
+      📡 <a href="market_signals_MAIN.html" style="color:#58a6ff">Market Signals</a>
+    </span>
+    <br><br>
+    <span style="font-size:12px;color:#475569">
+      Generated: 24 May 2026 07:12 BST · Next scan: 25 May 2026 07:00 BST<br>
+      Powered by Rightmove · Data may be delayed up to 24 hours
+    </span>
+  </div>
+
+</div>
+</body>
+</html>

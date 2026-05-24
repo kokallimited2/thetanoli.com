@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏠 Daily Property Hunt — 20260524</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; overflow-wrap: break-word; word-break: break-word; }
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+.header { padding: 24px 0 16px; border-bottom: 1px solid #30363d; margin-bottom: 20px; }
+.header h1 { font-size: 32px; color: #f0f6fc; }
+.header .subtitle { font-size: 14px; color: #8b949e; margin-top: 6px; }
+.header .subtitle span { color: #58a6ff; }
+.stats-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px 20px; flex: 1; min-width: 140px; }
+.stat-card .stat-num { font-size: 28px; font-weight: 700; color: #f0f6fc; }
+.stat-card .stat-label { font-size: 13px; color: #8b949e; margin-top: 2px; }
+.stat-card.green .stat-num { color: #3fb950; }
+.stat-card.orange .stat-num { color: #d29922; }
+.stat-card.blue .stat-num { color: #58a6ff; }
+
+.section-title { font-size: 26px; font-weight: 600; margin: 28px 0 16px; color: #f0f6fc; }
+.section-title .badge { font-size: 14px; background: #1f6feb33; color: #58a6ff; padding: 2px 10px; border-radius: 12px; margin-left: 8px; }
+
+/* Top 10 Table */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th { text-align: left; padding: 10px 10px; border-bottom: 2px solid #30363d; color: #8b949e; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+td { padding: 10px; border-bottom: 1px solid #21262d; vertical-align: middle; }
+tr:hover { background: #161b22; }
+.price { color: #f0f6fc; font-weight: 600; }
+.score { font-weight: 700; }
+.score.high { color: #3fb950; }
+.score.medium { color: #d29922; }
+.score.low { color: #f85149; }
+.bmv { font-weight: 600; }
+.bmv.positive { color: #3fb950; }
+.bmv.negative { color: #f85149; }
+
+/* Deal cards */
+.deal-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+.deal-card h3 { font-size: 18px; color: #f0f6fc; margin-bottom: 4px; }
+.deal-card .postcode { color: #8b949e; font-size: 14px; }
+.deal-verdict { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 14px; font-weight: 600; margin: 8px 0 12px; }
+.deal-verdict.call { background: #3fb95022; color: #3fb950; border: 1px solid #3fb95044; }
+.deal-verdict.high { background: #d2992222; color: #d29922; border: 1px solid #d2992244; }
+.deal-verdict.buy { background: #1f6feb33; color: #58a6ff; border: 1px solid #1f6feb44; }
+.deal-verdict.watch { background: #8b949e22; color: #8b949e; border: 1px solid #8b949e44; }
+.deal-verdict.monitor { background: #f8514922; color: #f85149; border: 1px solid #f8514944; }
+.deal-metrics { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; margin: 12px 0; }
+.deal-metric { background: #0d1117; border-radius: 6px; padding: 8px 12px; }
+.deal-metric .label { font-size: 11px; color: #8b949e; text-transform: uppercase; }
+.deal-metric .value { font-size: 16px; font-weight: 600; color: #f0f6fc; }
+.deal-metric .value.green { color: #3fb950; }
+.deal-metric .value.orange { color: #d29922; }
+.deal-metric .value.red { color: #f85149; }
+
+.card-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(48,54,61,0.5); }
+.action-btn { display: inline-flex; align-items: center; gap: 3px; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 500; text-decoration: none; transition: all 0.15s; }
+.action-btn:hover { transform: translateY(-1px); }
+.action-search { background: #1a3a2e; color: #22c55e; }
+.action-sold { background: #1e293b; color: #58a6ff; }
+.action-comps { background: #1e293b; color: #f59e0b; }
+.action-maps { background: #1e293b; color: #ef4444; }
+.action-land { background: #1e293b; color: #d946ef; }
+
+.risk-flags { margin: 8px 0; }
+.flag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin: 2px 4px 2px 0; }
+.flag.warning { background: #d2992222; color: #d29922; border: 1px solid #d2992244; }
+.flag.info { background: #1f6feb33; color: #58a6ff; border: 1px solid #1f6feb44; }
+.flag.caution { background: #f8514922; color: #f85149; border: 1px solid #f8514944; }
+
+.note-box { background: #0d1117; border: 1px solid #30363d; border-left: 3px solid #58a6ff; border-radius: 6px; padding: 12px 16px; margin: 16px 0; font-size: 14px; color: #8b949e; }
+.note-box strong { color: #f0f6fc; }
+
+.viewing-brief { background: #0d1117; border-radius: 8px; padding: 12px 16px; margin-top: 12px; }
+.viewing-brief h4 { color: #f0f6fc; font-size: 14px; margin-bottom: 6px; }
+.viewing-brief li { color: #8b949e; font-size: 13px; margin-left: 16px; padding: 2px 0; }
+
+.footer { margin-top: 40px; padding: 20px 0; border-top: 1px solid #30363d; font-size: 14px; color: #8b949e; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="header">
+<h1>🏠 Daily Property Hunt</h1>
+<div class="subtitle">20260524 <span>|</span> West Midlands <span>|</span> Autonomous Investor Mode</div>
+</div>
+
+<div class="stats-row">
+<div class="stat-card green">
+<div class="stat-num">10</div>
+<div class="stat-label">Candidates Scored</div>
+</div>
+<div class="stat-card orange">
+<div class="stat-num">3</div>
+<div class="stat-label">Fully Cashed Out</div>
+</div>
+<div class="stat-card blue">
+<div class="stat-num">10</div>
+<div class="stat-label">Cashflow Positive</div>
+</div>
+</div>
+
+<div class="note-box">
+<strong>📡 Data Source:</strong> PropAI Deals API — addresses and prices are live listings. Rightmove direct links are unavailable as all PropAI external IDs are stale (100% redirect rate). Use the search links below to view listings.
+<strong>⚠️ Important:</strong> High BMV scores (>30%) may indicate structural issues, commercial-to-resi conversions, or condition problems requiring in-person verification.
+</div>
+
+<h2 class="section-title">Top 10 Candidates <span class="badge">By BMV×Yield Score</span></h2>
+
+<div class="table-scroll">
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Address</th>
+<th>Postcode</th>
+<th>Price</th>
+<th>Beds</th>
+<th>BMV%</th>
+<th>Yield%</th>
+<th>Score</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">44, High Street, Brierley Hill</a></td>
+<td>DY5 4RS</td>
+<td class="price">£190,000.0</td>
+<td>3</td>
+<td class="bmv positive">45.0%</td>
+<td>9.8%</td>
+<td class="score high">106.7</td>
+<td><span class="deal-verdict call">🔴 CALL AGENT</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">2, Redhall Road, Dudley</a></td>
+<td>DY3 2NU</td>
+<td class="price">£120,000.0</td>
+<td>2</td>
+<td class="bmv positive">41.5%</td>
+<td>11.0%</td>
+<td class="score high">106.2</td>
+<td><span class="deal-verdict call">🔴 CALL AGENT</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">24, Swiss Drive, Stourbridge</a></td>
+<td>DY8 5SL</td>
+<td class="price">£198,000.0</td>
+<td>3</td>
+<td class="bmv positive">42.9%</td>
+<td>7.9%</td>
+<td class="score high">96.0</td>
+<td><span class="deal-verdict call">🔴 CALL AGENT</span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">Wrens Hill Road, Dudley, DY1 3</a></td>
+<td>DY1 3SD</td>
+<td class="price">£185,000.0</td>
+<td>4</td>
+<td class="bmv positive">34.4%</td>
+<td>8.3%</td>
+<td class="score high">84.8</td>
+<td><span class="deal-verdict high">🟠 HIGH CONVICTION</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">15A, New Road, Stourbridge</a></td>
+<td>DY8 1PQ</td>
+<td class="price">£200,000.0</td>
+<td>2</td>
+<td class="bmv positive">35.9%</td>
+<td>6.9%</td>
+<td class="score high">81.4</td>
+<td><span class="deal-verdict watch">🟢 STRONG BUY</span></td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EB4&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">11, Willow Tree Drive, Birmingham</a></td>
+<td>B45 8PB</td>
+<td class="price">£155,000.0</td>
+<td>2</td>
+<td class="bmv positive">9.9%</td>
+<td>14.5%</td>
+<td class="score medium">72.8</td>
+<td><span class="deal-verdict watch">🟡 WATCH</span></td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EWV&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">71, Bushbury Road, West Midlands</a></td>
+<td>WV10 0LZ</td>
+<td class="price">£170,000.0</td>
+<td>3</td>
+<td class="bmv positive">23.4%</td>
+<td>8.5%</td>
+<td class="score medium">69.1</td>
+<td><span class="deal-verdict watch">🟡 WATCH</span></td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EB3&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">23, Flax Gardens, Birmingham</a></td>
+<td>B38 9QY</td>
+<td class="price">£180,000.0</td>
+<td>2</td>
+<td class="bmv positive">16.3%</td>
+<td>7.7%</td>
+<td class="score medium">55.2</td>
+<td><span class="deal-verdict monitor">🔵 MONITOR</span></td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">32, Stewkins, Stourbridge</a></td>
+<td>DY8 4YW</td>
+<td class="price">£190,000.0</td>
+<td>2</td>
+<td class="bmv positive">17.0%</td>
+<td>7.3%</td>
+<td class="score medium">54.7</td>
+<td><span class="deal-verdict monitor">🔵 MONITOR</span></td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EB3&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">8, Barn Croft, Birmingham</a></td>
+<td>B32 3BD</td>
+<td class="price">£170,000.0</td>
+<td>2</td>
+<td class="bmv positive">14.1%</td>
+<td>7.8%</td>
+<td class="score medium">52.4</td>
+<td><span class="deal-verdict monitor">🔵 MONITOR</span></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+<h2 class="section-title">Top 3 — Deep Dive Analysis</h2>
+<div class="deal-card">
+<h3>#1: 44, High Street, Brierley Hill</h3>
+<div class="postcode">DY5 4RS | 3 bed house | £190,000.0</div>
+<div class="deal-verdict call">🔴 CALL AGENT</div>
+<div class="risk-flags"><span class="flag warning">⚠️ High BMV — verify condition/caveats</span></div>
+
+<div class="deal-metrics">
+<div class="deal-metric"><div class="label">Combined Score</div><div class="value">106.7</div></div>
+<div class="deal-metric"><div class="label">Market Value (Est)</div><div class="value">£345,455</div></div>
+<div class="deal-metric"><div class="label">BMV Discount</div><div class="value green">45.0%</div></div>
+<div class="deal-metric"><div class="label">Est Yield</div><div class="value">9.8%</div></div>
+<div class="deal-metric"><div class="label">All-in Cost</div><div class="value">£225,700.0</div></div>
+<div class="deal-metric"><div class="label">Refurb Est</div><div class="value">£28,500 (Medium)</div></div>
+<div class="deal-metric"><div class="label">Refi 75% LTV</div><div class="value">£259,091</div></div>
+<div class="deal-metric"><div class="label">Cash Left In</div><div class="value green">✅ FULLY CASHED OUT</div></div>
+<div class="deal-metric"><div class="label">Est Rent</div><div class="value">£1,552/mo</div></div>
+<div class="deal-metric"><div class="label">Mortgage</div><div class="value">£1,080/mo</div></div>
+<div class="deal-metric"><div class="label">Net Monthly</div><div class="value green">£239</div></div>
+<div class="deal-metric"><div class="label">ROI (Cash in)</div><div class="value">N/A</div></div>
+</div>
+<div class="viewing-brief"><h4>📋 Viewing Brief</h4><ul><li>Check if this is a commercial property being sold as residential (High Street location)</li><li>Verify structural condition — 45% BMV suggests serious issues</li><li>Check EPC — commercial-to-resi conversions need post-refurb EPC C</li><li>Measure room sizes for HMO potential</li><li>Ask agent about recent price history and why it's so far below market</li></ul></div>
+<div class="card-actions">
+<a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&sortType=6&radius=1.0" target="_blank" class="action-btn action-search">🔍 Search Rightmove</a>
+<a href="https://nethouseprices.com/house-prices/search?search=DY5 4RS" target="_blank" class="action-btn action-sold">📊 Sold Prices</a>
+<a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps">🏡 Comps (1mi)</a>
+<a href="https://www.google.com/maps/search/44,+High+Street,+Brierley+Hill+DY5 4RS" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+<a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=DY5 4RS" target="_blank" class="action-btn action-land">🏗️ Land Reg</a>
+</div>
+</div>
+
+<div class="deal-card">
+<h3>#2: 2, Redhall Road, Dudley</h3>
+<div class="postcode">DY3 2NU | 2 bed house | £120,000.0</div>
+<div class="deal-verdict call">🔴 CALL AGENT</div>
+<div class="risk-flags"><span class="flag warning">⚠️ High BMV — verify condition/caveats</span></div>
+
+<div class="deal-metrics">
+<div class="deal-metric"><div class="label">Combined Score</div><div class="value">106.2</div></div>
+<div class="deal-metric"><div class="label">Market Value (Est)</div><div class="value">£205,128</div></div>
+<div class="deal-metric"><div class="label">BMV Discount</div><div class="value green">41.5%</div></div>
+<div class="deal-metric"><div class="label">Est Yield</div><div class="value">11.0%</div></div>
+<div class="deal-metric"><div class="label">All-in Cost</div><div class="value">£143,100.0</div></div>
+<div class="deal-metric"><div class="label">Refurb Est</div><div class="value">£18,000 (Medium)</div></div>
+<div class="deal-metric"><div class="label">Refi 75% LTV</div><div class="value">£153,846</div></div>
+<div class="deal-metric"><div class="label">Cash Left In</div><div class="value green">✅ FULLY CASHED OUT</div></div>
+<div class="deal-metric"><div class="label">Est Rent</div><div class="value">£1,100/mo</div></div>
+<div class="deal-metric"><div class="label">Mortgage</div><div class="value">£641/mo</div></div>
+<div class="deal-metric"><div class="label">Net Monthly</div><div class="value green">£294</div></div>
+<div class="deal-metric"><div class="label">ROI (Cash in)</div><div class="value">N/A</div></div>
+</div>
+<div class="viewing-brief"><h4>📋 Viewing Brief</h4><ul><li>Verify actual condition — 41.5% BMV at £120k for DY3 is exceptional</li><li>Check for damp, subsidence, roof condition</li><li>Measure rooms for 2-bed or potential 3-bed conversion</li><li>Ask agent about the reason for discount (probate? repossession? family sale?)</li><li>Check if chain-free and vacant</li></ul></div>
+<div class="card-actions">
+<a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&sortType=6&radius=1.0" target="_blank" class="action-btn action-search">🔍 Search Rightmove</a>
+<a href="https://nethouseprices.com/house-prices/search?search=DY3 2NU" target="_blank" class="action-btn action-sold">📊 Sold Prices</a>
+<a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps">🏡 Comps (1mi)</a>
+<a href="https://www.google.com/maps/search/2,+Redhall+Road,+Dudley+DY3 2NU" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+<a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=DY3 2NU" target="_blank" class="action-btn action-land">🏗️ Land Reg</a>
+</div>
+</div>
+
+<div class="deal-card">
+<h3>#3: 24, Swiss Drive, Stourbridge</h3>
+<div class="postcode">DY8 5SL | 3 bed house | £198,000.0</div>
+<div class="deal-verdict call">🔴 CALL AGENT</div>
+<div class="risk-flags"><span class="flag warning">⚠️ High BMV — verify condition/caveats</span></div>
+
+<div class="deal-metrics">
+<div class="deal-metric"><div class="label">Combined Score</div><div class="value">96.0</div></div>
+<div class="deal-metric"><div class="label">Market Value (Est)</div><div class="value">£346,760</div></div>
+<div class="deal-metric"><div class="label">BMV Discount</div><div class="value green">42.9%</div></div>
+<div class="deal-metric"><div class="label">Est Yield</div><div class="value">7.9%</div></div>
+<div class="deal-metric"><div class="label">All-in Cost</div><div class="value">£235,140.0</div></div>
+<div class="deal-metric"><div class="label">Refurb Est</div><div class="value">£29,700 (Medium)</div></div>
+<div class="deal-metric"><div class="label">Refi 75% LTV</div><div class="value">£260,070</div></div>
+<div class="deal-metric"><div class="label">Cash Left In</div><div class="value green">✅ FULLY CASHED OUT</div></div>
+<div class="deal-metric"><div class="label">Est Rent</div><div class="value">£1,304/mo</div></div>
+<div class="deal-metric"><div class="label">Mortgage</div><div class="value">£1,084/mo</div></div>
+<div class="deal-metric"><div class="label">Net Monthly</div><div class="value orange">£25</div></div>
+<div class="deal-metric"><div class="label">ROI (Cash in)</div><div class="value">N/A</div></div>
+</div>
+<div class="viewing-brief"><h4>📋 Viewing Brief</h4><ul><li>4-bed semi in DY1 — verify if HMO potential (near Dudley town centre)</li><li>Check for coal mining search (CON29M needed for DY postcodes)</li><li>Verify condition of the 4th bedroom (loft conversion? extension?)</li><li>Check Article 4 — Dudley has borough-wide Article 4 since Sep 2023</li></ul></div>
+<div class="card-actions">
+<a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&sortType=6&radius=1.0" target="_blank" class="action-btn action-search">🔍 Search Rightmove</a>
+<a href="https://nethouseprices.com/house-prices/search?search=DY8 5SL" target="_blank" class="action-btn action-sold">📊 Sold Prices</a>
+<a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&radius=1.0&sortType=6" target="_blank" class="action-btn action-comps">🏡 Comps (1mi)</a>
+<a href="https://www.google.com/maps/search/24,+Swiss+Drive,+Stourbridge+DY8 5SL" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+<a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=DY8 5SL" target="_blank" class="action-btn action-land">🏗️ Land Reg</a>
+</div>
+</div>
+<h2 class="section-title">Remaining 7 — Quick View</h2><div class="table-scroll"><table><thead><tr><th>#</th><th>Address</th><th>Beds</th><th>Price</th><th>BMV%</th><th>Yield%</th><th>Score</th><th>Cash Left</th><th>Net/mo</th><th>Verdict</th></tr></thead><tbody><tr>
+<td>4</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">Wrens Hill Road, Dudley, DY1 3</a></td>
+<td>4</td>
+<td>£185,000.0</td>
+<td class="bmv positive">34.4%</td>
+<td>8.3%</td>
+<td class="score high">84.8</td>
+<td>£8,291</td>
+<td>£207</td>
+<td><span class="deal-verdict high">🟠 HIGH CONVICTION</span></td>
+</tr><tr>
+<td>5</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">15A, New Road, Stourbridge</a></td>
+<td>2</td>
+<td>£200,000.0</td>
+<td class="bmv positive">35.9%</td>
+<td>6.9%</td>
+<td class="score high">81.4</td>
+<td>£3,491</td>
+<td>£2</td>
+<td><span class="deal-verdict watch">🟢 STRONG BUY</span></td>
+</tr><tr>
+<td>6</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EB4&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">11, Willow Tree Drive, Birmingham</a></td>
+<td>2</td>
+<td>£155,000.0</td>
+<td class="bmv positive">9.9%</td>
+<td>14.5%</td>
+<td class="score medium">72.8</td>
+<td>£47,627</td>
+<td>£1,054</td>
+<td><span class="deal-verdict watch">🟡 WATCH</span></td>
+</tr><tr>
+<td>7</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EWV&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">71, Bushbury Road, West Midlands</a></td>
+<td>3</td>
+<td>£170,000.0</td>
+<td class="bmv positive">23.4%</td>
+<td>8.5%</td>
+<td class="score medium">69.1</td>
+<td>£35,651</td>
+<td>£330</td>
+<td><span class="deal-verdict watch">🟡 WATCH</span></td>
+</tr><tr>
+<td>8</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EB3&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">23, Flax Gardens, Birmingham</a></td>
+<td>2</td>
+<td>£180,000.0</td>
+<td class="bmv positive">16.3%</td>
+<td>7.7%</td>
+<td class="score medium">55.2</td>
+<td>£52,610</td>
+<td>£309</td>
+<td><span class="deal-verdict monitor">🔵 MONITOR</span></td>
+</tr><tr>
+<td>9</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EDY&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">32, Stewkins, Stourbridge</a></td>
+<td>2</td>
+<td>£190,000.0</td>
+<td class="bmv positive">17.0%</td>
+<td>7.3%</td>
+<td class="score medium">54.7</td>
+<td>£54,013</td>
+<td>£267</td>
+<td><span class="deal-verdict monitor">🔵 MONITOR</span></td>
+</tr><tr>
+<td>10</td>
+<td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE%5EB3&sortType=6&radius=1.0" target="_blank" style="color:#58a6ff;text-decoration:none;">8, Barn Croft, Birmingham</a></td>
+<td>2</td>
+<td>£170,000.0</td>
+<td class="bmv positive">14.1%</td>
+<td>7.8%</td>
+<td class="score medium">52.4</td>
+<td>£45,171</td>
+<td>£322</td>
+<td><span class="deal-verdict monitor">🔵 MONITOR</span></td>
+</tr>
+</tbody></table></div>
+<h2 class="section-title">📋 Summary & Recommendations</h2><div class="note-box">
+<p><strong>Action Required Today:</strong></p>
+<ul style="margin: 8px 0 0 20px; color: #8b949e;">
+<li>🔴 <strong>3 properties</strong> flagged "CALL AGENT" — these are exceptional deals that cash out fully on BRRR</li>
+<li>🟠 <strong>2 properties</strong> flagged "HIGH CONVICTION" — strong BRRR candidates worth viewing</li>
+<li>🟡 <strong>2 properties</strong> on watchlist — monitor for price drops</li>
+<li>🔵 <strong>3 properties</strong> — lower priority but worth tracking</li>
+</ul>
+<p style="margin-top: 10px;"><strong>Key Action:</strong> The top 3 deals all cash out or nearly cash out on a BRRR strategy. They need in-person verification — the BMV discounts are unusually high and may indicate condition issues or caveats not visible in the listing data.</p>
+</div>
+<div class="footer">
+Generated: 2026-05-24 06:08 BST | Data Source: PropAI Deals API | West Midlands Market Scan
+<br>Rightmove links use postcode-area searches — manually search individual addresses.
+<br>All financial projections are estimates based on available data. Always verify with in-person viewings and professional surveys.
+</div>
+
+</div>
+</body>
+</html>
