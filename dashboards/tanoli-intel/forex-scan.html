@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Forex Screener | Tanoli Intel</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:20px}
+.container{max-width:1200px;margin:0 auto}
+.header{background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:12px;padding:20px 24px;margin-bottom:20px;color:#1a1a1a}
+.header h1{margin:0;font-size:1.5rem}
+.header .sub{font-size:0.85rem;opacity:0.8;margin-top:4px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;margin-bottom:16px}
+.card h2{color:#58a6ff;font-size:1.1rem;margin:0 0 12px 0;border-bottom:1px solid #30363d;padding-bottom:8px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:8px;margin-bottom:12px}
+.metric{background:#0d1117;border:1px solid #30363d;border-radius:6px;padding:10px;text-align:center}
+.metric .val{font-size:1.3em;font-weight:bold}
+.metric .lbl{font-size:0.75em;color:#8b949e;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:0.8rem}
+th{background:#0d1117;color:#8b949e;text-align:left;padding:8px 4px;border-bottom:2px solid #30363d;font-weight:500}
+td{padding:6px 4px;border-bottom:1px solid #21262d}
+tr:hover{background:#1c2128}
+.signal-row,.pos-row{padding:8px;margin:4px 0;background:#0d1117;border-radius:6px;display:flex;gap:8px;align-items:center;font-size:0.85rem}
+.sig-pair,.pos-pair{font-weight:600;min-width:80px}
+.sig-conf{font-weight:700;min-width:50px}
+.sig-detail,.pos-detail{color:#8b949e;font-size:0.8rem}
+.pos-dir{font-weight:700;min-width:40px}
+.warn-row{background:rgba(245,158,11,0.1);border-left:3px solid #d29922;padding:8px 12px;margin:4px 0;font-size:0.85rem}
+.session-bar{display:flex;gap:4px;margin:8px 0}
+.session{padding:4px 8px;border-radius:4px;font-size:0.75rem;font-weight:500}
+.session-active{background:rgba(63,185,80,0.2);color:#3fb950;border:1px solid #3fb950}
+.session-inactive{background:#0d1117;color:#8b949e;border:1px solid #30363d}
+.green{color:#3fb950}.red{color:#f85149}.yellow{color:#d29922}
+a{color:#58a6ff}
+</style></head><body>
+<div class="container">
+
+<div class="header">
+  <h1>💱 Forex Screener</h1>
+  <div class="sub">2026-05-24 14:28 · 37 pairs tracked · 4 timeframes</div>
+</div>
+
+<div class="card">
+<div class="grid-2">
+  <div>
+    <h2>🟢 Top Buys</h2>
+    <p style="color:#8b949e;font-size:0.85rem">No buy signals</p>
+  </div>
+  <div>
+    <h2>🔴 Top Sells</h2>
+    <p style="color:#8b949e;font-size:0.85rem">No sell signals</p>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<h2>📊 Score Matrix</h2>
+<div style="overflow-x:auto">
+<table>
+<thead><tr>
+  <th>Pair</th><th>Score</th><th>Signal</th><th>Regime</th>
+  <th colspan="4">M15</th><th colspan="4">H1</th><th colspan="4">H4</th><th colspan="4">D1</th>
+</tr><tr style="font-size:0.7rem">
+  <th></th><th></th><th></th><th></th>
+  <th>Price</th><th>Trend</th><th>RSI</th><th>ADX</th>
+  <th>Price</th><th>Trend</th><th>RSI</th><th>ADX</th>
+  <th>Price</th><th>Trend</th><th>RSI</th><th>ADX</th>
+  <th>Price</th><th>Trend</th><th>RSI</th><th>ADX</th>
+</tr></thead>
+<tbody>
+
+</tbody></table>
+</div>
+</div>
+
+<div class="grid-2">
+  <div class="card">
+    <h2>📋 Open Positions</h2>
+    <p style="color:#8b949e;font-size:0.85rem">No open positions</p>
+  </div>
+  <div class="card">
+    <h2>⚠️ Risk Warnings</h2>
+    <p style="color:#8b949e;font-size:0.85rem">No warnings</p>
+    <div style="margin-top:12px">
+      <h2 style="margin-top:12px">⏰ Sessions</h2>
+      <div class="session-bar">
+        <span class="session session-active">🇯🇵 Asian</span>
+        <span class="session session-active">🇪🇺 London</span>
+        <span class="session session-active">🇺🇸 NY</span>
+        <span class="session session-inactive">🌙 Off Hours</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="text-align:center;color:#8b949e;font-size:0.8rem">
+  <p>Forex Screener — powered by IBKR + ib_insync · Signals are for educational purposes only</p>
+  <p>System: 37 pairs · 4 timeframes · 15+ indicators · 0-100 scoring</p>
+</div>
+
+</div></body></html>
