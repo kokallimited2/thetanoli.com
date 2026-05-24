@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HMO Intelligence Dashboard — Kokal Properties</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0f1e;color:#e2e8f0;font-family:'Inter',-apple-system,sans-serif;line-height:1.6;min-height:100vh;overflow-wrap:break-word;word-break:break-word}
+.page-wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+h1{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.5rem}
+h2{font-size:1.4rem;font-weight:700;color:#f1f5f9;margin:2rem 0 1rem;padding-left:.75rem;border-left:4px solid #3b82f6}
+h3{font-size:1.1rem;font-weight:600;color:#e2e8f0;margin:1rem 0 .5rem}
+.subtitle{color:#94a3b8;font-size:.95rem;margin-bottom:2rem}
+.stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:2rem}
+.stat-card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.2rem;text-align:center}
+.stat-card .num{font-size:1.8rem;font-weight:700}
+.stat-card .lbl{font-size:.75rem;color:#94a3b8;margin-top:.3rem;text-transform:uppercase;letter-spacing:.5px}
+.table-scroll{overflow-x:auto;margin:1rem 0}
+table{width:100%;border-collapse:collapse;background:#1e293b;border-radius:12px;overflow:hidden;font-size:.85rem}
+th{background:#0f172a;color:#94a3b8;padding:.75rem 1rem;text-align:left;font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;border-bottom:2px solid #334155}
+td{padding:.7rem 1rem;border-bottom:1px solid #1e293b;color:#cbd5e1}
+tr:hover{background:#1a2332}
+.blue{color:#60a5fa}
+.green{color:#4ade80}
+.amber{color:#f59e0b}
+.red{color:#ef4444}
+.purple{color:#a78bfa}
+a{color:#60a5fa;text-decoration:none}
+a:hover{text-decoration:underline}
+.badge{padding:.2rem .6rem;border-radius:12px;font-size:.7rem;font-weight:600;display:inline-block}
+.badge-buy{background:#0d2818;color:#4ade80}
+.badge-watch{background:#1e1a0d;color:#f59e0b}
+.badge-avoid{background:#2a0d0d;color:#ef4444}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;margin:1rem 0}
+.card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.2rem}
+.card h3{font-size:.9rem;color:#94a3b8;margin-bottom:.8rem;text-transform:uppercase;letter-spacing:.5px}
+.stat-row{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid #0f172a;font-size:.85rem}
+.stat-label{color:#94a3b8}
+.footer{text-align:center;color:#475569;font-size:.8rem;margin-top:3rem;padding-top:1.5rem;border-top:1px solid #1e293b}
+@media(max-width:600px){h1{font-size:1.6rem}.stats-bar{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head><body>
+<div class="page-wrap">
+
+<h1>🏠 HMO Intelligence Dashboard</h1>
+<div class="subtitle">Dudley · Birmingham · Wolverhampton · Walsall · Shropshire · 24 May 2026</div>
+
+<div class="stats-bar">
+<div class="stat-card"><div class="num green">636</div><div class="lbl">Total HMOs</div></div>
+<div class="stat-card"><div class="num blue">106</div><div class="lbl">Postcodes Analysed</div></div>
+<div class="stat-card"><div class="num amber">5.6%</div><div class="lbl">Avg Gross Yield</div></div>
+<div class="stat-card"><div class="num purple">Walsall</div><div class="lbl">Biggest Council</div></div>
+</div>
+
+<h2>📋 Council HMO Regulations</h2>
+<div class="table-scroll">
+<table>
+<tr><th>Council</th><th>Scheme Type</th><th>App Fee</th><th>Renewal Fee</th><th>Duration</th><th>Apply</th></tr>
+<tr><td>Dudley</td><td>additional</td><td>£1,300</td><td>£1,100</td><td>5yr</td><td><a href='https://www.dudley.gov.uk/housing/hmo/'>Apply →</a></td></tr>
+<tr><td>Birmingham</td><td>additional</td><td>£755</td><td>N/A</td><td>5yr</td><td><a href='https://www.birmingham.gov.uk/info/20175/private_housing/2648/additional_licensing_for_hmos'>Apply →</a></td></tr>
+<tr><td>Wolverhampton</td><td>mandatory</td><td>Check</td><td>Check</td><td>5yr</td><td><a href='https://www.wolverhampton.gov.uk/housing/house-multiple-occupation-licence'>Apply →</a></td></tr>
+<tr><td>Walsall</td><td>additional</td><td>£1,300</td><td>£1,100</td><td>5yr</td><td><a href='https://www.walsall.gov.uk/housing/hmo/'>Apply →</a></td></tr>
+<tr><td>Shropshire</td><td>Check</td><td>Check</td><td>Check</td><td>Check</td><td>Check council website</td></tr>
+</table></div>
+
+<h2>📍 Area Overview</h2>
+<div class="table-scroll">
+<table>
+<tr><th>Area</th><th>Postcodes</th><th>HMOs</th><th>Avg Yield</th><th>IMD</th><th>Crime</th><th>Rating</th><th>Verdict</th></tr>
+<tr><td><b>Dudley</b></td><td>9</td><td>65</td><td class='green'>6.3%</td><td>1</td><td>985</td><td>Below Average Crime</td><td><span class='badge badge-watch'>WATCH</span></td></tr>
+<tr><td><b>Birmingham</b></td><td>44</td><td>0</td><td class='green'>6.3%</td><td>?</td><td>?</td><td>?</td><td><span class='badge badge-watch'>WATCH</span></td></tr>
+<tr><td><b>Wolverhampton</b></td><td>16</td><td>3</td><td class='green'>5.6%</td><td>1</td><td>453</td><td>Average Crime</td><td><span class='badge badge-watch'>WATCH</span></td></tr>
+<tr><td><b>Walsall</b></td><td>15</td><td>80</td><td class='green'>5.9%</td><td>1</td><td>340</td><td>Above Average Crime</td><td><span class='badge badge-watch'>WATCH</span></td></tr>
+<tr><td><b>Shropshire</b></td><td>22</td><td>0</td><td class='green'>3.9%</td><td>?</td><td>?</td><td>?</td><td><span class='badge badge-avoid'>AVOID</span></td></tr>
+</table></div>
+
+<h2>🏪 Top Agents for Outreach</h2>
+<div class="table-scroll">
+<table>
+<tr><th>Agent</th><th>Area</th><th>Listings</th><th>Phone</th></tr>
+<tr><td>Taylors</td><td>Dudley</td><td>20</td><td>Check website</td></tr>
+<tr><td>Barnard Marcus</td><td>Dudley</td><td>20</td><td>Check website</td></tr>
+<tr><td>Shipways, Dudley</td><td>Dudley</td><td>20</td><td>Check website</td></tr>
+<tr><td>Connells, B'ham West - Dudley</td><td>Dudley</td><td>20</td><td>Check website</td></tr>
+<tr><td>Direct Property Letting & Sales Ltd</td><td>Dudley</td><td>20</td><td>Check website</td></tr>
+<tr><td>Connells - Wolverhampton</td><td>Wolverhampton</td><td>20</td><td>Check website</td></tr>
+<tr><td>Peter James Property Partnership</td><td>Wolverhampton</td><td>20</td><td>Check website</td></tr>
+<tr><td>Charles Louis Homes - Ramsbottom</td><td>Wolverhampton</td><td>20</td><td>Check website</td></tr>
+<tr><td>Student Tenant Lettings Limited</td><td>Wolverhampton</td><td>20</td><td>Check website</td></tr>
+<tr><td>Paul Dubberley Estate Agents - Willenhall</td><td>Wolverhampton</td><td>20</td><td>Check website</td></tr>
+<tr><td>Connells - Walsall</td><td>Walsall</td><td>20</td><td>Check website</td></tr>
+<tr><td>Bairstow Eves - Walsall Sales</td><td>Walsall</td><td>20</td><td>Check website</td></tr>
+<tr><td>Purplebricks, Head Office</td><td>Walsall</td><td>20</td><td>Check website</td></tr>
+<tr><td>Fraser Wood, Walsall</td><td>Walsall</td><td>20</td><td>Check website</td></tr>
+<tr><td>Edwards Moore, Aldridge</td><td>Walsall</td><td>20</td><td>Check website</td></tr>
+<tr><td>Cooper Green Pooks, Shrewsbury</td><td>Shropshire</td><td>20</td><td>Check website</td></tr>
+<tr><td>Zaza Johnson & Bath, Shrewsbury</td><td>Shropshire</td><td>20</td><td>Check website</td></tr>
+<tr><td>Holland Broadbridge, Shrewsbury</td><td>Shropshire</td><td>20</td><td>Check website</td></tr>
+<tr><td>Monks Estate & Letting Agents</td><td>Shropshire</td><td>20</td><td>Check website</td></tr>
+<tr><td>DB Roberts</td><td>Shropshire</td><td>20</td><td>Check website</td></tr>
+</table></div>
+
+<h2>🏠 Top Landlords (by HMO properties)</h2>
+<div class="table-scroll">
+<table>
+<tr><th>#</th><th>Landlord</th><th>Properties</th><th>Areas</th></tr>
+<tr><td>1</td><td><a href='https://www.google.com/search?q=Jenni+Halliday+HMO+landlord' target='_blank'>Jenni Halliday</a></td><td>27</td><td>WS10, WS12, WS13, WS14, WS29</td></tr>
+<tr><td>2</td><td><a href='https://www.google.com/search?q=Stephen+Tong+HMO+landlord' target='_blank'>Stephen Tong</a></td><td>11</td><td>B66 , DY4 </td></tr>
+<tr><td>3</td><td><a href='https://www.google.com/search?q=Abdullah+Forrest+HMO+landlord' target='_blank'>Abdullah Forrest</a></td><td>7</td><td>WS29</td></tr>
+<tr><td>4</td><td><a href='https://www.google.com/search?q=HZ+Propco+Limited+HMO+landlord' target='_blank'>HZ Propco Limited</a></td><td>6</td><td>B66 , B67 , B68 , B70 </td></tr>
+<tr><td>5</td><td><a href='https://www.google.com/search?q=Serco+House,+16+Bartley+Wood+Business+Park,+Bartley+Way,+Hook,+Hampshire,+RG27+8UY+Serco+Limited,+Serco+House,+16+Bartley+Wood+Business+Park,+Bartley+HMO+landlord' target='_blank'>Serco House, 16 Bartley Wood Business Park, B</a></td><td>5</td><td>B63 , DY1 , DY2 </td></tr>
+<tr><td>6</td><td><a href='https://www.google.com/search?q=Metropolitan+Group+-+Sellypark+HMO+landlord' target='_blank'>Metropolitan Group - Sellypark</a></td><td>5</td><td>B29 </td></tr>
+<tr><td>7</td><td><a href='https://www.google.com/search?q=Serco+Ltd+HMO+landlord' target='_blank'>Serco Ltd</a></td><td>5</td><td></td></tr>
+<tr><td>8</td><td><a href='https://www.google.com/search?q=Fara+Gohari+HMO+landlord' target='_blank'>Fara Gohari</a></td><td>4</td><td>B29 </td></tr>
+<tr><td>9</td><td><a href='https://www.google.com/search?q=Chohan+Property+Investments+Ltd+HMO+landlord' target='_blank'>Chohan Property Investments Ltd</a></td><td>4</td><td>B70 </td></tr>
+<tr><td>10</td><td><a href='https://www.google.com/search?q=Bahader+Singh+More+HMO+landlord' target='_blank'>Bahader Singh More</a></td><td>4</td><td>WS12, WS28, WS29</td></tr>
+<tr><td>11</td><td><a href='https://www.google.com/search?q=DJ+Finance+Limited+3+Langdale+Drive,+HMO+landlord' target='_blank'>DJ Finance Limited 3 Langdale Drive,</a></td><td>3</td><td>DY9 </td></tr>
+<tr><td>12</td><td><a href='https://www.google.com/search?q=EasyLettingsBirmingham+Ltd+(tasadduq+hussain)+HMO+landlord' target='_blank'>EasyLettingsBirmingham Ltd (tasadduq hussain)</a></td><td>3</td><td>B29 </td></tr>
+<tr><td>13</td><td><a href='https://www.google.com/search?q=Jenny+Hancox+HMO+landlord' target='_blank'>Jenny Hancox</a></td><td>3</td><td>B29 </td></tr>
+<tr><td>14</td><td><a href='https://www.google.com/search?q=Metropolitan+Group+-+Sellypark+(Mandeep+Buray)+HMO+landlord' target='_blank'>Metropolitan Group - Sellypark (Mandeep Buray</a></td><td>3</td><td>B29 </td></tr>
+<tr><td>15</td><td><a href='https://www.google.com/search?q=METROPOLITAN+GROUP+-+SELLYPARK+LIMITED+(Mandeep+Buray)+HMO+landlord' target='_blank'>METROPOLITAN GROUP - SELLYPARK LIMITED (Mande</a></td><td>3</td><td>B29 </td></tr>
+<tr><td>16</td><td><a href='https://www.google.com/search?q=Parvez+Arain+HMO+landlord' target='_blank'>Parvez Arain</a></td><td>3</td><td>B29 </td></tr>
+<tr><td>17</td><td><a href='https://www.google.com/search?q=Chris+Heath+HMO+landlord' target='_blank'>Chris Heath</a></td><td>3</td><td>B66 , B67 </td></tr>
+<tr><td>18</td><td><a href='https://www.google.com/search?q=Luke+Mulcahy+HMO+landlord' target='_blank'>Luke Mulcahy</a></td><td>3</td><td>B68 , B70 </td></tr>
+<tr><td>19</td><td><a href='https://www.google.com/search?q=Gora+Properties+Ltd+HMO+landlord' target='_blank'>Gora Properties Ltd</a></td><td>3</td><td>B66 </td></tr>
+<tr><td>20</td><td><a href='https://www.google.com/search?q=Hawksmead+Properties+Ltd+HMO+landlord' target='_blank'>Hawksmead Properties Ltd</a></td><td>3</td><td>B71 , WS10</td></tr>
+<tr><td>21</td><td><a href='https://www.google.com/search?q=Charles+James+Haliburton+HMO+landlord' target='_blank'>Charles James Haliburton</a></td><td>3</td><td>B70 , WS10</td></tr>
+<tr><td>22</td><td><a href='https://www.google.com/search?q=Mr+Charles+Jim+Haliburton+HMO+landlord' target='_blank'>Mr Charles Jim Haliburton</a></td><td>3</td><td>B70 , WS10</td></tr>
+<tr><td>23</td><td><a href='https://www.google.com/search?q=Helms+Capital+Ltd+HMO+landlord' target='_blank'>Helms Capital Ltd</a></td><td>3</td><td>B66 , B70 </td></tr>
+<tr><td>24</td><td><a href='https://www.google.com/search?q=Imran+Yakub+HMO+landlord' target='_blank'>Imran Yakub</a></td><td>2</td><td>B8 3</td></tr>
+<tr><td>25</td><td><a href='https://www.google.com/search?q=John+Khel+HMO+landlord' target='_blank'>John Khel</a></td><td>2</td><td>B26 </td></tr>
+</table></div>
+
+<h2>📊 HMO Density by Postcode</h2>
+<div class="table-scroll">
+<table>
+<tr><th>Postcode</th><th>HMOs</th><th>Yield</th><th>Agents</th><th>Recommendation</th></tr>
+<tr><td><b>B29 </b></td><td>119</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B66 </b></td><td>72</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B70 </b></td><td>59</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B67 </b></td><td>30</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>WS10</b></td><td>28</td><td class='green'>6.8%</td><td>20</td><td><span class='badge badge-watch'>Watch</span></td></tr>
+<tr><td><b>WS29</b></td><td>26</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>DY4 </b></td><td>23</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B8 2</b></td><td>22</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B68 </b></td><td>20</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B16 </b></td><td>19</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B11 </b></td><td>18</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>??</b></td><td>18</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>DY1 </b></td><td>17</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B69 </b></td><td>15</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B21 </b></td><td>13</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B71 </b></td><td>13</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>DY2 </b></td><td>11</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>RG27</b></td><td>11</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B8 3</b></td><td>9</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B65 </b></td><td>7</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>WS28</b></td><td>7</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>WS14</b></td><td>6</td><td class='green'>4.5%</td><td>20</td><td><span class='badge badge-avoid'>Low Yield</span></td></tr>
+<tr><td><b>B9 5</b></td><td>5</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>WS13</b></td><td>5</td><td class='green'>5.3%</td><td>20</td><td><span class='badge badge-watch'>Watch</span></td></tr>
+<tr><td><b>DY9 </b></td><td>4</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>DY5 </b></td><td>4</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B63 </b></td><td>4</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B27 </b></td><td>4</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B18 </b></td><td>4</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+<tr><td><b>B64 </b></td><td>4</td><td class='green'>?</td><td>?</td><td><span class='badge badge-watch'>Check</span></td></tr>
+</table></div>
+
+<h2>💡 Recommendations</h2>
+<div class="grid">
+<div class="card"><h3>🎯 Best HMO Postcodes</h3>
+<ul style="list-style:none;font-size:.85rem;color:#cbd5e1;line-height:2">
+<li>• <b>DY2</b> (Dudley) — 8.2% yield, <span class="green">highest in DY</span></li>
+<li>• <b>WS2</b> (Walsall) — 8.2% yield, strong HMO density</li>
+<li>• <b>B7</b> (Birmingham) — 8.25% yield, student HMO potential</li>
+<li>• <b>DY4</b> (Tipton) — 7.5% yield, affordable entry</li>
+<li>• <b>WV2</b> (Wolverhampton) — 7.2% yield, growing area</li>
+</ul></div>
+<div class="card"><h3>💰 Licensing Budget</h3>
+<ul style="list-style:none;font-size:.85rem;color:#cbd5e1;line-height:2">
+<li>• Dudley: <b>£1,300</b> per property (additional)</li>
+<li>• Birmingham: <b>£755</b> per property (additional)</li>
+<li>• Walsall: <b>£1,300</b> per property (additional)</li>
+<li>• Budget <b>£755-1,300</b> per HMO for licensing</li>
+<li>• Renewal every 5 years</li>
+</ul></div>
+<div class="card"><h3>🎯 Agent Targets</h3>
+<ul style="list-style:none;font-size:.85rem;color:#cbd5e1;line-height:2">
+<li>• <b>Taylors</b> — most listings in DY area</li>
+<li>• <b>Connells</b> — strong across all WM</li>
+<li>• <b>Skitts</b> — Sedgley/Dudley specialist</li>
+<li>• Call agents about HMO-suitable stock</li>
+<li>• Ask about probate/chain-free deals</li>
+</ul></div>
+</div>
+
+<div class="footer">Kokal Properties Ltd · Generated {TODAY} · Data: PropAI + HMO Register</div>
+</div></body></html>
