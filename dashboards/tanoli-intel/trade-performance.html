@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Trade Performance | Tanoli Intel</title>
+<style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+h1, h2, h3, h4 { color: #58a6ff; margin: 0 0 12px 0; }
+h2 { font-size: 1.2em; border-bottom: 1px solid #30363d; padding-bottom: 8px; margin-top: 20px; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.metric { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; text-align: center; }
+.metric .value { font-size: 1.5em; font-weight: bold; }
+.metric .label { font-size: 0.8em; color: #8b949e; margin-top: 4px; }
+.green { color: #3fb950; }
+.red { color: #f85149; }
+.orange { color: #d29922; }
+.stat-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.stat-label { min-width: 70px; font-weight: 500; }
+.stat-bar { flex: 1; height: 12px; background: #0d1117; border-radius: 6px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; transition: width 0.3s; }
+.stat-value { min-width: 180px; text-align: right; font-size: 0.85em; color: #8b949e; }
+.rec { background: #0d1117; border-left: 3px solid #58a6ff; padding: 8px 12px; margin: 6px 0; font-size: 0.9em; }
+a { color: #58a6ff; }
+.header { display: flex; justify-content: space-between; align-items: center; }
+.header .date { color: #8b949e; font-size: 0.85em; }
+</style></head><body>
+
+<div class="card">
+<div class="header">
+<h1>📊 Trade Performance Analysis</h1>
+<span class="date">2026-05-24 07:46</span>
+</div>
+<div class="metrics">
+    <div class="metric"><div class="value green">15</div><div class="label">Closed Trades</div></div>
+    <div class="metric"><div class="value green">86.7%</div><div class="label">Win Rate</div></div>
+    <div class="metric"><div class="value green">3.8%</div><div class="label">Avg Win</div></div>
+    <div class="metric"><div class="value red">-6.6%</div><div class="label">Avg Loss</div></div>
+    <div class="metric"><div class="value green">2.39</div><div class="label">Expectancy</div></div>
+    <div class="metric"><div class="value green">3.7x</div><div class="label">Profit Factor</div></div>
+    <div class="metric"><div class="value">11</div><div class="label">Max Win Streak</div></div>
+    <div class="metric"><div class="value red">2</div><div class="label">Max Loss Streak</div></div>
+    <div class="metric"><div class="value green">+35.8%</div><div class="label">Net P&L</div></div>
+    <div class="metric"><div class="value">2.0d</div><div class="label">Avg Hold</div></div>
+</div>
+</div>
+
+<div class="card">
+<h4>📋 Recommendations</h4>
+<div class="rec">💡 🟢 Strong win rate — consider increasing position sizing on high-conviction signals</div>
+<div class="rec">💡 📊 Best signal strength bracket: 4-6 (84.6% win rate) — weight these signals higher</div>
+
+</div>
+
+<div class="card">
+<h4>🏆 Best & Worst Trades</h4>
+<div class="stat-row"><span class="stat-label">🟢 ASTS</span><span class="stat-value" style="color:#3fb950">+15.86%</span></div>
+<div class="stat-row"><span class="stat-label">🟢 IONQ</span><span class="stat-value" style="color:#3fb950">+10.65%</span></div>
+<div class="stat-row"><span class="stat-label">🟢 RKLB</span><span class="stat-value" style="color:#3fb950">+6.19%</span></div>
+<div class="stat-row"><span class="stat-label">🔴 RKLB</span><span class="stat-value" style="color:#f85149">-7.97%</span></div>
+<div class="stat-row"><span class="stat-label">🔴 ASTS</span><span class="stat-value" style="color:#f85149">-5.24%</span></div>
+<div class="stat-row"><span class="stat-label">🔴 COIN</span><span class="stat-value" style="color:#f85149">0.8%</span></div>
+
+</div>
+
+<div class="card">
+<h4>📈 Performance by Ticker</h4>
+
+    <div class="stat-row">
+        <span class="stat-label">RKLB</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:66.7%;background:#3fb950"></span></span>
+        <span class="stat-value">3 trades, 66.7% WR, -0.1%</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label">MSFT</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span>
+        <span class="stat-value">2 trades, 100.0% WR, +4.7%</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label">ASTS</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:50.0%;background:#f85149"></span></span>
+        <span class="stat-value">2 trades, 50.0% WR, +10.6%</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label">COIN</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span>
+        <span class="stat-value">2 trades, 100.0% WR, +1.9%</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label">TSLA</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span>
+        <span class="stat-value">1 trades, 100.0% WR, +1.4%</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label">AMD</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span>
+        <span class="stat-value">1 trades, 100.0% WR, +2.5%</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label">IONQ</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span>
+        <span class="stat-value">1 trades, 100.0% WR, +10.7%</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label">AMZN</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span>
+        <span class="stat-value">1 trades, 100.0% WR, +1.8%</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label">META</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span>
+        <span class="stat-value">1 trades, 100.0% WR, +1.1%</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label">SOFI</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span>
+        <span class="stat-value">1 trades, 100.0% WR, +1.2%</span>
+    </div>
+</div>
+
+</body></html>
