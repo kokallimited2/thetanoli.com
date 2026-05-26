@@ -29,7 +29,7 @@
 <body>
 
 <h1>🧠 Deal Analysis Learning — Knowledge Base</h1>
-<p class="meta">Last updated: 2026-05-24 | Total improvements: 10</p>
+<p class="meta">Last updated: 2026-05-25 | Total improvements: 11</p>
 
 <section id="framework">
 <h2>🧠 Current Best Framework</h2>
@@ -156,6 +156,7 @@
   <li><strong>Debt Coverage Ratio (DCR):</strong> DCR = Net Rental Income ÷ Annual Mortgage Payments. Target ≥ 1.25. Below 1.0 → negative cashflow.</li>
   <li><strong>Cash Buffer:</strong> Maintain 20-25% cash reserves. Calculate as: (Total Monthly Costs × 6 months) + (20% of refurb budget).</li>
   <li><strong>Overestimate timelines by 50%</strong> — holding costs are the black hole that kills deals</li>
+  <li><strong>Holding Cost Rule-of-Thumb (NEW — 2026-05-25):</strong> For a standard 6-month refurb with bridging finance, budget <strong>£6,000-10,000</strong> total: bridging interest £4,200-6,000 (0.7-1%/mo on £100k loan) + unoccupied insurance £600-1,200 + council tax £600-1,200 + utilities £300-600. Use this as default budget line item — do not derive from scratch each deal. (Source: RefurbCalculator — Tony Walker / Help Build)</li>
   <li><strong>Six-month rule</strong>: High Street BTL lenders enforce 6 months from Land Registry registration. With backlogs, budget 8-9 months of bridging. Specialist lenders with manual underwriting can refinance within weeks.</li>
   <li><strong>Capital Trap Ratchet Modelling (NEW — 2026-05-20):</strong> Refurb overruns and surveyor valuation gaps do NOT compound linearly — they multiply. A 15% refurb overrun + 7.5% surveyor gap creates a 50-80% larger capital deficit than either alone. Model them TOGETHER with a Ratchet Scenario column in every BRRR Deal Card alongside Best/Base/Worst.</li>
 </ul>
@@ -187,6 +188,17 @@
   <li>Match property to strategy based on: condition, location, price, licensing, exit options</li>
   <li>Run 3-scenario analysis: BTL (primary), sell (secondary), HMO/SA (tertiary)</li>
   <li><strong>Thresholds per strategy</strong>: BTL gross yield ≥6% (WM), BRRR equity created ≥20% cost, Flip net profit ≥20%, HMO room yield ≥12%</li>
+  <li><strong>BRRR vs Flip Decision Matrix (NEW — 2026-05-25):</strong>
+    <table>
+      <tr><th>Dimension</th><th>Flip</th><th>BRRR</th></tr>
+      <tr><td>Capital returned</td><td>At sale (minus costs &amp; tax)</td><td>At refinance (75% LTV on GDV)</td></tr>
+      <tr><td>Tax treatment</td><td>Trading income (up to 45%)</td><td>BTL income + CGT on eventual sale</td></tr>
+      <tr><td>First deal suitability</td><td>✅ Easier to model, cleaner exit</td><td>⚠️ Better once refurb process understood</td></tr>
+      <tr><td>Ongoing income</td><td>None — one-off profit</td><td>Monthly cashflow + capital growth</td></tr>
+      <tr><td>Hidden cost risk</td><td>Selling costs erode 10-15% of GDV</td><td>Refinance gap erodes capital recycling</td></tr>
+    </table>
+    <em>Rule of thumb: First deal → flip. Limited capital → BRRR if MLI &lt; £10k. Portfolio building → BRRR. (Source: RefurbCalculator — Tony Walker, Help Build)</em>
+  </li>
 </ul>
 
 <h3>Step 7 — Sensitivity & Scenario Analysis</h3>
@@ -201,13 +213,24 @@
 </ul>
 
 <h3>Step 8 — Maximum Offer Price</h3>
-<h4>Method A: Residual Bid (BRRR / Flip)</h4>
+<h4>Method A: Residual Bid (BRRR / Flip) — PRIMARY</h4>
 <div class="formula-box">Max Bid = Post-Refurb GDV − Construction − Finance − Legal − Holding Costs − SDLT − Contingency − Target Profit (20% min)</div>
 <ul>
   <li>If vendor wants more → walk away. "The numbers never lie."</li>
 </ul>
 
-<h4>Method B: Ceiling Price (BTL)</h4>
+<h4>Method B: UK-Calibrated 70% Rule Quick Filter (NEW — 2026-05-25)</h4>
+<p><em>Use ONLY as a visual quick filter at the viewing stage. For actual pricing, use Method A above.</em></p>
+<div class="formula-box">
+<strong>Base formula:</strong> Max Offer = (ARV × 0.70) − Refurb Costs<br>
+<strong>UK SDLT adjustment:</strong> Reduce by additional 3-5% (second home surcharge)<br>
+<strong>Bridging finance adjustment:</strong> Reduce by additional 2-4% (arrangement + 6mo interest)<br>
+<strong>Total UK-adjusted range:</strong> ~58-65% of ARV (vs 70% US base)<br>
+<strong>BRRR variant:</strong> Use 75% (not 70%) because no agent fees or selling legal costs. UK-adjusted: ~63-68% of ARV.<br>
+<em>Source: RefurbCalculator (Tony Walker / Help Build). The US-originated 70% rule does not account for UK SDLT or bridging costs, which add 8-15% to the spread.</em>
+</div>
+
+<h4>Method C: Ceiling Price (BTL)</h4>
 <div class="formula-box">Ceiling Price = Price at which target net monthly cashflow is achieved<br><em>Work backwards: Target CF + Monthly Costs → Required Rent → Max Purchase Price</em></div>
 <ul>
   <li>Define target minimum cashflow (e.g. £300/mo for WM BTL)</li>
@@ -493,6 +516,17 @@ The trap compounds non-linearly — overruns compound with valuation gaps.<br>
 </ul>
 </div>
 
+<div class="entry" data-date="2026-05-25">
+<strong>2026-05-25</strong>
+<ul>
+  <li><strong>Treating the 70% Rule as exact (RefurbCalculator)</strong> — The US-originated 70% rule doesn't account for UK SDLT surcharge (3-5%) and bridging finance costs (2-4%), which add 8-15% to the spread. Always run the full work-backwards calculation before making an offer. The 70% rule is a visual quick filter at the viewing stage, not a pricing tool.</li>
+  <li><strong>Underestimating holding costs by 50%+</strong> — RefurbCalculator quantifies: 6-month refurb with bridging = £6,000-10,000 total holding costs (interest £4.2k-6k, unoccupied insurance £600-1.2k, council tax £600-1.2k, utilities £300-600). Most first-time developers budget £2k-3k.</li>
+  <li><strong>Using cost-per-sqm refurb estimates instead of room-by-room</strong> — Blanket £/sqm rates cannot distinguish between light decoration and full rewire+structural work. The only reliable method is room-by-room based on what you see. Cost-per-sqm is called out as "getting developers into trouble."</li>
+  <li><strong>Flipping without accounting for trading income tax</strong> — HMRC may treat flip profits as trading income (up to 45% income tax, not CGT). A £22.5k flip at 40% = £9k to HMRC, net drops to £13.5k. This is a critical differentiator between BRRR and flip strategy.</li>
+  <li><strong>Choosing BRRR or flip without a structured comparison</strong> — The decision has material impact on which metrics matter. BRRR metrics: Money Left In, ROE, monthly cashflow. Flip metrics: margin-on-cost, tax liability, timeline. Comparing them on profit alone is incomplete.</li>
+</ul>
+</div>
+
 <div class="entry" data-date="2026-05-24">
 <strong>2026-05-24</strong>
 <ul>
@@ -569,6 +603,38 @@ The trap compounds non-linearly — overruns compound with valuation gaps.<br>
 
 <section id="improvements">
 <h2>⚡ Improvement Log</h2>
+
+<div class="improvement-entry" data-date="2026-05-25">
+<h4>🆕 Improvement #11 — 2026-05-25</h4>
+<p><strong>Upgrade: Add "BRRR vs Flip Strategy Decision Matrix" to Strategy Matching Engine + UK-Calibrated 70% Rule Quick Filter + Holding Cost Rule-of-Thumb</strong></p>
+
+<p><strong>Source:</strong> RefurbCalculator Blog — Tony Walker / Help Build, 18+ years UK construction estimating. 4 articles: "Does the Deal Stack?", "BRRR vs Flip — Which Strategy?", "Refurb Yields: How to Calculate Your Return", "The 70% Rule: How to Calculate Your Maximum Offer."</p>
+
+<p><strong>Upgrade A — BRRR vs Flip Decision Matrix (Stage 6 — Strategy Fit):</strong><br>
+Add a structured 5-dimension decision framework to the strategy matching engine: capital returned (flip: at sale minus costs/tax vs BRRR: at refinance 75% LTV), tax treatment (flip: trading income up to 45% vs BRRR: BTL income + CGT on eventual sale), first-deal suitability (flip: easier model/cleaner exit vs BRRR: better once process understood), ongoing income (flip: none/one-off vs BRRR: monthly cashflow + growth), hidden cost risk (flip: selling costs erode 10-15% of GDV vs BRRR: refinance gap erodes capital recycling).</p>
+<ul>
+  <li><strong>Rule of thumb:</strong> First deal → flip is more predictable. After understanding refurb → BRRR. Limited capital → BRRR theoretically better but only if MLI &lt; £10k.</li>
+  <li><strong>Worked example:</strong> £110k purchase + £25k refurb + £175k ARV. Flip: £152.5k total costs → £22.5k gross profit → £13.5k net after 40% trading income tax. BRRR: £143.7k total → £131.25k refi → £3.75k left in + £303/mo cashflow + retained asset.</li>
+</ul>
+
+<p><strong>Upgrade B — UK-Calibrated 70% Rule Quick Filter (Stage 8 — Maximum Offer):</strong><br>
+The existing residual bid method (work backwards from GDV) is correct and should remain primary. Add the 70% rule as a visual quick filter at the viewing stage with explicit UK calibration:</p>
+<ul>
+  <li><strong>Base formula:</strong> Max offer = (ARV × 0.70) − Refurb costs</li>
+  <li><strong>UK SDLT adjustment:</strong> Reduce max offer by additional 3-5% (SDLT surcharge)</li>
+  <li><strong>Bridging finance adjustment:</strong> Reduce by additional 2-4% (arrangement + 6mo interest)</li>
+  <li><strong>Total UK adjustment:</strong> Base 70% → effective ~58-65% of ARV after UK costs</li>
+  <li><strong>BRRR variant:</strong> Use 75% (not 70%) because no agent fees, no selling legal, no immediate CGT. UK adjusted: ~63-68% of ARV.</li>
+  <li><strong>Rule:</strong> The 70% rule is a pass/fail gate at the viewing. The work-backwards method is the decision tool.</li>
+</ul>
+
+<p><strong>Upgrade C — Holding Cost Rule-of-Thumb (Stage 4 — Cost Waterfall):</strong><br>
+Add concrete default budget: <strong>£6,000-10,000 for a standard 6-month refurb with bridging finance.</strong> Breakdown: bridging interest £4,200-6,000 (0.7-1%/mo on £100k) + unoccupied insurance £600-1,200 + council tax £600-1,200 + utilities £300-600. Use as default line item rather than deriving from scratch each time.</p>
+
+<p><strong>Why this matters:</strong> The BRRR vs Flip decision was under-specified. The decision materially changes which metrics are primary (Money Left In vs margin-on-cost). Adding a structured comparison prevents analysing a flip property with BRRR metrics and vice versa. The UK 70% Rule calibration addresses a specific gap in our offer pricing methodology. The holding cost rule-of-thumb saves time and prevents the #1 silent deal-killer.</p>
+
+<p><strong>Convergence note:</strong> This upgrade is based on a single source (RefurbCalculator) but that source is operationally authoritative — built by practising UK estimators quoting real trade rates and live supplier costs, not a content marketing operation. The source's practical orientation (room-by-room costing, explicit holding cost ranges, worked UK examples) gives it credibility beyond an academic or aggregator source.</p>
+</div>
 
 <div class="improvement-entry" data-date="2026-05-24">
 <h4>🆕 Improvement #10 — 2026-05-24</h4>

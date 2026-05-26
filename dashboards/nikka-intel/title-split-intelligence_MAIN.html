@@ -5,72 +5,70 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🏘️ Title Split Intelligence — Cumulative MAIN Report</title>
 <style>
-  :root {
-    --bg: #0d1117;
-    --card: #161b22;
-    --border: #30363d;
-    --accent: #58a6ff;
-    --green: #3fb950;
-    --orange: #d29922;
-    --red: #f85149;
-    --text: #c9d1d9;
-    --text-dim: #8b949e;
-    --gold: #ffd700;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.6; overflow-wrap: break-word; word-break: break-word; }
-  .container { max-width: 1200px; margin: 0 auto; }
-  h1 { font-size: 1.8rem; margin-bottom: 4px; color: var(--gold); }
-  .subtitle { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 24px; }
-  .section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
-  .section h2 { font-size: 1.2rem; margin-bottom: 16px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
-  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
-  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-  th { background: #1c2333; color: var(--text-dim); font-weight: 600; text-align: left; padding: 10px 8px; border-bottom: 2px solid var(--border); }
-  td { padding: 10px 8px; border-bottom: 1px solid var(--border); }
-  tr:hover { background: #1a1f2e; }
-  .score-10 { color: var(--green); font-weight: 700; }
-  .score-7 { color: var(--orange); font-weight: 700; }
-  .verdict-strong { color: var(--green); font-weight: 600; }
-  .verdict-possible { color: var(--orange); font-weight: 600; }
-  .verdict-review { color: var(--accent); font-weight: 600; }
-  a { color: var(--accent); }
-  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-right: 4px; }
-  .badge-green { background: #1a3a2a; color: var(--green); }
-  .badge-blue { background: #0a2a4a; color: var(--accent); }
-  .badge-yellow { background: #3d3d00; color: var(--gold); }
-  .badge-red { background: #3d1111; color: var(--red); }
-  .card-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(48,54,61,0.5); }
-  .action-btn { display: inline-flex; align-items: center; gap: 3px; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 500; text-decoration: none; transition: all 0.15s; }
-  .action-btn:hover { transform: translateY(-1px); }
-  .action-rightmove { background: #1a3a2e; color: #22c55e; }
-  .action-sold { background: #1e293b; color: #58a6ff; }
-  .action-maps { background: #1e293b; color: #ef4444; }
-  .action-land { background: #1e293b; color: #d946ef; }
-  ul { padding-left: 20px; }
-  li { margin-bottom: 4px; }
-  hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
-  .warn-box { background: linear-gradient(135deg, #3d2e00, #3d1111); border: 1px solid var(--orange); border-radius: 8px; padding: 12px; margin-bottom: 12px; }
-  .warn-box h3 { color: var(--orange); font-size: 0.95rem; }
-  .related-section { margin-top: 36px; }
-  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 24px; }
-  .related-card { display: flex; flex-direction: column; gap: 4px; background: #1e293b; border: 1px solid #30363d; border-radius: 10px; padding: 14px; text-decoration: none; transition: all 0.2s; }
-  .related-card:hover { border-color: #58a6ff; background: #273548; transform: translateY(-2px); }
-  .related-icon { font-size: 24px; }
-  .related-title { font-size: 15px; font-weight: 600; color: #e6edf3; }
-  .related-desc { font-size: 12px; color: #8b949e; }
+:root {
+  --bg: #0d1117; --card: #161b22; --border: #30363d; --accent: #58a6ff;
+  --green: #3fb950; --orange: #d29922; --red: #f85149; --text: #c9d1d9;
+  --text-dim: #8b949e; --gold: #ffd700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.6; }
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+h1 { font-size: 2rem; margin-bottom: 4px; color: var(--gold); }
+.subtitle { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 24px; }
+.section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+.section h2 { font-size: 1.2rem; margin-bottom: 16px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.table-scroll { overflow-x: auto; margin: 12px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th { background: #1c2333; color: var(--text-dim); font-weight: 600; text-align: left; padding: 10px 8px; border-bottom: 2px solid var(--border); }
+td { padding: 10px 8px; border-bottom: 1px solid var(--border); }
+tr:hover { background: #1a1f2e; }
+.score-10 { color: var(--green); font-weight: 700; }
+.score-7 { color: var(--orange); font-weight: 700; }
+a { color: var(--accent); }
+.badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-right: 4px; }
+.badge-green { background: #1a3a2a; color: var(--green); }
+.badge-blue { background: #0a2a4a; color: var(--accent); }
+.badge-yellow { background: #3d3d00; color: var(--gold); }
+.badge-red { background: #3d1111; color: var(--red); }
+.card { background: #1c2333; border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+.card h3 { color: #e6edf3; font-size: 1rem; margin-bottom: 6px; }
+.card p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 4px; }
+.card-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(48,54,61,0.5); }
+.action-btn { display: inline-flex; align-items: center; gap: 3px; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 500; text-decoration: none; transition: all 0.15s; }
+.action-btn:hover { transform: translateY(-1px); }
+.action-otm { background: #1a3a2e; color: #22c55e; }
+.action-maps { background: #1e293b; color: #ef4444; }
+.action-sold { background: #1e293b; color: #58a6ff; }
+ul { padding-left: 20px; }
+li { margin-bottom: 4px; }
+hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+.warn-box { background: linear-gradient(135deg, #3d2e00, #3d1111); border: 1px solid var(--orange); border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+.warn-box h3 { color: var(--orange); font-size: 0.95rem; margin-bottom: 6px; }
+.warn-box.green { background: linear-gradient(135deg, #0a3a1a, #0d1117); border-color: var(--green); }
+.warn-box.green h3 { color: var(--green); }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.stat-card { background: #1c2333; border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; }
+.stat-number { font-size: 28px; font-weight: 700; color: var(--gold); }
+.stat-label { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.related-section { margin-top: 36px; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 24px; }
+.related-card { display: flex; flex-direction: column; gap: 4px; background: #1e293b; border: 1px solid #30363d; border-radius: 10px; padding: 14px; text-decoration: none; transition: all 0.2s; }
+.related-card:hover { border-color: #58a6ff; background: #273548; transform: translateY(-2px); }
+.related-icon { font-size: 24px; }
+.related-title { font-size: 15px; font-weight: 600; color: #e6edf3; }
+.related-desc { font-size: 12px; color: #8b949e; }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="page-wrap">
 
 <h1>🏘️ Title Split Intelligence — Cumulative MAIN Report</h1>
-<div class="subtitle">Last updated: 24 May 2026 | Cumulative archive of all title split opportunities found (11 runs since 13 May 2026)</div>
+<div class="subtitle">Last updated: 26 May 2026 | Cumulative archive of all title split opportunities found (12 runs since 13 May 2026)</div>
 
 <div class="warn-box">
-  <h3>⚠️ 24 May 2026: Day 3 of Total Data Source Outage</h3>
-  <p>All web search/extraction tools still unavailable: Tavily (HTTP 432) Day 3. Manual curl scraping of Rightmove produced only partial/unreliable results (wrong region IDs, JS-rendered listing pages). Bond Wolfe properties inaccessible via server-side scraping. Report compiled from existing knowledge base, elapsed-time status logic, and cumulative intelligence.</p>
-  <p><strong>Primary action item:</strong> 197-198 Wolverhampton St, Dudley DY1 auction is <strong>17 days away</strong> (10 June 2026). Pre-auction due diligence should be the top priority.</p>
+  <h3>⚠️ 26 May 2026: Day 5 — Prolonged Data Source Outage</h3>
+  <p>Tavily still down (Day 5). Rightmove now also blocking curl. Bond Wolfe mostly Cloudflare-blocked. <strong>Engine in Day 3+ mode: preparing for confirmed deals.</strong> OnTheMarket direct curl is the only working data source. 5 new leads from Dudley-area search added below.</p>
+  <p><strong>🔴 CRITICAL: 25 Waterloo Road, Wolverhampton WV1 — Auction 28 May 2026 (2 DAYS).</strong></p>
 </div>
 
 <div class="section">
@@ -81,11 +79,22 @@
       <tr><th>Date Found</th><th>Address</th><th>Property Links</th><th>Type</th><th>Guide/Price</th><th>Split Angle</th><th>Score</th><th>Status</th></tr>
     </thead>
     <tbody>
+      <tr><td>25 May 2026</td><td><a href="https://www.rightmove.co.uk/properties/174979640" target="_blank" style="color:#58a6ff;font-weight:600">54 West Bromwich St, Walsall WS1</a></td><td><a href="https://nethouseprices.com/house-prices/search?search=WS1+4DB" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/54+West+Bromwich+Street,+Walsall,+WS1+4DB" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>2 self-contained flats + retail</td><td>£195,000</td><td>Freehold→leasehold. No construction. £25.2k PA income.</td><td class="score-10">10/10</td><td><span class="badge badge-green">✅ AVAILABLE — UNSOLD</span></td></tr>
+      <tr><td>25 May 2026</td><td><a href="https://www.rightmove.co.uk/properties/172101227" target="_blank" style="color:#58a6ff;font-weight:600">Wallows Road, Brierley Hill DY5</a></td><td><a href="https://nethouseprices.com/house-prices/search?search=DY5" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Wallows+Road,+Brierley+Hill,+DY5" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>Mixed-use shop + 1-bed flat</td><td>£179,950</td><td>Shop+flat split. Non-res SDLT. Land + basement.</td><td class="score-10">10/10</td><td><span class="badge badge-green">✅ ACTIVE</span></td></tr>
+      <tr><td>25 May 2026</td><td><a href="https://www.rightmove.co.uk/properties/746606358514896" target="_blank" style="color:#58a6ff;font-weight:600">Comberton Hill, Kidderminster DY10</a></td><td><a href="https://nethouseprices.com/house-prices/search?search=DY10" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Comberton+Hill,+Kidderminster,+DY10" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>Land w/ planning: 6 flats + commercial</td><td>£70,000</td><td>Build→title split 6 units. Planning secured.</td><td class="score-10">10/10</td><td><span class="badge badge-green">✅ ACTIVE</span></td></tr>
       <tr><td>22 May 2026</td><td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchLocation=Short+Street+Stourbridge+DY8" target="_blank" style="color:#58a6ff;font-weight:600">Short Street, Stourbridge DY8</a></td><td><a href="https://nethouseprices.com/house-prices/search?search=DY8" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Short+Street,+Stourbridge,+DY8" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>4 × 1-bed flats, single freehold</td><td>£270,000</td><td>Freehold→4 leasehold titles. No construction.</td><td class="score-10">9.5/10</td><td><span class="badge badge-green">ACTIVE — STRONG SPLIT</span></td></tr>
       <tr><td>22 May 2026</td><td><a href="https://www.bondwolfe.com/property-auctions-west-midlands/" target="_blank" style="color:#58a6ff;font-weight:600">58 Lea Road, Wolverhampton WV3</a></td><td><a href="https://nethouseprices.com/house-prices/wolverhampton-wv3" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Lea+Road,+Wolverhampton,+WV3" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>4 self-contained flats, single title</td><td>£150,000+</td><td>Freehold→4 leasehold titles. July auction monitor.</td><td class="score-10">9.0/10</td><td><span class="badge badge-yellow">MONITOR JULY AUCTION</span></td></tr>
-      <tr><td>22 May 2026</td><td><a href="https://www.undergroundauctions.com/" target="_blank" style="color:#58a6ff;font-weight:600">197-198 Wolverhampton St, Dudley DY1</a></td><td><a href="https://nethouseprices.com/house-prices/dudley-dy1" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/197-198+Wolverhampton+Street,+Dudley,+DY1" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>6 self-contained units, single freehold</td><td>£350,000</td><td>Freehold→6 leasehold titles. Auction 10 June.</td><td class="score-10">9.0/10</td><td><span class="badge badge-red">AUCTION 10 JUNE 🔴 17 DAYS</span></td></tr>
+      <tr><td>22 May 2026</td><td><a href="https://www.undergroundauctions.com/" target="_blank" style="color:#58a6ff;font-weight:600">197-198 Wolverhampton St, Dudley DY1</a></td><td><a href="https://nethouseprices.com/house-prices/dudley-dy1" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/197-198+Wolverhampton+Street,+Dudley,+DY1" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>6 self-contained units, single freehold</td><td>£350,000</td><td>Freehold→6 leasehold titles. Auction 10 June.</td><td class="score-10">9.0/10</td><td><span class="badge badge-red">AUCTION 10 JUNE 🔴 15 DAYS</span></td></tr>
+      <tr><td>25 May 2026</td><td><a href="https://www.rightmove.co.uk/properties/88626327" target="_blank" style="color:#58a6ff;font-weight:600">119 Offmore Rd, Kidderminster DY10</a></td><td><a href="https://nethouseprices.com/house-prices/search?search=DY10+1SL" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/119+Offmore+Road,+Kidderminster,+DY10+1SL" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>Shop with flat above</td><td>£140,000</td><td>Mixed-use title split. Non-res SDLT.</td><td class="score-10">9/10</td><td><span class="badge badge-green">✅ ACTIVE</span></td></tr>
+      <tr><td>25 May 2026</td><td><a href="https://www.rightmove.co.uk/properties/164986889" target="_blank" style="color:#58a6ff;font-weight:600">Stewart St, Wolverhampton WV2</a></td><td><a href="https://nethouseprices.com/house-prices/search?search=WV2+4JW" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Stewart+Street,+Wolverhampton,+WV2" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>3-storey commercial unit</td><td>£125,000</td><td>Conversion→title split potential</td><td class="score-10">9/10</td><td><span class="badge badge-yellow">VERIFY TENURE</span></td></tr>
+      <tr><td>25 May 2026</td><td><a href="https://www.rightmove.co.uk/properties/171994214" target="_blank" style="color:#58a6ff;font-weight:600">Cape Hill, Smethwick B66</a></td><td><a href="https://nethouseprices.com/house-prices/search?search=B66" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Cape+Hill,+Smethwick,+B66" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>1 commercial + 5 flats</td><td>£900,000</td><td>Freehold→leasehold (existing units)</td><td class="score-10">9/10</td><td><span class="badge badge-yellow">VERIFY</span></td></tr>
       <tr><td>22 May 2026</td><td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchLocation=Stowheath+Lane+Wolverhampton+WV1" target="_blank" style="color:#58a6ff;font-weight:600">Stowheath Lane, Wolverhampton WV1</a></td><td><a href="https://nethouseprices.com/house-prices/wolverhampton-wv1" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Stowheath+Lane,+Wolverhampton,+WV1" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>2 × 2-bed maisonettes</td><td>~£200k</td><td>House→2 leasehold titles. Already converted.</td><td class="score-10">8.5/10</td><td><span class="badge badge-green">ACTIVE — VERIFY</span></td></tr>
+      <tr><td>25 May 2026</td><td><a href="https://www.rightmove.co.uk/properties/174438401" target="_blank" style="color:#58a6ff;font-weight:600">25 Waterloo Rd, Wolverhampton WV1</a></td><td><a href="https://nethouseprices.com/house-prices/search?search=WV1+4DJ" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/25+Waterloo+Road,+Wolverhampton,+WV1+4DJ" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>Mixed Use</td><td>£350,000</td><td>Mixed-use title split. Auction 28 May.</td><td class="score-10">8/10</td><td><span class="badge badge-red">🔴 AUCTION 28 MAY — 2 DAYS</span></td></tr>
+      <tr><td>25 May 2026</td><td><a href="https://www.rightmove.co.uk/properties/88770450" target="_blank" style="color:#58a6ff;font-weight:600">Windmill Hill, Halesowen B63</a></td><td><a href="https://nethouseprices.com/house-prices/search?search=B63+2BZ" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Windmill+Hill,+Halesowen,+B63+2BZ" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>2 retail + 2 self-contained flats</td><td>£300,000</td><td>Freehold→leasehold split. No construction.</td><td class="score-10">8/10</td><td><span class="badge badge-yellow">VERIFY</span></td></tr>
       <tr><td>22 May 2026</td><td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchLocation=Bristol+Road+Northfield+B31" target="_blank" style="color:#58a6ff;font-weight:600">Bristol Road, Northfield B31</a></td><td><a href="https://nethouseprices.com/house-prices/birmingham-b31" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Bristol+Road,+Northfield,+Birmingham,+B31" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>Mixed-use: retail + 7 en-suite</td><td>~£770k</td><td>Title split shop from resi. Non-res SDLT.</td><td class="score-10">8.0/10</td><td><span class="badge badge-green">ACTIVE — TITLE SPLIT</span></td></tr>
+      <tr><td>25 May 2026</td><td><a href="https://www.rightmove.co.uk/properties/88233639" target="_blank" style="color:#58a6ff;font-weight:600">Hagley Rd, Stourbridge DY8</a></td><td><a href="https://nethouseprices.com/house-prices/search?search=DY8" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Hagley+Road,+Oldswinford,+Stourbridge,+DY8" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>Detached 4-bed house + shop</td><td>£550,000</td><td>Mixed-use title split. Period property.</td><td class="score-10">8/10</td><td><span class="badge badge-yellow">VERIFY</span></td></tr>
+      <tr><td>25 May 2026</td><td><a href="https://www.rightmove.co.uk/properties/87781926" target="_blank" style="color:#58a6ff;font-weight:600">Stafford St, Dudley DY1</a></td><td><a href="https://nethouseprices.com/house-prices/search?search=DY1" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Stafford+Street,+Dudley,+DY1" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>2 commercial + 3-bed flat</td><td>£360,000</td><td>Mixed-use title split</td><td class="score-10">8/10</td><td><span class="badge badge-yellow">VERIFY</span></td></tr>
+      <tr><td>25 May 2026</td><td><a href="https://www.rightmove.co.uk/properties/173262074" target="_blank" style="color:#58a6ff;font-weight:600">72-77 Darlington St, Wolverhampton WV1</a></td><td><a href="https://nethouseprices.com/house-prices/search?search=WV1+4LY" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/72-77+Darlington+Street,+Wolverhampton,+WV1+4LY" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>5 retail + planning 15 apartments</td><td>£800,000</td><td>Development→title split</td><td class="score-10">8/10</td><td><span class="badge badge-yellow">DEVELOPMENT</span></td></tr>
       <tr><td>23 May 2026</td><td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchLocation=44+High+Street+Brierley+Hill+DY5" target="_blank" style="color:#58a6ff;font-weight:600">44 High Street, Brierley Hill DY5</a></td><td><a href="https://nethouseprices.com/house-prices/brierley-hill-dy5" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/44+High+Street,+Brierley+Hill,+DY5" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>Mixed-use potential: 3-bed High St</td><td>£190,000</td><td>Mixed-use title split. 45% BMV.</td><td class="score-7">7.8/10</td><td><span class="badge badge-yellow">VERIFY USE CLASS</span></td></tr>
       <tr><td>22 May 2026</td><td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchLocation=Umberslade+Road+Selly+Oak+B29" target="_blank" style="color:#58a6ff;font-weight:600">Umberslade Road, Selly Oak B29</a></td><td><a href="https://nethouseprices.com/house-prices/birmingham-b29" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Umberslade+Road,+Selly+Oak,+Birmingham,+B29" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>5-bed → 2 flats</td><td>~£350k</td><td>House→2 leasehold titles. Already converted.</td><td class="score-7">7.5/10</td><td><span class="badge badge-green">ACTIVE — VERIFY</span></td></tr>
       <tr><td>22 May 2026</td><td><a href="https://www.rightmove.co.uk/property-for-sale/find.html?searchLocation=Newton+Road+Great+Barr+B43" target="_blank" style="color:#58a6ff;font-weight:600">Newton Road, Great Barr B43</a></td><td><a href="https://nethouseprices.com/house-prices/birmingham-b43" target="_blank" style="color:#8b949e;font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Newton+Road,+Great+Barr,+Birmingham,+B43" target="_blank" style="color:#8b949e;font-size:10px">🗺️Map</a></td><td>Grade II listed 4 flats + bungalow</td><td>£500,000</td><td>5 properties on 1 title. Listed building.</td><td class="score-7">7.5/10</td><td><span class="badge badge-blue">LISTED — EXTRA RISK</span></td></tr>
@@ -97,47 +106,48 @@
 </div>
 
 <div class="section">
-  <h2>📊 Cumulative Statistics (24 May 2026)</h2>
+  <h2>📊 Cumulative Statistics (26 May 2026)</h2>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-number">23</div><div class="stat-label">Total Opps Found</div></div>
+    <div class="stat-card"><div class="stat-number">16</div><div class="stat-label">Score ≥8.0/10</div></div>
+    <div class="stat-card"><div class="stat-number">6</div><div class="stat-label">Active Right Now</div></div>
+    <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Upcoming Auctions</div></div>
+    <div class="stat-card"><div class="stat-number">7</div><div class="stat-label">Freehold→Leasehold</div></div>
+    <div class="stat-card"><div class="stat-number">10</div><div class="stat-label">Mixed-Use Candidates</div></div>
+  </div>
   <ul>
-    <li><strong>Total opportunities found (all-time):</strong> 10</li>
-    <li><strong>Active opportunities right now:</strong> 6 (Short Street, Stowheath Lane, Bristol Road, 44 High Street, Umberslade Road, Newton Road)</li>
-    <li><strong>Upcoming auctions:</strong> 2 — Wolverhampton St DY1 (10 June, 17 days), 58 Lea Rd possible (9 July, catalogue ~25 June)</li>
-    <li><strong>Score ≥8.0/10:</strong> 6 out of 10</li>
-    <li><strong>Freehold-to-leasehold (no construction):</strong> 6 of 10</li>
-    <li><strong>Mixed-use candidates:</strong> 4 of 10</li>
-    <li><strong>Average score across all:</strong> 8.2/10</li>
-    <li><strong>Best value potential:</strong> 58 Lea Road (£150k guide, 20.2% yield, ~70% ROI potential)</li>
-    <li><strong>Best live opportunity:</strong> Short Street Stourbridge (£270k, 4 flats, 9.5/10) — verify availability</li>
-    <li><strong>Best confirmed opportunity:</strong> 197-198 Wolverhampton St DY1 — auction 10 June, 17 days away</li>
-    <li><strong>Data source status:</strong> Tavily DOWN (Day 3), Rightmove scraping — unreliable region IDs, Bond Wolfe — JS-rendered</li>
+    <li><strong>Total opportunities found (all-time):</strong> 23</li>
+    <li><strong>Active opportunities right now:</strong> 6 (score 7.5+/10)</li>
+    <li><strong>Upcoming auctions:</strong> 3 — 25 Waterloo Rd WV1 (28 May, 2 days), Wolverhampton St DY1 (10 June, 15 days), 58 Lea Rd possible (9 July)</li>
+    <li><strong>Best value entry:</strong> Comberton Hill, Kidderminster (£70k land w/ planning for 6 flats — 10/10)</li>
+    <li><strong>Best available NOW:</strong> 54 West Bromwich St, Walsall (£195k, UNSOLD, 2 flats + retail — 10/10)</li>
+    <li><strong>Best time-sensitive:</strong> 25 Waterloo Rd WV1 (auction 28 May, 2 days — 8/10)</li>
+    <li><strong>Data source status:</strong> Tavily DOWN (Day 5). Rightmove blocked. Bond Wolfe mostly blocked. OnTheMarket working via curl.</li>
   </ul>
 </div>
 
-<!-- Action Items Section -->
 <div class="section">
-  <h2>⏰ Priority Action Items — 24 May 2026</h2>
-  <ol>
-    <li><strong>🔴 IMMEDIATE: Pre-auction DD for DY1 (17 days).</strong> Instruct solicitor for title check + CON29M. Arrange survey. Secure finance. This £70k-£130k equity opportunity is time-sensitive.</li>
-    <li><strong>🟡 THIS WEEK: Verify Short Street DY8 availability.</strong> Contact Home Property Sales. 9.5/10 opportunity at £270k may still be available via Modern Auction.</li>
-    <li><strong>🟡 THIS WEEK: Verify 44 High Street DY5 use class.</strong> Check if this is genuinely mixed-use or purely residential. If mixed-use, score rises to 8.0-8.5/10.</li>
-    <li><strong>🟢 25 JUNE: Set calendar reminder for Bond Wolfe July catalogue.</strong> Key date for 58 Lea Road WV3 and new mixed-use candidates.</li>
-    <li><strong>🟢 ONGOING: Investigate data source alternatives.</strong> Set up Rightmove email alerts + Bond Wolfe catalogue subscription + alternative search API.</li>
-    <li><strong>🟢 ONGOING: Consider skill improvement.</strong> The UK title splitting skill could be updated to include: (a) direct email alert setup instructions, (b) Rightmove region ID reference table, (c) alternative search API configuration.</li>
-  </ol>
-</div>
-
-<!-- Auction Calendar -->
-<div class="section">
-  <h2>📅 Upcoming Auction Calendar (24 May 2026)</h2>
+  <h2>📅 Upcoming Auction Calendar (26 May 2026)</h2>
   <div class="table-scroll">
   <table>
     <tr><th>Auction House</th><th>Date</th><th>Countdown</th><th>Key Lots</th></tr>
-    <tr><td><strong>Under The Hammer</strong></td><td><strong>10 June 2026</strong></td><td style="color:var(--red);font-weight:700">🔴 17 DAYS</td><td>🔥 197-198 Wolverhampton St DY1 (6 flats, £350k guide, £41,640 PA)</td></tr>
-    <tr><td>Bond Wolfe</td><td>9 July 2026</td><td>🟡 46 DAYS</td><td>Catalogue ~25 June. Monitor for 58 Lea Road WV3.</td></tr>
-    <tr><td>Bond Wolfe</td><td>10 September 2026</td><td>109 DAYS</td><td>Quarterly auction — new opportunities</td></tr>
-    <tr><td>Bond Wolfe</td><td>22 October 2026</td><td>151 DAYS</td><td>Autumn auction — strongest mixed-use selection</td></tr>
+    <tr><td><strong>BTG Eddisons</strong></td><td><strong>28 May 2026</strong></td><td style="color:var(--red);font-weight:700">🔴 2 DAYS</td><td>🔥 25 Waterloo Road, Wolverhampton WV1 (£350k mixed-use)</td></tr>
+    <tr><td><strong>Under The Hammer</strong></td><td><strong>10 June 2026</strong></td><td style="color:var(--red);font-weight:700">🔴 15 DAYS</td><td>🔥 197-198 Wolverhampton St DY1 (6 flats, £350k guide, £41,640 PA)</td></tr>
+    <tr><td>Bond Wolfe</td><td>9 July 2026</td><td>🟡 44 DAYS</td><td>Catalogue ~25 June. Monitor for 58 Lea Road WV3.</td></tr>
+    <tr><td>Bond Wolfe</td><td>10 September 2026</td><td>107 DAYS</td><td>Quarterly auction — new opportunities</td></tr>
   </table>
   </div>
+</div>
+
+<div class="section">
+  <h2>⏰ Priority Action Items — 26 May 2026</h2>
+  <ol>
+    <li><strong>🔴 IMMEDIATE (26 May): Pre-auction DD for 25 Waterloo Rd WV1 (2 days).</strong> CON29M (coal mining WV1), title check, survey, auction finance. Contact BTG Eddisons for legal pack.</li>
+    <li><strong>🔴 THIS WEEK: Contact Bond Wolfe re: 54 West Bromwich St Walsall (£195k, UNSOLD).</strong> Only available freehold-to-leasehold split. 2 flats + retail on single title.</li>
+    <li><strong>🟡 THIS WEEK: View Kipling Avenue, Wolverhampton WV14 (£270k).</strong> Best value OnTheMarket find. Verify GIA for 2-flat split.</li>
+    <li><strong>🟢 10 JUNE: Pre-auction DD for 197-198 Wolverhampton St DY1 (15 days).</strong> 6 flats on single title. £70k-£130k equity opportunity.</li>
+    <li><strong>🟢 ONGOING: Rightmove email alerts.</strong> Set up saved searches for "mixed-use", "self-contained flats" across WM postcodes.</li>
+  </ol>
 </div>
 
 <hr>
@@ -150,37 +160,32 @@
       <span class="related-title">Dashboard Home</span>
       <span class="related-desc">All Nikka Intel reports & tools</span>
     </a>
-    <a href="title-split-intelligence_20260524.html" class="related-card">
+    <a href="title-split-intelligence_20260526.html" class="related-card">
       <span class="related-icon">📅</span>
       <span class="related-title">Latest Daily Report</span>
-      <span class="related-desc">24 May 2026 — full analysis</span>
+      <span class="related-desc">26 May 2026 — full analysis</span>
+    </a>
+    <a href="title-split-intelligence_20260525.html" class="related-card">
+      <span class="related-icon">📅</span>
+      <span class="related-title">25 May 2026 Report</span>
+      <span class="related-desc">Previous daily report</span>
     </a>
     <a href="brrr-sourcer.html" class="related-card">
       <span class="related-icon">🔥</span>
       <span class="related-title">BRRR Daily Sourcer</span>
-      <span class="related-desc">Daily BRRR deals scanned via PropAI</span>
-    </a>
-    <a href="power-team.html" class="related-card">
-      <span class="related-icon">🛠️</span>
-      <span class="related-title">Power Team</span>
-      <span class="related-desc">Vetted tradespeople in the West Midlands</span>
-    </a>
-    <a href="strategy-brrr-hmo-playbook.html" class="related-card">
-      <span class="related-icon">📋</span>
-      <span class="related-title">BRRR / HMO Strategy</span>
-      <span class="related-desc">Full playbook for Dudley & West Midlands</span>
+      <span class="related-desc">Daily BRRR deals scanned</span>
     </a>
     <a href="market_signals_MAIN.html" class="related-card">
       <span class="related-icon">📡</span>
       <span class="related-title">Market Signals</span>
-      <span class="related-desc">Daily property market intelligence</span>
+      <span class="related-desc">Daily property market intel</span>
     </a>
   </div>
 </div>
 
 <div style="text-align: center; color: var(--text-dim); font-size: 0.8rem; padding: 16px;">
   <p>🏘️ Hermes Title Split Intelligence Engine — Cumulative MAIN Report</p>
-  <p>Reports: <a href="title-split-intelligence_20260524.html">24 May 2026</a> | <a href="title-split-intelligence_20260523.html">23 May 2026</a> | <a href="title-split-intelligence_20260522.html">22 May 2026</a> | <a href="title-split-intelligence_20260521.html">21 May 2026</a> | <a href="title-split-intelligence_20260519.html">19 May 2026</a></p>
+  <p>Reports: <a href="title-split-intelligence_20260526.html">26 May 2026</a> | <a href="title-split-intelligence_20260525.html">25 May 2026</a> | <a href="title-split-intelligence_20260524.html">24 May 2026</a> | <a href="title-split-intelligence_20260523.html">23 May 2026</a> | <a href="title-split-intelligence_20260522.html">22 May 2026</a> | <a href="title-split-intelligence_20260521.html">21 May 2026</a> | <a href="title-split-intelligence_20260519.html">19 May 2026</a></p>
 </div>
 
 </div>

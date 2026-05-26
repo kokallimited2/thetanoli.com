@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏠 Property Hunt — 2026-05-25</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0a0e17; color:#e2e8f0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; overflow-wrap:break-word; word-break:break-word; }
+.page-wrap { max-width:1100px; margin:0 auto; padding:16px; }
+h1 { font-size:2rem; color:#f1f5f9; margin:20px 0 8px; display:flex; align-items:center; gap:10px; }
+.subtitle { color:#94a3b8; font-size:0.95rem; margin-bottom:20px; }
+.stats-row { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px; }
+.stat-card { background:#131825; border:1px solid #1e293b; border-radius:10px; padding:14px 20px; flex:1; min-width:120px; text-align:center; }
+.stat-num { font-size:28px; font-weight:700; color:#60a5fa; }
+.stat-label { font-size:13px; color:#94a3b8; margin-top:2px; }
+h2 { font-size:1.5rem; color:#f1f5f9; margin:28px 0 14px; padding-bottom:8px; border-bottom:1px solid #1e293b; }
+h3 { font-size:1.1rem; color:#e2e8f0; margin:16px 0 8px; }
+.deal-card { background:#131825; border:1px solid #1e293b; border-radius:10px; padding:16px; margin-bottom:14px; }
+.deal-card.urgent { border-left:4px solid #ef4444; }
+.deal-card.high { border-left:4px solid #f59e0b; }
+.deal-card.medium { border-left:4px solid #3b82f6; }
+.deal-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; flex-wrap:wrap; }
+.deal-price { font-size:1.3rem; font-weight:700; color:#60a5fa; }
+.deal-address { font-size:0.95rem; color:#cbd5e1; }
+.deal-address a { color:#60a5fa; text-decoration:none; }
+.deal-address a:hover { text-decoration:underline; }
+.deal-badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:600; margin-left:6px; }
+.badge-extreme { background:#ef444420; color:#ef4444; border:1px solid #ef4444; }
+.badge-strong { background:#f59e0b20; color:#f59e0b; border:1px solid #f59e0b; }
+.badge-chain { background:#22c55e20; color:#22c55e; border:1px solid #22c55e; }
+.badge-reduced { background:#8b5cf620; color:#a78bfa; border:1px solid #8b5cf6; }
+.badge-buy { background:#22c55e20; color:#22c55e; border:1px solid #22c55e; }
+.badge-watch { background:#f59e0b20; color:#f59e0b; border:1px solid #f59e0b; }
+.deal-meta { display:flex; gap:10px; flex-wrap:wrap; margin:6px 0; font-size:0.85rem; color:#94a3b8; }
+.deal-meta span { background:#0f172a; padding:2px 8px; border-radius:4px; }
+.deal-summary { font-size:0.88rem; color:#94a3b8; margin:6px 0; line-height:1.5; }
+.deal-actions { margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; }
+.deal-actions a { display:inline-block; padding:4px 10px; border-radius:5px; font-size:0.78rem; text-decoration:none; color:#f1f5f9; background:#1e293b; border:1px solid #334155; transition:0.2s; }
+.deal-actions a:hover { background:#334155; border-color:#60a5fa; }
+table { width:100%; border-collapse:separate; border-spacing:0; margin:12px 0; }
+th { background:#1e293b; color:#94a3b8; font-size:0.8rem; text-align:left; padding:8px 10px; font-weight:600; }
+td { padding:8px 10px; border-bottom:1px solid #1e293b; font-size:0.85rem; vertical-align:middle; }
+tr:hover td { background:#131825; }
+.table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.footer { margin-top:32px; padding-top:16px; border-top:1px solid #1e293b; font-size:0.8rem; color:#64748b; text-align:center; }
+.verdict { display:inline-block; padding:3px 10px; border-radius:5px; font-size:0.8rem; font-weight:600; }
+.verdict-call { background:#ef444420; color:#ef4444; }
+.verdict-buy { background:#22c55e20; color:#22c55e; }
+.verdict-watch { background:#f59e0b20; color:#f59e0b; }
+.verdict-pass { background:#64748b20; color:#94a3b8; }
+.area-watchout { background:#131825; border:1px solid #f59e0b; border-radius:8px; padding:12px; margin:12px 0; font-size:0.85rem; }
+.area-watchout h4 { color:#f59e0b; margin-bottom:6px; }
+.seo-links { display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 20px; padding:10px 0; border-top:1px solid #1e293b; border-bottom:1px solid #1e293b; }
+.seo-links a { color:#64748b; text-decoration:none; font-size:0.8rem; }
+.seo-links a:hover { color:#60a5fa; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<h1>🏠 Property Hunt — Daily Scan</h1>
+<div class="subtitle">2026-05-25 | Autonomous Property Investor Mode | West Midlands</div>
+
+<div class="stats-row">
+  <div class="stat-card"><div class="stat-num">1,419</div><div class="stat-label">Listings Scanned</div></div>
+  <div class="stat-card"><div class="stat-num">233</div><div class="stat-label">Qualified Houses</div></div>
+  <div class="stat-card"><div class="stat-num">124</div><div class="stat-label">🔥 Extreme (190d+)</div></div>
+  <div class="stat-card"><div class="stat-num">55</div><div class="stat-label">🟡 Strong (90-189d)</div></div>
+  <div class="stat-card"><div class="stat-num">23</div><div class="stat-label">Postcodes Scanned</div></div>
+</div>
+
+<div class="seo-links">
+  <a href="index.html">🏠 Dashboard</a>
+  <a href="brrr-sourcer.html">🔥 BRRR Sourcer</a>
+  <a href="power-team.html">🛠 Power Team</a>
+  <a href="market_signals_MAIN.html">📡 Market Signals</a>
+  <a href="area-intelligence/">🗺 Area Intel</a>
+  <a href="offmarket-finder.html">🎯 Off-Market</a>
+</div>
+
+<div class="area-watchout">
+<h4>⚠️ Area Watchout</h4>
+<p><strong>Dudley DY1-DY5:</strong> Article 4 — Additional HMO licensing active. Mandatory HMO licensing for 5+ occupants across 3+ floors. Void risk: MODERATE (avg 25d). Crime: BELOW AVERAGE. Avg yield: 5.2%.</p>
+<p><strong>Wolverhampton WV1-WV14:</strong> Mandatory HMO licensing only. Article 4 — Additional HMO (selective licensing in some wards). Void risk: MODERATE (avg 22d). Crime: AVERAGE. Avg yield: 5.5%.</p>
+<p><strong>Stourbridge DY8-DY9:</strong> No Article 4 restrictions. Lower void risk. Higher price band means lower yields. Good capital growth area.</p>
+<p><strong>Brierley Hill DY5:</strong> Article 4 — Additional HMO licensing active (Dudley MBC). G&T Properties listing style = discount agent. Test with aggressive offers.</p>
+</div>
+
+<h2>🔥 Top 10 Distressed / Motivated Seller Deals</h2>
+<div class="table-scroll">
+<table>
+<thead><tr><th>#</th><th>Score</th><th>Price</th><th>Beds</th><th>Type</th><th>Address</th><th>DOM</th><th>Signals</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>80</strong></td>
+<td>£150,000</td>
+<td>3</td>
+<td>Semi-Detached</td>
+<td><a href="https://www.rightmove.co.uk/properties/153813749#/?channel=RES_BUY" target="_blank">Pedmore Road, Stourbridge, West Midlands, DY9</a></td>
+<td>587d</td>
+<td style="font-size:0.75rem">🔥190d+ ⬇Reduced HighDistress</td>
+<td><span class="verdict verdict-call">CALL AGENT</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>80</strong></td>
+<td>£140,000</td>
+<td>3</td>
+<td>Terraced</td>
+<td><a href="https://www.rightmove.co.uk/properties/168579962#/?channel=RES_BUY" target="_blank">Hart Road, Wolverhampton, West Midlands, WV11</a></td>
+<td>213d</td>
+<td style="font-size:0.75rem">🔥190d+ ⬇Reduced HighDistress</td>
+<td><span class="verdict verdict-call">CALL AGENT</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>77</strong></td>
+<td>£115,000</td>
+<td>2</td>
+<td>Terraced</td>
+<td><a href="https://www.rightmove.co.uk/properties/167008502#/?channel=RES_BUY" target="_blank">Wolverhampton</a></td>
+<td>252d</td>
+<td style="font-size:0.75rem">🔥190d+ HighDistress</td>
+<td><span class="verdict verdict-call">CALL AGENT</span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>77</strong></td>
+<td>£150,000</td>
+<td>2</td>
+<td>End of Terrace</td>
+<td><a href="https://www.rightmove.co.uk/properties/167008271#/?channel=RES_BUY" target="_blank">Bennetts Hill, Dudley, DY2</a></td>
+<td>252d</td>
+<td style="font-size:0.75rem">🔥190d+ HighDistress</td>
+<td><span class="verdict verdict-call">CALL AGENT</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>77</strong></td>
+<td>£120,000</td>
+<td>2</td>
+<td>Not Specified</td>
+<td><a href="https://www.rightmove.co.uk/properties/168738623#/?channel=RES_BUY" target="_blank">High Street, Quarry Bank, Brierley Hill, West</a></td>
+<td>208d</td>
+<td style="font-size:0.75rem">🔥190d+ HighDistress</td>
+<td><span class="verdict verdict-call">CALL AGENT</span></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>75</strong></td>
+<td>£180,000</td>
+<td>3</td>
+<td>Semi-Detached</td>
+<td><a href="https://www.rightmove.co.uk/properties/161779532#/?channel=RES_BUY" target="_blank">Foxglove Road, Wren's Nest, Dudley, DY1</a></td>
+<td>380d</td>
+<td style="font-size:0.75rem">🔥190d+ HighDistress</td>
+<td><span class="verdict verdict-call">CALL AGENT</span></td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>75</strong></td>
+<td>£180,000</td>
+<td>3</td>
+<td>End of Terrace</td>
+<td><a href="https://www.rightmove.co.uk/properties/168847370#/?channel=RES_BUY" target="_blank">Malvern Crescent, Dudley, West Midlands, DY2</a></td>
+<td>206d</td>
+<td style="font-size:0.75rem">🔥190d+ ⬇Reduced HighDistress</td>
+<td><span class="verdict verdict-call">CALL AGENT</span></td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>75</strong></td>
+<td>£162,500</td>
+<td>3</td>
+<td>Semi-Detached</td>
+<td><a href="https://www.rightmove.co.uk/properties/169248131#/?channel=RES_BUY" target="_blank">Highview Street, Dudley, DY2</a></td>
+<td>195d</td>
+<td style="font-size:0.75rem">🔥190d+ ⬇Reduced HighDistress</td>
+<td><span class="verdict verdict-call">CALL AGENT</span></td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>75</strong></td>
+<td>£175,000</td>
+<td>3</td>
+<td>Terraced</td>
+<td><a href="https://www.rightmove.co.uk/properties/165913997#/?channel=RES_BUY" target="_blank">Kings Road, Dudley, DY3</a></td>
+<td>280d</td>
+<td style="font-size:0.75rem">🔥190d+ ⬇Reduced HighDistress</td>
+<td><span class="verdict verdict-call">CALL AGENT</span></td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>75</strong></td>
+<td>£165,000</td>
+<td>3</td>
+<td>Terraced</td>
+<td><a href="https://www.rightmove.co.uk/properties/143198579#/?channel=RES_BUY" target="_blank">Corbett Road, Brierley Hill, DY5</a></td>
+<td>881d</td>
+<td style="font-size:0.75rem">🔥190d+ ⬇Reduced HighDistress</td>
+<td><span class="verdict verdict-call">CALL AGENT</span></td>
+</tr>
+</tbody></table></div>
+
+<h2>🏆 Top 3 Deep Dive — Priority Deals</h2>
+
+<div class="deal-card urgent">
+<div class="deal-header">
+<div>
+<div class="deal-price">£150,000 <span class="deal-address"><a href="https://www.rightmove.co.uk/properties/153813749#/?channel=RES_BUY" target="_blank">Pedmore Road, Stourbridge, West Midlands, DY9</a></span></div>
+</div>
+<div>
+<span class="verdict verdict-call">Score: 80/100</span>
+<span class="deal-badge badge-extreme">587d on market</span>
+<span class="deal-badge badge-reduced">⬇ Reduced</span>
+
+</div>
+</div>
+<div class="deal-meta">
+<span>🏠 Semi-Detached</span>
+<span>🛏️ 3 beds</span>
+<span>💷 ARV: £220,000</span>
+<span>🔨 Refurb: £25,000</span>
+<span>📈 Gross Yield: 4.8%</span>
+<span>📊 Net Yield: 3.5%</span>
+</div>
+<div class="deal-summary">Deceptively spacious three-bedroom semi-detached house in Stourbridge (DY9). Full of character. Listed for 587 days (over 1.5 years!) with one confirmed price reduction.</div>
+<div class="deal-actions">
+<a href="https://www.rightmove.co.uk/properties/153813749#/?channel=RES_BUY" target="_blank">📋 Listing</a>
+<a href="https://www.nethouseprices.com/house-prices/search?search=Pedmore Road" target="_blank">📊 Sold Prices</a>
+<a href="https://www.rightmove.co.uk/house-prices/Pedmore-Road.html" target="_blank">🏡 Comps</a>
+<a href="https://www.google.com/maps/search/Pedmore+Road,+Stourbridge,+West+Midlands,+DY9" target="_blank">🗺️ Map</a>
+<a href="https://www.planningportal.co.uk/" target="_blank">🏗️ Planning</a>
+</div>
+<div style="margin-top:10px; background:#0f172a; border-radius:6px; padding:10px;">
+<p><strong style="color:#60a5fa;">Verdict:</strong> CALL AGENT | <strong style="color:#f59e0b;">Suggested Offer:</strong> £120,000 (20% below asking)</p>
+<p><strong style="color:#ef4444;">Risk Flags:</strong> Check interior condition. DY9 prices are high — ARV of £220k may be conservative if property needs no structural work. Verify if reduced price reflects current market.</p>
+<p><strong style="color:#22c55e;">Strategy:</strong> Flip / BRRR | <strong style="color:#60a5fa;">Narrative:</strong> 587 days on market in Stourbridge — this is an extreme distressed seller. DY9 is a desirable area with good schools and commuter links. At £150k for a 3-bed semi, the price is already below the DY9 average. With refurb, could flip at £220k+ in this market. Suggested offer £120k (20% below asking). This property has been listed since October 2024 — the seller is ready to deal.</p>
+</div>
+</div>
+<div class="deal-card urgent">
+<div class="deal-header">
+<div>
+<div class="deal-price">£165,000 <span class="deal-address"><a href="https://www.rightmove.co.uk/properties/143198579#/?channel=RES_BUY" target="_blank">Corbett Road, Brierley Hill, DY5</a></span></div>
+</div>
+<div>
+<span class="verdict verdict-call">Score: 75/100</span>
+<span class="deal-badge badge-extreme">881d on market</span>
+<span class="deal-badge badge-reduced">⬇ Reduced</span>
+<span class="deal-badge badge-chain">✅ No Chain</span>
+</div>
+</div>
+<div class="deal-meta">
+<span>🏠 Terraced</span>
+<span>🛏️ 3 beds</span>
+<span>💷 ARV: £195,000</span>
+<span>🔨 Refurb: £15,000</span>
+<span>📈 Gross Yield: 5.2%</span>
+<span>📊 Net Yield: 3.8%</span>
+</div>
+<div class="deal-summary">Traditional terrace in Brierley Hill (DY5). Available with NO CHAIN. Close to Merry Hill shopping centre. Listed for an astonishing 881 days — over 2.4 years with a confirmed reduction.</div>
+<div class="deal-actions">
+<a href="https://www.rightmove.co.uk/properties/143198579#/?channel=RES_BUY" target="_blank">📋 Listing</a>
+<a href="https://www.nethouseprices.com/house-prices/search?search=Corbett Road" target="_blank">📊 Sold Prices</a>
+<a href="https://www.rightmove.co.uk/house-prices/Corbett-Road.html" target="_blank">🏡 Comps</a>
+<a href="https://www.google.com/maps/search/Corbett+Road,+Brierley+Hill,+DY5" target="_blank">🗺️ Map</a>
+<a href="https://www.planningportal.co.uk/" target="_blank">🏗️ Planning</a>
+</div>
+<div style="margin-top:10px; background:#0f172a; border-radius:6px; padding:10px;">
+<p><strong style="color:#60a5fa;">Verdict:</strong> CALL AGENT - URGENT | <strong style="color:#f59e0b;">Suggested Offer:</strong> £120,000 (27% below asking)</p>
+<p><strong style="color:#ef4444;">Risk Flags:</strong> 881 days is extreme — check if there are structural/legal issues. Verify no auction/chain complications. Brierley Hill Article 4: additional HMO licensing applies.</p>
+<p><strong style="color:#22c55e;">Strategy:</strong> Flip / BRRR | <strong style="color:#60a5fa;">Narrative:</strong> 881 DAYS ON MARKET. This is one of the longest-listed properties in the entire WM scan. No chain, £165k for a 3-bed terrace in Brierley Hill (DY5). The seller is desperate — this has been listed since December 2023. Refurb costs should be modest (£15k) as it's a standard terrace. ARV of £195k is conservative for a refurbed 3-bed in DY5. Offer £120k (27% below asking) — the agent G&T Properties handles discount properties and the seller would likely accept anything reasonable to exit.</p>
+</div>
+</div>
+<div class="deal-card high">
+<div class="deal-header">
+<div>
+<div class="deal-price">£180,000 <span class="deal-address"><a href="https://www.rightmove.co.uk/properties/161779532#/?channel=RES_BUY" target="_blank">Foxglove Road, Wren's Nest, Dudley, DY1</a></span></div>
+</div>
+<div>
+<span class="verdict verdict-call">Score: 75/100</span>
+<span class="deal-badge badge-extreme">380d on market</span>
+
+<span class="deal-badge badge-chain">✅ No Chain</span>
+</div>
+</div>
+<div class="deal-meta">
+<span>🏠 Semi-Detached</span>
+<span>🛏️ 3 beds</span>
+<span>💷 ARV: £220,000</span>
+<span>🔨 Refurb: £20,000</span>
+<span>📈 Gross Yield: 5.0%</span>
+<span>📊 Net Yield: 3.6%</span>
+</div>
+<div class="deal-summary">NO CHAIN | TWO DOUBLE BEDROOMS | IN NEED OF COSMETIC IMPROVEMENTS | PARKING | PRIVATE REAR GARDEN. Semi-detached in Dudley DY1 at Wren's Nest. 380 days on market.</div>
+<div class="deal-actions">
+<a href="https://www.rightmove.co.uk/properties/161779532#/?channel=RES_BUY" target="_blank">📋 Listing</a>
+<a href="https://www.nethouseprices.com/house-prices/search?search=Foxglove Road" target="_blank">📊 Sold Prices</a>
+<a href="https://www.rightmove.co.uk/house-prices/Foxglove-Road.html" target="_blank">🏡 Comps</a>
+<a href="https://www.google.com/maps/search/Foxglove+Road,+Wren's+Nest,+Dudley,+DY1" target="_blank">🗺️ Map</a>
+<a href="https://www.planningportal.co.uk/" target="_blank">🏗️ Planning</a>
+</div>
+<div style="margin-top:10px; background:#0f172a; border-radius:6px; padding:10px;">
+<p><strong style="color:#60a5fa;">Verdict:</strong> CALL AGENT | <strong style="color:#f59e0b;">Suggested Offer:</strong> £140,000 (22% below asking)</p>
+<p><strong style="color:#ef4444;">Risk Flags:</strong> Cosmetic improvements needed — verify extent. Wren's Nest is a good area in Dudley. Check if there's an Article 4 restriction for HMO conversion.</p>
+<p><strong style="color:#22c55e;">Strategy:</strong> BRRR | <strong style="color:#60a5fa;">Narrative:</strong> No chain, cosmetic improvements needed, 380 days on market — this is the archetypal value-add opportunity. Foxglove Road is in a good pocket of Dudley (Wren's Nest, DY1). Three-bed semi with parking and garden. The description explicitly says 'in need of cosmetic improvements' — confirmed value-add potential. ARV £220k after £20k refurb. Suggested offer £140k (22% below asking). Fits the BRRR model well — buy at discount, refurb cosmetically, refinance at £220k GDV.</p>
+</div>
+</div>
+<h2>🔥 Top BRRR Candidates (from Today's BRRR Sourcer)</h2>
+<div class="table-scroll">
+<table>
+<thead><tr><th>#</th><th>Score</th><th>Verdict</th><th>Price</th><th>Beds</th><th>Address</th><th>DOM</th><th>Profit</th><th>Chain</th></tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>100</strong></td>
+<td><span class="verdict verdict-buy">STRONG BUY</span></td>
+<td>£81,250</td>
+<td>3</td>
+<td><a href="https://www.rightmove.co.uk/properties/174623120#/?channel=RES_BUY" target="_blank">Sunderton Road, Birmingham, B14</a></td>
+<td>36d</td>
+<td>£83,288</td>
+<td>✅</td>
+</tr><tr>
+<td>2</td>
+<td><strong>90</strong></td>
+<td><span class="verdict verdict-buy">STRONG BUY</span></td>
+<td>£140,000</td>
+<td>3</td>
+<td><a href="https://www.rightmove.co.uk/properties/174130196#/?channel=RES_BUY" target="_blank">Coppice Road, Rugeley, WS15</a></td>
+<td>47d</td>
+<td>£11,900</td>
+<td>✅</td>
+</tr><tr>
+<td>3</td>
+<td><strong>85</strong></td>
+<td><span class="verdict verdict-buy">STRONG BUY</span></td>
+<td>£150,000</td>
+<td>3</td>
+<td><a href="https://www.rightmove.co.uk/properties/174055472#/?channel=RES_BUY" target="_blank">Arlingham Avenue, Bromsgrove, B61</a></td>
+<td>52d</td>
+<td>£110,600</td>
+<td>✅</td>
+</tr><tr>
+<td>4</td>
+<td><strong>83</strong></td>
+<td><span class="verdict verdict-buy">BUY</span></td>
+<td>£50,000</td>
+<td>2</td>
+<td><a href="https://www.rightmove.co.uk/properties/87647121#/?channel=RES_BUY" target="_blank">Gough Close, Wednesfield, Wolverhampton, WV11</a></td>
+<td>88d</td>
+<td>£94,350</td>
+<td>❌</td>
+</tr><tr>
+<td>5</td>
+<td><strong>80</strong></td>
+<td><span class="verdict verdict-buy">BUY</span></td>
+<td>£82,000</td>
+<td>2</td>
+<td><a href="https://www.rightmove.co.uk/properties/174732185#/?channel=RES_BUY" target="_blank">Staley Grove, Highley, WV16</a></td>
+<td>33d</td>
+<td>£138,190</td>
+<td>❌</td>
+</tr></tbody></table></div>
+
+<h2>📋 Additional Strong Candidates (Score 70+)</h2>
+<div class="table-scroll">
+<table>
+<thead><tr><th>Score</th><th>Price</th><th>Beds</th><th>Type</th><th>Address</th><th>DOM</th><th>Signals</th></tr></thead>
+<tbody>
+<tr>
+<td><strong>75</strong></td>
+<td>£180,000</td>
+<td>3</td>
+<td>Semi-Detached</td>
+<td><a href="https://www.rightmove.co.uk/properties/169057952#/?channel=RES_BUY" target="_blank">Lawfred Avenue, Wednesfield, Wolverhampt</a></td>
+<td>200d</td>
+<td>🔥190d+ ⬇Red</td>
+</tr><tr>
+<td><strong>73</strong></td>
+<td>£180,000</td>
+<td>3</td>
+<td>Semi-Detached</td>
+<td><a href="https://www.rightmove.co.uk/properties/167625731#/?channel=RES_BUY" target="_blank">Westley Street, Dudley, West Midlands, D</a></td>
+<td>237d</td>
+<td>🔥190d+ ⬇Red</td>
+</tr><tr>
+<td><strong>73</strong></td>
+<td>£130,000</td>
+<td>3</td>
+<td>Terraced</td>
+<td><a href="https://www.rightmove.co.uk/properties/167279342#/?channel=RES_BUY" target="_blank">Zoar Street, Dudley, West Midlands, DY3</a></td>
+<td>245d</td>
+<td>🔥190d+ ⬇Red</td>
+</tr><tr>
+<td><strong>72</strong></td>
+<td>£145,000</td>
+<td>2</td>
+<td>Terraced</td>
+<td><a href="https://www.rightmove.co.uk/properties/165721916#/?channel=RES_BUY" target="_blank">Clarence Street, Dudley</a></td>
+<td>284d</td>
+<td>🔥190d+ ⬇Red</td>
+</tr><tr>
+<td><strong>72</strong></td>
+<td>£170,000</td>
+<td>2</td>
+<td>Terraced</td>
+<td><a href="https://www.rightmove.co.uk/properties/162437390#/?channel=RES_BUY" target="_blank">New Street, Quarry Bank, DY5</a></td>
+<td>364d</td>
+<td>🔥190d+ ⬇Red</td>
+</tr><tr>
+<td><strong>72</strong></td>
+<td>£170,000</td>
+<td>2</td>
+<td>Terraced</td>
+<td><a href="https://www.rightmove.co.uk/properties/154421747#/?channel=RES_BUY" target="_blank">Deans Road, Wolverhampton, WV1</a></td>
+<td>571d</td>
+<td>🔥190d+ ⬇Red</td>
+</tr><tr>
+<td><strong>72</strong></td>
+<td>£160,000</td>
+<td>2</td>
+<td>Terraced</td>
+<td><a href="https://www.rightmove.co.uk/properties/168851033#/?channel=RES_BUY" target="_blank">Kent Road, All Saints, Wolverhampton, WV</a></td>
+<td>206d</td>
+<td>🔥190d+</td>
+</tr><tr>
+<td><strong>70</strong></td>
+<td>£170,000</td>
+<td>3</td>
+<td>Terraced</td>
+<td><a href="https://www.rightmove.co.uk/properties/155816312#/?channel=RES_BUY" target="_blank">Beacon Lane, Dudley</a></td>
+<td>531d</td>
+<td>🔥190d+ ⬇Red</td>
+</tr><tr>
+<td><strong>70</strong></td>
+<td>£170,000</td>
+<td>3</td>
+<td>Semi-Detached</td>
+<td><a href="https://www.rightmove.co.uk/properties/169649330#/?channel=RES_BUY" target="_blank">Northwood Park Road, Northwood Park, Bus</a></td>
+<td>182d</td>
+<td></td>
+</tr><tr>
+<td><strong>70</strong></td>
+<td>£195,000</td>
+<td>3</td>
+<td>Terraced</td>
+<td><a href="https://www.rightmove.co.uk/properties/163937807#/?channel=RES_BUY" target="_blank">Bloomfield Road, Tipton, DY4</a></td>
+<td>330d</td>
+<td>🔥190d+ ⬇Red</td>
+</tr><tr>
+<td><strong>70</strong></td>
+<td>£190,000</td>
+<td>3</td>
+<td>Semi-Detached</td>
+<td><a href="https://www.rightmove.co.uk/properties/156876836#/?channel=RES_BUY" target="_blank">Foxhills Road, Stourbridge, West Midland</a></td>
+<td>496d</td>
+<td>🔥190d+ ⬇Red</td>
+</tr><tr>
+<td><strong>70</strong></td>
+<td>£190,000</td>
+<td>3</td>
+<td>Semi-Detached</td>
+<td><a href="https://www.rightmove.co.uk/properties/163650533#/?channel=RES_BUY" target="_blank">Durberville Road, Wolverhampton, WV2</a></td>
+<td>337d</td>
+<td>🔥190d+</td>
+</tr><tr>
+<td><strong>70</strong></td>
+<td>£175,000</td>
+<td>3</td>
+<td>Semi-Detached</td>
+<td><a href="https://www.rightmove.co.uk/properties/87287070#/?channel=RES_BUY" target="_blank">Newman Avenue, Wolverhampton, WV4</a></td>
+<td>223d</td>
+<td>🔥190d+</td>
+</tr></tbody></table></div>
+
+<h2>🏘️ Known Distress Clusters</h2>
+<div class="deal-card">
+<p><strong>DY3 (Sedgley/Gornal):</strong> Kings Road (£175k, 280d, reduced, no chain), Zoar Street (£130k, 245d, reduced, back on market) — two strong candidates in the same postcode area. Sedgley micro-market showing stagnation.</p>
+<p><strong>DY5 (Brierley Hill):</strong> Corbett Road (£165k, 881d, reduced, no chain), New Street (£170k, 364d, reduced, no chain), High Street/Quarry Bank (£120k, 208d mixed-use) — three properties at 200+ days. DY5 is showing clear seller fatigue.</p>
+<p><strong>DY2 (Dudley):</strong> Bennetts Hill (£150k, 252d), Malvern Crescent (£180k, 206d, reduced), Highview Street (£162.5k, 195d, reduced) — strong cluster of distressed sellers.</p>
+<p><strong>WV11 (Wednesfield/Wolverhampton):</strong> Hart Road (£140k, 213d, reduced), Lawfred Avenue (£180k, 200d, reduced) — two properties at 200d+ in this area.</p>
+</div>
+
+<h2>📌 Urgent Call Opportunities</h2>
+<div class="deal-card urgent">
+<ol>
+<li><strong><a href="https://www.rightmove.co.uk/properties/143198579#/?channel=RES_BUY" style="color:#ef4444;">Corbett Road, Brierley Hill DY5</a></strong> — 881 DAYS. No chain. Reduced. Offered via G&T Properties (discount agent). Offer £120k (27% below). <strong style="color:#22c55e;">Call today.</strong></li>
+<li><strong><a href="https://www.rightmove.co.uk/properties/153813749#/?channel=RES_BUY" style="color:#f59e0b;">Pedmore Road, Stourbridge DY9</a></strong> — 587 days, reduced. Premium area. Offer £120k (20% below). <strong>Call tomorrow.</strong></li>
+<li><strong><a href="https://www.rightmove.co.uk/properties/161779532#/?channel=RES_BUY" style="color:#f59e0b;">Foxglove Road, Dudley DY1</a></strong> — 380 days, no chain, cosmetic improvements needed. Offer £140k (22% below). <strong>Call this week.</strong></li>
+</ol>
+</div>
+
+<div class="footer">
+Generated: {now_str} BST | Autonomous Property Investor Mode | Postcodes scanned: DY1-DY9, WV1-WV14<br>
+Data source: Rightmove via Playwright Firefox __NEXT_DATA__ extraction | 1,419 total listings, 233 qualified houses<br>
+© Kokal Properties — Daily Property Hunt Intelligence
+</div>
+
+</div>
+</body>
+</html>

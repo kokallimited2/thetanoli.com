@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercial Property Daily Radar | 26 May 2026</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 0; overflow-wrap: break-word; word-break: break-word; }
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+h1 { font-size: 32px; color: #e6edf3; margin-bottom: 4px; }
+h2 { font-size: 26px; color: #e6edf3; margin-top: 28px; margin-bottom: 12px; border-bottom: 1px solid #21262d; padding-bottom: 8px; }
+h3 { font-size: 18px; color: #e6edf3; margin-top: 18px; margin-bottom: 8px; }
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th { background: #161b22; color: #8b949e; padding: 10px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid #21262d; }
+td { padding: 10px 12px; border-bottom: 1px solid #21262d; }
+tr:hover td { background: #1c2333; }
+a { color: #58a6ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.header { background: linear-gradient(135deg, #0d1117 0%, #161b22 100%); padding: 24px 0; border-bottom: 1px solid #30363d; }
+.header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.badge { background: #1e40af; color: #bfdbfe; padding: 4px 12px; border-radius: 20px; font-size: 12px; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin: 14px 0; }
+.stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 14px; text-align: center; }
+.stat-num { font-size: 28px; font-weight: 700; color: #e6edf3; }
+.stat-label { font-size: 13px; color: #8b949e; margin-top: 4px; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+.card-hdr { display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 8px; }
+.card-price { font-size: 18px; font-weight: 700; color: #e6edf3; }
+.card-score { font-size: 14px; font-weight: 600; }
+.score-high { color: #22c55e; }
+.score-mid { color: #fbbf24; }
+.score-low { color: #f87171; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 2px; }
+.tag-blue { background: #1e40af; color: #bfdbfe; }
+.tag-green { background: #166534; color: #86efac; }
+.tag-amber { background: #92400e; color: #fde68a; }
+.tag-purple { background: #581c87; color: #d8b4fe; }
+.tag-red { background: #991b1b; color: #fecaca; }
+.verdict { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 14px; margin-bottom: 14px; }
+.verdict-title { font-size: 16px; font-weight: 600; color: #e6edf3; }
+.verdict-body { font-size: 14px; color: #8b949e; margin-top: 6px; line-height: 1.6; }
+.strategy-box { background: #1e293b; border: 1px solid #30363d; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+.strategy-box h3 { color: #e6edf3; font-size: 16px; }
+.strategy-box p, .strategy-box li { font-size: 14px; color: #94a3b8; line-height: 1.6; }
+.action-btns { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.action-btn { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 6px; font-size: 12px; background: #1e293b; border: 1px solid #30363d; color: #8b949e; text-decoration: none; }
+.action-btn:hover { border-color: #58a6ff; color: #58a6ff; }
+.related-section { margin-top: 36px; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 24px; }
+.related-card { display: flex; flex-direction: column; gap: 4px; background: #1e293b; border: 1px solid #30363d; border-radius: 10px; padding: 14px; text-decoration: none; transition: all 0.2s; }
+.related-card:hover { border-color: #58a6ff; background: #273548; transform: translateY(-2px); }
+.related-icon { font-size: 24px; }
+.related-title { font-size: 15px; font-weight: 600; color: #e6edf3; }
+.related-desc { font-size: 12px; color: #8b949e; }
+.footer { margin-top: 32px; padding: 16px 0; border-top: 1px solid #21262d; font-size: 11px; color: #475569; text-align: center; line-height: 1.8; }
+.area-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin: 12px 0; }
+.area-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 12px; text-align: center; }
+.area-name { font-size: 14px; font-weight: 600; color: #e6edf3; }
+.area-count { font-size: 24px; font-weight: 700; color: #58a6ff; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+<div class="header">
+<div class="header-inner">
+<div>
+<h1>🏢 Commercial Property Daily Radar</h1>
+<div style="font-size:14px;color:#8b949e;margin-top:4px">26 May 2026 · 8AM Scan · West Midlands · 241 properties scanned</div>
+</div>
+<div class="badge">241 properties scanned</div>
+</div>
+</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="stat-num">241</div><div class="stat-label">Properties Scanned</div></div>
+<div class="stat-card"><div class="stat-num">0</div><div class="stat-label">Priority (70+)</div></div>
+<div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Light Audit (50-69)</div></div>
+<div class="stat-card"><div class="stat-num">24</div><div class="stat-label">Watchlist (30-49)</div></div>
+<div class="stat-card"><div class="stat-num">50</div><div class="stat-label">Conversion Plays</div></div>
+<div class="stat-card"><div class="stat-num">36</div><div class="stat-label">Under £200k</div></div>
+<div class="stat-card"><div class="stat-num">13</div><div class="stat-label">Distress Signals</div></div>
+<div class="stat-card"><div class="stat-num">16</div><div class="stat-label">With Planning</div></div>
+</div>
+
+<h2>🏆 Top 3 Commercial Leads</h2>
+
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Wolverhampton · Shop+Flat Split / Conversion</div>
+<a href="https://www.rightmove.co.uk/properties/168561437" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">**INVESTMENT OPPORTUNITY** 70 & 70a Ettingshall Road, Wolverhampton, West Midlan</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£295,000</div>
+<div class="card-score score-mid">Score: 63</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Mixed Use</span> <span class="tag tag-amber">Vacant</span> <span class="tag tag-purple">Resi Potential</span> <span class="tag tag-red">Distressed</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Type: Mixed Use (+15) · Distress: +10 · Conv/Dev: +33 · Core area: +3 · Under £500k: +2</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">PROMINENT INVESTMENT PROPERTY WITH VACANT 1ST FLOOR RESIDENTIAL ACCOMMODATION AND SIGNIFICANT LAND TO THE REAR WITH DEVELOPMENT POTENTIAL (STPP). Consisting of a ground floor commercial unit and first...</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/168561437" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/WV14" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWV14&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/**INVESTMENT+OPPORTUNITY**+70+&+70a+Ettingshall+Road,+Wolver" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Kidderminster · Development Land</div>
+<a href="https://www.rightmove.co.uk/properties/746606358514896" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">Land at Comberton Hill, Comberton Hill, Kidderminster</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£70,000</div>
+<div class="card-score score-mid">Score: 53</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Land</span> <span class="tag tag-green">Planning</span> <span class="tag tag-purple">Resi Potential</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Type: Land (+3) · Conv/Dev: +35 · Under £80k: +15</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Well Located Freehold Land of 0.08 acres (0.03 hectares) with Full Planning Consent for 6 x Flats and a Ground Floor Commercial Unit Located in an Established Mixed-Use Location in Central Kidderminst...</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/746606358514896" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/Land at Comberton Hill" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5ELand at Comberton Hill&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/Land+at+Comberton+Hill,+Comberton+Hill,+Kidderminster" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Wolverhampton · Development Land</div>
+<a href="https://www.rightmove.co.uk/properties/88079166" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">Land at School Street, Wolverhampton, WV1 4LJ</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£1,750,000</div>
+<div class="card-score score-mid">Score: 51</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Land</span> <span class="tag tag-green">Planning</span> <span class="tag tag-purple">Resi Potential</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Type: Land (+3) · Conv/Dev: +45 · Core area: +3</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Freehold Residential Development Opportunity With Full Live Planning Consent for 113 apartments...</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/88079166" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/WV1 4LJ" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWV1 4LJ&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/Land+at+School+Street,+Wolverhampton,+WV1+4LJ" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<h2>📍 Area Watchout</h2>
+<div class="area-grid">
+<div class="area-card"><div class="area-count">53</div><div class="area-name">Dudley</div></div><div class="area-card"><div class="area-count">35</div><div class="area-name">Walsall</div></div><div class="area-card"><div class="area-count">27</div><div class="area-name">Coventry</div></div><div class="area-card"><div class="area-count">26</div><div class="area-name">Birmingham</div></div><div class="area-card"><div class="area-count">23</div><div class="area-name">Wolverhampton</div></div><div class="area-card"><div class="area-count">17</div><div class="area-name">Halesowen</div></div><div class="area-card"><div class="area-count">14</div><div class="area-name">Tipton</div></div><div class="area-card"><div class="area-count">10</div><div class="area-name">Stourbridge</div></div><div class="area-card"><div class="area-count">8</div><div class="area-name">Kidderminster</div></div><div class="area-card"><div class="area-count">4</div><div class="area-name">Sandwell/West Bromwich</div></div><div class="area-card"><div class="area-count">3</div><div class="area-name">Oldbury</div></div><div class="area-card"><div class="area-count">2</div><div class="area-name">Cannock</div></div><div class="area-card"><div class="area-count">2</div><div class="area-name">Wednesbury</div></div></div>
+<h2>🧠 Strategy Intelligence</h2>
+
+<div class="strategy-box">
+<h3>💡 Pre-Approved Development Sites — Highest Value Play</h3>
+<p>Full planning permission already granted. Multiple new finds today:</p>
+<ul>
+    <li><strong>Land at Comberton Hill, Kidderminster</strong> — £70,000, FULL PP for 6 flats + ground floor commercial. <a href="https://www.rightmove.co.uk/properties/746606358514896" target="_blank">View</a></li>
+    <li><strong>Hednesford Road, Cannock</strong> — £135,000, PP for 3 units (bungalow + 2 apartments). <a href="https://www.rightmove.co.uk/properties/173541875" target="_blank">View</a></li>
+    <li><strong>Musk Lane/Brook St, Lower Gornal, Dudley</strong> — £225,000, PP for 10 houses. <a href="https://www.rightmove.co.uk/properties/748242353120400" target="_blank">View</a></li>
+    <li><strong>99 High Street, Dudley</strong> — POA, PP for 14 flats + retail. <a href="https://www.rightmove.co.uk/properties/158675270" target="_blank">View</a></li>
+    <li><strong>Land at School Street, Wolverhampton</strong> — £1.75M, PP for 113 apartments. <a href="https://www.rightmove.co.uk/properties/88079166" target="_blank">View</a></li>
+</ul>
+</div>
+
+<div class="strategy-box">
+<h3>🏢 Mixed-Use / Shop-with-Flat Plays</h3>
+<p>Buy mixed-use, split commercial + residential. The commercial SDLT advantage (no 3% surcharge) applies.</p>
+<ul>
+    <li><strong>70 & 70a Ettingshall Road, Wolverhampton</strong> — £295k, commercial + vacant flat + large rear land. <a href="https://www.rightmove.co.uk/properties/168561437" target="_blank">View</a></li>
+    <li><strong>Liskeard Road, Walsall (x2)</strong> — £250k/£255k, shop + 2-bed duplex above, fully let at 8-9% yield. <a href="https://www.rightmove.co.uk/properties/143098415" target="_blank">View 1</a> | <a href="https://www.rightmove.co.uk/properties/143098343" target="_blank">View 2</a></li>
+    <li><strong>Windmill Hill, Halesowen</strong> — £300k, 2 retail + 2 flats above (first floor). <a href="https://www.rightmove.co.uk/properties/88770450" target="_blank">View</a></li>
+    <li><strong>72-77 Darlington Street, Wolverhampton</strong> — £800k, 5 retail units fully let at £56kpa + PP for 15 apartments above. <a href="https://www.rightmove.co.uk/properties/173262074" target="_blank">View</a></li>
+</ul>
+</div>
+
+<div class="strategy-box">
+<h3>🎰 Pub / Hospitality Plays</h3>
+<ul>
+    <li><strong>Pedmore Road, Stourbridge</strong> — £295k, Victorian freehouse, £300k turnover. <a href="https://www.rightmove.co.uk/properties/148615826" target="_blank">View</a></li>
+    <li><strong>Horse & Jockey, Darlaston</strong> — £395k, pub + development site. <a href="https://www.rightmove.co.uk/properties/88535214" target="_blank">View</a></li>
+    <li><strong>Loom Shuttle, Kidderminster</strong> — £640k, freehold pub investment. <a href="https://www.rightmove.co.uk/properties/745548431427376" target="_blank">View</a></li>
+</ul>
+</div>
+
+<div class="strategy-box">
+<h3>💰 High-Yield Retail BTL</h3>
+<ul>
+    <li><strong>Oxford Street, Kidderminster</strong> — £100k, vacant 2-storey commercial. EPC E. <a href="https://www.rightmove.co.uk/properties/172541642" target="_blank">View</a></li>
+    <li><strong>Market Street, Stourbridge</strong> — £250k, 3-storey retail, vacant possession. <a href="https://www.rightmove.co.uk/properties/173528363" target="_blank">View</a></li>
+    <li><strong>Bradleys Lane, Tipton</strong> — £170k, 2-storey commercial, refurb/redevelopment potential. <a href="https://www.rightmove.co.uk/properties/169267838" target="_blank">View</a></li>
+    <li><strong>78 Darlington Street, Wolverhampton</strong> — POA, vacant commercial, suitable for residential conversion. <a href="https://www.rightmove.co.uk/properties/173255885" target="_blank">View</a></li>
+</ul>
+</div>
+
+<h2>🔍 Top 10 Scored Properties</h2>
+
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Wolverhampton · Shop+Flat Split / Conversion</div>
+<a href="https://www.rightmove.co.uk/properties/168561437" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">**INVESTMENT OPPORTUNITY** 70 & 70a Ettingshall Road, Wolverhampton, West Midlan</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£295,000</div>
+<div class="card-score score-mid">Score: 63</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Mixed Use</span> <span class="tag tag-amber">Vacant</span> <span class="tag tag-purple">Resi Potential</span> <span class="tag tag-red">Distressed</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Type: Mixed Use (+15) · Distress: +10 · Conv/Dev: +33 · Core area: +3 · Under £500k: +2</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">PROMINENT INVESTMENT PROPERTY WITH VACANT 1ST FLOOR RESIDENTIAL ACCOMMODATION AND SIGNIFICANT LAND TO THE REAR WITH DEVELOPMENT POTENTIAL (STPP). Consisting of a ground floor commercial unit and first...</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/168561437" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/WV14" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWV14&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/**INVESTMENT+OPPORTUNITY**+70+&+70a+Ettingshall+Road,+Wolver" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Kidderminster · Development Land</div>
+<a href="https://www.rightmove.co.uk/properties/746606358514896" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">Land at Comberton Hill, Comberton Hill, Kidderminster</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£70,000</div>
+<div class="card-score score-mid">Score: 53</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Land</span> <span class="tag tag-green">Planning</span> <span class="tag tag-purple">Resi Potential</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Type: Land (+3) · Conv/Dev: +35 · Under £80k: +15</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Well Located Freehold Land of 0.08 acres (0.03 hectares) with Full Planning Consent for 6 x Flats and a Ground Floor Commercial Unit Located in an Established Mixed-Use Location in Central Kidderminst...</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/746606358514896" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/Land at Comberton Hill" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5ELand at Comberton Hill&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/Land+at+Comberton+Hill,+Comberton+Hill,+Kidderminster" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Wolverhampton · Development Land</div>
+<a href="https://www.rightmove.co.uk/properties/88079166" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">Land at School Street, Wolverhampton, WV1 4LJ</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£1,750,000</div>
+<div class="card-score score-mid">Score: 51</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Land</span> <span class="tag tag-green">Planning</span> <span class="tag tag-purple">Resi Potential</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Type: Land (+3) · Conv/Dev: +45 · Core area: +3</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Freehold Residential Development Opportunity With Full Live Planning Consent for 113 apartments...</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/88079166" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/WV1 4LJ" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWV1 4LJ&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/Land+at+School+Street,+Wolverhampton,+WV1+4LJ" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Cannock · Development Land</div>
+<a href="https://www.rightmove.co.uk/properties/173541875" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">Hednesford Road, Cannock</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£135,000</div>
+<div class="card-score score-low">Score: 48</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Land</span> <span class="tag tag-green">Planning</span> <span class="tag tag-purple">Resi Potential</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Type: Land (+3) · Conv/Dev: +35 · Under £150k: +10</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">** BUILDING PLOTS ** THREE UNITS ** THREE BEDROOM DETACHED BUNGALOW ** 2 X TWO BEDROOM APARTMENTS ** REAR ACCESS ** DRIVEWAYS ** FULL PLANNING ** FULL DRAWINGS AVAILABLE ** Webbs Estate have pleasure ...</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/173541875" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5E&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/Hednesford+Road,+Cannock" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Tipton · Resi Dev Site</div>
+<a href="https://www.rightmove.co.uk/properties/747930909283472" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">St. Marks Road, Tipton</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£8,500</div>
+<div class="card-score score-low">Score: 46</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Residential Development</span> <span class="tag tag-purple">Resi Potential</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Type: Residential Development (+5) · Conv/Dev: +26 · Under £80k: +15</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Strategic residential development land in Tipton. Final plot with precedent for four apartments on an established 64-flat residential site....</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/747930909283472" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5E&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/St.+Marks+Road,+Tipton" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Birmingham · BTL / Hold</div>
+<a href="https://www.rightmove.co.uk/properties/171441419" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">71-79 John Bright Street, Birmingham, B1 1BL</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£1,500,000</div>
+<div class="card-score score-low">Score: 45</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Commercial Property</span> <span class="tag tag-green">Planning</span> <span class="tag tag-purple">Resi Potential</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Conv/Dev: +45</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">A City Centre Redevelopment Opportunity With Full Planning Permission and listed building consent for development of 15 luxury apartments....</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/171441419" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/71-79 John Bright Street" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5E71-79 John Bright Street&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/71-79+John+Bright+Street,+Birmingham,+B1+1BL" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Kidderminster · Retail BTL / Conversion</div>
+<a href="https://www.rightmove.co.uk/properties/172541642" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">Oxford Street, Kidderminster, Worcestershire</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£100,000</div>
+<div class="card-score score-low">Score: 45</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Retail Property (high street)</span> <span class="tag tag-amber">Vacant</span> <span class="tag tag-red">Distressed</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Type: Retail Property (high street) (+10) · Distress: +25 · Under £150k: +10</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Rare opportunity to purchase 57 Oxford Street, a commercial premises located in the town centre of Kidderminster. The property now being sold with vacant possession after being historically leased. Th...</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/172541642" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5E&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/Oxford+Street,+Kidderminster,+Worcestershire" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Birmingham · Development Land</div>
+<a href="https://www.rightmove.co.uk/properties/174375356" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">Land Rear of 325 Soho Road, Handsworth, Birmingham, B21 9SD</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£50,000</div>
+<div class="card-score score-low">Score: 43</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Land</span> <span class="tag tag-amber">Vacant</span> <span class="tag tag-green">Planning</span> <span class="tag tag-red">Distressed</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Type: Land (+3) · Distress: +10 · Conv/Dev: +15 · Under £80k: +15</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">For Sale By Public Auction 14 May 2026 Freehold vacant land, which may be suitable for a variety of uses, subject to obtaining the necessary planning consents...</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/174375356" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/Birmingham" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EBirmingham&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/Land+Rear+of+325+Soho+Road,+Handsworth,+Birmingham,+B21+9SD" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Wolverhampton · Development</div>
+<a href="https://www.rightmove.co.uk/properties/173262074" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">72-77 Darlington Street, Wolverhampton, West Midlands, WV1 4LY</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£800,000</div>
+<div class="card-score score-low">Score: 41</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Commercial Development</span> <span class="tag tag-green">Planning</span> <span class="tag tag-purple">Resi Potential</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Type: Commercial Development (+5) · Conv/Dev: +33 · Core area: +3</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">A Freehold parade of 5 fully let retail units with planning consent to convert upper floors to 15 apartments. The ground floor retail units are fully let producing £56,000 per annum...</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/173262074" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/WV1 4LY" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWV1 4LY&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/72-77+Darlington+Street,+Wolverhampton,+West+Midlands,+WV1+4" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">Wolverhampton · Shop+Flat Split / Conversion</div>
+<a href="https://www.rightmove.co.uk/properties/734668392159072" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">282-290, Linthouse Lane, Wolverhampton, WV11 3TT</a>
+</div>
+<div style="text-align:right">
+<div class="card-price">£750,000</div>
+<div class="card-score score-low">Score: 41</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Mixed Use</span> <span class="tag tag-purple">Resi Potential</span></div>
+<div style="font-size:12px;color:#8b949e;margin-top:6px">Type: Mixed Use (+15) · Distress: +5 · Conv/Dev: +18 · Core area: +3</div>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Fully tenanted investment opportunity. The properties form a parade of shops & two self contained residential flats located 2 miles north east of Wolverhampton City Centre. ...</div>
+
+    <div class="action-btns">
+        <a class="action-btn" href="https://www.rightmove.co.uk/properties/734668392159072" target="_blank">📋 Listing</a>
+        <a class="action-btn" href="https://nethouseprices.com/WV11 3TT" target="_blank">📊 Sold</a>
+        <a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWV11 3TT&radius=1.0" target="_blank">🏡 Comps</a>
+        <a class="action-btn" href="https://www.google.com/maps/search/282-290,+Linthouse+Lane,+Wolverhampton,+WV11+3TT" target="_blank">🗺 Map</a>
+    </div>
+</div>
+<h2>📝 Watchlist (Score 30-49)</h2>
+<div class="table-scroll">
+<table>
+<tr><th>Score</th><th>Price</th><th>Type</th><th>Location</th><th>Address</th><th>Links</th></tr>
+<tr>
+    <td><strong>40</strong></td>
+    <td>£250,000</td>
+    <td>Retail Property (high street)</td>
+    <td>Stourbridge</td>
+    <td><a href="https://www.rightmove.co.uk/properties/173528363" target="_blank">Market Street, Stourbridge, DY8...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/173528363" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>39</strong></td>
+    <td>POA</td>
+    <td>Land</td>
+    <td>Dudley</td>
+    <td><a href="https://www.rightmove.co.uk/properties/158675270" target="_blank">99 High Street, Dudley, West Midlands, DY1 1QP...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/158675270" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>38</strong></td>
+    <td>£225,000</td>
+    <td>Land</td>
+    <td>Dudley</td>
+    <td><a href="https://www.rightmove.co.uk/properties/748242353120400" target="_blank">Land - Musk Lane/Brook St, Lower Gornal, Dudley, DY3 2UH...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/748242353120400" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>38</strong></td>
+    <td>£250,000</td>
+    <td>Retail Property (high street)</td>
+    <td>Walsall</td>
+    <td><a href="https://www.rightmove.co.uk/properties/143098415" target="_blank">Unit 9, 11 Liskeard Road, Walsall, West Midlands, WS5 3EY...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/143098415" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>38</strong></td>
+    <td>£255,000</td>
+    <td>Retail Property (high street)</td>
+    <td>Walsall</td>
+    <td><a href="https://www.rightmove.co.uk/properties/143098343" target="_blank">Unit 2, 57 Liskeard Road, Walsall, West Midlands, WS5 3EY...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/143098343" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>38</strong></td>
+    <td>£300,000</td>
+    <td>Retail Property (high street)</td>
+    <td>Halesowen</td>
+    <td><a href="https://www.rightmove.co.uk/properties/88770450" target="_blank">Windmill Hill, Halesowen, West Midlands, B63 2BZ...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/88770450" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>38</strong></td>
+    <td>£295,000</td>
+    <td>Land</td>
+    <td>Walsall</td>
+    <td><a href="https://www.rightmove.co.uk/properties/88628484" target="_blank">Land Rear Of 53 Hatherton Road, Cannock, Staffordshire, WS11...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/88628484" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>36</strong></td>
+    <td>£385,000</td>
+    <td>Land</td>
+    <td>Dudley</td>
+    <td><a href="https://www.rightmove.co.uk/properties/173971949" target="_blank">11, Dixons Green Road, Dudley...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/173971949" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>35</strong></td>
+    <td>POA</td>
+    <td>Commercial Property</td>
+    <td>Wolverhampton</td>
+    <td><a href="https://www.rightmove.co.uk/properties/173255885" target="_blank">78 Darlington Street, Wolverhampton, WV1 4LY...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/173255885" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>35</strong></td>
+    <td>£170,000</td>
+    <td>Retail Property (high street)</td>
+    <td>Tipton</td>
+    <td><a href="https://www.rightmove.co.uk/properties/169267838" target="_blank">13 Bradleys Lane, Tipton, DY4 9EZ...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/169267838" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>33</strong></td>
+    <td>£160,000</td>
+    <td>Commercial Property</td>
+    <td>Dudley</td>
+    <td><a href="https://www.rightmove.co.uk/properties/88156071" target="_blank">15-17 Coventry Street, Kidderminster, DY10 2BG...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/88156071" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>33</strong></td>
+    <td>£160,000</td>
+    <td>Commercial Property</td>
+    <td>Dudley</td>
+    <td><a href="https://www.rightmove.co.uk/properties/88156065" target="_blank">15-17 Coventry Street, Kidderminster, DY10 2BG...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/88156065" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>32</strong></td>
+    <td>£450,000</td>
+    <td>Office</td>
+    <td>Kidderminster</td>
+    <td><a href="https://www.rightmove.co.uk/properties/126162788" target="_blank">Clensmore Street, Kidderminster, Worcestershire...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/126162788" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>31</strong></td>
+    <td>£140,000</td>
+    <td>Retail Property (high street)</td>
+    <td>Dudley</td>
+    <td><a href="https://www.rightmove.co.uk/properties/88626327" target="_blank">119 Offmore Road, Kidderminster, DY10 1SL...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/88626327" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>30</strong></td>
+    <td>£250,000</td>
+    <td>Commercial Property</td>
+    <td>Halesowen</td>
+    <td><a href="https://www.rightmove.co.uk/properties/87889710" target="_blank">Victoria Road, Halesowen...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/87889710" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>30</strong></td>
+    <td>£2,950,000</td>
+    <td>Commercial Development</td>
+    <td>Birmingham</td>
+    <td><a href="https://www.rightmove.co.uk/properties/164785970" target="_blank">37-38 and adjacent land, Icknield Street, Hockley, Birmingha...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/164785970" target="_blank">📋</a></td>
+    </tr><tr>
+    <td><strong>30</strong></td>
+    <td>£450,000</td>
+    <td>Light Industrial</td>
+    <td>Walsall</td>
+    <td><a href="https://www.rightmove.co.uk/properties/170354324" target="_blank">Unit 11A, Brookfield Drive, Cannock, Staffordshire, WS11 0JN...</a></td>
+    <td><a href="https://www.rightmove.co.uk/properties/170354324" target="_blank">📋</a></td>
+    </tr></table></div>
+<h2>🚨 Distress Signals Detected</h2>
+<div class="verdict">
+<div class="verdict-title">Summary</div>
+<div class="verdict-body">
+• <strong>13</strong> properties with distress signals (vacant, price reduced, chain free)<br>
+• <strong>12</strong> properties explicitly described as vacant<br>
+• <strong>16</strong> properties with planning permission / prior approval<br>
+• <strong>36</strong> properties under £200k (accessible price point)<br>
+• <strong>24</strong> shops/retail properties — best for conversion or high-yield BTL<br>
+• <strong>9</strong> pubs/hotels — hospitality conversion potential<br>
+• <strong>10</strong> mixed-use properties — shop+flat split plays
+</div>
+</div>
+
+<h2>💡 Learning Summary</h2>
+<div class="verdict">
+<div class="verdict-title">Model Updates & Observations</div>
+<div class="verdict-body">
+<strong>1. Data Source Change:</strong> Tavily search API unavailable (error 432). Used Rightmove direct via Smartproxy — 241 unique properties scraped from 14 target areas.<br><br>
+<strong>2. New Pre-Approved Development Finds:</strong> Comberton Hill Kidderminster (£70k, 6 flats + retail) and Hednesford Road Cannock (£135k, 3 units) are strong new additions to the pre-approved dev pipeline.<br><br>
+<strong>3. Market Observations:</strong> Mixed-use shop-with-flat inventory in Walsall (Liskeard Road) remains available. Stourbridge has prime retail with vacant possession at £250k. 72-77 Darlington Street Wolverhampton is the best hybrid income+conversion deal (5 retail at £56kpa + PP for 15 apartments).<br><br>
+<strong>4. Walsall Post-Auction:</strong> 54 & 54A West Bromwich Street (£195k, unsold Bond Wolfe 14 May) was not found on this scan — may have been removed or sold. Monitor.<br><br>
+<strong>5. Scoring Calibration:</strong> Rightmove summaries are truncated, limiting keyword detection. Scores are lower than actual potential. Human overlay needed: properties with "planning consent for flats" should be scored +15 above auto-score.
+</div>
+</div>
+</div>
+
+<div class="related-section">
+<h2>🔗 Related Resources</h2>
+<div class="related-grid">
+<a class="related-card" href="../index.html">
+    <div class="related-icon">🏠</div>
+    <div class="related-title">Dashboard Home</div>
+    <div class="related-desc">Property intelligence hub</div>
+</a>
+<a class="related-card" href="../brrr-sourcer.html">
+    <div class="related-icon">🔥</div>
+    <div class="related-title">BRRR Daily Sourcer</div>
+    <div class="related-desc">Residential BMV deals</div>
+</a>
+<a class="related-card" href="../power-team.html">
+    <div class="related-icon">🛠️</div>
+    <div class="related-title">Power Team</div>
+    <div class="related-desc">Contractors & trades</div>
+</a>
+<a class="related-card" href="../strategy-brrr-hmo-playbook.html">
+    <div class="related-icon">📖</div>
+    <div class="related-title">BRRR/HMO Playbook</div>
+    <div class="related-desc">Strategy guide</div>
+</a>
+<a class="related-card" href="../market_signals_MAIN.html">
+    <div class="related-icon">📡</div>
+    <div class="related-title">Market Signals</div>
+    <div class="related-desc">Market intelligence</div>
+</a>
+<a class="related-card" href="../area-intelligence/">
+    <div class="related-icon">🗺️</div>
+    <div class="related-title">Area Intelligence</div>
+    <div class="related-desc">Postcode-level reports</div>
+</a>
+</div>
+</div>
+
+<div class="footer">
+Generated 26 May 2026 · Commercial Property Sourcer v1.0.0 · 241 properties from 14 areas · Data: Rightmove Commercial via Smartproxy<br>
+© Nikka Khan — This is automated intelligence. Always verify with agent before proceeding.
+</div>
+</div>
+</body>
+</html>

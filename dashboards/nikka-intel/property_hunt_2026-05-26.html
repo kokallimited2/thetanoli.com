@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏠 Property Hunt — 26 May 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; overflow-wrap: break-word; word-break: break-word; line-height: 1.6; }
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  .header { padding: 32px 0 16px; border-bottom: 1px solid #21262d; margin-bottom: 24px; }
+  .header h1 { font-size: 2rem; color: #f0f6fc; }
+  .header .date { font-size: 1rem; color: #8b949e; margin-top: 4px; }
+  .header .subtitle { font-size: 0.9rem; color: #58a6ff; margin-top: 4px; }
+  
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 20px 0; }
+  .stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; text-align: center; }
+  .stat-card .num { font-size: 28px; font-weight: 700; color: #f0f6fc; }
+  .stat-card .label { font-size: 13px; color: #8b949e; margin-top: 4px; }
+  .stat-card.highlight { border-color: #58a6ff; }
+  .stat-card.highlight .num { color: #58a6ff; }
+  .stat-card.danger .num { color: #f85149; }
+  .stat-card.success .num { color: #3fb950; }
+  .stat-card.warning .num { color: #d29922; }
+
+  h2 { font-size: 1.5rem; color: #f0f6fc; margin: 28px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #21262d; }
+  h3 { font-size: 1.1rem; color: #f0f6fc; margin: 20px 0 8px; }
+
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th { background: #161b22; color: #8b949e; font-weight: 600; padding: 10px 12px; text-align: left; border-bottom: 2px solid #30363d; white-space: nowrap; }
+  td { padding: 10px 12px; border-bottom: 1px solid #21262d; }
+  tr:hover td { background: #1c2128; }
+  .rank-num { font-weight: 700; color: #58a6ff; }
+  .price { font-weight: 600; color: #f0f6fc; white-space: nowrap; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+  .badge.red { background: #3d0020; color: #f85149; }
+  .badge.green { background: #003d1f; color: #3fb950; }
+  .badge.yellow { background: #3d2e00; color: #d29922; }
+  .badge.blue { background: #00263d; color: #58a6ff; }
+  .badge.purple { background: #2a004a; color: #bc8cff; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .actions { white-space: nowrap; }
+  .actions a { display: inline-block; padding: 2px 6px; margin: 0 2px; border-radius: 4px; font-size: 12px; background: #21262d; color: #c9d1d9; }
+  .actions a:hover { background: #30363d; text-decoration: none; }
+
+  .deal-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 24px; margin: 16px 0; }
+  .deal-card.urgent { border-color: #f85149; border-left: 4px solid #f85149; }
+  .deal-card.high { border-color: #d29922; border-left: 4px solid #d29922; }
+  .deal-card.standard { border-color: #30363d; border-left: 4px solid #58a6ff; }
+  .deal-card h3 { margin: 0 0 12px; font-size: 1.2rem; }
+  .deal-card .address { color: #58a6ff; font-size: 1.1rem; }
+  .deal-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; margin: 12px 0; }
+  .deal-meta .item { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #21262d; }
+  .deal-meta .item .label { color: #8b949e; }
+  .deal-meta .item .value { color: #f0f6fc; font-weight: 500; }
+  .deal-meta .item .value.green { color: #3fb950; }
+  .deal-meta .item .value.red { color: #f85149; }
+  .deal-meta .item .value.gold { color: #d29922; }
+  .signal-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+  .signal { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; background: #21262d; color: #c9d1d9; border: 1px solid #30363d; }
+  .signal.high { border-color: #f85149; color: #f85149; }
+  .signal.med { border-color: #d29922; color: #d29922; }
+  .verdict { display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 13px; margin-top: 8px; }
+  .verdict.call { background: #3d0020; color: #f85149; border: 1px solid #f85149; }
+  .verdict.watch { background: #3d2e00; color: #d29922; border: 1px solid #d29922; }
+  .verdict.skip { background: #1c2128; color: #484f58; border: 1px solid #30363d; }
+  .verdict.buy { background: #003d1f; color: #3fb950; border: 1px solid #3fb950; }
+
+  .risk-list { margin: 8px 0; list-style: none; }
+  .risk-list li { padding: 4px 0; font-size: 14px; }
+  .risk-list li::before { content: "⚠️ "; }
+
+  .footer { text-align: center; color: #484f58; font-size: 12px; padding: 32px 0; border-top: 1px solid #21262d; margin-top: 32px; }
+  .seo-links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 20px 0; padding: 16px; background: #161b22; border: 1px solid #30363d; border-radius: 8px; }
+  .seo-links a { font-size: 13px; }
+
+  .narrative { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px; margin: 12px 0; font-size: 14px; color: #8b949e; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="header">
+  <h1>🏠 Daily Property Hunt</h1>
+  <div class="date">26 May 2026 (Tuesday) — 06:00 BST</div>
+  <div class="subtitle">BMV / BRRR / Flip — Kokal Properties · Brierley Hill DY5 Base</div>
+</div>
+
+<div class="stats-row">
+  <div class="stat-card highlight">
+    <div class="num">1,389</div>
+    <div class="label">Properties Scanned</div>
+  </div>
+  <div class="stat-card success">
+    <div class="num">200</div>
+    <div class="label">BRRR-Qualifying</div>
+  </div>
+  <div class="stat-card warning">
+    <div class="num">73</div>
+    <div class="label">Hot Deals</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">82</div>
+    <div class="label">Areas Scanned</div>
+  </div>
+  <div class="stat-card danger">
+    <div class="num">12</div>
+    <div class="label">180+ Day Distressed</div>
+  </div>
+</div>
+
+<h2>📋 Top 10 Deals (Ranked)</h2>
+
+<div class="table-scroll">
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Property</th>
+  <th>Price</th>
+  <th>Beds</th>
+  <th>Type</th>
+  <th>DOM</th>
+  <th>Signals</th>
+  <th>Score</th>
+  <th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="rank-num">1</td>
+  <td><a href="https://www.rightmove.co.uk/properties/165420896#/?channel=RES_BUY" target="_blank">High Street, Quarry Bank, Brierley Hill DY5</a></td>
+  <td class="price">£150,000</td>
+  <td>2</td>
+  <td>Terraced</td>
+  <td>293</td>
+  <td><span class="badge red">REDUCED</span> <span class="badge purple">CASH ONLY</span> <span class="badge yellow">DEV OPP</span></td>
+  <td><span class="badge red">96</span></td>
+  <td class="actions"><a href="https://www.rightmove.co.uk/properties/165420896#/?channel=RES_BUY" target="_blank">📋</a></td>
+</tr>
+<tr>
+  <td class="rank-num">2</td>
+  <td><a href="https://www.rightmove.co.uk/properties/174276719#/?channel=RES_BUY" target="_blank">Tanner Court, Codsall, Wolverhampton WV8</a></td>
+  <td class="price">£71,250</td>
+  <td>3</td>
+  <td>End Terrace</td>
+  <td>45</td>
+  <td><span class="badge green">BEST VALUE</span></td>
+  <td><span class="badge green">95</span></td>
+  <td class="actions"><a href="https://www.rightmove.co.uk/properties/174276719#/?channel=RES_BUY" target="_blank">📋</a></td>
+</tr>
+<tr>
+  <td class="rank-num">3</td>
+  <td><a href="https://www.rightmove.co.uk/properties/174801830#/?channel=RES_BUY" target="_blank">Mostyn Street, Whitmore Reans, Wolverhampton WV1</a></td>
+  <td class="price">£80,000</td>
+  <td>2</td>
+  <td>End Terrace</td>
+  <td>33</td>
+  <td><span class="badge green">CHAIN FREE</span> <span class="badge green">BRRR</span></td>
+  <td><span class="badge green">93</span></td>
+  <td class="actions"><a href="https://www.rightmove.co.uk/properties/174801830#/?channel=RES_BUY" target="_blank">📋</a></td>
+</tr>
+<tr>
+  <td class="rank-num">4</td>
+  <td><a href="https://www.rightmove.co.uk/properties/162332063#/?channel=RES_BUY" target="_blank">Dudley Road, Sedgley DY3</a></td>
+  <td class="price">£174,950</td>
+  <td>3</td>
+  <td>Terraced</td>
+  <td>368</td>
+  <td><span class="badge red">REDUCED</span> <span class="badge green">NO CHAIN</span></td>
+  <td><span class="badge red">92</span></td>
+  <td class="actions"><a href="https://www.rightmove.co.uk/properties/162332063#/?channel=RES_BUY" target="_blank">📋</a></td>
+</tr>
+<tr>
+  <td class="rank-num">5</td>
+  <td><a href="https://www.rightmove.co.uk/properties/168679130#/?channel=RES_BUY" target="_blank">High Street, Brierley Hill DY5</a></td>
+  <td class="price">£125,000</td>
+  <td>2</td>
+  <td>Terraced</td>
+  <td>210</td>
+  <td><span class="badge red">REDUCED</span> <span class="badge green">NO CHAIN</span></td>
+  <td><span class="badge yellow">90</span></td>
+  <td class="actions"><a href="https://www.rightmove.co.uk/properties/168679130#/?channel=RES_BUY" target="_blank">📋</a></td>
+</tr>
+<tr>
+  <td class="rank-num">6</td>
+  <td><a href="https://www.rightmove.co.uk/properties/167615879#/?channel=RES_BUY" target="_blank">Clinton Road, Bilston WV14</a></td>
+  <td class="price">£140,000</td>
+  <td>3</td>
+  <td>Semi-Detached</td>
+  <td>237</td>
+  <td><span class="badge green">CHAIN FREE</span> <span class="badge red">237D</span></td>
+  <td><span class="badge yellow">88</span></td>
+  <td class="actions"><a href="https://www.rightmove.co.uk/properties/167615879#/?channel=RES_BUY" target="_blank">📋</a></td>
+</tr>
+<tr>
+  <td class="rank-num">7</td>
+  <td><a href="https://www.rightmove.co.uk/properties/88504161#/?channel=RES_BUY" target="_blank">Barnetts Lane, Brownhills, Walsall WS8</a></td>
+  <td class="price">£140,000</td>
+  <td>3</td>
+  <td>Semi-Detached</td>
+  <td>11</td>
+  <td><span class="badge green">CHAIN FREE</span> <span class="badge green">SEMI</span></td>
+  <td><span class="badge green">90</span></td>
+  <td class="actions"><a href="https://www.rightmove.co.uk/properties/88504161#/?channel=RES_BUY" target="_blank">📋</a></td>
+</tr>
+<tr>
+  <td class="rank-num">8</td>
+  <td><a href="https://www.rightmove.co.uk/properties/87508812#/?channel=RES_BUY" target="_blank">Station Road, Brockmoor, Brierley Hill DY5</a></td>
+  <td class="price">£160,000</td>
+  <td>2</td>
+  <td>Terraced</td>
+  <td>136</td>
+  <td><span class="badge red">REDUCED</span> <span class="badge green">NO CHAIN</span></td>
+  <td><span class="badge yellow">85</span></td>
+  <td class="actions"><a href="https://www.rightmove.co.uk/properties/87508812#/?channel=RES_BUY" target="_blank">📋</a></td>
+</tr>
+<tr>
+  <td class="rank-num">9</td>
+  <td><a href="https://www.rightmove.co.uk/properties/172134083#/?channel=RES_BUY" target="_blank">Dudley Road, Sedgley DY3</a></td>
+  <td class="price">£160,000</td>
+  <td>3</td>
+  <td>End Terrace</td>
+  <td>103</td>
+  <td><span class="badge green">CHAIN FREE</span> <span class="badge yellow">103D</span></td>
+  <td><span class="badge yellow">83</span></td>
+  <td class="actions"><a href="https://www.rightmove.co.uk/properties/172134083#/?channel=RES_BUY" target="_blank">📋</a></td>
+</tr>
+<tr>
+  <td class="rank-num">10</td>
+  <td><a href="https://www.rightmove.co.uk/properties/153813749#/?channel=RES_BUY" target="_blank">Pedmore Road, Stourbridge DY9</a></td>
+  <td class="price">£150,000</td>
+  <td>3</td>
+  <td>Semi-Detached</td>
+  <td>588</td>
+  <td><span class="badge red">REDUCED</span> <span class="badge red">588D</span></td>
+  <td><span class="badge yellow">82</span></td>
+  <td class="actions"><a href="https://www.rightmove.co.uk/properties/153813749#/?channel=RES_BUY" target="_blank">📋</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>🎯 Top 3 Deep-Dives</h2>
+
+<!-- Deal 1 -->
+<div class="deal-card urgent">
+  <h3>#1 — 🚨 EXTREME DISTRESS</h3>
+  <div class="address">
+    <a href="https://www.rightmove.co.uk/properties/165420896#/?channel=RES_BUY" target="_blank">High Street, Quarry Bank, Brierley Hill DY5</a>
+  </div>
+  <div class="signal-list">
+    <span class="signal high">293 days on market</span>
+    <span class="signal high">Reduced 05/05/2026</span>
+    <span class="signal high">Cash Buyers Only</span>
+    <span class="signal med">Development Opportunity</span>
+    <span class="signal med">Full Refurb Needed</span>
+  </div>
+  <div class="deal-meta">
+    <div class="item"><span class="label">Price</span><span class="value">£150,000</span></div>
+    <div class="item"><span class="label">Type</span><span class="value">Terraced · 2 bed · 1 bath</span></div>
+    <div class="item"><span class="label">Tenure</span><span class="value">Freehold</span></div>
+    <div class="item"><span class="label">Days on Market</span><span class="value red">293 days</span></div>
+    <div class="item"><span class="label">Last Reduced</span><span class="value red">05/05/2026 (21 days ago)</span></div>
+    <div class="item"><span class="label">ARV Estimate</span><span class="value gold">£190k-£210k</span></div>
+    <div class="item"><span class="label">Refurb Cost</span><span class="value">£25k-£35k (full)</span></div>
+    <div class="item"><span class="label">Gross Yield</span><span class="value gold">~7.2%</span></div>
+    <div class="item"><span class="label">Rent (refurbed)</span><span class="value gold">£900-£1,100/mo</span></div>
+  </div>
+  <div class="narrative">
+    <strong>Analysis:</strong> "CASH BUYERS ONLY" = strongest distress indicator. 293 days unsold despite reduction. Full refurbishment required inside & out. High Street location in Quarry Bank — strong local amenities, bus routes, and Russell's Hall Hospital nearby. Brierley Hill town centre 5-min drive. This is a <strong>prime flip or BRRR candidate</strong> for an aggressive offer. Q-Bank terraces typically sell £170-190k when done up; the 2-bed layout with development potential makes this attractive for a budget refurb flip.
+  </div>
+  <div class="risk-list">
+    <li>High Street location — check for parking constraints</li>
+    <li>"Cash buyers only" may indicate mortgageability issue — verify with agent</li>
+    <li>Full refurb needed — get builder quote before offering</li>
+  </div>
+  <div class="verdict call">📞 CALL AGENT — Offer £115k-£120k (23% below asking)</div>
+</div>
+
+<!-- Deal 2 -->
+<div class="deal-card high">
+  <h3>#2 — 🏆 BEST VALUE BRRR</h3>
+  <div class="address">
+    <a href="https://www.rightmove.co.uk/properties/174276719#/?channel=RES_BUY" target="_blank">Tanner Court, Codsall, Wolverhampton WV8</a>
+  </div>
+  <div class="signal-list">
+    <span class="signal med">£71,250 — Deep value</span>
+    <span class="signal med">3-bed end terrace</span>
+    <span class="signal med">45 days on market</span>
+  </div>
+  <div class="deal-meta">
+    <div class="item"><span class="label">Price</span><span class="value">£71,250</span></div>
+    <div class="item"><span class="label">Type</span><span class="value">End of Terrace · 3 bed</span></div>
+    <div class="item"><span class="label">Tenure</span><span class="value">Freehold</span></div>
+    <div class="item"><span class="label">Days on Market</span><span class="value yellow">45 days</span></div>
+    <div class="item"><span class="label">BRRR Score</span><span class="value green">85/100</span></div>
+    <div class="item"><span class="label">GDV Estimate</span><span class="value gold">£240,000</span></div>
+    <div class="item"><span class="label">Profit</span><span class="value green">£134,588</span></div>
+    <div class="item"><span class="label">ROCE</span><span class="value green">999.9%</span></div>
+  </div>
+  <div class="narrative">
+    <strong>Analysis:</strong> Exceptional value at £71k for a 3-bed end terrace in Codsall (WV8) — one of Wolverhampton's better suburbs. Codsall has good schools, train station to Birmingham (40min), and strong local amenities. The BRRR sourcer rates this STRONG BUY with £134k+ profit potential. GDV of £240k based on intel_data (conservative). Codsall semi-detached homes sell £220k-£280k. End-of-terrace is slightly below semi but well above £71k. Needs refurb but at this price point, enormous headroom. <strong>Codsall is a premium WV postcode</strong> — low crime, good schooling, high demand.
+  </div>
+  <div class="risk-list">
+    <li>Verify condition and refurb needs — £71k is very cheap for Codsall</li>
+    <li>Not chain-free — may slow completion</li>
+    <li>Check EPC and flood risk before committing</li>
+  </div>
+  <div class="verdict buy">🔥 STRONG BUY — Offer £65k-£68k</div>
+</div>
+
+<!-- Deal 3 -->
+<div class="deal-card urgent">
+  <h3>#3 — 🚨 EXTREME DISTRESS + NO CHAIN</h3>
+  <div class="address">
+    <a href="https://www.rightmove.co.uk/properties/162332063#/?channel=RES_BUY" target="_blank">Dudley Road, Sedgley DY3</a>
+  </div>
+  <div class="signal-list">
+    <span class="signal high">368 days on market</span>
+    <span class="signal high">Reduced 18/05/2026 (8 days ago)</span>
+    <span class="signal high">No Chain</span>
+    <span class="signal med">3-bed + loft conversion</span>
+    <span class="signal med">Yopa agent (online = motivated)</span>
+  </div>
+  <div class="deal-meta">
+    <div class="item"><span class="label">Price</span><span class="value">£174,950</span></div>
+    <div class="item"><span class="label">Type</span><span class="value">Terraced · 3 bed · 1 bath</span></div>
+    <div class="item"><span class="label">Tenure</span><span class="value">Freehold</span></div>
+    <div class="item"><span class="label">Days on Market</span><span class="value red">368 days (OVER 1 YEAR!)</span></div>
+    <div class="item"><span class="label">Last Reduced</span><span class="value red">18/05/2026 — now at £174,950</span></div>
+    <div class="item"><span class="label">ARV Estimate</span><span class="value gold">£220k-£240k</span></div>
+    <div class="item"><span class="label">Refurb Cost</span><span class="value">£20k-£30k (cosmetic/light)</span></div>
+    <div class="item"><span class="label">Key Features</span><span class="value">2 reception, loft conversion, no chain</span></div>
+  </div>
+  <div class="narrative">
+    <strong>Analysis:</strong> Over 1 YEAR on market with NO CHAIN — the seller is trapped. Reduced just 8 days ago to £174,950 from a higher starting point (likely £200k+). Yopa is an online/hybrid agent — the seller is trying to save fees, which suggests limited budget motivation. Extended 3-bed with loft conversion (already done) is a selling point. Walking distance to Sedgley town centre. DY3 is a known distress cluster (per skill: "3+ properties at 190-235 days — stagnant micro-market"). This is a perfect candidate for an <strong>aggressive below-market offer</strong> of 15-20% under asking. Seller has already paid for a year of marketing and is clearly stuck.
+  </div>
+  <div class="risk-list">
+    <li>Yopa agent — less responsive than traditional agents, chase hard</li>
+    <li>Check if the loft conversion has building regs approval</li>
+    <li>DY3 micro-market is slow — factor in exit time</li>
+    <li>Check for flood risk (Dudley Rd, Sedgley has known spots)</li>
+  </div>
+  <div class="verdict call">📞 CALL AGENT — Offer £140k-£148k (15-20% below asking)</div>
+</div>
+
+<h2>🔥 Urgent Call Opportunities</h2>
+
+<div class="table-scroll">
+<table>
+<thead>
+<tr>
+  <th>Property</th>
+  <th>Price</th>
+  <th>Signal</th>
+  <th>Offer</th>
+  <th>Agent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="https://www.rightmove.co.uk/properties/165420896#/?channel=RES_BUY" target="_blank">High Street, Quarry Bank DY5</a></td>
+  <td class="price">£150,000</td>
+  <td><span class="badge red">CASH ONLY · 293D</span></td>
+  <td>£115k-£120k</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td><a href="https://www.rightmove.co.uk/properties/162332063#/?channel=RES_BUY" target="_blank">Dudley Road, Sedgley DY3</a></td>
+  <td class="price">£174,950</td>
+  <td><span class="badge red">NO CHAIN · 368D</span></td>
+  <td>£140k-£148k</td>
+  <td>Yopa</td>
+</tr>
+<tr>
+  <td><a href="https://www.rightmove.co.uk/properties/168679130#/?channel=RES_BUY" target="_blank">High Street, Brierley Hill DY5</a></td>
+  <td class="price">£125,000</td>
+  <td><span class="badge red">NO CHAIN · 210D</span></td>
+  <td>£99k-£105k</td>
+  <td>G&T Properties</td>
+</tr>
+<tr>
+  <td><a href="https://www.rightmove.co.uk/properties/167615879#/?channel=RES_BUY" target="_blank">Clinton Road, Bilston WV14</a></td>
+  <td class="price">£140,000</td>
+  <td><span class="badge yellow">CHAIN FREE · 237D</span></td>
+  <td>£120k</td>
+  <td>—</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>🏆 BRRR Candidates (Top 5)</h2>
+
+<div class="table-scroll">
+<table>
+<thead>
+<tr>
+  <th>Property</th>
+  <th>Price</th>
+  <th>GDV</th>
+  <th>Profit</th>
+  <th>ROCE</th>
+  <th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="https://www.rightmove.co.uk/properties/174276719#/?channel=RES_BUY" target="_blank">Tanner Court, WV8</a></td>
+  <td class="price">£71,250</td>
+  <td>£240,000</td>
+  <td class="value green">£134,588</td>
+  <td class="value green">999.9%</td>
+  <td><span class="badge green">85</span></td>
+</tr>
+<tr>
+  <td><a href="https://www.rightmove.co.uk/properties/174801830#/?channel=RES_BUY" target="_blank">Mostyn Street, WV1</a></td>
+  <td class="price">£80,000</td>
+  <td>£130,000</td>
+  <td class="value green">£20,450</td>
+  <td class="value green">75.5%</td>
+  <td><span class="badge green">90</span></td>
+</tr>
+<tr>
+  <td><a href="https://www.rightmove.co.uk/properties/172246217#/?channel=RES_BUY" target="_blank">Deer Park Drive, B42</a></td>
+  <td class="price">£92,000</td>
+  <td>£180,000</td>
+  <td class="value green">£56,890</td>
+  <td class="value green">999.9%</td>
+  <td><span class="badge green">90</span></td>
+</tr>
+<tr>
+  <td><a href="https://www.rightmove.co.uk/properties/88504161#/?channel=RES_BUY" target="_blank">Barnetts Lane, WS8</a></td>
+  <td class="price">£140,000</td>
+  <td>£237,750</td>
+  <td class="value green">£54,650</td>
+  <td class="value green">201%</td>
+  <td><span class="badge green">90</span></td>
+</tr>
+<tr>
+  <td><a href="https://www.rightmove.co.uk/properties/167615879#/?channel=RES_BUY" target="_blank">Clinton Road, WV14</a></td>
+  <td class="price">£140,000</td>
+  <td>£228,725</td>
+  <td class="value green">£45,625</td>
+  <td class="value green">87.8%</td>
+  <td><span class="badge green">85</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>🎯 Flip Candidates (Top 3)</h2>
+
+<div class="table-scroll">
+<table>
+<thead>
+<tr>
+  <th>Property</th>
+  <th>Price</th>
+  <th>ARV</th>
+  <th>Refurb</th>
+  <th>Est. Profit</th>
+  <th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="https://www.rightmove.co.uk/properties/165420896#/?channel=RES_BUY" target="_blank">High Street, Quarry Bank DY5</a></td>
+  <td class="price">£150,000</td>
+  <td>£190-210k</td>
+  <td>£25-35k</td>
+  <td class="value green">£15-30k</td>
+  <td><span class="badge red">96</span></td>
+</tr>
+<tr>
+  <td><a href="https://www.rightmove.co.uk/properties/162332063#/?channel=RES_BUY" target="_blank">Dudley Road, Sedgley DY3</a></td>
+  <td class="price">£174,950</td>
+  <td>£220-240k</td>
+  <td>£20-30k</td>
+  <td class="value gold">£5-25k</td>
+  <td><span class="badge red">92</span></td>
+</tr>
+<tr>
+  <td><a href="https://www.rightmove.co.uk/properties/168679130#/?channel=RES_BUY" target="_blank">High Street, Brierley Hill DY5</a></td>
+  <td class="price">£125,000</td>
+  <td>£155-175k</td>
+  <td>£15-25k</td>
+  <td class="value green">£15-25k</td>
+  <td><span class="badge yellow">90</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>📡 Market Intelligence</h2>
+
+<div class="narrative">
+  <strong>Known Distress Clusters (26 May):</strong><br>
+  <strong>DY3 (Sedgley/Gornal):</strong> 2 properties at 368d + 103d on Dudley Road — confirms the cluster. That's 5+ properties 100+ days in the same road. Stagnant micro-market. Bulk approach opportunity: contact Yopa about both plus the other agents. Offer 15-25% below.<br><br>
+  <strong>DY5 (Brierley Hill):</strong> 6 properties 100+ days across High Street, Station Road, Brockmoor. G&T Properties has 2 of these — discount agent = motivated sellers. Test with aggressive offers.<br><br>
+  <strong>WV14 (Bilston):</strong> Clinton Road at 237 days, chain-free. Semi-detached. This is a strong BRRR/flip candidate with massive headroom (£140k → £228k GDV).<br><br>
+  <strong>B97/WS8 (Redditch/Brownhills):</strong> Strong BRRR values with high GDV uplifts — consider these for a strategic push if DY/WV core doesn't convert.
+</div>
+
+<h2>⚠️ Area Watchouts</h2>
+
+<div class="narrative">
+  <strong>DY5 (Brierley Hill):</strong> Article 4 risk in parts. HMO licensing via Dudley MBC (£1,300 fee, 5yr). Check specific postcodes before committing to HMO strategy. Strong for BRRR/flip.<br><br>
+  <strong>WV3 (Wolverhampton):</strong> Known cluster of reduced terraces that haven't sold since Jan-Feb 2026. Seller expectations reducing. Good negotiation target.<br><br>
+  <strong>DY3 (Sedgley):</strong> Article 4 likely active. Check HMO research DB. Good demand for family homes.<br><br>
+  <strong>General:</strong> 50%+ of sub-£150k listings are auction/modern method — always read descriptions carefully. Watch for "guide price" phrasing which disguises auction.
+</div>
+
+<div class="seo-links">
+  <a href="index.html">🏠 Dashboard Home</a>
+  <a href="brrr-sourcer.html">🔥 BRRR Daily Sourcer</a>
+  <a href="motivated-sellers_2026-05-26.html">🎯 Motivated Sellers</a>
+  <a href="offmarket-finder.html">🎯 Off-Market Finder</a>
+  <a href="../area-intelligence/">🗺️ Area Intelligence</a>
+  <a href="power-team.html">🛠️ Power Team</a>
+</div>
+
+<div class="footer">
+  Generated: 26 May 2026 06:00 BST | Kokal Properties · Nikka Khan<br>
+  Data sources: Rightmove Playwright Firefox · BRRR Daily Sourcer · PropertyData cache
+</div>
+
+</div>
+</body>
+</html>
