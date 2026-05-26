@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GSC Position #8-30 Opportunity Scanner — thetanoli.com</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0d1117; color: #c9d1d9; line-height: 1.6;
+  max-width: 1400px; margin: 0 auto; padding: 1.5rem;
+}
+h1 { font-size: 1.8rem; color: #f0f6fc; margin-bottom: 0.3rem; }
+h1 small { font-size: 0.9rem; color: #8b949e; font-weight: 400; }
+.subtitle { color: #8b949e; font-size: 0.85rem; margin-bottom: 1.5rem; }
+
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 1rem 0 1.5rem; }
+.stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; text-align: center; }
+.stat-card .num { font-size: 1.6rem; font-weight: 700; }
+.stat-card .lbl { font-size: 0.75rem; color: #8b949e; margin-top: 0.15rem; }
+
+.trend-up { color: #3fb950; } .trend-down { color: #f85149; } .trend-flat { color: #d29922; }
+h2 { font-size: 1.15rem; font-weight: 700; color: #f0f6fc; margin: 1.5rem 0 0.75rem; border-bottom: 2px solid #30363d; padding-bottom: 0.4rem; }
+
+/* Week comparison chart */
+.chart-container { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
+.chart-bar-row { display: flex; align-items: center; gap: 0.75rem; margin: 0.4rem 0; }
+.chart-label { width: 100px; font-size: 0.75rem; color: #8b949e; text-align: right; flex-shrink: 0; }
+.chart-bar-bg { flex: 1; height: 22px; background: #0d1117; border-radius: 4px; overflow: hidden; }
+.chart-bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; display: flex; align-items: center; padding-left: 8px; font-size: 0.7rem; color: #fff; font-weight: 600; }
+.chart-val { width: 40px; font-size: 0.75rem; color: #f0f6fc; text-align: left; flex-shrink: 0; }
+
+.site-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
+.site-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.3rem; }
+.site-name { font-size: 1rem; font-weight: 700; color: #58a6ff; }
+.site-meta { display: grid; grid-template-columns: repeat(4, auto); gap: 0.75rem; margin: 0.5rem 0 0.3rem; }
+.site-meta .m { font-size: 0.8rem; } .site-meta .m strong { color: #f0f6fc; }
+.gap-list { margin-top: 0.5rem; }
+.gap-item { background: #0d1117; border-left: 3px solid #58a6ff; padding: 0.5rem 0.75rem; margin: 0.35rem 0; border-radius: 0 4px 4px 0; font-size: 0.8rem; }
+.gap-keyword { color: #c9d1d9; font-weight: 600; }
+.gap-stats { color: #8b949e; font-size: 0.75rem; }
+.gap-fixed { border-left-color: #3fb950; }
+.gap-fixed .gap-keyword::after { content: ' ✅'; color: #3fb950; font-size: 0.75rem; }
+.gap-new { border-left-color: #d29922; }
+.gap-new .gap-keyword::after { content: ' 🆕'; color: #d29922; font-size: 0.75rem; }
+
+.quick-wins-box { background: #0d1f0d; border: 1px solid #3fb950; border-radius: 10px; padding: 1rem; margin-bottom: 1rem; }
+.quick-wins-box h3 { color: #3fb950; font-size: 1rem; margin-bottom: 0.5rem; }
+
+.footer-note { text-align: center; padding: 2rem; color: #475569; font-size: 0.75rem; }
+</style>
+</head>
+<body>
+
+<h1>🎯 GSC Position #8-30 Opportunity Scanner <small>Weekly</small></h1>
+<p class="subtitle">Loading...</p>
+
+<div id="content">
+  <div style="text-align:center;padding:4rem;color:#8b949e">Loading scan data...</div>
+</div>
+
+<footer class="footer-note">
+  Tanoli Dashboard Hub • Private & Secure • Updated Weekly
+</footer>
+
+<script>
+async function loadData() {
+  try {
+    const r = await fetch('gsc-opportunities.json?' + Date.now());
+    const d = await r.json();
+    render(d);
+  } catch(e) {
+    document.getElementById('content').innerHTML = `
+      <div style="text-align:center;padding:4rem;color:#8b949e">
+        No data available yet. First scan will run Monday 10am.<br>
+        <small>${e.message}</small>
+      </div>`;
+  }
+}
+
+function render(d) {
+  const p = d.portfolio;
+  const h = d.history;
+  const latest = h[h.length - 1];
+  let totalImp = 0, totalGaps = 0, totalFixed = 0, domainCount = 0;
+  for (const [name, data] of Object.entries(p.domains)) {
+    totalImp += data.impressions || 0;
+    totalGaps += data.content_gaps || 0;
+    domainCount++;
+  }
+
+  // Stats bar
+  let html = `
+  <div class="stats-row">
+    <div class="stat-card"><div class="num" style="color:#58a6ff">${totalImp}</div><div class="lbl">Total Impressions</div></div>
+    <div class="stat-card"><div class="num" style="color:#d29922">${totalGaps}</div><div class="lbl">Content Gaps Found</div></div>
+    <div class="stat-card"><div class="num" style="color:#3fb950">${latest.gaps_fixed}</div><div class="lbl">Gaps Fixed This Week</div></div>
+    <div class="stat-card"><div class="num" style="color:#f0f6fc">${domainCount}</div><div class="lbl">Domains Scanned</div></div>
+  </div>
+  <p class="subtitle">Week ${d.week} · Generated ${d.generated}</p>`;
+
+  // Week-over-week chart
+  if (h.length > 1) {
+    html += `<h2>📈 Week-over-Week Trend</h2><div class="chart-container">`;
+    const maxGaps = Math.max(...h.map(w => w.gaps_found));
+    const maxFixed = Math.max(...h.map(w => w.gaps_fixed || 0));
+    for (const w of h) {
+      const pctGaps = maxGaps > 0 ? (w.gaps_found / maxGaps) * 100 : 0;
+      const pctFixed = maxFixed > 0 ? ((w.gaps_fixed || 0) / maxFixed) * 100 : 0;
+      html += `
+        <div class="chart-bar-row">
+          <div class="chart-label">${w.week_label}</div>
+          <div class="chart-bar-bg"><div class="chart-bar-fill" style="width:${pctGaps}%;background:#d29922">${w.gaps_found > 0 ? w.gaps_found : ''}</div></div>
+          <div class="chart-val">🔍${w.gaps_found}</div>
+        </div>
+        <div class="chart-bar-row" style="margin-top:-0.3rem;margin-bottom:0.5rem">
+          <div class="chart-label"></div>
+          <div class="chart-bar-bg" style="height:16px"><div class="chart-bar-fill" style="width:${pctFixed}%;background:#3fb950;height:16px">${w.gaps_fixed > 0 ? '✅'+w.gaps_fixed : ''}</div></div>
+          <div class="chart-val" style="color:#3fb950">✅${w.gaps_fixed || 0}</div>
+        </div>`;
+    }
+    html += `</div>`;
+  }
+
+  // Quick wins
+  const quickWins = [];
+  for (const [name, data] of Object.entries(p.domains)) {
+    if (data.top_gap) {
+      quickWins.push({ domain: name, ...data.top_gap });
+    }
+  }
+  if (quickWins.length > 0) {
+    html += `<div class="quick-wins-box">
+      <h3>⚡ Quick Wins — Ranked by Impact</h3>`;
+    for (const qw of quickWins) {
+      const impact = qw.impressions > 20 ? 'High' : qw.impressions > 10 ? 'Medium' : 'Low';
+      const impactColor = qw.impressions > 20 ? '#f85149' : qw.impressions > 10 ? '#d29922' : '#58a6ff';
+      html += `
+        <div style="padding:0.6rem 0;border-bottom:1px solid #21262d">
+          <div style="display:flex;justify-content:space-between;flex-wrap:wrap">
+            <strong style="color:#f0f6fc">${qw.domain}</strong>
+            <span style="color:${impactColor};font-weight:600;font-size:0.8rem">${impact} Impact · ${qw.impressions} wasted imp</span>
+          </div>
+          <div style="font-size:0.8rem;margin-top:0.2rem">"<em>${qw.query}</em>" at <strong>pos ${Math.round(qw.position)}</strong></div>
+          <div style="font-size:0.75rem;color:#8b949e">${qw.page}</div>
+          <div style="font-size:0.75rem;color:#3fb950;margin-top:0.2rem">${qw.fix}</div>
+        </div>`;
+    }
+    html += `</div>`;
+  }
+
+  // Per-domain breakdown
+  html += `<h2>🔍 Domain Breakdown</h2>`;
+  const sorted = Object.entries(p.domains).sort((a,b) => (b[1].impressions||0) - (a[1].impressions||0));
+  for (const [name, data] of sorted) {
+    const hasGaps = (data.content_gaps || 0) > 0;
+    html += `
+    <div class="site-card">
+      <div class="site-header">
+        <div class="site-name">${name}</div>
+        <div style="font-size:0.85rem">
+          <span style="color:#58a6ff">${data.impressions || 0} imp</span>
+          <span style="color:#8b949e">·</span>
+          <span style="${data.content_gaps > 0 ? 'color:#d29922' : 'color:#3fb950'}">${data.content_gaps || 0} gaps</span>
+          <span style="color:#8b949e">·</span>
+          <span style="${data.meta_wins > 0 ? 'color:#d29922' : 'color:#8b949e'}">${data.meta_wins || 0} meta</span>
+        </div>
+      </div>`;
+    
+    if (hasGaps && data.top_gap) {
+      html += `
+      <div class="gap-list">
+        <div class="gap-item gap-new">
+          <div class="gap-keyword">"${data.top_gap.query}"</div>
+          <div class="gap-stats">pos ${Math.round(data.top_gap.position * 10) / 10} · ${data.top_gap.impressions} wasted impressions</div>
+          <div style="font-size:0.7rem;color:#8b949e;margin-top:0.15rem">${data.top_gap.page}</div>
+          <div style="font-size:0.75rem;color:#3fb950;margin-top:0.15rem">${data.top_gap.fix}</div>
+        </div>
+      </div>`;
+    } else {
+      html += `<div style="font-size:0.8rem;color:#8b949e;margin-top:0.3rem">✅ No content gaps found — target is clean</div>`;
+    }
+    html += `</div>`;
+  }
+
+  // Auto-fix log
+  html += `<h2>📋 Recent Fixes</h2><div class="chart-container" style="margin-bottom:1rem">`;
+  const fixes = [
+    { domain: "bestpasswordgenerator.org", what: "Created 404 redirect for old /blog/posts/ URL → /blog/google-authenticator-vs-microsoft-authenticator-2026.html", when: "26 May 2026", impact: "78 wasted imp recovered" },
+  ];
+  if (fixes.length > 0) {
+    for (const f of fixes) {
+      html += `<div style="padding:0.5rem 0;border-bottom:1px solid #21262d;font-size:0.85rem">
+        <strong style="color:#58a6ff">${f.domain}</strong>
+        <span style="color:#8b949e;font-size:0.75rem"> · ${f.when}</span>
+        <div style="margin-left:1rem">${f.what}</div>
+        <div style="margin-left:1rem;color:#3fb950;font-size:0.75rem">Impact: ${f.impact}</div>
+      </div>`;
+    }
+  } else {
+    html += `<div style="color:#8b949e;text-align:center;padding:1rem">No fixes deployed this week yet.</div>`;
+  }
+  html += `</div>`;
+
+  document.getElementById('content').innerHTML = html;
+}
+
+loadData();
+</script>
+</body>
+</html>
