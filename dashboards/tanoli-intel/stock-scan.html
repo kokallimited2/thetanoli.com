@@ -3,213 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>US Stock Market Scanner — 2026-05-22</title>
+<title>US Stock Market Scanner — 2026-05-25</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
-  .container { max-width: 900px; margin: 0 auto; }
-  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
-  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
-  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
-  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
-  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
-  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
-  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
-  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
-  li { margin: 0.3rem 0; }
-  .highlight { color: #7ee787; }
-  .warn { color: #d29922; }
-  .error { color: #f85149; }
-  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
-  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
-  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
-  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
-  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
-  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
-  a { color: #58a6ff; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .timestamp { color: #8b949e; font-size: 0.8rem; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0d1117; color: #c9d1d9; line-height: 1.6;
+  max-width: 1000px; margin: 0 auto; padding: 2rem 1rem;
+}
+h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #f0f6fc; }
+h2 { font-size: 1.3rem; margin: 1.5rem 0 1rem; color: #f0f6fc; border-bottom: 1px solid #30363d; padding-bottom: 0.5rem; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 1rem 0; }
+.stat { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; text-align: center; }
+.stat-value { font-size: 2rem; font-weight: 700; color: #58a6ff; }
+.stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.25rem; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; }
+.card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; color: #f0f6fc; }
+.highlight { color: #7ee787; }
+.tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.8rem; }
+.footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #30363d; color: #8b949e; font-size: 0.85rem; }
+.chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 700px) { .chart-row { grid-template-columns: 1fr; } }
+.table-wrap { overflow-x: auto; background: #161b22; border: 1px solid #30363d; border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th { background: #21262d; padding: 0.6rem 0.8rem; text-align: left; color: #8b949e; font-weight: 600; border-bottom: 1px solid #30363d; }
+td { padding: 0.5rem 0.8rem; border-bottom: 1px solid #21262d; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #1c2128; }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>US Stock Market Scanner — 2026-05-22</h1>
-  <div class="meta">Generated: 2026-05-22 14:37<br>Source: Yahoo Finance + Reddit (WSB, stocks, pennystocks)</div>
-  
+<h1>US Stock Market Scanner — 2026-05-25</h1>
+<div style="color:#8b949e;margin-bottom:1rem">2026-05-25 20:31 · Yahoo Finance + Reddit (WSB, stocks, pennystocks)</div>
+
     <h2>Market Scan Results</h2>
     
     <div class="stats">
-        <div class="stat"><div class="stat-value">14</div><div class="stat-label">Scanned</div></div>
-        <div class="stat"><div class="stat-value">4</div><div class="stat-label">Buy Signals</div></div>
-        <div class="stat"><div class="stat-value">6</div><div class="stat-label">Sell Signals</div></div>
-        <div class="stat"><div class="stat-value">9</div><div class="stat-label">Open Positions</div></div>
+        <div class="stat"><div class="stat-value">15</div><div class="stat-label">Scanned</div></div>
+        <div class="stat"><div class="stat-value">0</div><div class="stat-label">Buy Signals</div></div>
+        <div class="stat"><div class="stat-value">0</div><div class="stat-label">Sell Signals</div></div>
+        <div class="stat"><div class="stat-value">13</div><div class="stat-label">Open Positions</div></div>
     </div>
     
     <h2>Buy Signals</h2>
-    
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">MSFT — <span class="highlight">WEAK BUY</span></div>
-        <div>$422.16 | RSI: 58.0 | MACD: -0.129 | Vol: 0.08x</div>
-        <p>Price above EMA20 ($414.52); EMA20 > EMA50 (bullish structure)</p>
-        
-        <span class="tag" style="color:#7ee787">Reddit Bullish</span>
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">TSLA — <span class="highlight">WEAK BUY</span></div>
-        <div>$424.35 | RSI: 61.1 | MACD: -0.908 | Vol: 0.07x</div>
-        <p>Price above EMA20 ($411.06); EMA20 > EMA50 (bullish structure)</p>
-        
-        <span class="tag" style="color:#7ee787">Reddit Bullish</span>
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">AMD — <span class="highlight">WEAK BUY</span></div>
-        <div>$476.90 | RSI: 76.1 | MACD: -0.75 | Vol: 0.13x</div>
-        <p>Price above EMA20 ($405.3); EMA20 > EMA50 (bullish structure)</p>
-        
-        <span class="tag" style="color:#7ee787">Reddit Bullish</span>
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">IONQ — <span class="highlight">BUY</span></div>
-        <div>$61.89 | RSI: 67.1 | MACD: 0.328 | Vol: 0.24x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($51.02); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
+    <p style="color: #8b949e;">No buy signals today.</p>
     
     <h2>Sell Signals</h2>
-    
-    <div class="card" style="border-left: 3px solid #f85149;">
-        <div class="card-title">AMZN — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: +1.8%</div>
-        <p>MACD bearish crossover</p>
-    </div>
-    <div class="card" style="border-left: 3px solid #f85149;">
-        <div class="card-title">META — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: +1.1%</div>
-        <p>MACD bearish crossover; Price below EMA20 ($617.22)</p>
-    </div>
-    <div class="card" style="border-left: 3px solid #f85149;">
-        <div class="card-title">SOFI — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: +1.2%</div>
-        <p>MACD bearish crossover; Price below EMA20 ($16.13)</p>
-    </div>
-    <div class="card" style="border-left: 3px solid #f85149;">
-        <div class="card-title">COIN — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: +1.1%</div>
-        <p>MACD bearish crossover; Price below EMA20 ($196.02)</p>
-    </div>
-    <div class="card" style="border-left: 3px solid #f85149;">
-        <div class="card-title">RKLB — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: +6.2%</div>
-        <p>RSI overbought at 74.3</p>
-    </div>
-    <div class="card" style="border-left: 3px solid #f85149;">
-        <div class="card-title">ASTS — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: +15.9%</div>
-        <p>RSI overbought at 72.8; Take profit target hit (15.9%)</p>
-    </div>
+    <p style="color: #8b949e;">No sell signals today.</p>
     
     <h2>Open Positions</h2>
     
     <div class="card">
         <div class="card-title">AAPL</div>
-        <div>Entry: $297.94 | Current: $0.00 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div>Entry: $300.23 | Current: $308.82 | <span style="color:#7ee787">PnL: +2.9%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $333.03 (+11.8%) · 🛑 $273.49 (-8.2%)
-            <br>Entered: 2026-05-18
+            Signal: BUY · 🎯 $341.68 (+13.8%) · 🛑 $271.86 (-9.4%)
+            <br>Entered: 2026-05-17
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">MSFT</div>
+        <div>Entry: $421.92 | Current: $418.57 | <span style="color:#f85149">PnL: -0.8%</span></div>
+        <div style="color:#8b949e;font-size:0.85rem">
+            Signal: BUY · 🎯 $455.96 (+8.1%) · 🛑 $396.87 (-5.9%)
+            <br>Entered: 2026-05-17
         </div>
     </div>
     <div class="card">
         <div class="card-title">GOOGL</div>
-        <div>Entry: $398.61 | Current: $386.95 | <span style="color:#f85149">PnL: -2.9%</span></div>
+        <div>Entry: $396.78 | Current: $382.97 | <span style="color:#f85149">PnL: -3.5%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $424.24 (+6.4%) · 🛑 $370.15 (-7.1%)
-            <br>Entered: 2026-05-18
+            Signal: BUY · 🎯 $424.27 (+6.9%) · 🛑 $367.96 (-7.3%)
+            <br>Entered: 2026-05-17
         </div>
     </div>
     <div class="card">
         <div class="card-title">NVDA</div>
-        <div>Entry: $227.10 | Current: $219.90 | <span style="color:#f85149">PnL: -3.2%</span></div>
+        <div>Entry: $225.32 | Current: $215.33 | <span style="color:#f85149">PnL: -4.4%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $277.37 (+22.1%) · 🛑 $194.07 (-14.5%)
-            <br>Entered: 2026-05-18
+            Signal: BUY · 🎯 $274.80 (+22.0%) · 🛑 $192.79 (-14.4%)
+            <br>Entered: 2026-05-17
         </div>
     </div>
     <div class="card">
         <div class="card-title">HOOD</div>
-        <div>Entry: $77.22 | Current: $75.72 | <span style="color:#f85149">PnL: -1.9%</span></div>
+        <div>Entry: $76.51 | Current: $73.64 | <span style="color:#f85149">PnL: -3.8%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $81.93 (+6.1%) · 🛑 $73.51 (-4.8%)
+            Signal: BUY · 🎯 $80.17 (+4.8%) · 🛑 $73.51 (-3.9%)
             <br>Entered: 2026-05-18
         </div>
     </div>
     <div class="card">
         <div class="card-title">PLTR</div>
-        <div>Entry: $132.43 | Current: $137.86 | <span style="color:#7ee787">PnL: +4.1%</span></div>
+        <div>Entry: $137.41 | Current: $136.88 | <span style="color:#f85149">PnL: -0.4%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $138.38 (+4.5%) · 🛑 $127.46 (-3.8%)
-            <br>Entered: 2026-05-20
+            Signal: BUY · 🎯 $151.42 (+10.2%) · 🛑 $127.46 (-7.2%)
+            <br>Entered: 2026-05-21
         </div>
     </div>
     <div class="card">
-        <div class="card-title">MSFT</div>
-        <div>Entry: $422.16 | Current: $422.16 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div class="card-title">AMZN</div>
+        <div>Entry: $266.72 | Current: $266.32 | <span style="color:#f85149">PnL: -0.1%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $458.00 (+8.5%) · 🛑 $396.01 (-6.2%)
-            <br>Entered: 2026-05-22
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">TSLA</div>
-        <div>Entry: $424.35 | Current: $424.35 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $474.05 (+11.7%) · 🛑 $389.69 (-8.2%)
+            Signal: BUY · 🎯 $285.38 (+7.0%) · 🛑 $252.64 (-5.3%)
             <br>Entered: 2026-05-22
         </div>
     </div>
     <div class="card">
         <div class="card-title">AMD</div>
-        <div>Entry: $476.90 | Current: $476.90 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div>Entry: $467.07 | Current: $467.51 | <span style="color:#7ee787">PnL: +0.1%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $481.37 (+0.9%) · 🛑 $389.43 (-18.3%)
+            Signal: WEAK BUY · 🎯 $481.37 (+3.1%) · 🛑 $389.43 (-16.6%)
             <br>Entered: 2026-05-22
         </div>
     </div>
     <div class="card">
         <div class="card-title">IONQ</div>
-        <div>Entry: $61.89 | Current: $61.89 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div>Entry: $62.35 | Current: $63.64 | <span style="color:#7ee787">PnL: +2.1%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $63.93 (+3.3%) · 🛑 $45.05 (-27.2%)
+            Signal: STRONG BUY · 🎯 $65.80 (+5.5%) · 🛑 $45.05 (-27.7%)
             <br>Entered: 2026-05-22
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">TSLA</div>
+        <div>Entry: $426.01 | Current: $426.01 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div style="color:#8b949e;font-size:0.85rem">
+            Signal: WEAK BUY · 🎯 $478.40 (+12.3%) · 🛑 $389.69 (-8.5%)
+            <br>Entered: 2026-05-25
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">COIN</div>
+        <div>Entry: $184.99 | Current: $184.99 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div style="color:#8b949e;font-size:0.85rem">
+            Signal: BUY · 🎯 $196.53 (+6.2%) · 🛑 $182.31 (-1.4%)
+            <br>Entered: 2026-05-25
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">RKLB</div>
+        <div>Entry: $135.76 | Current: $135.76 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div style="color:#8b949e;font-size:0.85rem">
+            Signal: BUY · 🎯 $139.76 (+2.9%) · 🛑 $102.96 (-24.2%)
+            <br>Entered: 2026-05-25
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">ASTS</div>
+        <div>Entry: $105.86 | Current: $105.86 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div style="color:#8b949e;font-size:0.85rem">
+            Signal: STRONG BUY · 🎯 $107.59 (+1.6%) · 🛑 $69.22 (-34.6%)
+            <br>Entered: 2026-05-25
         </div>
     </div>
     
     <h2>Forum Sentiment</h2>
+    <p style="color: #8b949e;">No forum data available.</p>
     
-    <div class="card">
-        <div class="card-title">MSFT</div>
-        <div>Sentiment: <span style="color:#7ee787">BULLISH</span> | Net Score: +36</div>
-        <div style="color:#8b949e;font-size:0.85rem">Bullish: 1 posts · Bearish: 0 posts</div>
-    </div>
-    <div class="card">
-        <div class="card-title">TSLA</div>
-        <div>Sentiment: <span style="color:#7ee787">BULLISH</span> | Net Score: +26</div>
-        <div style="color:#8b949e;font-size:0.85rem">Bullish: 1 posts · Bearish: 0 posts</div>
-    </div>
-    <div class="card">
-        <div class="card-title">AMD</div>
-        <div>Sentiment: <span style="color:#7ee787">BULLISH</span> | Net Score: +40</div>
-        <div style="color:#8b949e;font-size:0.85rem">Bullish: 2 posts · Bearish: 0 posts</div>
-    </div>
-    <div class="card">
-        <div class="card-title">IONQ</div>
-        <div>Sentiment: <span style="color:#d29922">NEUTRAL</span> | Net Score: +0</div>
-        <div style="color:#8b949e;font-size:0.85rem">Bullish: 0 posts · Bearish: 0 posts</div>
-    </div>
-    
-  <hr>
-  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-22 14:37</div>
-</div>
+<div class="footer">Generated by Hermes Trading · Stock & Options Scanners</div>
 </body>
 </html>

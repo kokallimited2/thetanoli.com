@@ -1,155 +1,554 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><title>Stock Analysis — 2026-05-25 08:02 UK</title>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stocks Self-Learning Report — 2026-05-25 (Monday — Memorial Day)</title>
 <style>
-body { background:#0d1117; color:#e6edf3; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; margin:0; font-size:18px; line-height:1.8; }
-.container { max-width:960px; margin:0 auto; padding:28px 32px; }
-h1,h2,h3 { color:#f0f6fc; }
-h1 { font-size:2.2rem; font-weight:800; margin-bottom:0.8rem; }
-h2 { font-size:1.7rem; font-weight:700; margin:2rem 0 1.2rem; }
-table { width:100%; border-collapse:collapse; margin:16px 0 28px; }
-th,td { padding:14px 18px; text-align:left; border-bottom:1px solid #30363d; font-size:17px; }
-th { background:#161b22; color:#8b949e; font-weight:700; text-transform:uppercase; font-size:13px; letter-spacing:0.5px; }
-tr:hover { background:#1c2128; }
-.stats { display:flex; gap:24px; margin:28px 0; flex-wrap:wrap; }
-.stat { background:#161b22; border:1px solid #30363d; border-radius:12px; padding:20px 28px; text-align:center; min-width:120px; }
-.stat .num { font-size:32px; font-weight:800; }
-.stat .label { font-size:13px; color:#8b949e; text-transform:uppercase; letter-spacing:0.5px; font-weight:600; }
-code { color:#f59e0b; font-weight:600; }
-.green { color:#3fb950; }
-.yellow { color:#d29922; }
-</style></head><body>
+  :root { --bg: #0f0f1a; --card: #1a1a2e; --accent: #00d4aa; --accent2: #7c3aed; --red: #ef4444; --yellow: #f59e0b; --green: #10b981; --orange: #f97316; --text: #e2e8f0; --muted: #94a3b8; --blue: #3b82f6; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 24px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; margin-bottom: 4px; }
+  .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+  .badge-green { background: rgba(16,185,129,0.2); color: var(--green); }
+  .badge-yellow { background: rgba(245,158,11,0.2); color: var(--yellow); }
+  .badge-red { background: rgba(239,68,68,0.2); color: var(--red); }
+  .badge-blue { background: rgba(59,130,246,0.2); color: var(--blue); }
+  .badge-orange { background: rgba(249,115,22,0.2); color: var(--orange); }
+  .badge-purple { background: rgba(124,58,237,0.2); color: var(--accent2); }
+
+  .market-status { background: var(--card); border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid var(--green); }
+  .market-closed { border-left-color: var(--blue); }
+  .market-status h2 { font-size: 1.1rem; margin-bottom: 8px; }
+  .market-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 12px; margin-top: 12px; }
+  .market-item { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; }
+  .market-item .label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; }
+  .market-item .value { font-size: 1.1rem; font-weight: 600; }
+  .market-item .change { font-size: 0.8rem; }
+  .up { color: var(--green); } .down { color: var(--red); } .flat { color: var(--muted); }
+
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 12px; margin-bottom: 20px; }
+  .summary-card { background: var(--card); border-radius: 12px; padding: 16px; text-align: center; }
+  .summary-card .num { font-size: 2rem; font-weight: 700; }
+  .summary-card .label { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+
+  .stock-card { background: var(--card); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .stock-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; margin-bottom: 12px; }
+  .stock-symbol { font-size: 1.3rem; font-weight: 700; }
+  .stock-name { font-size: 0.8rem; color: var(--muted); }
+  .stock-price { text-align: right; }
+  .stock-price .price { font-size: 1.2rem; font-weight: 600; }
+  .stock-price .change { font-size: 0.85rem; }
+  .stock-score { font-size: 2rem; font-weight: 700; text-align: center; margin: 0 16px; }
+  .score-breakdown { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 8px; margin: 12px 0; }
+  .score-item { background: rgba(255,255,255,0.04); padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between; font-size: 0.85rem; }
+  .score-item .sval { font-weight: 600; }
+  .analysis-text { font-size: 0.85rem; line-height: 1.6; color: var(--muted); margin-top: 8px; }
+
+  .section-title { font-size: 1.1rem; font-weight: 600; margin: 24px 0 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+  .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 12px; margin-bottom: 20px; }
+  .review-card { background: var(--card); border-radius: 10px; padding: 16px; }
+  .review-card h3 { font-size: 0.9rem; margin-bottom: 8px; }
+  .review-card ul { list-style: none; font-size: 0.8rem; color: var(--muted); }
+  .review-card li { padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .review-card li:last-child { border: none; }
+
+  .banner-caution { background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.3); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 0.85rem; color: var(--orange); }
+  .banner-info { background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 0.85rem; color: var(--blue); }
+  .banner-bullish { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 0.85rem; color: var(--green); }
+
+  @media (max-width: 600px) {
+    body { padding: 12px; }
+    .stock-header { flex-direction: column; }
+    .stock-price { text-align: left; margin-top: 4px; }
+    .stock-score { margin: 8px 0; }
+  }
+</style>
+</head>
+<body>
 <div class="container">
-<div style="background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:10px;padding:18px 24px;margin-bottom:20px;">
-<h1 style="color:#0d1117;margin:0;">📈 Stock Analysis Report</h1>
-<p style="color:#422006;margin:6px 0 0;opacity:0.85;">2026-05-25 08:02 UK — Market: <strong>Favourable</strong></p>
+
+<h1>📊 Stocks Self-Learning Report</h1>
+<p class="subtitle">Monday, May 25, 2026 — 🇺🇸 MEMORIAL DAY (Market Closed) | Post-Market Analysis (9:30 PM UK) | Model: DeepSeek V4 Flash</p>
+
+<!-- BANNER: Market Closed -->
+<div class="banner-info">
+  <strong>🕊️ Memorial Day — US Markets Closed</strong> — No trading today. All data below is from <strong>Friday May 22 close</strong>. Futures are trading live and pointing to a <strong>massive gap-up open Tuesday</strong>. This report evaluates the setup for Tuesday's session using Friday's close + Tuesday AM pre-market context.
 </div>
-<div class="stats">
-<div class="stat"><div class="num green">0</div><div class="label">BUY</div></div>
-<div class="stat"><div class="num yellow">1</div><div class="label">WATCH</div></div>
-<div class="stat"><div class="num">14</div><div class="label">AVOID</div></div>
+
+<!-- MARKET STATUS -->
+<div class="market-status market-closed">
+  <h2>Market Context: <span class="badge badge-blue">MEMORIAL DAY — PREPPING FOR TUESDAY</span></h2>
+  <p style="font-size:0.85rem;color:var(--muted);">
+    <strong>Last Session (Friday):</strong> S&P 500 +0.37% — 8th straight weekly gain. DJIA +0.58% NEW ALL-TIME RECORD at 50,579.70. NASDAQ +0.19%. VIX 16.59 (-0.66%). Kevin Warsh sworn in successfully as Fed chair.<br><br>
+    <strong>Pre-market Futures (Tuesday AM):</strong> Dow futures +478 pts (implied open +784). S&P futures +73.5 pts (implied open +101). NASDAQ futures similarly strong. Last updated 12:59 PM EDT Monday.<br><br>
+    <strong>Global Markets Today:</strong> Nikkei 225 <strong>65,158.19 (+2.87%)</strong> — NEW ALL-TIME HIGH. DAX 25,389 (+2.01%). HSI +0.86%. Shanghai +0.96%. FTSE +0.22%. Oil -6.52% on Hormuz reopening hopes. Gold $4,573 (+1.11%). 10Y yield 4.558% (-0.57%).<br><br>
+    <strong>Weekend Catalysts:</strong> US-Iran peace deal diplomacy "in final stage" per Trump. Hormuz Strait reopening = oil crash. Nikkei structural breakout. European markets surging. Bullish flag patterns forming in tech stocks (Katie Stockton, CNBC).
+  </p>
 </div>
-<h2>Analysis Results</h2>
-<table><tr><th>Signal</th><th>Price</th><th>Score</th><th>Bar</th><th>Decision</th><th>Type</th><th>Notes</th></tr><tr>
-            <td>⚪ NVDA</td>
-            <td>$215.33</td>
-            <td>6.4</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="color:#8b949e">RSI(63) neutral | trend up | mega-cap $5216B</td>
-        </tr><tr>
-            <td>⚪ AAPL</td>
-            <td>$308.82</td>
-            <td>6.1</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="color:#8b949e">RSI(91) overbought | trend up | mega-cap $4536B</td>
-        </tr><tr>
-            <td>⚪ MSFT</td>
-            <td>$418.57</td>
-            <td>6.7</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="color:#8b949e">RSI(55) neutral | below 52w high | mega-cap $3109B</td>
-        </tr><tr>
-            <td>⚪ GOOGL</td>
-            <td>$382.97</td>
-            <td>6.6</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="color:#8b949e">RSI(50) neutral | trend up | mega-cap $4640B</td>
-        </tr><tr>
-            <td>⚪ AMZN</td>
-            <td>$266.32</td>
-            <td>5.8</td>
-            <td><code>█████░░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="color:#8b949e">RSI(43) neutral | trend up | mega-cap $2865B</td>
-        </tr><tr>
-            <td>⚪ META</td>
-            <td>$610.26</td>
-            <td>6.2</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="color:#8b949e">RSI(50) neutral | below 52w high | mega-cap $1549B</td>
-        </tr><tr>
-            <td>⚪ TSLA</td>
-            <td>$426.01</td>
-            <td>6.8</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="color:#8b949e">RSI(62) neutral | trend up | mega-cap $1600B</td>
-        </tr><tr>
-            <td>⚪ AMD</td>
-            <td>$467.51</td>
-            <td>6.1</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Large Cap</td>
-            <td style="color:#8b949e">RSI(75) overbought | trend up | mega-cap $762B</td>
-        </tr><tr>
-            <td>⚪ PLTR</td>
-            <td>$136.88</td>
-            <td>6.6</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Wildcard</td>
-            <td style="color:#8b949e">RSI(36) neutral | below 52w high</td>
-        </tr><tr>
-            <td>⚪ COIN</td>
-            <td>$184.99</td>
-            <td>4.8</td>
-            <td><code>████░░░░░░</code></td>
-            <td>AVOID</td>
-            <td>Wildcard</td>
-            <td style="color:#8b949e">RSI(41) neutral | below 52w high</td>
-        </tr><tr>
-            <td>⚪ RKLB</td>
-            <td>$135.76</td>
-            <td>5.2</td>
-            <td><code>█████░░░░░</code></td>
-            <td>AVOID</td>
-            <td>Wildcard</td>
-            <td style="color:#8b949e">RSI(75) overbought | trend up</td>
-        </tr><tr>
-            <td>⚪ ASTS</td>
-            <td>$105.86</td>
-            <td>6.8</td>
-            <td><code>██████░░░░</code></td>
-            <td>AVOID</td>
-            <td>Wildcard</td>
-            <td style="color:#8b949e">RSI(74) overbought | trend up | below 52w high</td>
-        </tr><tr>
-            <td>🟡 IONQ</td>
-            <td>$63.64</td>
-            <td>7.9</td>
-            <td><code>███████░░░</code></td>
-            <td>WATCH</td>
-            <td>Wildcard</td>
-            <td style="color:#8b949e">RSI(68) neutral | trend up | below 52w high</td>
-        </tr><tr>
-            <td>⚪ HOOD</td>
-            <td>$73.64</td>
-            <td>4.8</td>
-            <td><code>████░░░░░░</code></td>
-            <td>AVOID</td>
-            <td>Wildcard</td>
-            <td style="color:#8b949e">RSI(45) neutral | below 52w high</td>
-        </tr><tr>
-            <td>⚪ SOFI</td>
-            <td>$15.62</td>
-            <td>4.5</td>
-            <td><code>████░░░░░░</code></td>
-            <td>AVOID</td>
-            <td>Wildcard</td>
-            <td style="color:#8b949e">RSI(44) neutral | below 52w high</td>
-        </tr></table>
-<p style="color:#8b949e;font-size:13px;margin-top:30px">Generated by Hermes • Stocks Self-Learning Agent • 2026-05-25 08:02 UK</p>
+
+<!-- MARKET DATA GRID (Friday Close + Tues Futures) -->
+<div class="section-title">📈 Market Data — Friday Close + Pre-Market Futures</div>
+<div class="market-grid">
+  <div class="market-item"><div class="label">S&P 500 (Fri Close)</div><div class="value">7,473.47</div><div class="change up">+0.37%</div></div>
+  <div class="market-item"><div class="label">S&P Futures (Tues)</div><div class="value">7,564.50</div><div class="change up">+73.5 pts</div></div>
+  <div class="market-item"><div class="label">DJIA (Fri Close)</div><div class="value">50,579.70</div><div class="change up">+0.58% ★ATH</div></div>
+  <div class="market-item"><div class="label">Dow Futures (Tues)</div><div class="value">51,140</div><div class="change up">+478 pts</div></div>
+  <div class="market-item"><div class="label">NASDAQ (Fri Close)</div><div class="value">26,343.97</div><div class="change up">+0.19%</div></div>
+  <div class="market-item"><div class="label">VIX</div><div class="value">16.59</div><div class="change down">-0.66%</div></div>
+  <div class="market-item"><div class="label">Russell 2000</div><div class="value">2,869.23</div><div class="change up">+0.91%</div></div>
+  <div class="market-item"><div class="label">10Y Yield</div><div class="value">4.558%</div><div class="change down">-0.57%</div></div>
+  <div class="market-item"><div class="label">Oil (WTI)</div><div class="value">$90.30</div><div class="change down">-6.52% 🚨</div></div>
+  <div class="market-item"><div class="label">Gold</div><div class="value">$4,573</div><div class="change up">+1.11%</div></div>
+  <div class="market-item"><div class="label">Nikkei 225</div><div class="value">65,158</div><div class="change up">+2.87% ★ATH</div></div>
+  <div class="market-item"><div class="label">BTC</div><div class="value">$77,390</div><div class="change up">+0.53%</div></div>
 </div>
-</body></html>
+
+<!-- CATALYST WALL -->
+<div class="section-title">🔥 Catalysts That Moved Markets This Weekend</div>
+<div class="review-grid">
+  <div class="review-card">
+    <h3>🇮🇷 US-Iran Peace Deal — 'Final Stage'</h3>
+    <ul>
+      <li>Trump says negotiations with Iran are in "final stage"</li>
+      <li>Hormuz Strait reopening hopes — oil -6.52% in single session</li>
+      <li>Petraeus: Iran is "in the process of blinking"</li>
+      <li>Asia & Europe markets surged on peace hopes</li>
+      <li>US futures following global rally higher</li>
+    </ul>
+  </div>
+  <div class="review-card">
+    <h3>🇯🇵 Nikkei 225 Tops 65,000 — First Time Ever</h3>
+    <ul>
+      <li>+2.87% to 65,158 — new all-time high</li>
+      <li>Japan's Takaichi unveils $19B extra budget</li>
+      <li>BOJ policy stability driving capital inflows</li>
+      <li>Asian tech and export sectors leading</li>
+    </ul>
+  </div>
+  <div class="review-card">
+    <h3>🛢️ Oil Market at 'Tank Bottoms'</h3>
+    <ul>
+      <li>Oil -6.52% — biggest single-session drop in months</li>
+      <li>Jeff Currie (market veteran): oil at "tank bottoms in Asia"</li>
+      <li>Transport sector (TRAN +0.79%) benefiting from fuel cost relief</li>
+      <li>Inflation fears easing = bullish for growth stocks</li>
+    </ul>
+  </div>
+  <div class="review-card">
+    <h3>🏛️ Fed Chair Transition Complete</h3>
+    <ul>
+      <li>Kevin Warsh sworn in — no market disruption</li>
+      <li>Record close on transition day validates smooth handoff</li>
+      <li>10Y yield easing from 5.09% to 4.558%</li>
+      <li>Easing financial conditions = tailwind for equities</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SUMMARY STATS -->
+<div class="section-title">📋 Portfolio Summary</div>
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="num" style="color:var(--green)">2</div>
+    <div class="label">BUY Signals</div>
+  </div>
+  <div class="summary-card">
+    <div class="num" style="color:var(--yellow)">7</div>
+    <div class="label">WATCH Signals</div>
+  </div>
+  <div class="summary-card">
+    <div class="num" style="color:var(--red)">1</div>
+    <div class="label">AVOID Signals</div>
+  </div>
+  <div class="summary-card">
+    <div class="num" style="color:var(--blue)">10</div>
+    <div class="label">Stocks Analysed</div>
+  </div>
+</div>
+
+<!-- TUESDAY PRE-MARKET OUTLOOK -->
+<div class="banner-bullish">
+  <strong>🚀 Tuesday Outlook:</strong> S&P futures +73.5 pts (implied open ~+1.3%). If the implied open holds through Tuesday's regular session, the S&P 500 opens at approximately <strong>7,564 — a new ALL-TIME HIGH</strong> above the previous record of 7,517.12. Dow futures imply a 50,950+ open (above Friday's 50,579 record). The oil-driven rally, Iran peace hopes, and global market surge create a powerful tailwind for the first session of the short week.
+</div>
+
+<!-- SECTION: LARGE CAPS -->
+<div class="section-title">🏢 Large Caps (4) — Foundation Holdings</div>
+
+<!-- MSFT -->
+<div class="stock-card">
+  <div class="stock-header">
+    <div>
+      <div class="stock-symbol">MSFT <span class="badge badge-yellow">WATCH</span></div>
+      <div class="stock-name">Microsoft Corporation | Technology | $3.11T MCap</div>
+    </div>
+    <div class="stock-score" style="color:var(--yellow)">7.6</div>
+    <div class="stock-price">
+      <div class="price">$418.57</div>
+      <div class="change flat">-0.12% Fri</div>
+    </div>
+  </div>
+  <div class="score-breakdown">
+    <div class="score-item"><span>Technical</span><span class="sval" style="color:var(--green)">8/10</span></div>
+    <div class="score-item"><span>Fundamental</span><span class="sval" style="color:var(--green)">8/10</span></div>
+    <div class="score-item"><span>Catalyst</span><span class="sval" style="color:var(--yellow)">5/10</span></div>
+    <div class="score-item"><span>Risk/Reward</span><span class="sval" style="color:var(--green)">9/10</span></div>
+  </div>
+  <div class="analysis-text">
+    <strong>Score unchanged at 7.6.</strong> MSFT remains the highest-scoring large cap in the portfolio despite a flat Friday (-0.12%). The fundamental thesis is strongest among mega-caps: forward PE 21.6x — <em>cheapest</em> in the Magnificent 7. 24% below ATH $555.45 provides the widest discount in the group. Futures rally should lift MSFT Tuesday but it needs a fresh catalyst (AI deal, Copilot monetization update, Azure acceleration) to cross the 8.0 BUY threshold. <strong>Key catalyst this week:</strong> The broader AI server demand theme (validated by DELL/HPQ earnings) and easing bond yields directly benefit MSFT's Azure and AI capex narrative.
+  </div>
+</div>
+
+<!-- AAPL -->
+<div class="stock-card">
+  <div class="stock-header">
+    <div>
+      <div class="stock-symbol">AAPL <span class="badge badge-yellow">WATCH</span></div>
+      <div class="stock-name">Apple Inc. | Technology | $4.54T MCap</div>
+    </div>
+    <div class="stock-score" style="color:var(--yellow)">7.5</div>
+    <div class="stock-price">
+      <div class="price">$308.82</div>
+      <div class="change up">+1.26% Fri ★52W High</div>
+    </div>
+  </div>
+  <div class="score-breakdown">
+    <div class="score-item"><span>Technical</span><span class="sval" style="color:var(--green)">8/10</span></div>
+    <div class="score-item"><span>Fundamental</span><span class="sval" style="color:var(--yellow)">7/10</span></div>
+    <div class="score-item"><span>Catalyst</span><span class="sval" style="color:var(--yellow)">6/10</span></div>
+    <div class="score-item"><span>Risk/Reward</span><span class="sval" style="color:var(--yellow)">7/10</span></div>
+  </div>
+  <div class="analysis-text">
+    <strong>Score unchanged at 7.5.</strong> AAPL printed a new 52W high $311.40 on Friday — third consecutive session of ATHs. Volume 43.6M (elevated). WWDC June is the next major catalyst. From AVOID at 5.9 (May 19) to three consecutive ATHs: this was a market-momentum driven breakout, and it has held. The futures rally should lift AAPL to new highs on Tuesday. <strong>Risk:</strong> No product-specific catalyst — this is pure market momentum. If Tuesday's futures gap-up fades, AAPL has no earnings or event to defend the level. PE 32x is premium. <strong>Upgrade consideration:</strong> Only if WWDC previews emerge this week with concrete AI features.
+  </div>
+</div>
+
+<!-- DELL -->
+<div class="stock-card">
+  <div class="stock-header">
+    <div>
+      <div class="stock-symbol">DELL <span class="badge badge-green">BUY</span></div>
+      <div class="stock-name">Dell Technologies Inc. | Technology | $191.7B MCap</div>
+    </div>
+    <div class="stock-score" style="color:var(--green)">8.0</div>
+    <div class="stock-price">
+      <div class="price">$295.19</div>
+      <div class="change up">+16.77% Fri</div>
+    </div>
+  </div>
+  <div class="score-breakdown">
+    <div class="score-item"><span>Technical</span><span class="sval" style="color:var(--green)">9/10</span></div>
+    <div class="score-item"><span>Fundamental</span><span class="sval" style="color:var(--green)">8/10</span></div>
+    <div class="score-item"><span>Catalyst</span><span class="sval" style="color:var(--green)">9/10</span></div>
+    <div class="score-item"><span>Risk/Reward</span><span class="sval" style="color:var(--yellow)">6/10</span></div>
+  </div>
+  <div class="analysis-text">
+    <strong>Upgraded from WATCH (7.5) to BUY (8.0).</strong> Post-earnings gap-up held through Friday full session: +16.77% from $252.80 to $295.19, new 52W high $298.32. AH only -0.10% — no gap-fill. Q1 FY2027 earnings beat was sector-validating (HPQ +15.25% same day = PC+AI server demand is real). The critical test was whether the gap would HOLD on the first day — it did, AND expanded. <strong>Tuesday setup:</strong> With futures +73.5 S&P, DELL should open well above $295. The market-wide rally provides a second-day follow-through tailwind. Forward PE 19.8x is reasonable for a company growing AI server revenue. <strong>Gap cap removed:</strong> Day 1 gap session is past. The gap held and expanded — now pure momentum. Risk: gap-fill to $252 still possible in 5-10 sessions.
+  </div>
+</div>
+
+<!-- LLY -->
+<div class="stock-card">
+  <div class="stock-header">
+    <div>
+      <div class="stock-symbol">LLY <span class="badge badge-yellow">WATCH</span></div>
+      <div class="stock-name">Eli Lilly & Co. | Healthcare | $949.7B MCap</div>
+    </div>
+    <div class="stock-score" style="color:var(--yellow)">7.5</div>
+    <div class="stock-price">
+      <div class="price">$1,065.00</div>
+      <div class="change up">+2.24% Fri</div>
+    </div>
+  </div>
+  <div class="score-breakdown">
+    <div class="score-item"><span>Technical</span><span class="sval" style="color:var(--green)">8/10</span></div>
+    <div class="score-item"><span>Fundamental</span><span class="sval" style="color:var(--green)">8/10</span></div>
+    <div class="score-item"><span>Catalyst</span><span class="sval" style="color:var(--yellow)">6/10</span></div>
+    <div class="score-item"><span>Risk/Reward</span><span class="sval" style="color:var(--green)">8/10</span></div>
+  </div>
+  <div class="analysis-text">
+    <strong>Score unchanged at 7.5.</strong> LLY +2.24% Friday — second consecutive day of strength. 8% below ATH $1,133.95. Healthcare sector was Friday's leader (XLV +1.17%). Forward PE 24x is reasonable for a pharma with the weight-loss drug pipeline. The futures rally should lift LLY Tuesday but less directly than tech — oil crash/cooling inflation is a positive input (lower input costs, consumer health spending resilience). Pharma provides useful diversification in a tech-heavy portfolio. <strong>Catalyst watch:</strong> Next-gen weight loss drug data (timing unclear, but oral formulation updates could trigger breakout).
+  </div>
+</div>
+
+<!-- SECTION: MOMENTUM -->
+<div class="section-title">⚡ Momentum (4) — Growth & Trend Plays</div>
+
+<!-- NVDA -->
+<div class="stock-card">
+  <div class="stock-header">
+    <div>
+      <div class="stock-symbol">NVDA <span class="badge badge-yellow">WATCH</span></div>
+      <div class="stock-name">NVIDIA Corporation | Technology | $5.22T MCap</div>
+    </div>
+    <div class="stock-score" style="color:var(--yellow)">7.0</div>
+    <div class="stock-price">
+      <div class="price">$215.33</div>
+      <div class="change down">-1.90% Fri</div>
+    </div>
+  </div>
+  <div class="score-breakdown">
+    <div class="score-item"><span>Technical</span><span class="sval" style="color:var(--yellow)">6/10</span></div>
+    <div class="score-item"><span>Fundamental</span><span class="sval" style="color:var(--green)">9/10</span></div>
+    <div class="score-item"><span>Catalyst</span><span class="sval" style="color:var(--green)">8/10</span></div>
+    <div class="score-item"><span>Risk/Reward</span><span class="sval" style="color:var(--yellow)">6/10</span></div>
+  </div>
+  <div class="analysis-text">
+    <strong>Upgraded from 6.7 to 7.0.</strong> NVDA sell-the-news (-1.90% Friday, -3.66% cumulative post-earnings) is now entering Day 3 of digestion. The Vera CPU $200B TAM announcement is being digested by analysts positively ("Street loves Jensen Huang's new $200B opportunity"). DELL +16.77% validates AI server demand acceleration — NVDA is the ultimate beneficiary. Forward PE 17x is the cheapest among mega-cap tech. <strong>Key Tuesday setup:</strong> The futures-led gap-up may be the catalyst that breaks the sell-the-news pattern. If futures hold, NVDA could rally $5-8 on Tuesday. 168M volume Friday suggests selling exhaustion (extremely high but not accelerating). Risk: Vera CPU cannibalization fears (ASIC threat to GPU dominance).
+  </div>
+</div>
+
+<!-- AMD -->
+<div class="stock-card">
+  <div class="stock-header">
+    <div>
+      <div class="stock-symbol">AMD <span class="badge badge-yellow">WATCH</span></div>
+      <div class="stock-name">Advanced Micro Devices | Technology | Market $467B</div>
+    </div>
+    <div class="stock-score" style="color:var(--yellow)">7.0</div>
+    <div class="stock-price">
+      <div class="price">$467.51</div>
+      <div class="change up">+3.99% Fri <strong>★NEW ENTRY</strong></div>
+    </div>
+  </div>
+  <div class="score-breakdown">
+    <div class="score-item"><span>Technical</span><span class="sval" style="color:var(--green)">7/10</span></div>
+    <div class="score-item"><span>Fundamental</span><span class="sval" style="color:var(--green)">7/10</span></div>
+    <div class="score-item"><span>Catalyst</span><span class="sval" style="color:var(--yellow)">6/10</span></div>
+    <div class="score-item"><span>Risk/Reward</span><span class="sval" style="color:var(--yellow)">7/10</span></div>
+  </div>
+  <div class="analysis-text">
+    <strong>NEW ENTRY — Replaces AMZN.</strong> AMD +3.99% Friday led semiconductor peer group. As NVDA sell-the-news creates rotation, AMD captured momentum (NVDA AI competitor narrative). Forward PE is competitive in AI chip space. The DELL/HPQ earnings validated enterprise IT demand — AMD's server CPU business benefits directly. <strong>Tuesday catalyst:</strong> Futures-led tech rally + AI tailwinds. AMD's MI300/MI400 GPU pipeline competes with NVDA for inference workloads. Risk: Still a distant #2 in AI GPUs. Custom ASIC threat applies to AMD too. 52W high $467.51 range position unclear — may already be at resistance.
+  </div>
+</div>
+
+<!-- ARM -->
+<div class="stock-card">
+  <div class="stock-header">
+    <div>
+      <div class="stock-symbol">ARM <span class="badge badge-orange">WATCH</span></div>
+      <div class="stock-name">ARM Holdings | Technology | ADR</div>
+    </div>
+    <div class="stock-score" style="color:var(--orange)">6.8</div>
+    <div class="stock-price">
+      <div class="price">$306.51</div>
+      <div class="change up">+2.78% Fri</div>
+    </div>
+  </div>
+  <div class="score-breakdown">
+    <div class="score-item"><span>Technical</span><span class="sval" style="color:var(--orange)">5/10</span></div>
+    <div class="score-item"><span>Fundamental</span><span class="sval" style="color:var(--yellow)">7/10</span></div>
+    <div class="score-item"><span>Catalyst</span><span class="sval" style="color:var(--green)">8/10</span></div>
+    <div class="score-item"><span>Risk/Reward</span><span class="sval" style="color:var(--orange)">5/10</span></div>
+  </div>
+  <div class="analysis-text">
+    <strong>NEW ENTRY — High Momentum, High Risk.</strong> ARM extended its weekly rally to almost 50% (per CNBC). +2.78% Friday. The NVDA Vera CPU announcement using ARM architecture is a massive catalyst — it validates ARM as a datacenter CPU architecture, not just mobile IP. <strong>Tuesday setup:</strong> Futures rally + Vera catalyst momentum could push ARM higher. However, a 50% weekly gain is extreme — pullback risk is significant. Score capped by overbought RSI conditions. Risk: Retail hype spike. Any negative Vera news kills the thesis. Only for short-term momentum plays.
+  </div>
+</div>
+
+<!-- CSCO -->
+<div class="stock-card">
+  <div class="stock-header">
+    <div>
+      <div class="stock-symbol">CSCO <span class="badge badge-yellow">WATCH</span></div>
+      <div class="stock-name">Cisco Systems Inc. | Technology | $474.6B MCap</div>
+    </div>
+    <div class="stock-score" style="color:var(--yellow)">7.0</div>
+    <div class="stock-price">
+      <div class="price">$120.41</div>
+      <div class="change up">+1.87% Fri</div>
+    </div>
+  </div>
+  <div class="score-breakdown">
+    <div class="score-item"><span>Technical</span><span class="sval" style="color:var(--yellow)">6/10</span></div>
+    <div class="score-item"><span>Fundamental</span><span class="sval" style="color:var(--green)">8/10</span></div>
+    <div class="score-item"><span>Catalyst</span><span class="sval" style="color:var(--green)">8/10</span></div>
+    <div class="score-item"><span>Risk/Reward</span><span class="sval" style="color:var(--yellow)">6/10</span></div>
+  </div>
+  <div class="analysis-text">
+    <strong>Upgraded from 6.9 to 7.0.</strong> CSCO +1.87% Friday, new 52W high $120.79. The DELL/HPQ earnings beat (enterprise IT + AI server demand) is a powerful sector-level catalyst for CSCO — networking infrastructure spending rises with enterprise IT refresh cycles. CSCO provides the networking backbone for AI clusters. <strong>Risk:</strong> Overbought RSI persists — CSCO has rallied from $62.30 52W low to $120.79 (94% gain). Pullback overdue. However, the futures rally + enterprise IT sector validation extends the thesis. Score upgrade reflects the sector tailwind, not individual stock improvement.
+  </div>
+</div>
+
+<!-- WILDCARD -->
+<div class="section-title">🃏 Wildcards (2) — Special Situations</div>
+
+<!-- ROST -->
+<div class="stock-card">
+  <div class="stock-header">
+    <div>
+      <div class="stock-symbol">ROST <span class="badge badge-green">BUY ✅</span></div>
+      <div class="stock-name">Ross Stores Inc. | Consumer Cyclical | $75.9B MCap</div>
+    </div>
+    <div class="stock-score" style="color:var(--green)">8.5</div>
+    <div class="stock-price">
+      <div class="price">$234.81</div>
+      <div class="change up">+8.11% Fri</div>
+    </div>
+  </div>
+  <div class="score-breakdown">
+    <div class="score-item"><span>Technical</span><span class="sval" style="color:var(--green)">9/10</span></div>
+    <div class="score-item"><span>Fundamental</span><span class="sval" style="color:var(--green)">8/10</span></div>
+    <div class="score-item"><span>Catalyst</span><span class="sval" style="color:var(--green)">9/10</span></div>
+    <div class="score-item"><span>Risk/Reward</span><span class="sval" style="color:var(--yellow)">6/10</span></div>
+  </div>
+  <div class="analysis-text">
+    <strong>Upgraded from 8.1 to 8.5.</strong> ROST was the first BUY in system history (May 22) — now upgraded further. Post-earnings gap-up held AND expanded: +5.88% AH Thursday → +8.11% full session Friday. New 52W high $235.80. AH only -0.21% — minimal profit-taking. Forward PE 27.4x is reasonable for off-price retail in a trade-down economy. <strong>Consumer divergence validated:</strong> WMT -7.27% vs ROST +8.11% on the same week — the structural bifurcation between mass retail and off-price is confirmed. Oil crash = lower input costs = margin expansion. <strong>Risk:</strong> At ATH with 8% 2-session gain. Pullback to $220-225 would be healthy but painful for late entrants. Tuesday's futures rally may push ROST to $240+.
+  </div>
+</div>
+
+<!-- NOW -->
+<div class="stock-card">
+  <div class="stock-header">
+    <div>
+      <div class="stock-symbol">NOW <span class="badge badge-yellow">WATCH</span></div>
+      <div class="stock-name">ServiceNow Inc. | Technology | $105.3B MCap</div>
+    </div>
+    <div class="stock-score" style="color:var(--yellow)">6.5</div>
+    <div class="stock-price">
+      <div class="price">$102.13</div>
+      <div class="change up">+2.45% Fri</div>
+    </div>
+  </div>
+  <div class="score-breakdown">
+    <div class="score-item"><span>Technical</span><span class="sval" style="color:var(--yellow)">6/10</span></div>
+    <div class="score-item"><span>Fundamental</span><span class="sval" style="color:var(--green)">7/10</span></div>
+    <div class="score-item"><span>Catalyst</span><span class="sval" style="color:var(--orange)">4/10</span></div>
+    <div class="score-item"><span>Risk/Reward</span><span class="sval" style="color:var(--green)">9/10</span></div>
+  </div>
+  <div class="analysis-text">
+    <strong>Upgraded from 6.2 to 6.5.</strong> NOW +2.45% Friday on 23.5M volume (near average). Bounce continues from -3.49% drop. 51% below ATH $211.48 — the widest discount in the portfolio. Software rotation thesis provides thematic support. The absence of catalyst is the weakness — this is a technical bounce, not fundamental re-rating. <strong>Tuesday setup:</strong> Futures-led tech rally should provide follow-through. NOW has the highest upside potential in a broad market rally given its deep discount. Risk: AH -0.32% suggests no follow-through conviction. Needs a specific catalyst (earnings, AI workflow product, new CEO strategy) to sustain.
+  </div>
+</div>
+
+<!-- DECISIONS SUMMARY -->
+<div class="section-title">📋 Decisions Summary</div>
+<div class="review-grid">
+  <div class="review-card">
+    <h3>✅ BUY (2)</h3>
+    <ul>
+      <li><strong>ROST 8.5</strong> — Gap held + expanded. Trade-down economy winner. Oil crash = margin tailwind. ATH with Tuesday futures tailwind.</li>
+      <li><strong>DELL 8.0</strong> — Upgraded to BUY. Earnings gap held Day 1. Sector-level PC+AI server demand validation. Futures tailwind for Day 2.</li>
+    </ul>
+  </div>
+  <div class="review-card">
+    <h3>👀 WATCH (7)</h3>
+    <ul>
+      <li><strong>MSFT 7.6</strong> — Best risk/reward. 24% below ATH. Needs catalyst to cross 8.0.</li>
+      <li><strong>AAPL 7.5</strong> — Three consecutive ATHs. Pure market momentum. WWDC June catalyst.</li>
+      <li><strong>LLY 7.5</strong> — Pharma diversification. 8% below ATH. Weight loss pipeline catalyst pending.</li>
+      <li><strong>NVDA 7.0</strong> — Sell-the-news exhaustion Day 3. Vera CPU + DELL validation. Futures rally may break the pattern.</li>
+      <li><strong>AMD 7.0</strong> — NEW. +3.99% Friday. AI competitor momentum. Enterprise IT tailwind.</li>
+      <li><strong>CSCO 7.0</strong> — Overbought but sector tailwind from DELL/HPQ. Enterprise IT spending cycle.</li>
+      <li><strong>NOW 6.5</strong> — Deepest discount. No catalyst — technical bounce. Highest upside in broad rally.</li>
+    </ul>
+  </div>
+  <div class="review-card">
+    <h3>⛔ AVOID (1) + DROPPED</h3>
+    <ul>
+      <li><strong>AMZN 5.9 (DROPPED)</strong> — AVOID confirmed. -0.80% Friday, no catalyst. 4% below ATH and can't rally in a record market. Replaced by AMD.</li>
+      <li><strong>ARM 6.8</strong> — High risk/high reward. +50% weekly rally is extreme. Vera catalyst is real but pullback risk high. Not for conservative positioning.</li>
+      <li><strong>HPQ (DROPPED)</strong> — Day 1 gap of +15.25%. Gap-fill risk too high for a legacy tech dividend stock. DELL is the better AI+PC play.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PORTFOLIO CHANGES FROM LAST RUN -->
+<div class="section-title">🔄 Changes From Last Report (May 22)</div>
+<div class="review-grid">
+  <div class="review-card">
+    <h3>📈 Upgrades</h3>
+    <ul>
+      <li><strong>DELL 7.5→8.0 (BUY)</strong> — Gap held+expanded, sector validation, futures tailwind</li>
+      <li><strong>ROST 8.1→8.5</strong> — Confirmed BUY. Consumer divergence structural. Oil = margin tailwind</li>
+      <li><strong>NVDA 6.7→7.0</strong> — Sell-the-news exhaustion. Futures rally may reverse pattern</li>
+      <li><strong>CSCO 6.9→7.0</strong> — Enterprise IT sector tailwind from DELL/HPQ</li>
+      <li><strong>NOW 6.2→6.5</strong> — Recovery bounce continuing</li>
+    </ul>
+  </div>
+  <div class="review-card">
+    <h3>🔄 Removals & Additions</h3>
+    <ul>
+      <li><strong>REMOVED: AMZN (5.9 AVOID)</strong> — No catalyst, underperforming in record market. Replaced.</li>
+      <li><strong>REMOVED: HPQ (7.5 WATCH)</strong> — Earnings gap-fill risk on legacy tech stock. DELL is better play.</li>
+      <li><strong>ADDED: AMD (7.0 WATCH)</strong> — +3.99% Friday, AI competitor rotation, enterprise IT tailwind</li>
+      <li><strong>ADDED: ARM (6.8 WATCH)</strong> — +50% weekly rally, Vera CPU catalyst, high risk/reward</li>
+    </ul>
+  </div>
+  <div class="review-card">
+    <h3>🔑 Key Lessons This Cycle</h3>
+    <ul>
+      <li><strong>Holiday weekends magnify futures moves:</strong> Memorial Day compressed 3 days of sentiment into futures. Oil crash + peace deal news over 72 hours = massive gap-up.</li>
+      <li><strong>Consumer divergence is structural:</strong> WMT vs ROST is permanent bifurcation. Trade-down thesis stronger than ever with oil crash (lower consumer costs).</li>
+      <li><strong>Sector-level earnings validation trumps individual catalysts:</strong> DELL+HPQ both +15%+ same day = PC/AI sector cycle, not just company-specific.</li>
+      <li><strong>NVDA sell-the-news pattern persists Day 3:</strong> Mega-cap earnings need 3-5 sessions. The futures rally may accelerate exhaustion.</li>
+      <li><strong>Geopolitical oil crash is bullish US equities:</strong> Lower energy prices = consumer stimulus + lower inflation = Fed-friendly.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TUESDAY ACTION PLAN -->
+<div class="section-title">🎯 Tuesday Action Plan</div>
+<div class="banner-bullish">
+  <strong>Pre-market (1:00 PM UK / 8:00 AM ET):</strong> Check if futures +73.5 S&P holds or fades. If S&P futures are still +50+ at 2:30 PM UK, the gap-up is genuine.<br>
+  <strong>Open (2:30 PM UK / 9:30 AM ET):</strong> Watch DELL open — if above $300 (new ATH), BUY thesis confirmed. Watch NVDA — if opens +2%+, sell-the-news pattern broken.<br>
+  <strong>Key levels to watch:</strong> S&P 500 7,517 (old ATH) → 7,550 (new support) → 7,600+ (if rally continues). Dow 50,579 (old record) → 51,000. Oil below $90 = bullish for transports & consumer.
+</div>
+
+<div class="review-grid">
+  <div class="review-card">
+    <h3>🌡️ Tuesday Key Catalysts</h3>
+    <ul>
+      <li><strong>Iran deal headlines</strong> — any setback reverses oil crash</li>
+      <li><strong>Futures hold/fade</strong> — by 10 AM ET, will the gap hold?</li>
+      <li><strong>Nikkei follow-through</strong> — Japan open Tues AM (overnight)</li>
+      <li><strong>Oil price direction</strong> — below $88 = incremental bullish</li>
+      <li><strong>10Y yield</strong> — below 4.50% = growth stock tailwind</li>
+      <li><strong>DELL/ROST price levels</strong> — do ATHs hold or gap-fill?</li>
+    </ul>
+  </div>
+  <div class="review-card">
+    <h3>⚠️ Risk Factors</h3>
+    <ul>
+      <li><strong>Buy the rumor, sell the news:</strong> If Tuesday opens +1.5%+, the Iran peace deal is already priced in. Any disappointment = violent reversal.</li>
+      <li><strong>Short week liquidity:</strong> Tuesday is effectively Monday after Memorial Day — lower volume, higher volatility.</li>
+      <li><strong>NVDA dead cat bounce risk:</strong> Sell-the-news (-3.66%) may not be exhausted even with futures rally. Day traders could fade the open.</li>
+      <li><strong>DELL/HPQ gap-fill risk:</strong> Earnings gap-ups this large (16-17%) historically fill 30-40% of the gap within 10 sessions.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PAST PERFORMANCE REVIEW -->
+<div class="section-title">📊 Self-Learning Review</div>
+<div class="review-grid">
+  <div class="review-card">
+    <h3>✅ Correct Calls (May 22)</h3>
+    <ul>
+      <li><strong>ROST 8.1 BUY</strong> — Correct. Gap held + expanded. Upgraded to 8.5.</li>
+      <li><strong>NVDA WATCH (avoid BUY)</strong> — Correct. -1.90% Friday, sell-the-news continued.</li>
+      <li><strong>AMZN AVOID (5.9)</strong> — Correct. -0.80% Friday, no catalyst.</li>
+      <li><strong>MSFT WATCH (no BUY)</strong> — Correct. Flat day, no catalyst to trigger.</li>
+    </ul>
+  </div>
+  <div class="review-card">
+    <h3>🔍 Lessons Learned</h3>
+    <ul>
+      <li><strong>Pre-market futures on holiday weekends are unreliable:</strong> Dow futures +478 on Memorial Day Monday may fade by Tuesday open. Wait for 9:30 AM confirmation.</li>
+      <li><strong>Oil crash from geopolitics is a soft catalyst:</strong> Fast to reverse. Any Iran deal setback puts oil +$10 in hours.</li>
+      <li><strong>ROST at 8.1 was the right entry:</strong> The gap held into Day 2. Consumer divergence (WMT vs ROST) was structural, not temporary.</li>
+      <li><strong>DELL at 7.5 WATCH was too conservative in hindsight:</strong> The gap-hold + sector validation (+HPQ) should have triggered BUY on Friday. Corrected to BUY today.</li>
+      <li><strong>New rule discovered:</strong> When two sector peers both beat earnings +15%+ same day, BUY the sector leader (DELL over HPQ) even on Day 1 gap — the peer validation reduces gap-fill risk enough to warrant entry.</li>
+    </ul>
+  </div>
+</div>
+
+<p class="subtitle" style="margin-top:24px; text-align:center;">
+  Generated: Monday, May 25, 2026 9:30 PM UK | Market Closed for Memorial Day | Next Live Session: Tuesday, May 26
+</p>
+
+</div>
+</body>
+</html>
