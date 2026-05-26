@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Course Creation Strategy</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f1a; color: #e0e0e0; line-height: 1.6; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+  h1 { font-size: 2rem; color: #8b5cf6; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.4rem; color: #a78bfa; margin: 2rem 0 1rem; border-bottom: 1px solid #2a2a3e; padding-bottom: 0.5rem; }
+  .subtitle { color: #888; margin-bottom: 2rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+  .card { background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 12px; padding: 1.5rem; }
+  .card h3 { color: #8b5cf6; margin-top: 0; }
+  .card .value { font-size: 1.8rem; font-weight: 700; color: #a78bfa; }
+  .card .label { font-size: 0.85rem; color: #888; margin-top: 0.25rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #2a2a3e; }
+  th { background: #1a1a2e; color: #a78bfa; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .course-card { background: #1a1a2e; border: 1px solid #3a2a4e; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; }
+  .course-card h3 { color: #a78bfa; }
+  .course-card .price { font-size: 1.5rem; color: #8b5cf6; font-weight: 700; }
+  .course-card.recommended { border: 2px solid #8b5cf6; position: relative; }
+  .course-card.recommended::before { content: 'RECOMMENDED FIRST'; position: absolute; top: -10px; right: 12px; background: #8b5cf6; color: #000; padding: 2px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; }
+  .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+  .badge-purple { background: #4c1d9520; color: #a78bfa; border: 1px solid #4c1d95; }
+  .platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; }
+  .platform-card { background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 8px; padding: 1rem; text-align: center; }
+  .platform-card h4 { color: #a78bfa; }
+  .platform-card .rev { font-size: 1.2rem; color: #e0e0e0; margin: 0.5rem 0; }
+  .platform-card .note { color: #888; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🎓 Online Course Creation</h1>
+  <p class="subtitle">Package blog content into video courses — sell on Udemy + Gumroad. Security niche has high demand.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Production Cost</h3>
+      <div class="value">$0-50</div>
+      <div class="label">OBS + Canva + free tools</div>
+    </div>
+    <div class="card">
+      <h3>Time to Create</h3>
+      <div class="value">20-40 hrs</div>
+      <div class="label">Per course (one-time effort)</div>
+    </div>
+    <div class="card">
+      <h3>Course Price</h3>
+      <div class="value">$30-200</div>
+      <div class="label">B2B commands premium pricing</div>
+    </div>
+    <div class="card">
+      <h3>Annual Potential</h3>
+      <div class="value">$34K-110K</div>
+      <div class="label">3 courses on Udemy + Gumroad</div>
+    </div>
+  </div>
+
+  <h2>Course Ideas</h2>
+
+  <div class="course-card recommended">
+    <h3>🔐 Password Security Masterclass</h3>
+    <div class="price">$50-100</div>
+    <p style="margin-top:0.75rem; color:#aaa;">3-4 hours (20-25 videos). Strong passwords, 2FA setup, password manager deep dive, enterprise policies, emergency plans.</p>
+    <p><span class="badge badge-purple">Udemy</span> <span class="badge badge-purple">Gumroad</span> <span class="badge badge-purple">Teachable</span></p>
+  </div>
+
+  <div class="course-card">
+    <h3>👨‍👩‍👧‍👦 Personal Digital Security for Families</h3>
+    <div class="price">$30-50</div>
+    <p style="margin-top:0.75rem; color:#aaa;">2 hours (12-15 videos). Parental controls, family password sharing, kids online safety, device security checklists.</p>
+  </div>
+
+  <div class="course-card">
+    <h3>🏢 Cybersecurity for Small Business</h3>
+    <div class="price">$100-200</div>
+    <p style="margin-top:0.75rem; color:#aaa;">5+ hours (30+ videos). B2B pricing — highest value, sells to companies not individuals.</p>
+  </div>
+
+  <h2>Platform Strategy</h2>
+  <div class="platform-grid">
+    <div class="platform-card">
+      <h4>Udemy</h4>
+      <div class="rev">$8K-20K/yr</div>
+      <div class="note">Max reach + built-in audience</div>
+    </div>
+    <div class="platform-card">
+      <h4>Gumroad</h4>
+      <div class="rev">$10K-50K/yr</div>
+      <div class="note">100% margin from your traffic</div>
+    </div>
+    <div class="platform-card">
+      <h4>Skillshare</h4>
+      <div class="rev">$2K-10K/yr</div>
+      <div class="note">Royalty-based, supplementary</div>
+    </div>
+  </div>
+
+  <h2>Revenue Projection (3 Courses, Year 1)</h2>
+  <table>
+    <tr><th>Platform</th><th>Month 1</th><th>Month 3</th><th>Month 6</th><th>Month 12</th></tr>
+    <tr><td>Udemy</td><td>$600</td><td>$1,200</td><td>$2,400</td><td>$8,000-20,000</td></tr>
+    <tr><td>Gumroad (from portfolio)</td><td>$500</td><td>$1,500</td><td>$3,000</td><td>$10,000-50,000</td></tr>
+    <tr><td><strong>Total</strong></td><td><strong>$1,100</strong></td><td><strong>$2,700</strong></td><td><strong>$5,400</strong></td><td><strong>$18K-70K</strong></td></tr>
+  </table>
+
+  <h2>Next Actions</h2>
+  <div class="card">
+    <p>1. Write scripts for "Password Security Masterclass" (repurpose 5-8 blog posts)</p>
+    <p>2. Record with OBS — slides + screencasts</p>
+    <p>3. Edit in CapCut — add transitions, captions, intro/outro</p>
+    <p>4. Publish on Udemy ($14.99 launch price for ranking)</p>
+    <p>5. List on Gumroad ($47 — 100% margin from direct traffic)</p>
+    <p>6. Promote from all 12 password sites + newsletter</p>
+  </div>
+</div>
+</body>
+</html>
