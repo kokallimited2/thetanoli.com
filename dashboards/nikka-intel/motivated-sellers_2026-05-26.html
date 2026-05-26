@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motivated Sellers Scan — Dudley Area — 2026-05-26</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d29922;
+    --red: #f85149;
+    --purple: #bc8cff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  .header {
+    background: linear-gradient(135deg, #161b22 0%, #1c2333 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 0 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .header h1 { font-size: 2rem; display: flex; align-items: center; gap: 0.75rem; }
+  .header h1 .badge { 
+    font-size: 0.8rem; background: var(--red); color: #fff;
+    padding: 0.15rem 0.65rem; border-radius: 999px; font-weight: 600;
+  }
+  .header .subtitle { color: var(--text-muted); font-size: 0.95rem; margin-top: 0.5rem; }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem; margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem; text-align: center;
+  }
+  .stat-card .num { font-size: 28px; font-weight: 700; color: var(--accent); }
+  .stat-card .label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+  .deal-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .deal-card .rank {
+    display: inline-block; background: var(--red); color: #fff;
+    font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.6rem;
+    border-radius: 6px; margin-bottom: 0.75rem;
+  }
+  .deal-card h2 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .deal-card .price { font-size: 1.5rem; font-weight: 700; color: var(--green); }
+  .deal-card .meta { color: var(--text-muted); font-size: 0.9rem; margin: 0.3rem 0; }
+  .deal-card .signal-list {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0;
+  }
+  .deal-card .signal {
+    font-size: 0.75rem; padding: 0.15rem 0.5rem; border-radius: 5px;
+    font-weight: 500;
+  }
+  .signal-red { background: rgba(248,81,73,0.15); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
+  .signal-orange { background: rgba(210,153,34,0.15); color: var(--orange); border: 1px solid rgba(210,153,34,0.3); }
+  .signal-green { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .signal-blue { background: rgba(88,166,255,0.15); color: var(--accent); border: 1px solid rgba(88,166,255,0.3); }
+  .signal-purple { background: rgba(188,140,255,0.15); color: var(--purple); border: 1px solid rgba(188,140,255,0.3); }
+  .score-bar {
+    display: flex; height: 8px; border-radius: 4px; overflow: hidden;
+    margin: 0.75rem 0; gap: 2px;
+  }
+  .score-bar .seg { min-width: 4px; }
+  .score-bar .s-discount { background: var(--accent); }
+  .score-bar .s-days { background: var(--green); }
+  .score-bar .s-refurb { background: var(--orange); }
+  .score-bar .s-location { background: var(--purple); }
+  .score-bar .s-chain { background: var(--red); }
+  .btn-group {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    padding: 0.4rem 0.8rem; border-radius: 6px; text-decoration: none;
+    font-size: 0.82rem; font-weight: 500; transition: all 0.15s;
+  }
+  .btn-primary { background: var(--accent); color: #000; }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-secondary { background: rgba(88,166,255,0.1); color: var(--accent); border: 1px solid rgba(88,166,255,0.3); }
+  .btn-secondary:hover { background: rgba(88,166,255,0.2); }
+  .btn-amber { background: rgba(210,153,34,0.15); color: var(--orange); border: 1px solid rgba(210,153,34,0.3); }
+  .btn-mint { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .summary-text { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-top: 0.5rem; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 2px solid var(--border); color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: rgba(88,166,255,0.05); }
+  h3 { font-size: 1.1rem; margin: 1.5rem 0 0.75rem; color: var(--accent); }
+  .footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 2rem 0; border-top: 1px solid var(--border); margin-top: 2rem; }
+  .area-watchout {
+    background: rgba(248,81,73,0.08); border: 1px solid rgba(248,81,73,0.25);
+    border-radius: 10px; padding: 1rem; margin: 1.5rem 0;
+  }
+  .area-watchout h3 { color: var(--red); margin-top: 0; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="page-wrap">
+    <h1>🔥 Motivated Sellers Scan <span class="badge">2026-05-26</span></h1>
+    <p class="subtitle">Distressed properties within 20mi of Dudley — 2+ bed houses ≤£200k — Listed 90+ days</p>
+    <p class="subtitle">Generated: 2026-05-26 06:15 UTC · Source: Rightmove (individual property pages) · Sorted by opportunity score</p>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="num">7</div>
+    <div class="label">Available 90+ Day</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">1</div>
+    <div class="label">Under £180k</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">4</div>
+    <div class="label">Price Reduced</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">1</div>
+    <div class="label">No Chain</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">1</div>
+    <div class="label">Fixer/Refurb</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">£195,714</div>
+    <div class="label">Avg List Price</div>
+  </div>
+</div>
+
+<h3>🏆 Top 5 Motivated Seller Opportunities</h3>
+
+<div class="deal-card">
+  <div class="rank">DEAL #1 · Score 63/100</div>
+  <h2>3 bed Detached — Barn Owl Walk, Brierley Hill, DY5</h2>
+  <div class="price">£170,000</div>
+  <div class="meta">📍 DY5 · 📅 Listed 186 days ago · Agency: Connells, Stourbridge</div>
+  
+  <div class="signal-list">
+    <span class="signal signal-red">Reduced</span>
+    <span class="signal signal-blue">Guide Price</span>
+    <span class="signal signal-purple">⏳ 186d Listed</span>
+  </div>
+  
+  <div class="score-bar">
+    <div class="seg s-discount" style="width:100px" title="Discount: 30/30"></div>
+    <div class="seg s-days" style="width:50px" title="Days on market: 10/20"></div>
+    <div class="seg s-refurb" style="width:40px" title="Refurb potential: 8/20"></div>
+    <div class="seg s-location" style="width:67px" title="Location demand: 10/15"></div>
+    <div class="seg s-chain" style="width:33px" title="Chain status: 5/15"></div>
+  </div>
+  <div class="meta" style="font-size:0.78rem; display:flex; gap:1rem; flex-wrap:wrap;">
+    <span>📊 Discount: 30/30</span>
+    <span>⏱️ Days: 10/20</span>
+    <span>🔨 Refurb: 8/20</span>
+    <span>📍 Location: 10/15</span>
+    <span>🔗 Chain: 5/15</span>
+  </div>
+  
+  <div class="meta" style="font-size:0.85rem; margin-top:0.5rem;">
+    Est. Refurb: £15,000-25,000 · Est. MV: £210,000 · Est. Profit: £30,000 · Est. Discount: 19.0%
+  </div>
+  
+  <div class="btn-group">
+    <a href="https://www.rightmove.co.uk/properties/169519739#/?channel=RES_BUY" target="_blank" class="btn btn-primary">📋 Listing</a>
+    <a href="https://nethouseprices.com/house-prices/search?search=DY5" target="_blank" class="btn btn-amber">📊 Sold Prices</a>
+    <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EDY5&radius=1.0&sortType=6&maxPrice=195500&minBedrooms=3" target="_blank" class="btn btn-secondary">🏡 Comps (1mi)</a>
+    <a href="https://www.google.com/maps/search/Barn+Owl+Walk+Brierley+Hill+DY5" target="_blank" class="btn btn-secondary">🗺️ Map</a>
+    <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=DY5" target="_blank" class="btn btn-secondary">🏗️ Land</a>
+  </div>
+  
+  <div class="summary-text">Detached at £170k - cheapest on list, just reduced</div>
+</div><div class="deal-card">
+  <div class="rank">DEAL #2 · Score 54/100</div>
+  <h2>3 bed End of Terrace — Mousehall Farm Road, Brierley Hill, DY5</h2>
+  <div class="price">£200,000</div>
+  <div class="meta">📍 DY5 · 📅 Listed 202 days ago · Agency: G and T Properties, Dudley</div>
+  
+  <div class="signal-list">
+    <span class="signal signal-green">No Chain</span>
+    <span class="signal signal-purple">⏳ 202d Listed</span>
+  </div>
+  
+  <div class="score-bar">
+    <div class="seg s-discount" style="width:17px" title="Discount: 5/30"></div>
+    <div class="seg s-days" style="width:70px" title="Days on market: 14/20"></div>
+    <div class="seg s-refurb" style="width:50px" title="Refurb potential: 10/20"></div>
+    <div class="seg s-location" style="width:67px" title="Location demand: 10/15"></div>
+    <div class="seg s-chain" style="width:100px" title="Chain status: 15/15"></div>
+  </div>
+  <div class="meta" style="font-size:0.78rem; display:flex; gap:1rem; flex-wrap:wrap;">
+    <span>📊 Discount: 5/30</span>
+    <span>⏱️ Days: 14/20</span>
+    <span>🔨 Refurb: 10/20</span>
+    <span>📍 Location: 10/15</span>
+    <span>🔗 Chain: 15/15</span>
+  </div>
+  
+  <div class="meta" style="font-size:0.85rem; margin-top:0.5rem;">
+    Est. Refurb: £5,000-10,000 · Est. MV: £224,000 · Est. Profit: £14,000 · Est. Discount: 10.7%
+  </div>
+  
+  <div class="btn-group">
+    <a href="https://www.rightmove.co.uk/properties/168961589#/?channel=RES_BUY" target="_blank" class="btn btn-primary">📋 Listing</a>
+    <a href="https://nethouseprices.com/house-prices/search?search=DY5" target="_blank" class="btn btn-amber">📊 Sold Prices</a>
+    <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EDY5&radius=1.0&sortType=6&maxPrice=230000&minBedrooms=3" target="_blank" class="btn btn-secondary">🏡 Comps (1mi)</a>
+    <a href="https://www.google.com/maps/search/Mousehall+Farm+Road+Brierley+Hill+DY5" target="_blank" class="btn btn-secondary">🗺️ Map</a>
+    <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=DY5" target="_blank" class="btn btn-secondary">🏗️ Land</a>
+  </div>
+  
+  <div class="summary-text">No chain - no reduction yet</div>
+</div><div class="deal-card">
+  <div class="rank">DEAL #3 · Score 52/100</div>
+  <h2>3 bed End of Terrace — Brierley Hill Road, Brierley Hill, DY5</h2>
+  <div class="price">£200,000</div>
+  <div class="meta">📍 DY5 · 📅 Listed 214 days ago · Agency: Lex Allan, Stourbridge</div>
+  
+  <div class="signal-list">
+    <span class="signal signal-red">Reduced</span>
+    <span class="signal signal-orange">Fixer Upper</span>
+    <span class="signal signal-purple">⏳ 214d Listed</span>
+  </div>
+  
+  <div class="score-bar">
+    <div class="seg s-discount" style="width:17px" title="Discount: 5/30"></div>
+    <div class="seg s-days" style="width:70px" title="Days on market: 14/20"></div>
+    <div class="seg s-refurb" style="width:90px" title="Refurb potential: 18/20"></div>
+    <div class="seg s-location" style="width:67px" title="Location demand: 10/15"></div>
+    <div class="seg s-chain" style="width:33px" title="Chain status: 5/15"></div>
+  </div>
+  <div class="meta" style="font-size:0.78rem; display:flex; gap:1rem; flex-wrap:wrap;">
+    <span>📊 Discount: 5/30</span>
+    <span>⏱️ Days: 14/20</span>
+    <span>🔨 Refurb: 18/20</span>
+    <span>📍 Location: 10/15</span>
+    <span>🔗 Chain: 5/15</span>
+  </div>
+  
+  <div class="meta" style="font-size:0.85rem; margin-top:0.5rem;">
+    Est. Refurb: £10,000-20,000 · Est. MV: £224,000 · Est. Profit: £14,000 · Est. Discount: 10.7%
+  </div>
+  
+  <div class="btn-group">
+    <a href="https://www.rightmove.co.uk/properties/168512276#/?channel=RES_BUY" target="_blank" class="btn btn-primary">📋 Listing</a>
+    <a href="https://nethouseprices.com/house-prices/search?search=DY5" target="_blank" class="btn btn-amber">📊 Sold Prices</a>
+    <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EDY5&radius=1.0&sortType=6&maxPrice=230000&minBedrooms=3" target="_blank" class="btn btn-secondary">🏡 Comps (1mi)</a>
+    <a href="https://www.google.com/maps/search/Brierley+Hill+Road+Brierley+Hill+DY5" target="_blank" class="btn btn-secondary">🗺️ Map</a>
+    <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=DY5" target="_blank" class="btn btn-secondary">🏗️ Land</a>
+  </div>
+  
+  <div class="summary-text">Recently reduced Apr 2026 - fixer potential</div>
+</div><div class="deal-card">
+  <div class="rank">DEAL #4 · Score 51/100</div>
+  <h2>3 bed Semi-Detached — KINGSWINFORD, Standhills Road, DY6</h2>
+  <div class="price">£200,000</div>
+  <div class="meta">📍 DY6 · 📅 Listed 348 days ago · Agency: Taylors Estate Agents, Kingswinford</div>
+  
+  <div class="signal-list">
+    <span class="signal signal-purple">⏳ 348d Listed</span>
+  </div>
+  
+  <div class="score-bar">
+    <div class="seg s-discount" style="width:17px" title="Discount: 5/30"></div>
+    <div class="seg s-days" style="width:85px" title="Days on market: 17/20"></div>
+    <div class="seg s-refurb" style="width:50px" title="Refurb potential: 10/20"></div>
+    <div class="seg s-location" style="width:93px" title="Location demand: 14/15"></div>
+    <div class="seg s-chain" style="width:33px" title="Chain status: 5/15"></div>
+  </div>
+  <div class="meta" style="font-size:0.78rem; display:flex; gap:1rem; flex-wrap:wrap;">
+    <span>📊 Discount: 5/30</span>
+    <span>⏱️ Days: 17/20</span>
+    <span>🔨 Refurb: 10/20</span>
+    <span>📍 Location: 14/15</span>
+    <span>🔗 Chain: 5/15</span>
+  </div>
+  
+  <div class="meta" style="font-size:0.85rem; margin-top:0.5rem;">
+    Est. Refurb: £5,000-10,000 · Est. MV: £224,000 · Est. Profit: £14,000 · Est. Discount: 10.7%
+  </div>
+  
+  <div class="btn-group">
+    <a href="https://www.rightmove.co.uk/properties/163159019#/?channel=RES_BUY" target="_blank" class="btn btn-primary">📋 Listing</a>
+    <a href="https://nethouseprices.com/house-prices/search?search=DY6" target="_blank" class="btn btn-amber">📊 Sold Prices</a>
+    <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EDY6&radius=1.0&sortType=6&maxPrice=230000&minBedrooms=3" target="_blank" class="btn btn-secondary">🏡 Comps (1mi)</a>
+    <a href="https://www.google.com/maps/search/KINGSWINFORD+Standhills+Road+DY6" target="_blank" class="btn btn-secondary">🗺️ Map</a>
+    <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=DY6" target="_blank" class="btn btn-secondary">🏗️ Land</a>
+  </div>
+  
+  <div class="summary-text">No chain - no reduction history, stale at 348 days</div>
+</div><div class="deal-card">
+  <div class="rank">DEAL #5 · Score 49/100</div>
+  <h2>3 bed Terraced — Webley Grove, Dudley, West Midlands, DY1</h2>
+  <div class="price">£200,000</div>
+  <div class="meta">📍 DY1 · 📅 Listed 243 days ago · Agency: British Homesellers, National</div>
+  
+  <div class="signal-list">
+    <span class="signal signal-red">Reduced</span>
+    <span class="signal signal-blue">Offers in Excess of</span>
+    <span class="signal signal-purple">⏳ 243d Listed</span>
+  </div>
+  
+  <div class="score-bar">
+    <div class="seg s-discount" style="width:17px" title="Discount: 5/30"></div>
+    <div class="seg s-days" style="width:70px" title="Days on market: 14/20"></div>
+    <div class="seg s-refurb" style="width:50px" title="Refurb potential: 10/20"></div>
+    <div class="seg s-location" style="width:80px" title="Location demand: 12/15"></div>
+    <div class="seg s-chain" style="width:53px" title="Chain status: 8/15"></div>
+  </div>
+  <div class="meta" style="font-size:0.78rem; display:flex; gap:1rem; flex-wrap:wrap;">
+    <span>📊 Discount: 5/30</span>
+    <span>⏱️ Days: 14/20</span>
+    <span>🔨 Refurb: 10/20</span>
+    <span>📍 Location: 12/15</span>
+    <span>🔗 Chain: 8/15</span>
+  </div>
+  
+  <div class="meta" style="font-size:0.85rem; margin-top:0.5rem;">
+    Est. Refurb: £5,000-10,000 · Est. MV: £224,000 · Est. Profit: £14,000 · Est. Discount: 10.7%
+  </div>
+  
+  <div class="btn-group">
+    <a href="https://www.rightmove.co.uk/properties/167348270#/?channel=RES_BUY" target="_blank" class="btn btn-primary">📋 Listing</a>
+    <a href="https://nethouseprices.com/house-prices/search?search=DY1" target="_blank" class="btn btn-amber">📊 Sold Prices</a>
+    <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EDY1&radius=1.0&sortType=6&maxPrice=230000&minBedrooms=3" target="_blank" class="btn btn-secondary">🏡 Comps (1mi)</a>
+    <a href="https://www.google.com/maps/search/Webley+Grove+Dudley+West+Midlands+DY1" target="_blank" class="btn btn-secondary">🗺️ Map</a>
+    <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=DY1" target="_blank" class="btn btn-secondary">🏗️ Land</a>
+  </div>
+  
+  <div class="summary-text">Just reduced Apr 2026 - fresh motivation</div>
+</div>
+
+<h3>📋 All 90+ Day Listings — Ranked</h3>
+<div class="table-scroll">
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Address</th>
+  <th>Beds</th>
+  <th>Type</th>
+  <th>Price</th>
+  <th>Days</th>
+  <th>Score</th>
+  <th>Signals</th>
+  <th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-left:3px solid var(--green);">
+  <td>1</td>
+  <td>Barn Owl Walk, Brierley Hill, DY5</td>
+  <td>3</td>
+  <td>Detached</td>
+  <td>£170,000</td>
+  <td>186</td>
+  <td>63</td>
+  <td>💰 </td>
+  <td><a href="https://www.rightmove.co.uk/properties/169519739#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr style="border-left:3px solid var(--green);">
+  <td>2</td>
+  <td>Mousehall Farm Road, Brierley Hill, DY5</td>
+  <td>3</td>
+  <td>End of Terrace</td>
+  <td>£200,000</td>
+  <td>202</td>
+  <td>54</td>
+  <td>🔗 </td>
+  <td><a href="https://www.rightmove.co.uk/properties/168961589#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr style="border-left:3px solid var(--green);">
+  <td>3</td>
+  <td>Brierley Hill Road, Brierley Hill, DY5</td>
+  <td>3</td>
+  <td>End of Terrace</td>
+  <td>£200,000</td>
+  <td>214</td>
+  <td>52</td>
+  <td>💰 🔨 </td>
+  <td><a href="https://www.rightmove.co.uk/properties/168512276#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr style="border-left:3px solid var(--green);">
+  <td>4</td>
+  <td>KINGSWINFORD, Standhills Road, DY6</td>
+  <td>3</td>
+  <td>Semi-Detached</td>
+  <td>£200,000</td>
+  <td>348</td>
+  <td>51</td>
+  <td></td>
+  <td><a href="https://www.rightmove.co.uk/properties/163159019#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr>
+  <td>5</td>
+  <td>Webley Grove, Dudley, West Midlands, DY1</td>
+  <td>3</td>
+  <td>Terraced</td>
+  <td>£200,000</td>
+  <td>243</td>
+  <td>49</td>
+  <td>💰 </td>
+  <td><a href="https://www.rightmove.co.uk/properties/167348270#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr>
+  <td>6</td>
+  <td>Middlefield Road, Tividale, Oldbury, B69</td>
+  <td>3</td>
+  <td>Semi-Detached</td>
+  <td>£200,000</td>
+  <td>258</td>
+  <td>45</td>
+  <td>💰 </td>
+  <td><a href="https://www.rightmove.co.uk/properties/166752830#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr>
+  <td>7</td>
+  <td>Blockley Road, Hadley, Telford, TF1</td>
+  <td>3</td>
+  <td>Terraced</td>
+  <td>£200,000</td>
+  <td>244</td>
+  <td>39</td>
+  <td></td>
+  <td><a href="https://www.rightmove.co.uk/properties/167319284#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="area-watchout">
+  <h3>⚠️ Area Watchout — Dudley &amp; Surrounding</h3>
+  <ul style="list-style:disc; padding-left:1.5rem; color:var(--text-muted); font-size:0.9rem; line-height:1.6;">
+    <li><strong>Article 4 Direction:</strong> Check HMO licensing rules in DY1-DY3 — some areas have been removing permitted development rights for HMOs</li>
+    <li><strong>Void Risk:</strong> Dudley town centre flats can sit void 4-8 weeks. Terraced houses in Brierley Hill/DY5 let faster</li>
+    <li><strong>Crime Level:</strong> Dudley is average for West Midlands. DY1 (town centre) has higher reported crime than DY6 (Kingswinford)</li>
+    <li><strong>HMO Licensing:</strong> Mandatory licensing applies to 5+ person HMOs. Some DY2/DY3 areas have additional licensing schemes</li>
+    <li><strong>Yield Context:</strong> 3-bed houses in DY5/DY6 typically yield 5-7% gross. Detached in Brierley Hill at £170k offers best value-add potential</li>
+    <li><strong>Market Trend:</strong> Rightmove data shows Dudley asking prices down ~2% YoY — motivated sellers becoming more common. Several 200-day+ listings still unsold indicates overpricing</li>
+    <li><strong>Sold STC Properties:</strong> 5 of 12 detailed candidates already Sold STC — good sign that well-priced stock moves, but also indicates competition</li>
+    <li><strong>Top Pick:</strong> Barn Owl Walk (169519739) at £170k is the standout — 3-bed detached, just reduced 19/05/2026, Guide Price suggests room for negotiation</li>
+  </ul>
+</div>
+
+<div class="btn-group" style="margin:2rem 0; justify-content:center;">
+  <a href="/dashboards/nikka-intel/index.html" class="btn btn-secondary">🏠 Dashboard Home</a>
+  <a href="/dashboards/nikka-intel/brrr-sourcer.html" class="btn btn-secondary">🔥 BRRR Sourcer</a>
+  <a href="/dashboards/nikka-intel/power-team.html" class="btn btn-secondary">🛠️ Power Team</a>
+  <a href="/dashboards/nikka-intel/market_signals_MAIN.html" class="btn btn-secondary">📡 Market Signals</a>
+  <a href="/dashboards/nikka-intel/area-intelligence/" class="btn btn-secondary">🗺️ Area Intel</a>
+</div>
+
+<div class="footer">
+  <p>🔄 Generated 2026-05-26 06:15 UTC · Data from Rightmove.co.uk (individual property pages) · Filtered: 2+ bed houses ≤£200k, 20mi of Dudley, 90+ days listed</p>
+  <p>Nikka Khan 🔵 Property Intelligence · Motivated Sellers Daily Scan v1.0 · 2026-05-26</p>
+</div>
+</div>
+</body>
+</html>
