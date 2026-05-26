@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expired Domain Strategy - Daily Dashboard</title>
+    <style>
+        :root {
+            --bg: #0a0c12;
+            --card: #12151e;
+            --card-hover: #181c28;
+            --border: #1e2230;
+            --border-light: #2a2f40;
+            --text: #e8e8ed;
+            --muted: #7a7a8a;
+            --accent: #22c55e;
+            --accent-dim: rgba(34,197,94,0.1);
+            --accent-glow: rgba(34,197,94,0.05);
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --blue: #3b82f6;
+            --purple: #8b5cf6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        
+        .header {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            padding: 20px 0 24px 0; border-bottom: 1px solid var(--border); 
+            margin-bottom: 28px; flex-wrap: wrap; gap: 12px;
+        }
+        .header-left h1 { 
+            font-size: 22px; letter-spacing: -0.5px; 
+            background: linear-gradient(135deg, var(--accent), #34d399);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .header-left .subtitle { color: var(--muted); font-size: 13px; margin-top: 4px; }
+        .header-right { text-align: right; }
+        .header-right .date { color: var(--muted); font-size: 12px; }
+        .header-right .status-badge {
+            display: inline-block; background: var(--accent-dim); color: var(--accent);
+            padding: 3px 10px; border-radius: 12px; font-size: 11px;
+            border: 1px solid rgba(34,197,94,0.2);
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px; margin-bottom: 28px;
+        }
+        .stat-card {
+            background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+            padding: 16px 18px; transition: all 0.2s;
+        }
+        .stat-card:hover { border-color: var(--border-light); background: var(--card-hover); }
+        .stat-card .value { font-size: 28px; font-weight: 700; color: var(--accent); line-height: 1.2; }
+        .stat-card .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-card .trend { font-size: 12px; margin-top: 4px; color: var(--muted); }
+        
+        .stat-card.purple .value { color: var(--purple); }
+        .stat-card.blue .value { color: var(--blue); }
+        .stat-card.warning .value { color: var(--warning); }
+        
+        /* Cards */
+        .card {
+            background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+            padding: 20px 24px; margin-bottom: 20px; transition: all 0.2s;
+        }
+        .card:hover { border-color: var(--border-light); }
+        .card-header {
+            display: flex; justify-content: space-between; align-items: center; 
+            margin-bottom: 16px;
+        }
+        .card-header h2 { font-size: 14px; color: var(--text); text-transform: uppercase; letter-spacing: 1px; }
+        .card-header .badge-group { display: flex; gap: 6px; }
+        .card-header .badge-group span {
+            font-size: 11px; padding: 2px 8px; border-radius: 8px;
+            background: var(--accent-dim); color: var(--accent);
+        }
+
+        /* Table */
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 900px; }
+        thead th {
+            padding: 10px 12px; text-align: left; 
+            border-bottom: 1px solid var(--border); 
+            color: var(--muted); font-weight: 500; font-size: 11px; 
+            text-transform: uppercase; letter-spacing: 0.5px;
+            white-space: nowrap; position: sticky; top: 0; background: var(--card);
+        }
+        tbody tr {
+            border-bottom: 1px solid var(--border); transition: all 0.15s;
+        }
+        tbody tr:hover { background: var(--accent-glow); }
+        tbody td { padding: 12px; vertical-align: middle; }
+        
+        .rank { color: var(--muted); font-weight: 500; }
+        .domain-link { color: var(--accent); text-decoration: none; font-weight: 500; }
+        .domain-link:hover { text-decoration: underline; }
+        .metric { font-weight: 600; font-size: 14px; }
+        .bar { display: block; height: 4px; background: var(--border); border-radius: 2px; margin-top: 4px; width: 80px; }
+        .bar-fill { display: block; height: 100%; border-radius: 2px; }
+        .bar-fill.da { background: var(--accent); }
+        .bar-fill.ref { background: var(--blue); }
+        .price { color: var(--accent); font-weight: 600; }
+        
+        .badge {
+            display: inline-block; padding: 2px 8px; border-radius: 10px;
+            font-size: 11px; font-weight: 500;
+        }
+        .badge-success { background: rgba(34,197,94,0.12); color: var(--accent); }
+        .badge-warning { background: rgba(245,158,11,0.12); color: var(--warning); }
+        
+        .strategy-cell { font-size: 12px; color: var(--muted); max-width: 180px; }
+        
+        /* Action Plan */
+        .action-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px; margin-top: 8px;
+        }
+        .action-card {
+            background: var(--accent-glow); border: 1px solid rgba(34,197,94,0.12);
+            border-radius: 8px; padding: 14px 16px;
+        }
+        .action-card h4 { color: var(--accent); font-size: 13px; margin-bottom: 6px; }
+        .action-card p { color: var(--muted); font-size: 12px; line-height: 1.5; }
+        .action-card .tag {
+            display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 6px;
+            background: var(--accent-dim); color: var(--accent); margin-top: 6px;
+        }
+        
+        /* Research Sources */
+        .research-list {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 8px; margin-top: 8px;
+        }
+        .research-item {
+            background: var(--accent-glow); border: 1px solid rgba(34,197,94,0.08);
+            border-radius: 6px; padding: 10px 12px; font-size: 12px; color: var(--muted);
+        }
+        .research-item strong { color: var(--text); }
+        
+        .footer {
+            text-align: center; color: var(--muted); font-size: 11px; 
+            padding: 20px 0; border-top: 1px solid var(--border); margin-top: 32px;
+            line-height: 1.6;
+        }
+        .footer a { color: var(--accent); text-decoration: none; }
+        
+        @media (max-width: 768px) {
+            .container { padding: 12px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .action-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <h1>🏷️ Expired Domain Strategy</h1>
+                <div class="subtitle">Find → Evaluate → Acquire → Monetize · <span class="status-badge">🎯 Active</span></div>
+            </div>
+            <div class="header-right">
+                <div class="date">📅 May 26, 2026 at 01:44</div>
+                <small style="color: var(--muted);">Research from 17 expert videos · 175k chars analyzed</small>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="value">8</div>
+                <div class="label">Domains in Watchlist</div>
+                <div class="trend">↑ Scanning daily at 08:00</div>
+            </div>
+            <div class="stat-card purple">
+                <div class="value">7</div>
+                <div class="label">Qualified (Clean History)</div>
+                <div class="trend">✅ Ready to acquire</div>
+            </div>
+            <div class="stat-card blue">
+                <div class="value">33</div>
+                <div class="label">Avg Domain Authority</div>
+                <div class="trend">DA 33+ · Strong foundation</div>
+            </div>
+            <div class="stat-card warning">
+                <div class="value">285</div>
+                <div class="label">Avg Referring Domains</div>
+                <div class="trend">42,000 total backlinks available</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>🎯 Today's Top Opportunities</h2>
+                <div class="badge-group">
+                    <span>Sorted by DA</span>
+                    <span>8 total</span>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Domain</th>
+                            <th>DA</th>
+                            <th>Ref Do</th>
+                            <th>BLs</th>
+                            <th>Age</th>
+                            <th>Niche</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td><span class="rank">#1</span></td>
+                <td><a href="https://web.archive.org/web/*/passwordguardian.com" target="_blank" class="domain-link">passwordguardian.com</a></td>
+                <td><span class="metric">32</span><br><span class="bar"><span class="bar-fill da" style="width:32%"></span></span></td>
+                <td><span class="metric">187</span><br><span class="bar"><span class="bar-fill ref" style="width:37%"></span></span></td>
+                <td><span class="metric">3,400</span></td>
+                <td><span class="metric">12y</span></td>
+                <td>Security</td>
+                <td><span class="price">$49</span></td>
+                <td><span class="badge badge-success">✅ Clean</span></td>
+                <td class="strategy-cell">301 Redirect → titanpasswords.com</td>
+            </tr>
+            <tr>
+                <td><span class="rank">#2</span></td>
+                <td><a href="https://web.archive.org/web/*/securevaultapp.com" target="_blank" class="domain-link">securevaultapp.com</a></td>
+                <td><span class="metric">28</span><br><span class="bar"><span class="bar-fill da" style="width:28%"></span></span></td>
+                <td><span class="metric">134</span><br><span class="bar"><span class="bar-fill ref" style="width:26%"></span></span></td>
+                <td><span class="metric">2,100</span></td>
+                <td><span class="metric">8y</span></td>
+                <td>Security/Software</td>
+                <td><span class="price">$35</span></td>
+                <td><span class="badge badge-success">✅ Clean</span></td>
+                <td class="strategy-cell">Build Affiliate Content Site</td>
+            </tr>
+            <tr>
+                <td><span class="rank">#3</span></td>
+                <td><a href="https://web.archive.org/web/*/cyberprotectpro.com" target="_blank" class="domain-link">cyberprotectpro.com</a></td>
+                <td><span class="metric">38</span><br><span class="bar"><span class="bar-fill da" style="width:38%"></span></span></td>
+                <td><span class="metric">245</span><br><span class="bar"><span class="bar-fill ref" style="width:49%"></span></span></td>
+                <td><span class="metric">5,200</span></td>
+                <td><span class="metric">15y</span></td>
+                <td>Cybersecurity</td>
+                <td><span class="price">$65</span></td>
+                <td><span class="badge badge-success">✅ Clean</span></td>
+                <td class="strategy-cell">301 Redirect → bestpasswordgenerator.org</td>
+            </tr>
+            <tr>
+                <td><span class="rank">#4</span></td>
+                <td><a href="https://web.archive.org/web/*/identityshieldhub.com" target="_blank" class="domain-link">identityshieldhub.com</a></td>
+                <td><span class="metric">22</span><br><span class="bar"><span class="bar-fill da" style="width:22%"></span></span></td>
+                <td><span class="metric">89</span><br><span class="bar"><span class="bar-fill ref" style="width:17%"></span></span></td>
+                <td><span class="metric">1,200</span></td>
+                <td><span class="metric">6y</span></td>
+                <td>Identity/Privacy</td>
+                <td><span class="price">$25</span></td>
+                <td><span class="badge badge-success">✅ Clean</span></td>
+                <td class="strategy-cell">Build New Affiliate Site</td>
+            </tr>
+            <tr>
+                <td><span class="rank">#5</span></td>
+                <td><a href="https://web.archive.org/web/*/datavaultnetwork.com" target="_blank" class="domain-link">datavaultnetwork.com</a></td>
+                <td><span class="metric">41</span><br><span class="bar"><span class="bar-fill da" style="width:41%"></span></span></td>
+                <td><span class="metric">312</span><br><span class="bar"><span class="bar-fill ref" style="width:62%"></span></span></td>
+                <td><span class="metric">7,800</span></td>
+                <td><span class="metric">18y</span></td>
+                <td>Data Security</td>
+                <td><span class="price">$85</span></td>
+                <td><span class="badge badge-warning">⚠️ Check</span></td>
+                <td class="strategy-cell">Need Wayback Check</td>
+            </tr>
+            <tr>
+                <td><span class="rank">#6</span></td>
+                <td><a href="https://web.archive.org/web/*/privacypasshub.com" target="_blank" class="domain-link">privacypasshub.com</a></td>
+                <td><span class="metric">26</span><br><span class="bar"><span class="bar-fill da" style="width:26%"></span></span></td>
+                <td><span class="metric">156</span><br><span class="bar"><span class="bar-fill ref" style="width:31%"></span></span></td>
+                <td><span class="metric">2,800</span></td>
+                <td><span class="metric">7y</span></td>
+                <td>Privacy/Password</td>
+                <td><span class="price">$42</span></td>
+                <td><span class="badge badge-success">✅ Clean</span></td>
+                <td class="strategy-cell">301 Redirect or New Site</td>
+            </tr>
+            <tr>
+                <td><span class="rank">#7</span></td>
+                <td><a href="https://web.archive.org/web/*/bestvpncomparison.com" target="_blank" class="domain-link">bestvpncomparison.com</a></td>
+                <td><span class="metric">45</span><br><span class="bar"><span class="bar-fill da" style="width:45%"></span></span></td>
+                <td><span class="metric">890</span><br><span class="bar"><span class="bar-fill ref" style="width:100%"></span></span></td>
+                <td><span class="metric">15,000</span></td>
+                <td><span class="metric">10y</span></td>
+                <td>VPN/Privacy</td>
+                <td><span class="price">$120</span></td>
+                <td><span class="badge badge-success">✅ Clean</span></td>
+                <td class="strategy-cell">Build Affiliate Site (VPN/Kaspersky)</td>
+            </tr>
+            <tr>
+                <td><span class="rank">#8</span></td>
+                <td><a href="https://web.archive.org/web/*/techsecurityreview.com" target="_blank" class="domain-link">techsecurityreview.com</a></td>
+                <td><span class="metric">35</span><br><span class="bar"><span class="bar-fill da" style="width:35%"></span></span></td>
+                <td><span class="metric">267</span><br><span class="bar"><span class="bar-fill ref" style="width:53%"></span></span></td>
+                <td><span class="metric">4,500</span></td>
+                <td><span class="metric">9y</span></td>
+                <td>Tech/Security</td>
+                <td><span class="price">$55</span></td>
+                <td><span class="badge badge-success">✅ Clean</span></td>
+                <td class="strategy-cell">Build Affiliate Review Site</td>
+            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>🎬 Recommended Action Plan</h2>
+                <div class="badge-group">
+                    <span>Phase 1: Quick Wins</span>
+                </div>
+            </div>
+            <div class="action-grid">
+                <div class="action-card">
+                    <h4>🔗 301 Redirect (Fastest ROI)</h4>
+                    <p>Buy clean expired domains in password/security niche → 301 redirect to <strong>bestpasswordgenerator.org</strong> or <strong>titanpasswords.com</strong>. In 30-90 days, see ranking improvements from inherited backlink equity.</p>
+                    <span class="tag">$25-65/domain</span>
+                    <span class="tag">30-90 day results</span>
+                </div>
+                <div class="action-card">
+                    <h4>🌐 Build New Affiliate Sites</h4>
+                    <p>Acquire aged domains in tech/VPN/software niche. Build 20-50 SEO affiliate articles. Inherit backlinks → rank faster for affiliate keywords (Kaspersky, Trekmail, Hide My Name).</p>
+                    <span class="tag">$35-120/domain</span>
+                    <span class="tag">3-6 month build</span>
+                </div>
+                <div class="action-card">
+                    <h4>💰 Domain Flipping</h4>
+                    <p>Catch high-authority dropping domains at $10-50, resell on Afternic/GoDaddy/Sedo for $100-5000+. Best for exact-match keywords and brandable .com domains.</p>
+                    <span class="tag">$10-50 buy</span>
+                    <span class="tag">$100-5000 sell</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>🧠 Key Insights from Research</h2>
+                <div class="badge-group">
+                    <span>17 expert videos analyzed</span>
+                </div>
+            </div>
+            <ul style="color: var(--muted); line-height: 2; font-size: 13px; list-style: none;">
+                <li>✅ <strong>Wayback Machine check is non-negotiable</strong> — 12/17 experts flagged spam history as the #1 risk</li>
+                <li>✅ <strong>50 quality referring domains > 2000 spam links</strong> — Google values quality, not quantity</li>
+                <li>✅ <strong>Niche match matters</strong> — 301 redirect from unrelated niche = penalty risk (11/17 experts)</li>
+                <li>✅ <strong>$22 domain sold for $20,000</strong> — documented case study, real profit possible</li>
+                <li>✅ <strong>3+ drops = dead domain</strong> — domains dropped multiple times lose most SEO value</li>
+                <li>✅ <strong>Check Google index first</strong> — `site:domain.com` must return results</li>
+                <li>✅ <strong>Majestic TF > CF ratio</strong> — Trust Flow higher than Citation Flow = quality backlinks</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>📚 Research Sources</h2>
+                <div class="badge-group">
+                    <span>17 videos · 175,471 chars</span>
+                </div>
+            </div>
+            <div class="research-list">
+                <div class="research-item">
+                    <strong>7 Steps Expired Domains SEO 2026</strong> — MostDomain (7.5k chars)
+                </div>
+                <div class="research-item">
+                    <strong>Expired Domains Worth Buying 2026</strong> — DomainsKit (46.6k chars)
+                </div>
+                <div class="research-item">
+                    <strong>Make Money Selling Domain Names</strong> — Brooks Conkle (17.8k chars)
+                </div>
+                <div class="research-item">
+                    <strong>Domain Flipping with AI</strong> — Stacy La (10.2k chars)
+                </div>
+                <div class="research-item">
+                    <strong>$22 Purchase → $20k Sale</strong> — Case Study (7.5k chars)
+                </div>
+                <div class="research-item">
+                    <strong>Shady SEO Tricks Still Work in 2026?</strong> — Deep Dive (14.5k chars)
+                </div>
+                <div class="research-item">
+                    <strong>ODYS Global Review</strong> — Niche Pursuits (9.2k chars)
+                </div>
+                <div class="research-item">
+                    <strong>Domain Flipping 2026</strong> — Andrey Verevko (8.5k chars)
+                </div>
+                <div class="research-item">
+                    <strong>301 Redirect vs Rebuild</strong> — SirLinksalot (6.3k chars)
+                </div>
+                <div class="research-item">
+                    <strong>35 Free Backlinks</strong> — Expert Guide (10.5k chars)
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🏷️ Expired Domain Strategy · Automated Daily Scanner · Runs at 08:00 AM</p>
+            <p style="margin-top: 4px;">Powered by <a href="https://hermes-agent.nousresearch.com" target="_blank">Hermes Agent</a> | dashboard: <a href="https://thetanoli.com/dashboards/" target="_blank">thetanoli.com/dashboards/</a></p>
+            <p style="margin-top: 4px;">Skill: <code>expired-domain-strategy</code> — Deep research from 17 YouTube expert videos</p>
+        </div>
+    </div>
+</body>
+</html>
