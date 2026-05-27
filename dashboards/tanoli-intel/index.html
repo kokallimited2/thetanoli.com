@@ -3,139 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📊 Tanoli's Trading Intel Hub</title>
+<title>Tanoli Intel — Trading Dashboard</title>
 <style>
-:root { --bg: #0a0f1e; --bg2: #111827; --card: #1e293b; --border: #334155; --accent: #f59e0b; --green: #22c55e; --red: #ef4444; --blue: #3b82f6; --purple: #8b5cf6; --teal: #0d9488; --text: #f1f5f9; --text2: #94a3b8; --rad: 12px; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; padding: 20px; max-width: 1200px; margin: 0 auto; }
-h1 { color: var(--accent); font-size: 1.6rem; margin-bottom: 4px; }
-.subtitle { color: var(--text2); margin-bottom: 24px; font-size: 0.9rem; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
-.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 16px; transition: border-color .2s; }
-.card:hover { border-color: var(--accent); }
-.card h3 { color: var(--accent); font-size: 1rem; margin-bottom: 6px; }
-.card p { color: var(--text2); font-size: 0.85rem; margin-bottom: 10px; }
-.card .status { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
-.status-live { background: rgba(34,197,94,0.15); color: var(--green); }
-.status-pending { background: rgba(245,158,11,0.15); color: var(--accent); }
-.card .meta { color: var(--text2); font-size: 0.78rem; margin-top: 8px; }
-.section-title { color: var(--blue); font-size: 1.2rem; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 2rem; }
+h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.3rem; }
+.subtitle { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.5rem; text-decoration: none; color: #c9d1d9; transition: border-color 0.2s, transform 0.2s; display: block; }
+.card:hover { border-color: #58a6ff; transform: translateY(-2px); }
+.card-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.3rem; font-size: 1.1rem; }
+.card-desc { color: #8b949e; font-size: 0.85rem; line-height: 1.4; }
+.card-meta { color: #6e7681; font-size: 0.75rem; margin-top: 0.5rem; }
+.badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-right: 0.3rem; }
+.badge-green { background: #3fb95033; color: #3fb950; }
+.badge-blue { background: #58a6ff33; color: #58a6ff; }
+.badge-orange { background: #d2992233; color: #d29922; }
+.badge-purple { background: #a371f733; color: #a371f7; }
+.badge-red { background: #f8514933; color: #f85149; }
+.section-title { font-size: 1.2rem; color: #f0883e; margin: 2rem 0 0.5rem 0; padding-bottom: 0.5rem; border-bottom: 1px solid #21262d; }
+a { text-decoration: none; }
+iframe { width: 100%; border: none; background: #161b22; border-radius: 8px; border: 1px solid #30363d; }
 </style>
 </head>
 <body>
-<h1>📊 Tanoli Saab's Trading Intel Hub</h1>
-<p class="subtitle">Stock analysis, crypto signals, options flow, portfolio tracking — all in one place</p>
 
-<h2 class="section-title">📈 Trading Dashboards</h2>
-<div class="grid" id="trading-grid">
-  <a href="trade-signals.html" style="text-decoration:none"><div class="card">
-    <h3>📊 Portfolio Dashboard</h3>
-    <p>£10k stocks + £10k crypto — P&amp;L, open positions, portfolio growth chart</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">Updated daily 4pm UK</div>
-  </div></a>
-  <a href="stock-scan.html" style="text-decoration:none"><div class="card">
-    <h3>📉 Stock Scanner</h3>
-    <p>US stock market scan — technical signals, Reddit sentiment, watchlist</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">Updated daily 2:35pm UK</div>
-  </div></a>
-  <a href="stocks-learning.html" style="text-decoration:none"><div class="card">
-    <h3>🧠 Stock Analysis Report</h3>
-    <p>15-stock daily analysis — scores, decisions, RSI, trend info</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">Updated daily 8am UK</div>
-  </div></a>
-  <a href="trading-course.html" style="text-decoration:none"><div class="card">
-    <h3>📡 Trading Pipeline</h3>
-    <p>Daily YouTube scan — 50 queries, auto-categorised strategy knowledge base for stocks, options &amp; crypto</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">Updated weekdays 7am UK</div>
-  </div></a>
-  <a href="catalyst-screener.html" style="text-decoration:none"><div class="card" style="border-left:3px solid #a855f7;">
-    <h3>💊 Catalyst Screener</h3>
-    <p>Biotech & pharma stocks with binary events — FDA dates, trial readouts, breakthroughs. Scoring, targets & verdicts.</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">Updated on run · 20 catalysts tracked</div>
-  </div></a>
-  <a href="micro-stock-screener.html" style="text-decoration:none"><div class="card" style="border-left:3px solid #ef4444;">
-    <h3>🚀 Micro-Stock Runner Screener</h3>
-    <p>Top 10 micro/small-cap stocks with 2x+ potential — momentum, volume surges, breakout setups &amp; clear verdicts</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">Updated market days 2:30pm UK</div>
-  </div></a>
+<h1>📊 Tanoli Trading Dashboard</h1>
+<div class="subtitle">Live dashboards · Stock scans · Options flow · Performance reviews · Automated assessment</div>
+
+<h2 class="section-title">📈 Core Dashboards (Updated Daily)</h2>
+<div class="grid">
+
+<a class="card" href="trade-performance.html" target="main-frame">
+    <div class="card-icon">📊</div>
+    <div class="card-title">Stock Trade Performance</div>
+    <div class="card-desc">Closed stock trades — win rate, expectancy, profit factor, signal score analysis, ticker breakdown, recommendations.</div>
+    <div class="card-meta"><span class="badge badge-green">updating 20:30 Mon-Fri</span></div>
+</a>
+
+<a class="card" href="options-performance.html" target="main-frame">
+    <div class="card-icon">📊</div>
+    <div class="card-title">Options Trade Performance</div>
+    <div class="card-desc">Closed options trades — performance by signal type (BULLISH_CALL, BEARISH_PUT, IV_SPIKE), DTE bucket, sector, direction accuracy.</div>
+    <div class="card-meta"><span class="badge badge-green">updating 20:00 Mon-Fri</span></div>
+</a>
+
+<a class="card" href="biweekly-assessment.html" target="main-frame">
+    <div class="card-icon">🏆</div>
+    <div class="card-title">Bi-Weekly Assessment</div>
+    <div class="card-desc">Combined stock + options review. Overall grade (A-F), best/worst strategies, sector analysis, market regime, action recommendations.</div>
+    <div class="card-meta"><span class="badge badge-purple">updating every 2 weeks Mon</span> <span class="badge badge-orange">latest</span></div>
+</a>
+
 </div>
 
-<h2 class="section-title">🪙 Crypto &amp; Options</h2>
-<div class="grid" id="crypto-grid">
-  <a href="crypto-scan.html" style="text-decoration:none"><div class="card">
-    <h3>🪙 Crypto Scanner</h3>
-    <p>Top 50 coins — buy/sell signals, RSI, MACD, EMA cross — now with trade scoring &amp; verdicts</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">Updated 6am &amp; 6pm UK</div>
-  </div></a>
-  <a href="crypto-trade-monitor.html" style="text-decoration:none"><div class="card" style="border-left:3px solid #22c55e;">
-    <h3>📈 Crypto Trade Monitor</h3>
-    <p>Top 15 crypto trades ranked by momentum, volume, cap &amp; trend — with clear go/no-go verdicts</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">Updated 6am &amp; 6pm UK</div>
-  </div></a>
-  <a href="options-scan.html" style="text-decoration:none"><div class="card">
-    <h3>🎯 Options Flow Scanner</h3>
-    <p>Unusual options activity on 14 watchlist tickers</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">Updated 3pm &amp; 8:30pm UK</div>
-  </div></a>
-  <a href="paper-trading.html" style="text-decoration:none"><div class="card" style="border-left:3px solid #8b5cf6;">
-    <h3>📝 Paper Trading</h3>
-    <p>Strategy testing — spot (bullish) &amp; futures (bearish). Win rates, regime history, per-strategy performance.</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">Updated 06:06 daily · 7 strategies · $10k paper capital</div>
-  </div></a>
-  <a href="trade-performance.html" style="text-decoration:none"><div class="card" style="border-left:3px solid #f59e0b;">
-    <h3>🎯 Trade Performance Analysis</h3>
-    <p>Post-trade analysis — win rate, expectancy, profit factor, best/worst trades, ticker performance, strategy recommendations.</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">Updated after market close</div>
-  </div></a>
-  <a href="options-paper-trading.html" style="text-decoration:none"><div class="card" style="border-left:3px solid #f59e0b;">
-    <h3>📝 Options Paper Trading</h3>
-    <p>IBKR paper trading — reads scanner signals, executes options trades, gateway status, trade journal.</p>
-    <span class="status status-pending">New — Paper</span>
-    <div class="meta">IB Gateway + ib_insync · $10k paper</div>
-  </div></a>
-  <a href="forex-scan.html" style="text-decoration:none"><div class="card" style="border-left:3px solid #0d9488;">
-    <h3>💱 Forex Screener</h3>
-    <p>37 forex pairs — 4 timeframes, 15+ indicators, 0-100 scoring, buy/sell signals, risk management via IBKR.</p>
-    <span class="status status-pending">New — Paper</span>
-    <div class="meta">IB Gateway + ib_insync · M15/H1/H4/D1</div>
-  </div></a>
-  <a href="gold-scan.html" style="text-decoration:none"><div class="card" style="border-left:3px solid #f59e0b;">
-    <h3>🥇 Gold Screener</h3>
-    <p>MGC Micro Gold Futures — technicals, DXY correlation, round number S/R, divergence detection, COMEX session signals.</p>
-    <span class="status status-pending">New — Paper</span>
-    <div class="meta">yfinance + IBKR · COMEX · DXY correlated</div>
-  </div></a>
+<h2 class="section-title">🟢 Scanners (Updated 14:35 Mon-Fri)</h2>
+<div class="grid">
+
+<a class="card" href="../../reports/stock-scan-2026-05-27.html" target="main-frame">
+    <div class="card-icon">📈</div>
+    <div class="card-title">US Stock Scanner</div>
+    <div class="card-desc">103 stocks · technical buy/sell signals · sector breakdown · price targets · Reddit sentiment.</div>
+    <div class="card-meta"><span class="badge badge-blue">latest scan</span></div>
+</a>
+
+<a class="card" href="../../reports/options-scan-2026-05-27.html" target="main-frame">
+    <div class="card-icon">📊</div>
+    <div class="card-title">US Options Scanner</div>
+    <div class="card-desc">95+ tickers · unusual call/put volume · OI builds · IV spikes · flow ratios · tracked paper trades.</div>
+    <div class="card-meta"><span class="badge badge-blue">latest scan</span></div>
+</a>
+
 </div>
 
-<h2 class="section-title">📚 Knowledge Base</h2>
-<div class="grid" id="kb-grid">
-  <a href="trading-kb.html" style="text-decoration:none"><div class="card">
-    <h3>📖 Trading Knowledge Base</h3>
-    <p>16 strategy categories from 116+ YouTube transcripts</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">Updated daily 5am UK</div>
-  </div></a>
-  <a href="trading-assessment.html" style="text-decoration:none"><div class="card">
-    <h3>✍️ Trading Assessment</h3>
-    <p>Interactive scenario-based Q&amp;A across all strategies</p>
-    <span class="status status-live">Live</span>
-    <div class="meta">249 questions across 13 categories</div>
-  </div></a>
+<h2 class="section-title">🔄 Supporting Dashboards</h2>
+<div class="grid">
+
+<a class="card" href="../../dashboards/tanoli-intel/" style="opacity:0.7" target="main-frame">
+    <div class="card-icon">💼</div>
+    <div class="card-title">Portfolio Tracker</div>
+    <div class="card-desc">Dual portfolio (£10k stocks + £10k crypto) — live prices, P&L, trade history.</div>
+    <div class="card-meta"><span class="badge badge-blue">updating 16:00 daily</span></div>
+</a>
+
+<a class="card" href="../../dashboards/micro-stocks/" style="opacity:0.7" target="main-frame">
+    <div class="card-icon">🎯</div>
+    <div class="card-title">Micro-Stock Runners</div>
+    <div class="card-desc">Small-cap momentum runners scanning for breakout/breakdown patterns.</div>
+    <div class="card-meta"><span class="badge badge-blue">updating 14:30 Mon-Fri</span></div>
+</a>
+
+<a class="card" href="../../dashboards/catalyst/" style="opacity:0.7" target="main-frame">
+    <div class="card-icon">💊</div>
+    <div class="card-title">Catalyst Screener</div>
+    <div class="card-desc">Biotech/pharma stocks with binary catalyst events — FDA dates, trial readouts.</div>
+    <div class="card-meta"><span class="badge badge-blue">updating 08:00 Mon-Fri</span></div>
+</a>
+
 </div>
 
-<div class="footer" style="margin-top: 32px; padding-top: 12px; border-top: 1px solid var(--border); color: var(--text2); font-size: 0.8rem; text-align: center;">
-  Tanoli Trading Intel Hub — Updated periodically
+<h2 class="section-title">⚡ Quick Links</h2>
+<div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+
+<a class="card" href="https://github.com/tanoli-folio" target="_blank" style="text-align:center;">
+    <div class="card-icon">💻</div>
+    <div class="card-title">GitHub</div>
+</a>
+
+<a class="card" href="https://thetanoli.com" target="_blank" style="text-align:center;">
+    <div class="card-icon">🌐</div>
+    <div class="card-title">thetanoli.com</div>
+</a>
+
 </div>
+
+<hr style="border: none; border-top: 1px solid #21262d; margin: 2rem 0;">
+<div class="subtitle" style="text-align: center;">All dashboards auto-generated by Hermes Agent · Khan Lala 👑</div>
+
 </body>
 </html>
