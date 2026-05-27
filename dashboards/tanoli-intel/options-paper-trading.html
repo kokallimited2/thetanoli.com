@@ -2,57 +2,39 @@
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Options Paper Trading | Tanoli Intel</title>
 <style>
-body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
-.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; max-width: 800px; }
+body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; max-width: 600px; }
 h1 { color: #58a6ff; font-size: 1.3rem; margin: 0 0 16px 0; }
-.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+.metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 .metric { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; text-align: center; }
 .metric .value { font-size: 1.4em; font-weight: bold; }
 .metric .label { font-size: 0.8em; color: #8b949e; margin-top: 4px; }
-.green { color: #3fb950; } .red { color: #f85149; } .blue { color: #58a6ff; }
-table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
-th { text-align: left; padding: 8px; border-bottom: 1px solid #30363d; color: #8b949e; }
-td { padding: 6px 8px; border-bottom: 1px solid #21262d; }
-tr:hover { background: #1c2128; }
-.status { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
-.gateway-stopped { background: rgba(248,81,73,0.15); color: #f85149; }
+.green { color: #3fb950; }
+.red { color: #f85149; }
+.blue { color: #58a6ff; }
+.yellow { color: #d29922; }
 .pipeline { font-size: 0.9em; margin: 16px 0; line-height: 1.6; }
-.alert { background: rgba(210,153,34,0.1); border: 1px solid rgba(210,153,34,0.3); border-radius: 6px; padding: 10px; margin: 12px 0; font-size: 0.85em; color: #d29922; }
+.note { font-size: 0.85em; color: #f85149; background: rgba(248,81,73,0.1); border: 1px solid rgba(248,81,73,0.3); border-radius: 6px; padding: 10px; margin-top: 12px; }
 </style></head><body>
 <div class="card">
-<h1>📝 Options Paper Trading — Daily Scan</h1>
-<p style="color:#8b949e;font-size:0.85em;margin-bottom:16px">2026-05-26 14:49</p>
-
-<div class="alert">
-⚠️ IB Gateway not logged in — auto-login not configured. Trades are NOT being placed. 
-Run <code>xvfb-run ~/ibkr/gateway/installed/ibgateway</code> manually and log in with saved password to enable execution.
-</div>
-
+<h1>📝 Options Paper Trading</h1>
+<p style="color:#8b949e;font-size:0.85em;margin-bottom:16px">2026-05-27 15:01</p>
 <div class="metrics">
-    <div class="metric"><div class="value red">❌</div><div class="label">Gateway</div></div>
-    <div class="metric"><div class="value blue">14</div><div class="label">Tickers Scanned</div></div>
-    <div class="metric"><div class="value blue">7</div><div class="label">High-Conf Signals</div></div>
-    <div class="metric"><div class="value blue">0</div><div class="label">Trades Executed</div></div>
+    <div class="metric"><div class="value red">❌</div><div class="label">Gateway Status</div></div>
+    <div class="metric"><div class="value blue">0</div><div class="label">Today's Trades</div></div>
+    <div class="metric"><div class="value blue">0</div><div class="label">Total Journal Trades</div></div>
+    <div class="metric"><div class="value blue">251</div><div class="label">Signals Today</div></div>
 </div>
-
-<h2 style="color:#58a6ff;font-size:1rem;margin:16px 0 8px">Top Signals</h2>
-<table>
-<thead><tr><th>Ticker</th><th>Signal</th><th>Strength</th><th>Reason</th></tr></thead>
-<tbody>
-<tr><td>MSFT</td><td>🟢 BULLISH_FLOW</td><td>7/10</td><td style="font-size:0.8em;color:#8b949e">Call/Put vol ratio 4.2:1 — 13595c vs 3272p</td></tr>
-<tr><td>MSFT</td><td>🟢 BULLISH_FLOW</td><td>7/10</td><td style="font-size:0.8em;color:#8b949e">Call/Put vol ratio 3.5:1 — 65505c vs 18647p</td></tr>
-<tr><td>AMZN</td><td>🟢 BULLISH_FLOW</td><td>7/10</td><td style="font-size:0.8em;color:#8b949e">Call/Put vol ratio 3.4:1 — 10430c vs 3064p</td></tr>
-<tr><td>AMZN</td><td>🟢 BULLISH_FLOW</td><td>7/10</td><td style="font-size:0.8em;color:#8b949e">Call/Put vol ratio 4.2:1 — 69759c vs 16585p</td></tr>
-<tr><td>META</td><td>🟢 BULLISH_FLOW</td><td>7/10</td><td style="font-size:0.8em;color:#8b949e">Call/Put vol ratio 3.2:1 — 50862c vs 15669p</td></tr>
-<tr><td>SOFI</td><td>🟢 BULLISH_FLOW</td><td>7/10</td><td style="font-size:0.8em;color:#8b949e">Call/Put vol ratio 3.3:1 — 28680c vs 8602p</td></tr>
-<tr><td>IWM</td><td>🔴 BEARISH_FLOW</td><td>7/10</td><td style="font-size:0.8em;color:#8b949e">Call/Put OI ratio 0.32:1 — heavy put positioning</td></tr>
-
-</tbody>
-</table>
-
 <div class="pipeline">
-<div><b>Last Scan:</b> 2026-05-26 14:49</div>
-<div><b>Note:</b> Scanner completed successfully. 899 signals detected (19 bullish, 25 bearish). 
-Execution pending gateway login — log in once, then future cron runs auto-execute.</div>
+<div><b>Last Pipeline Run:</b> 2026-05-27 15:01</div>
+<div><b>Executed:</b> 0 trades</div>
+<div><b>Skipped:</b> 0 signals</div>
+</div>
+<div class="note">
+⚠️ <b>Gateway Login Required</b> — IB Gateway is running but no auto-login session saved.<br>
+To fix: SSH in and run <code>xvfb-run ~/ibkr/gateway/installed/ibgateway</code>, log in with paper trading credentials, check "Save password". Future restarts will auto-login.<br>
+<br>
+<b>Scanner Status:</b> ✅ Running — 251 signals generated today<br>
+<b>Executor:</b> ⛔ Skipped — gateway not authenticated
 </div>
 </div></body></html>
