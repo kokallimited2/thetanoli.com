@@ -5,216 +5,524 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0d1117">
 <title>Portfolio | Tanoli Intel</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: #0d1117; color: #c9d1d9; }
+html, body { margin:0; padding:0; background:#0d1117; color:#e6edf3; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 18px;
-  line-height: 1.5;
-  padding: 24px;
-  max-width: 1400px;
-  margin: 0 auto;
+  font-size:18px;
+  line-height:1.8;
 }
-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #30363d; }
-h1 { margin: 0; font-size: 1.6em; color: #58a6ff; }
-h2 { margin: 0 0 12px 0; color: #58a6ff; font-size: 1.15em; border-bottom: 1px solid #30363d; padding-bottom: 6px; }
-.subtitle { color: #8b949e; font-size: 0.9em; }
-.timestamp { color: #8b949e; font-size: 0.85em; }
-.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 18px; margin-bottom: 18px; }
-.grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-.metric { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px 14px; }
-.metric .v { font-size: 1.4em; font-weight: 700; }
-.metric .l { font-size: 0.75em; color: #8b949e; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
-table { width: 100%; border-collapse: collapse; font-size: 16px; }
-th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #30363d; }
-th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #8b949e; font-weight: 600; background: #0d1117; position: sticky; top: 0; }
-tr:hover { background: #1c2128; }
-td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-.green { color: #3fb950; } .red { color: #f85149; }
-.muted { color: #8b949e; }
-.orange { color: #d29922; } .blue { color: #58a6ff; } .purple { color: #bc8cff; }
-.tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; background: #1c2128; color: #8b949e; border: 1px solid #30363d; }
-.tag.paper { color: #bc8cff; border-color: rgba(188,140,255,0.3); }
-.tag.live  { color: #58a6ff;   border-color: rgba(88,166,255,0.3); }
-.empty { color: #8b949e; text-align: center; padding: 16px; font-style: italic; }
-.bar { height: 6px; background: #1c2128; border-radius: 3px; overflow: hidden; }
-.bar > span { display: block; height: 100%; }
-.scroll { max-height: 460px; overflow-y: auto; }
-footer { color: #8b949e; font-size: 0.8em; margin-top: 32px; padding-top: 12px; border-top: 1px solid #30363d; text-align: center; }
-@media (max-width: 680px) {
-  body { padding: 14px; font-size: 13px; }
-  h1 { font-size: 1.3em; }
-  .metric .v { font-size: 1.15em; }
-  th, td { padding: 6px 8px; }
+.container { max-width:1200px; margin:0 auto; padding:28px 32px; }
+.header-bar {
+  background:linear-gradient(135deg,#f59e0b,#d97706);
+  border-radius:10px;
+  padding:18px 24px;
+  margin-bottom:28px;
 }
+.header-bar h1 { margin:0 0 6px 0; color:#0d1117; font-size:28px; font-weight:800; }
+.header-bar p { margin:0; color:#422006; font-size:15px; font-weight:600; }
+
+h2 { color:#e6edf3; font-size:22px; font-weight:700; margin:36px 0 16px 0; padding-bottom:8px; border-bottom:1px solid #30363d; }
+
+.card {
+  background:#161b22;
+  border:1px solid #30363d;
+  border-radius:10px;
+  padding:16px 24px;
+  margin-bottom:16px;
+}
+
+.stats-row { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-bottom:16px; }
+.stat-card {
+  background:#161b22;
+  border:1px solid #30363d;
+  border-radius:10px;
+  padding:16px 24px;
+}
+.stat-card h3 { margin:0 0 12px 0; font-size:16px; color:#e6edf3; font-weight:700; }
+.stat-row { display:flex; justify-content:space-between; align-items:baseline; padding:4px 0; font-size:15px; }
+.stat-row .lbl { color:#8b949e; font-size:13px; text-transform:uppercase; letter-spacing:0.5px; }
+.stat-row .val { color:#e6edf3; font-weight:600; }
+
+.stat-num { font-size:28px; font-weight:800; }
+.stat-label { font-size:12px; color:#8b949e; text-transform:uppercase; letter-spacing:0.5px; margin-top:4px; }
+
+.metric-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:14px; margin-bottom:16px; }
+.metric-tile {
+  background:#161b22;
+  border:1px solid #30363d;
+  border-radius:10px;
+  padding:16px 24px;
+}
+
+table { width:100%; border-collapse:collapse; background:#161b22; border:1px solid #30363d; border-radius:10px; overflow:hidden; }
+th {
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  color:#8b949e;
+  background:#161b22;
+  text-align:left;
+  padding:10px 14px;
+  border-bottom:1px solid #30363d;
+}
+td {
+  font-size:16px;
+  padding:10px 14px;
+  border-bottom:1px solid #30363d;
+  color:#e6edf3;
+}
+tr:last-child td { border-bottom:none; }
+
+.green { color:#3fb950; font-weight:700; }
+.red { color:#ef4444; font-weight:700; }
+.amber { color:#f59e0b; font-weight:700; }
+.blue { color:#58a6ff; font-weight:700; }
+.muted { color:#8b949e; }
+
+.options-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; }
+.options-tile { background:#161b22; border:1px solid #30363d; border-radius:10px; padding:14px 18px; }
+.options-tile .ticker { font-size:18px; font-weight:800; color:#e6edf3; margin-bottom:8px; }
+.options-tile .row { font-size:14px; padding:3px 0; }
+
+.chart-wrap { background:#161b22; border:1px solid #30363d; border-radius:10px; padding:20px; height:360px; }
+
+.howto { background:#161b22; border:1px solid #30363d; border-radius:10px; padding:20px 28px; }
+.howto h3 { margin:18px 0 6px 0; color:#f59e0b; font-size:16px; font-weight:700; }
+.howto h3:first-child { margin-top:0; }
+.howto p { margin:0 0 8px 0; font-size:15px; line-height:1.7; color:#e6edf3; }
+
+.reason-snippet { font-size:13px; color:#8b949e; max-width:340px; }
 </style>
 </head>
 <body>
-<div style="max-width: 1200px; margin: 0 auto;">
-<header>
-  <div style="background: linear-gradient(135deg, #f59e0b, #d97706); padding: 18px 24px; border-radius: 8px; margin-bottom: 24px;">
-    <h1 style="margin: 0; color: #1a1a1a; font-size: 1.6em;">Portfolio Dashboard</h1>
-    <div style="color: #4a3000; font-size: 0.9em; margin-top: 4px;">Paper portfolios (£10k stocks + £10k crypto) and live trader positions</div>
-    <div style="color: #4a3000; font-size: 0.85em; margin-top: 2px;">Updated 2026-05-26 16:04 BST</div>
+<div class="container">
+
+  <div class="header-bar">
+    <h1>Portfolio Dashboard</h1>
+    <p>Paper trading + signal performance — updated 2026-05-27 16:00 UK</p>
   </div>
 
-  <div style="background: #1c2128; border: 1px solid #30363d; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px;">
-    <h4 style="margin: 0 0 8px 0; color: #58a6ff; font-size: 1em;">How to Read This Page</h4>
-    <ul style="margin: 0; padding-left: 20px; color: #8b949e; font-size: 14px; line-height: 1.6;">
-      <li><strong>Paper portfolios</strong> = £10k stocks + £10k crypto — simulated buy/sell tracking</li>
-      <li><strong>Live trader</strong> = actual positions from stock scanner and options flow</li>
-      <li><strong>Green</strong> = profit / winning trade &nbsp; <strong>Red</strong> = loss / losing trade</li>
-      <li>Figures in £ (paper) or $ (live trader) — check the source tag on each position</li>
-    </ul>
-  </div>
-
-<section class="card">
+  <!-- 1. PORTFOLIO OVERVIEW -->
   <h2>Portfolio Overview</h2>
-  <div class="grid">
-    <div class="metric"><div class="v">£19,983.17</div><div class="l">Paper Portfolio Total</div></div>
-    <div class="metric"><div class="v red">−£16.83</div><div class="l">Paper P&amp;L</div></div>
-    <div class="metric"><div class="v red">-0.08%</div><div class="l">Paper Return</div></div>
-    <div class="metric"><div class="v">£19,983.17</div><div class="l">Cash Available</div></div>
-    <div class="metric"><div class="v">9</div><div class="l">Open Positions</div></div>
-  </div>
-  <div class="grid" style="margin-top:14px">
-    <div class="metric">
-      <div class="v">£9,983.17</div>
-      <div class="l">Paper Stocks <span class="red">−£16.83</span></div>
+  <div class="stats-row">
+    <div class="stat-card">
+      <h3>Stocks Portfolio (£10,000 start)</h3>
+      <div class="stat-row"><span class="lbl">Cash</span><span class="val">£9,983.17</span></div>
+      <div class="stat-row"><span class="lbl">Positions Value</span><span class="val">£0.00</span></div>
+      <div class="stat-row"><span class="lbl">Total Value</span><span class="val">£9,983.17</span></div>
+      <div class="stat-row"><span class="lbl">P&amp;L vs Start</span><span class="val red">−£16.83 (−0.17%)</span></div>
     </div>
-    <div class="metric">
-      <div class="v">£10,000.00</div>
-      <div class="l">Paper Crypto <span class="muted">£0.00</span></div>
-    </div>
-    <div class="metric">
-      <div class="v">9</div>
-      <div class="l">Live Open (stock/opt/crypto)</div>
-    </div>
-    <div class="metric">
-      <div class="v muted">£0.00</div>
-      <div class="l">Unrealised P&amp;L (all)</div>
+    <div class="stat-card">
+      <h3>Crypto Portfolio (£10,000 start)</h3>
+      <div class="stat-row"><span class="lbl">Cash</span><span class="val">£10,000.00</span></div>
+      <div class="stat-row"><span class="lbl">Positions Value</span><span class="val">£0.00</span></div>
+      <div class="stat-row"><span class="lbl">Total Value</span><span class="val">£10,000.00</span></div>
+      <div class="stat-row"><span class="lbl">P&amp;L vs Start</span><span class="val muted">£0.00 (0.00%)</span></div>
     </div>
   </div>
-</section>
 
-
-<section class="card">
-  <h2>Open Positions</h2>
-  <div class="scroll">
+  <!-- 2. OPEN STOCK SIGNALS -->
+  <h2>Open Stock Signals</h2>
   <table>
-    <thead><tr>
-      <th>Symbol</th><th>Source</th>
-      <th class="num">Qty</th><th class="num">Avg</th><th class="num">Last</th>
-      <th class="num">Value</th><th class="num">P&amp;L</th><th class="num">%</th>
-      <th>Entry</th>
-    </tr></thead>
-    <tbody><tr><td><strong>?</strong></td><td><span class="tag live">Stock Trader</span></td><td class="num">0.0000</td><td class="num">$297.9400</td><td class="num">$297.9400</td><td class="num">$0.00</td><td class="num muted">$0.00</td><td class="num muted">+0.00%</td><td class="muted">2026-05-18</td></tr><tr><td><strong>?</strong></td><td><span class="tag live">Stock Trader</span></td><td class="num">0.0000</td><td class="num">$398.6100</td><td class="num">$398.6100</td><td class="num">$0.00</td><td class="num muted">$0.00</td><td class="num muted">+0.00%</td><td class="muted">2026-05-18</td></tr><tr><td><strong>?</strong></td><td><span class="tag live">Stock Trader</span></td><td class="num">0.0000</td><td class="num">$227.1000</td><td class="num">$227.1000</td><td class="num">$0.00</td><td class="num muted">$0.00</td><td class="num muted">+0.00%</td><td class="muted">2026-05-18</td></tr><tr><td><strong>?</strong></td><td><span class="tag live">Stock Trader</span></td><td class="num">0.0000</td><td class="num">$77.2200</td><td class="num">$77.2200</td><td class="num">$0.00</td><td class="num muted">$0.00</td><td class="num muted">+0.00%</td><td class="muted">2026-05-18</td></tr><tr><td><strong>?</strong></td><td><span class="tag live">Stock Trader</span></td><td class="num">0.0000</td><td class="num">$132.4300</td><td class="num">$132.4300</td><td class="num">$0.00</td><td class="num muted">$0.00</td><td class="num muted">+0.00%</td><td class="muted">2026-05-20</td></tr><tr><td><strong>?</strong></td><td><span class="tag live">Stock Trader</span></td><td class="num">0.0000</td><td class="num">$422.1600</td><td class="num">$422.1600</td><td class="num">$0.00</td><td class="num muted">$0.00</td><td class="num muted">+0.00%</td><td class="muted">2026-05-22</td></tr><tr><td><strong>?</strong></td><td><span class="tag live">Stock Trader</span></td><td class="num">0.0000</td><td class="num">$424.3500</td><td class="num">$424.3500</td><td class="num">$0.00</td><td class="num muted">$0.00</td><td class="num muted">+0.00%</td><td class="muted">2026-05-22</td></tr><tr><td><strong>?</strong></td><td><span class="tag live">Stock Trader</span></td><td class="num">0.0000</td><td class="num">$476.9000</td><td class="num">$476.9000</td><td class="num">$0.00</td><td class="num muted">$0.00</td><td class="num muted">+0.00%</td><td class="muted">2026-05-22</td></tr><tr><td><strong>?</strong></td><td><span class="tag live">Stock Trader</span></td><td class="num">0.0000</td><td class="num">$61.8900</td><td class="num">$61.8900</td><td class="num">$0.00</td><td class="num muted">$0.00</td><td class="num muted">+0.00%</td><td class="muted">2026-05-22</td></tr></tbody>
+    <thead>
+      <tr>
+        <th>Ticker</th>
+        <th>Entry Price</th>
+        <th>Current Signal</th>
+        <th>Score</th>
+        <th>Target</th>
+        <th>Stop Loss</th>
+        <th>Target Gain %</th>
+        <th>Reason</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🟢 AAPL</td><td>$297.94</td><td class="green">BUY</td><td>5.5</td><td>$333.03</td><td>$273.49</td><td class="green">+11.8%</td>
+        <td class="reason-snippet">MACD bullish crossover; Price above EMA20 ($285.0); EMA20 &gt; EMA50</td>
+      </tr>
+      <tr>
+        <td>🟢 GOOGL</td><td>$398.61</td><td class="amber">WEAK BUY</td><td>3.0</td><td>$424.24</td><td>$370.15</td><td class="green">+6.4%</td>
+        <td class="reason-snippet">Price above EMA20 ($377.7); EMA20 &gt; EMA50 (bullish structure)</td>
+      </tr>
+      <tr>
+        <td>🟢 NVDA</td><td>$227.10</td><td class="green">BUY</td><td>5.5</td><td>$277.37</td><td>$194.07</td><td class="green">+22.1%</td>
+        <td class="reason-snippet">MACD bullish crossover; Price above EMA20 ($212.74); EMA20 &gt; EMA50</td>
+      </tr>
+      <tr>
+        <td>🟢 HOOD</td><td>$77.22</td><td class="green">BUY</td><td>4.0</td><td>$81.93</td><td>$73.51</td><td class="green">+6.1%</td>
+        <td class="reason-snippet">RSI neutral-bullish at 43.6; EMA20 &gt; EMA50; At EMA50 support</td>
+      </tr>
+      <tr>
+        <td>🟢 PLTR</td><td>$132.43</td><td class="amber">WEAK BUY</td><td>3.5</td><td>$138.38</td><td>$127.46</td><td class="green">+4.5%</td>
+        <td class="reason-snippet">RSI neutral-bullish at 41.4; Near BB lower band; Near recent low</td>
+      </tr>
+      <tr>
+        <td>🟢 MSFT</td><td>$422.16</td><td class="amber">WEAK BUY</td><td>3.0</td><td>$458.00</td><td>$396.01</td><td class="green">+8.5%</td>
+        <td class="reason-snippet">Price above EMA20 ($414.52); EMA20 &gt; EMA50 (bullish structure)</td>
+      </tr>
+      <tr>
+        <td>🟢 TSLA</td><td>$424.35</td><td class="amber">WEAK BUY</td><td>3.0</td><td>$474.05</td><td>$389.69</td><td class="green">+11.7%</td>
+        <td class="reason-snippet">Price above EMA20 ($411.06); EMA20 &gt; EMA50 (bullish structure)</td>
+      </tr>
+      <tr>
+        <td>🟢 AMD</td><td>$476.90</td><td class="amber">WEAK BUY</td><td>3.0</td><td>$481.37</td><td>$389.43</td><td class="green">+0.9%</td>
+        <td class="reason-snippet">Price above EMA20 ($405.3); EMA20 &gt; EMA50 (bullish structure)</td>
+      </tr>
+      <tr>
+        <td>🟢 IONQ</td><td>$61.89</td><td class="green">BUY</td><td>5.5</td><td>$63.93</td><td>$45.05</td><td class="green">+3.3%</td>
+        <td class="reason-snippet">MACD bullish crossover; Price above EMA20 ($51.02); EMA20 &gt; EMA50</td>
+      </tr>
+    </tbody>
   </table>
-  </div>
-</section>
 
-
-<section class="card">
-  <h2>Recent Trades</h2>
-  <div class="scroll">
+  <!-- 3. RECENT COMPLETED TRADES -->
+  <h2>Recent Completed Trades</h2>
   <table>
-    <thead><tr>
-      <th>Date</th><th>Symbol</th><th>Source</th><th>Action</th>
-      <th class="num">Qty</th><th class="num">Price</th><th class="num">P&amp;L</th>
-    </tr></thead>
-    <tbody><tr><td class="muted">2026-05-22 21:00:18</td><td><strong>GOOGL</strong></td><td><span class="tag paper">Paper Stocks</span></td><td class="red">SELL</td><td class="num">6.9673</td><td class="num">£285.3100</td><td class="num"><span class="red">−£12.15</span></td></tr><tr><td class="muted">2026-05-22 21:00:18</td><td><strong>GOOGL</strong></td><td><span class="tag paper">Paper Stocks</span></td><td class="red">SELL</td><td class="num">6.9934</td><td class="num">£285.3100</td><td class="num"><span class="red">−£4.69</span></td></tr><tr><td class="muted">2026-05-22 14:37:37</td><td><strong>ASTS</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$101.2400</td><td class="num"><span class="green">+$15.86</span></td></tr><tr><td class="muted">2026-05-22 14:37:35</td><td><strong>RKLB</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$133.4600</td><td class="num"><span class="green">+$6.19</span></td></tr><tr><td class="muted">2026-05-22 14:37:31</td><td><strong>COIN</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$191.9900</td><td class="num"><span class="green">+$1.12</span></td></tr><tr><td class="muted">2026-05-22 14:37:29</td><td><strong>SOFI</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$15.7000</td><td class="num"><span class="green">+$1.16</span></td></tr><tr><td class="muted">2026-05-22 14:37:17</td><td><strong>META</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$613.5100</td><td class="num"><span class="green">+$1.12</span></td></tr><tr><td class="muted">2026-05-22 14:37:13</td><td><strong>AMZN</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$269.0500</td><td class="num"><span class="green">+$1.82</span></td></tr><tr><td class="muted">2026-05-21 14:36:02</td><td><strong>IONQ</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$55.8900</td><td class="num"><span class="green">+$10.65</span></td></tr><tr><td class="muted">2026-05-21 14:35:47</td><td><strong>AMD</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$445.0400</td><td class="num"><span class="green">+$2.48</span></td></tr><tr><td class="muted">2026-05-21 14:35:45</td><td><strong>TSLA</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$425.8200</td><td class="num"><span class="green">+$1.42</span></td></tr><tr><td class="muted">2026-05-21 14:35:36</td><td><strong>MSFT</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$422.8400</td><td class="num"><span class="green">+$2.65</span></td></tr><tr><td class="muted">2026-05-21 14:31:17</td><td><strong>GOOGL</strong></td><td><span class="tag paper">Paper Stocks</span></td><td class="green">BUY</td><td class="num">6.9934</td><td class="num">£285.9831</td><td class="num"><span class="muted">—</span></td></tr><tr><td class="muted">2026-05-21 14:30:57</td><td><strong>GOOGL</strong></td><td><span class="tag paper">Paper Stocks</span></td><td class="green">BUY</td><td class="num">6.9673</td><td class="num">£287.0559</td><td class="num"><span class="muted">—</span></td></tr><tr><td class="muted">2026-05-20 14:36:18</td><td><strong>COIN</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$191.1100</td><td class="num"><span class="green">+$0.80</span></td></tr><tr><td class="muted">2026-05-19 14:36:30</td><td><strong>ASTS</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$84.5300</td><td class="num"><span class="red">−$5.24</span></td></tr><tr><td class="muted">2026-05-19 14:36:28</td><td><strong>RKLB</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$125.2100</td><td class="num"><span class="red">−$7.97</span></td></tr><tr><td class="muted">2026-05-19 14:36:20</td><td><strong>RKLB</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$135.0800</td><td class="num"><span class="green">+$1.73</span></td></tr><tr><td class="muted">2026-05-19 14:36:07</td><td><strong>MSFT</strong></td><td><span class="tag live">Stock Trader</span></td><td class="muted">CLOSE</td><td class="num">0.0000</td><td class="num">$425.0500</td><td class="num"><span class="green">+$2.04</span></td></tr></tbody>
+    <thead>
+      <tr>
+        <th>Ticker</th>
+        <th>Entry</th>
+        <th>Exit</th>
+        <th>P&amp;L %</th>
+        <th>Signal Score</th>
+        <th>Days Held</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>ASTS</td><td>$87.38</td><td>$101.24</td><td class="green">+15.86%</td><td>4.0</td><td>2</td></tr>
+      <tr><td>IONQ</td><td>$50.51</td><td>$55.89</td><td class="green">+10.65%</td><td>3.0</td><td>3</td></tr>
+      <tr><td>RKLB</td><td>$125.68</td><td>$133.46</td><td class="green">+6.19%</td><td>5.5</td><td>2</td></tr>
+      <tr><td>MSFT</td><td>$411.94</td><td>$422.84</td><td class="green">+2.65%</td><td>4.0</td><td>1</td></tr>
+      <tr><td>AMD</td><td>$434.28</td><td>$445.04</td><td class="green">+2.48%</td><td>5.5</td><td>3</td></tr>
+      <tr><td>MSFT</td><td>$416.57</td><td>$425.05</td><td class="green">+2.04%</td><td>4.0</td><td>1</td></tr>
+      <tr><td>AMZN</td><td>$264.25</td><td>$269.05</td><td class="green">+1.82%</td><td>4.0</td><td>4</td></tr>
+      <tr><td>RKLB</td><td>$132.78</td><td>$135.08</td><td class="green">+1.73%</td><td>3.5</td><td>1</td></tr>
+      <tr><td>TSLA</td><td>$419.84</td><td>$425.82</td><td class="green">+1.42%</td><td>5.5</td><td>3</td></tr>
+      <tr><td>SOFI</td><td>$15.52</td><td>$15.70</td><td class="green">+1.16%</td><td>4.5</td><td>4</td></tr>
+      <tr><td>META</td><td>$606.72</td><td>$613.51</td><td class="green">+1.12%</td><td>4.5</td><td>4</td></tr>
+      <tr><td>COIN</td><td>$189.87</td><td>$191.99</td><td class="green">+1.12%</td><td>4.0</td><td>1</td></tr>
+      <tr><td>COIN</td><td>$189.59</td><td>$191.11</td><td class="green">+0.80%</td><td>4.0</td><td>2</td></tr>
+      <tr><td>ASTS</td><td>$89.20</td><td>$84.53</td><td class="red">−5.24%</td><td>4.0</td><td>1</td></tr>
+      <tr><td>RKLB</td><td>$136.06</td><td>$125.21</td><td class="red">−7.97%</td><td>5.5</td><td>1</td></tr>
+    </tbody>
   </table>
-  </div>
-</section>
 
+  <!-- 4. OPTIONS SIGNALS TODAY -->
+  <h2>Options Signals Today</h2>
+  <p class="muted" style="margin-top:-8px;font-size:14px;">Tracked option contract signals scanned 2026-05-27 14:59 UK, grouped by underlying ticker.</p>
+  <div class="options-grid" id="optionsGrid"></div>
 
-<section class="card">
-  <h2>P&amp;L Summary</h2>
-  <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
-    
-    <div class="card" style="margin:0; background:#0d1117;">
-      <h3 style="margin:0 0 10px 0; color:#c9d1d9; font-size:0.95em;">Combined (all sources)</h3>
-      <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap:8px;">
-        <div class="metric"><div class="v">17</div><div class="l">Closed Trades</div></div>
-        <div class="metric"><div class="v green">76.5%</div><div class="l">Win Rate</div></div>
-        <div class="metric"><div class="v green">+£18.99</div><div class="l">Total P&amp;L</div></div>
-        <div class="metric"><div class="v">1.63</div><div class="l">Profit Factor</div></div>
-        <div class="metric"><div class="v green">+£3.77</div><div class="l">Avg Win</div></div>
-        <div class="metric"><div class="v red">−£7.51</div><div class="l">Avg Loss</div></div>
-      </div>
+  <!-- 5. TRADE PERFORMANCE -->
+  <h2>Trade Performance</h2>
+  <div class="metric-grid">
+    <div class="metric-tile">
+      <div class="stat-num green">86.7%</div>
+      <div class="stat-label">Win Rate</div>
     </div>
-
-    
-    <div class="card" style="margin:0; background:#0d1117;">
-      <h3 style="margin:0 0 10px 0; color:#c9d1d9; font-size:0.95em;">Paper trading</h3>
-      <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap:8px;">
-        <div class="metric"><div class="v">2</div><div class="l">Closed Trades</div></div>
-        <div class="metric"><div class="v red">0.0%</div><div class="l">Win Rate</div></div>
-        <div class="metric"><div class="v red">−£16.84</div><div class="l">Total P&amp;L</div></div>
-        <div class="metric"><div class="v">0.00</div><div class="l">Profit Factor</div></div>
-        <div class="metric"><div class="v green">£0.00</div><div class="l">Avg Win</div></div>
-        <div class="metric"><div class="v red">−£8.42</div><div class="l">Avg Loss</div></div>
-      </div>
+    <div class="metric-tile">
+      <div class="stat-num green">3.71</div>
+      <div class="stat-label">Profit Factor</div>
     </div>
-
-    
-    <div class="card" style="margin:0; background:#0d1117;">
-      <h3 style="margin:0 0 10px 0; color:#c9d1d9; font-size:0.95em;">Live trading</h3>
-      <div class="grid" style="grid-template-columns: repeat(2, 1fr); gap:8px;">
-        <div class="metric"><div class="v">15</div><div class="l">Closed Trades</div></div>
-        <div class="metric"><div class="v green">86.7%</div><div class="l">Win Rate</div></div>
-        <div class="metric"><div class="v green">+$35.83</div><div class="l">Total P&amp;L</div></div>
-        <div class="metric"><div class="v">3.71</div><div class="l">Profit Factor</div></div>
-        <div class="metric"><div class="v green">+$3.77</div><div class="l">Avg Win</div></div>
-        <div class="metric"><div class="v red">−$6.61</div><div class="l">Avg Loss</div></div>
-      </div>
+    <div class="metric-tile">
+      <div class="stat-num green">2.39%</div>
+      <div class="stat-label">Expectancy / Trade</div>
     </div>
-
-  </div>
-</section>
-
-
-<section class="card">
-  <h2>Risk Metrics</h2>
-  <div class="grid">
-    <div class="metric">
-      <div class="v green">0.0%</div>
-      <div class="l">Largest Position</div>
-      <div class="muted" style="font-size:0.8em;margin-top:4px;">?</div>
+    <div class="metric-tile">
+      <div class="stat-num">15</div>
+      <div class="stat-label">Total Trades</div>
     </div>
-    <div class="metric">
-      <div class="v green">0.0%</div>
-      <div class="l">Capital Deployed</div>
+    <div class="metric-tile">
+      <div class="stat-num green">+15.86%</div>
+      <div class="stat-label">Best Trade (ASTS)</div>
     </div>
-    <div class="metric">
-      <div class="v">9</div>
-      <div class="l">Position Count</div>
-    </div>
-    <div class="metric">
-      <div class="v muted">0/9</div>
-      <div class="l">Losing Open</div>
-    </div>
-    <div class="metric">
-      <div class="v red">−£26.28</div>
-      <div class="l">Max Drawdown (realized)</div>
-    </div>
-    <div class="metric">
-      <div class="v">+£1.12</div>
-      <div class="l">Per-Trade Expectancy</div>
-    </div>
-    <div class="metric">
-      <div class="v green">+£15.86</div>
-      <div class="l">Best Trade</div>
-    </div>
-    <div class="metric">
-      <div class="v red">−£12.15</div>
-      <div class="l">Worst Trade</div>
+    <div class="metric-tile">
+      <div class="stat-num red">−7.97%</div>
+      <div class="stat-label">Worst Trade (RKLB)</div>
     </div>
   </div>
-</section>
 
-<div style="color: #8b949e; font-size: 0.8em; margin-top: 32px; padding-top: 12px; border-top: 1px solid #30363d; text-align: center;">Tanoli Intel · generated 2026-05-26 16:05 BST · sources: ~/trading/portfolio · ~/stock-trader · ~/options-trader · ~/crypto-trader</div>
+  <div class="stats-row">
+    <div class="stat-card">
+      <h3>Best Trades</h3>
+      <div class="stat-row"><span class="val">ASTS</span><span class="val green">+15.86%</span></div>
+      <div class="stat-row"><span class="val">IONQ</span><span class="val green">+10.65%</span></div>
+      <div class="stat-row"><span class="val">RKLB</span><span class="val green">+6.19%</span></div>
+    </div>
+    <div class="stat-card">
+      <h3>Worst Trades</h3>
+      <div class="stat-row"><span class="val">RKLB</span><span class="val red">−7.97%</span></div>
+      <div class="stat-row"><span class="val">ASTS</span><span class="val red">−5.24%</span></div>
+      <div class="stat-row"><span class="val">COIN</span><span class="val green">+0.80%</span></div>
+    </div>
+    <div class="stat-card">
+      <h3>Top Tickers by P&amp;L</h3>
+      <div class="stat-row"><span class="val">IONQ</span><span class="val green">+10.65%</span></div>
+      <div class="stat-row"><span class="val">ASTS</span><span class="val green">+10.62%</span></div>
+      <div class="stat-row"><span class="val">MSFT</span><span class="val green">+4.69%</span></div>
+      <div class="stat-row"><span class="val">AMD</span><span class="val green">+2.48%</span></div>
+      <div class="stat-row"><span class="val">COIN</span><span class="val green">+1.92%</span></div>
+    </div>
+  </div>
+
+  <!-- 6. PORTFOLIO VALUE CHART -->
+  <h2>Stocks Portfolio Value (£)</h2>
+  <div class="chart-wrap">
+    <canvas id="portfolioChart"></canvas>
+  </div>
+
+  <!-- 7. HOW TO READ -->
+  <h2>How to Read This Page</h2>
+  <div class="howto">
+    <h3>Portfolio Overview</h3>
+    <p>Each portfolio started with £10,000 in paper cash. "Cash" is what is currently uninvested, "Positions Value" is the live worth of open holdings, and "P&amp;L vs Start" shows whether the strategy is ahead or behind the £10k baseline.</p>
+
+    <h3>Open Stock Signals</h3>
+    <p>These are tickers the stock scanner currently rates as a BUY (strong signal) or WEAK BUY (weaker confirmation). "Score" is the scanner's confidence (higher = stronger). "Target" is the price the scanner expects to reach, "Stop Loss" is where the trade would be cut, and "Target Gain %" is the upside if the target is hit.</p>
+
+    <h3>Recent Completed Trades</h3>
+    <p>Trades that have already exited. "P&amp;L %" is the percentage gain or loss after the position closed. Green is a win, red is a loss. "Days Held" tells you how long the trade was open.</p>
+
+    <h3>Options Signals Today</h3>
+    <p>Option contracts flagged by the options scanner today. 🟢 Call signals mean the model expects the stock to go up; 🔴 Put signals mean it expects the stock to go down. Counts show how many strikes/expiries were flagged for each side.</p>
+
+    <h3>Trade Performance</h3>
+    <p>Win Rate is the share of trades that closed positive. Profit Factor is total gains divided by total losses — anything above 1 means the strategy is net profitable. Expectancy is the average P&amp;L per trade. Best/Worst show the standout outcomes.</p>
+
+    <h3>Stocks Portfolio Value Chart</h3>
+    <p>A daily view of the paper stocks portfolio total value (cash + positions). Flat sections mean cash was sitting idle; dips and rises show open positions being marked to market.</p>
+  </div>
+
 </div>
+
+<script>
+// Options signals raw list
+const optionsSignals = [
+  "AAPL_BEARISH_PUT_305.0_2026-06-01_202605271459",
+  "GOOGL_BEARISH_PUT_240.0_2026-05-29_202605271459",
+  "NVDA_BULLISH_CALL_217.5_2026-05-29_202605271459",
+  "NVDA_BULLISH_CALL_220.0_2026-05-29_202605271459",
+  "NVDA_BULLISH_CALL_217.5_2026-06-01_202605271459",
+  "NVDA_BEARISH_PUT_202.5_2026-06-01_202605271459",
+  "TSLA_BULLISH_CALL_450.0_2026-05-29_202605271459",
+  "TSLA_BULLISH_CALL_472.5_2026-05-29_202605271459",
+  "TSLA_BULLISH_CALL_537.5_2026-05-29_202605271459",
+  "TSLA_BULLISH_CALL_542.5_2026-05-29_202605271459",
+  "TSLA_BEARISH_PUT_417.5_2026-05-29_202605271459",
+  "TSLA_BEARISH_PUT_420.0_2026-05-29_202605271459",
+  "TSLA_BEARISH_PUT_425.0_2026-05-29_202605271459",
+  "TSLA_BEARISH_PUT_427.5_2026-05-29_202605271459",
+  "TSLA_BEARISH_PUT_430.0_2026-05-29_202605271459",
+  "TSLA_BULLISH_CALL_450.0_2026-06-01_202605271459",
+  "TSLA_BEARISH_PUT_405.0_2026-06-01_202605271459",
+  "TSLA_BEARISH_PUT_415.0_2026-06-01_202605271459",
+  "TSLA_BEARISH_PUT_425.0_2026-06-01_202605271459",
+  "TSLA_BEARISH_PUT_430.0_2026-06-01_202605271459",
+  "META_BEARISH_PUT_592.5_2026-05-29_202605271459",
+  "META_BEARISH_PUT_597.5_2026-05-29_202605271459",
+  "META_BEARISH_PUT_580.0_2026-06-01_202605271459",
+  "META_BEARISH_PUT_595.0_2026-06-01_202605271459",
+  "PLTR_BULLISH_CALL_136.0_2026-05-29_202605271459",
+  "PLTR_BULLISH_CALL_137.0_2026-05-29_202605271459",
+  "PLTR_BULLISH_CALL_139.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_510.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_512.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_515.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_520.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_522.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_525.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_530.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_532.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_537.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_540.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_542.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_545.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_547.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_550.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_555.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_557.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_560.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_562.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_572.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_577.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_580.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_582.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_585.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_587.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_595.0_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_597.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_650.0_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_425.0_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_430.0_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_450.0_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_457.5_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_460.0_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_462.5_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_465.0_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_467.5_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_470.0_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_472.5_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_475.0_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_480.0_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_482.5_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_485.0_2026-05-29_202605271459",
+  "AMD_BEARISH_PUT_487.5_2026-05-29_202605271459",
+  "AMD_BULLISH_CALL_550.0_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_422.5_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_425.0_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_427.5_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_430.0_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_432.5_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_435.0_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_437.5_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_440.0_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_452.5_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_457.5_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_460.0_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_465.0_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_470.0_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_475.0_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_480.0_2026-06-05_202605271459",
+  "AMD_BEARISH_PUT_485.0_2026-06-05_202605271459",
+  "AMD_BULLISH_CALL_545.0_2026-06-12_202605271459",
+  "AMD_BULLISH_CALL_580.0_2026-06-12_202605271459",
+  "AMD_BEARISH_PUT_375.0_2026-06-12_202605271459",
+  "AMD_BEARISH_PUT_440.0_2026-06-12_202605271459",
+  "AMD_BEARISH_PUT_475.0_2026-06-12_202605271459",
+  "AMD_BEARISH_PUT_480.0_2026-06-12_202605271459",
+  "AMD_BEARISH_PUT_485.0_2026-06-12_202605271459",
+  "ASTS_BULLISH_CALL_125.0_2026-05-29_202605271459",
+  "ASTS_BULLISH_CALL_130.0_2026-05-29_202605271459",
+  "ASTS_BULLISH_CALL_135.0_2026-05-29_202605271459",
+  "ASTS_BULLISH_CALL_140.0_2026-05-29_202605271459",
+  "ASTS_BULLISH_CALL_145.0_2026-05-29_202605271459",
+  "ASTS_BULLISH_CALL_150.0_2026-05-29_202605271459",
+  "ASTS_BEARISH_PUT_96.0_2026-05-29_202605271459",
+  "ASTS_BEARISH_PUT_105.0_2026-05-29_202605271459",
+  "ASTS_BEARISH_PUT_107.0_2026-05-29_202605271459",
+  "ASTS_BEARISH_PUT_108.0_2026-05-29_202605271459",
+  "ASTS_BEARISH_PUT_109.0_2026-05-29_202605271459",
+  "ASTS_BEARISH_PUT_110.0_2026-05-29_202605271459",
+  "ASTS_BEARISH_PUT_111.0_2026-05-29_202605271459",
+  "ASTS_BEARISH_PUT_113.0_2026-05-29_202605271459",
+  "ASTS_BEARISH_PUT_115.0_2026-05-29_202605271459",
+  "ASTS_BEARISH_PUT_116.0_2026-05-29_202605271459",
+  "ASTS_BEARISH_PUT_117.0_2026-05-29_202605271459",
+  "ASTS_BULLISH_CALL_125.0_2026-06-05_202605271459",
+  "ASTS_BEARISH_PUT_110.0_2026-06-05_202605271459",
+  "ASTS_BEARISH_PUT_111.0_2026-06-05_202605271459",
+  "ASTS_BEARISH_PUT_113.0_2026-06-05_202605271459",
+  "ASTS_BEARISH_PUT_115.0_2026-06-05_202605271459",
+  "RKLB_BULLISH_CALL_147.0_2026-05-29_202605271459",
+  "RKLB_BULLISH_CALL_148.0_2026-05-29_202605271459",
+  "RKLB_BULLISH_CALL_149.0_2026-05-29_202605271459",
+  "RKLB_BULLISH_CALL_150.0_2026-05-29_202605271459",
+  "RKLB_BULLISH_CALL_155.0_2026-05-29_202605271459",
+  "RKLB_BULLISH_CALL_160.0_2026-05-29_202605271459",
+  "RKLB_BULLISH_CALL_162.5_2026-05-29_202605271459",
+  "RKLB_BEARISH_PUT_139.0_2026-05-29_202605271459",
+  "RKLB_BEARISH_PUT_140.0_2026-05-29_202605271459",
+  "RKLB_BEARISH_PUT_86.0_2026-06-05_202605271459",
+  "RKLB_BEARISH_PUT_117.0_2026-06-05_202605271459",
+  "RKLB_BEARISH_PUT_131.0_2026-06-05_202605271459",
+  "RKLB_BEARISH_PUT_138.0_2026-06-05_202605271459",
+  "RKLB_BEARISH_PUT_50.0_2026-06-12_202605271459",
+  "ORCL_BULLISH_CALL_212.5_2026-05-29_202605271459",
+  "AVGO_BULLISH_CALL_452.5_2026-05-29_202605271459",
+  "AVGO_BEARISH_PUT_412.5_2026-05-29_202605271459",
+  "AVGO_BULLISH_CALL_440.0_2026-06-01_202605271459",
+  "AVGO_BULLISH_CALL_460.0_2026-06-01_202605271459",
+  "AMAT_BEARISH_PUT_225.0_2026-06-12_202605271459",
+  "AMAT_BEARISH_PUT_235.0_2026-06-12_202605271459"
+];
+
+const byTicker = {};
+optionsSignals.forEach(s => {
+  const parts = s.split('_');
+  const ticker = parts[0];
+  const direction = parts[1];
+  if (!byTicker[ticker]) byTicker[ticker] = { bull: 0, bear: 0 };
+  if (direction === 'BULLISH') byTicker[ticker].bull++;
+  else if (direction === 'BEARISH') byTicker[ticker].bear++;
+});
+
+const grid = document.getElementById('optionsGrid');
+const sorted = Object.entries(byTicker).sort((a,b) => (b[1].bull+b[1].bear) - (a[1].bull+a[1].bear));
+sorted.forEach(([ticker, counts]) => {
+  const tile = document.createElement('div');
+  tile.className = 'options-tile';
+  const total = counts.bull + counts.bear;
+  let bias = 'mixed';
+  if (counts.bull > counts.bear * 1.5) bias = 'bullish';
+  else if (counts.bear > counts.bull * 1.5) bias = 'bearish';
+  let biasColor = '#8b949e';
+  if (bias === 'bullish') biasColor = '#3fb950';
+  if (bias === 'bearish') biasColor = '#ef4444';
+  tile.innerHTML = `
+    <div class="ticker">${ticker} <span style="font-size:12px;color:${biasColor};font-weight:700;text-transform:uppercase;letter-spacing:0.5px;">${bias}</span></div>
+    <div class="row"><span style="color:#3fb950;font-weight:700;">🟢 ${counts.bull}</span> Call Buy signals</div>
+    <div class="row"><span style="color:#ef4444;font-weight:700;">🔴 ${counts.bear}</span> Put Buy signals</div>
+    <div class="row" style="color:#8b949e;font-size:13px;margin-top:4px;">${total} contracts tracked</div>
+  `;
+  grid.appendChild(tile);
+});
+
+// Portfolio chart - dedupe by date keeping last value of each day
+const rawHistory = [
+  { date: "2026-05-21", total_value: 10044.22 },
+  { date: "2026-05-21", total_value: 10031.94 },
+  { date: "2026-05-22", total_value: 10031.63 },
+  { date: "2026-05-22", total_value: 9983.17 },
+  { date: "2026-05-23", total_value: 9983.17 },
+  { date: "2026-05-24", total_value: 9983.17 },
+  { date: "2026-05-26", total_value: 9983.17 },
+  { date: "2026-05-27", total_value: 9983.17 }
+];
+const dateMap = {};
+rawHistory.forEach(h => { dateMap[h.date] = h.total_value; });
+const dates = Object.keys(dateMap).sort();
+const values = dates.map(d => dateMap[d]);
+
+const ctx = document.getElementById('portfolioChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: dates,
+    datasets: [{
+      label: 'Portfolio Value (£)',
+      data: values,
+      borderColor: '#f59e0b',
+      backgroundColor: 'rgba(245, 158, 11, 0.15)',
+      borderWidth: 2,
+      tension: 0.25,
+      fill: true,
+      pointBackgroundColor: '#f59e0b',
+      pointRadius: 4,
+      pointHoverRadius: 6
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { color: '#e6edf3' } },
+      tooltip: { callbacks: { label: (c) => '£' + c.parsed.y.toFixed(2) } }
+    },
+    scales: {
+      x: { ticks: { color: '#8b949e' }, grid: { color: '#30363d' } },
+      y: {
+        ticks: { color: '#8b949e', callback: (v) => '£' + v },
+        grid: { color: '#30363d' },
+        suggestedMin: 9900,
+        suggestedMax: 10100
+      }
+    }
+  }
+});
+</script>
 </body>
 </html>
