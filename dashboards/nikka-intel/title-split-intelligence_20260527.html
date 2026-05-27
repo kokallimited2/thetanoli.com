@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏘️ Title Split Intelligence — 27 May 2026</title>
+<style>
+:root {
+  --bg: #0d1117; --card: #161b22; --border: #30363d; --accent: #58a6ff;
+  --green: #3fb950; --orange: #d29922; --red: #f85149; --text: #c9d1d9;
+  --text-dim: #8b949e; --gold: #ffd700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.6; }
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+h1 { font-size: 2rem; margin-bottom: 4px; color: var(--gold); }
+.subtitle { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 24px; }
+.section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+.section h2 { font-size: 1.2rem; margin-bottom: 16px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.table-scroll { overflow-x: auto; margin: 12px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th { background: #1c2333; color: var(--text-dim); font-weight: 600; text-align: left; padding: 10px 8px; border-bottom: 2px solid var(--border); }
+td { padding: 10px 8px; border-bottom: 1px solid var(--border); }
+tr:hover { background: #1a1f2e; }
+.score-10 { color: var(--green); font-weight: 700; }
+.score-7 { color: var(--orange); font-weight: 700; }
+a { color: var(--accent); }
+.badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-right: 4px; }
+.badge-green { background: #1a3a2a; color: var(--green); }
+.badge-blue { background: #0a2a4a; color: var(--accent); }
+.badge-yellow { background: #3d3d00; color: var(--gold); }
+.badge-red { background: #3d1111; color: var(--red); }
+.card { background: #1c2333; border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+.card h3 { color: #e6edf3; font-size: 1rem; margin-bottom: 6px; }
+.card p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 4px; }
+.card-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(48,54,61,0.5); }
+.action-btn { display: inline-flex; align-items: center; gap: 3px; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 500; text-decoration: none; }
+.action-btn:hover { transform: translateY(-1px); }
+.action-otm { background: #1a3a2e; color: #22c55e; }
+.action-maps { background: #1e293b; color: #ef4444; }
+.action-sold { background: #1e293b; color: #58a6ff; }
+ul { padding-left: 20px; }
+li { margin-bottom: 4px; }
+hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+.warn-box { background: linear-gradient(135deg, #3d2e00, #3d1111); border: 1px solid var(--orange); border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+.warn-box h3 { color: var(--orange); font-size: 0.95rem; margin-bottom: 6px; }
+.warn-box.green { background: linear-gradient(135deg, #0a3a1a, #0d1117); border-color: var(--green); }
+.warn-box.green h3 { color: var(--green); }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.stat-card { background: #1c2333; border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; }
+.stat-number { font-size: 28px; font-weight: 700; color: var(--gold); }
+.stat-label { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.related-section { margin-top: 36px; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 24px; }
+.related-card { display: flex; flex-direction: column; gap: 4px; background: #1e293b; border: 1px solid #30363d; border-radius: 10px; padding: 14px; text-decoration: none; transition: all 0.2s; }
+.related-card:hover { border-color: #58a6ff; background: #273548; transform: translateY(-2px); }
+.related-icon { font-size: 24px; }
+.related-title { font-size: 15px; font-weight: 600; color: #e6edf3; }
+.related-desc { font-size: 12px; color: #8b949e; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<h1>🏘️ Title Split Intelligence — 27 May 2026</h1>
+<div class="subtitle">Wednesday 27 May 2026 · Day 6 of data source outage · Cumulative: 13 runs</div>
+
+<div class="warn-box" style="border-color:var(--red)">
+  <h3>🔴 DAY 6 — PROLONGED DATA SOURCE OUTAGE — CRITICAL AUCTION TOMORROW</h3>
+  <p>Tavily web_search/web_extract unavailable (Day 6, HTTP 432). Rightmove still blocking all curl. Bond Wolfe Cloudflare-blocked. <strong>Engine in Day 3+ mode: preparing for confirmed deals.</strong></p>
+  <p><strong>Working alternative:</strong> OnTheMarket direct curl — 3 promising new candidates found today.</p>
+  <p><strong>🔴🔴 CRITICAL: 25 Waterloo Road, Wolverhampton WV1 — AUCTION TOMORROW 28 MAY 2026.</strong> All pre-auction DD must be completed TODAY.</p>
+</div>
+
+<div class="warn-box" style="background:linear-gradient(135deg, #0a3a1a, #0d1117);border-color:var(--green)">
+  <h3>📊 27 May 2026 — Today's Findings</h3>
+  <p><strong>OnTheMarket Dudley/Wolves scan completed:</strong> 3 viable property leads identified. Best find is <strong>Blackacre Road, Dudley DY2</strong> — a 6-bed semi-detached, 1,553 sqft (144 sqm), £355,000 freehold, newly listed. GIA ≥120 sqm threshold cleared for viable split. However, at £355k purchase price, the economics still require careful stress testing.</p>
+  <p>Ivanhoe Street, Dudley DY2 (£160k, 4-bed terraced, 1,173 sqft / 109 sqm) is the best value entry point found today — borderline for NDSS 2-flat split at 109 sqm.</p>
+</div>
+
+<div class="section">
+  <h2>🔥 New OnTheMarket Leads — 27 May 2026</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Address</th><th>Property Links</th><th>Type</th><th>Price</th><th>Floor Area</th><th>Split Angle</th><th>Score</th></tr>
+    <tr>
+      <td><a href="https://www.onthemarket.com/details/19485697/" target="_blank" style="color:#58a6ff;font-weight:600">Blackacre Road, Dudley DY2</a></td>
+      <td>
+        <a href="https://www.google.com/maps/place/Blackacre+Road,+Dudley,+DY2" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+        <a href="https://nethouseprices.com/house-prices/search?search=DY2+8LY" target="_blank" class="action-btn action-sold">📊 Sold</a>
+      </td>
+      <td>6-bed semi-detached, freehold, EPC E, Council Tax C</td>
+      <td>£355,000</td>
+      <td>1,553 sqft / 144 sqm</td>
+      <td>5/6-bed with multiple reception rooms. GIA 144 sqm clears NDSS threshold. Potential: 2× 2-bed (70+61 sqm) + 1× 1-bed (50 sqm). Recently listed (<14 days). Multiple reception rooms suggest flexible layout.</td>
+      <td class="score-7">7.0/10</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.onthemarket.com/details/17913341/" target="_blank" style="color:#58a6ff;font-weight:600">Ivanhoe Street, Dudley DY2</a></td>
+      <td>
+        <a href="https://www.google.com/maps/place/Ivanhoe+Street,+Dudley,+DY2" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+        <a href="https://nethouseprices.com/house-prices/search?search=DY2" target="_blank" class="action-btn action-sold">📊 Sold</a>
+      </td>
+      <td>4-bed terraced, freehold (Your Move Dudley)</td>
+      <td>£160,000</td>
+      <td>1,173 sqft / 109 sqm</td>
+      <td>Best value entry today at £160k. 109 sqm is borderline for 2-flat split (NDSS min ~111 sqm for 2×1-bed). Close to town centre. Could work if clever layout. Strong candidate if auction/probate pricing.</td>
+      <td class="score-7">6.5/10</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.onthemarket.com/details/19256894/" target="_blank" style="color:#58a6ff;font-weight:600">Edge Hill Drive, Wolverhampton WV6</a></td>
+      <td>
+        <a href="https://www.google.com/maps/place/Edge+Hill+Drive,+Wolverhampton,+WV6" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+        <a href="https://nethouseprices.com/house-prices/search?search=WV6" target="_blank" class="action-btn action-sold">📊 Sold</a>
+      </td>
+      <td>4-bed detached, freehold (Your Move Perton — Tettenhall area)</td>
+      <td>£360,000</td>
+      <td>? (4-bed detached typical 1,200-1,600 sqft)</td>
+      <td>Tettenhall WV6 is a premium postcode. Higher GDV per sqm for split units (£170k-£225k each). If GIA ≥1,400 sqft, viable 2-flat high-end split (2× 2-bed luxury flats). Requires viewing to confirm GIA.</td>
+      <td class="score-7">6.5/10</td>
+    </tr>
+  </table>
+  </div>
+</div>
+
+<div class="section">
+  <h2>📊 Quick Viability Check — Blackacre Road, Dudley DY2</h2>
+  <div class="card">
+    <h3>💰 Financial Projection at £355k Purchase</h3>
+    <div class="card-actions">
+      <a href="https://www.onthemarket.com/details/19485697/" target="_blank" class="action-btn action-otm">🔗 View on OTM</a>
+      <a href="https://www.google.com/maps/place/Blackacre+Road,+Dudley,+DY2" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+    </div>
+    <ul>
+      <li><strong>Purchase:</strong> £355,000 | <strong>GIA:</strong> 144 sqm (1,553 sqft)</li>
+      <li><strong>Potential unit mix:</strong> 2× 2-bed flats (70+61 sqm) = 131 sqm + 13 sqm communal</li>
+      <li><strong>Conversion cost:</strong> 131 sqm × £1,800 = £236k + 15% contingency = ~£271k</li>
+      <li><strong>Total project cost (est):</strong> ~£655k-£700k (incl purchase, SDLT, fees, finance)</li>
+      <li><strong>GDV (est):</strong> 2× 2-bed @ £140k-£150k each = £280k-£300k</li>
+      <td class="score-7">❌ LOSS-MAKING as conversion. Only viable as HMO or single BRRR let.</td>
+    </ul>
+    <p><strong>Verdict (from skill guidelines):</strong> Total cost ~£670k vs GDV ~£290k = cost/GDV ratio of <strong>231%</strong> — far above the 70% threshold. This confirms the skill's hard truth: pure resi conversion at current build costs (£1,800/sqm) plus post-MDR SDLT rarely works. The property is better suited to HMO operation or single-let BRRR.</p>
+  </div>
+
+  <div class="card">
+    <h3>💰 Quick Viability — Ivanhoe Street, Dudley DY2 (£160k)</h3>
+    <ul>
+      <li><strong>Purchase:</strong> £160,000 | <strong>GIA:</strong> 109 sqm (borderline)</li>
+      <li><strong>Conversion cost (est):</strong> £165k-£200k for 2 flats</li>
+      <li><strong>Total project cost:</strong> ~£360k-£400k</li>
+      <li><strong>GDV (est):</strong> 1× 2-bed £125k + 1× 1-bed £95k = <strong>£220k</strong></li>
+      <td class="score-7">❌ Still underwater. 2-flat split <strong>fails</strong> at current numbers.</td>
+    </ul>
+    <p><strong>BUT:</strong> At £160k purchase price, could work as a single-let BRRR with a buy at £100k-£120k. Or if negotiated down to £130k-£140k with vendor, numbers shift.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🔴🔴 CRITICAL — 1 Day to BTG Eddisons Auction (28 May 2026)</h2>
+  <div class="card" style="border-color:var(--red);border-width:2px">
+    <h3>🚨 25 Waterloo Road, Wolverhampton WV1 — Auction TOMORROW (28 May)</h3>
+    <p><strong>Guide Price:</strong> £350,000 | <strong>Type:</strong> Mixed-use | <strong>Auction Date:</strong> 28 May 2026</p>
+    <div class="card-actions">
+      <a href="https://www.onthemarket.com/for-sale/property/wolverhampton/" target="_blank" class="action-btn action-otm">🔗 OTM Wolves</a>
+      <a href="https://www.google.com/maps/place/25+Waterloo+Road,+Wolverhampton,+WV1+4DJ" target="_blank" class="action-btn action-maps">🗺️ Map</a>
+      <a href="https://nethouseprices.com/house-prices/search?search=WV1+4DJ" target="_blank" class="action-btn action-sold">📊 Comps</a>
+    </div>
+    <p style="color:var(--red);font-weight:700">⏰ DEADLINE: TOMORROW — Complete TODAY or miss the lot.</p>
+    <p><strong>Pre-auction DD checklist (MUST DO TODAY):</strong></p>
+    <ul>
+      <li>☐ 📞 Phone BTG Eddisons — request legal pack immediately</li>
+      <li>☐ 📄 CON29M Coal Authority search — WV1 is heavy coal mining area (critical)</li>
+      <li>☐ 🏛️ Title check via solicitor — any restrictive covenants?</li>
+      <li>☐ 🏠 Survey/RICS desktop valuation — inform bidding limit</li>
+      <li>☐ 💰 Bridging/auction finance in principle — 28-day completion</li>
+      <li>☐ 📋 Legal pack review — special conditions, tenancies, leasehold details</li>
+      <li>☐ 🎯 Set maximum bid with 15% stress buffer (max ~£315k guide + £50k = £365k)</li>
+    </ul>
+    <p><strong>Economic model at £350k:</strong> Mixed-use means non-residential SDLT (~£4k vs ~£17.5k resi). If has existing flats/retail, pure freehold-to-leasehold play with zero construction = strongest model. If requires conversion, only works if GIA ≥120 sqm of resi space.</p>
+  </div>
+</div>
+
+<div class="section">
+  <h2>📅 Auction Calendar — 27 May 2026</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Auction House</th><th>Date</th><th>Countdown</th><th>Key Lots</th></tr>
+    <tr>
+      <td><strong>BTG Eddisons</strong></td>
+      <td><strong>28 May 2026</strong></td>
+      <td style="color:var(--red);font-weight:700">🔴 TOMORROW</td>
+      <td>🔥 25 Waterloo Road, Wolverhampton WV1 (£350k mixed-use) — COMPLETE DD TODAY</td>
+    </tr>
+    <tr>
+      <td><strong>Under The Hammer</strong></td>
+      <td><strong>10 June 2026</strong></td>
+      <td style="color:var(--red);font-weight:700">🔴 14 DAYS</td>
+      <td>🔥 197-198 Wolverhampton St DY1 (6 flats on single title, £350k guide, £41,640 PA income) — CLASSIC FREEFOLD→LEASEHOLD</td>
+    </tr>
+    <tr>
+      <td>Bond Wolfe</td>
+      <td>9 July 2026</td>
+      <td>🟡 43 DAYS</td>
+      <td>Catalogue ~25 June. Monitor for 58 Lea Road WV3 (~£150k, 4 flats). Also search for new unsplit blocks.</td>
+    </tr>
+    <tr>
+      <td>Bond Wolfe</td>
+      <td>10 September 2026</td>
+      <td>106 DAYS</td>
+      <td>Quarterly auction — best for larger commercial/resi mixed lots</td>
+    </tr>
+  </table>
+  </div>
+</div>
+
+<div class="section">
+  <h2>📊 Cumulative State — 27 May 2026</h2>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-number">24</div><div class="stat-label">Total Opps Found</div></div>
+    <div class="stat-card"><div class="stat-number">16</div><div class="stat-label">Score ≥8.0/10</div></div>
+    <div class="stat-card"><div class="stat-number">6</div><div class="stat-label">Active Right Now</div></div>
+    <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Upcoming Auctions</div></div>
+    <div class="stat-card"><div class="stat-number">7</div><div class="stat-label">Freehold→Leasehold</div></div>
+    <div class="stat-card"><div class="stat-number">10</div><div class="stat-label">Mixed-Use Candidates</div></div>
+  </div>
+  <p><strong>Key summary:</strong> 24 total opportunities tracked. 16 scoring ≥8/10. 6 currently active. 3 upcoming auctions including 25 Waterloo Rd WV1 (TOMORROW) and 197-198 Wolverhampton St DY1 (14 days).</p>
+</div>
+
+<div class="section">
+  <h2>⏰ Recommended Actions — 27 May 2026</h2>
+  <ol>
+    <li><strong>🔴 TODAY — PRIORITY 1:</strong> Complete ALL pre-auction DD for 25 Waterloo Road WV1 (auction TOMORROW 28 May). Phone BTG Eddisons for legal pack. Get CON29M, title check, finance in principle.</li>
+    <li><strong>🔴 TODAY — PRIORITY 2:</strong> Contact agent on Ivanhoe Street, Dudley DY2 (£160k). Express interest at £130k-£140k cash. 109 sqm borderline but at the right price could be a viable 2-flat split.</li>
+    <li><strong>🟡 THIS WEEK:</strong> View Blackacre Road, Dudley DY2 (£355k, 6-bed). Not viable for split, but assess as HMO (6 bed × £450-£500 PCM = £2,700-£3,000/mo = 9.5-10.1% gross yield). Better as HMO play.</li>
+    <li><strong>🟡 THIS WEEK:</strong> Verify 54 West Bromwich St Walsall (£195k, 2 flats + retail) — still best available pure freehold-to-leasehold at 10/10.</li>
+    <li><strong>🟢 10 JUNE:</strong> Start pre-auction DD for 197-198 Wolverhampton St DY1 (14 days). 6 flats on single title is the strongest freehold-to-leasehold play in the pipeline.</li>
+    <li><strong>🟢 ONGOING:</strong> Set up Rightmove/Zoopla email alerts for "self-contained flats", "mixed-use", "already converted" in WM postcodes.</li>
+    <li><strong>🟡 DATA FIX:</strong> Tavily still down Day 6. Submit support ticket or consider alternative (SerpAPI, Brave Search API).</li>
+  </ol>
+</div>
+
+<hr>
+
+<div class="related-section">
+  <h2 style="color:#e6edf3;font-size:22px;margin:28px 0 14px">🔗 Related Resources</h2>
+  <div class="related-grid">
+    <a href="index.html" class="related-card">
+      <span class="related-icon">🏠</span>
+      <span class="related-title">Dashboard Home</span>
+      <span class="related-desc">All Nikka Intel reports</span>
+    </a>
+    <a href="title-split-intelligence_MAIN.html" class="related-card">
+      <span class="related-icon">📋</span>
+      <span class="related-title">Cumulative MAIN Report</span>
+      <span class="related-desc">All-time opportunities archive</span>
+    </a>
+    <a href="title-split-intelligence_20260526.html" class="related-card">
+      <span class="related-icon">📅</span>
+      <span class="related-title">Yesterday: 26 May 2026</span>
+      <span class="related-desc">Full analysis from previous run</span>
+    </a>
+    <a href="market_signals_MAIN.html" class="related-card">
+      <span class="related-icon">📡</span>
+      <span class="related-title">Market Signals</span>
+      <span class="related-desc">Daily property market intel</span>
+    </a>
+  </div>
+</div>
+
+<div style="text-align: center; color: var(--text-dim); font-size: 0.8rem; padding: 16px;">
+  <p>🏘️ Hermes Title Split Intelligence Engine — 27 May 2026</p>
+  <p>Data source status: Tavily DOWN (Day 6) · Rightmove blocked · Bond Wolfe mostly blocked · OnTheMarket working via curl</p>
+  <p>Reports: <a href="title-split-intelligence_20260527.html">27 May 2026</a> | <a href="title-split-intelligence_20260526.html">26 May 2026</a> | <a href="title-split-intelligence_20260525.html">25 May 2026</a></p>
+</div>
+
+</div>
+</body>
+</html>

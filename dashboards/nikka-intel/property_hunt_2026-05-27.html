@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏠 Property Hunt — Wed 27 May 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0f172a;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;overflow-wrap:break-word;word-break:break-word;min-height:100vh}
+.page-wrap{max-width:1100px;margin:0 auto;padding:0 16px 60px}
+.header{padding:28px 0 16px;border-bottom:1px solid #1e293b;margin-bottom:28px}
+.header h1{font-size:2rem;color:#f8fafc;display:flex;align-items:center;gap:10px}
+.header .sub{color:#94a3b8;font-size:0.9rem;margin-top:6px}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:28px}
+.stat-card{background:#1e293b;border-radius:12px;padding:16px;text-align:center;border:1px solid #334155}
+.stat-card .num{font-size:1.8rem;font-weight:700;color:#60a5fa}
+.stat-card .label{font-size:0.78rem;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}
+h2{font-size:1.5rem;color:#f1f5f9;margin:32px 0 16px;display:flex;align-items:center;gap:8px}
+h2 .badge{font-size:0.7rem;background:#334155;padding:3px 10px;border-radius:20px;color:#94a3b8}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;border-radius:10px;border:1px solid #1e293b}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{background:#1e293b;color:#94a3b8;padding:10px 12px;text-align:left;font-weight:600;white-space:nowrap;border-bottom:1px solid #334155}
+td{padding:10px 12px;border-bottom:1px solid #1e293b;vertical-align:middle}
+tr:hover td{background:#1a2332}
+tr:last-child td{border-bottom:none}
+.price{color:#60a5fa;font-weight:600}
+.score{font-weight:700}
+.score-high{color:#22c55e}
+.score-mid{color:#eab308}
+.score-low{color:#ef4444}
+.verdict{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.75rem;font-weight:600}
+.verdict-buy{background:#166534;color:#86efac}
+.verdict-watch{background:#854d0e;color:#fde047}
+.verdict-call{background:#1e40af;color:#93c5fd}
+.deal-link{color:#60a5fa;text-decoration:none;border-bottom:1px dotted #60a5fa33}
+.deal-link:hover{color:#93c5fd;border-bottom-color:#93c5fd}
+.chip{display:inline-block;padding:1px 7px;border-radius:4px;font-size:0.7rem;font-weight:600;margin-right:3px}
+.chip-green{background:#166534;color:#86efac}
+.chip-yellow{background:#854d0e;color:#fde047}
+.chip-blue{background:#1e40af;color:#93c5fd}
+.chip-gray{background:#334155;color:#cbd5e1}
+
+.deal-card{background:#1e293b;border-radius:14px;padding:20px;margin-bottom:16px;border:1px solid #334155;border-left:4px solid;}
+.deal-card.p1{border-left-color:#22c55e}
+.deal-card.p2{border-left-color:#eab308}
+.deal-card.p3{border-left-color:#f97316}
+.deal-card .d-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;flex-wrap:wrap;gap:8px}
+.deal-card .d-title{font-size:1.1rem;font-weight:600;color:#f1f5f9}
+.deal-card .d-price{font-size:1.3rem;font-weight:700;color:#60a5fa}
+.deal-card .d-meta{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.deal-card .d-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:12px 0}
+.deal-card .d-item{background:#0f172a;border-radius:8px;padding:10px}
+.deal-card .d-item .d-val{font-size:1.1rem;font-weight:600;color:#e2e8f0}
+.deal-card .d-item .d-lbl{font-size:0.72rem;color:#64748b;text-transform:uppercase;letter-spacing:0.3px}
+.deal-card .d-desc{color:#94a3b8;font-size:0.88rem;line-height:1.5;margin:10px 0}
+.deal-card .verdict-lg{display:inline-block;padding:4px 14px;border-radius:6px;font-size:0.85rem;font-weight:700}
+.deal-card .verdict-lg.call{background:#1e40af;color:#93c5fd}
+.deal-card .verdict-lg.watch{background:#854d0e;color:#fde047}
+.deal-card .verdict-lg.buy{background:#166534;color:#86efac}
+.risk-flags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.risk-flag{background:#450a0a;color:#fca5a5;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:500}
+.positive-flag{background:#0a2f1a;color:#86efac;padding:2px 8px;border-radius:4px;font-size:0.72rem;font-weight:500}
+.action-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.action-btn{display:inline-block;padding:6px 14px;border-radius:6px;font-size:0.78rem;font-weight:600;text-decoration:none;transition:all 0.15s}
+.action-btn.primary{background:#1d4ed8;color:#fff}
+.action-btn.primary:hover{background:#1e40af}
+.action-btn.secondary{background:#334155;color:#cbd5e1}
+.action-btn.secondary:hover{background:#475569}
+
+.area-watchout{background:#1e293b;border-radius:12px;padding:20px;margin:24px 0;border:1px solid #334155}
+.area-watchout h3{color:#f1f5f9;font-size:1rem;margin-bottom:12px}
+.area-watchout ul{color:#94a3b8;font-size:0.85rem;line-height:1.7;list-style:none;padding:0}
+.area-watchout ul li{padding:4px 0}
+.area-watchout ul li::before{content:"⚠️ ";font-size:0.8rem}
+.footer{margin-top:40px;padding:20px 0;border-top:1px solid #1e293b;color:#64748b;font-size:0.8rem;text-align:center}
+.seo-links{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;padding:16px;background:#1e293b;border-radius:10px}
+.seo-links a{color:#60a5fa;text-decoration:none;font-size:0.85rem;padding:4px 10px;border-radius:4px;background:#0f172a}
+.seo-links a:hover{background:#334155}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="header">
+<h1>🏠 Daily Property Hunt</h1>
+<div class="sub">Wednesday, 27 May 2026 | West Midlands | £80k–£200k | Houses 2+ Beds | Freehold</div>
+</div>
+
+<div class="stats-row">
+<div class="stat-card"><div class="num">1,664</div><div class="label">Total Scanned</div></div>
+<div class="stat-card"><div class="num">251</div><div class="label">BRRR Qualified</div></div>
+<div class="stat-card"><div class="num">17</div><div class="label">STRONG BUYS</div></div>
+<div class="stat-card"><div class="num">96</div><div class="label">Areas Scanned</div></div>
+<div class="stat-card"><div class="num">251</div><div class="label">Verified Live</div></div>
+</div>
+
+<div class="seo-links">
+<a href="index.html">🏠 Dashboard Home</a>
+<a href="brrr-sourcer.html">🔥 BRRR Sourcer</a>
+<a href="offmarket-finder.html">🎯 Off-Market</a>
+<a href="power-team.html">🛠️ Power Team</a>
+<a href="market_signals_MAIN.html">📡 Market Signals</a>
+</div>
+
+<h2>🔥 Top 10 Deals <span class="badge">WM Core Areas</span></h2>
+<div class="table-scroll">
+<table>
+<thead>
+<tr><th>#</th><th>Address</th><th>Price</th><th>Type</th><th>Beds</th><th>DOM</th><th>Chain</th><th>Score</th><th>Verdict</th><th>Profit</th><th>ROCE</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a class="deal-link" href="https://www.rightmove.co.uk/properties/173372123#/?channel=RES_BUY" target="_blank">Lime Street, Wolverhampton WV3</a></td>
+<td class="price">£145,000</td>
+<td>Terraced</td>
+<td>3</td>
+<td>70</td>
+<td><span class="chip chip-green">Free</span></td>
+<td><span class="score score-high">93</span></td>
+<td><span class="verdict verdict-buy">STRONG BUY</span></td>
+<td>£1,250</td>
+<td>22.6%</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a class="deal-link" href="https://www.rightmove.co.uk/properties/174801830#/?channel=RES_BUY" target="_blank">Mostyn Street, Whitmore Reans WV1</a></td>
+<td class="price">£80,000</td>
+<td>End Terrace</td>
+<td>2</td>
+<td>34</td>
+<td><span class="chip chip-green">Free</span></td>
+<td><span class="score score-high">90</span></td>
+<td><span class="verdict verdict-buy">STRONG BUY</span></td>
+<td>£20,450</td>
+<td>75.5%</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a class="deal-link" href="https://www.rightmove.co.uk/properties/172246217#/?channel=RES_BUY" target="_blank">Deer Park Drive, Great Barr B42</a></td>
+<td class="price">£92,000</td>
+<td>End Terrace</td>
+<td>2</td>
+<td>99</td>
+<td><span class="chip chip-green">Free</span></td>
+<td><span class="score score-high">90</span></td>
+<td><span class="verdict verdict-buy">STRONG BUY</span></td>
+<td>£56,890</td>
+<td>999.9%</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a class="deal-link" href="https://www.rightmove.co.uk/properties/174826526#/?channel=RES_BUY" target="_blank">Tansey Green Road, Brierley Hill DY5</a></td>
+<td class="price">£135,000</td>
+<td>Terraced</td>
+<td>2</td>
+<td>34</td>
+<td><span class="chip chip-green">Free</span></td>
+<td><span class="score score-high">88</span></td>
+<td><span class="verdict verdict-buy">STRONG BUY</span></td>
+<td>£23,300</td>
+<td>46.0%</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a class="deal-link" href="https://www.rightmove.co.uk/properties/173144201#/?channel=RES_BUY" target="_blank">Lime Street, Wolverhampton WV3</a></td>
+<td class="price">£140,000</td>
+<td>Terraced</td>
+<td>2</td>
+<td>76</td>
+<td><span class="chip chip-green">Free</span></td>
+<td><span class="score score-high">88</span></td>
+<td><span class="verdict verdict-buy">STRONG BUY</span></td>
+<td>£12,650</td>
+<td>30.0%</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a class="deal-link" href="https://www.rightmove.co.uk/properties/88351833#/?channel=RES_BUY" target="_blank">Mount Pleasant Avenue, Birmingham B21</a></td>
+<td class="price">£85,000</td>
+<td>Terraced</td>
+<td>4</td>
+<td>12</td>
+<td><span class="chip chip-gray">—</span></td>
+<td><span class="score score-high">88</span></td>
+<td><span class="verdict verdict-buy">STRONG BUY</span></td>
+<td>£43,300</td>
+<td>999.9%</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a class="deal-link" href="https://www.rightmove.co.uk/properties/170153123#/?channel=RES_BUY" target="_blank">Oval Road, Tipton DY4</a></td>
+<td class="price">£120,000</td>
+<td>Semi-Detached</td>
+<td>3</td>
+<td><span class="chip chip-yellow">168</span></td>
+<td><span class="chip chip-gray">—</span></td>
+<td><span class="score score-high">85</span></td>
+<td><span class="verdict verdict-buy">STRONG BUY</span></td>
+<td>£64,500</td>
+<td>999.9%</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a class="deal-link" href="https://www.rightmove.co.uk/properties/174336881#/?channel=RES_BUY" target="_blank">Dingle Avenue, Cradley Heath B64</a></td>
+<td class="price">£125,000</td>
+<td>Semi-Detached</td>
+<td>3</td>
+<td>45</td>
+<td><span class="chip chip-gray">—</span></td>
+<td><span class="score score-high">85</span></td>
+<td><span class="verdict verdict-buy">STRONG BUY</span></td>
+<td>£18,850</td>
+<td>37.1%</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a class="deal-link" href="https://www.rightmove.co.uk/properties/174276719#/?channel=RES_BUY" target="_blank">Tanner Court, Codsall WV8</a></td>
+<td class="price">£71,250</td>
+<td>End Terrace</td>
+<td>3</td>
+<td>46</td>
+<td><span class="chip chip-gray">—</span></td>
+<td><span class="score score-high">85</span></td>
+<td><span class="verdict verdict-buy">STRONG BUY</span></td>
+<td>£134,588</td>
+<td>999.9%</td>
+</tr>
+<tr>
+<td>10</td>
+<td><a class="deal-link" href="https://www.rightmove.co.uk/properties/170491175#/?channel=RES_BUY" target="_blank">Cranmore Road, Wolverhampton WV3</a></td>
+<td class="price">£150,000</td>
+<td>Terraced</td>
+<td>3</td>
+<td><span class="chip chip-yellow">157</span></td>
+<td><span class="chip chip-green">Free</span></td>
+<td><span class="score score-high">88</span></td>
+<td><span class="verdict verdict-watch">WATCH</span></td>
+<td>-£4,400</td>
+<td>20.1%</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>🔍 Top 3 Deep-Dive Deals</h2>
+
+<!-- DEAL 1: Tansey Green Road, Brierley Hill DY5 -->
+<div class="deal-card p1">
+<div class="d-header">
+<div>
+<div class="d-title"><a class="deal-link" href="https://www.rightmove.co.uk/properties/174826526#/?channel=RES_BUY" target="_blank">🏆 Tansey Green Road, Brierley Hill DY5</a></div>
+<div style="color:#94a3b8;font-size:0.85rem;margin-top:2px">G&T Properties | Added 23/04/2026 (34 days)</div>
+</div>
+<div class="d-price">£135,000</div>
+</div>
+
+<div class="d-meta">
+<span class="chip chip-green">NO CHAIN</span>
+<span class="chip chip-green">FREEHOLD</span>
+<span class="chip chip-blue">Terraced</span>
+<span class="chip chip-blue">2 Beds</span>
+</div>
+
+<div class="risk-flags">
+<span class="positive-flag">✅ Brierley Hill DY5 — Core Target Area</span>
+<span class="positive-flag">✅ No-Onward Chain</span>
+<span class="positive-flag">✅ Freehold</span>
+</div>
+
+<div class="d-grid">
+<div class="d-item"><div class="d-val">£195,000</div><div class="d-lbl">GDV (Est.)</div></div>
+<div class="d-item"><div class="d-val">£23,300</div><div class="d-lbl">Projected Profit</div></div>
+<div class="d-item"><div class="d-val">46.0%</div><div class="d-lbl">ROCE</div></div>
+<div class="d-item"><div class="d-val">£23,500</div><div class="d-lbl">Refurb Budget</div></div>
+</div>
+
+<div class="d-desc">
+<strong>Analysis:</strong> This 2-bed terraced house in Brierley Hill DY5 (core target area) is offered with <strong>no onward chain</strong> and FREEHOLD tenure. At £135k with an estimated GDV of £195k after refurb, this gives £23.3k projected profit and a strong 46% ROCE. The property features two reception rooms and is being sold chain-free — perfect for a quick BRRR. G&T Properties is a known discount agent, suggesting motivated sellers. Ideal BRRR candidate in the DY5 heartland.
+</div>
+
+<div class="verdict-lg buy">✅ CALL AGENT — Strong BRRR Candidate</div>
+
+<div class="action-btns">
+<a class="action-btn primary" href="https://www.rightmove.co.uk/properties/174826526#/?channel=RES_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn secondary" href="https://nethouseprices.com/house-prices/search?q=DY5" target="_blank">📊 Sold Prices</a>
+<a class="action-btn secondary" href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE^735&radius=1.0&sortType=1" target="_blank">🏡 Comps 1mi</a>
+<a class="action-btn secondary" href="https://www.google.com/maps/search/Tansey+Green+Road,+Brierley+Hill+DY5" target="_blank">🗺️ Map</a>
+<a class="action-btn secondary" href="https://www.nationalbuildings.co.uk/search?q=DY5" target="_blank">🏗️ Land Reg</a>
+</div>
+</div>
+
+<!-- DEAL 2: Oval Road, Tipton DY4 -->
+<div class="deal-card p2">
+<div class="d-header">
+<div>
+<div class="d-title"><a class="deal-link" href="https://www.rightmove.co.uk/properties/170153123#/?channel=RES_BUY" target="_blank">🏆 Oval Road, Tipton DY4</a></div>
+<div style="color:#94a3b8;font-size:0.85rem;margin-top:2px">Reduced 17/04/2026 | 168 Days on Market</div>
+</div>
+<div class="d-price">£120,000</div>
+</div>
+
+<div class="d-meta">
+<span class="chip chip-yellow">168 DAYS</span>
+<span class="chip chip-yellow">REDUCED</span>
+<span class="chip chip-green">FREEHOLD</span>
+<span class="chip chip-blue">Semi-Detached</span>
+<span class="chip chip-blue">3 Beds</span>
+</div>
+
+<div class="risk-flags">
+<span class="positive-flag">✅ Tipton DY4 — Core Target Area</span>
+<span class="positive-flag">✅ "Vacant Possession" Signal</span>
+<span class="positive-flag">✅ "Project" + "Investment" Keywords</span>
+<span class="positive-flag">✅ 3-Bed Semi = High Rental Demand</span>
+<span class="positive-flag">✅ Price Reduced + 168 Days = MOTIVATED SELLER</span>
+<span class="risk-flag">⚠️ Not Listed as Chain-Free</span>
+</div>
+
+<div class="d-grid">
+<div class="d-item"><div class="d-val">£225,000</div><div class="d-lbl">GDV (Est.)</div></div>
+<div class="d-item"><div class="d-val">£64,500</div><div class="d-lbl">Projected Profit</div></div>
+<div class="d-item"><div class="d-val">999.9%</div><div class="d-lbl">ROCE</div></div>
+<div class="d-item"><div class="d-val">£30,000</div><div class="d-lbl">Refurb Budget</div></div>
+</div>
+
+<div class="d-desc">
+<strong>Analysis:</strong> This 3-bed semi-detached house in Tipton DY4 is the standout distress opportunity today. At <strong>168 days on market</strong> with a confirmed price reduction (17/04/2026), the seller is clearly motivated. The listing contains "vacant possession", "project", and "investment" keywords — all strong distress signals. FREEHOLD tenure. Estimated GDV of £225k gives massive headroom with £64.5k projected profit. Semi-detached 3-beds in Tipton have strong rental demand. <strong>This is a prime negotiation target — offer 15-20% below asking.</strong>
+</div>
+
+<div class="verdict-lg call">📞 PRIORITY — CALL AGENT TODAY — Extremely Motivated Seller</div>
+
+<div class="action-btns">
+<a class="action-btn primary" href="https://www.rightmove.co.uk/properties/170153123#/?channel=RES_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn secondary" href="https://nethouseprices.com/house-prices/search?q=DY4" target="_blank">📊 Sold Prices</a>
+<a class="action-btn secondary" href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE^735&radius=1.0&sortType=1" target="_blank">🏡 Comps 1mi</a>
+<a class="action-btn secondary" href="https://www.google.com/maps/search/Oval+Road,+Tipton+DY4" target="_blank">🗺️ Map</a>
+<a class="action-btn secondary" href="https://www.nationalbuildings.co.uk/search?q=DY4" target="_blank">🏗️ Land Reg</a>
+</div>
+</div>
+
+<!-- DEAL 3: Mostyn Street, Wolverhampton WV1 -->
+<div class="deal-card p3">
+<div class="d-header">
+<div>
+<div class="d-title"><a class="deal-link" href="https://www.rightmove.co.uk/properties/174801830#/?channel=RES_BUY" target="_blank">🏆 Mostyn Street, Whitmore Reans, Wolverhampton WV1</a></div>
+<div style="color:#94a3b8;font-size:0.85rem;margin-top:2px">Added 23/04/2026 (34 days) | Chain-Free</div>
+</div>
+<div class="d-price">£80,000</div>
+</div>
+
+<div class="d-meta">
+<span class="chip chip-green">NO CHAIN</span>
+<span class="chip chip-green">FREEHOLD</span>
+<span class="chip chip-blue">End Terrace</span>
+<span class="chip chip-blue">2 Beds</span>
+</div>
+
+<div class="risk-flags">
+<span class="positive-flag">✅ Wolverhampton WV1 — Core WM</span>
+<span class="positive-flag">✅ £80k — Deep Value Territory</span>
+<span class="positive-flag">✅ Chain-Free</span>
+<span class="positive-flag">✅ 75.5% ROCE</span>
+</div>
+
+<div class="d-grid">
+<div class="d-item"><div class="d-val">£130,000</div><div class="d-lbl">GDV (Est.)</div></div>
+<div class="d-item"><div class="d-val">£20,450</div><div class="d-lbl">Projected Profit</div></div>
+<div class="d-item"><div class="d-val">75.5%</div><div class="d-lbl">ROCE</div></div>
+<div class="d-item"><div class="d-val">£20,000</div><div class="d-lbl">Refurb Budget</div></div>
+</div>
+
+<div class="d-desc">
+<strong>Analysis:</strong> At just <strong>£80,000</strong>, this 2-bed end of terrace in Whitmore Reans WV1 offers exceptional value. Chain-free and FREEHOLD. Estimated GDV of £130k yields £20.4k profit with a stellar 75.5% ROCE. Wolverhampton WV1 is a core target area with good transport links and investor activity. The low entry price (£80k) makes this accessible for cash purchase or bridging. Whitmore Reans has good rental demand from the nearby hospital and university.
+</div>
+
+<div class="verdict-lg buy">✅ CALL AGENT — Strong Entry-Level BRRR</div>
+
+<div class="action-btns">
+<a class="action-btn primary" href="https://www.rightmove.co.uk/properties/174801830#/?channel=RES_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn secondary" href="https://nethouseprices.com/house-prices/search?q=WV1" target="_blank">📊 Sold Prices</a>
+<a class="action-btn secondary" href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=OUTCODE^735&radius=1.0&sortType=1" target="_blank">🏡 Comps 1mi</a>
+<a class="action-btn secondary" href="https://www.google.com/maps/search/Mostyn+Street,+Whitmore+Reans,+Wolverhampton+WV1" target="_blank">🗺️ Map</a>
+<a class="action-btn secondary" href="https://www.nationalbuildings.co.uk/search?q=WV1" target="_blank">🏗️ Land Reg</a>
+</div>
+</div>
+
+<h2>📡 Area Intelligence</h2>
+<div class="area-watchout">
+<h3>⚠️ West Midlands Watchouts</h3>
+<ul>
+<li><strong>Dudley MBC (DY):</strong> Additional HMO licensing active. Article 4 in parts. £1,300 application fee. Check ward-level restrictions before HMO strategy.</li>
+<li><strong>Wolverhampton (WV):</strong> Mandatory HMO licensing. Selective licensing in parts (Whitmore Reans, Blakenhall). Check postcode before committing.</li>
+<li><strong>Sandwell (B64-B71):</strong> Additional HMO licensing scheme active. Article 4 restricts HMO conversions in most wards.</li>
+<li><strong>Birmingham (B):</strong> Borough-wide Additional Licensing. High void risk in some inner-city wards. Verify rental demand per postcode.</li>
+<li><strong>Coal mining risk:</strong> DY4 (Tipton), DY5 (Brierley Hill) and parts of Walsall have historic coal mining — factor CON29M search (£80-£120) into due diligence.</li>
+</ul>
+</div>
+
+<h2>📊 Strategy Summary</h2>
+<div class="table-scroll">
+<table>
+<thead><tr><th>Deal</th><th>Best Strategy</th><th>Entry Cost</th><th>Return</th><th>Timeline</th></tr></thead>
+<tbody>
+<tr>
+<td>Tansey Green Rd, DY5</td>
+<td><strong>BRRR</strong></td>
+<td>£158,500</td>
+<td>£23,300 / 46% ROCE</td>
+<td>4-5 months</td>
+</tr>
+<tr>
+<td>Oval Road, DY4</td>
+<td><strong>Flip or BRRR</strong></td>
+<td>£150,000</td>
+<td>£64,500 / very high ROCE</td>
+<td>4-6 months</td>
+</tr>
+<tr>
+<td>Mostyn St, WV1</td>
+<td><strong>BRRR</strong></td>
+<td>£100,000</td>
+<td>£20,450 / 75.5% ROCE</td>
+<td>3-4 months</td>
+</tr>
+<tr>
+<td>Deer Park Dr, B42</td>
+<td><strong>BRRR</strong></td>
+<td>£112,000</td>
+<td>£56,890 / very high ROCE</td>
+<td>4-5 months</td>
+</tr>
+<tr>
+<td>Lime St, WV3</td>
+<td><strong>BTL / Hold</strong></td>
+<td>£162,500</td>
+<td>£1,250 / 22.6% ROCE</td>
+<td>Immediate</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="footer">
+<p>🏠 Property Hunt Report — Generated 27 May 2026 06:00 BST</p>
+<p>Source: BRRR Daily Sourcer (5:30AM) + Rightmove Verification | 96 Areas Scanned</p>
+<p>Data: BRRR Sourcer 27 May 2026 | 1,664 properties scanned, 251 BRRR-qualifying, 17 STRONG BUYS</p>
+<p>Kokal Properties Ltd — Dudley, West Midlands</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motivated Sellers Scan — Dudley Area — 2026-05-27</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d29922;
+    --red: #f85149;
+    --purple: #bc8cff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  .header {
+    background: linear-gradient(135deg, #161b22 0%, #1c2333 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 0 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .header h1 { font-size: 2rem; display: flex; align-items: center; gap: 0.75rem; }
+  .header h1 .badge { 
+    font-size: 0.8rem; background: var(--red); color: #fff;
+    padding: 0.15rem 0.65rem; border-radius: 999px; font-weight: 600;
+  }
+  .header .subtitle { color: var(--text-muted); font-size: 0.95rem; margin-top: 0.5rem; }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem; margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem; text-align: center;
+  }
+  .stat-card .num { font-size: 28px; font-weight: 700; color: var(--accent); }
+  .stat-card .label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+  .deal-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .deal-card .rank {
+    display: inline-block; background: var(--red); color: #fff;
+    font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.6rem;
+    border-radius: 6px; margin-bottom: 0.75rem;
+  }
+  .deal-card h2 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+  .deal-card .price { font-size: 1.5rem; font-weight: 700; color: var(--green); }
+  .deal-card .meta { color: var(--text-muted); font-size: 0.9rem; margin: 0.3rem 0; }
+  .deal-card .signal-list {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0;
+  }
+  .deal-card .signal {
+    font-size: 0.75rem; padding: 0.15rem 0.5rem; border-radius: 5px;
+    font-weight: 500;
+  }
+  .signal-red { background: rgba(248,81,73,0.15); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
+  .signal-orange { background: rgba(210,153,34,0.15); color: var(--orange); border: 1px solid rgba(210,153,34,0.3); }
+  .signal-green { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .signal-blue { background: rgba(88,166,255,0.15); color: var(--accent); border: 1px solid rgba(88,166,255,0.3); }
+  .signal-purple { background: rgba(188,140,255,0.15); color: var(--purple); border: 1px solid rgba(188,140,255,0.3); }
+  .score-bar {
+    display: flex; height: 8px; border-radius: 4px; overflow: hidden;
+    margin: 0.75rem 0; gap: 2px;
+  }
+  .score-bar .seg { min-width: 4px; }
+  .score-bar .s-discount { background: var(--accent); }
+  .score-bar .s-days { background: var(--green); }
+  .score-bar .s-refurb { background: var(--orange); }
+  .score-bar .s-location { background: var(--purple); }
+  .score-bar .s-chain { background: var(--red); }
+  .btn-group {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    padding: 0.4rem 0.8rem; border-radius: 6px; text-decoration: none;
+    font-size: 0.82rem; font-weight: 500; transition: all 0.15s;
+  }
+  .btn-primary { background: var(--accent); color: #000; }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-secondary { background: rgba(88,166,255,0.1); color: var(--accent); border: 1px solid rgba(88,166,255,0.3); }
+  .btn-secondary:hover { background: rgba(88,166,255,0.2); }
+  .btn-amber { background: rgba(210,153,34,0.15); color: var(--orange); border: 1px solid rgba(210,153,34,0.3); }
+  .btn-mint { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .summary-text { color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-top: 0.5rem; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 2px solid var(--border); color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: rgba(88,166,255,0.05); }
+  h3 { font-size: 1.1rem; margin: 1.5rem 0 0.75rem; color: var(--accent); }
+  .footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 2rem 0; border-top: 1px solid var(--border); margin-top: 2rem; }
+  .area-watchout {
+    background: rgba(248,81,73,0.08); border: 1px solid rgba(248,81,73,0.25);
+    border-radius: 10px; padding: 1rem; margin: 1.5rem 0;
+  }
+  .area-watchout h3 { color: var(--red); margin-top: 0; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="page-wrap">
+    <h1>🔥 Motivated Sellers Scan <span class="badge">2026-05-27</span></h1>
+    <p class="subtitle">Distressed properties within 20mi of Dudley — 2+ bed houses ≤£200k — Listed 90+ days</p>
+    <p class="subtitle">Generated: 2026-05-27 07:17 BST · Source: Rightmove.co.uk search results</p>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="num">10</div>
+    <div class="label">Available 90+ Day</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">7</div>
+    <div class="label">Price Reduced</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">2</div>
+    <div class="label">No Chain</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">0</div>
+    <div class="label">Fixer/Refurb</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">£176,500</div>
+    <div class="label">Avg List Price</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">£150,000</div>
+    <div class="label">Cheapest</div>
+  </div>
+</div>
+
+<h3>🏆 Top 5 Motivated Seller Opportunities</h3>
+
+<div class="deal-card">
+  <div class="rank">DEAL #1 · Score 58/100 · ID: 171966506</div>
+  <h2>2 bed Terraced — Gravelly Lane, Erdington, Birmingham</h2>
+  <div class="price">£165,000</div>
+  <div class="meta">📍  · 📅 Listed 110 days ago · Agency: Waller &amp; Farnworth, Birmingham</div>
+  
+  <div class="signal-list"><span class="signal signal-red">💰Reduced</span> <span class="signal signal-blue">🏚️Vacant</span> </div>
+  
+  <div class="score-bar">
+    <div class="seg s-discount" style="width:15px" title="Discount: 30/30"></div>
+    <div class="seg s-days" style="width:8px" title="Days: 20/20"></div>
+    <div class="seg s-refurb" style="width:7px" title="Refurb: 5/20"></div>
+    <div class="seg s-location" style="width:20px" title="Location: 10/15"></div>
+    <div class="seg s-chain" style="width:20px" title="Chain: 10/15"></div>
+  </div>
+  <div class="meta" style="font-size:0.78rem; display:flex; gap:1rem; flex-wrap:wrap;">
+    <span>📊 Discount: 30/30</span>
+    <span>⏱️ Days: 20/20</span>
+    <span>🔨 Refurb: 5/20</span>
+    <span>📍 Location: 10/15</span>
+    <span>🔗 Chain: 10/15</span>
+  </div>
+  
+  <div class="meta" style="font-size:0.85rem; margin-top:0.5rem;">
+    Est. Refurb: £5,000-10,000 · Est. MV: £190,000 · Discount vs avg: 15.4%
+  </div>
+  
+  <div class="btn-group">
+    <a href="https://www.rightmove.co.uk/properties/171966506#/?channel=RES_BUY" target="_blank" class="btn btn-primary">📋 Listing</a>
+    <a href="https://nethouseprices.com/house-prices/search?search=" target="_blank" class="btn btn-amber">📊 Sold Prices</a>
+    <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5E&radius=1.0&sortType=6&maxPrice=189749&minBedrooms=2" target="_blank" class="btn btn-secondary">🏡 Comps (1mi)</a>
+    <a href="https://www.google.com/maps/search/Gravelly+Lane,+Erdington,+Birmingham+" target="_blank" class="btn btn-secondary">🗺️ Map</a>
+    <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=" target="_blank" class="btn btn-secondary">🏗️ Land</a>
+  </div>
+  
+  <div class="summary-text">A vacant, traditional two bedroom period terraced house located between Station Road and Summer Road/South Road in central Erdington. The ground floor comprises two good size reception rooms and a fit</div>
+</div>
+<div class="deal-card">
+  <div class="rank">DEAL #2 · Score 54/100 · ID: 167707040</div>
+  <h2>3 bed Semi-Detached — Gravelly Lane, Erdington, Birmingham</h2>
+  <div class="price">£180,000</div>
+  <div class="meta">📍  · 📅 Listed 237 days ago · Agency: Acres, Sutton Coldfield</div>
+  
+  <div class="signal-list"><span class="signal signal-blue">⚡Auction</span> <span class="signal signal-purple">📋Guide</span> </div>
+  
+  <div class="score-bar">
+    <div class="seg s-discount" style="width:7px" title="Discount: 25/30"></div>
+    <div class="seg s-days" style="width:17px" title="Days: 20/20"></div>
+    <div class="seg s-refurb" style="width:4px" title="Refurb: 3/20"></div>
+    <div class="seg s-location" style="width:20px" title="Location: 10/15"></div>
+    <div class="seg s-chain" style="width:20px" title="Chain: 10/15"></div>
+  </div>
+  <div class="meta" style="font-size:0.78rem; display:flex; gap:1rem; flex-wrap:wrap;">
+    <span>📊 Discount: 25/30</span>
+    <span>⏱️ Days: 20/20</span>
+    <span>🔨 Refurb: 3/20</span>
+    <span>📍 Location: 10/15</span>
+    <span>🔗 Chain: 10/15</span>
+  </div>
+  
+  <div class="meta" style="font-size:0.85rem; margin-top:0.5rem;">
+    Est. Refurb: £15,000-30,000 · Est. MV: £205,000 · Discount vs avg: 7.7%
+  </div>
+  
+  <div class="btn-group">
+    <a href="https://www.rightmove.co.uk/properties/167707040#/?channel=RES_BUY" target="_blank" class="btn btn-primary">📋 Listing</a>
+    <a href="https://nethouseprices.com/house-prices/search?search=" target="_blank" class="btn btn-amber">📊 Sold Prices</a>
+    <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5E&radius=1.0&sortType=6&maxPrice=206999&minBedrooms=3" target="_blank" class="btn btn-secondary">🏡 Comps (1mi)</a>
+    <a href="https://www.google.com/maps/search/Gravelly+Lane,+Erdington,+Birmingham+" target="_blank" class="btn btn-secondary">🗺️ Map</a>
+    <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=" target="_blank" class="btn btn-secondary">🏗️ Land</a>
+  </div>
+  
+  <div class="summary-text">This end terraced home offers spacious and versatile living accommodation, making it an ideal choice for families, first time buyers or investors. Benefitting from PVC double glazed windows and gas ce</div>
+</div>
+<div class="deal-card">
+  <div class="rank">DEAL #3 · Score 53/100 · ID: 87621642</div>
+  <h2>3 bed Semi-Detached — Heather Road, Walsall</h2>
+  <div class="price">£150,000</div>
+  <div class="meta">📍  · 📅 Listed 99 days ago · Agency: Webbs Estate Agents, Walsall</div>
+  
+  <div class="signal-list"><span class="signal signal-red">💰Reduced</span> </div>
+  
+  <div class="score-bar">
+    <div class="seg s-discount" style="width:22px" title="Discount: 30/30"></div>
+    <div class="seg s-days" style="width:7px" title="Days: 20/20"></div>
+    <div class="seg s-refurb" style="width:0px" title="Refurb: 0/20"></div>
+    <div class="seg s-location" style="width:20px" title="Location: 10/15"></div>
+    <div class="seg s-chain" style="width:9px" title="Chain: 5/15"></div>
+  </div>
+  <div class="meta" style="font-size:0.78rem; display:flex; gap:1rem; flex-wrap:wrap;">
+    <span>📊 Discount: 30/30</span>
+    <span>⏱️ Days: 20/20</span>
+    <span>🔨 Refurb: 0/20</span>
+    <span>📍 Location: 10/15</span>
+    <span>🔗 Chain: 5/15</span>
+  </div>
+  
+  <div class="meta" style="font-size:0.85rem; margin-top:0.5rem;">
+    Est. Refurb: £5,000-10,000 · Est. MV: £175,000 · Discount vs avg: 23.1%
+  </div>
+  
+  <div class="btn-group">
+    <a href="https://www.rightmove.co.uk/properties/87621642#/?channel=RES_BUY" target="_blank" class="btn btn-primary">📋 Listing</a>
+    <a href="https://nethouseprices.com/house-prices/search?search=" target="_blank" class="btn btn-amber">📊 Sold Prices</a>
+    <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5E&radius=1.0&sortType=6&maxPrice=172500&minBedrooms=3" target="_blank" class="btn btn-secondary">🏡 Comps (1mi)</a>
+    <a href="https://www.google.com/maps/search/Heather+Road,+Walsall+" target="_blank" class="btn btn-secondary">🗺️ Map</a>
+    <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=" target="_blank" class="btn btn-secondary">🏗️ Land</a>
+  </div>
+  
+  <div class="summary-text">**CASH BUYERS ONLY**THREE BEDROOM SEMI**TWO RECPETION ROOMS**FITTED KITCHEN**UTILITY AND STORE ROOM** THREE GENROUS BEDROOMS**FITTED BATHROOM**DECEPTIVLEY SPACIOUS**DRIVE TO THE FRONT** Webbs Estate A</div>
+</div>
+<div class="deal-card">
+  <div class="rank">DEAL #4 · Score 50/100 · ID: 172637549</div>
+  <h2>2 bed Semi-Detached — Brickhouse Road, Rowley Regis, B65 8EX</h2>
+  <div class="price">£180,000</div>
+  <div class="meta">📍 B65 · 📅 Listed 90 days ago · Agency: Tonks Property People, Powered by eXp, H</div>
+  
+  <div class="signal-list"><span class="signal signal-red">💰Reduced</span> <span class="signal signal-green">🔗NoChain</span> </div>
+  
+  <div class="score-bar">
+    <div class="seg s-discount" style="width:7px" title="Discount: 25/30"></div>
+    <div class="seg s-days" style="width:6px" title="Days: 20/20"></div>
+    <div class="seg s-refurb" style="width:0px" title="Refurb: 0/20"></div>
+    <div class="seg s-location" style="width:24px" title="Location: 12/15"></div>
+    <div class="seg s-chain" style="width:30px" title="Chain: 15/15"></div>
+  </div>
+  <div class="meta" style="font-size:0.78rem; display:flex; gap:1rem; flex-wrap:wrap;">
+    <span>📊 Discount: 25/30</span>
+    <span>⏱️ Days: 20/20</span>
+    <span>🔨 Refurb: 0/20</span>
+    <span>📍 Location: 12/15</span>
+    <span>🔗 Chain: 15/15</span>
+  </div>
+  
+  <div class="meta" style="font-size:0.85rem; margin-top:0.5rem;">
+    Est. Refurb: £5,000-10,000 · Est. MV: £205,000 · Discount vs avg: 7.7%
+  </div>
+  
+  <div class="btn-group">
+    <a href="https://www.rightmove.co.uk/properties/172637549#/?channel=RES_BUY" target="_blank" class="btn btn-primary">📋 Listing</a>
+    <a href="https://nethouseprices.com/house-prices/search?search=B65" target="_blank" class="btn btn-amber">📊 Sold Prices</a>
+    <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EB65&radius=1.0&sortType=6&maxPrice=206999&minBedrooms=2" target="_blank" class="btn btn-secondary">🏡 Comps (1mi)</a>
+    <a href="https://www.google.com/maps/search/Brickhouse+Road,+Rowley+Regis,+B65+8EX+B65" target="_blank" class="btn btn-secondary">🗺️ Map</a>
+    <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=B65" target="_blank" class="btn btn-secondary">🏗️ Land</a>
+  </div>
+  
+  <div class="summary-text">NO CHAIN - Two Double Bedrooms. Perfect for First Time Buyers and Downsizers.</div>
+</div>
+<div class="deal-card">
+  <div class="rank">DEAL #5 · Score 48/100 · ID: 171540257</div>
+  <h2>2 bed End of Terrace — Vineyard Road, Newport, TF10</h2>
+  <div class="price">£160,000</div>
+  <div class="meta">📍 TF10 · 📅 Listed 119 days ago · Agency: Nock Deighton, Telford</div>
+  
+  <div class="signal-list"><span class="signal signal-red">💰Reduced</span> </div>
+  
+  <div class="score-bar">
+    <div class="seg s-discount" style="width:17px" title="Discount: 30/30"></div>
+    <div class="seg s-days" style="width:8px" title="Days: 20/20"></div>
+    <div class="seg s-refurb" style="width:0px" title="Refurb: 0/20"></div>
+    <div class="seg s-location" style="width:20px" title="Location: 10/15"></div>
+    <div class="seg s-chain" style="width:9px" title="Chain: 5/15"></div>
+  </div>
+  <div class="meta" style="font-size:0.78rem; display:flex; gap:1rem; flex-wrap:wrap;">
+    <span>📊 Discount: 30/30</span>
+    <span>⏱️ Days: 20/20</span>
+    <span>🔨 Refurb: 0/20</span>
+    <span>📍 Location: 10/15</span>
+    <span>🔗 Chain: 5/15</span>
+  </div>
+  
+  <div class="meta" style="font-size:0.85rem; margin-top:0.5rem;">
+    Est. Refurb: £5,000-10,000 · Est. MV: £185,000 · Discount vs avg: 17.9%
+  </div>
+  
+  <div class="btn-group">
+    <a href="https://www.rightmove.co.uk/properties/171540257#/?channel=RES_BUY" target="_blank" class="btn btn-primary">📋 Listing</a>
+    <a href="https://nethouseprices.com/house-prices/search?search=TF10" target="_blank" class="btn btn-amber">📊 Sold Prices</a>
+    <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5ETF10&radius=1.0&sortType=6&maxPrice=184000&minBedrooms=2" target="_blank" class="btn btn-secondary">🏡 Comps (1mi)</a>
+    <a href="https://www.google.com/maps/search/Vineyard+Road,+Newport,+TF10+TF10" target="_blank" class="btn btn-secondary">🗺️ Map</a>
+    <a href="https://checker.nationalbuildingsdatabase.co.uk/search?q=TF10" target="_blank" class="btn btn-secondary">🏗️ Land</a>
+  </div>
+  
+  <div class="summary-text">Charming end-terrace on Vineyard Road, Newport. Two bedrooms, period features, Aga kitchen, garden, on-street parking, close to amenities and transport. Buyer protection available.</div>
+</div>
+
+<h3>📋 All 90+ Day Listings — Ranked</h3>
+<div class="table-scroll">
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Address</th>
+  <th>Beds</th>
+  <th>Type</th>
+  <th>Price</th>
+  <th>Days</th>
+  <th>Score</th>
+  <th>Signals</th>
+  <th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-left:3px solid var(--green);">
+  <td>1</td>
+  <td>Gravelly Lane, Erdington, Birmingha</td>
+  <td>2</td>
+  <td>Terraced</td>
+  <td>£165,000</td>
+  <td>110</td>
+  <td>58</td>
+  <td>💰Reduced 🏚️Vacant</td>
+  <td><a href="https://www.rightmove.co.uk/properties/171966506#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr style="border-left:3px solid var(--green);">
+  <td>2</td>
+  <td>Gravelly Lane, Erdington, Birmingha</td>
+  <td>3</td>
+  <td>Semi-Detached</td>
+  <td>£180,000</td>
+  <td>237</td>
+  <td>54</td>
+  <td>⚡Auction 📋Guide</td>
+  <td><a href="https://www.rightmove.co.uk/properties/167707040#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr style="border-left:3px solid var(--green);">
+  <td>3</td>
+  <td>Heather Road, Walsall</td>
+  <td>3</td>
+  <td>Semi-Detached</td>
+  <td>£150,000</td>
+  <td>99</td>
+  <td>53</td>
+  <td>💰Reduced</td>
+  <td><a href="https://www.rightmove.co.uk/properties/87621642#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr style="border-left:3px solid var(--green);">
+  <td>4</td>
+  <td>Brickhouse Road, Rowley Regis, B65 </td>
+  <td>2</td>
+  <td>Semi-Detached</td>
+  <td>£180,000</td>
+  <td>90</td>
+  <td>50</td>
+  <td>💰Reduced 🔗NoChain</td>
+  <td><a href="https://www.rightmove.co.uk/properties/172637549#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr style="border-left:3px solid var(--orange);">
+  <td>5</td>
+  <td>Vineyard Road, Newport, TF10</td>
+  <td>2</td>
+  <td>End of Terrace</td>
+  <td>£160,000</td>
+  <td>119</td>
+  <td>48</td>
+  <td>💰Reduced</td>
+  <td><a href="https://www.rightmove.co.uk/properties/171540257#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr style="border-left:3px solid var(--orange);">
+  <td>6</td>
+  <td>Wilford Road, WEST BROMWICH</td>
+  <td>2</td>
+  <td>Terraced</td>
+  <td>£180,000</td>
+  <td>289</td>
+  <td>46</td>
+  <td></td>
+  <td><a href="https://www.rightmove.co.uk/properties/165609092#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr style="border-left:3px solid var(--orange);">
+  <td>7</td>
+  <td>Ashmore Crescent, Broseley</td>
+  <td>2</td>
+  <td>Terraced</td>
+  <td>£170,000</td>
+  <td>93</td>
+  <td>43</td>
+  <td>💰Reduced</td>
+  <td><a href="https://www.rightmove.co.uk/properties/172502480#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr style="border-left:3px solid var(--red);">
+  <td>8</td>
+  <td>Wharf Road, Kings Norton, Birmingha</td>
+  <td>2</td>
+  <td>Terraced</td>
+  <td>£200,000</td>
+  <td>152</td>
+  <td>39</td>
+  <td>💰Reduced 🔗NoChain</td>
+  <td><a href="https://www.rightmove.co.uk/properties/170612399#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr style="border-left:3px solid var(--red);">
+  <td>9</td>
+  <td>Goscote Lane, Walsall</td>
+  <td>3</td>
+  <td>Semi-Detached</td>
+  <td>£190,000</td>
+  <td>271</td>
+  <td>36</td>
+  <td></td>
+  <td><a href="https://www.rightmove.co.uk/properties/166355792#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr><tr style="border-left:3px solid var(--red);">
+  <td>10</td>
+  <td>New Street, Gornal Wood</td>
+  <td>2</td>
+  <td>End of Terrace</td>
+  <td>£190,000</td>
+  <td>131</td>
+  <td>28</td>
+  <td>💰Reduced</td>
+  <td><a href="https://www.rightmove.co.uk/properties/171076589#/?channel=RES_BUY" target="_blank" style="color:var(--accent);">🔗</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="area-watchout">
+  <h3>⚠️ Area Watchout — Dudley &amp; Surrounding</h3>
+  <ul style="list-style:disc; padding-left:1.5rem; color:var(--text-muted); font-size:0.9rem; line-height:1.6;">
+    <li><strong>Article 4 Direction:</strong> Check HMO licensing rules in DY1-DY3 — some areas have been removing permitted development rights for HMOs</li>
+    <li><strong>Void Risk:</strong> Dudley town centre flats can sit void 4-8 weeks. Terraced houses in Brierley Hill/DY5 let faster</li>
+    <li><strong>Crime Level:</strong> Dudley is average for West Midlands. DY1 (town centre) has higher reported crime than DY6 (Kingswinford)</li>
+    <li><strong>HMO Licensing:</strong> Mandatory licensing applies to 5+ person HMOs. Some DY2/DY3 areas have additional licensing schemes</li>
+    <li><strong>Yield Context:</strong> 3-bed houses in DY5/DY6 typically yield 5-7% gross. Reduced and chain-free properties offer best value-add potential</li>
+    <li><strong>Market Trend:</strong> Rightmove data shows Dudley asking prices down ~2% YoY — motivated sellers becoming more common with several 200-day+ listings still unsold</li>
+    <li><strong>Sold STC Properties:</strong> Several previously tracked properties sold (Webley Grove DY1 went SSTC) — well-priced stock still moves, competition remains for quality deals</li>
+    <li><strong>Top Pick:</strong> Gravelly Lane, Erdington, Birmingham at £165,000 — 110 days on market, score 58/100</li>
+  </ul>
+</div>
+
+<div class="btn-group" style="margin:2rem 0; justify-content:center;">
+  <a href="/dashboards/nikka-intel/index.html" class="btn btn-secondary">🏠 Dashboard Home</a>
+  <a href="/dashboards/nikka-intel/brrr-sourcer.html" class="btn btn-secondary">🔥 BRRR Sourcer</a>
+  <a href="/dashboards/nikka-intel/power-team.html" class="btn btn-secondary">🛠️ Power Team</a>
+  <a href="/dashboards/nikka-intel/market_signals_MAIN.html" class="btn btn-secondary">📡 Market Signals</a>
+  <a href="/dashboards/nikka-intel/area-intelligence/" class="btn btn-secondary">🗺️ Area Intel</a>
+</div>
+
+<div class="footer">
+  <p>🔄 Generated 2026-05-27 07:17 BST · Data from Rightmove.co.uk · Filtered: 2+ bed houses ≤£200k, 20mi of Dudley, 90+ days listed</p>
+  <p>Nikka Khan 🔵 Property Intelligence · Motivated Sellers Daily Scan v1.0 · 2026-05-27</p>
+</div>
+</div>
+</body>
+</html>
