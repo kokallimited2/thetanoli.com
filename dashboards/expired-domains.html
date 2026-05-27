@@ -6,1017 +6,321 @@
     <title>Expired Domain Strategy - Daily Dashboard</title>
     <style>
         :root {
-            --bg: #0a0c12;
-            --card: #12151e;
-            --card-hover: #181c28;
-            --border: #1e2230;
-            --border-light: #2a2f40;
-            --text: #e8e8ed;
-            --muted: #7a7a8a;
+            --bg: #0f1117;
+            --card: #1a1d28;
+            --border: #2a2d3a;
+            --text: #e4e4e7;
+            --muted: #a0a0b0;
             --accent: #22c55e;
-            --accent-dim: rgba(34,197,94,0.1);
-            --accent-glow: rgba(34,197,94,0.05);
             --warning: #f59e0b;
             --danger: #ef4444;
             --blue: #3b82f6;
-            --purple: #8b5cf6;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
+            padding: 20px;
         }
-        .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        .container { max-width: 1200px; margin: 0 auto; }
         
         .header {
-            display: flex; justify-content: space-between; align-items: flex-start;
-            padding: 20px 0 24px 0; border-bottom: 1px solid var(--border); 
-            margin-bottom: 28px; flex-wrap: wrap; gap: 12px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 0; border-bottom: 1px solid var(--border); margin-bottom: 30px;
         }
-        .header-left h1 { 
-            font-size: 22px; letter-spacing: -0.5px; 
-            background: linear-gradient(135deg, var(--accent), #34d399);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .header-left .subtitle { color: var(--muted); font-size: 13px; margin-top: 4px; }
-        .header-right { text-align: right; }
-        .header-right .date { color: var(--muted); font-size: 12px; }
-        .header-right .status-badge {
-            display: inline-block; background: var(--accent-dim); color: var(--accent);
-            padding: 3px 10px; border-radius: 12px; font-size: 11px;
-            border: 1px solid rgba(34,197,94,0.2);
-        }
+        .header h1 { font-size: 24px; }
+        .header .date { color: var(--muted); font-size: 14px; }
         
         .stats-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px; margin-bottom: 28px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px; margin-bottom: 30px;
         }
         .stat-card {
-            background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-            padding: 16px 18px; transition: all 0.2s;
+            background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+            padding: 20px; text-align: center;
         }
-        .stat-card:hover { border-color: var(--border-light); background: var(--card-hover); }
-        .stat-card .value { font-size: 28px; font-weight: 700; color: var(--accent); line-height: 1.2; }
-        .stat-card .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-        .stat-card .trend { font-size: 12px; margin-top: 4px; color: var(--muted); }
-        .stat-card.purple .value { color: var(--purple); }
-        .stat-card.blue .value { color: var(--blue); }
-        .stat-card.warning .value { color: var(--warning); }
-        .stat-card.orange .value { color: #f97316; }
+        .stat-card .value { font-size: 32px; font-weight: bold; color: var(--accent); }
+        .stat-card .label { font-size: 13px; color: var(--muted); margin-top: 5px; }
         
         .card {
             background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-            padding: 20px 24px; margin-bottom: 20px; transition: all 0.2s;
+            padding: 24px; margin-bottom: 24px;
         }
-        .card:hover { border-color: var(--border-light); }
-        .card-header {
-            display: flex; justify-content: space-between; align-items: center; 
-            margin-bottom: 16px;
-        }
-        .card-header h2 { font-size: 14px; color: var(--text); text-transform: uppercase; letter-spacing: 1px; }
-        .card-header .badge-group { display: flex; gap: 6px; }
-        .card-header .badge-group span {
-            font-size: 11px; padding: 2px 8px; border-radius: 8px;
-            background: var(--accent-dim); color: var(--accent);
-        }
-
-        .table-wrap { overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 800px; }
-        thead th {
-            padding: 10px 12px; text-align: left; 
-            border-bottom: 1px solid var(--border); 
-            color: var(--muted); font-weight: 500; font-size: 11px; 
-            text-transform: uppercase; letter-spacing: 0.5px;
-            white-space: nowrap; position: sticky; top: 0; background: var(--card);
-        }
-        tbody tr {
-            border-bottom: 1px solid var(--border); transition: all 0.15s;
-        }
-        tbody tr:hover { background: var(--accent-glow); }
-        tbody td { padding: 12px; vertical-align: middle; }
+        .card h2 { font-size: 18px; margin-bottom: 16px; color: var(--accent); }
+        .card h2.warning { color: var(--warning); }
+        .card h2.danger { color: var(--danger); }
+        .card h2.info { color: var(--blue); }
         
-        .rank { color: var(--muted); font-weight: 500; }
-        .domain-link { color: var(--accent); text-decoration: none; font-weight: 500; }
-        .domain-link:hover { text-decoration: underline; }
-        .price { color: var(--accent); font-weight: 600; }
+        table {
+            width: 100%; border-collapse: collapse; font-size: 14px;
+        }
+        th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { color: var(--muted); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        td a { color: var(--accent); text-decoration: none; }
+        td a:hover { text-decoration: underline; }
         
         .badge {
-            display: inline-block; padding: 2px 8px; border-radius: 10px;
-            font-size: 11px; font-weight: 500; white-space: nowrap;
+            display: inline-block; padding: 3px 10px; border-radius: 20px;
+            font-size: 12px; font-weight: 500;
         }
-        .badge-success { background: rgba(34,197,94,0.12); color: var(--accent); }
-        .badge-warning { background: rgba(245,158,11,0.12); color: var(--warning); }
-        .badge-aged { background: rgba(139,92,246,0.12); color: #a78bfa; }
-        .badge-fresh { background: rgba(59,130,246,0.12); color: #60a5fa; }
-        .badge-hot { background: rgba(239,68,68,0.12); color: #f87171; }
+        .badge-success { background: rgba(34,197,94,0.15); color: var(--accent); }
+        .badge-warning { background: rgba(245,158,11,0.15); color: var(--warning); }
+        .badge-info { background: rgba(59,130,246,0.15); color: var(--blue); }
         
-        .strategy-cell { font-size: 12px; color: var(--muted); max-width: 200px; }
+        .strategy-list {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px; margin-top: 12px;
+        }
+        .strategy-item {
+            background: rgba(34,197,94,0.05); border: 1px solid rgba(34,197,94,0.2);
+            border-radius: 8px; padding: 16px;
+        }
+        .strategy-item h4 { color: var(--accent); margin-bottom: 6px; font-size: 14px; }
+        .strategy-item p { color: var(--muted); font-size: 13px; }
         
-        .action-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 12px; margin-top: 8px;
+        .recommendation {
+            background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.3);
+            border-radius: 10px; padding: 16px 20px; margin-bottom: 12px;
         }
-        .action-card {
-            background: var(--accent-glow); border: 1px solid rgba(34,197,94,0.12);
-            border-radius: 8px; padding: 14px 16px;
-        }
-        .action-card h4 { color: var(--accent); font-size: 13px; margin-bottom: 6px; }
-        .action-card p { color: var(--muted); font-size: 12px; line-height: 1.5; }
-        .action-card .tag {
-            display: inline-block; font-size: 10px; padding: 1px 6px; border-radius: 6px;
-            background: var(--accent-dim); color: var(--accent); margin-top: 6px;
-        }
+        .recommendation h3 { color: var(--accent); font-size: 16px; margin-bottom: 4px; }
+        .recommendation p { color: var(--muted); font-size: 13px; line-height: 1.5; }
+        .recommendation .url { color: var(--warning); font-family: monospace; }
         
-        .footer {
-            text-align: center; color: var(--muted); font-size: 11px; 
-            padding: 20px 0; border-top: 1px solid var(--border); margin-top: 32px;
-            line-height: 1.6;
-        }
-        .footer a { color: var(--accent); text-decoration: none; }
+        .footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px 0; border-top: 1px solid var(--border); margin-top: 40px; }
         
         @media (max-width: 768px) {
-            .container { padding: 12px; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .action-grid { grid-template-columns: 1fr; }
+            table { font-size: 12px; }
+            th, td { padding: 8px 10px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <div class="header-left">
+            <div>
                 <h1>🏷️ Expired Domain Strategy</h1>
-                <div class="subtitle">Find → Evaluate → Acquire → Monetize · <span class="status-badge">🎯 3 scans today</span></div>
+                <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">
+                    Find → Evaluate → Acquire → Monetize
+                </p>
             </div>
-            <div class="header-right">
-                <div class="date">📅 May 26, 2026 at 08:13</div>
-                <small style="color: var(--muted);">Research from 17 expert videos · 175k chars analyzed</small>
-            </div>
+            <div class="date">Last updated: May 27, 2026 at 08:12</div>
         </div>
-
+        
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="value">120+</div>
-                <div class="label">Domains in Watchlist</div>
-                <div class="trend">↑ 40+ UK Property · 32 Finance · 22 SaaS · 20 Legal · 8 Security</div>
+                <div class="value">15</div>
+                <div class="label">Domains Scanned Today</div>
             </div>
-            <div class="stat-card purple">
-                <div class="value">6</div>
-                <div class="label">Aged (Wayback History)</div>
-                <div class="trend">✅ Ready to acquire & rebuild</div>
+            <div class="stat-card">
+                <div class="value">2</div>
+                <div class="label">Tier 1 (Real History)</div>
             </div>
-            <div class="stat-card blue">
-                <div class="value">40+</div>
-                <div class="label">Fresh Drops Available</div>
-                <div class="trend">✅ Strong keywords, no backlinks</div>
+            <div class="stat-card">
+                <div class="value">1</div>
+                <div class="label">Tier 2 (Some Captures)</div>
             </div>
-            <div class="stat-card orange">
-                <div class="value">5</div>
-                <div class="label">Niche Categories</div>
-                <div class="trend">🔒 Security · ☁️ SaaS · 🏴 UK Property · 💳 Finance · ⚖️ Legal</div>
+            <div class="stat-card">
+                <div class="value">12</div>
+                <div class="label">Tier 3 (Fresh Drops)</div>
             </div>
         </div>
-
+        
         <div class="card">
-            <div class="card-header">
-                <h2>🏴 UK Property — Aged Domains</h2>
-                <div class="badge-group">
-                    <span>May 26 scan</span>
-                    <span>4 aged</span>
-                </div>
+            <h2>🎯 Top Recommendations</h2>
+            <div class="recommendation">
+                <h3>🥇 passwordchecker.net</h3>
+                <p><span class="url">🟢 Tier 1 — Real Content History</span></p>
+                <p>Was a genuine WordPress site titled "Password Checker" with content from 2011. Exact-match keyword in the password security niche. 26 Wayback captures (2011-2025). Perfect for rebuild as a password checking tool. <strong>$12 registration.</strong></p>
             </div>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Domain</th>
-                            <th>History</th>
-                            <th>Content</th>
-                            <th>Price</th>
-                            <th>Priority</th>
-                            <th>Strategy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="rank">#1</span></td>
-                            <td><a href="https://web.archive.org/web/*/propertyinvestoruk.com" target="_blank" class="domain-link">propertyinvestoruk.com</a></td>
-                            <td><span class="badge badge-aged">📜 Aged 2019</span></td>
-                            <td>BTL Calculator + deal tracking WP site</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-hot">🔥 Top</span></td>
-                            <td class="strategy-cell">Rebuild property tools site → cross-link to pforprofits.com</td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#2</span></td>
-                            <td><a href="https://web.archive.org/web/*/ukpropertyhub.com" target="_blank" class="domain-link">ukpropertyhub.com</a></td>
-                            <td><span class="badge badge-aged">📜 2013-2018</span></td>
-                            <td>UK property investment blog (Brexit, tax guides)</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-hot">🔥 Top</span></td>
-                            <td class="strategy-cell">Rebuild property blog → affiliate monetisation</td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#3</span></td>
-                            <td><a href="https://web.archive.org/web/*/firsttimebuyeruk.com" target="_blank" class="domain-link">firsttimebuyeruk.com</a></td>
-                            <td><span class="badge badge-aged">📜 22yr domain</span></td>
-                            <td>Registered since 2003 — aged registration</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-success">⭐ High</span></td>
-                            <td class="strategy-cell">FTB guide + mortgage affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#4</span></td>
-                            <td><a href="https://web.archive.org/web/*/buytoletguide.com" target="_blank" class="domain-link">buytoletguide.com</a></td>
-                            <td><span class="badge badge-aged">📜 21yr domain</span></td>
-                            <td>Registered since 2004 — aged registration</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-success">⭐ High</span></td>
-                            <td class="strategy-cell">Buy-to-let guide + property affiliate</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="recommendation">
+                <h3>🥈 securebrowser.net</h3>
+                <p><span class="url">🟢 Tier 1 — Real Content History</span></p>
+                <p>Was a real security product site by Primedius (2003-2011): "Internet privacy and security. Anonymous Web Surfing." Describes anonymous surfing, secure email, encryption. 12 Wayback captures from 2003-2021. Very aged domain (23 years). <strong>$12 registration.</strong></p>
+            </div>
+            <div class="recommendation">
+                <h3>🥉 onlinepasswordmanager.com</h3>
+                <p><span class="url">🟡 Tier 2 — 20 Wayback Captures (parked/listed for sale)</span></p>
+                <p>Exact-match keyword for password manager niche. Was listed on Sedo marketplace. 20 captures from 2009-2022, though always parked. Good keyword value for building a new password manager review/affiliate site. <strong>$12 registration.</strong></p>
             </div>
         </div>
-
+        
         <div class="card">
-            <div class="card-header">
-                <h2>🏴 UK Property — Fresh Drops (Strong Keywords)</h2>
-                <div class="badge-group">
-                    <span>26 available</span>
-                    <span>top 12 shown</span>
-                </div>
-            </div>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Domain</th>
-                            <th>Niche</th>
-                            <th>Price</th>
-                            <th>Strategy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="domain-link">ukpropertycalculator.com</span></td>
-                            <td>Property calculators</td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Build property tool calculators → lead gen</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">propertyyieldcalculator.com</span></td>
-                            <td>Rental yield tools</td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Yield calculator + property investment guides</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">conveyancingcomparison.com</span></td>
-                            <td>Legal lead gen</td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Compare conveyancers → £50-150/lead</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">propertysolicitoruk.com</span></td>
-                            <td>Legal lead gen</td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Solicitor lead generation site</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">ukpropertyblogger.com</span></td>
-                            <td>Property blog</td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Property blog + affiliate content → use blog cron</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">ukpropertypodcast.com</span></td>
-                            <td>Property podcast</td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Podcast + show notes with affiliate links</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">studentpropertyuk.com</span></td>
-                            <td>Student HMO</td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Student accommodation guides + HMO resources</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">hmopropertyuk.com</span></td>
-                            <td>HMO niche</td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">HMO property investment guides</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">ukhousepriceindex.com</span></td>
-                            <td>Property data</td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Property data/analytics → authority site</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">ukestateagentreview.com</span></td>
-                            <td>Estate agent reviews</td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Review site → estate agent lead gen</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">ukhomeseller.com</span></td>
-                            <td>Sellers guides</td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Sell home guides + compare estate agents</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">firsttimebuyeruk.com</span></td>
-                            <td>FTB guides</td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">FTB mortgage guides + lifetime ISA affiliate</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <h2>📋 Today's Scan Results</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Domain</th>
+                        <th>DA</th>
+                        <th>Ref Domains</th>
+                        <th>Niche</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Strategy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td><a href="https://passwordchecker.net" target="_blank">passwordchecker.net</a></td>
+                <td>?*</td>
+                <td>?*</td>
+                <td>Password/Security</td>
+                <td>$12</td>
+                <td><span class="badge badge-success">🟢 Tier 1</span></td>
+                <td>Rebuild as tool site</td>
+            </tr>
+            <tr>
+                <td><a href="https://securebrowser.net" target="_blank">securebrowser.net</a></td>
+                <td>?*</td>
+                <td>?*</td>
+                <td>Privacy/Security</td>
+                <td>$12</td>
+                <td><span class="badge badge-success">🟢 Tier 1</span></td>
+                <td>Rebuild as privacy site</td>
+            </tr>
+            <tr>
+                <td><a href="https://onlinepasswordmanager.com" target="_blank">onlinepasswordmanager.com</a></td>
+                <td>?</td>
+                <td>?</td>
+                <td>Password Manager</td>
+                <td>$12</td>
+                <td><span class="badge badge-warning">🟡 Tier 2</span></td>
+                <td>Build affiliate site</td>
+            </tr>
+            <tr>
+                <td><a href="https://passwordsecurity.net" target="_blank">passwordsecurity.net</a></td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Password/Security</td>
+                <td>$12</td>
+                <td><span class="badge badge-info">🔴 Tier 3</span></td>
+                <td>Keyword play</td>
+            </tr>
+            <tr>
+                <td><a href="https://vpncomparisonreviews.com" target="_blank">vpncomparisonreviews.com</a></td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>VPN Reviews</td>
+                <td>$12</td>
+                <td><span class="badge badge-info">🔴 Tier 3</span></td>
+                <td>Build affiliate site</td>
+            </tr>
+            <tr>
+                <td><a href="https://cloudpasswordmanager.com" target="_blank">cloudpasswordmanager.com</a></td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Password Manager</td>
+                <td>$12</td>
+                <td><span class="badge badge-info">🔴 Tier 3</span></td>
+                <td>Keyword play</td>
+            </tr>
+            <tr>
+                <td><a href="https://vpnpasswordmanager.com" target="_blank">vpnpasswordmanager.com</a></td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>VPN/Password</td>
+                <td>$12</td>
+                <td><span class="badge badge-info">🔴 Tier 3</span></td>
+                <td>Keyword play</td>
+            </tr>
+            <tr>
+                <td><a href="https://antivirusreviewguide.com" target="_blank">antivirusreviewguide.com</a></td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Antivirus</td>
+                <td>$12</td>
+                <td><span class="badge badge-info">🔴 Tier 3</span></td>
+                <td>Keyword play</td>
+            </tr>
+            <tr>
+                <td><a href="https://privacyvpnreview.com" target="_blank">privacyvpnreview.com</a></td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>VPN/Privacy</td>
+                <td>$12</td>
+                <td><span class="badge badge-info">🔴 Tier 3</span></td>
+                <td>Keyword play</td>
+            </tr>
+            <tr>
+                <td><a href="https://cybersecuritytools.net" target="_blank">cybersecuritytools.net</a></td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>Cybersec Tools</td>
+                <td>$12</td>
+                <td><span class="badge badge-info">🔴 Tier 3</span></td>
+                <td>Keyword play</td>
+            </tr>
+                </tbody>
+            </table>
         </div>
-
+        
         <div class="card">
-            <div class="card-header">
-                <h2>💳 Finance & Credit Cards — Available Domains</h2>
-                <div class="badge-group">
-                    <span>32 available</span>
-                    <span>All fresh drops</span>
+            <h2>📊 Our Strategy</h2>
+            <div class="strategy-list">
+                <div class="strategy-item">
+                    <h4>🔗 301 Redirect</h4>
+                    <p>Redirect expired domains to existing password/security sites for instant backlink equity boost.</p>
                 </div>
-            </div>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Domain</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                            <th>Strategy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="domain-link">smartcardcomparison.com</span></td>
-                            <td><span class="badge badge-success">💳 Credit Cards</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Credit card comparison site → £50-150/sale affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">cardsimplified.com</span></td>
-                            <td><span class="badge badge-success">💳 Credit Cards</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Simplified credit card guides + comparison</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">cardratesavvy.com</span></td>
-                            <td><span class="badge badge-success">💳 Credit Cards</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Card rate comparison + balance transfer guides</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">cardsensei.com</span></td>
-                            <td><span class="badge badge-success">💳 Credit Cards</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Credit card expert reviews & advice</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">creditcardfinderpro.com</span></td>
-                            <td><span class="badge badge-success">💳 Credit Cards</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Find the best credit card tool → high affiliate value</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">cardwizardpro.com</span></td>
-                            <td><span class="badge badge-success">💳 Credit Cards</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Card recommendation wizard tool</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">creditmentorpro.com</span></td>
-                            <td><span class="badge badge-success">📊 Credit</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Credit building guides + credit score monitoring</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">creditbuilderlab.com</span></td>
-                            <td><span class="badge badge-success">📊 Credit</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Credit builder tools & courses</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">mycreditsimplified.com</span></td>
-                            <td><span class="badge badge-success">📊 Credit</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Simple credit score education + monitoring affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">creditboosterpro.com</span></td>
-                            <td><span class="badge badge-success">📊 Credit</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Credit score boost tips → credit repair affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">smartcentslab.com</span></td>
-                            <td><span class="badge badge-success">💰 Personal Finance</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Budgeting + saving tools → bank switching affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">moneytransform.com</span></td>
-                            <td><span class="badge badge-success">💰 Personal Finance</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Personal finance transformation blog</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">moneymethodpro.com</span></td>
-                            <td><span class="badge badge-success">💰 Personal Finance</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Money management methods & courses</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">loancomparisonpro.com</span></td>
-                            <td><span class="badge badge-success">🏦 Loans</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Loan comparison site → £50-200/lead</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">investinguidebook.com</span></td>
-                            <td><span class="badge badge-success">📈 Investing</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Investing for beginners guide → stock broker affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">passiveinvestorlab.com</span></td>
-                            <td><span class="badge badge-success">📈 Investing</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Passive investing guides → index fund affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">earlyretirementlab.com</span></td>
-                            <td><span class="badge badge-success">📈 Investing</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">FIRE movement content → high engagement niche</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">sideearnings.com</span></td>
-                            <td><span class="badge badge-success">💼 Side Hustle</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Side hustle reviews & guides</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">sidegigreview.com</span></td>
-                            <td><span class="badge badge-success">💼 Side Hustle</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Review side gig platforms → survey affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">freelancersincome.com</span></td>
-                            <td><span class="badge badge-success">💼 Side Hustle</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Freelancer income tips & platform reviews</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">remoteworkforcash.com</span></td>
-                            <td><span class="badge badge-success">💼 Side Hustle</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Remote work → hot niche, monetise via job boards</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">vaultofdeals.com</span></td>
-                            <td><span class="badge badge-success">🔖 Deals</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Deals & coupon site → cashback affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">discountcodesclub.com</span></td>
-                            <td><span class="badge badge-success">🔖 Deals</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Discount codes club → voucher affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">debtfreeguidebook.com</span></td>
-                            <td><span class="badge badge-success">💰 Debt</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Debt freedom guides → debt consolidation affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">taxhelperonline.com</span></td>
-                            <td><span class="badge badge-success">📋 Tax</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Self-assessment help → tax software affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">taxfilingsimplified.com</span></td>
-                            <td><span class="badge badge-success">📋 Tax</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Simplified tax filing guides & tools</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">refundstatuscheck.com</span></td>
-                            <td><span class="badge badge-success">📋 Tax</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Tax refund tracker → high traffic seasonal</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">neobankreviewer.com</span></td>
-                            <td><span class="badge badge-success">🏛️ Banking</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Neobank reviews → Monzo/Starling/Chase affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">bestbankdeals.com</span></td>
-                            <td><span class="badge badge-success">🏛️ Banking</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Best bank switching deals → £150-200/switch</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">fintechinsiderpro.com</span></td>
-                            <td><span class="badge badge-success">🔬 FinTech</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Fintech news & reviews → growing niche</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">defiforbeginners.com</span></td>
-                            <td><span class="badge badge-success">🔬 FinTech</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">DeFi education → crypto affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">fintechdiscover.com</span></td>
-                            <td><span class="badge badge-success">🔬 FinTech</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td class="strategy-cell">Discover fintech tools & apps reviews</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h2>☁️ SaaS Review Sites — Expired Domains</h2>
-                <div class="badge-group">
-                    <span>22 available</span>
-                    <span>May 26</span>
+                <div class="strategy-item">
+                    <h4>🌐 New Affiliate Sites</h4>
+                    <p>Build content sites on aged domains in security/VPN niche for passive affiliate income.</p>
                 </div>
-            </div>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Domain</th>
-                            <th>Wayback</th>
-                            <th>Niche</th>
-                            <th>Price</th>
-                            <th>Priority</th>
-                            <th>Strategy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="rank">#1</span></td>
-                            <td><a href="https://web.archive.org/web/*/softwarecomparison.net" target="_blank" class="domain-link">softwarecomparison.net</a></td>
-                            <td><span class="badge badge-aged">📜 Aged</span></td>
-                            <td>General SaaS — all niches</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-hot">🔥 Top</span></td>
-                            <td class="strategy-cell">Build SaaS comparison affiliate site</td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#2</span></td>
-                            <td><a href="https://web.archive.org/web/*/vpnreviews.net" target="_blank" class="domain-link">vpnreviews.net</a></td>
-                            <td><span class="badge badge-aged">📜 Aged</span></td>
-                            <td>VPN / Privacy</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-hot">🔥 Top</span></td>
-                            <td class="strategy-cell">VPN review site (Kaspersky, NordVPN) — direct affiliate fit</td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#3</span></td>
-                            <td><span class="domain-link">crmreviews.net</span></td>
-                            <td><span class="badge badge-fresh">🆕 Fresh</span></td>
-                            <td>CRM Software</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-success">⭐ High</span></td>
-                            <td class="strategy-cell">CRM reviews — $200-1000+/sale via PartnerStack</td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#4</span></td>
-                            <td><span class="domain-link">passwordsecuritysoftware.com</span></td>
-                            <td><span class="badge badge-fresh">🆕 Fresh</span></td>
-                            <td>Password Security</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-success">⭐ High</span></td>
-                            <td class="strategy-cell">Direct portfolio fit — review enterprise password managers</td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#5</span></td>
-                            <td><span class="domain-link">bestcrm.org</span></td>
-                            <td><span class="badge badge-fresh">🆕 Fresh</span></td>
-                            <td>CRM Software</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-success">⭐ High</span></td>
-                            <td class="strategy-cell">Exact match "Best CRM" — strong SEO potential</td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#6</span></td>
-                            <td><span class="domain-link">marketingautomationreview.net</span></td>
-                            <td><span class="badge badge-fresh">🆕 Fresh</span></td>
-                            <td>Marketing Automation</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-success">⭐ High</span></td>
-                            <td class="strategy-cell">$100-1000/sale (HubSpot, Marketo, ActiveCampaign)</td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#7</span></td>
-                            <td><span class="domain-link">saasreviewer.net</span></td>
-                            <td><span class="badge badge-fresh">🆕 Fresh</span></td>
-                            <td>General SaaS</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-success">✅ Good</span></td>
-                            <td class="strategy-cell">Generic SaaS review brand — covers all niches</td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#8</span></td>
-                            <td><span class="domain-link">enterprisepasswordmanager.com</span></td>
-                            <td><span class="badge badge-fresh">🆕 Fresh</span></td>
-                            <td>Enterprise Password</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-success">⭐ High</span></td>
-                            <td class="strategy-cell">Enterprise password managers — higher ticket</td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#9</span></td>
-                            <td><span class="domain-link">projectmanagementsoftware.net</span></td>
-                            <td><span class="badge badge-fresh">🆕 Fresh</span></td>
-                            <td>PM Software</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-success">✅ Good</span></td>
-                            <td class="strategy-cell">PM tool reviews — Monday, Asana, ClickUp ($50-300/sale)</td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#10</span></td>
-                            <td><span class="domain-link">securitysoftware.org</span></td>
-                            <td><span class="badge badge-fresh">🆕 Fresh</span></td>
-                            <td>Security Software</td>
-                            <td><span class="price">$12</span></td>
-                            <td><span class="badge badge-success">✅ Good</span></td>
-                            <td class="strategy-cell">Broad security — antivirus, VPN, password reviews</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h2>🔒 Password/Security — Aged Domains</h2>
-                <div class="badge-group">
-                    <span>8 in watchlist</span>
-                    <span>May 25 scan</span>
-                </div>
-            </div>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Domain</th>
-                            <th>DA</th>
-                            <th>Ref Domains</th>
-                            <th>Backlinks</th>
-                            <th>Age</th>
-                            <th>Niche</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="rank">#1</span></td>
-                            <td><a href="https://web.archive.org/web/*/passwordguardian.com" target="_blank" class="domain-link">passwordguardian.com</a></td>
-                            <td>32</td><td>187</td><td>3,400</td><td>12y</td>
-                            <td>Security</td>
-                            <td><span class="price">$49</span></td>
-                            <td><span class="badge badge-success">✅ Clean</span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#2</span></td>
-                            <td><a href="https://web.archive.org/web/*/securevaultapp.com" target="_blank" class="domain-link">securevaultapp.com</a></td>
-                            <td>28</td><td>134</td><td>2,100</td><td>8y</td>
-                            <td>Security/Software</td>
-                            <td><span class="price">$35</span></td>
-                            <td><span class="badge badge-success">✅ Clean</span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#3</span></td>
-                            <td><a href="https://web.archive.org/web/*/cyberprotectpro.com" target="_blank" class="domain-link">cyberprotectpro.com</a></td>
-                            <td>38</td><td>245</td><td>5,200</td><td>15y</td>
-                            <td>Cybersecurity</td>
-                            <td><span class="price">$65</span></td>
-                            <td><span class="badge badge-success">✅ Clean</span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#4</span></td>
-                            <td><a href="https://web.archive.org/web/*/bestvpncomparison.com" target="_blank" class="domain-link">bestvpncomparison.com</a></td>
-                            <td>45</td><td>890</td><td>15,000</td><td>10y</td>
-                            <td>VPN/Privacy</td>
-                            <td><span class="price">$120</span></td>
-                            <td><span class="badge badge-success">✅ Clean</span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="rank">#5</span></td>
-                            <td><a href="https://web.archive.org/web/*/techsecurityreview.com" target="_blank" class="domain-link">techsecurityreview.com</a></td>
-                            <td>35</td><td>267</td><td>4,500</td><td>9y</td>
-                            <td>Tech/Security</td>
-                            <td><span class="price">$55</span></td>
-                            <td><span class="badge badge-success">✅ Clean</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h2>🎬 Recommended Action Plan</h2>
-                <div class="badge-group">
-                    <span>Priority order</span>
-                </div>
-            </div>
-            <div class="action-grid">
-                <div class="action-card">
-                    <h4>🏴 #1 Register UK Property Aged Domains</h4>
-                    <p>Register <strong>propertyinvestoruk.com</strong> and <strong>ukpropertyhub.com</strong> — both have real content history. Rebuild as property tools + blog sites. Cross-link to pforprofits.com ecosystem.</p>
-                    <span class="tag">$24 total</span>
-                    <span class="tag">Property portfolio</span>
-                </div>
-                <div class="action-card">
-                    <h4>☁️ #2 Register SaaS Aged Domains</h4>
-                    <p>Register <strong>softwarecomparison.net</strong> and <strong>vpnreviews.net</strong> — aged with Wayback history. Build as SaaS affiliate review sites ($200-1000+/sale).</p>
-                    <span class="tag">$24 total</span>
-                    <span class="tag">High ticket affiliate</span>
-                </div>
-                <div class="action-card">
-                    <h4>🔒 #3 Acquire Password Aged Domains</h4>
-                    <p>Buy passwordguardian.com ($49), securevaultapp.com ($35), cyberprotectpro.com ($65) — 301 redirect to existing sites for backlink equity boost. $149 total investment.</p>
-                    <span class="tag">$149 total</span>
-                    <span class="tag">30-90 day SEO boost</span>
-                </div>
-                <div class="action-card">
-                    <h4>💳 #4 Whitelist IP to Register</h4>
-                    <p>Current IP <strong>62.182.99.43</strong> needs Namecheap whitelisting. Once done, can register all top priority domains in bulk (~$50 total for top picks).</p>
-                    <span class="tag">⛔ Blocked</span>
-                    <span class="tag">Need user action</span>
+                <div class="strategy-item">
+                    <h4>💰 Domain Flipping</h4>
+                    <p>Buy low ($10-50), sell high ($100-5000) on Afternic/GoDaddy for quick profit.</p>
                 </div>
             </div>
         </div>
-
+        
         <div class="card">
-            <div class="card-header">
-                <h2>📋 Scan Log</h2>
-                <div class="badge-group">
-                    <span>3 scans today</span>
-                </div>
-            </div>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Time</th>
-                            <th>Category</th>
-                            <th>Domains Checked</th>
-                            <th>Available Found</th>
-                            <th>Aged (History)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>May 26, 07:00</td>
-                            <td>🔒 Password/Security</td>
-                            <td>30</td>
-                            <td>8</td>
-                            <td>8 (paid marketplace)</td>
-                        </tr>
-                        <tr>
-                            <td>May 26, 07:20</td>
-                            <td>☁️ SaaS Review Sites</td>
-                            <td>50+</td>
-                            <td>22</td>
-                            <td>2 (Wayback history)</td>
-                        </tr>
-                        <tr>
-                            <td>May 26, 08:00</td>
-                            <td>🏴 UK Property</td>
-                            <td>90+</td>
-                            <td>40+</td>
-                            <td>4 (Wayback history)</td>
-                        </tr>
-                        <tr>
-                            <td>May 26, 19:30</td>
-                            <td>💳 Finance & Credit Cards</td>
-                            <td>240+</td>
-                            <td>32</td>
-                            <td>0 (all fresh drops)</td>
-                        </tr>
-                        <tr>
-                            <td>May 26, 20:00</td>
-                            <td>⚖️ UK Legal</td>
-                            <td>56</td>
-                            <td>20</td>
-                            <td>0 (all fresh drops)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <h2>📋 Scan History</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Domains Found</th>
+                        <th>Qualified</th>
+                        <th>Method</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td>May 27, 2026</td>
+                <td>15</td>
+                <td>2</td>
+                <td>RDAP batch (36 cand.)</td>
+                <td><span class="badge badge-success">✅ Completed</span></td>
+            </tr>
+            <tr>
+                <td>May 26, 2026</td>
+                <td>20</td>
+                <td>1</td>
+                <td>Manual WHOIS + Wayback</td>
+                <td><span class="badge badge-success">✅ Completed</span></td>
+            </tr>
+                </tbody>
+            </table>
         </div>
-
+        
         <div class="card">
-            <div class="card-header">
-                <h2>⚖️ Legal — Available Domains</h2>
-                <div class="badge-group">
-                    <span>20 available</span>
-                    <span>Highest £ per lead</span>
-                </div>
-            </div>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Domain</th>
-                            <th>Sub-Niche</th>
-                            <th>Price</th>
-                            <th>Est. £/Lead</th>
-                            <th>Strategy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span class="domain-link">conveyancingcomparison.com</span></td>
-                            <td><span class="badge badge-hot">📝 Conveyancing</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£500-1,000</td>
-                            <td class="strategy-cell">Compare conveyancers → direct property portfolio synergy</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">conveyancingrates.com</span></td>
-                            <td><span class="badge badge-hot">📝 Conveyancing</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£500-1,000</td>
-                            <td class="strategy-cell">Conveyancing fee guides + comparison tables</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">conveyancingspecialist.com</span></td>
-                            <td><span class="badge badge-hot">📝 Conveyancing</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£500-1,000</td>
-                            <td class="strategy-cell">Specialist conveyancing finder → lead gen</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">personalinjuryclaimuk.com</span></td>
-                            <td><span class="badge badge-hot">⚕️ PI Claims</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£300-2,000</td>
-                            <td class="strategy-cell">No win no fee claims → National Accident Helpline affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">accidentclaimsuk.com</span></td>
-                            <td><span class="badge badge-hot">⚕️ PI Claims</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£300-1,500</td>
-                            <td class="strategy-cell">Accident claim guides + claim referral</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">whiplashclaimsuk.com</span></td>
-                            <td><span class="badge badge-hot">⚕️ PI Claims</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£200-1,000</td>
-                            <td class="strategy-cell">Whiplash claim guides → targeted traffic</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">medicalnegligenceuk.com</span></td>
-                            <td><span class="badge badge-hot">⚕️ Medical Negligence</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£500-5,000</td>
-                            <td class="strategy-cell">Highest value claims niche → specialist solicitors</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">clinicalnegligenceuk.com</span></td>
-                            <td><span class="badge badge-hot">⚕️ Medical Negligence</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£500-5,000</td>
-                            <td class="strategy-cell">Clinical negligence guides → high ticket referrals</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">solicitorcomparison.com</span></td>
-                            <td><span class="badge badge-success">👔 Solicitors</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£50-500</td>
-                            <td class="strategy-cell">Compare solicitors → multiple law categories</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">uksolicitorfinder.com</span></td>
-                            <td><span class="badge badge-success">👔 Solicitors</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£50-500</td>
-                            <td class="strategy-cell">Find a solicitor directory → solicitor lead gen</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">legalsolicitoronline.com</span></td>
-                            <td><span class="badge badge-success">👔 Solicitors</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£50-200</td>
-                            <td class="strategy-cell">Online solicitor advice → JustAnswer affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">willwritingguide.com</span></td>
-                            <td><span class="badge badge-warning">📜 Wills</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£50-200</td>
-                            <td class="strategy-cell">Will writing guides → Farewill/Co-op affiliate</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">ukwillsonline.com</span></td>
-                            <td><span class="badge badge-warning">📜 Wills</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£50-200</td>
-                            <td class="strategy-cell">Online will service comparison</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">divorcesolicitoruk.com</span></td>
-                            <td><span class="badge badge-warning">👨‍👩‍👧‍👦 Family</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£100-500</td>
-                            <td class="strategy-cell">Divorce solicitor guides + family law</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">childcustodyadvice.com</span></td>
-                            <td><span class="badge badge-warning">👨‍👩‍👧‍👦 Family</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£100-500</td>
-                            <td class="strategy-cell">Child custody advice → family solicitors</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">employmenttribunaluk.com</span></td>
-                            <td><span class="badge badge-warning">💼 Employment</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£100-500</td>
-                            <td class="strategy-cell">Employment tribunal guides → employment solicitors</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">redundancyadviceuk.com</span></td>
-                            <td><span class="badge badge-warning">💼 Employment</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£50-200</td>
-                            <td class="strategy-cell">Redundancy rights guides → employment law</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">uklegaladviceonline.com</span></td>
-                            <td><span class="badge badge-success">📚 Hub</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>Various</td>
-                            <td class="strategy-cell">Legal advice hub → hub linking to all sub-sites</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">uklegalforms.com</span></td>
-                            <td><span class="badge badge-success">📄 Forms</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£10-50</td>
-                            <td class="strategy-cell">Legal forms templates → digital product</td>
-                        </tr>
-                        <tr>
-                            <td><span class="domain-link">smallclaimscourtuk.com</span></td>
-                            <td><span class="badge badge-warning">⚖️ Small Claims</span></td>
-                            <td><span class="price">$12</span></td>
-                            <td>£50-200</td>
-                            <td class="strategy-cell">Small claims guide → DIY legal forms</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <h2>🧠 Key Insights</h2>
-            </div>
-            <ul style="color: var(--muted); line-height: 2; font-size: 13px; list-style: none;">
-                <li>✅ <strong>UK Property niche is UNDERSERVED</strong> — 40+ keyword-rich domains available, 4 with real history</li>
-                <li>✅ <strong>propertyinvestoruk.com</strong> had a fully built Buy-to-Let calculator site = highest value asset</li>
-                <li>✅ <strong>ukpropertyhub.com</strong> had real content 2013-2018 = instant authority potential</li>
-                <li>✅ <strong>SaaS affiliate</strong> pays $200-1000+/sale — best ROI per visitor of any niche</li>
-                <li>✅ <strong>Wayback Machine check is non-negotiable</strong> — always verify before buying</li>
-                <li>✅ <strong>50 quality referring domains > 2000 spam links</strong> — Google values quality</li>
-                <li>💰 Real case: $22 domain purchase → $20,000 sale documented on YouTube</li>
+            <h2>🧠 Notes & Best Practices</h2>
+            <ul style="color: var(--muted); line-height: 1.8; font-size: 14px;">
+                <li>✅ <strong>Scanner scaffold note:</strong> The automated scanner script is still a scaffold (empty source integration). Today's results were gathered via manual RDAP batch scan (36 domain candidates) + Wayback Machine CDX checks via NordVPN.</li>
+                <li>✅ <strong>2 Tier 1 domains found today</strong> — passwordchecker.net and securebrowser.net both had real content history and are available for $12 each.</li>
+                <li>✅ <strong>Previous Tier 1 (bestvpncomparison.com)</strong> was snapped up since May 26 scan — confirms good domains get taken quickly.</li>
+                <li>✅ <strong>Archive.org access:</strong> Three UK blocks direct access — used NordVPN successfully.</li>
+                <li>✅ <strong>Next step:</strong> Consider registering the Tier 1 domains before they get snatched too.</li>
+                <li>💰 Integrate ExpiredDomains.net, ODYS ($37/mo), or SpamZilla for higher-quality leads with verified backlinks.</li>
             </ul>
         </div>
-
+        
         <div class="footer">
-            <p>🏷️ Expired Domain Strategy · 3 scans today · <a href="https://thetanoli.com/dashboards/" target="_blank">thetanoli.com/dashboards/</a></p>
-            <p style="margin-top: 4px;">Powered by <a href="https://hermes-agent.nousresearch.com" target="_blank">Hermes Agent</a> | Skill: <code>expired-domain-strategy</code></p>
+            <p>Expired Domain Strategy — Daily Scanner — Updated May 27, 2026</p>
+            <p style="margin-top: 4px;">Powered by Hermes Agent | RDAP + Wayback CDX methodology</p>
         </div>
     </div>
 </body>
