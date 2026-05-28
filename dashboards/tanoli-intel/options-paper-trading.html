@@ -2,8 +2,8 @@
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Options Paper Trading | Tanoli Intel</title>
 <style>
-body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
-.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; max-width: 600px; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; max-width: 650px; }
 h1 { color: #58a6ff; font-size: 1.3rem; margin: 0 0 16px 0; }
 .metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 .metric { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; text-align: center; }
@@ -13,28 +13,31 @@ h1 { color: #58a6ff; font-size: 1.3rem; margin: 0 0 16px 0; }
 .red { color: #f85149; }
 .blue { color: #58a6ff; }
 .yellow { color: #d29922; }
+.status { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
+.gateway-stopped { background: rgba(248,81,73,0.15); color: #f85149; }
 .pipeline { font-size: 0.9em; margin: 16px 0; line-height: 1.6; }
-.note { font-size: 0.85em; color: #f85149; background: rgba(248,81,73,0.1); border: 1px solid rgba(248,81,73,0.3); border-radius: 6px; padding: 10px; margin-top: 12px; }
+.alert { background: rgba(210,153,34,0.1); border: 1px solid #d29922; border-radius: 6px; padding: 12px; margin: 12px 0; font-size: 0.85em; }
+.alert-title { color: #d29922; font-weight: bold; margin-bottom: 4px; }
 </style></head><body>
 <div class="card">
 <h1>📝 Options Paper Trading</h1>
-<p style="color:#8b949e;font-size:0.85em;margin-bottom:16px">2026-05-27 15:01</p>
+<p style="color:#8b949e;font-size:0.85em;margin-bottom:16px">2026-05-28 14:49 · 2026-05-28</p>
 <div class="metrics">
     <div class="metric"><div class="value red">❌</div><div class="label">Gateway Status</div></div>
-    <div class="metric"><div class="value blue">0</div><div class="label">Today's Trades</div></div>
-    <div class="metric"><div class="value blue">0</div><div class="label">Total Journal Trades</div></div>
-    <div class="metric"><div class="value blue">251</div><div class="label">Signals Today</div></div>
+    <div class="metric"><div class="value blue">0</div><div class="label">Today Trades</div></div>
+    <div class="metric"><div class="value green">228</div><div class="label">Signals Today</div></div>
+    <div class="metric"><div class="value yellow">14</div><div class="label">High-Strength (≥7)</div></div>
+</div>
+<div class="alert">
+<div class="alert-title">⚠️ Gateway Needs Manual Login</div>
+To enable auto-login (one-time setup):<br>
+<code style="background:#0d1117;padding:1px 4px;border-radius:3px">xvfb-run ~/ibkr/gateway/installed/ibgateway</code><br>
+Log in with paper trading credentials, check "Save password", then restart.<br>
+<div style="font-size:0.85em;color:#8b949e;margin-top:6px">Scanner ran OK — 228 signals generated but no trades placed yet.</div>
 </div>
 <div class="pipeline">
-<div><b>Last Pipeline Run:</b> 2026-05-27 15:01</div>
-<div><b>Executed:</b> 0 trades</div>
-<div><b>Skipped:</b> 0 signals</div>
-</div>
-<div class="note">
-⚠️ <b>Gateway Login Required</b> — IB Gateway is running but no auto-login session saved.<br>
-To fix: SSH in and run <code>xvfb-run ~/ibkr/gateway/installed/ibgateway</code>, log in with paper trading credentials, check "Save password". Future restarts will auto-login.<br>
-<br>
-<b>Scanner Status:</b> ✅ Running — 251 signals generated today<br>
-<b>Executor:</b> ⛔ Skipped — gateway not authenticated
+<div><b>Scanner:</b> ✅ Ran at 2026-05-28 14:49</div>
+<div><b>Executor:</b> ⏸️ Skipped (gateway not logged in)</div>
+<div><b>Journal Trades:</b> 0 total, 0 today</div>
 </div>
 </div></body></html>
