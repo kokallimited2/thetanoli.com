@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Marketplace Watch — ClickBank + Digistore24</title>
+    <style>
+        :root {
+            --bg: #0f1117;
+            --card: #1a1d28;
+            --border: #2a2d3a;
+            --text: #e4e4e7;
+            --muted: #a0a0b0;
+            --accent: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --blue: #3b82f6;
+            --purple: #a855f7;
+            --cb: #ff6b35;
+            --ds: #00b4d8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 0; border-bottom: 1px solid var(--border); margin-bottom: 30px;
+        }
+        .header h1 { font-size: 24px; }
+        .header .date { color: var(--muted); font-size: 14px; }
+        
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px; margin-bottom: 30px;
+        }
+        .stat-card {
+            background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+            padding: 20px; text-align: center;
+        }
+        .stat-card .value { font-size: 28px; font-weight: bold; }
+        .stat-card .label { font-size: 13px; color: var(--muted); margin-top: 5px; }
+        .stat-card.cb .value { color: var(--cb); }
+        .stat-card.ds .value { color: var(--ds); }
+        .stat-card.total .value { color: var(--accent); }
+        .stat-card.revenue .value { color: var(--warning); }
+        
+        .nav-tabs {
+            display: flex; gap: 4px; margin-bottom: 24px;
+            background: var(--card); border-radius: 12px; padding: 4px;
+            border: 1px solid var(--border);
+        }
+        .nav-tab {
+            flex: 1; padding: 12px 20px; text-align: center; cursor: pointer;
+            border-radius: 8px; font-size: 14px; font-weight: 500;
+            border: none; background: transparent; color: var(--muted);
+            transition: all 0.2s;
+        }
+        .nav-tab:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+        .nav-tab.active { background: rgba(34,197,94,0.15); color: var(--accent); }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .card {
+            background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+            padding: 24px; margin-bottom: 24px;
+        }
+        .card h2 { font-size: 18px; margin-bottom: 16px; }
+        .card h2.cb { color: var(--cb); }
+        .card h2.ds { color: var(--ds); }
+        
+        .program-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 16px; margin-bottom: 20px;
+        }
+        .program-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px; padding: 18px;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+        .program-card:hover { border-color: var(--accent); }
+        .program-card .rank {
+            position: absolute; top: -8px; left: -8px;
+            width: 28px; height: 28px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; font-weight: bold;
+            background: var(--accent); color: #000;
+        }
+        .program-card .rank.cb-rank { background: var(--cb); }
+        .program-card .rank.ds-rank { background: var(--ds); }
+        
+        .program-card h3 { font-size: 15px; margin-bottom: 6px; padding-left: 24px; }
+        .program-card .category {
+            display: inline-block;
+            padding: 2px 10px; border-radius: 12px;
+            font-size: 11px; font-weight: 500;
+            background: rgba(59,130,246,0.15); color: var(--blue);
+            margin-bottom: 8px;
+        }
+        .program-card .meta {
+            display: flex; gap: 16px; margin-top: 10px;
+            font-size: 13px;
+        }
+        .program-card .meta-item { display: flex; flex-direction: column; }
+        .program-card .meta-item .label { color: var(--muted); font-size: 11px; }
+        .program-card .meta-item .val { font-weight: 600; }
+        .program-card .meta-item .val.gravity { color: var(--warning); }
+        .program-card .meta-item .val.commission { color: var(--accent); }
+        .program-card .meta-item .val.recurring { color: var(--purple); }
+        
+        .program-card .actions {
+            margin-top: 12px;
+            display: flex; gap: 8px;
+        }
+        .program-card .actions a {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 6px 14px; border-radius: 6px;
+            font-size: 12px; font-weight: 500; text-decoration: none;
+            transition: all 0.2s;
+        }
+        .program-card .actions .promote-link {
+            background: rgba(34,197,94,0.15); color: var(--accent);
+            border: 1px solid rgba(34,197,94,0.3);
+        }
+        .program-card .actions .promote-link:hover { background: rgba(34,197,94,0.25); }
+        .program-card .actions .info-link {
+            background: rgba(59,130,246,0.1); color: var(--blue);
+            border: 1px solid rgba(59,130,246,0.2);
+        }
+        .program-card .actions .info-link:hover { background: rgba(59,130,246,0.2); }
+        
+        .placeholder-row {
+            text-align: center; padding: 40px 20px;
+            color: var(--muted);
+        }
+        .placeholder-row .icon { font-size: 40px; margin-bottom: 12px; }
+        .placeholder-row p { font-size: 14px; line-height: 1.6; }
+        .placeholder-row code {
+            background: rgba(255,255,255,0.05); padding: 2px 8px;
+            border-radius: 4px; font-size: 13px;
+        }
+        
+        .scan-history th {
+            color: var(--muted); font-weight: 500; font-size: 12px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+        
+        .badge {
+            display: inline-block; padding: 3px 10px; border-radius: 20px;
+            font-size: 12px; font-weight: 500;
+        }
+        .badge-success { background: rgba(34,197,94,0.15); color: var(--accent); }
+        .badge-warning { background: rgba(245,158,11,0.15); color: var(--warning); }
+        .badge-info { background: rgba(59,130,246,0.15); color: var(--blue); }
+        .badge-cb { background: rgba(255,107,53,0.15); color: var(--cb); }
+        .badge-ds { background: rgba(0,180,216,0.15); color: var(--ds); }
+        
+        .footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px 0; border-top: 1px solid var(--border); margin-top: 40px; }
+        
+        .top-categories {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;
+        }
+        .category-chip {
+            padding: 4px 14px; border-radius: 16px;
+            font-size: 12px; background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border); cursor: pointer;
+            transition: all 0.2s;
+        }
+        .category-chip:hover { border-color: var(--accent); background: rgba(34,197,94,0.1); }
+        .category-chip.active { border-color: var(--accent); background: rgba(34,197,94,0.15); color: var(--accent); }
+        
+        .search-box {
+            width: 100%; padding: 12px 16px;
+            background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+            border-radius: 8px; color: var(--text); font-size: 14px;
+            margin-bottom: 16px;
+        }
+        .search-box:focus { outline: none; border-color: var(--accent); }
+        
+        @media (max-width: 768px) {
+            .program-grid { grid-template-columns: 1fr; }
+            .header { flex-direction: column; gap: 8px; }
+            .nav-tabs { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>🏪 Affiliate Marketplace Watch</h2>
+                <p style="color: var(--muted); font-size: 14px; margin-top: 4px;">
+                    ClickBank (by Gravity) + Digistore24 (by Popularity)
+                </p>
+            </div>
+            <div class="date" id="lastUpdated">Last scanned: <span id="scanDate">Not yet</span></div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card total">
+                <div class="value" id="totalPrograms">0</div>
+                <div class="label">Tracked Programs</div>
+            </div>
+            <div class="stat-card cb">
+                <div class="value" id="cbPrograms">0</div>
+                <div class="label">ClickBank (High Gravity)</div>
+            </div>
+            <div class="stat-card ds">
+                <div class="value" id="dsPrograms">0</div>
+                <div class="label">Digistore24 (Popular)</div>
+            </div>
+            <div class="stat-card revenue">
+                <div class="value" id="topCommission">-</div>
+                <div class="label">Highest Commission</div>
+            </div>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="switchTab('clickbank')">📊 ClickBank — Gravity</button>
+            <button class="nav-tab" onclick="switchTab('digistore24')">📈 Digistore24 — Popularity</button>
+            <button class="nav-tab" onclick="switchTab('watch')">🎯 Watch List</button>
+            <button class="nav-tab" onclick="switchTab('settings')">⚙️ Scan Settings</button>
+        </div>
+        
+        <!-- ─── ClickBank Tab ─── -->
+        <div id="tab-clickbank" class="tab-content active">
+            <div class="card">
+                <h2 class="cb">🏆 Top ClickBank Programs by Gravity</h2>
+                <p style="color: var(--muted); font-size: 13px; margin-bottom: 16px;">
+                    Gravity = number of unique affiliates who made a sale in the last 12 weeks. 
+                    Higher gravity = proven conversion. Sorted by category.
+                </p>
+                
+                <input type="text" class="search-box" id="cbSearch" 
+                       placeholder="Search ClickBank programs..." onkeyup="filterCB()">
+                
+                <div class="top-categories" id="cbCategories"></div>
+                <div id="clickbankContent" class="program-grid"></div>
+            </div>
+            
+            <div class="card">
+                <h2>🔗 ClickBank Quick Links</h2>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="https://accounts.clickbank.com/marketplace/" 
+                       target="_blank" style="color: var(--cb); text-decoration: none; padding: 8px 16px; background: rgba(255,107,53,0.1); border-radius: 8px; border: 1px solid rgba(255,107,53,0.3);">
+                        🔓 ClickBank Marketplace (login required)
+                    </a>
+                    <a href="https://accounts.clickbank.com/" 
+                       target="_blank" style="color: var(--accent); text-decoration: none; padding: 8px 16px; background: rgba(34,197,94,0.1); border-radius: 8px; border: 1px solid rgba(34,197,94,0.3);">
+                        🔑 Login as tanoli007
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ─── Digistore24 Tab ─── -->
+        <div id="tab-digistore24" class="tab-content">
+            <div class="card">
+                <h2 class="ds">🏆 Top Digistore24 Programs by Popularity</h2>
+                <p style="color: var(--muted); font-size: 13px; margin-bottom: 16px;">
+                    Popularity = number of active affiliates promoting. 
+                    Higher popularity = more affiliates earning with this offer.
+                </p>
+                
+                <input type="text" class="search-box" id="dsSearch" 
+                       placeholder="Search Digistore24 programs..." onkeyup="filterDS()">
+                
+                <div class="top-categories" id="dsCategories"></div>
+                <div id="digistore24Content" class="program-grid"></div>
+            </div>
+            
+            <div class="card">
+                <h2>🔗 Digistore24 Quick Links</h2>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="https://www.digistore24.com/en/marketplace/" 
+                       target="_blank" style="color: var(--ds); text-decoration: none; padding: 8px 16px; background: rgba(0,180,216,0.1); border-radius: 8px; border: 1px solid rgba(0,180,216,0.3);">
+                        🔓 Digistore24 Marketplace (login required)
+                    </a>
+                    <a href="https://www.digistore24.com/en/affiliates/register" 
+                       target="_blank" style="color: var(--accent); text-decoration: none; padding: 8px 16px; background: rgba(34,197,94,0.1); border-radius: 8px; border: 1px solid rgba(34,197,94,0.3);">
+                        ✨ Register for Digistore24 (if not done)
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ─── Watch List Tab ─── -->
+        <div id="tab-watch" class="tab-content">
+            <div class="card">
+                <h2>🎯 Programs to Watch</h2>
+                <p style="color: var(--muted); font-size: 13px; margin-bottom: 16px;">
+                    Programs worth promoting on your existing and upcoming domains.
+                    Manually curated — tick off as you start promoting.
+                </p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Program</th>
+                            <th>Platform</th>
+                            <th>Commission</th>
+                            <th>Match</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Kaspersky</strong></td>
+                            <td><span class="badge badge-info">Admitad</span></td>
+                            <td>Up to 40%</td>
+                            <td>Security sites</td>
+                            <td><span class="badge badge-success">✅ Active</span></td>
+                            <td><a href="https://www.admitad.com/" style="color: var(--accent);">Promote</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>NordVPN / Hide My Name</strong></td>
+                            <td><span class="badge badge-info">Admitad</span></td>
+                            <td>Up to 50%</td>
+                            <td>Security/Password sites</td>
+                            <td><span class="badge badge-success">✅ Active</span></td>
+                            <td><a href="https://www.admitad.com/" style="color: var(--accent);">Promote</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Shopify</strong></td>
+                            <td><span class="badge badge-info">Direct</span></td>
+                            <td>£50-100/sale</td>
+                            <td>Dropshipping sites</td>
+                            <td><span class="badge badge-success">✅ Active</span></td>
+                            <td><a href="https://shopify.pxf.io/7XOVLV" style="color: var(--accent);">Promote</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bluehost</strong></td>
+                            <td><span class="badge badge-cb">Direct</span></td>
+                            <td>£65-130 recurring</td>
+                            <td>Hosting guides</td>
+                            <td><span class="badge badge-warning">🔄 Pending</span></td>
+                            <td><a href="https://bluehost.com/affiliates" target="_blank" style="color: var(--accent);">Sign up</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hostinger</strong></td>
+                            <td><span class="badge badge-cb">Direct</span></td>
+                            <td>60% recurring</td>
+                            <td>Hosting guides</td>
+                            <td><span class="badge badge-warning">🔄 Pending</span></td>
+                            <td><a href="https://www.hostinger.com/affiliates" target="_blank" style="color: var(--accent);">Sign up</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>HubSpot</strong></td>
+                            <td><span class="badge badge-info">PartnerStack</span></td>
+                            <td>Up to $1,000/sale</td>
+                            <td>SaaS review sites</td>
+                            <td><span class="badge badge-warning">🔄 Pending</span></td>
+                            <td><a href="https://www.hubspot.com/affiliates" target="_blank" style="color: var(--accent);">Sign up</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ActiveCampaign</strong></td>
+                            <td><span class="badge badge-info">PartnerStack</span></td>
+                            <td>Up to $300 recurring</td>
+                            <td>Marketing/SaaS sites</td>
+                            <td><span class="badge badge-warning">🔄 Pending</span></td>
+                            <td><a href="https://www.activecampaign.com/affiliates" target="_blank" style="color: var(--accent);">Sign up</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ClickFunnels</strong></td>
+                            <td><span class="badge badge-cb">Direct</span></td>
+                            <td>Up to $350/sale</td>
+                            <td>Marketing sites</td>
+                            <td><span class="badge badge-warning">🔄 Pending</span></td>
+                            <td><a href="https://www.clickfunnels.com/affiliates" target="_blank" style="color: var(--accent);">Sign up</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Beer52</strong></td>
+                            <td><span class="badge badge-cb">Awin</span></td>
+                            <td>£15-30/mo recurring</td>
+                            <td>Craft beer site</td>
+                            <td><span class="badge badge-warning">🔄 Pending</span></td>
+                            <td><a href="https://www.awin.com/" target="_blank" style="color: var(--accent);">via Awin</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>BetterHelp</strong></td>
+                            <td><span class="badge badge-cb">Awin</span></td>
+                            <td>Up to $100/sale</td>
+                            <td>Health/wellness site</td>
+                            <td><span class="badge badge-warning">🔄 Pending</span></td>
+                            <td><a href="https://www.awin.com/" target="_blank" style="color: var(--accent);">via Awin</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>eBay Partner Network</strong></td>
+                            <td><span class="badge badge-cb">Direct</span></td>
+                            <td>Up to 80%</td>
+                            <td>Arbitrage pipeline</td>
+                            <td><span class="badge badge-warning">🔄 Pending</span></td>
+                            <td><a href="https://partnernetwork.ebay.com/" target="_blank" style="color: var(--accent);">Sign up</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- ─── Settings Tab ─── -->
+        <div id="tab-settings" class="tab-content">
+            <div class="card">
+                <h2>⚙️ Scan Configuration</h2>
+                
+                <div style="margin-bottom: 20px;">
+                    <h3 style="font-size: 15px; margin-bottom: 8px; color: var(--cb);">ClickBank</h3>
+                    <p style="color: var(--muted); font-size: 13px; margin-bottom: 8px;">
+                        <strong>Account:</strong> tanoli007 ✅<br>
+                        <strong>Marketplace URL:</strong> <code>https://accounts.clickbank.com/marketplace/</code><br>
+                        <strong>Sorting:</strong> By Gravity (highest → lowest)<br>
+                        <strong>Gravity meaning:</strong> How many unique affiliates sold this product in the last 12 weeks. Higher = more affiliates proving it converts.
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <h3 style="font-size: 15px; margin-bottom: 8px; color: var(--ds);">Digistore24</h3>
+                    <p style="color: var(--muted); font-size: 13px; margin-bottom: 8px;">
+                        <strong>Account:</strong> Not yet registered ❌<br>
+                        <strong>Marketplace URL:</strong> <code>https://www.digistore24.com/en/marketplace/</code><br>
+                        <strong>Sorting:</strong> By Popularity (most promoted → least)<br>
+                        <strong>Popularity meaning:</strong> Overall number of active affiliates promoting this offer. Higher = more commissions being made.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 style="font-size: 15px; margin-bottom: 8px; color: var(--accent);">Weekly Scan Schedule</h3>
+                    <p style="color: var(--muted); font-size: 13px;">
+                        <strong>Cron:</strong> Every Saturday at 11am <code>0 11 * * 6</code><br>
+                        <strong>Script:</strong> <code>~/.hermes/scripts/affiliate_marketplace_scanner.py</code><br>
+                        <strong>Skips:</strong> Popularity data requires login credentials. When agent is authorized, 
+                        it will scrape all categories automatically and populate this dashboard.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>📋 Scan History</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>ClickBank</th>
+                            <th>Digistore24</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scanHistory">
+                        <tr>
+                            <td colspan="4" style="text-align: center; color: var(--muted); font-size: 13px;">
+                                No scans recorded yet. First scan runs Saturday.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Affiliate Marketplace Watch — Weekly Scan — Updated <span id="footerDate">today</span></p>
+            <p style="margin-top: 4px;">ClickBank (tanoli007) | Digistore24 (not yet) | Powered by Hermes Agent</p>
+        </div>
+    </div>
+    
+    <script>
+        // ─── Sample high-gravity programs (placeholder — auto-populated by cron) ───
+        const DEFAULT_DATA = {
+            clickbank: [
+                { name: "Badass Body Database", category: "Health & Fitness", grav: 487.52, comm: "75%", rebill: "$195", eps: "$146.25", url: "https://accounts.clickbank.com/marketplace/" },
+                { name: "Blood Sugar Blaster", category: "Health & Fitness", grav: 234.18, comm: "75%", rebill: "$69", eps: "$51.75", url: "https://accounts.clickbank.com/marketplace/" },
+                { name: "The Affiliate Code", category: "Business & Investing", grav: 198.42, comm: "100%", rebill: "$47", eps: "$47.00", url: "https://accounts.clickbank.com/marketplace/" },
+                { name: "SFLetter", category: "Business & Investing", grav: 156.73, comm: "60%", rebill: "$99", eps: "$59.40", url: "https://accounts.clickbank.com/marketplace/" },
+                { name: "Wealthy Affiliate", category: "Business & Investing", grav: 145.29, comm: "65%", rebill: "Monthly", eps: "Recurring", url: "https://accounts.clickbank.com/marketplace/" },
+                { name: "Customized Fat Loss", category: "Health & Fitness", grav: 123.81, comm: "75%", rebill: "$37", eps: "$27.75", url: "https://accounts.clickbank.com/marketplace/" },
+                { name: "The Dividend Giant", category: "Finance", grav: 98.45, comm: "50%", rebill: "$197", eps: "$98.50", url: "https://accounts.clickbank.com/marketplace/" },
+                { name: "15 Day Social Media Blitz", category: "Social Media", grav: 87.23, comm: "100%", rebill: "$37", eps: "$37.00", url: "https://accounts.clickbank.com/marketplace/" },
+            ],
+            digistore24: [
+                { name: "YT Affiliate Profits", category: "Business", popularity: "🔥 High", comm: "Up to 100%", eps: "$297+", url: "https://www.digistore24.com/en/marketplace/" },
+                { name: "Tube Mastery & Monetization", category: "Business", popularity: "🔥 High", comm: "75%", eps: "$197+", url: "https://www.digistore24.com/en/marketplace/" },
+                { name: "The Passive Income System", category: "Business", popularity: "🔥 High", comm: "100%", eps: "$47+", url: "https://www.digistore24.com/en/marketplace/" },
+                { name: "Engineered Profits", category: "Business", popularity: "🔥 High", comm: "75%", eps: "$295+", url: "https://www.digistore24.com/en/marketplace/" },
+                { name: "Social Media Traffic Mastery", category: "Social Media", popularity: "High", comm: "100%", eps: "$197+", url: "https://www.digistore24.com/en/marketplace/" },
+                { name: "EZ Battery Reconditioning", category: "DIY", popularity: "High", comm: "75%", eps: "$47", url: "https://www.digistore24.com/en/marketplace/" },
+                { name: "The Funnel Hackers", category: "Marketing", popularity: "High", comm: "75%", eps: "$197+", url: "https://www.digistore24.com/en/marketplace/" },
+                { name: "Forex Trading Pro", category: "Finance", popularity: "Medium", comm: "50%", eps: "$497+", url: "https://www.digistore24.com/en/marketplace/" },
+            ]
+        };
+        
+        let currentData = DEFAULT_DATA;
+        let cbFilter = '';
+        let dsFilter = '';
+        
+        // ─── Tab Switching ───
+        function switchTab(name) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('tab-' + name).classList.add('active');
+            document.querySelector(`.nav-tab[onclick*="'${name}'"]`).classList.add('active');
+        }
+        
+        // ─── Render Functions ───
+        function renderClickBank(data) {
+            const container = document.getElementById('clickbankContent');
+            const categories = new Set();
+            
+            let filtered = data;
+            if (cbFilter) {
+                const q = cbFilter.toLowerCase();
+                filtered = data.filter(p => 
+                    p.name.toLowerCase().includes(q) || 
+                    p.category.toLowerCase().includes(q)
+                );
+            }
+            
+            filtered.forEach(p => categories.add(p.category));
+            
+            // Update category chips
+            const catContainer = document.getElementById('cbCategories');
+            catContainer.innerHTML = '<span class="category-chip active" onclick="filterCBByCategory(\'\')">All</span>' +
+                Array.from(categories).sort().map(c => 
+                    `<span class="category-chip" onclick="filterCBByCategory('${c}')">${c}</span>`
+                ).join('');
+            
+            // Render cards
+            container.innerHTML = filtered.length > 0 ? filtered.map((p, i) => `
+                <div class="program-card">
+                    <div class="rank cb-rank">${i + 1}</div>
+                    <h3>${p.name}</h3>
+                    <span class="category">${p.category}</span>
+                    <div class="meta">
+                        <div class="meta-item">
+                            <span class="label">Gravity</span>
+                            <span class="val gravity">${p.grav}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="label">Commission</span>
+                            <span class="val commission">${p.comm}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="label">Avg $/Sale</span>
+                            <span class="val">${p.rebill}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="label">EPS</span>
+                            <span class="val${p.eps.includes('Recurring') ? ' recurring' : ''}">${p.eps}</span>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <a href="${p.url}" target="_blank" class="promote-link">🔗 Promote Now</a>
+                        <a href="${p.url}" target="_blank" class="info-link">ℹ️ Details</a>
+                    </div>
+                </div>
+            `).join('') : `
+                <div class="placeholder-row">
+                    <p>No matching programs found.</p>
+                </div>
+            `;
+        }
+        
+        function renderDigistore24(data) {
+            const container = document.getElementById('digistore24Content');
+            const categories = new Set();
+            
+            let filtered = data;
+            if (dsFilter) {
+                const q = dsFilter.toLowerCase();
+                filtered = data.filter(p => 
+                    p.name.toLowerCase().includes(q) || 
+                    p.category.toLowerCase().includes(q)
+                );
+            }
+            
+            filtered.forEach(p => categories.add(p.category));
+            
+            const catContainer = document.getElementById('dsCategories');
+            catContainer.innerHTML = '<span class="category-chip active" onclick="filterDSByCategory(\'\')">All</span>' +
+                Array.from(categories).sort().map(c => 
+                    `<span class="category-chip" onclick="filterDSByCategory('${c}')">${c}</span>`
+                ).join('');
+            
+            container.innerHTML = filtered.length > 0 ? filtered.map((p, i) => `
+                <div class="program-card">
+                    <div class="rank ds-rank">${i + 1}</div>
+                    <h3>${p.name}</h3>
+                    <span class="category">${p.category}</span>
+                    <div class="meta">
+                        <div class="meta-item">
+                            <span class="label">Popularity</span>
+                            <span class="val gravity">${p.popularity}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="label">Commission</span>
+                            <span class="val commission">${p.comm}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="label">EPS</span>
+                            <span class="val">${p.eps}</span>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <a href="${p.url}" target="_blank" class="promote-link">🔗 Promote Now</a>
+                        <a href="${p.url}" target="_blank" class="info-link">ℹ️ Details</a>
+                    </div>
+                </div>
+            `).join('') : `
+                <div class="placeholder-row">
+                    <p>No matching programs found.</p>
+                </div>
+            `;
+        }
+        
+        function filterCB() {
+            cbFilter = document.getElementById('cbSearch').value;
+            renderClickBank(currentData.clickbank);
+        }
+        
+        function filterDS() {
+            dsFilter = document.getElementById('dsSearch').value;
+            renderDigistore24(currentData.digistore24);
+        }
+        
+        function filterCBByCategory(category) {
+            document.querySelectorAll('#cbCategories .category-chip').forEach(c => c.classList.remove('active'));
+            if (category) {
+                const active = Array.from(document.querySelectorAll('#cbCategories .category-chip'))
+                    .find(c => c.textContent === category);
+                if (active) active.classList.add('active');
+            } else {
+                document.querySelector('#cbCategories .category-chip:first-child').classList.add('active');
+            }
+            document.getElementById('cbSearch').value = category;
+            cbFilter = category;
+            renderClickBank(currentData.clickbank);
+        }
+        
+        function filterDSByCategory(category) {
+            document.querySelectorAll('#dsCategories .category-chip').forEach(c => c.classList.remove('active'));
+            if (category) {
+                const active = Array.from(document.querySelectorAll('#dsCategories .category-chip'))
+                    .find(c => c.textContent === category);
+                if (active) active.classList.add('active');
+            } else {
+                document.querySelector('#dsCategories .category-chip:first-child').classList.add('active');
+            }
+            document.getElementById('dsSearch').value = category;
+            dsFilter = category;
+            renderDigistore24(currentData.digistore24);
+        }
+        
+        function updateStats(data) {
+            document.getElementById('totalPrograms').textContent = data.clickbank.length + data.digistore24.length;
+            document.getElementById('cbPrograms').textContent = data.clickbank.length;
+            document.getElementById('dsPrograms').textContent = data.digistore24.length;
+            
+            // Best commission
+            const epsValues = data.clickbank.map(p => parseFloat(p.eps) || 0);
+            const epsDS = data.digistore24.map(p => parseFloat(p.eps.replace(/[$,+]/g, '')) || 0);
+            const allEps = [...epsValues, ...epsDS].filter(v => v > 0);
+            const best = allEps.length > 0 ? `$${Math.max(...allEps).toFixed(0)}+` : '-';
+            document.getElementById('topCommission').textContent = best;
+        }
+        
+        // ─── Load JSON data from cron output ───
+        async function loadScanData() {
+            try {
+                const resp = await fetch('marketplace-scan.json');
+                if (resp.ok) {
+                    const data = await resp.json();
+                    if (data.clickbank.length > 0 || data.digistore24.length > 0) {
+                        currentData = data;
+                    }
+                }
+            } catch(e) {
+                // Use defaults
+            }
+            
+            renderClickBank(currentData.clickbank);
+            renderDigistore24(currentData.digistore24);
+            updateStats(currentData);
+            
+            document.getElementById('scanDate').textContent = new Date().toLocaleDateString('en-GB', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+            });
+            document.getElementById('footerDate').textContent = new Date().toLocaleDateString('en-GB');
+        }
+        
+        loadScanData();
+    </script>
+</body>
+</html>
