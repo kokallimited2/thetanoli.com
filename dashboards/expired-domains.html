@@ -14,7 +14,6 @@
             --accent: #22c55e;
             --warning: #f59e0b;
             --danger: #ef4444;
-            --blue: #3b82f6;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -49,9 +48,6 @@
             padding: 24px; margin-bottom: 24px;
         }
         .card h2 { font-size: 18px; margin-bottom: 16px; color: var(--accent); }
-        .card h2.warning { color: var(--warning); }
-        .card h2.danger { color: var(--danger); }
-        .card h2.info { color: var(--blue); }
         
         table {
             width: 100%; border-collapse: collapse; font-size: 14px;
@@ -67,7 +63,12 @@
         }
         .badge-success { background: rgba(34,197,94,0.15); color: var(--accent); }
         .badge-warning { background: rgba(245,158,11,0.15); color: var(--warning); }
-        .badge-info { background: rgba(59,130,246,0.15); color: var(--blue); }
+        .badge-info { background: rgba(59,130,246,0.15); color: #3b82f6; }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h3 { font-size: 16px; margin-bottom: 12px; color: var(--text); }
         
         .strategy-list {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -79,14 +80,6 @@
         }
         .strategy-item h4 { color: var(--accent); margin-bottom: 6px; font-size: 14px; }
         .strategy-item p { color: var(--muted); font-size: 13px; }
-        
-        .recommendation {
-            background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.3);
-            border-radius: 10px; padding: 16px 20px; margin-bottom: 12px;
-        }
-        .recommendation h3 { color: var(--accent); font-size: 16px; margin-bottom: 4px; }
-        .recommendation p { color: var(--muted); font-size: 13px; line-height: 1.5; }
-        .recommendation .url { color: var(--warning); font-family: monospace; }
         
         .footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px 0; border-top: 1px solid var(--border); margin-top: 40px; }
         
@@ -105,49 +98,30 @@
                     Find → Evaluate → Acquire → Monetize
                 </p>
             </div>
-            <div class="date">Last updated: May 27, 2026 at 08:12</div>
+            <div class="date">Last updated: May 28, 2026 at 08:00</div>
         </div>
         
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="value">47</div>
-                <div class="label">Domains Identified Today (+32 high-ticket)</div>
+                <div class="value">0</div>
+                <div class="label">Domains Scanned Today</div>
             </div>
             <div class="stat-card">
-                <div class="value">2</div>
-                <div class="label">Tier 1 (Real History)</div>
+                <div class="value">0</div>
+                <div class="label">Qualified (Clean History)</div>
             </div>
             <div class="stat-card">
-                <div class="value">1</div>
-                <div class="label">Tier 2 (Some Captures)</div>
+                <div class="value">0</div>
+                <div class="label">Avg DA (Top 10)</div>
             </div>
             <div class="stat-card">
-                <div class="value">12</div>
-                <div class="label">Tier 3 (Fresh Drops)</div>
+                <div class="value">0</div>
+                <div class="label">Avg Referring Domains</div>
             </div>
         </div>
         
         <div class="card">
-            <h2>🎯 Top Recommendations</h2>
-            <div class="recommendation">
-                <h3>🥇 passwordchecker.net</h3>
-                <p><span class="url">🟢 Tier 1 — Real Content History</span></p>
-                <p>Was a genuine WordPress site titled "Password Checker" with content from 2011. Exact-match keyword in the password security niche. 26 Wayback captures (2011-2025). Perfect for rebuild as a password checking tool. <strong>$12 registration.</strong></p>
-            </div>
-            <div class="recommendation">
-                <h3>🥈 securebrowser.net</h3>
-                <p><span class="url">🟢 Tier 1 — Real Content History</span></p>
-                <p>Was a real security product site by Primedius (2003-2011): "Internet privacy and security. Anonymous Web Surfing." Describes anonymous surfing, secure email, encryption. 12 Wayback captures from 2003-2021. Very aged domain (23 years). <strong>$12 registration.</strong></p>
-            </div>
-            <div class="recommendation">
-                <h3>🥉 onlinepasswordmanager.com</h3>
-                <p><span class="url">🟡 Tier 2 — 20 Wayback Captures (parked/listed for sale)</span></p>
-                <p>Exact-match keyword for password manager niche. Was listed on Sedo marketplace. 20 captures from 2009-2022, though always parked. Good keyword value for building a new password manager review/affiliate site. <strong>$12 registration.</strong></p>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h2>📋 Today's Scan Results</h2>
+            <h2>🎯 Today's Top Opportunities</h2>
             <table>
                 <thead>
                     <tr>
@@ -163,170 +137,13 @@
                 <tbody>
                     
             <tr>
-                <td><a href="https://passwordchecker.net" target="_blank">passwordchecker.net</a></td>
-                <td>?*</td>
-                <td>?*</td>
-                <td>Password/Security</td>
-                <td>$12</td>
-                <td><span class="badge badge-success">🟢 Tier 1</span></td>
-                <td>Rebuild as tool site</td>
-            </tr>
-            <tr>
-                <td><a href="https://securebrowser.net" target="_blank">securebrowser.net</a></td>
-                <td>?*</td>
-                <td>?*</td>
-                <td>Privacy/Security</td>
-                <td>$12</td>
-                <td><span class="badge badge-success">🟢 Tier 1</span></td>
-                <td>Rebuild as privacy site</td>
-            </tr>
-            <tr>
-                <td><a href="https://onlinepasswordmanager.com" target="_blank">onlinepasswordmanager.com</a></td>
-                <td>?</td>
-                <td>?</td>
-                <td>Password Manager</td>
-                <td>$12</td>
-                <td><span class="badge badge-warning">🟡 Tier 2</span></td>
-                <td>Build affiliate site</td>
-            </tr>
-            <tr>
-                <td><a href="https://passwordsecurity.net" target="_blank">passwordsecurity.net</a></td>
-                <td>N/A</td>
-                <td>N/A</td>
-                <td>Password/Security</td>
-                <td>$12</td>
-                <td><span class="badge badge-info">🔴 Tier 3</span></td>
-                <td>Keyword play</td>
-            </tr>
-            <tr>
-                <td><a href="https://vpncomparisonreviews.com" target="_blank">vpncomparisonreviews.com</a></td>
-                <td>N/A</td>
-                <td>N/A</td>
-                <td>VPN Reviews</td>
-                <td>$12</td>
-                <td><span class="badge badge-info">🔴 Tier 3</span></td>
-                <td>Build affiliate site</td>
-            </tr>
-            <tr>
-                <td><a href="https://cloudpasswordmanager.com" target="_blank">cloudpasswordmanager.com</a></td>
-                <td>N/A</td>
-                <td>N/A</td>
-                <td>Password Manager</td>
-                <td>$12</td>
-                <td><span class="badge badge-info">🔴 Tier 3</span></td>
-                <td>Keyword play</td>
-            </tr>
-            <tr>
-                <td><a href="https://vpnpasswordmanager.com" target="_blank">vpnpasswordmanager.com</a></td>
-                <td>N/A</td>
-                <td>N/A</td>
-                <td>VPN/Password</td>
-                <td>$12</td>
-                <td><span class="badge badge-info">🔴 Tier 3</span></td>
-                <td>Keyword play</td>
-            </tr>
-            <tr>
-                <td><a href="https://antivirusreviewguide.com" target="_blank">antivirusreviewguide.com</a></td>
-                <td>N/A</td>
-                <td>N/A</td>
-                <td>Antivirus</td>
-                <td>$12</td>
-                <td><span class="badge badge-info">🔴 Tier 3</span></td>
-                <td>Keyword play</td>
-            </tr>
-            <tr>
-                <td><a href="https://privacyvpnreview.com" target="_blank">privacyvpnreview.com</a></td>
-                <td>N/A</td>
-                <td>N/A</td>
-                <td>VPN/Privacy</td>
-                <td>$12</td>
-                <td><span class="badge badge-info">🔴 Tier 3</span></td>
-                <td>Keyword play</td>
-            </tr>
-            <tr>
-                <td><a href="https://cybersecuritytools.net" target="_blank">cybersecuritytools.net</a></td>
-                <td>N/A</td>
-                <td>N/A</td>
-                <td>Cybersec Tools</td>
-                <td>$12</td>
-                <td><span class="badge badge-info">🔴 Tier 3</span></td>
-                <td>Keyword play</td>
+                <td colspan="7" style="text-align: center; padding: 40px; color: #666;">
+                    🔍 No domains scanned yet. Next scan will populate this table.<br>
+                    <small>Scanner is configured to run daily at 8:00 AM</small>
+                </td>
             </tr>
                 </tbody>
             </table>
-        </div>
-        
-        <div class="card">
-            <h2 class="info">💰 HIGH-TICKET NICHES — £50-2,000/Sale</h2>
-            <p style="color: var(--muted); font-size: 13px; margin-bottom: 16px;">
-                Newly identified domain opportunities in 7 niches with high-value affiliate programs (hosting, SaaS, home services, broadband, learning, dating, health).
-            </p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Niche</th>
-                        <th>Domains</th>
-                        <th>Cost</th>
-                        <th>Est. Commission</th>
-                        <th>Top Affiliate</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>🏆 Web Hosting</strong></td>
-                        <td><a href="https://ukhostingguide.com" target="_blank">ukhostingguide.com</a>, <a href="https://hostingcomparisonpro.com" target="_blank">hostingcomparisonpro.com</a>, <a href="https://affordablehostingpro.com" target="_blank">affordablehostingpro.com</a></td>
-                        <td>$36/yr</td>
-                        <td>£65-900/sale <span class="badge badge-info">🔄 recurring</span></td>
-                        <td>Bluehost, SiteGround, WP Engine, Kinsta</td>
-                    </tr>
-                    <tr>
-                        <td><strong>🏆 SaaS/CRM</strong></td>
-                        <td><a href="https://saasreviewshub.com" target="_blank">saasreviewshub.com</a>, <a href="https://emailmarketingtoolspro.com" target="_blank">emailmarketingtoolspro.com</a>, <a href="https://salescrmguide.com" target="_blank">salescrmguide.com</a>, <a href="https://onlinemarketingtoolspro.com" target="_blank">onlinemarketingtoolspro.com</a></td>
-                        <td>$48/yr</td>
-                        <td>£200-2,000/sale</td>
-                        <td>HubSpot (£1K), ClickFunnels (£350), ActiveCampaign (£300)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>🏆 Home Services UK</strong></td>
-                        <td><a href="https://ukboilerguide.com" target="_blank">ukboilerguide.com</a>, <a href="https://uksolarpanelguide.com" target="_blank">uksolarpanelguide.com</a>, <a href="https://uksolarguide.com" target="_blank">uksolarguide.com</a>, <a href="https://ukhomeimprovementhub.com" target="_blank">ukhomeimprovementhub.com</a>, <a href="https://heatingsystemcomparison.com" target="_blank">heatingsystemcomparison.com</a></td>
-                        <td>$60/yr</td>
-                        <td>£100-500/lead</td>
-                        <td>Boiler quotes, solar panel lead gen</td>
-                    </tr>
-                    <tr>
-                        <td><strong>🏆 Online Learning</strong></td>
-                        <td><a href="https://onlinecertificationhub.com" target="_blank">onlinecertificationhub.com</a>, <a href="https://googlecertguide.com" target="_blank">googlecertguide.com</a>, <a href="https://awscloudcertguide.com" target="_blank">awscloudcertguide.com</a>, <a href="https://onlineskillcentre.com" target="_blank">onlineskillcentre.com</a>, <a href="https://digitalcertificationhub.com" target="_blank">digitalcertificationhub.com</a>, <a href="https://professionalcertguide.com" target="_blank">professionalcertguide.com</a>, <a href="https://ukcoursereviews.com" target="_blank">ukcoursereviews.com</a></td>
-                        <td>$84/yr</td>
-                        <td>£50-150/sale</td>
-                        <td>Coursera Plus, MasterClass, Google/AWS certs</td>
-                    </tr>
-                    <tr>
-                        <td><strong>🏆 Broadband/Mobile UK</strong></td>
-                        <td><a href="https://bestbroadbanduk.com" target="_blank">bestbroadbanduk.com</a>, <a href="https://ukmobilephoneguide.com" target="_blank">ukmobilephoneguide.com</a>, <a href="https://simonlyguideuk.com" target="_blank">simonlyguideuk.com</a>, <a href="https://tvbroadbanddeals.com" target="_blank">tvbroadbanddeals.com</a>, <a href="https://cheapbroadbanduk.com" target="_blank">cheapbroadbanduk.com</a></td>
-                        <td>$60/yr</td>
-                        <td>£50-120/signup</td>
-                        <td>UK broadband comparison networks</td>
-                    </tr>
-                    <tr>
-                        <td><strong>🏆 Dating</strong></td>
-                        <td><a href="https://ukdatingadvicehub.com" target="_blank">ukdatingadvicehub.com</a>, <a href="https://online-dating-tips.net" target="_blank">online-dating-tips.net</a>, <a href="https://ukdatingsiteguide.com" target="_blank">ukdatingsiteguide.com</a>, <a href="https://ukseniordating.com" target="_blank">ukseniordating.com</a>, <a href="https://ukmatchmakerguide.com" target="_blank">ukmatchmakerguide.com</a></td>
-                        <td>$60/yr</td>
-                        <td>£30-100/signup</td>
-                        <td>eharmony (£50-100), Match, EliteSingles</td>
-                    </tr>
-                    <tr>
-                        <td><strong>🏆 Health/Wellness</strong></td>
-                        <td><a href="https://onlineweightlossguide.com" target="_blank">onlineweightlossguide.com</a>, <a href="https://mentalhealthukguide.com" target="_blank">mentalhealthukguide.com</a>, <a href="https://ukvisioncentreguide.com" target="_blank">ukvisioncentreguide.com</a>, <a href="https://cbdoilguideuk.com" target="_blank">cbdoilguideuk.com</a>, <a href="https://ukchiropracticguide.com" target="_blank">ukchiropracticguide.com</a></td>
-                        <td>$60/yr</td>
-                        <td>£50-300/sale</td>
-                        <td>BetterHelp, CBD networks, weight loss programs</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="color: var(--muted); font-size: 13px; margin-top: 12px;">
-                <strong>Total: 32 domains | $408/yr</strong> — All fresh drops, available at standard $12 registration. 
-                Requires Namecheap IP whitelist to register (current IP: 62.182.99.43).
-            </p>
         </div>
         
         <div class="card">
@@ -355,47 +172,37 @@
                         <th>Date</th>
                         <th>Domains Found</th>
                         <th>Qualified</th>
-                        <th>Method</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     
             <tr>
-                <td>May 27, 2026</td>
-                <td>15</td>
-                <td>2</td>
-                <td>RDAP batch (36 cand.)</td>
-                <td><span class="badge badge-success">✅ Completed</span></td>
-            </tr>
-            <tr>
-                <td>May 26, 2026</td>
-                <td>20</td>
-                <td>1</td>
-                <td>Manual WHOIS + Wayback</td>
-                <td><span class="badge badge-success">✅ Completed</span></td>
+                <td>May 28, 2026 at 08:00</td>
+                <td>0</td>
+                <td>0</td>
+                <td><span class="badge badge-info">⏳ Scheduled</span></td>
             </tr>
                 </tbody>
             </table>
         </div>
         
         <div class="card">
-            <h2>🧠 Notes & Best Practices</h2>
+            <h2>🧠 Tips & Best Practices</h2>
             <ul style="color: var(--muted); line-height: 1.8; font-size: 14px;">
-                <li>✅ <strong>Scanner scaffold note:</strong> The automated scanner script is still a scaffold (empty source integration). Today's results were gathered via manual RDAP batch scan (36 domain candidates) + Wayback Machine CDX checks via NordVPN.</li>
-                <li>✅ <strong>2 Tier 1 domains found today</strong> — passwordchecker.net and securebrowser.net both had real content history and are available for $12 each.</li>
-                <li>✅ <strong>Previous Tier 1 (bestvpncomparison.com)</strong> was snapped up since May 26 scan — confirms good domains get taken quickly.</li>
-                <li>✅ <strong>Archive.org access:</strong> Three UK blocks direct access — used NordVPN successfully.</li>
-                <li>✅ <strong>Next step:</strong> Consider registering the Tier 1 domains before they get snatched too.</li>
-                <li>💰 Integrate ExpiredDomains.net, ODYS ($37/mo), or SpamZilla for higher-quality leads with verified backlinks.</li>
-                <li>💰 <strong>NEW: 32 high-ticket niche domains identified</strong> — hosting, SaaS/CRM, home services, online learning, broadband, dating, health. See new section above.</li>
-                <li>📋 14 new todo items added: register domains + research affiliate programs for all 7 high-ticket niches.</li>
+                <li>✅ Always check Wayback Machine before buying — avoid spam history</li>
+                <li>✅ Check `site:domain.com` in Google — must have indexed pages</li>
+                <li>✅ Niche match matters — 301 redirect unrelated domain = penalty risk</li>
+                <li>✅ Start cheap ($10-50 domains) until you learn the market</li>
+                <li>✅ Check dropped count — domains dropped 3+ times lose most value</li>
+                <li>✅ Majestic Trust Flow > Citation Flow indicates quality backlinks</li>
+                <li>💰 Real case: $22 domain purchase → $20,000 sale documented on YouTube</li>
             </ul>
         </div>
         
         <div class="footer">
-            <p>Expired Domain Strategy — Daily Scanner — Updated May 27, 2026</p>
-            <p style="margin-top: 4px;">Powered by Hermes Agent | RDAP + Wayback CDX methodology</p>
+            <p>Expired Domain Strategy — Automated Scanner — Runs daily at 08:00 AM</p>
+            <p style="margin-top: 4px;">Powered by Hermes Agent | Research from 17 expert videos</p>
         </div>
     </div>
 </body>
