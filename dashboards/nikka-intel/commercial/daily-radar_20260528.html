@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercial Property Daily Radar | 28 May 2026</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 0; overflow-wrap: break-word; word-break: break-word; }
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+h1 { font-size: 32px; color: #e6edf3; margin-bottom: 4px; }
+h2 { font-size: 26px; color: #e6edf3; margin-top: 28px; margin-bottom: 12px; border-bottom: 1px solid #21262d; padding-bottom: 8px; }
+h3 { font-size: 18px; color: #e6edf3; margin-top: 18px; margin-bottom: 8px; }
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th { background: #161b22; color: #8b949e; padding: 10px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid #21262d; }
+td { padding: 10px 12px; border-bottom: 1px solid #21262d; }
+tr:hover td { background: #1c2333; }
+a { color: #58a6ff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.header { background: linear-gradient(135deg, #0d1117 0%, #161b22 100%); padding: 24px 0; border-bottom: 1px solid #30363d; }
+.header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.badge { background: #1e40af; color: #bfdbfe; padding: 4px 12px; border-radius: 20px; font-size: 12px; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin: 14px 0; }
+.stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 14px; text-align: center; }
+.stat-num { font-size: 28px; font-weight: 700; color: #e6edf3; }
+.stat-label { font-size: 13px; color: #8b949e; margin-top: 4px; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+.card-hdr { display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 8px; }
+.card-price { font-size: 18px; font-weight: 700; color: #e6edf3; }
+.card-score { font-size: 14px; font-weight: 600; }
+.score-high { color: #22c55e; }
+.score-mid { color: #fbbf24; }
+.score-low { color: #f87171; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin: 2px; }
+.tag-blue { background: #1e40af; color: #bfdbfe; }
+.tag-green { background: #166534; color: #86efac; }
+.tag-amber { background: #92400e; color: #fde68a; }
+.tag-purple { background: #581c87; color: #d8b4fe; }
+.tag-red { background: #991b1b; color: #fecaca; }
+.verdict { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 14px; margin-bottom: 14px; }
+.verdict-title { font-size: 16px; font-weight: 600; color: #e6edf3; }
+.verdict-body { font-size: 14px; color: #8b949e; margin-top: 6px; line-height: 1.6; }
+.strategy-box { background: #1e293b; border: 1px solid #30363d; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
+.strategy-box h3 { color: #e6edf3; font-size: 16px; }
+.strategy-box p, .strategy-box li { font-size: 14px; color: #94a3b8; line-height: 1.6; }
+.action-btns { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.action-btn { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 6px; font-size: 12px; background: #1e293b; border: 1px solid #30363d; color: #8b949e; text-decoration: none; }
+.action-btn:hover { border-color: #58a6ff; color: #58a6ff; }
+.related-section { margin-top: 36px; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 24px; }
+.related-card { display: flex; flex-direction: column; gap: 4px; background: #1e293b; border: 1px solid #30363d; border-radius: 10px; padding: 14px; text-decoration: none; transition: all 0.2s; }
+.related-card:hover { border-color: #58a6ff; background: #273548; transform: translateY(-2px); }
+.related-icon { font-size: 24px; }
+.related-title { font-size: 15px; font-weight: 600; color: #e6edf3; }
+.related-desc { font-size: 12px; color: #8b949e; }
+.footer { margin-top: 32px; padding: 16px 0; border-top: 1px solid #21262d; font-size: 11px; color: #475569; text-align: center; line-height: 1.8; }
+.area-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin: 12px 0; }
+.area-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 12px; text-align: center; }
+.area-name { font-size: 14px; font-weight: 600; color: #e6edf3; }
+.area-count { font-size: 24px; font-weight: 700; color: #58a6ff; }
+.tt-land { background:#581c87; color:#d8b4fe; }
+.tt-retail { background:#1e40af; color:#bfdbfe; }
+.tt-mixed { background:#166534; color:#86efac; }
+.tt-office { background:#92400e; color:#fde68a; }
+.tt-other { background:#333; color:#ccc; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="header">
+<div class="header-inner">
+<div>
+<h1>🏢 Commercial Property Daily Radar</h1>
+<div style="font-size:14px;color:#8b949e;margin-top:4px">28 May 2026 · 8AM Scan · West Midlands · 28 prioritised properties</div>
+</div>
+<div class="badge">28 prioritised</div>
+</div>
+</div>
+
+<div class="stat-grid">
+<div class="stat-card"><div class="stat-num">28</div><div class="stat-label">Properties Scanned</div></div>
+<div class="stat-card"><div class="stat-num">1</div><div class="stat-label">Priority (60+)</div></div>
+<div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Watchlist (40-59)</div></div>
+<div class="stat-card"><div class="stat-num">3</div><div class="stat-label">With Planning</div></div>
+<div class="stat-card"><div class="stat-num">11</div><div class="stat-label">Under £200k</div></div>
+<div class="stat-card"><div class="stat-num">6</div><div class="stat-label">Auction Watch</div></div>
+</div>
+
+<h2>🏆 Top 10 Commercial Leads</h2>
+
+<div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">#1 · DY1 · Land</div>
+<a href="https://www.rightmove.co.uk/properties/158675270#/?channel=COM_BUY" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">99 High Street, Dudley, West Midlands, DY1 1QP</a>
+</div>
+<div style="text-align:right">
+<span style="color:#8b949e">POA</span>
+<div class="card-score score-high">Score: 65</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Priority</span> <span class="tag tag-purple">Watchlist</span> <span class="tag tag-red">Distressed</span> <span class="tag tag-green">Planning</span> <span class="tag tag-blue">Under £200k</span></div>
+<br><span class="tag tag-green">land:+15</span> <span class="tag tag-green">under_100k:+10</span> <span class="tag tag-green">distress:+3</span> <span class="tag tag-green">conversion:+9</span> <span class="tag tag-green">upper_floors:+8</span> <span class="tag tag-green">planning_granted:+20</span>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Planning permission has been obtained for the redevelopment of the existing site which extends for approximately 0.08 hectares with a four and five storey building to contain a retail unit on part of the ground floor and 14 residential apartments abo</div>
+<div class="action-btns">
+<a class="action-btn" href="https://www.rightmove.co.uk/properties/158675270#/?channel=COM_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+<a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EDY1&radius=1.0" target="_blank">🏡 Comps</a>
+<a class="action-btn" href="https://www.google.com/maps/search/99+High+Street,+Dudley,+West+Midlands,+DY1+1QP" target="_blank">🗺️ Map</a>
+</div>
+</div><div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">#2 · WS1 · Residential Development</div>
+<a href="https://www.rightmove.co.uk/properties/157013612#/?channel=COM_BUY" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">The White Lion, 150 Sandwell Street, Walsall, WS1 3EQ</a>
+</div>
+<div style="text-align:right">
+<span style="color:#fbbf24;font-weight:600">£375,000</span>
+<div class="card-score score-mid">Score: 48</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-purple">Watchlist</span> <span class="tag tag-red">Distressed</span> <span class="tag tag-green">Planning</span></div>
+<br><span class="tag tag-green">pub:+20</span> <span class="tag tag-green">distress:+3</span> <span class="tag tag-green">conversion:+5</span> <span class="tag tag-green">planning_granted:+20</span>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Former public house of approximately 6,600 sqft on 0.18 acre site. Former pub conversion potential. Full PP for 13 apartments. Guide £375,000.</div>
+<div class="action-btns">
+<a class="action-btn" href="https://www.rightmove.co.uk/properties/157013612#/?channel=COM_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+<a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWS1&radius=1.0" target="_blank">🏡 Comps</a>
+<a class="action-btn" href="https://www.google.com/maps/search/The+White+Lion,+150+Sandwell+Street,+Walsall,+WS1+3EQ" target="_blank">🗺️ Map</a>
+</div>
+</div><div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">#3 · WS1 · Mixed Use</div>
+<a href="https://www.rightmove.co.uk/properties/174979640#/?channel=COM_BUY" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">54 & 54A West Bromwich Street & 1a Windsor St, Walsall, WS1 4DB</a>
+</div>
+<div style="text-align:right">
+<span style="color:#fbbf24;font-weight:600">£195,000</span>
+<div class="card-score score-mid">Score: 47</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-purple">Watchlist</span> <span class="tag tag-red">Distressed</span> <span class="tag tag-amber">Auction</span> <span class="tag tag-blue">Under £200k</span></div>
+<br><span class="tag tag-green">mixed_use:+15</span> <span class="tag tag-green">under_200k:+5</span> <span class="tag tag-green">auction:+8</span> <span class="tag tag-green">distress:+6</span> <span class="tag tag-green">conversion:+4</span> <span class="tag tag-green">btl:+9</span>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">UNSOLD at Bond Wolfe auction 14 May 2026. Freehold mixed use investment, two self-contained flats + retail unit. Current gross income £25,200pa. 12.9% yield at guide. 5 beds.</div>
+<div class="action-btns">
+<a class="action-btn" href="https://www.rightmove.co.uk/properties/174979640#/?channel=COM_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+<a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWS1&radius=1.0" target="_blank">🏡 Comps</a>
+<a class="action-btn" href="https://www.google.com/maps/search/54+&+54A+West+Bromwich+Street+&+1a+Windsor+St,+Walsall,+WS1+4DB" target="_blank">🗺️ Map</a>
+</div>
+</div><div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">#4 · WV1 · Land</div>
+<a href="https://www.rightmove.co.uk/properties/88079166#/?channel=COM_BUY" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">Land at School Street, Wolverhampton, WV1 4LJ</a>
+</div>
+<div style="text-align:right">
+<span style="color:#fbbf24;font-weight:600">£1,750,000</span>
+<div class="card-score score-mid">Score: 45</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-purple">Watchlist</span> <span class="tag tag-red">Distressed</span> <span class="tag tag-green">Planning</span></div>
+<br><span class="tag tag-green">land:+15</span> <span class="tag tag-green">distress:+3</span> <span class="tag tag-green">conversion:+7</span> <span class="tag tag-green">planning_granted:+20</span>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Freehold Residential Development Opportunity With Full Live Planning Consent for 113 apartments. Guide Price £1,750,000. Major development site in Wolverhampton city centre.</div>
+<div class="action-btns">
+<a class="action-btn" href="https://www.rightmove.co.uk/properties/88079166#/?channel=COM_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+<a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWV1&radius=1.0" target="_blank">🏡 Comps</a>
+<a class="action-btn" href="https://www.google.com/maps/search/Land+at+School+Street,+Wolverhampton,+WV1+4LJ" target="_blank">🗺️ Map</a>
+</div>
+</div><div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">#5 · WS1 · Residential Development</div>
+<a href="https://www.rightmove.co.uk/properties/88738260#/?channel=COM_BUY" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">1 Freer Street, Walsall, West Midlands, WS1 1QD</a>
+</div>
+<div style="text-align:right">
+<span style="color:#fbbf24;font-weight:600">£190,000</span>
+<div class="card-score score-low">Score: 37</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-red">Distressed</span> <span class="tag tag-amber">Vacant</span> <span class="tag tag-amber">Auction</span> <span class="tag tag-blue">Under £200k</span></div>
+<br><span class="tag tag-green">under_200k:+5</span> <span class="tag tag-green">vacant:+10</span> <span class="tag tag-green">auction:+8</span> <span class="tag tag-green">distress:+12</span> <span class="tag tag-green">conversion:+2</span>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Guide Price £180k-£190k. Freehold Vacant Warehouse/Retail Premises with Redevelopment Potential. Auction 3 June 2026. Post-auction distress (unsold 22 April).</div>
+<div class="action-btns">
+<a class="action-btn" href="https://www.rightmove.co.uk/properties/88738260#/?channel=COM_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+<a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWS1&radius=1.0" target="_blank">🏡 Comps</a>
+<a class="action-btn" href="https://www.google.com/maps/search/1+Freer+Street,+Walsall,+West+Midlands,+WS1+1QD" target="_blank">🗺️ Map</a>
+</div>
+</div><div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">#6 · WV1 · Mixed Use</div>
+<a href="https://www.rightmove.co.uk/properties/174438401#/?channel=COM_BUY" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">25 Waterloo Road, Wolverhampton, West Midlands WV1 4DJ</a>
+</div>
+<div style="text-align:right">
+<span style="color:#fbbf24;font-weight:600">£350,000</span>
+<div class="card-score score-low">Score: 32</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-red">Distressed</span> <span class="tag tag-amber">Auction</span></div>
+<br><span class="tag tag-green">mixed_use:+15</span> <span class="tag tag-green">auction:+8</span> <span class="tag tag-green">distress:+6</span> <span class="tag tag-green">conversion:+3</span>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">For sale by Auction on 28 May 2026. Mixed-use property in Wolverhampton city centre. Guide Price £350,000. AUCTION TODAY - potential post-auction distress opportunity.</div>
+<div class="action-btns">
+<a class="action-btn" href="https://www.rightmove.co.uk/properties/174438401#/?channel=COM_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+<a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWV1&radius=1.0" target="_blank">🏡 Comps</a>
+<a class="action-btn" href="https://www.google.com/maps/search/25+Waterloo+Road,+Wolverhampton,+West+Midlands+WV1+4DJ" target="_blank">🗺️ Map</a>
+</div>
+</div><div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">#7 · WS1 · Commercial Development</div>
+<a href="https://www.rightmove.co.uk/properties/88534014#/?channel=COM_BUY" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">144-147 Lichfield Street, Walsall, WS1 1SE</a>
+</div>
+<div style="text-align:right">
+<span style="color:#fbbf24;font-weight:600">£390,000</span>
+<div class="card-score score-low">Score: 32</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-red">Distressed</span> <span class="tag tag-amber">Vacant</span> <span class="tag tag-amber">Auction</span></div>
+<br><span class="tag tag-green">vacant:+10</span> <span class="tag tag-green">auction:+8</span> <span class="tag tag-green">distress:+6</span> <span class="tag tag-green">conversion:+2</span> <span class="tag tag-green">btl:+6</span>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Auction 4 June 2026. Freehold part vacant building with THREE RETAIL UNITS AND TWELVE FLATS producing £13,800 per annum. Guide Price £390,000. 12 beds.</div>
+<div class="action-btns">
+<a class="action-btn" href="https://www.rightmove.co.uk/properties/88534014#/?channel=COM_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+<a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWS1&radius=1.0" target="_blank">🏡 Comps</a>
+<a class="action-btn" href="https://www.google.com/maps/search/144-147+Lichfield+Street,+Walsall,+WS1+1SE" target="_blank">🗺️ Map</a>
+</div>
+</div><div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">#8 · DY5 · Shop</div>
+<a href="https://www.rightmove.co.uk/properties/172101227#/?channel=COM_BUY" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">Wallows Road, Brierley Hill</a>
+</div>
+<div style="text-align:right">
+<span style="color:#fbbf24;font-weight:600">£179,950</span>
+<div class="card-score score-low">Score: 30</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-blue">Under £200k</span></div>
+<br><span class="tag tag-green">retail:+5</span> <span class="tag tag-green">under_200k:+5</span> <span class="tag tag-green">conversion:+9</span> <span class="tag tag-green">btl:+3</span> <span class="tag tag-green">upper_floors:+8</span>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Versatile income-generating Mixed-Use Property comprising a well-presented 1-bedroom first floor flat, ground floor commercial unit, large basement with conversion potential. £179,950.</div>
+<div class="action-btns">
+<a class="action-btn" href="https://www.rightmove.co.uk/properties/172101227#/?channel=COM_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+<a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EDY5&radius=1.0" target="_blank">🏡 Comps</a>
+<a class="action-btn" href="https://www.google.com/maps/search/Wallows+Road,+Brierley+Hill" target="_blank">🗺️ Map</a>
+</div>
+</div><div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">#9 · WS1 · Commercial Property</div>
+<a href="https://www.rightmove.co.uk/properties/87548673#/?channel=COM_BUY" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">27 Bridge Street, Walsall, West Midlands, WS1 1DP</a>
+</div>
+<div style="text-align:right">
+<span style="color:#fbbf24;font-weight:600">£87,000</span>
+<div class="card-score score-low">Score: 29</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-red">Distressed</span> <span class="tag tag-amber">Auction</span> <span class="tag tag-blue">Under £200k</span></div>
+<br><span class="tag tag-green">under_100k:+10</span> <span class="tag tag-green">auction:+8</span> <span class="tag tag-green">distress:+6</span> <span class="tag tag-green">conversion:+5</span>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Town Centre Bar/Leisure Premises For Sale By Auction Unless Sold Prior. Guide Price £87,000. Potential conversion to residential (STP).</div>
+<div class="action-btns">
+<a class="action-btn" href="https://www.rightmove.co.uk/properties/87548673#/?channel=COM_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+<a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWS1&radius=1.0" target="_blank">🏡 Comps</a>
+<a class="action-btn" href="https://www.google.com/maps/search/27+Bridge+Street,+Walsall,+West+Midlands,+WS1+1DP" target="_blank">🗺️ Map</a>
+</div>
+</div><div class="card">
+<div class="card-hdr">
+<div>
+<div style="font-size:13px;color:#8b949e">#10 · WV1 · Leisure Facility</div>
+<a href="https://www.rightmove.co.uk/properties/174796220#/?channel=COM_BUY" target="_blank" style="font-size:16px;font-weight:600;color:#58a6ff;text-decoration:none">33 Princess Street, Wolverhampton, WV1 1HD</a>
+</div>
+<div style="text-align:right">
+<span style="color:#fbbf24;font-weight:600">£250,000</span>
+<div class="card-score score-low">Score: 28</div>
+</div>
+</div>
+<div style="margin-top:8px"><span class="tag tag-red">Distressed</span> <span class="tag tag-amber">Vacant</span></div>
+<br><span class="tag tag-green">restaurant:+10</span> <span class="tag tag-green">under_350k:+2</span> <span class="tag tag-green">vacant:+10</span> <span class="tag tag-green">distress:+3</span> <span class="tag tag-green">btl:+3</span>
+<div style="margin-top:6px;font-size:13px;color:#8b949e;line-height:1.5">Ground floor restaurant/bar/takeaway opportunity available to let (subject to vacant possession). Offers in Excess of £250,000.</div>
+<div class="action-btns">
+<a class="action-btn" href="https://www.rightmove.co.uk/properties/174796220#/?channel=COM_BUY" target="_blank">📋 Listing</a>
+<a class="action-btn" href="https://nethouseprices.com/" target="_blank">📊 Sold</a>
+<a class="action-btn" href="https://www.rightmove.co.uk/commercial-property-for-sale/search.html?locationIdentifier=POSTCODE%5EWV1&radius=1.0" target="_blank">🏡 Comps</a>
+<a class="action-btn" href="https://www.google.com/maps/search/33+Princess+Street,+Wolverhampton,+WV1+1HD" target="_blank">🗺️ Map</a>
+</div>
+</div>
+
+<h2>📍 Area Watchout</h2>
+<div class="area-grid">
+<div class="area-card"><div class="area-count">10</div><div class="area-name">Walsall</div></div>
+<div class="area-card"><div class="area-count">7</div><div class="area-name">Wolverhampton</div></div>
+<div class="area-card"><div class="area-count">4</div><div class="area-name">Dudley</div></div>
+<div class="area-card"><div class="area-count">3</div><div class="area-name">Brierley Hill</div></div>
+<div class="area-card"><div class="area-count">3</div><div class="area-name">Stourbridge</div></div>
+<div class="area-card"><div class="area-count">1</div><div class="area-name">Halesowen</div></div>
+</div>
+
+<h2>🧠 Strategy Intelligence</h2>
+
+<div class="strategy-box">
+<h3>💡 Pre-Approved Development Sites — HIGHEST VALUE PLAY</h3>
+<p>Full planning permission already granted at purchase. These are the lowest-risk commercial plays — skip the PA/PP process entirely:</p>
+<ul><li><strong>99 High Street, Dudley, West Midlands, DY1 1QP…</strong> — POA, Land. <a href="https://www.rightmove.co.uk/properties/158675270#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>The White Lion, 150 Sandwell Street, Walsall, WS1 …</strong> — £375,000, Residential Development. <a href="https://www.rightmove.co.uk/properties/157013612#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>Land at School Street, Wolverhampton, WV1 4LJ…</strong> — £1,750,000, Land. <a href="https://www.rightmove.co.uk/properties/88079166#/?channel=COM_BUY" target="_blank">View</a></li></ul>
+</div><div class="strategy-box">
+<h3>🎯 Post-Auction Distress — UNSOLD Opportunities</h3>
+<p>Properties that failed at auction and are now relisted. Vendors have paid auction fees and face empty rates ticking — motivated sellers.</p>
+<ul><li><strong>54 & 54A West Bromwich Street & 1a Windsor St, Wal…</strong> — £195,000, Score 47. <a href="https://www.rightmove.co.uk/properties/174979640#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>1 Freer Street, Walsall, West Midlands, WS1 1QD…</strong> — £190,000, Score 37. <a href="https://www.rightmove.co.uk/properties/88738260#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>27 Bridge Street, Walsall, West Midlands, WS1 1DP…</strong> — £87,000, Score 29. <a href="https://www.rightmove.co.uk/properties/87548673#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>63 George Street, Walsall, West Midlands WS1 1RS…</strong> — £95,000, Score 12. <a href="https://www.rightmove.co.uk/properties/87976215#/?channel=COM_BUY" target="_blank">View</a></li></ul>
+</div><div class="strategy-box">
+<h3>🏪 Mixed-Use & Shop-with-Flat Plays</h3>
+<p>Buy mixed-use properties with commercial SDLT advantage (no 3% surcharge). Split commercial + residential value.</p>
+<ul><li><strong>54 & 54A West Bromwich Street & 1a Windsor St, Wal…</strong> — £195,000, Score 47. <a href="https://www.rightmove.co.uk/properties/174979640#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>25 Waterloo Road, Wolverhampton, West Midlands WV1…</strong> — £350,000, Score 32. <a href="https://www.rightmove.co.uk/properties/174438401#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>Wallows Road, Brierley Hill…</strong> — £179,950, Score 30. <a href="https://www.rightmove.co.uk/properties/172101227#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>Market Street, Stourbridge, DY8…</strong> — £250,000, Score 28. <a href="https://www.rightmove.co.uk/properties/173528363#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>Windmill Hill, Halesowen, West Midlands, B63 2BZ…</strong> — £300,000, Score 22. <a href="https://www.rightmove.co.uk/properties/88770450#/?channel=COM_BUY" target="_blank">View</a></li></ul>
+</div><div class="strategy-box">
+<h3>🚪 Vacant Properties — Conversion Potential</h3>
+<p>Empty commercial units where the rates liability clock is ticking. Ideal for Class MA prior approval conversion.</p>
+<ul><li><strong>1 Freer Street, Walsall, West Midlands, WS1 1QD…</strong> — £190,000, Score 37. <a href="https://www.rightmove.co.uk/properties/88738260#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>144-147 Lichfield Street, Walsall, WS1 1SE…</strong> — £390,000, Score 32. <a href="https://www.rightmove.co.uk/properties/88534014#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>33 Princess Street, Wolverhampton, WV1 1HD…</strong> — £250,000, Score 28. <a href="https://www.rightmove.co.uk/properties/174796220#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>Market Street, Stourbridge, DY8…</strong> — £250,000, Score 28. <a href="https://www.rightmove.co.uk/properties/173528363#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>78 Darlington Street, Wolverhampton, WV1 4LY…</strong> — Offers Invited, Score 20. <a href="https://www.rightmove.co.uk/properties/173255885#/?channel=COM_BUY" target="_blank">View</a></li></ul>
+</div><div class="strategy-box">
+<h3>💰 Under £100k Opportunities</h3>
+<ul><li><strong>99 High Street, Dudley, West Midlands, DY1 1QP…</strong> — POA, Land, Score 65. <a href="https://www.rightmove.co.uk/properties/158675270#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>27 Bridge Street, Walsall, West Midlands, WS1 1DP…</strong> — £87,000, Commercial Property, Score 29. <a href="https://www.rightmove.co.uk/properties/87548673#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>13 Bridge Street, Walsall, West Midlands, WS1 1DP…</strong> — £75,000, Commercial Property, Score 26. <a href="https://www.rightmove.co.uk/properties/87548622#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>Corbyn Road, Dudley, West Midlands, DY1…</strong> — Offers Invited, Commercial Property, Score 17. <a href="https://www.rightmove.co.uk/properties/171749414#/?channel=COM_BUY" target="_blank">View</a></li><li><strong>63 George Street, Walsall, West Midlands WS1 1RS…</strong> — £95,000, Commercial Property, Score 12. <a href="https://www.rightmove.co.uk/properties/87976215#/?channel=COM_BUY" target="_blank">View</a></li></ul>
+</div>
+
+<h2>📊 Full Scoring Table — Top 20</h2>
+
+<div class="table-scroll">
+<table>
+<thead>
+<tr><th>#</th><th>Score</th><th>Price</th><th>Type</th><th>Area</th><th>Address</th><th>Link</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td class="score-high" style="font-weight:700">65</td><td style="color:#fbbf24;font-weight:600">POA</td><td><span class="tag tt-land">Land</span></td><td>DY1</td><td>99 High Street, Dudley, West Midlands, DY1 1QP…</td><td><a href="https://www.rightmove.co.uk/properties/158675270#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>2</td><td class="score-mid" style="font-weight:700">48</td><td style="color:#fbbf24;font-weight:600">£375,000</td><td><span class="tag tt-other">Residential Dev</span></td><td>WS1</td><td>The White Lion, 150 Sandwell Street, Walsall, WS1 …</td><td><a href="https://www.rightmove.co.uk/properties/157013612#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>3</td><td class="score-mid" style="font-weight:700">47</td><td style="color:#fbbf24;font-weight:600">£195,000</td><td><span class="tag tt-mixed">Mixed Use</span></td><td>WS1</td><td>54 & 54A West Bromwich Street & 1a Windsor St, Wal…</td><td><a href="https://www.rightmove.co.uk/properties/174979640#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>4</td><td class="score-mid" style="font-weight:700">45</td><td style="color:#fbbf24;font-weight:600">£1,750,000</td><td><span class="tag tt-land">Land</span></td><td>WV1</td><td>Land at School Street, Wolverhampton, WV1 4LJ…</td><td><a href="https://www.rightmove.co.uk/properties/88079166#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>5</td><td class="score-low" style="font-weight:700">37</td><td style="color:#fbbf24;font-weight:600">£190,000</td><td><span class="tag tt-other">Residential Dev</span></td><td>WS1</td><td>1 Freer Street, Walsall, West Midlands, WS1 1QD…</td><td><a href="https://www.rightmove.co.uk/properties/88738260#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>6</td><td class="score-low" style="font-weight:700">32</td><td style="color:#fbbf24;font-weight:600">£350,000</td><td><span class="tag tt-mixed">Mixed Use</span></td><td>WV1</td><td>25 Waterloo Road, Wolverhampton, West Midlands WV1…</td><td><a href="https://www.rightmove.co.uk/properties/174438401#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>7</td><td class="score-low" style="font-weight:700">32</td><td style="color:#fbbf24;font-weight:600">£390,000</td><td><span class="tag tt-other">Commercial Deve</span></td><td>WS1</td><td>144-147 Lichfield Street, Walsall, WS1 1SE…</td><td><a href="https://www.rightmove.co.uk/properties/88534014#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>8</td><td class="score-low" style="font-weight:700">30</td><td style="color:#fbbf24;font-weight:600">£179,950</td><td><span class="tag tt-retail">Shop</span></td><td>DY5</td><td>Wallows Road, Brierley Hill…</td><td><a href="https://www.rightmove.co.uk/properties/172101227#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>9</td><td class="score-low" style="font-weight:700">29</td><td style="color:#fbbf24;font-weight:600">£87,000</td><td><span class="tag tt-other">Commercial Prop</span></td><td>WS1</td><td>27 Bridge Street, Walsall, West Midlands, WS1 1DP…</td><td><a href="https://www.rightmove.co.uk/properties/87548673#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>10</td><td class="score-low" style="font-weight:700">28</td><td style="color:#fbbf24;font-weight:600">£250,000</td><td><span class="tag tt-other">Leisure Facilit</span></td><td>WV1</td><td>33 Princess Street, Wolverhampton, WV1 1HD…</td><td><a href="https://www.rightmove.co.uk/properties/174796220#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>11</td><td class="score-low" style="font-weight:700">28</td><td style="color:#fbbf24;font-weight:600">£250,000</td><td><span class="tag tt-retail">Retail Property</span></td><td>DY8</td><td>Market Street, Stourbridge, DY8…</td><td><a href="https://www.rightmove.co.uk/properties/173528363#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>12</td><td class="score-low" style="font-weight:700">26</td><td style="color:#fbbf24;font-weight:600">£75,000</td><td><span class="tag tt-other">Commercial Prop</span></td><td>WS1</td><td>13 Bridge Street, Walsall, West Midlands, WS1 1DP…</td><td><a href="https://www.rightmove.co.uk/properties/87548622#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>13</td><td class="score-low" style="font-weight:700">23</td><td style="color:#fbbf24;font-weight:600">£350,000</td><td><span class="tag tt-office">Office</span></td><td>WS1</td><td>Birmingham Road, Walsall…</td><td><a href="https://www.rightmove.co.uk/properties/144669992#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>14</td><td class="score-low" style="font-weight:700">23</td><td style="color:#fbbf24;font-weight:600">£150,000</td><td><span class="tag tt-other">Commercial Prop</span></td><td>WS1</td><td>Leicester Street, Walsall…</td><td><a href="https://www.rightmove.co.uk/properties/173199458#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>15</td><td class="score-low" style="font-weight:700">22</td><td style="color:#fbbf24;font-weight:600">£300,000</td><td><span class="tag tt-retail">Retail Property</span></td><td>B63</td><td>Windmill Hill, Halesowen, West Midlands, B63 2BZ…</td><td><a href="https://www.rightmove.co.uk/properties/88770450#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>16</td><td class="score-low" style="font-weight:700">20</td><td style="color:#fbbf24;font-weight:600">Offers Invited</td><td><span class="tag tt-other">Commercial Prop</span></td><td>WV1</td><td>78 Darlington Street, Wolverhampton, WV1 4LY…</td><td><a href="https://www.rightmove.co.uk/properties/173255885#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>17</td><td class="score-low" style="font-weight:700">20</td><td style="color:#fbbf24;font-weight:600">£200,000</td><td><span class="tag tt-land">Land</span></td><td>WS1</td><td>Bath Street, Walsall, West Midlands, WS1…</td><td><a href="https://www.rightmove.co.uk/properties/168198701#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>18</td><td class="score-low" style="font-weight:700">18</td><td style="color:#fbbf24;font-weight:600">£245,000</td><td><span class="tag tt-other">Restaurant</span></td><td>WV1</td><td>1a North Street, Wolverhampton…</td><td><a href="https://www.rightmove.co.uk/properties/748220618149456#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>19</td><td class="score-low" style="font-weight:700">18</td><td style="color:#fbbf24;font-weight:600">£140,000</td><td><span class="tag tt-other">Commercial Prop</span></td><td>DY5</td><td>1E & 1F Meeting Lane, Brierley Hill…</td><td><a href="https://www.rightmove.co.uk/properties/163753748#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+<tr><td>20</td><td class="score-low" style="font-weight:700">17</td><td style="color:#fbbf24;font-weight:600">Offers Invited</td><td><span class="tag tt-other">Commercial Prop</span></td><td>DY1</td><td>Corbyn Road, Dudley, West Midlands, DY1…</td><td><a href="https://www.rightmove.co.uk/properties/171749414#/?channel=COM_BUY" target="_blank" style="font-size:12px">🔗 View</a></td></tr>
+
+</tbody>
+</table>
+</div>
+
+<h2>🚨 Distress Signals Detected</h2>
+<div class="table-scroll">
+<table>
+<thead>
+<tr><th>Property</th><th>Area</th><th>Price</th><th>Signal</th><th>Score</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://www.rightmove.co.uk/properties/158675270#/?channel=COM_BUY" target="_blank">99 High Street, Dudley, West Midlands, D…</a></td><td>DY1</td><td style="color:#fbbf24">POA</td><td><span class="tag tag-red">redevelopment</span></td><td style="font-weight:700">65</td></tr>
+<tr><td><a href="https://www.rightmove.co.uk/properties/157013612#/?channel=COM_BUY" target="_blank">The White Lion, 150 Sandwell Street, Wal…</a></td><td>WS1</td><td style="color:#fbbf24">£375,000</td><td><span class="tag tag-red">former</span></td><td style="font-weight:700">48</td></tr>
+<tr><td><a href="https://www.rightmove.co.uk/properties/174979640#/?channel=COM_BUY" target="_blank">54 & 54A West Bromwich Street & 1a Winds…</a></td><td>WS1</td><td style="color:#fbbf24">£195,000</td><td><span class="tag tag-red">auction, unsold</span></td><td style="font-weight:700">47</td></tr>
+<tr><td><a href="https://www.rightmove.co.uk/properties/88079166#/?channel=COM_BUY" target="_blank">Land at School Street, Wolverhampton, WV…</a></td><td>WV1</td><td style="color:#fbbf24">£1,750,000</td><td><span class="tag tag-red">guide price</span></td><td style="font-weight:700">45</td></tr>
+<tr><td><a href="https://www.rightmove.co.uk/properties/88738260#/?channel=COM_BUY" target="_blank">1 Freer Street, Walsall, West Midlands, …</a></td><td>WS1</td><td style="color:#fbbf24">£190,000</td><td><span class="tag tag-red">auction, unsold, guide price, </span></td><td style="font-weight:700">37</td></tr>
+<tr><td><a href="https://www.rightmove.co.uk/properties/174438401#/?channel=COM_BUY" target="_blank">25 Waterloo Road, Wolverhampton, West Mi…</a></td><td>WV1</td><td style="color:#fbbf24">£350,000</td><td><span class="tag tag-red">auction, guide price</span></td><td style="font-weight:700">32</td></tr>
+<tr><td><a href="https://www.rightmove.co.uk/properties/88534014#/?channel=COM_BUY" target="_blank">144-147 Lichfield Street, Walsall, WS1 1…</a></td><td>WS1</td><td style="color:#fbbf24">£390,000</td><td><span class="tag tag-red">auction, guide price</span></td><td style="font-weight:700">32</td></tr>
+<tr><td><a href="https://www.rightmove.co.uk/properties/87548673#/?channel=COM_BUY" target="_blank">27 Bridge Street, Walsall, West Midlands…</a></td><td>WS1</td><td style="color:#fbbf24">£87,000</td><td><span class="tag tag-red">auction, guide price</span></td><td style="font-weight:700">29</td></tr>
+
+</tbody></table></div>
+
+<h2>📊 Learning Summary — 28 May 2026</h2>
+
+<div class="verdict">
+<div class="verdict-title">🔍 What Changed in the Model Today</div>
+<div class="verdict-body">
+<strong>Data Sources:</strong> Rightmove Commercial (live curl extraction via __NEXT_DATA__).<br>
+<strong>Areas scanned:</strong> DY1 (Dudley), WV1 (Wolverhampton), WS1 (Walsall), DY5 (Brierley Hill), DY8 (Stourbridge), B63 (Halesowen) — 78 unique commercial properties found, 28 prioritised.<br>
+<strong>Top strategy:</strong> Post-auction distress plays in Walsall are the standout opportunity — 3 unsold auction properties identified (54 West Bromwich St, 63 George St, 1 Freer St) with vendors motivated after paying auction fees.<br>
+<strong>Pre-approved development:</strong> 99 High Street Dudley (14 flats + retail) and Land at School Street Wolverhampton (113 apartments) remain the highest-value pre-approved plays.<br>
+<strong>Pub conversion:</strong> The White Lion Walsall (£375k, PP for 13 apartments) scored 48 — strong pub conversion play.<br>
+<strong>Yield observation:</strong> Walsall post-auction mixed-use at 12.9% yield (54 West Bromwich St) confirms Walsall as post-auction distress capital.<br>
+<strong>NB:</strong> Tavily web search API returning 432 errors; used direct curl to Rightmove Commercial for live extraction. 78 properties scanned across 6 postcode areas.
+</div>
+</div>
+
+<div class="verdict">
+<div class="verdict-title">✅ Recommended Human Actions</div>
+<div class="verdict-body">
+<ol>
+<li><strong>URGENT: 25 Waterloo Road, Wolverhampton</strong> (£350k, Auction TODAY 28 May) — Monitor auction result. If unsold, contact agent next week with offer 10-15% below guide.</li>
+<li><strong>Enquire on 54 & 54A West Bromwich Street, Walsall</strong> (£195k, £25,200pa income) — UNSOLD at Bond Wolfe 14 May. Target offer £170k-£180k. 12.9% yield is excellent.</li>
+<li><strong>Review 99 High Street, Dudley</strong> (PP for 14 flats + retail) — Contact agent to confirm price. Best pre-approved development site in the series.</li>
+<li><strong>Check 63 George Street, Walsall</strong> (£95k, unsold 30 April) — Lowest entry point in Walsall. Could be ideal shop conversion for £50-70k budget.</li>
+<li><strong>View 1 Freer Street, Walsall</strong> (£190k, vacant warehouse, redevelopment potential) — Auction 3 June. Strong post-auction distress play.</li>
+<li><strong>Monitor 144-147 Lichfield Street, Walsall</strong> (£390k, 3 retail + 12 flats) — Auction 4 June. Already income-producing. Target post-auction if unsold.</li>
+<li><strong>Run VOA check on Wallows Road, Brierley Hill</strong> (£179,950, mixed-use with flat + basement). Good shop-with-flat split play.</li>
+</ol>
+</div>
+</div>
+
+<div class="related-section">
+<h2>🔗 Related Resources</h2>
+<div class="related-grid">
+<a class="related-card" href="../brrr-sourcer.html"><span class="related-icon">🔥</span><span class="related-title">BRRR Daily Sourcer</span><span class="related-desc">Residential BMV/BRRR deals</span></a>
+<a class="related-card" href="../power-team.html"><span class="related-icon">🛠️</span><span class="related-title">Power Team</span><span class="related-desc">Trusted contractors &amp; professionals</span></a>
+<a class="related-card" href="../strategy-brrr-hmo-playbook.html"><span class="related-icon">📖</span><span class="related-title">Strategy Playbook</span><span class="related-desc">BRRR/HMO strategy reference</span></a>
+<a class="related-card" href="../index.html"><span class="related-icon">🏠</span><span class="related-title">Dashboard Home</span><span class="related-desc">Main property dashboard</span></a>
+</div>
+</div>
+
+<div class="footer">
+<p>Commercial Property Daily Radar · 28 May 2026 · Generated 08:07 by Hermes Agent (Commercial Property Sourcer skill)</p>
+<p>Data sources: Rightmove Commercial (live curl extraction) · 78 properties scanned across 6 postcode areas</p>
+</div>
+
+</div>
+</body>
+</html>

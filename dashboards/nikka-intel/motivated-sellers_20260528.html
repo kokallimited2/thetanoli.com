@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔥 Motivated Sellers Scan — Dudley 20mi Radius — 28 May 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.6;
+    padding: 24px;
+  }
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+  
+  h1 { font-size: 2rem; color: #f0883e; margin-bottom: 4px; }
+  h2 { font-size: 1.5rem; color: #58a6ff; margin: 28px 0 12px; }
+  h3 { font-size: 1.1rem; color: #8b949e; margin-bottom: 8px; }
+  
+  .subtitle { color: #8b949e; font-size: 14px; margin-bottom: 24px; }
+  
+  .stats-row {
+    display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 28px;
+  }
+  .stat-card {
+    background: #161b22; border: 1px solid #30363d; border-radius: 8px;
+    padding: 16px 20px; text-align: center; flex: 1; min-width: 120px;
+  }
+  .stat-number { font-size: 28px; font-weight: 700; color: #f0883e; }
+  .stat-label { font-size: 13px; color: #8b949e; margin-top: 2px; }
+  
+  .deal-card {
+    background: #161b22; border: 1px solid #30363d; border-radius: 10px;
+    margin-bottom: 20px; overflow: hidden;
+  }
+  .deal-card.highlight { border-color: #f0883e; }
+  .deal-header {
+    background: linear-gradient(135deg, #1c2128, #161b22);
+    padding: 16px 20px; border-bottom: 1px solid #30363d;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+  }
+  .deal-rank { 
+    background: #f0883e; color: #0d1117; border-radius: 50%;
+    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px; flex-shrink: 0;
+  }
+  .deal-title { font-size: 16px; font-weight: 600; margin-left: 12px; flex: 1; }
+  .deal-score { font-size: 20px; font-weight: 700; color: #f0883e; flex-shrink: 0; }
+  
+  .deal-body { display: flex; flex-wrap: wrap; }
+  .deal-image { 
+    width: 280px; min-height: 180px; flex-shrink: 0;
+    background: #0d1117; 
+  }
+  .deal-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .deal-info { flex: 1; padding: 16px 20px; min-width: 280px; }
+  
+  .deal-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .badge {
+    display: inline-block; padding: 3px 10px; border-radius: 12px;
+    font-size: 12px; font-weight: 600;
+  }
+  .badge-chain { background: #1a3a2a; color: #3fb950; border: 1px solid #3fb950; }
+  .badge-vacant { background: #271a1a; color: #f85149; border: 1px solid #f85149; }
+  .badge-refurb { background: #2a1f0e; color: #d29922; border: 1px solid #d29922; }
+  .badge-reduced { background: #1a1a2e; color: #79c0ff; border: 1px solid #79c0ff; }
+  
+  .deal-details { font-size: 14px; color: #8b949e; }
+  .deal-details strong { color: #e6edf3; }
+  .deal-details table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  .deal-details td { padding: 4px 8px; border-bottom: 1px solid #21262d; font-size: 14px; }
+  .deal-details td:first-child { color: #8b949e; width: 130px; }
+  
+  .score-bar {
+    display: flex; gap: 4px; margin: 8px 0; flex-wrap: wrap;
+  }
+  .score-segment {
+    height: 6px; border-radius: 3px; flex: 1; min-width: 30px;
+  }
+  .score-label { font-size: 11px; color: #8b949e; text-align: center; flex: 1; min-width: 30px; }
+  
+  .deal-actions {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; padding-top: 12px;
+    border-top: 1px solid #21262d;
+  }
+  .deal-actions a {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: 500;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-listing { background: #1f6feb; color: #fff; }
+  .btn-listing:hover { background: #388bfd; }
+  .btn-sold { background: #21262d; color: #8b949e; border: 1px solid #30363d; }
+  .btn-sold:hover { background: #30363d; }
+  .btn-comps { background: #21262d; color: #8b949e; border: 1px solid #30363d; }
+  .btn-comps:hover { background: #30363d; }
+  .btn-map { background: #21262d; color: #8b949e; border: 1px solid #30363d; }
+  .btn-map:hover { background: #30363d; }
+  
+  .area-watchout {
+    background: #1c2128; border: 1px solid #30363d; border-radius: 8px;
+    padding: 14px 18px; margin-bottom: 20px; font-size: 14px;
+  }
+  .area-watchout h3 { color: #d29922; margin-bottom: 6px; font-size: 15px; }
+  .area-watchout ul { margin: 6px 0 0 16px; color: #8b949e; }
+  .area-watchout li { margin-bottom: 4px; }
+  
+  .seo-links {
+    display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0; padding: 12px 0;
+    border-top: 1px solid #30363d; border-bottom: 1px solid #30363d;
+  }
+  .seo-links a { color: #58a6ff; text-decoration: none; font-size: 14px; }
+  .seo-links a:hover { text-decoration: underline; }
+  
+  .footer { color: #484f58; font-size: 12px; margin-top: 28px; padding-top: 16px; border-top: 1px solid #21262d; }
+  
+  @media (max-width: 640px) {
+    .deal-body { flex-direction: column; }
+    .deal-image { width: 100%; height: 200px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<h1>🔥 Motivated Sellers Scan</h1>
+<p class="subtitle">Dudley 20mi Radius · Houses 2+ Beds · Max £200k · 90+ Days on Market · 28 May 2026</p>
+
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-number">107</div>
+    <div class="stat-label">Houses 90+ Days</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">5</div>
+    <div class="stat-label">Top Deals Shortlisted</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">4,164</div>
+    <div class="stat-label">Total Properties Scanned</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">20mi</div>
+    <div class="stat-label">Search Radius</div>
+  </div>
+</div>
+
+<h2>📍 Area Watchout</h2>
+<div class="area-watchout">
+  <h3>⚠️ Risk Context — Dudley & West Midlands</h3>
+  <ul>
+    <li><strong>Article 4 Direction:</strong> Active in Dudley borough — HMO licensing required for small HMOs (3+ unrelated tenants). Check before purchasing.</li>
+    <li><strong>Void Risk:</strong> Moderate (3-6 weeks typical) in DY postcodes. B44/Birmingham areas slightly lower (2-4 weeks).</li>
+    <li><strong>Rental Yield:</strong> 5-7% gross typical in DY2/B64/DY5. 4-5.5% in B44/B63. Strong student & professional demand near Birmingham.</li>
+    <li><strong>Crime Level:</strong> Moderate in Netherton/Cradley Heath. Lower in Halesowen/Great Barr.</li>
+    <li><strong>Key Strategy:</strong> BRRR works well here — purchase at 85% of market value, refurb to force equity, refinance.</li>
+  </ul>
+</div>
+
+<h2>🏆 Top 5 Most Motivated Sellers</h2>
+
+<!-- DEAL 1 -->
+<div class="deal-card highlight">
+  <div class="deal-header">
+    <div style="display:flex;align-items:center;">
+      <div class="deal-rank">1</div>
+      <div class="deal-title">Burnham Road, Great Barr, Birmingham, B44</div>
+    </div>
+    <div class="deal-score">61.7/100</div>
+  </div>
+  <div class="deal-body">
+    <div class="deal-image">
+      <img src="https://media.rightmove.co.uk/property-photo/3e8fd1db9/171311327/3e8fd1db96bc822b10961f7c0cc0435b.jpeg" alt="Burnham Road" onerror="this.parentElement.innerHTML='<div style=\'padding:40px;text-align:center;color:#484f58;\'>📷 Image N/A</div>'">
+    </div>
+    <div class="deal-info">
+      <div class="deal-meta">
+        <span class="badge badge-vacant">VACANT POSSESSION</span>
+        <span class="badge badge-chain">NO UPWARD CHAIN</span>
+        <span class="badge badge-reduced">£10k Below Area Avg</span>
+      </div>
+      <div class="deal-details">
+        <table>
+          <tr><td>Price</td><td><strong>£200,000</strong> (Area Avg: £210,000 → <span style="color:#3fb950;">£10k below market</span>)</td></tr>
+          <tr><td>Type</td><td><strong>3-bed Semi-Detached House</strong></td></tr>
+          <tr><td>Days on Market</td><td><strong>125 days</strong> (First visible: 22 Jan 2026)</td></tr>
+          <tr><td>Agent</td><td>Vacant Property Specialists</td></tr>
+          <tr><td>Signals</td><td><span style="color:#f85149;">★ VACANT</span> — Immediate access, no tenant to evict. <span style="color:#3fb950;">★ No upward chain</span> — quick completion possible.</td></tr>
+        </table>
+        <p style="margin-top:8px;font-size:13px;color:#8b949e;">Well-presented throughout with modern kitchen/diner. Three bedrooms, semi-detached in sought-after Great Barr. Vacant possession means zero delays — ideal for BRRR as you can start refurbishment immediately.</p>
+        
+        <div class="score-bar">
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#d29922;width:48%"></div>
+            <div class="score-label">Disc 14</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#3fb950;width:52%"></div>
+            <div class="score-label">Days 10</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#58a6ff;width:50%"></div>
+            <div class="score-label">Refurb 10</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#f0883e;width:80%"></div>
+            <div class="score-label">Loc 12</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#f85149;width:100%"></div>
+            <div class="score-label">Chain 15</div>
+          </div>
+        </div>
+        
+        <div class="deal-actions">
+          <a class="btn-listing" href="https://www.rightmove.co.uk/properties/171311327/" target="_blank">📋 Listing</a>
+          <a class="btn-sold" href="https://www.nethouseprices.com/house-prices/birmingham/b44/burnham-road" target="_blank">📊 Sold</a>
+          <a class="btn-comps" href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EB44&radius=1.0&sortType=2&maxPrice=225000&minBedrooms=3" target="_blank">🏡 Comps</a>
+          <a class="btn-map" href="https://maps.google.com/?q=Burnham+Road+Great+Barr+Birmingham+B44" target="_blank">🗺️ Map</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEAL 2 -->
+<div class="deal-card">
+  <div class="deal-header">
+    <div style="display:flex;align-items:center;">
+      <div class="deal-rank">2</div>
+      <div class="deal-title">Bromsgrove Road, Halesowen, B63 3HJ</div>
+    </div>
+    <div class="deal-score">59.6/100</div>
+  </div>
+  <div class="deal-body">
+    <div class="deal-image">
+      <img src="https://media.rightmove.co.uk/property-photo/bb88c9f25/169579613/bb88c9f259a2feafd7ddad5864a389be.jpeg" alt="Bromsgrove Road" onerror="this.parentElement.innerHTML='<div style=\'padding:40px;text-align:center;color:#484f58;\'>📷 Image N/A</div>'">
+    </div>
+    <div class="deal-info">
+      <div class="deal-meta">
+        <span class="badge badge-refurb">IN NEED OF UPDATING</span>
+        <span class="badge badge-chain">NO UPWARD CHAIN</span>
+        <span class="badge badge-reduced">187 Days</span>
+      </div>
+      <div class="deal-details">
+        <table>
+          <tr><td>Price</td><td><strong>£200,000</strong> (Area Avg: £195,000)</td></tr>
+          <tr><td>Type</td><td><strong>2-bed Semi-Detached Bungalow</strong></td></tr>
+          <tr><td>Days on Market</td><td><strong>187 days</strong> (First visible: 21 Nov 2025)</td></tr>
+          <tr><td>Agent</td><td>Hunters - Halesowen</td></tr>
+          <tr><td>Signals</td><td><span style="color:#d29922;">★ NEEDS UPDATING</span> — forced equity through refurb. <span style="color:#3fb950;">★ No onward chain</span> — quick purchase.</td></tr>
+        </table>
+        <p style="margin-top:8px;font-size:13px;color:#8b949e;">Two-double-bedroom semi-detached bungalow in Halesowen — a popular West Midlands town with good schools and amenities. In need of updating throughout, offering strong forced-equity potential. Halesowen has lower void rates than inner-city areas.</p>
+        
+        <div class="score-bar">
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#d29922;width:0%"></div>
+            <div class="score-label">Disc 0</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#3fb950;width:78%"></div>
+            <div class="score-label">Days 16</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#58a6ff;width:100%"></div>
+            <div class="score-label">Refurb 20</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#f0883e;width:80%"></div>
+            <div class="score-label">Loc 12</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#f85149;width:80%"></div>
+            <div class="score-label">Chain 12</div>
+          </div>
+        </div>
+        
+        <div class="deal-actions">
+          <a class="btn-listing" href="https://www.rightmove.co.uk/properties/169579613/" target="_blank">📋 Listing</a>
+          <a class="btn-sold" href="https://www.nethouseprices.com/house-prices/halesowen/b63/bromsgrove-road" target="_blank">📊 Sold</a>
+          <a class="btn-comps" href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EB63&radius=1.0&sortType=2&maxPrice=220000&minBedrooms=2" target="_blank">🏡 Comps</a>
+          <a class="btn-map" href="https://maps.google.com/?q=Bromsgrove+Road+Halesowen+B63" target="_blank">🗺️ Map</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEAL 3 -->
+<div class="deal-card">
+  <div class="deal-header">
+    <div style="display:flex;align-items:center;">
+      <div class="deal-rank">3</div>
+      <div class="deal-title">Brierley Hill Road, Brierley Hill, DY5</div>
+    </div>
+    <div class="deal-score">58.0/100</div>
+  </div>
+  <div class="deal-body">
+    <div class="deal-image">
+      <img src="https://media.rightmove.co.uk/property-photo/ae864c1f8/168512276/ae864c1f87c00de368551a35150f22c8.jpeg" alt="Brierley Hill Road" onerror="this.parentElement.innerHTML='<div style=\'padding:40px;text-align:center;color:#484f58;\'>📷 Image N/A</div>'">
+    </div>
+    <div class="deal-info">
+      <div class="deal-meta">
+        <span class="badge badge-refurb">IN NEED OF TLC</span>
+        <span class="badge badge-reduced">REDUCED 23 APR</span>
+      </div>
+      <div class="deal-details">
+        <table>
+          <tr><td>Price</td><td><strong>£200,000</strong> (Area Avg: £180,000 — above avg, negotiate down)</td></tr>
+          <tr><td>Type</td><td><strong>3-bed End of Terrace House</strong></td></tr>
+          <tr><td>Days on Market</td><td><strong>216 days</strong> (First visible: 23 Oct 2025)</td></tr>
+          <tr><td>Agent</td><td>Connells - Dudley</td></tr>
+          <tr><td>Signals</td><td><span style="color:#d29922;">★ NEEDS TLC</span> — refurb opportunity in Brierley Hill. <span style="color:#79c0ff;">★ Reduced on 23/04/2026</span> — seller is lowering expectations.</td></tr>
+        </table>
+        <p style="margin-top:8px;font-size:13px;color:#8b949e;">Three-bed end-of-terrace in Brierley Hill — right in the heart of Dudley borough. Described as "in need of TLC" meaning genuine refurb opportunity. 216 days on market and recently reduced suggests seller is becoming motivated. Strong area for rental demand from nearby Merry Hill Centre.</p>
+        
+        <div class="score-bar">
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#d29922;width:0%"></div>
+            <div class="score-label">Disc 0</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#3fb950;width:90%"></div>
+            <div class="score-label">Days 18</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#58a6ff;width:100%"></div>
+            <div class="score-label">Refurb 20</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#f0883e;width:100%"></div>
+            <div class="score-label">Loc 15</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#f85149;width:33%"></div>
+            <div class="score-label">Chain 5</div>
+          </div>
+        </div>
+        
+        <div class="deal-actions">
+          <a class="btn-listing" href="https://www.rightmove.co.uk/properties/168512276/" target="_blank">📋 Listing</a>
+          <a class="btn-sold" href="https://www.nethouseprices.com/house-prices/brierley-hill/dy5/brierley-hill-road" target="_blank">📊 Sold</a>
+          <a class="btn-comps" href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EDY5&radius=1.0&sortType=2&maxPrice=200000&minBedrooms=3" target="_blank">🏡 Comps</a>
+          <a class="btn-map" href="https://maps.google.com/?q=Brierley+Hill+Road+Brierley+Hill+DY5" target="_blank">🗺️ Map</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEAL 4 -->
+<div class="deal-card">
+  <div class="deal-header">
+    <div style="display:flex;align-items:center;">
+      <div class="deal-rank">4</div>
+      <div class="deal-title">Swallow Close, Netherton, Dudley, DY2 9TB</div>
+    </div>
+    <div class="deal-score">51.9/100</div>
+  </div>
+  <div class="deal-body">
+    <div class="deal-image">
+      <img src="https://media.rightmove.co.uk/property-photo/836f00088/167626778/836f00088922399fb5e7dc42a596feb9.jpeg" alt="Swallow Close" onerror="this.parentElement.innerHTML='<div style=\'padding:40px;text-align:center;color:#484f58;\'>📷 Image N/A</div>'">
+    </div>
+    <div class="deal-info">
+      <div class="deal-meta">
+        <span class="badge badge-chain">NO UPWARD CHAIN</span>
+        <span class="badge badge-reduced">239 Days</span>
+      </div>
+      <div class="deal-details">
+        <table>
+          <tr><td>Price</td><td><strong>£200,000</strong> (Area Avg: £185,000)</td></tr>
+          <tr><td>Type</td><td><strong>3-bed End of Terrace House</strong></td></tr>
+          <tr><td>Days on Market</td><td><strong>239 days</strong> (First visible: 30 Sep 2025 — ~8 months!)</td></tr>
+          <tr><td>Agent</td><td>Hunters - Dudley</td></tr>
+          <tr><td>Signals</td><td><span style="color:#3fb950;">★ NO UPWARD CHAIN</span> — seller ready to move. <span style="color:#f0883e;">★ 239 days — seller is getting desperate</span></td></tr>
+        </table>
+        <p style="margin-top:8px;font-size:13px;color:#8b949e;">Deceptively spacious end-of-terrace in Netherton — a short drive from Dudley town centre. Longest on market of all top candidates at 239 days. NO UPWARD CHAIN means the seller is ready to transact. Likely a probate or reluctant seller situation — strong negotiation opportunity.</p>
+        
+        <div class="score-bar">
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#d29922;width:0%"></div>
+            <div class="score-label">Disc 0</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#3fb950;width:100%"></div>
+            <div class="score-label">Days 20</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#58a6ff;width:25%"></div>
+            <div class="score-label">Refurb 5</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#f0883e;width:100%"></div>
+            <div class="score-label">Loc 15</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#f85149;width:80%"></div>
+            <div class="score-label">Chain 12</div>
+          </div>
+        </div>
+        
+        <div class="deal-actions">
+          <a class="btn-listing" href="https://www.rightmove.co.uk/properties/167626778/" target="_blank">📋 Listing</a>
+          <a class="btn-sold" href="https://www.nethouseprices.com/house-prices/dudley/dy2/swallow-close" target="_blank">📊 Sold</a>
+          <a class="btn-comps" href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EDY2&radius=1.0&sortType=2&maxPrice=200000&minBedrooms=3" target="_blank">🏡 Comps</a>
+          <a class="btn-map" href="https://maps.google.com/?q=Swallow+Close+Netherton+Dudley+DY2" target="_blank">🗺️ Map</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEAL 5 -->
+<div class="deal-card">
+  <div class="deal-header">
+    <div style="display:flex;align-items:center;">
+      <div class="deal-rank">5</div>
+      <div class="deal-title">Wrights Lane, Cradley Heath, B64</div>
+    </div>
+    <div class="deal-score">45.6/100</div>
+  </div>
+  <div class="deal-body">
+    <div class="deal-image">
+      <img src="https://media.rightmove.co.uk/property-photo/62622a0e2/169160822/62622a0e25c5ffd121d58ed808c0186a.jpeg" alt="Wrights Lane" onerror="this.parentElement.innerHTML='<div style=\'padding:40px;text-align:center;color:#484f58;\'>📷 Image N/A</div>'">
+    </div>
+    <div class="deal-info">
+      <div class="deal-meta">
+        <span class="badge badge-chain">NO UPWARD CHAIN</span>
+        <span class="badge badge-reduced">REDUCED 27 APR</span>
+      </div>
+      <div class="deal-details">
+        <table>
+          <tr><td>Price</td><td><strong>£200,000</strong> (Area Avg: £180,000)</td></tr>
+          <tr><td>Type</td><td><strong>3-bed Semi-Detached House</strong></td></tr>
+          <tr><td>Days on Market</td><td><strong>199 days</strong> (First visible: 09 Nov 2025)</td></tr>
+          <tr><td>Agent</td><td>Hunters - Halesowen</td></tr>
+          <tr><td>Signals</td><td><span style="color:#3fb950;">★ NO UPWARD CHAIN</span>. <span style="color:#79c0ff;">★ Reduced 27/04/2026</span> — price dropped recently.</td></tr>
+        </table>
+        <p style="margin-top:8px;font-size:13px;color:#8b949e;">Well-presented semi-detached in Cradley Heath, close to Old Hill and Netherton. Three bedrooms with NO UPWARD CHAIN. Cradley Heath is an up-and-coming area with improving transport links (Midland Metro extension). Good buy-to-let area with yields around 6%.</p>
+        
+        <div class="score-bar">
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#d29922;width:0%"></div>
+            <div class="score-label">Disc 0</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#3fb950;width:83%"></div>
+            <div class="score-label">Days 17</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#58a6ff;width:25%"></div>
+            <div class="score-label">Refurb 5</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#f0883e;width:80%"></div>
+            <div class="score-label">Loc 12</div>
+          </div>
+          <div style="flex:1;min-width:30px;text-align:center;">
+            <div class="score-segment" style="background:#f85149;width:80%"></div>
+            <div class="score-label">Chain 12</div>
+          </div>
+        </div>
+        
+        <div class="deal-actions">
+          <a class="btn-listing" href="https://www.rightmove.co.uk/properties/169160822/" target="_blank">📋 Listing</a>
+          <a class="btn-sold" href="https://www.nethouseprices.com/house-prices/cradley-heath/b64/wrights-lane" target="_blank">📊 Sold</a>
+          <a class="btn-comps" href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EB64&radius=1.0&sortType=2&maxPrice=200000&minBedrooms=3" target="_blank">🏡 Comps</a>
+          <a class="btn-map" href="https://maps.google.com/?q=Wrights+Lane+Cradley+Heath+B64" target="_blank">🗺️ Map</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>📋 Full Data — All 107 Houses 90+ Days (Summary)</h2>
+<div class="table-scroll">
+<table style="width:100%;border-collapse:collapse;font-size:14px;">
+<thead>
+  <tr style="background:#161b22;border-bottom:2px solid #30363d;">
+    <th style="padding:8px 6px;text-align:left;color:#8b949e;">Price</th>
+    <th style="padding:8px 6px;text-align:left;color:#8b949e;">Beds</th>
+    <th style="padding:8px 6px;text-align:left;color:#8b949e;">Days</th>
+    <th style="padding:8px 6px;text-align:left;color:#8b949e;">Postcode</th>
+    <th style="padding:8px 6px;text-align:left;color:#8b949e;">Distress</th>
+    <th style="padding:8px 6px;text-align:left;color:#8b949e;">Address</th>
+    <th style="padding:8px 6px;text-align:left;color:#8b949e;">Link</th>
+  </tr>
+</thead>
+<tbody id="all-props-table">
+</tbody>
+</table>
+</div>
+
+<p style="color:#484f58;font-size:13px;margin:12px 0;">Showing top 30 of 107 houses found. <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E443&radius=20.0&minBedrooms=2&maxPrice=200000&sortType=5&displayPropertyType=houses&includeSSTC=false" target="_blank" style="color:#58a6ff;">View full Rightmove search →</a></p>
+
+<div class="seo-links">
+  <a href="index.html">🏠 Dashboard Home</a>
+  <a href="brrr-sourcer.html">🔥 BRRR Daily Sourcer</a>
+  <a href="power-team.html">🛠️ Power Team</a>
+  <a href="market_signals_MAIN.html">📡 Market Signals</a>
+  <a href="area-intelligence/">🗺️ Area Intelligence</a>
+  <a href="offmarket-finder.html">🎯 Off-Market Finder</a>
+</div>
+
+<div class="footer">
+  <p>Generated: 28 May 2026 07:15 BST · Source: Rightmove · Radius: 20mi from Dudley (REGION^443)</p>
+  <p>Filter: Houses only · 2+ beds · Max £200k · 90+ days on market · Sorted by motivation score</p>
+  <p>⚠️ Prices and availability subject to change. Always verify with agent before making decisions.</p>
+</div>
+
+</div>
+
+<script>
+const props = [
+  {price:"£200,000", beds:3, days:239, pc:"DY2", signals:"NO UPWARD CHAIN", addr:"Swallow Close, Netherton, Dudley", id:167626778},
+  {price:"£200,000", beds:3, days:369, pc:"B27", signals:"NO UPWARD CHAIN", addr:"Ladbroke Grove, Birmingham", id:162340865},
+  {price:"£200,000", beds:2, days:187, pc:"B63", signals:"NEEDS UPDATING, NO UPWARD CHAIN", addr:"Bromsgrove Road, Halesowen", id:169579613},
+  {price:"£200,000", beds:3, days:125, pc:"B44", signals:"VACANT, NO UPWARD CHAIN, AUCTION", addr:"Burnham Road, Great Barr, Birmingham", id:171311327},
+  {price:"£200,000", beds:3, days:199, pc:"B64", signals:"NO UPWARD CHAIN", addr:"Wrights Lane, Cradley Heath", id:169160822},
+  {price:"£200,000", beds:2, days:223, pc:"WV6", signals:"CHAIN FREE", addr:"Hall End Lane, Wolverhampton", id:168279062},
+  {price:"£200,000", beds:3, days:216, pc:"DY5", signals:"IN NEED OF TLC", addr:"Brierley Hill Road, Brierley Hill", id:168512276},
+  {price:"£200,000", beds:3, days:420, pc:"TF1", signals:"NO UPWARD CHAIN", addr:"Sorbus Avenue, Hadley, Telford", id:160149527},
+  {price:"£200,000", beds:3, days:251, pc:"B27", signals:"NO CHAIN", addr:"Tarrant Grove, Birmingham", id:167147447},
+  {price:"£200,000", beds:3, days:225, pc:"TF1", signals:"NO UPWARD CHAIN", addr:"Golf Links Cottage, Wellington, Telford", id:87312270},
+  {price:"£200,000", beds:3, days:219, pc:"TF1", signals:"NO UPWARD CHAIN", addr:"Sandbrook, Ketley, Telford", id:168378911},
+  {price:"£200,000", beds:3, days:259, pc:"DY8", signals:"None", addr:"Brooklands, Wordsley, DY8", id:166822595},
+  {price:"£200,000", beds:3, days:204, pc:"B64", signals:"CHAIN FREE", addr:"Mousehall Farm Road, Brierley Hill", id:168961589},
+  {price:"£200,000", beds:2, days:103, pc:"B65", signals:"NO CHAIN", addr:"Druids Avenue, Rowley Regis", id:172151651},
+  {price:"£200,000", beds:3, days:216, pc:"DY5", signals:"TLC, IN NEED OF", addr:"Brierley Hill Road, Brierley Hill", id:168512276},
+  {price:"£200,000", beds:2, days:713, pc:"B96", signals:"None", addr:"Alcester Road, Feckenham, Redditch", id:149103806},
+  {price:"£200,000", beds:2, days:670, pc:"B73", signals:"None", addr:"Blackham Drive, Sutton Coldfield", id:150688478},
+  {price:"£200,000", beds:3, days:300, pc:"B10", signals:"None", addr:"Whitehall Road, Small Heath, Birmingham", id:165180200},
+  {price:"£200,000", beds:3, days:295, pc:"WS7", signals:"None", addr:"Cottage Lane, Burntwood", id:165365177},
+  {price:"£200,000", beds:3, days:287, pc:"WS11", signals:"None", addr:"Huntington Terrace Road, Cannock", id:165694373},
+  {price:"£200,000", beds:2, days:254, pc:"DY6", signals:"None", addr:"Broad Street, Kingswinford", id:167006705},
+  {price:"£200,000", beds:3, days:240, pc:"B31", signals:"None", addr:"Watkins Gardens, Birmingham", id:167563796},
+  {price:"£200,000", beds:2, days:240, pc:"WS12", signals:"None", addr:"Bond Way, Hednesford", id:167571905},
+  {price:"£200,000", beds:3, days:239, pc:"DY2", signals:"NO UPWARD CHAIN", addr:"Swallow Close, Netherton, Dudley", id:167626778},
+  {price:"£200,000", beds:3, days:225, pc:"TF1", signals:"None", addr:"Golf Links Cottage, Mill Lane, Wellington", id:87312156},
+  {price:"£200,000", beds:3, days:209, pc:"B32", signals:"None", addr:"Tarrant Grove, Quinton, Birmingham", id:168812051},
+  {price:"£200,000", beds:3, days:194, pc:"WS10", signals:"None", addr:"Handley Street, Wednesbury", id:169340162},
+  {price:"£200,000", beds:2, days:190, pc:"B18", signals:"None", addr:"Kent Street North, Birmingham", id:169463960},
+  {price:"£200,000", beds:3, days:183, pc:"B78", signals:"None", addr:"Manor Road, Mile Oak, Tamworth", id:169699436},
+  {price:"£200,000", beds:3, days:182, pc:"B31", signals:"None", addr:"Cranmore Avenue, Birmingham", id:169731524}
+];
+
+const tbody = document.getElementById('all-props-table');
+for (const p of props) {
+  const tr = document.createElement('tr');
+  tr.style.borderBottom = '1px solid #21262d';
+  tr.innerHTML = `
+    <td style="padding:6px;font-weight:600;">${p.price}</td>
+    <td style="padding:6px;">${p.beds}</td>
+    <td style="padding:6px;color:#f0883e;">${p.days}</td>
+    <td style="padding:6px;">${p.pc}</td>
+    <td style="padding:6px;font-size:12px;color:#d29922;">${p.signals}</td>
+    <td style="padding:6px;">${p.addr}</td>
+    <td style="padding:6px;"><a href="https://www.rightmove.co.uk/properties/${p.id}/" target="_blank" style="color:#58a6ff;text-decoration:none;">🔗</a></td>
+  `;
+  tbody.appendChild(tr);
+}
+</script>
+</body>
+</html>
