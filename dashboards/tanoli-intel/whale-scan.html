@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Whale Options Scan | Tanoli Intel</title>
+<style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+h1, h2, h3, h4 { color: #58a6ff; margin: 0 0 12px 0; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.metric { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; text-align: center; }
+.metric .value { font-size: 1.4em; font-weight: bold; }
+.metric .label { font-size: 0.8em; color: #8b949e; margin-top: 4px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.82em; }
+th { text-align: left; padding: 7px 8px; border-bottom: 1px solid #30363d; color: #8b949e; font-weight: 600; font-size: 0.78em; text-transform: uppercase; }
+td { padding: 6px 8px; border-bottom: 1px solid #21262d; }
+tr:hover { background: #1c2128; }
+.header { display: flex; justify-content: space-between; align-items: center; }
+.header .date { color: #8b949e; font-size: 0.85em; }
+.gold { color: #f0c040; }
+.green { color: #3fb950; }
+.red { color: #f85149; }
+.orange { color: #d29922; }
+</style></head><body>
+
+<div class="card">
+<div class="header">
+<h1>🐋 Whale Options Scan</h1>
+<span class="date">2026-05-29 00:49</span>
+</div>
+<div class="metrics">
+    <div class="metric"><div class="value gold">51</div><div class="label">Whale Signals</div></div>
+    <div class="metric"><div class="value" style="color:#f0c040">$22,243,148</div><div class="label">Total Premium</div></div>
+    <div class="metric"><div class="value green">29</div><div class="label">Mega Blocks</div></div>
+    <div class="metric"><div class="value">14</div><div class="label">Premium Surges</div></div>
+    <div class="metric"><div class="value">0</div><div class="label">Vol/OI Surges</div></div>
+    <div class="metric"><div class="value">100</div><div class="label">Tickers Scanned</div></div>
+</div>
+</div>
+
+<div class="card">
+<h4>🔥 Top Whale Signals</h4>
+<div style="overflow-x:auto;">
+<table>
+<tr><th>Ticker</th><th>Type</th><th>C/P</th><th>Strike</th><th>Expiry</th><th>DTE</th><th>Premium</th><th>Vol</th><th>V/OI</th><th>IV</th><th>Signal</th></tr>
+<tr>
+    <td><b>OXY</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$59.0</td>
+    <td>2026-06-05</td>
+    <td>7</td>
+    <td style="color:#f0c040">$448,350</td>
+    <td>6,405</td>
+    <td>8.81x</td>
+    <td>37.9%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>OXY</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$60.0</td>
+    <td>2026-06-05</td>
+    <td>7</td>
+    <td style="color:#f0c040">$288,148</td>
+    <td>7,028</td>
+    <td>5.87x</td>
+    <td>37.4%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>PANW</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$95.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$548,576</td>
+    <td>62</td>
+    <td>2.48x</td>
+    <td>861.9%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>PANW</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$135.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$420,420</td>
+    <td>91</td>
+    <td>1.03x</td>
+    <td>586.0%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>PANW</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$260.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$270,900</td>
+    <td>1,505</td>
+    <td>2.1x</td>
+    <td>39.0%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>ISRG</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>PUT</td>
+    <td>$422.5</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$578,388</td>
+    <td>1,884</td>
+    <td>0.89x</td>
+    <td>36.4%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>GOOGL</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$355.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$427,752</td>
+    <td>117</td>
+    <td>0.39x</td>
+    <td>69.2%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>GOOGL</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$365.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$568,296</td>
+    <td>216</td>
+    <td>0.21x</td>
+    <td>75.8%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>GOOGL</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$380.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$529,200</td>
+    <td>504</td>
+    <td>0.57x</td>
+    <td>37.3%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>GE</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$305.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$440,065</td>
+    <td>283</td>
+    <td>0.23x</td>
+    <td>63.9%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>SCHW</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>PUT</td>
+    <td>$89.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$1,068,255</td>
+    <td>2,895</td>
+    <td>1.54x</td>
+    <td>73.4%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>SCHW</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>PUT</td>
+    <td>$90.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$1,247,490</td>
+    <td>2,490</td>
+    <td>1.52x</td>
+    <td>81.4%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>SCHW</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>PUT</td>
+    <td>$91.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$855,844</td>
+    <td>1,468</td>
+    <td>1.51x</td>
+    <td>66.8%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>JNJ</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$175.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$1,334,655</td>
+    <td>223</td>
+    <td>infx</td>
+    <td>216.5%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>JNJ</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$190.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$1,782,000</td>
+    <td>400</td>
+    <td>infx</td>
+    <td>144.1%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>JNJ</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$205.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$365,625</td>
+    <td>125</td>
+    <td>infx</td>
+    <td>92.4%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>MU</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$315.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$1,805,223</td>
+    <td>31</td>
+    <td>4.43x</td>
+    <td>860.8%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>MU</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$330.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$1,395,600</td>
+    <td>24</td>
+    <td>0.89x</td>
+    <td>836.9%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>MU</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$450.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$914,470</td>
+    <td>19</td>
+    <td>0.07x</td>
+    <td>368.8%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>META</b></td>
+    <td>💎 MEGA_BLOCK</td>
+    <td>CALL</td>
+    <td>$110.0</td>
+    <td>2026-05-29</td>
+    <td>0</td>
+    <td style="color:#f0c040">$939,546</td>
+    <td>18</td>
+    <td>0.28x</td>
+    <td>1143.8%</td>
+    <td style="color:#3fb950">10/10</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="card">
+<h4>📊 Hottest Tickers</h4>
+<div style="overflow-x:auto;">
+<table>
+<tr><th>Ticker</th><th>Sector</th><th>Signals</th><th>Total Premium</th><th>Top Signal Type</th></tr>
+<tr>
+    <td><b>PANW</b></td>
+    <td>cybersecurity</td>
+    <td>3</td>
+    <td style="color:#f0c040">$1,239,896</td>
+    <td>MEGA_BLOCK</td>
+</tr><tr>
+    <td><b>GOOGL</b></td>
+    <td>tech_mega</td>
+    <td>3</td>
+    <td style="color:#f0c040">$1,525,248</td>
+    <td>MEGA_BLOCK</td>
+</tr><tr>
+    <td><b>SCHW</b></td>
+    <td>fintech_financials</td>
+    <td>3</td>
+    <td style="color:#f0c040">$3,171,589</td>
+    <td>MEGA_BLOCK</td>
+</tr><tr>
+    <td><b>JNJ</b></td>
+    <td>healthcare</td>
+    <td>3</td>
+    <td style="color:#f0c040">$3,482,280</td>
+    <td>MEGA_BLOCK</td>
+</tr><tr>
+    <td><b>MU</b></td>
+    <td>semiconductors</td>
+    <td>3</td>
+    <td style="color:#f0c040">$4,115,293</td>
+    <td>MEGA_BLOCK</td>
+</tr><tr>
+    <td><b>META</b></td>
+    <td>tech_mega</td>
+    <td>3</td>
+    <td style="color:#f0c040">$2,518,837</td>
+    <td>MEGA_BLOCK</td>
+</tr><tr>
+    <td><b>ZS</b></td>
+    <td>cybersecurity</td>
+    <td>3</td>
+    <td style="color:#f0c040">$1,213,824</td>
+    <td>MEGA_BLOCK</td>
+</tr><tr>
+    <td><b>GE</b></td>
+    <td>industrials_energy</td>
+    <td>3</td>
+    <td style="color:#f0c040">$964,357</td>
+    <td>MEGA_BLOCK</td>
+</tr><tr>
+    <td><b>OXY</b></td>
+    <td>industrials_energy</td>
+    <td>3</td>
+    <td style="color:#f0c040">$852,472</td>
+    <td>MEGA_BLOCK</td>
+</tr><tr>
+    <td><b>DE</b></td>
+    <td>industrials_energy</td>
+    <td>3</td>
+    <td style="color:#f0c040">$1,121,434</td>
+    <td>MEGA_BLOCK</td>
+</tr>
+</table>
+</div>
+</div>
+
+</body></html>

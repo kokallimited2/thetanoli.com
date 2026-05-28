@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Whale Stock Scan | Tanoli Intel</title>
+<style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+h1, h2, h3, h4 { color: #58a6ff; margin: 0 0 12px 0; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.metric { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; text-align: center; }
+.metric .value { font-size: 1.4em; font-weight: bold; }
+.metric .label { font-size: 0.8em; color: #8b949e; margin-top: 4px; }
+.stat-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+.stat-label { min-width: 130px; font-weight: 500; }
+.stat-value { text-align: right; font-size: 0.85em; color: #8b949e; }
+table { width: 100%; border-collapse: collapse; font-size: 0.82em; }
+th { text-align: left; padding: 7px 8px; border-bottom: 1px solid #30363d; color: #8b949e; font-weight: 600; font-size: 0.78em; text-transform: uppercase; }
+td { padding: 6px 8px; border-bottom: 1px solid #21262d; }
+tr:hover { background: #1c2128; }
+.header { display: flex; justify-content: space-between; align-items: center; }
+.header .date { color: #8b949e; font-size: 0.85em; }
+.green { color: #3fb950; }
+.red { color: #f85149; }
+.orange { color: #d29922; }
+.gold { color: #f0c040; }
+</style></head><body>
+
+<div class="card">
+<div class="header">
+<h1>🐋 Whale Stock Scan</h1>
+<span class="date">2026-05-29 00:47</span>
+</div>
+<div class="metrics">
+    <div class="metric"><div class="value gold">12</div><div class="label">Whale Signals</div></div>
+    <div class="metric"><div class="value">103</div><div class="label">Tickers Scanned</div></div>
+    <div class="metric"><div class="value green">1</div><div class="label">Volume Spikes</div></div>
+    <div class="metric"><div class="value">1</div><div class="label">Breakouts 🚀</div></div>
+    <div class="metric"><div class="value red">1</div><div class="label">Selloffs 📉</div></div>
+</div>
+</div>
+
+<div class="card">
+<h4>📊 Signal Distribution</h4>
+<div class="stat-row"><span class="stat-label">DOLLAR_SURGE</span><span class="stat-value">8 signals</span></div>
+<div class="stat-row"><span class="stat-label">MOMENTUM_SELLOFF</span><span class="stat-value">1 signals</span></div>
+<div class="stat-row"><span class="stat-label">MOMENTUM_BREAKOUT</span><span class="stat-value">1 signals</span></div>
+<div class="stat-row"><span class="stat-label">VOLUME_SPIKE</span><span class="stat-value">1 signals</span></div>
+<div class="stat-row"><span class="stat-label">VOLATILITY_EXPANSION</span><span class="stat-value">1 signals</span></div>
+
+</div>
+
+<div class="card">
+<h4>🔥 Top Whale Signals</h4>
+<div style="overflow-x:auto;">
+<table>
+<tr><th>Ticker</th><th>Type</th><th>Change</th><th>Price</th><th>Vol Ratio</th><th>Volume</th><th>RSI</th><th>ATR</th><th>Signal</th></tr>
+<tr>
+    <td><b>HOOD</b></td>
+    <td>💰 DOLLAR_SURGE</td>
+    <td style="color:#3fb950">+11.29%</td>
+    <td>$84.84</td>
+    <td>1.9x</td>
+    <td>43,527,866</td>
+    <td>RSI 62</td>
+    <td>ATR 2.59x</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>CRM</b></td>
+    <td>💰 DOLLAR_SURGE</td>
+    <td style="color:#f85149">-0.75%</td>
+    <td>$176.17</td>
+    <td>1.6x</td>
+    <td>21,327,945</td>
+    <td>RSI 39</td>
+    <td>ATR 1.44x</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>MRVL</b></td>
+    <td>💰 DOLLAR_SURGE</td>
+    <td style="color:#3fb950">+3.09%</td>
+    <td>$204.83</td>
+    <td>1.9x</td>
+    <td>52,361,036</td>
+    <td>RSI 72</td>
+    <td>ATR 0.88x</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>SNPS</b></td>
+    <td>💰 DOLLAR_SURGE</td>
+    <td style="color:#f85149">-8.61%</td>
+    <td>$480.64</td>
+    <td>2.7x</td>
+    <td>4,701,872</td>
+    <td>RSI 41</td>
+    <td>ATR 3.02x</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>SNPS</b></td>
+    <td>🚀 MOMENTUM_SELLOFF</td>
+    <td style="color:#f85149">-8.61%</td>
+    <td>$480.64</td>
+    <td>2.7x</td>
+    <td>4,701,872</td>
+    <td>RSI 41</td>
+    <td>ATR 3.02x</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>SCHW</b></td>
+    <td>💰 DOLLAR_SURGE</td>
+    <td style="color:#f85149">-0.30%</td>
+    <td>$85.35</td>
+    <td>1.5x</td>
+    <td>16,247,216</td>
+    <td>RSI 39</td>
+    <td>ATR 0.74x</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>ZS</b></td>
+    <td>💰 DOLLAR_SURGE</td>
+    <td style="color:#3fb950">+2.87%</td>
+    <td>$130.04</td>
+    <td>2.8x</td>
+    <td>16,099,236</td>
+    <td>RSI 40</td>
+    <td>ATR 0.84x</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>MDB</b></td>
+    <td>💰 DOLLAR_SURGE</td>
+    <td style="color:#3fb950">+10.60%</td>
+    <td>$325.68</td>
+    <td>3.2x</td>
+    <td>6,810,427</td>
+    <td>RSI 61</td>
+    <td>ATR 0.82x</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>MDB</b></td>
+    <td>🚀 MOMENTUM_BREAKOUT</td>
+    <td style="color:#3fb950">+10.60%</td>
+    <td>$325.68</td>
+    <td>3.2x</td>
+    <td>6,810,427</td>
+    <td>RSI 61</td>
+    <td>ATR 0.82x</td>
+    <td style="color:#3fb950">10/10</td>
+</tr><tr>
+    <td><b>IBKR</b></td>
+    <td>💰 DOLLAR_SURGE</td>
+    <td style="color:#3fb950">+2.67%</td>
+    <td>$83.11</td>
+    <td>1.9x</td>
+    <td>9,721,600</td>
+    <td>RSI 48</td>
+    <td>ATR 1.54x</td>
+    <td style="color:#3fb950">8.1/10</td>
+</tr><tr>
+    <td><b>MDB</b></td>
+    <td>📊 VOLUME_SPIKE</td>
+    <td style="color:#3fb950">+10.60%</td>
+    <td>$325.68</td>
+    <td>3.2x</td>
+    <td>6,810,427</td>
+    <td>RSI 61</td>
+    <td>ATR 0.82x</td>
+    <td style="color:#d29922">6.5/10</td>
+</tr><tr>
+    <td><b>SNPS</b></td>
+    <td>⚡ VOLATILITY_EXPANSION</td>
+    <td style="color:#f85149">-8.61%</td>
+    <td>$480.64</td>
+    <td>2.7x</td>
+    <td>4,701,872</td>
+    <td>RSI 41</td>
+    <td>ATR 3.02x</td>
+    <td style="color:#d29922">6.0/10</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="card">
+<h4>📊 Hottest Tickers</h4>
+<div style="overflow-x:auto;">
+<table>
+<tr><th>Ticker</th><th>Signals</th><th>Combined Strength</th></tr>
+<tr><td><b>MDB</b></td><td>3</td><td style='color:#3fb950'>26.5/10</td></tr><tr><td><b>SNPS</b></td><td>3</td><td style='color:#3fb950'>26.0/10</td></tr><tr><td><b>HOOD</b></td><td>1</td><td style='color:#3fb950'>10/10</td></tr><tr><td><b>CRM</b></td><td>1</td><td style='color:#3fb950'>10/10</td></tr><tr><td><b>MRVL</b></td><td>1</td><td style='color:#3fb950'>10/10</td></tr><tr><td><b>SCHW</b></td><td>1</td><td style='color:#3fb950'>10/10</td></tr><tr><td><b>ZS</b></td><td>1</td><td style='color:#3fb950'>10/10</td></tr><tr><td><b>IBKR</b></td><td>1</td><td style='color:#3fb950'>8.1/10</td></tr>
+</table>
+</div>
+</div>
+
+</body></html>
