@@ -22,104 +22,183 @@ h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.3rem; }
 .badge-orange { background: #d2992233; color: #d29922; }
 .badge-purple { background: #a371f733; color: #a371f7; }
 .badge-red { background: #f8514933; color: #f85149; }
+.badge-gray { background: #6e768133; color: #8b949e; }
 .section-title { font-size: 1.2rem; color: #f0883e; margin: 2rem 0 0.5rem 0; padding-bottom: 0.5rem; border-bottom: 1px solid #21262d; }
-a { text-decoration: none; }
-iframe { width: 100%; border: none; background: #161b22; border-radius: 8px; border: 1px solid #30363d; }
+.system-status { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; margin: 1rem 0; font-size: 0.85rem; }
+.system-status table { width: 100%; border-collapse: collapse; }
+.system-status th, .system-status td { padding: 0.4rem 0.6rem; text-align: left; border-bottom: 1px solid #21262d; }
+.system-status th { color: #8b949e; font-weight: 600; }
 </style>
 </head>
 <body>
 
 <h1>📊 Tanoli Trading Dashboard</h1>
-<div class="subtitle">Live dashboards · Stock scans · Options flow · Performance reviews · Automated assessment</div>
+<div class="subtitle">Live dashboards · Stock scans · Options flow · Performance · <span id="update-timestamp">⋯</span></div>
 
-<h2 class="section-title">📈 Core Dashboards (Updated Daily)</h2>
+<script>
+async function loadStatus() {
+  try {
+    const r = await fetch('trade-scan-status.json?' + Date.now());
+    const data = await r.json();
+    const el = document.getElementById('update-timestamp');
+    if (data.generated_at) el.textContent = 'Last updated: ' + data.generated_at;
+    else el.textContent = new Date().toLocaleString('en-GB', {timeZone:'Europe/London'});
+  } catch(e) {
+    document.getElementById('update-timestamp').textContent = new Date().toLocaleString('en-GB', {timeZone:'Europe/London'});
+  }
+}
+loadStatus();
+</script>
+
+<h2 class="section-title">📈 Core Dashboards</h2>
 <div class="grid">
 
-<a class="card" href="trade-performance.html" target="main-frame">
+<a class="card" href="trade-performance.html" target="_blank">
     <div class="card-icon">📊</div>
     <div class="card-title">Stock Trade Performance</div>
     <div class="card-desc">Closed stock trades — win rate, expectancy, profit factor, signal score analysis, ticker breakdown, recommendations.</div>
-    <div class="card-meta"><span class="badge badge-green">updating 20:30 Mon-Fri</span></div>
+    <div class="card-meta"><span class="badge badge-green">updating 21:45 Mon-Fri</span></div>
 </a>
 
-<a class="card" href="options-performance.html" target="main-frame">
+<a class="card" href="options-performance.html" target="_blank">
     <div class="card-icon">📊</div>
     <div class="card-title">Options Trade Performance</div>
-    <div class="card-desc">Closed options trades — performance by signal type (BULLISH_CALL, BEARISH_PUT, IV_SPIKE), DTE bucket, sector, direction accuracy.</div>
+    <div class="card-desc">Closed options trades — performance by signal type, DTE bucket, sector, direction accuracy.</div>
     <div class="card-meta"><span class="badge badge-green">updating 20:00 Mon-Fri</span></div>
 </a>
 
-<a class="card" href="biweekly-assessment.html" target="main-frame">
+<a class="card" href="biweekly-assessment.html" target="_blank">
     <div class="card-icon">🏆</div>
     <div class="card-title">Bi-Weekly Assessment</div>
-    <div class="card-desc">Combined stock + options + micro-stock review. Overall grade (A-F), best/worst strategies, sector analysis, action recommendations.</div>
-    <div class="card-meta"><span class="badge badge-purple">updating every Mon 10am</span> <span class="badge badge-orange">latest</span></div>
+    <div class="card-desc">Combined stock + options + micro-stock review. Overall grade (A-F), best/worst strategies.</div>
+    <div class="card-meta"><span class="badge badge-purple">updating Mon 10am</span></div>
 </a>
 
-</div>
-
-<h2 class="section-title">🟢 Scanners (Updated 14:30-14:35 Mon-Fri)</h2>
-<div class="grid">
-
-<a class="card" href="../../reports/stock-scan-2026-05-27.html" target="main-frame">
-    <div class="card-icon">📈</div>
-    <div class="card-title">US Stock Scanner</div>
-    <div class="card-desc">103 stocks · technical buy/sell signals · sector breakdown · price targets · Reddit sentiment.</div>
-    <div class="card-meta"><span class="badge badge-blue">latest scan</span></div>
-</a>
-
-<a class="card" href="../../reports/options-scan-2026-05-27.html" target="main-frame">
-    <div class="card-icon">📊</div>
-    <div class="card-title">US Options Scanner</div>
-    <div class="card-desc">95+ tickers · unusual call/put volume · OI builds · IV spikes · flow ratios · tracked paper trades.</div>
-    <div class="card-meta"><span class="badge badge-blue">latest scan</span></div>
-</a>
-
-<a class="card" href="micro-stock-performance.html" target="main-frame">
-    <div class="card-icon">🚀</div>
-    <div class="card-title">Micro-Stock Performance</div>
-    <div class="card-desc">150+ micro/small-cap runner screening · trade journal · performance by signal type, sector, score bracket.</div>
-    <div class="card-meta"><span class="badge badge-green">v2 with trade tracking</span></div>
-</a>
-
-</div>
-
-<h2 class="section-title">🔄 Supporting Dashboards</h2>
-<div class="grid">
-
-<a class="card" href="whale-scan.html" target="main-frame">
-    <div class="card-icon">🐋</div>
-    <div class="card-title">Whale Options Flow</div>
-    <div class="card-desc">Unusual options activity — mega blocks, premium surges, Vol/OI disparities, spread positioning. Filters for institutional-grade signals ($50k+).</div>
-    <div class="card-meta"><span class="badge badge-purple">updating 14:35 Mon-Fri</span> <span class="badge badge-orange">new</span></div>
-</a>
-
-<a class="card" href="whale-stock-scan.html" target="main-frame">
-    <div class="card-icon">🐋</div>
-    <div class="card-title">Whale Stock Scan</div>
-    <div class="card-desc">Unusual stock activity — volume spikes, dollar surges, momentum breakouts/selloffs, volatility expansion. Institutional-grade signals from 50+ liquid stocks.</div>
-    <div class="card-meta"><span class="badge badge-purple">updating 14:35 Mon-Fri</span> <span class="badge badge-orange">new</span></div>
-</a>
-
-<a class="card" href="../../dashboards/tanoli-intel/" style="opacity:0.7" target="main-frame">
+<a class="card" href="portfolio.html" target="_blank">
     <div class="card-icon">💼</div>
     <div class="card-title">Portfolio Tracker</div>
     <div class="card-desc">Dual portfolio (£10k stocks + £10k crypto) — live prices, P&L, trade history.</div>
     <div class="card-meta"><span class="badge badge-blue">updating 16:00 daily</span></div>
 </a>
 
-<a class="card" href="../../dashboards/micro-stocks/" style="opacity:0.7" target="main-frame">
-    <div class="card-icon">🎯</div>
-    <div class="card-title">Micro-Stock Runners</div>
-    <div class="card-desc">Small-cap momentum runners scanning for breakout/breakdown patterns.</div>
-    <div class="card-meta"><span class="badge badge-blue">updating 14:30 Mon-Fri</span></div>
+<a class="card" href="portfolio-performance.html" target="_blank">
+    <div class="card-icon">📈</div>
+    <div class="card-title">Portfolio Performance</div>
+    <div class="card-desc">Historical returns, drawdown analysis, asset allocation, risk metrics.</div>
+    <div class="card-meta"><span class="badge badge-gray">static snapshot</span></div>
 </a>
 
-<a class="card" href="../../dashboards/catalyst/" style="opacity:0.7" target="main-frame">
+</div>
+
+<h2 class="section-title">🟢 Scanners (Market Hours Mon-Fri)</h2>
+<div class="grid">
+
+<a class="card" href="stock-scan.html" target="_blank">
+    <div class="card-icon">📈</div>
+    <div class="card-title">US Stock Scanner</div>
+    <div class="card-desc">103 stocks · technical buy/sell signals · sector breakdown · Reddit sentiment.</div>
+    <div class="card-meta"><span class="badge badge-blue">scanning 14:00 Mon-Fri</span> <span class="badge badge-red">API 429 errors</span></div>
+</a>
+
+<a class="card" href="options-scan.html" target="_blank">
+    <div class="card-icon">📊</div>
+    <div class="card-title">US Options Scanner</div>
+    <div class="card-desc">95+ tickers · unusual call/put volume · OI builds · IV spikes · paper trades.</div>
+    <div class="card-meta"><span class="badge badge-blue">scanning 14:30 Mon-Fri</span> <span class="badge badge-red">API 429 errors</span></div>
+</a>
+
+<a class="card" href="micro-stock-screener.html" target="_blank">
+    <div class="card-icon">🚀</div>
+    <div class="card-title">Micro-Stock Runner Screener</div>
+    <div class="card-desc">150+ micro/small-cap runner screening · trade tracking · score-based signals.</div>
+    <div class="card-meta"><span class="badge badge-green">v2 with trade tracking</span></div>
+</a>
+
+<a class="card" href="micro-stock-performance.html" target="_blank">
+    <div class="card-icon">🎯</div>
+    <div class="card-title">Micro-Stock Performance</div>
+    <div class="card-desc">Micro-stock trade journal — performance by signal type, sector, score bracket.</div>
+    <div class="card-meta"><span class="badge badge-green">updating 20:45 Mon-Fri</span></div>
+</a>
+
+</div>
+
+<h2 class="section-title">🐋 Whale & Institutional Flow</h2>
+<div class="grid">
+
+<a class="card" href="whale-scan.html" target="_blank">
+    <div class="card-icon">🐋</div>
+    <div class="card-title">Whale Options Flow</div>
+    <div class="card-desc">Unusual options activity — mega blocks, premium surges, Vol/OI disparities. Filters for $50k+ institutional signals.</div>
+    <div class="card-meta"><span class="badge badge-purple">updating 14:45 Mon-Fri</span></div>
+</a>
+
+<a class="card" href="whale-stock-scan.html" target="_blank">
+    <div class="card-icon">🐋</div>
+    <div class="card-title">Whale Stock Scan</div>
+    <div class="card-desc">Unusual stock activity — volume spikes, dollar surges, momentum breakouts/selloffs. 50+ liquid stocks.</div>
+    <div class="card-meta"><span class="badge badge-purple">updating 15:00 Mon-Fri</span></div>
+</a>
+
+<a class="card" href="catalyst-screener.html" target="_blank">
     <div class="card-icon">💊</div>
     <div class="card-title">Catalyst Screener</div>
-    <div class="card-desc">Biotech/pharma stocks with binary catalyst events — FDA dates, trial readouts.</div>
-    <div class="card-meta"><span class="badge badge-blue">updating 08:00 Mon-Fri</span></div>
+    <div class="card-desc">Biotech/pharma stocks with binary catalysts — FDA dates, trial readouts, PDUFA calendar.</div>
+    <div class="card-meta"><span class="badge badge-blue">updating 08:30 Mon-Fri</span></div>
+</a>
+
+</div>
+
+<h2 class="section-title">🔄 Supporting & Strategy</h2>
+<div class="grid">
+
+<a class="card" href="stocks-learning.html" target="_blank">
+    <div class="card-icon">🧠</div>
+    <div class="card-title">Stocks Learning Agent</div>
+    <div class="card-desc">Self-learning stock analysis — daily opportunity scan with improving methodology.</div>
+    <div class="card-meta"><span class="badge badge-green">updating 08:00 Mon-Fri</span></div>
+</a>
+
+<a class="card" href="trading-kb.html" target="_blank">
+    <div class="card-icon">📚</div>
+    <div class="card-title">Trading Knowledge Base</div>
+    <div class="card-desc">YouTube-sourced trading strategies, concepts, patterns. Self-improving knowledge base.</div>
+    <div class="card-meta"><span class="badge badge-gray">last update 9d ago</span></div>
+</a>
+
+<a class="card" href="strategy-research.html" target="_blank">
+    <div class="card-icon">🔬</div>
+    <div class="card-title">Strategy Research Pipeline</div>
+    <div class="card-desc">Daily YouTube research — 25 queries × 4 asset classes (crypto, options, forex, gold).</div>
+    <div class="card-meta"><span class="badge badge-green">updating daily 17:00</span></div>
+</a>
+
+<a class="card" href="options-paper-trading.html" target="_blank">
+    <div class="card-icon">📝</div>
+    <div class="card-title">Options Paper Trading</div>
+    <div class="card-desc">Options paper trade pipeline — current open paper positions and performance.</div>
+    <div class="card-meta"><span class="badge badge-green">updating 15:45 Mon-Fri</span></div>
+</a>
+
+<a class="card" href="trading-course.html" target="_blank">
+    <div class="card-icon">🎓</div>
+    <div class="card-title">Trading Course</div>
+    <div class="card-desc">Trading education content generated from YouTube research.</div>
+    <div class="card-meta"><span class="badge badge-gray">static</span></div>
+</a>
+
+<a class="card" href="forex-scan.html" target="_blank">
+    <div class="card-icon">💱</div>
+    <div class="card-title">Forex Scanner</div>
+    <div class="card-desc">37-pair forex screener — London open, London/NY overlap, end-of-day risk check.</div>
+    <div class="card-meta"><span class="badge badge-blue">updating 08:45 Mon-Fri</span></div>
+</a>
+
+<a class="card" href="gold-scan.html" target="_blank">
+    <div class="card-icon">🥇</div>
+    <div class="card-title">Gold Screener</div>
+    <div class="card-desc">MGC Micro Gold Futures — COMEX open scan with DXY correlation.</div>
+    <div class="card-meta"><span class="badge badge-blue">updating 13:30 Mon-Fri</span></div>
 </a>
 
 </div>
@@ -135,6 +214,16 @@ iframe { width: 100%; border: none; background: #161b22; border-radius: 8px; bor
 <a class="card" href="https://thetanoli.com" target="_blank" style="text-align:center;">
     <div class="card-icon">🌐</div>
     <div class="card-title">thetanoli.com</div>
+</a>
+
+<a class="card" href="../nikka-intel.html" target="_blank" style="text-align:center;">
+    <div class="card-icon">🏠</div>
+    <div class="card-title">Nikka Property Intel</div>
+</a>
+
+<a class="card" href="../ops-status.html" target="_blank" style="text-align:center;">
+    <div class="card-icon">⚙️</div>
+    <div class="card-title">Ops Status</div>
 </a>
 
 </div>
