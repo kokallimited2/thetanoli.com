@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="UTF-8">
-<title>Trading Strategy Research — Day 1</title>
+<title>Trading Strategy Research — Day 2</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -12,130 +12,57 @@
   .stat-card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:14px; }
   .stat-card .num { font-size:1.6rem; font-weight:700; color:#58a6ff; }
   .stat-card .label { font-size:0.75rem; color:#8b949e; text-transform:uppercase; }
-  .stat-card.warn { border-color:#da3633; }
-  .stat-card.warn .num { color:#f85149; }
   .section { margin-bottom:24px; }
   .section h2 { font-size:1.1rem; color:#58a6ff; margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid #30363d; }
   .asset-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(440px,1fr)); gap:12px; }
   .asset-card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:14px; }
   .asset-card h3 { color:#f0f6fc; font-size:0.95rem; margin-bottom:8px; text-transform:capitalize; }
   .asset-card .stat-line { font-size:0.8rem; color:#8b949e; margin-bottom:6px; }
-  .asset-card ul { font-size:0.82rem; line-height:1.6; }
-  .asset-card ul li { margin-bottom:4px; list-style:none; padding-left:12px; }
-  .asset-card ul li::before { content:"▸"; color:#58a6ff; margin-right:6px; }
-  .alert-box { background:#1a1a2e; border:1px solid #da3633; border-radius:8px; padding:16px; margin-bottom:24px; }
-  .alert-box h3 { color:#f85149; font-size:0.95rem; margin-bottom:8px; }
-  .alert-box p { color:#c9d1d9; font-size:0.85rem; line-height:1.6; }
-  .alert-box code { background:#0d1117; color:#d2a8ff; padding:2px 6px; border-radius:3px; font-size:0.8rem; }
+  .asset-card .strategies { font-size:0.82rem; line-height:1.6; }
+  .asset-card .strategies li { color:#d2a8ff; margin-bottom:4px; list-style:none; padding-left:12px; }
+  .asset-card .strategies li::before { content:"▸"; color:#58a6ff; margin-right:6px; }
+  .top-concepts { font-size:0.82rem; line-height:1.8; }
+  .top-concepts span { display:inline-block; background:#1f2937; padding:2px 8px; border-radius:4px; margin:2px; color:#7ee787; font-size:0.75rem; }
+  .gaps { font-size:0.85rem; }
+  .gaps li { color:#f85149; margin-bottom:4px; list-style:none; padding-left:12px; }
+  .gaps li::before { content:"⚠"; margin-right:6px; }
+  .best-vid { font-size:0.82rem; line-height:1.6; }
+  .best-vid li { margin-bottom:8px; list-style:none; padding-left:12px; color:#e6edf3; }
+  .best-vid li::before { content:"🏆"; margin-right:6px; }
+  .best-vid .channel { color:#8b949e; font-size:0.75rem; }
   .daily-progress { margin-bottom:24px; }
   .day-bar { display:flex; gap:6px; align-items:center; margin-bottom:4px; }
   .day-bar .day-label { min-width:100px; font-size:0.8rem; color:#8b949e; }
   .day-bar .bar { height:18px; border-radius:3px; background:#2ea043; }
-  .day-bar .bar.warn { background:#da3633; }
+  .day-bar .bar.empty { background:#30363d; }
   .day-bar .count { font-size:0.75rem; color:#8b949e; margin-left:6px; }
-  .fix-list { font-size:0.82rem; line-height:1.8; }
-  .fix-list li { color:#d2a8ff; margin-bottom:6px; list-style:none; padding-left:12px; }
-  .fix-list li::before { content:"→"; color:#58a6ff; margin-right:6px; }
   .footer { text-align:center; color:#484f58; font-size:0.7rem; margin-top:32px; padding-top:16px; border-top:1px solid #30363d; }
 </style>
 </head>
 <body>
 <h1> Trading Strategy Research</h1>
-<p class="subtitle">Day 1 · 2026-05-30 · Auto-improving daily</p>
+<p class="subtitle">Day 2 · 2026-05-30 · Auto-improving daily</p>
 
 <div class="stats">
-  <div class="stat-card warn"><div class="num">0</div><div class="label">Total<br>Videos Analysed</div></div>
-  <div class="stat-card warn"><div class="num">0</div><div class="label">New Today</div></div>
-  <div class="stat-card warn"><div class="num">0</div><div class="label">Strategies<br>Extracted Today</div></div>
-  <div class="stat-card warn"><div class="num">0</div><div class="label">Unique<br>Concepts Today</div></div>
-  <div class="stat-card warn"><div class="num">80</div><div class="label">Videos<br>Found (search)</div></div>
-</div>
-
-<div class="alert-box">
-  <h3>⚠️ Infrastructure Blocker — Day 1</h3>
-  <p>
-    YouTube IP block detected. 80 videos were discovered (20 per asset class across 100 searches) but
-    <strong>all transcript downloads failed with HTTP 429 (Too Many Requests)</strong>.
-    YouTube is blocking the VPS/WSL IP from both direct yt-dlp and YouTube Transcript API calls.
-  </p>
-  <p style="margin-top:8px;">
-    <strong>Root cause:</strong> The initial 100 search requests triggered YouTube's rate limiter. Subsequent
-    transcript extraction requests <code>yt-dlp --write-auto-subs</code> are all getting 429'd.
-    Also, <code>--flat-playlist</code> search mode returns minimal metadata (no channels, views, durations),
-    making the "best findings" list meaningless.
-  </p>
-</div>
-
-<div class="section daily-progress">
-  <h2> Daily Progress</h2>
-  <div class="day-bar">
-    <span class="day-label">2026-05-30</span>
-    <div class="bar warn" style="width:5%"></div>
-    <span class="count">0 transcripts (80 found)</span>
-  </div>
-</div>
-
-<div class="section">
-  <h2> Asset Search Results</h2>
-  <div class="asset-grid">
-    <div class="asset-card">
-      <h3> CRYPTO</h3>
-      <div class="stat-line">Found: 20 videos | Strategies: 0 | Queries: 25</div>
-      <ul><li style="color:#484f58;">Transcripts blocked — no strategies extracted yet</li></ul>
-    </div>
-    <div class="asset-card">
-      <h3> OPTIONS</h3>
-      <div class="stat-line">Found: 20 videos | Strategies: 0 | Queries: 25</div>
-      <ul><li style="color:#484f58;">Transcripts blocked — no strategies extracted yet</li></ul>
-    </div>
-    <div class="asset-card">
-      <h3> FOREX</h3>
-      <div class="stat-line">Found: 20 videos | Strategies: 0 | Queries: 25</div>
-      <ul><li style="color:#484f58;">Transcripts blocked — no strategies extracted yet</li></ul>
-    </div>
-    <div class="asset-card">
-      <h3> GOLD</h3>
-      <div class="stat-line">Found: 20 videos | Strategies: 0 | Queries: 25</div>
-      <ul><li style="color:#484f58;">Transcripts blocked — no strategies extracted yet</li></ul>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <h2> Search Queries Used (100 total)</h2>
-  <div class="top-concepts">
-    <span style="color:#7ee787;">crypto: 25 queries</span>
-    <span style="color:#58a6ff;">options: 25 queries</span>
-    <span style="color:#d2a8ff;">forex: 25 queries</span>
-    <span style="color:#f0883e;">gold: 25 queries</span>
-  </div>
-  <p style="color:#8b949e; font-size:0.8rem; margin-top:8px;">
-    All 100 searches returned exactly 1 result each (yt-dlp <code>ytsearch3</code> likely hit by same rate limiter).
-    Expected: up to 3 per query = 300 results.
-  </p>
-</div>
-
-<div class="section">
-  <h2> Fixes Applied — Ready for Day 2</h2>
-  <ul class="fix-list">
-    <li><strong>PATCHED:</strong> <code>download_transcript()</code> now has rate-limit handling (2.5s delays, 429 retry with exponential backoff 15s/30s/45s)</li>
-    <li><strong>ADDED:</strong> Playwright-based transcript extractor script at <code>~/.hermes/scripts/yt-transcript-playwright.py</code></li>
-    <li><strong>DOCUMENTED:</strong> Search focus adjustments saved in state for tomorrow's run</li>
-  </ul>
-</div>
-
-<div class="section">
-  <h2> Recommended Fixes for Day 2</h2>
-  <ul class="fix-list">
-    <li><strong>Primary:</strong> Install <code>python-curl-cffi</code> for yt-dlp <code>--impersonate</code> support — bypasses YouTube bot detection</li>
-    <li><strong>Secondary:</strong> Use Playwright batch transcript extraction — open one browser session, fetch all 80 transcripts sequentially</li>
-    <li><strong>Metadata:</strong> Change <code>search_youtube()</code> from flat-playlist to full extraction for channel, view count, duration data</li>
-    <li><strong>Fallback:</strong> On 429, reduce max_results to 1 per query and add 10s inter-query delay for search phase too</li>
-  </ul>
-</div>
-
-<div class="footer">
-  Trading Strategy Research · Day 1 · 2026-05-30<br>
-  Auto-researches 80+ YouTube videos daily across crypto, options, forex, gold
+  <div class="stat-card"><div class="num">65</div><div class="label">Total<br>Videos Analysed</div></div>
+  <div class="stat-card"><div class="num">65</div><div class="label">New Today</div></div>
+  <div class="stat-card"><div class="num">291</div><div class="label">Strategies<br>Extracted</div></div>
+  <div class="stat-card"><div class="num">30</div><div class="label">Unique<br>Concepts Found</div></div>
+  <div class="stat-card"><div class="num">3/4</div><div class="label">Asset<br>Classes Covered</div></div>
+</div><div class="section"><h2> Strategy Breakdown by Asset</h2><div class="asset-grid"><div class="asset-card">
+  <h3>🪙 CRYPTO</h3>
+  <div class="stat-line">Videos: 19 | Strategies: 126 | Avg: 6/vid</div>
+  <ul class="strategies"><li>All my best filters from previous videos, new red flags I've been seeing behind the scenes and the exact checklist you c...</li><li>That way I can just analyze the coin like this, read the tweet, understand the narrative, check the global fees, check t...</li><li>You're going to have extremely bad exits and trading is just not going to work out for you</li><li>If you see a chart like that, that's a red flag</li><li>This coin is a total red flag</li><li>Well, first of all, the what gives it off is this big green candle here</li><li>You see, we're all about examples here on this channel</li><li>One of the green flags in bundles is that they're decreasing</li></ul></div><div class="asset-card">
+  <h3>📊 OPTIONS</h3>
+  <div class="stat-line">Videos: 17 | Strategies: 28 | Avg: 1/vid</div>
+  <ul class="strategies"><li>So, I was just looking for the investors, some of them, to play it safe and start to take profits into earnings</li><li>There were some technical analysis reasons and key levels I had, but just to keep this strategy simple, we're going to u...</li><li>If we started to close over 400 and reclaim the 50, I was going to exit my position</li><li>So, just for quick math, let's say you buy one contract at $700 and you sold it, let's say 2 days later at you're never ...</li><li>What you're looking for is if we're holding support over the 50 SMA, that's a bullish sign and you want to stay long foc...</li><li>But if we start to lose it and hold resistance under, that can be a sign of weakness and you can look to target, let's s...</li><li>Now, my strategy has multiple different confluences</li><li>So, if you do want to learn my strategy A through Z, I do have that laid out in PT Trading School, which is linked in th...</li></ul></div><div class="asset-card">
+  <h3>💱 FOREX</h3>
+  <div class="stat-line">Videos: 1 | Strategies: 0 | Avg: 0/vid</div>
+  <ul class="strategies"><li style="color:#484f58;">No strategies extracted yet</li></ul></div><div class="asset-card">
+  <h3>🥇 GOLD</h3>
+  <div class="stat-line">Videos: 0 | Strategies: 0 | Avg: 0/vid</div>
+  <ul class="strategies"><li style="color:#484f58;">No strategies extracted yet</li></ul></div></div></div><div class="section"><h2> Top Concepts</h2><div class="top-concepts"><span>channel (21)</span> <span>swing (18)</span> <span>price action (16)</span> <span>market structure (14)</span> <span>momentum (11)</span> <span>support and resistance (11)</span> <span>breakout (10)</span> <span>risk management (8)</span> <span>reversal (8)</span> <span>fibonacci (7)</span> <span>delta (7)</span> <span>day trade (7)</span> <span>fair value gap (7)</span> <span>scalp (7)</span> <span>trend line (6)</span> <span>supply and demand (5)</span> <span>theta (5)</span> <span>theta decay (5)</span> <span>credit spread (4)</span> <span>iron condor (3)</span> </div></div><div class="section"><h2>🏆 Most Strategy-Rich Videos</h2><ul class="best-vid"><li><strong>8LWxfgro8dk</strong><br><span class="channel">UNKNOWN · 18,486 chars · score 100</span><br><span style="color:#7ee787;font-size:0.75rem;">market structure, supply and demand, swing</span></li><li><strong>8nUh5VQMbfU</strong><br><span class="channel">OPTIONS · 14,206 chars · score 100</span><br><span style="color:#7ee787;font-size:0.75rem;">price action, theta, day trade, swing</span></li><li><strong>9AL41xON3hA</strong><br><span class="channel">UNKNOWN · 15,473 chars · score 100</span><br><span style="color:#7ee787;font-size:0.75rem;">fair value gap, swing</span></li><li><strong>ExvoIqNglOk</strong><br><span class="channel">UNKNOWN · 12,252 chars · score 100</span><br><span style="color:#7ee787;font-size:0.75rem;">market structure, supply and demand, momentum, reversal</span></li><li><strong>L56plZU8z-M</strong><br><span class="channel">CRYPTO · 14,314 chars · score 100</span><br><span style="color:#7ee787;font-size:0.75rem;">channel, delta, breakout, momentum, drawdown</span></li></ul></div><div class="section"><h2>⚠️ Knowledge Gaps</h2><ul class="gaps"><li>forex: only 0 strategies (target: 10+)</li><li>gold: only 0 strategies (target: 10+)</li></ul></div><div class="footer">
+  Trading Strategy Research · Day 2 · 2026-05-30<br>
+  65 transcripts analysed across crypto, options, forex, gold · Generated by Khan Lala
 </div>
 </body></html>
