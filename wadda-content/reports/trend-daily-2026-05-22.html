@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Trend Agent — Daily Monitor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Trend Agent — Daily Monitor</h1>
+  <div class="meta">Generated: 2026-05-22T05:00 UTC<br>Source: Reddit (r/netsec, r/cybersecurity, r/privacy, r/artificial), BleepingComputer, TechCrunch, TheRegister, Kaspersky Securelist, ZeroDay.cloud, HaveIBeenPwned</div>
+  
+<div class="stats">
+  <div class="stat">
+    <div class="stat-value">154</div>
+    <div class="stat-label">Total Events in Queue</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">25</div>
+    <div class="stat-label">New Events Today</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">42</div>
+    <div class="stat-label">Urgency 10 Events</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">154</div>
+    <div class="stat-label">Pending Alerts</div>
+  </div>
+</div>
+
+<h2>🚨 Urgency 10 Alerts</h2>
+<p>Breaking events (<24h) that require immediate content response:</p>
+
+<div class="card">
+  <div class="card-title">CVE-2026-40369: Twelve Bytes to Escape the Browser Sandbox <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/netsec | <strong>Age:</strong> 12.0 hours</p>
+  <p><strong>Affiliates:</strong> NordVPN, 1Password, ExpressVPN, SentinelOne</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Technical breakdown → affected systems → mitigation steps → long-term protection with NordVPN, 1Password</p>
+  <p><strong>Est. Traffic:</strong> 50K-200K (technical audience)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">Unpopular opinion: the GitHub breach is 100% predictable and the security industry deserves the blame <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/cybersecurity | <strong>Age:</strong> 9.0 hours</p>
+  <p><strong>Affiliates:</strong> Aura, 1Password, Dashlane, NordPass</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Breaking coverage of the event → explain impact → how to check if affected → protective measures using Aura, 1Password</p>
+  <p><strong>Est. Traffic:</strong> 200K-500K (security community + mainstream)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">Microsoft warns hackers are exploiting password resets to gain access to user accounts <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/cybersecurity | <strong>Age:</strong> 8.8 hours</p>
+  <p><strong>Affiliates:</strong> Aura, Dashlane, NordVPN, 1Password</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Technical breakdown → affected systems → mitigation steps → long-term protection with Aura, Dashlane</p>
+  <p><strong>Est. Traffic:</strong> 500K-1M (high mainstream interest)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">Microsoft warns of new Defender zero-days exploited in attacks <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/cybersecurity | <strong>Age:</strong> 19.7 hours</p>
+  <p><strong>Affiliates:</strong> NordVPN, Norton, Backblaze, SentinelOne</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Technical breakdown → affected systems → mitigation steps → long-term protection with NordVPN, Norton</p>
+  <p><strong>Est. Traffic:</strong> 500K-1M (high mainstream interest)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">Two Microsoft Defender vulnerabilities actively exploited. One grants full SYSTEM access. CISA has a June 3 federal deadline. Here is what to check. <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/cybersecurity | <strong>Age:</strong> 12.9 hours</p>
+  <p><strong>Affiliates:</strong> Aura, NordVPN, 1Password, Backblaze</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Technical breakdown → affected systems → mitigation steps → long-term protection with Aura, NordVPN</p>
+  <p><strong>Est. Traffic:</strong> 500K-1M (high mainstream interest)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">Sensing ‘renewed outbreak’ of war, Iran hackers vow ‘dozens’ of ‘devastating’ infrastructure attacks ready <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/cybersecurity | <strong>Age:</strong> 6.2 hours</p>
+  <p><strong>Affiliates:</strong> Aura, 1Password, Bitdefender, NordPass</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Event analysis → impact assessment → actionable security recommendations using Aura, 1Password</p>
+  <p><strong>Est. Traffic:</strong> 200K-500K (security community + mainstream)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">mass github repo backdooring via CI workflows(Megalodon) <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/cybersecurity | <strong>Age:</strong> 10.6 hours</p>
+  <p><strong>Affiliates:</strong> NordVPN, SentinelOne, Bitdefender</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Technical breakdown → affected systems → mitigation steps → long-term protection with NordVPN, SentinelOne</p>
+  <p><strong>Est. Traffic:</strong> 30K-100K (niche technical audience)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">9-Year-Old Linux Kernel Flaw Enables Root Command Execution on Major Distros (Yes there is another one, only a CVS 5.5 though this time, still looks pretty bad though) <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/cybersecurity | <strong>Age:</strong> 16.3 hours</p>
+  <p><strong>Affiliates:</strong> Bitdefender GravityZone, Backblaze, SentinelOne</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Event analysis → impact assessment → actionable security recommendations using Bitdefender GravityZone, Backblaze</p>
+  <p><strong>Est. Traffic:</strong> 30K-100K (niche technical audience)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">Google publishes exploit code threatening millions of Chromium users <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/cybersecurity | <strong>Age:</strong> 22.5 hours</p>
+  <p><strong>Affiliates:</strong> NordVPN, Norton, 1Password, Bitdefender</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Technical breakdown → affected systems → mitigation steps → long-term protection with NordVPN, Norton</p>
+  <p><strong>Est. Traffic:</strong> 500K-1M (high mainstream interest)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">Disney sued over facial recognition at parks <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/privacy | <strong>Age:</strong> 15.3 hours</p>
+  <p><strong>Affiliates:</strong> NordVPN, 1Password, Bitdefender</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Event analysis → impact assessment → actionable security recommendations using NordVPN, 1Password</p>
+  <p><strong>Est. Traffic:</strong> 30K-100K (niche technical audience)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">Texas sues Meta over ‘misleading’ WhatsApp privacy claims <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/privacy | <strong>Age:</strong> 5.5 hours</p>
+  <p><strong>Affiliates:</strong> Aura, NordVPN, 1Password, ExpressVPN</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Privacy implications → what changed → how to protect yourself using Aura, NordVPN</p>
+  <p><strong>Est. Traffic:</strong> 500K-1M (high mainstream interest)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">Woman’s Talkspace Therapy App Sessions Exposed in Court - “We know that information that's been anonymized can very easily be reidentified,” “[HIPAA] is not enough protection.” <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/privacy | <strong>Age:</strong> 11.2 hours</p>
+  <p><strong>Affiliates:</strong> NordVPN, 1Password, Bitdefender</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Breaking coverage of the event → explain impact → how to check if affected → protective measures using NordVPN, 1Password</p>
+  <p><strong>Est. Traffic:</strong> 30K-100K (niche technical audience)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">How did Instagram know that I searched someone on LinkedIn!? <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/privacy | <strong>Age:</strong> 21.2 hours</p>
+  <p><strong>Affiliates:</strong> NordVPN, 1Password, Bitdefender</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Event analysis → impact assessment → actionable security recommendations using NordVPN, 1Password</p>
+  <p><strong>Est. Traffic:</strong> 30K-100K (niche technical audience)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">durabletask (Microsoft's Python Durable Task client) compromised by TeamPCP | same Mini Shai-Hulud payload as last week's TanStack wave <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/netsec | <strong>Age:</strong> 8.2 hours</p>
+  <p><strong>Affiliates:</strong> NordVPN, 1Password, Backblaze, Bitdefender</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> AI security development → implications for users → how to stay protected with NordVPN, 1Password</p>
+  <p><strong>Est. Traffic:</strong> 500K-1M (high mainstream interest)</p>
+</div>
+
+
+<div class="card">
+  <div class="card-title">GitHub links repo breach to TanStack npm supply-chain attack <span class="tag">⭐ NEW</span></div>
+  <p><strong>Source:</strong> reddit/r/cybersecurity | <strong>Age:</strong> 21.0 hours</p>
+  <p><strong>Affiliates:</strong> Aura, Dashlane, NordVPN, 1Password</p>
+  <p><strong>Priority:</strong> <span class="error">P0</span></p>
+  <p><strong>Angle:</strong> Breaking coverage of the event → explain impact → how to check if affected → protective measures using Aura, Dashlane</p>
+  <p><strong>Est. Traffic:</strong> 200K-500K (security community + mainstream)</p>
+</div>
+
+<h2>📊 Source Breakdown</h2>
+<ul>
+  <li><strong>TechCrunch Security:</strong> 25 events</li>
+  <li><strong>reddit/r/cybersecurity:</strong> 12 events</li>
+  <li><strong>Kaspersky Securelist:</strong> 10 events</li>
+  <li><strong>reddit/r/privacy:</strong> 7 events</li>
+  <li><strong>TheRegister:</strong> 5 events</li>
+  <li><strong>Securelist (Kaspersky):</strong> 5 events</li>
+  <li><strong>Reddit r/cybersecurity:</strong> 4 events</li>
+  <li><strong>The Register:</strong> 4 events</li>
+  <li><strong>BleepingComputer:</strong> 3 events</li>
+  <li><strong>reddit/r/netsec:</strong> 3 events</li>
+  <li><strong>reddit/r/artificial:</strong> 3 events</li>
+  <li><strong>Reddit r/netsec (score 21):</strong> 2 events</li>
+  <li><strong>TheRegister Security:</strong> 2 events</li>
+  <li><strong>BleepingComputer, Tomshardware, Reddit r/cybersecurity (score 643 - highest today), r/netsec:</strong> 1 events</li>
+  <li><strong>TechCrunch, Reddit r/cybersecurity (score 108, 10.2h old):</strong> 1 events</li>
+  <li><strong>TheRegister, Reddit r/cybersecurity (score 143, 12.3h old):</strong> 1 events</li>
+  <li><strong>IBTimes, Reddit r/cybersecurity (score 110, 16h old):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 12, 15.1h old):</strong> 1 events</li>
+  <li><strong>Beelzebub.ai, Reddit r/netsec (score 59, 17.5h old):</strong> 1 events</li>
+  <li><strong>TechCrunch:</strong> 1 events</li>
+  <li><strong>Reddit r/netsec:</strong> 1 events</li>
+  <li><strong>The Register, Reddit cross-post:</strong> 1 events</li>
+  <li><strong>TechCrunch Security, The Register:</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 517, 11.5h old), linuxiac.com:</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 66, 14.9h old), TheHackerNews:</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 238, 36.5h old), TechCrunch, BleepingComputer (blocked but confirmed):</strong> 1 events</li>
+  <li><strong>Reddit r/netsec (101 upvotes, 17.7h old):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (152 upvotes, 19.2h old):</strong> 1 events</li>
+  <li><strong>Reddit r/privacy (421 upvotes, 5.0h old):</strong> 1 events</li>
+  <li><strong>TheRegister (36h, security pros warn):</strong> 1 events</li>
+  <li><strong>Reddit r/privacy (587 upvotes, 16.9h old), r/cybersecurity cross-post:</strong> 1 events</li>
+  <li><strong>Reddit r/privacy (93 upvotes, 2.7h old):</strong> 1 events</li>
+  <li><strong>Reddit r/netsec (21 upvotes, 30.6h old):</strong> 1 events</li>
+  <li><strong>Reddit r/netsec (93 upvotes, 30.7h old):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 293, 6.7h old):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 324 & 404, 15h & 9.5h old), Microsoft:</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 49, 14.4h old):</strong> 1 events</li>
+  <li><strong>Reddit r/privacy (score 16, 8.1h old):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 89, 19.9h old):</strong> 1 events</li>
+  <li><strong>TheRegister + TechCrunch Security:</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 193, 13.8h old), Zetter ZeroDay:</strong> 1 events</li>
+  <li><strong>Reddit r/privacy (score 501, 15.4h old), TechRadar:</strong> 1 events</li>
+  <li><strong>Reddit r/privacy (score 267, 18.5h old):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 15, 15.3h old), BleepingComputer:</strong> 1 events</li>
+  <li><strong>Reddit r/netsec (score 3, 45.7h old), Infosec Writeups:</strong> 1 events</li>
+  <li><strong>Reddit r/privacy (score 418, 3h ago):</strong> 1 events</li>
+  <li><strong>Reddit r/privacy (score 164, 9h ago):</strong> 1 events</li>
+  <li><strong>ZeroDay.cloud, TechCrunch security:</strong> 1 events</li>
+  <li><strong>TheRegister, Reddit r/netsec (score 29):</strong> 1 events</li>
+  <li><strong>TheRegister, Reddit r/netsec:</strong> 1 events</li>
+  <li><strong>TheRegister, TechCrunch:</strong> 1 events</li>
+  <li><strong>TheRegister, KnowBe4 research:</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 319, 1.7h old), Gizmodo, KrebsOnSecurity:</strong> 1 events</li>
+  <li><strong>Reddit r/privacy (score 426, 7h old), TechCrunch, TheNextWeb:</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 481, 22h old), BleepingComputer (via Reddit link):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 1369 — highest today), TheRegister:</strong> 1 events</li>
+  <li><strong>Reddit r/netsec (score 13, 9.8h old), IEEE Spectrum:</strong> 1 events</li>
+  <li><strong>TechCrunch (confirmed via curl), TheRegister, Reddit r/netsec:</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 57, 17.7h old), BleepingComputer (via Reddit):</strong> 1 events</li>
+  <li><strong>Reddit r/netsec (score 2):</strong> 1 events</li>
+  <li><strong>Reddit r/netsec (score 5):</strong> 1 events</li>
+  <li><strong>Reddit r/netsec (score 130):</strong> 1 events</li>
+  <li><strong>Reddit r/netsec (score 10):</strong> 1 events</li>
+  <li><strong>Reddit r/netsec (score 0):</strong> 1 events</li>
+  <li><strong>Reddit r/netsec (score 30):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 381):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 606):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 100):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 140):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 1357):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 449):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 61):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 33, 9.9h old), The Record:</strong> 1 events</li>
+  <li><strong>Reddit r/netsec (score 106, 16.4h old):</strong> 1 events</li>
+  <li><strong>TheRegister Security (confirmed ongoing):</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 595, 10.6h old), TechSpot:</strong> 1 events</li>
+  <li><strong>Reddit r/privacy (score 431, 8.1h old), PCMag:</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 9, 7.2h old), oddguan.com:</strong> 1 events</li>
+  <li><strong>Reddit r/cybersecurity (score 215, 20.5h old), BleepingComputer:</strong> 1 events</li>
+  <li><strong>TheRegister Security, Reddit r/cybersecurity (score 11, 7.9h old):</strong> 1 events</li>
+  <li><strong>Reddit r/privacy (score 18, 1.7h old):</strong> 1 events</li>
+  <li><strong>Reddit r/privacy (score 289, 14.3h old), NotebookCheck:</strong> 1 events</li>
+</ul>
+<h2>💰 Affiliate Opportunities Detected</h2>
+<ul>
+  <li><strong>1Password:</strong> 22 events</li>
+  <li><strong>NordVPN:</strong> 20 events</li>
+  <li><strong>Bitdefender:</strong> 10 events</li>
+  <li><strong>Aura:</strong> 9 events</li>
+  <li><strong>Dashlane:</strong> 6 events</li>
+  <li><strong>NordPass:</strong> 6 events</li>
+  <li><strong>ExpressVPN:</strong> 4 events</li>
+  <li><strong>SentinelOne:</strong> 4 events</li>
+  <li><strong>Backblaze:</strong> 4 events</li>
+  <li><strong>Norton:</strong> 3 events</li>
+  <li><strong>Bitdefender GravityZone:</strong> 1 events</li>
+  <li><strong>Bitwarden:</strong> 1 events</li>
+</ul>
+<h2>🔍 Key Patterns</h2>
+<ul>
+  <li><strong>Microsoft security: massive</strong> — 4 urgency-10 events: Defender zero-days (2x), password reset exploitation, and 9-year Linux kernel flaw references</li>
+  <li><strong>Supply chain attacks continuing</strong> — GitHub repo backdooring via CI (Megalodon), durabletask compromization, TanStack follow-up</li>
+  <li><strong>Privacy litigation wave</strong> — Disney facial recognition, Texas vs Meta WhatsApp, Talkspace therapy app exposure</li>
+  <li><strong>Google under fire</strong> — Chromium exploit code, Google API keys staying active after deletion</li>
+  <li><strong>Critical infrastructure threat</strong> — Iran hackers vow renewed devastating attacks</li>
+  <li><strong>Consumer privacy mainstream</strong> — Instagram/LinkedIn cross-tracking, Disney facial recognition, Talkspace therapy sessions in court</li>
+</ul>
+<h2>⚡ Action Items</h2>
+<div class='card'>
+<p><strong>P0 — Publish within 4 hours:</strong></p>
+<ol>
+  <li><strong>CVE-2026-40369: Twelve Bytes to Escape the Browser Sandbox</strong> — Affiliates: NordVPN, 1Password, ExpressVPN</li>
+  <li><strong>Unpopular opinion: the GitHub breach is 100% predictable and the security industry deserves the blame</strong> — Affiliates: Aura, 1Password, Dashlane</li>
+  <li><strong>Microsoft warns hackers are exploiting password resets to gain access to user accounts</strong> — Affiliates: Aura, Dashlane, NordVPN</li>
+  <li><strong>Microsoft warns of new Defender zero-days exploited in attacks</strong> — Affiliates: NordVPN, Norton, Backblaze</li>
+  <li><strong>Two Microsoft Defender vulnerabilities actively exploited. One grants full SYSTEM access. CISA has a June 3 federal deadline. Here is what to check.</strong> — Affiliates: Aura, NordVPN, 1Password</li>
+</ol>
+</div>
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-22T05:00 UTC</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Research Agent — Daily Scan</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Research Agent — Daily Scan</h1>
+  <div class="meta">Generated: 2026-05-28<br>Source: Affiliate Networks & Data Sources</div>
+  
+  <h2>📊 Scan Summary</h2>
+  <div class="stats">
+    <div class="stat"><div class="stat-value">0</div><div class="stat-label">New Programs Found</div></div>
+    <div class="stat"><div class="stat-value">36</div><div class="stat-label">Aggressive Promote (80+)</div></div>
+    <div class="stat"><div class="stat-value">23</div><div class="stat-label">Selective Test (60-79)</div></div>
+    <div class="stat"><div class="stat-value">25</div><div class="stat-label">Unalerted 80+ Backlog</div></div>
+  </div>
+
+  <h2>🔍 Sources Scanned</h2>
+  <div class="card">
+    <div class="card-title">UpPromote</div>
+    <ul>
+      <li>✅ <strong>VPN</strong> (uppromote.com/affiliate-programs/vpn/) — 18 programs, last updated Feb 4, 2026</li>
+      <li>✅ <strong>Cyber Security</strong> (uppromote.com/affiliate-programs/cyber-security/) — 20 programs, last updated Feb 4, 2026</li>
+      <li>✅ <strong>Web Hosting</strong> (uppromote.com/affiliate-programs/web-hosting/) — 25 programs, last updated Jan 6, 2026</li>
+      <li>❌ <strong>Antivirus</strong> — 404 Not Found</li>
+      <li>❌ <strong>Password Manager</strong> — 404 Not Found</li>
+      <li>❌ <strong>SaaS</strong> — 404 Not Found</li>
+      <li>❌ <strong>Finance</strong> — 404 Not Found</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Other Sources</div>
+    <ul>
+      <li>❌ <strong>Affiliate Collective</strong> — All category pages return 404 (site restructured)</li>
+      <li>❌ <strong>AffiliateVault</strong> — Domain redirects to Spaceship (dead source)</li>
+      <li>❌ <strong>Google Search</strong> — Blocked by bot detection (no results returned)</li>
+    </ul>
+  </div>
+
+  <h2>📋 Findings</h2>
+  <div class="card">
+    <p><span class="warn">No new programs discovered today.</span> All UpPromote pages are unchanged since last scan. Affiliate Collective and AffiliateVault remain inaccessible.</p>
+    <p style="margin-top: 0.5rem;">Database stable at <strong>39 total programs</strong> (36 aggressive promote, 23 selective test, 1 discarded).</p>
+  </div>
+
+  <h2>⚠️ Backlog Warning</h2>
+  <div class="card">
+    <p class="error"><strong>⚠️ 25 unalerted 80+ programs in backlog — threshold is 20.</strong></p>
+    <p>Backlog has exceeded the threshold. Recommend manual processing of the top 15 highest-scorers.</p>
+    <h3>Top 15 Unalerted 80+ Programs</h3>
+    <ol>
+      <li><strong>WP Engine</strong> — 101/140 (Web Hosting, $200 flat CPA, 180-day cookie)</li>
+      <li><strong>SiteGround</strong> — 94/140 (Web Hosting, up to $100 CPA, 90-day cookie)</li>
+      <li><strong>Kinsta</strong> — 94/140 (Web Hosting, $50-$500 + 10% recurring, 60-day cookie)</li>
+      <li><strong>Avast</strong> — 93/140 (Antivirus, 30% per sale, 60-day cookie)</li>
+      <li><strong>Cloudways</strong> — 93/140 (Web Hosting, up to $125 CPA, 90-day cookie)</li>
+      <li><strong>Surfshark VPN</strong> — 92/140 (VPN, 40% per purchase, 30-day cookie)</li>
+      <li><strong>Perimeter 81</strong> — 91/140 (Cybersecurity, $400-$1000 CPA, 60-day cookie)</li>
+      <li><strong>ExpressVPN</strong> — 91/140 (VPN, $13-$36/sale, 30-day cookie)</li>
+      <li><strong>Proton VPN</strong> — 90/140 (VPN, 30-100% multi-product, 30-day cookie)</li>
+      <li><strong>Liquid Web</strong> — 89/140 (Web Hosting, up to 200% tiered)</li>
+      <li><strong>CyberGhost</strong> — 89/140 (VPN, up to 100%, unlimited devices)</li>
+      <li><strong>StationX</strong> — 88/140 (Cybersecurity, 30-40%, 1800-day cookie!)</li>
+      <li><strong>Bitdefender</strong> — 88/140 (Antivirus, 10-50% commission)</li>
+      <li><strong>AVG</strong> — 88/140 (Antivirus, 30%, 60-day cookie)</li>
+      <li><strong>Bluehost</strong> — 87/140 (Web Hosting, $65/sale, 30-day cookie)</li>
+    </ol>
+  </div>
+
+  <h2>📈 Recommendations</h2>
+  <div class="card">
+    <ul>
+      <li>Prioritise WP Engine, SiteGround, and Kinsta for content creation — highest scores with strong cookie durations</li>
+      <li>StationX (1800-day cookie) is a unique opportunity for long-term passive income</li>
+      <li>Perimeter 81 ($400-$1000 CPA) is excellent for B2B content targeting enterprise security</li>
+      <li>Consider writing comparison articles: ExpressVPN vs NordVPN, Bluehost alternatives, etc.</li>
+    </ul>
+  </div>
+
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-28</div>
+</div>
+</body>
+</html>

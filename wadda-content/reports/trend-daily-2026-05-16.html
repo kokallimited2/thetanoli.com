@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Trend Agent — Daily Monitor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Trend Agent — Daily Monitor</h1>
+  <div class="meta">Generated: 2026-05-16 05:00 UTC<br>Source: Reddit (r/netsec, r/cybersecurity, r/privacy, r/artificial), HaveIBeenPwned, TechCrunch Security, TheRegister Security, Securelist (Kaspersky), ZeroDay.cloud</div>
+  <div class="stats">
+  <div class="stat"><div class="stat-value">14</div><div class="stat-label">New Events Today</div></div>
+  <div class="stat"><div class="stat-value">4</div><div class="stat-label">Critical (U≥9)</div></div>
+  <div class="stat"><div class="stat-value">10</div><div class="stat-label">High (U7-8)</div></div>
+  <div class="stat"><div class="stat-value">56</div><div class="stat-label">Total Queue</div></div>
+</div>
+<h2>🚨 Critical Alerts (Urgency ≥ 9)</h2>
+<div class="card">
+  <div class="card-title">The 4th Linux kernel flaw this month can lead to stolen SSH host keys</div>
+  <p><span class="tag highlight">Urgency: 10/10</span> <span class="tag">Critical Vulnerability</span> <span class="tag">HERMES-20260516-073</span></p>
+  <p>A 4th Linux kernel vulnerability this month can lead to stolen SSH host keys. This continues the alarming pattern of Linux kernel zero-days (CopyFail, Dirty Frag, Fragnesia). New twist: SSH host key compromise allows persistent, undetectable man-in-the-middle attacks.</p>
+  <p><strong>Source:</strong> Reddit r/cybersecurity (score 293, 6.7h old)</p>
+  <p><strong>Suggested Titles:</strong></p>
+  <ul>
+    <li>New Linux Kernel Flaw Steals SSH Host Keys: The 4th Zero-Day This Month</li><li>SSH Host Key Theft: How the Latest Linux Kernel Vulnerability Enables Persistent MITM Attacks</li><li>Linux Zero-Day Crisis: From CopyFail to SSH Key Theft — Complete Protection Guide</li>
+  </ul>
+  <p><strong>Traffic:</strong> 200,000-400,000 monthly searches</p>
+  <p><strong>Priority:</strong> <span class="highlight">P0 - Publish within 4 hours</span></p>
+  <p><strong>Affiliate Opportunities:</strong> endpoint protection for Linux (Bitdefender GravityZone, SentinelOne), backup solutions (Acronis, Backblaze), VPN (NordVPN — secure remote SSH), password managers (1Password — SSH key management)</p>
+</div>
+<div class="card">
+  <div class="card-title">Microsoft Exchange Zero-Day Under Active Attack + Pwn2Own: Windows 11 and Exchange Hacked</div>
+  <p><span class="tag highlight">Urgency: 10/10</span> <span class="tag">Zero-Day / Exploitation</span> <span class="tag">HERMES-20260516-074</span></p>
+  <p>Microsoft Exchange zero-day vulnerability is being actively exploited in attacks (confirmed by Microsoft warning). Separately, at Pwn2Own 2026, researchers successfully hacked Windows 11 and Microsoft Exchange on the second day. Dual Exchange threat — both a confirmed active exploit and a Pwn2Own compromise.</p>
+  <p><strong>Source:</strong> Reddit r/cybersecurity (score 324 & 404, 15h & 9.5h old), Microsoft</p>
+  <p><strong>Suggested Titles:</strong></p>
+  <ul>
+    <li>Microsoft Exchange Zero-Day Under Active Attack: Emergency Patching Guide</li><li>Pwn2Own 2026: Windows 11 and Exchange Hacked — What Microsoft Won't Tell You</li><li>Exchange and Windows Under Fire: Active Exploit + Pwn2Own Double Threat</li>
+  </ul>
+  <p><strong>Traffic:</strong> 300,000-500,000 monthly searches</p>
+  <p><strong>Priority:</strong> <span class="highlight">P0 - Publish within 4 hours</span></p>
+  <p><strong>Affiliate Opportunities:</strong> VPN (NordVPN, ExpressVPN — secure Exchange remote access), password managers (NordPass, 1Password — enterprise credential security), backup solutions (Backblaze, Acronis — Exchange backup before patch</p>
+</div>
+<div class="card">
+  <div class="card-title">New Linux privilege escalation flaw ‘Fragnesia’ disclosed; PoC available</div>
+  <p><span class="tag highlight">Urgency: 9/10</span> <span class="tag">Critical Vulnerability</span> <span class="tag">HERMES-20260516-075</span></p>
+  <p>A new Fragnesia Linux privilege escalation flaw has been disclosed with proof-of-concept available. This is a separate disclosure from the initial Fragnesia report, with PoC now publicly available — increasing the exploitation risk for Linux systems.</p>
+  <p><strong>Source:</strong> Reddit r/cybersecurity (score 49, 14.4h old)</p>
+  <p><strong>Suggested Titles:</strong></p>
+  <ul>
+    <li>Fragnesia Update: PoC Published for New Linux Root Exploit — Patch Now</li><li>Fragnesia PoC Now Available: Linux Admins Urged to Apply Emergency Patches</li><li>Linux Exploit Spree Continues: Fragnesia PoC Released, Affecting All Major Distros</li>
+  </ul>
+  <p><strong>Traffic:</strong> 100,000-200,000 monthly searches</p>
+  <p><strong>Priority:</strong> <span class="highlight">P0 - Publish within 4 hours</span></p>
+  <p><strong>Affiliate Opportunities:</strong> Linux endpoint protection (Bitdefender GravityZone, SentinelOne), backup solutions (Acronis, Backblaze), managed Linux hosting with automatic patching</p>
+</div>
+<div class="card">
+  <div class="card-title">A fix for the previous Linux kernel critical exploit has introduced a new vulnerability</div>
+  <p><span class="tag highlight">Urgency: 9/10</span> <span class="tag">Critical Vulnerability</span> <span class="tag">HERMES-20260516-077</span></p>
+  <p>The fix for a previous critical Linux kernel exploit has seemingly introduced a new vulnerability. Classic patch-regression scenario making the ongoing Linux security crisis even worse.</p>
+  <p><strong>Source:</strong> Reddit r/cybersecurity (score 89, 19.9h old)</p>
+  <p><strong>Suggested Titles:</strong></p>
+  <ul>
+    <li>Linux Patch Creates New Bug: Fix for Critical Kernel Exploit Introduces Fresh Vulnerability</li><li>Patch Regressions: The Linux Kernel's Fix-Cycle Nightmare Continues</li><li>When Patches Backfire: How the Linux Kernel Update Introduced a New Security Hole</li>
+  </ul>
+  <p><strong>Traffic:</strong> 60,000-120,000 monthly searches</p>
+  <p><strong>Priority:</strong> <span class="highlight">P1 - Publish within 24 hours</span></p>
+  <p><strong>Affiliate Opportunities:</strong> endpoint protection (Bitdefender GravityZone, SentinelOne), managed Linux hosting, managed security services</p>
+</div>
+<h2>📊 High Priority Events (Urgency 7-8)</h2>
+<div class="card">
+  <div class="card-title">Instagram tracking web browsing even with privacy settings?</div>
+  <p><span class="tag warn">Urgency: 8/10</span> <span class="tag">Privacy</span> <span class="tag">HERMES-20260516-076</span></p>
+  <p>Instagram is reportedly tracking users' web browsing activity even when privacy settings are enabled. Meta's tracking continues despite user privacy p</p>
+  <p><strong>Source:</strong> Reddit r/privacy (score 16, 8.1h old)</p>
+  <p><strong>Affiliate:</strong> VPN (NordVPN, ExpressVPN — block Meta tracking), password managers, privacy-focused browsers (Brave, Firefox)</p>
+</div>
+<div class="card">
+  <div class="card-title">US bank discloses security lapse after sharing customer data with AI app</div>
+  <p><span class="tag warn">Urgency: 8/10</span> <span class="tag">Data Breach / Privacy</span> <span class="tag">HERMES-20260516-078</span></p>
+  <p>A US bank disclosed a security lapse after sharing customer data with an AI application. Financial sector privacy breach with regulatory implications.</p>
+  <p><strong>Source:</strong> TechCrunch Security</p>
+  <p><strong>Affiliate:</strong> identity theft protection (Aura, LifeLock), VPN (NordVPN — secure banking), password managers</p>
+</div>
+<div class="card">
+  <div class="card-title">Hotel check-in system exposed a million passports and driver's licenses</div>
+  <p><span class="tag warn">Urgency: 8/10</span> <span class="tag">Data Breach</span> <span class="tag">HERMES-20260516-079</span></p>
+  <p>A hotel check-in system left a million passports and driver's license scans exposed online. Massive identity document breach with severe identity thef</p>
+  <p><strong>Source:</strong> TechCrunch Security</p>
+  <p><strong>Affiliate:</strong> identity theft protection (Aura, LifeLock), VPN (NordVPN — secure travel booking), password managers</p>
+</div>
+<div class="card">
+  <div class="card-title">Cisco SD-WAN zero-day patch released along with 4,000 job cuts for AI push</div>
+  <p><span class="tag warn">Urgency: 8/10</span> <span class="tag">Zero-Day / Corporate News</span> <span class="tag">HERMES-20260516-080</span></p>
+  <p>Cisco released a patch for a serious SD-WAN admin zero-day that gives make-me-admin access. Separately, Cisco is cutting nearly 4,000 jobs to spend mo</p>
+  <p><strong>Source:</strong> TheRegister + TechCrunch Security</p>
+  <p><strong>Affiliate:</strong> VPN (NordVPN — secure SD-WAN), backup (Backblaze — network config backup)</p>
+</div>
+<div class="card">
+  <div class="card-title">US defense contractor who sold hacking tools to Russian broker ordered to pay $10M</div>
+  <p><span class="tag warn">Urgency: 7/10</span> <span class="tag">Cybercrime / Legal</span> <span class="tag">HERMES-20260516-081</span></p>
+  <p>US defense contractor who sold hacking tools to a Russian broker ordered to pay $10 million to former employers. Insider threat story with legal impli</p>
+  <p><strong>Source:</strong> TechCrunch Security</p>
+  <p><strong>Affiliate:</strong> enterprise endpoint protection, VPN (secure remote access), password managers</p>
+</div>
+<div class="card">
+  <div class="card-title">Kimsuky targets organizations with PebbleDash-based tools — state-backed APT campaign</div>
+  <p><span class="tag warn">Urgency: 7/10</span> <span class="tag">Threat Intelligence / APT</span> <span class="tag">HERMES-20260516-082</span></p>
+  <p>North Korean APT group Kimsuky is targeting organizations with PebbleDash-based tools. State-sponsored cyber espionage campaign with global reach.</p>
+  <p><strong>Source:</strong> Securelist (Kaspersky)</p>
+  <p><strong>Affiliate:</strong> enterprise endpoint protection (Bitdefender GravityZone, SentinelOne), VPN</p>
+</div>
+<div class="card">
+  <div class="card-title">OceanLotus suspected of using PyPI to deliver ZiChatBot malware — supply chain attack via Python packages</div>
+  <p><span class="tag warn">Urgency: 8/10</span> <span class="tag">Supply Chain Attack</span> <span class="tag">HERMES-20260516-083</span></p>
+  <p>OceanLotus (APT32) is suspected of using PyPI (Python Package Index) to distribute ZiChatBot malware. Supply chain attack on the Python ecosystem.</p>
+  <p><strong>Source:</strong> Securelist (Kaspersky)</p>
+  <p><strong>Affiliate:</strong> VPN (secure package downloads), endpoint protection, password managers (API key security)</p>
+</div>
+<div class="card">
+  <div class="card-title">Lotus Wiper: new threat targeting energy and utilities sector — critical infrastructure attack</div>
+  <p><span class="tag warn">Urgency: 8/10</span> <span class="tag">Critical Infrastructure</span> <span class="tag">HERMES-20260516-084</span></p>
+  <p>Lotus Wiper is a new malware threat targeting the energy and utilities sector. Critical infrastructure wiper attack adds to the pattern of industrial </p>
+  <p><strong>Source:</strong> Securelist (Kaspersky)</p>
+  <p><strong>Affiliate:</strong> VPN (secure industrial access), backup (Backblaze, Acronis — data preservation), endpoint protection</p>
+</div>
+<div class="card">
+  <div class="card-title">BWH Hotels guests warned after reservation data checks out with cybercrooks</div>
+  <p><span class="tag warn">Urgency: 7/10</span> <span class="tag">Data Breach</span> <span class="tag">HERMES-20260516-085</span></p>
+  <p>BWH Hotels (Best Western) guests are being warned after reservation data was stolen by cybercriminals. Hotel chain breach affecting travelers.</p>
+  <p><strong>Source:</strong> TheRegister</p>
+  <p><strong>Affiliate:</strong> identity theft protection (Aura, LifeLock), VPN (NordVPN — secure bookings), password managers</p>
+</div>
+<div class="card">
+  <div class="card-title">Silver Fox uses new ABCDoor backdoor to target organizations in Russia and India</div>
+  <p><span class="tag warn">Urgency: 7/10</span> <span class="tag">Threat Intelligence</span> <span class="tag">HERMES-20260516-086</span></p>
+  <p>Silver Fox APT group is using a new backdoor called ABCDoor to target organizations in Russia and India. State-sponsored cyber espionage.</p>
+  <p><strong>Source:</strong> Securelist (Kaspersky)</p>
+  <p><strong>Affiliate:</strong> endpoint protection, VPN</p>
+</div>
+<h2>📈 Patterns & Trends</h2>
+<div class="card">
+  <h3>🔥 Linux Vulnerability Crisis Deepens</h3>
+  <p>Today's findings confirm the Linux kernel vulnerability trend is accelerating. <strong>4th Linux kernel flaw this month</strong> targets SSH host keys — a new attack vector beyond the CopyFail → Dirty Frag → Fragnesia pattern. Plus: a <strong>patch regression</strong> means the original fix may have introduced a new bug. This is the most intense Linux vulnerability period in years.</p>
+  <h3>🎯 Exchange + Pwn2Own: Double Microsoft Hit</h3>
+  <p>Two separate Exchange stories today: (1) <strong>Active zero-day exploitation</strong> confirmed by Microsoft, and (2) <strong>Pwn2Own demonstration</strong> hacking Windows 11 and Exchange. Enterprise IT teams need immediate guidance on both.</p>
+  <h3>🏢 Supply Chain Diversification</h3>
+  <p>OceanLotus via PyPI, Kimsuky via PebbleDash, Silver Fox via ABCDoor — three separate APT supply chain campaigns from different sources. Supply chain security content remains a high-demand evergreen niche.</p>
+  <h3>🔐 Affiliate Opportunity: Linux Protection</h3>
+  <p>With 4 Linux kernel vulnerabilities in a month, there's never been a better time for <strong>endpoint protection for Linux</strong> (Bitdefender GravityZone, SentinelOne) and <strong>backup solutions</strong> (Backblaze, Acronis) content targeting Linux administrators.</p>
+</div>
+<h2>🔍 Sources Checked</h2>
+<div class="card">
+  <h3>✅ Working Sources</h3>
+  <ul>
+    <li><strong>Reddit r/cybersecurity</strong> — Top source today. 4 critical events including Exchange zero-day (404 upvotes), SSH host key theft (293 upvotes), pwn2own (324 upvotes), kernel patch regression (89 upvotes)</li>
+    <li><strong>Reddit r/privacy</strong> — Instagram tracking story (16 upvotes, 8h old), but lower signal today</li>
+    <li><strong>Reddit r/netsec</strong> — Technical posts but most were research/releases, not incidents. NGINX POst already in queue</li>
+    <li><strong>HaveIBeenPwned</strong> — No new breaches in last 14 days beyond Cushman & Wakefield (May 5)</li>
+    <li><strong>TechCrunch Security</strong> — 37 headlines: Hotel passport leak, US bank AI data leak, Cisco job cuts, defense contractor ruling</li>
+    <li><strong>TheRegister Security</strong> — 26 headlines: Cisco SD-WAN patch, patch tuesday, Canvas breach updates, BWH Hotels breach</li>
+    <li><strong>Securelist (Kaspersky)</strong> — 21 articles: Kimsuky APT, OceanLotus PyPI, Lotus Wiper, Silver Fox ABCDoor, state of ransomware 2026</li>
+    <li><strong>ZeroDay.cloud</strong> — 1 headline: MariaDB CVE-2026-32710 (already in queue)</li>
+  </ul>
+  <h3>❌ Blocked Sources</h3>
+  <ul>
+    <li><strong>BleepingComputer</strong> — Blocked (5KB HTML returned, 0 headlines parseable)</li>
+    <li><strong>CyberNews</strong> — Blocked (minimal page, per previous runs)</li>
+  </ul>
+  <h3>❌ Noise Removed</h3>
+  <ul>
+    <li>Removed career/academic posts (AMA, certification, career advice)</li>
+    <li>Removed research/tool papers (Process injection techniques, CI/CD security, vulnerability hunting frameworks)</li>
+    <li>Removed redundant duplicates (NGINX, WaSteal, TanStack — already in queue)</li>
+    <li>Removed non-security topics (Reddit app blocking, boating privacy, poll results)</li>
+  </ul>
+</div>
+<h2>💰 Affiliate Opportunity Summary</h2>
+<div class="card">
+  <div class="stats">
+    <div class="stat"><div class="stat-value">17</div><div class="stat-label">Password Manager Events</div></div>
+    <div class="stat"><div class="stat-value">16</div><div class="stat-label">VPN Events</div></div>
+    <div class="stat"><div class="stat-value">15</div><div class="stat-label">Endpoint/Antivirus</div></div>
+    <div class="stat"><div class="stat-value">10</div><div class="stat-label">Backup Solutions</div></div>
+    <div class="stat"><div class="stat-value">6</div><div class="stat-label">Identity Theft</div></div>
+  </div>
+  <p><strong>Top content priorities for affiliate revenue:</strong></p>
+  <ol>
+    <li><strong>Linux crisis roundup</strong> (4 vulnerabilities in a month) → Endpoint protection + Backup</li>
+    <li><strong>Exchange zero-day + Pwn2Own</strong> → VPN + Password managers for enterprise</li>
+    <li><strong>Hotel passport leak + US bank AI leak</strong> → Identity theft protection</li>
+    <li><strong>OceanLotus PyPI + APT campaigns</strong> → Enterprise endpoint + VPN</li>
+  </ol>
+</div>
+<h2>📋 HaveIBeenPwned — Last 14 Days</h2>
+<div class="card">
+  <p><strong>Cushman & Wakefield</strong> — 310,431 records — 2026-05-05</p>
+  <p>No new breaches in last 14 days beyond this one.</p>
+</div>
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-16 05:00 UTC</div>
+</div>
+</body>
+</html>

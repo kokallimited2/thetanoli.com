@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Trend Agent — Daily Monitor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Trend Agent — Daily Monitor</h1>
+  <div class="meta">Generated: 2026-05-29<br>Source: Reddit (blocked), HIBP, Security News Outlets</div>
+  <div class="stats">
+<div class="stat"><div class="stat-value">76</div><div class="stat-label">New Events Today</div></div>
+<div class="stat"><div class="stat-value">76</div><div class="stat-label">Urgency 10 Alerts</div></div>
+<div class="stat"><div class="stat-value">0</div><div class="stat-label">New Data Breaches</div></div>
+<div class="stat"><div class="stat-value">1164</div><div class="stat-label">Queue Total</div></div>
+</div>
+<h2>📊 Source Breakdown</h2>
+<ul>
+<li><strong>theregister</strong>: 52 events</li>
+<li><strong>techcrunch</strong>: 23 events</li>
+<li><strong>zerodayinitiative</strong>: 1 events</li>
+</ul>
+<div class="card"><span class="warn">⚠</span> Note: Reddit API currently blocking requests. News parsing limited by static HTML scraping.</div>
+<h2>🚨 Urgency 10 — Breaking Alerts</h2>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> A spyware investigator exposed Russian government hackers trying to hijack Signal accounts</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">exposed</span>
+<span class="tag">breach</span>
+<span class="tag">spyware</span>
+<span class="tag">russian</span>
+<span class="tag">trying</span>
+<span class="tag">investigator</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> NYC Health + Hospitals says hackers stole medical data and fingerprints during breach affecting at least 1.8 million peo</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">hospitals</span>
+<span class="tag">stole</span>
+<span class="tag">health</span>
+<span class="tag">breach</span>
+<span class="tag">nyc</span>
+<span class="tag">medical</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Law enforcement shuts down VPN service used by two dozen ransomware gangs</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">law</span>
+<span class="tag">shuts</span>
+<span class="tag">two</span>
+<span class="tag">ransomware</span>
+<span class="tag">vpn</span>
+<span class="tag">down</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> UK Visa Portal exposed thousands of applicants’ passports and selfies — then called the lawyers on us</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">exposed</span>
+<span class="tag">selfies</span>
+<span class="tag">applicants</span>
+<span class="tag">called</span>
+<span class="tag">breach</span>
+<span class="tag">passports</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> These special phone and app features can help protect you from spyware</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">help</span>
+<span class="tag">special</span>
+<span class="tag">spyware</span>
+<span class="tag">features</span>
+<span class="tag">phone</span>
+<span class="tag">app</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Hackers are trying to steal Signal users&#8217; backups in new wave of phishing attacks</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">default</span>
+<span class="tag">trying</span>
+<span class="tag">users</span>
+<span class="tag">steal</span>
+<span class="tag">wave</span>
+<span class="tag">backups</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Open source tool maker Grafana Labs says hackers stole its code, refuses to pay ransom</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">source</span>
+<span class="tag">grafana</span>
+<span class="tag">tool</span>
+<span class="tag">labs</span>
+<span class="tag">says</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Kash Patel&#8217;s clothing brand website shut down after reports it was hacked</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">shut</span>
+<span class="tag">cybersecurity</span>
+<span class="tag">website</span>
+<span class="tag">default</span>
+<span class="tag">kash</span>
+<span class="tag">reports</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Customers say Trump Mobile is leaking their personal information</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">breach</span>
+<span class="tag">personal</span>
+<span class="tag">say</span>
+<span class="tag">customers</span>
+<span class="tag">information</span>
+<span class="tag">leaking</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> US cyber agency CISA exposed reams of passwords and cloud keys to the open web</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">exposed</span>
+<span class="tag">breach</span>
+<span class="tag">cisa</span>
+<span class="tag">agency</span>
+<span class="tag">cyber</span>
+<span class="tag">passwords</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Iranian hackers blamed for breach of Los Angeles transit system that took weeks to recover</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">breach</span>
+<span class="tag">transit</span>
+<span class="tag">los</span>
+<span class="tag">system</span>
+<span class="tag">blamed</span>
+<span class="tag">angeles</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> This is what some of the world&#8217;s largest banks of malware look like stacked as hard drives</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">like</span>
+<span class="tag">world</span>
+<span class="tag">hard</span>
+<span class="tag">look</span>
+<span class="tag">stacked</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> OpenAI says hackers stole some data after latest code security issue</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">stole</span>
+<span class="tag">code</span>
+<span class="tag">security</span>
+<span class="tag">default</span>
+<span class="tag">latest</span>
+<span class="tag">openai</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> From teen hacker to Iron Dome researcher, this founder raised $28M to fight AI phishing</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">teen</span>
+<span class="tag">iron</span>
+<span class="tag">default</span>
+<span class="tag">fight</span>
+<span class="tag">raised</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> US orders travelers on Air Force One to throw away gifts, pins, and burner phones after China trip</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">default</span>
+<span class="tag">one</span>
+<span class="tag">travelers</span>
+<span class="tag">force</span>
+<span class="tag">throw</span>
+<span class="tag">air</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Discord enables end-to-end encrypted voice and video calling for every user</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">default</span>
+<span class="tag">enables</span>
+<span class="tag">every</span>
+<span class="tag">calling</span>
+<span class="tag">voice</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Trump Mobile confirms it exposed customers&#8217; personal data, including phone numbers and home addresses</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">exposed</span>
+<span class="tag">breach</span>
+<span class="tag">confirms</span>
+<span class="tag">personal</span>
+<span class="tag">customers</span>
+<span class="tag">data</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> GitHub says hackers stole data from thousands of internal repositories</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">stole</span>
+<span class="tag">default</span>
+<span class="tag">repositories</span>
+<span class="tag">github</span>
+<span class="tag">thousands</span>
+<span class="tag">data</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Ransomware hackers claim breach at Foxconn, a major electronics manufacturer for Apple, Google, and Nvidia</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">electronics</span>
+<span class="tag">breach</span>
+<span class="tag">claim</span>
+<span class="tag">major</span>
+<span class="tag">manufacturer</span>
+<span class="tag">foxconn</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> DuckDuckGo installs are up 30% as users reject being ‘force-fed’ Google’s AI Search</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">default</span>
+<span class="tag">google</span>
+<span class="tag">force</span>
+<span class="tag">reject</span>
+<span class="tag">being</span>
+<span class="tag">installs</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Ghost hackers: the cybersecurity mystery that nobody has solved</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">hackers</span>
+<span class="tag">default</span>
+<span class="tag">solved</span>
+<span class="tag">mystery</span>
+<span class="tag">ghost</span>
+<span class="tag">nobody</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> CrowdStrike and Google take down botnet used by hackers to target open source software developers</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">crowdstrike</span>
+<span class="tag">google</span>
+<span class="tag">target</span>
+<span class="tag">take</span>
+<span class="tag">botnet</span>
+<span class="tag">malware</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> A security lapse at prison pay phone service Pay Tel publicly exposed over 300K callers&#8217; driver&#8217;s licenses</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">security</span>
+<span class="tag">breach</span>
+<span class="tag">pay</span>
+<span class="tag">prison</span>
+<span class="tag">tel</span>
+<span class="tag">phone</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> A Freedom of Information Act request shows the extent of the surveillance</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">extent</span>
+<span class="tag">cybersecurity</span>
+<span class="tag">act</span>
+<span class="tag">freedom</span>
+<span class="tag">information</span>
+<span class="tag">privacy</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Shai-Hulud worm exploited GitHub Actions misconfiguration to poison shared cache, now project weighing nuclear option on</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">worm</span>
+<span class="tag">actions</span>
+<span class="tag">poison</span>
+<span class="tag">github</span>
+<span class="tag">misconfiguration</span>
+<span class="tag">hulud</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Plenty of time for cyber crims to grab data or hit you with a giant bill</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">hit</span>
+<span class="tag">default</span>
+<span class="tag">cyber</span>
+<span class="tag">grab</span>
+<span class="tag">time</span>
+<span class="tag">plenty</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> FBI warns Kali365 phishing kit is stealing Microsoft OAuth tokens at scale</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">default</span>
+<span class="tag">kit</span>
+<span class="tag">stealing</span>
+<span class="tag">fbi</span>
+<span class="tag">microsoft</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Techie claims Trump Mobile website was leaking thousands of people's data</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">website</span>
+<span class="tag">breach</span>
+<span class="tag">people</span>
+<span class="tag">claims</span>
+<span class="tag">thousands</span>
+<span class="tag">leaking</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Apache, Alibaba databases vulnerable and only one has a patch</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">default</span>
+<span class="tag">vulnerable</span>
+<span class="tag">one</span>
+<span class="tag">only</span>
+<span class="tag">databases</span>
+<span class="tag">alibaba</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Mystery Microsoft bug leaker keeps the zero-days coming</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">bug</span>
+<span class="tag">breach</span>
+<span class="tag">zero</span>
+<span class="tag">mystery</span>
+<span class="tag">microsoft</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Travel and leisure giant was just one of many victims of the cybercrooks' crime spree this year</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">default</span>
+<span class="tag">one</span>
+<span class="tag">cybercrooks</span>
+<span class="tag">many</span>
+<span class="tag">crime</span>
+<span class="tag">victims</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Nobody believes the 'criminals and scumbags' who hacked Canvas really deleted stolen student data</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">scumbags</span>
+<span class="tag">canvas</span>
+<span class="tag">default</span>
+<span class="tag">really</span>
+<span class="tag">believes</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Dems slam Trump for making cybersecurity hold out the tin cup while splurging on ballroom and Jan. 6 'slush fund'</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">dems</span>
+<span class="tag">tin</span>
+<span class="tag">default</span>
+<span class="tag">making</span>
+<span class="tag">slam</span>
+<span class="tag">hold</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Six 0-days, three under active exploitation, more to come on July 14?</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">default</span>
+<span class="tag">active</span>
+<span class="tag">three</span>
+<span class="tag">july</span>
+<span class="tag">six</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Crook leaks 468k+ records, claims they pwned Portugal’s postal carrier</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">carrier</span>
+<span class="tag">breach</span>
+<span class="tag">records</span>
+<span class="tag">claims</span>
+<span class="tag">portugal</span>
+<span class="tag">postal</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Cybercriminals still allowed to walk into office blocks and convince staff to let them plug in their own thumb drives</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">walk</span>
+<span class="tag">staff</span>
+<span class="tag">default</span>
+<span class="tag">cybercriminals</span>
+<span class="tag">still</span>
+<span class="tag">blocks</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> India's cyber agency sets clock at 12 hours to tackle exploited bugs as AI turns up the heat</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">hours</span>
+<span class="tag">default</span>
+<span class="tag">agency</span>
+<span class="tag">cyber</span>
+<span class="tag">clock</span>
+<span class="tag">india</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> CERT-In says internet-facing or critical systems should be patched, mitigated, or cut off within half a day where feasib</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">internet</span>
+<span class="tag">default</span>
+<span class="tag">cert</span>
+<span class="tag">systems</span>
+<span class="tag">mitigated</span>
+<span class="tag">patched</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> AI models are getting better at replacing cybersecurity pros on certain tasks</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">models</span>
+<span class="tag">pros</span>
+<span class="tag">default</span>
+<span class="tag">getting</span>
+<span class="tag">replacing</span>
+<span class="tag">tasks</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Redmond open sources two tools for building and maintaining safer agents</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordLayer</div>
+<div><strong>Keywords: </strong>
+<span class="tag">building</span>
+<span class="tag">cybersecurity</span>
+<span class="tag">two</span>
+<span class="tag">redmond</span>
+<span class="tag">supply chain</span>
+<span class="tag">safer</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Zombie user account let hackers control the city’s water</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">zombie</span>
+<span class="tag">control</span>
+<span class="tag">default</span>
+<span class="tag">user</span>
+<span class="tag">city</span>
+<span class="tag">hackers</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Experts pour cold borscht on Farage's Russian hack claim</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">farage</span>
+<span class="tag">default</span>
+<span class="tag">russian</span>
+<span class="tag">claim</span>
+<span class="tag">hack</span>
+<span class="tag">experts</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Fresh kernel flaw comes with public exploit code and continues ugly run of highly reliable privilege escalation bugs tie</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">default</span>
+<span class="tag">continues</span>
+<span class="tag">comes</span>
+<span class="tag">fresh</span>
+<span class="tag">kernel</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> HackerOne takes an axe to its bug bounty rewards</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">takes</span>
+<span class="tag">bug</span>
+<span class="tag">default</span>
+<span class="tag">bounty</span>
+<span class="tag">rewards</span>
+<span class="tag">hackerone</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Do fear the Reaper - stealer swipes macOS users' passwords, wallets, then backdoors them</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">passwords</span>
+<span class="tag">wallets</span>
+<span class="tag">fear</span>
+<span class="tag">users</span>
+<span class="tag">reaper</span>
+<span class="tag">macos</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Shai-Hulud copycat worm infects yet another npm package</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">worm</span>
+<span class="tag">npm</span>
+<span class="tag">infects</span>
+<span class="tag">yet</span>
+<span class="tag">hulud</span>
+<span class="tag">copycat</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Congress investigates Canvas breach as company pays ransom</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">investigates</span>
+<span class="tag">breach</span>
+<span class="tag">ransom</span>
+<span class="tag">company</span>
+<span class="tag">pays</span>
+<span class="tag">canvas</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Microsoft shuts down illegal code-signing operation used by ransomware crims to mask their malware</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">signing</span>
+<span class="tag">shuts</span>
+<span class="tag">operation</span>
+<span class="tag">illegal</span>
+<span class="tag">microsoft</span>
+<span class="tag">down</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Apple, Google drag cross-platform texting into the encrypted age</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">platform</span>
+<span class="tag">default</span>
+<span class="tag">google</span>
+<span class="tag">apple</span>
+<span class="tag">texting</span>
+<span class="tag">cross</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> NGINX Rift attackers waste no time targeting exposed servers</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">exposed</span>
+<span class="tag">targeting</span>
+<span class="tag">breach</span>
+<span class="tag">servers</span>
+<span class="tag">time</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> CrowdStrike, Google shatter Glassworm botnet</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">crowdstrike</span>
+<span class="tag">google</span>
+<span class="tag">glassworm</span>
+<span class="tag">botnet</span>
+<span class="tag">malware</span>
+<span class="tag">shatter</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Attackers stole a limited amount of internal credential material after malware hidden in poisoned packages reached two s</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">stole</span>
+<span class="tag">credential</span>
+<span class="tag">amount</span>
+<span class="tag">material</span>
+<span class="tag">attackers</span>
+<span class="tag">malware</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Lawmakers push DoD to tighten smartphone controls after adversaries exploited commercial tracking data</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">dod</span>
+<span class="tag">lawmakers</span>
+<span class="tag">adversaries</span>
+<span class="tag">push</span>
+<span class="tag">smartphone</span>
+<span class="tag">tighten</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> MFA? No problem, says crimeware that tricks users into handing attackers the keys to M365</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">handing</span>
+<span class="tag">default</span>
+<span class="tag">problem</span>
+<span class="tag">crimeware</span>
+<span class="tag">tricks</span>
+<span class="tag">users</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Welcome to the vulnpocalypse, as vendors use AI to find bugs and patches multiply like rabbits</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">use</span>
+<span class="tag">default</span>
+<span class="tag">welcome</span>
+<span class="tag">multiply</span>
+<span class="tag">vulnpocalypse</span>
+<span class="tag">bugs</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Foxconn confirms cyberattack after ransomware crew claims it stole confidential Apple, Nvidia files</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">stole</span>
+<span class="tag">confirms</span>
+<span class="tag">crew</span>
+<span class="tag">foxconn</span>
+<span class="tag">claims</span>
+<span class="tag">cyberattack</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Leakage blamed on treacherous friends exposed unencrypted credentials, email addresses</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">exposed</span>
+<span class="tag">breach</span>
+<span class="tag">friends</span>
+<span class="tag">email</span>
+<span class="tag">treacherous</span>
+<span class="tag">blamed</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> TanStack weighs invitation-only pull requests after supply chain attack</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordLayer</div>
+<div><strong>Keywords: </strong>
+<span class="tag">invitation</span>
+<span class="tag">tanstack</span>
+<span class="tag">only</span>
+<span class="tag">chain</span>
+<span class="tag">supply chain</span>
+<span class="tag">requests</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Malware dev tries to steal Claude users' secrets, writes npm slop, leaks own GitHub private token</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">claude</span>
+<span class="tag">tries</span>
+<span class="tag">secrets</span>
+<span class="tag">breach</span>
+<span class="tag">dev</span>
+<span class="tag">users</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> A Russian speaker and jailbroken Gemini went on a hacking spree and emptied at least one MAGA victim's crypto wallets</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">emptied</span>
+<span class="tag">cybersecurity</span>
+<span class="tag">default</span>
+<span class="tag">spree</span>
+<span class="tag">gemini</span>
+<span class="tag">russian</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Six-minute supply chain blitz pushed 84 malicious versions with credential theft and disk-wiping code</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordLayer</div>
+<div><strong>Keywords: </strong>
+<span class="tag">versions</span>
+<span class="tag">pushed</span>
+<span class="tag">minute</span>
+<span class="tag">malicious</span>
+<span class="tag">chain</span>
+<span class="tag">supply chain</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> May security update trips over hostnames of a very specific length</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">security</span>
+<span class="tag">specific</span>
+<span class="tag">default</span>
+<span class="tag">may</span>
+<span class="tag">length</span>
+<span class="tag">update</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Security pros warn YellowKey claim could make stolen laptops a much bigger problem</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">pros</span>
+<span class="tag">security</span>
+<span class="tag">default</span>
+<span class="tag">claim</span>
+<span class="tag">warn</span>
+<span class="tag">yellowkey</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Researchers say 18-year-old flaw already being probed and exploited just days after disclosure</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">old</span>
+<span class="tag">default</span>
+<span class="tag">say</span>
+<span class="tag">being</span>
+<span class="tag">flaw</span>
+<span class="tag">already</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Reform UK leader alleges Moscow broke into his phone and leaked £5M gift story, but security specialists await evidence</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">leader</span>
+<span class="tag">broke</span>
+<span class="tag">breach</span>
+<span class="tag">moscow</span>
+<span class="tag">phone</span>
+<span class="tag">alleges</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Malware crew TeamPCP open-sources its Shai-Hulud worm on GitHub</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">worm</span>
+<span class="tag">cybersecurity</span>
+<span class="tag">crew</span>
+<span class="tag">hulud</span>
+<span class="tag">malware</span>
+<span class="tag">teampcp</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Clear your calendar, Drupal user: You have a critically urgent patch to install</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">default</span>
+<span class="tag">urgent</span>
+<span class="tag">you</span>
+<span class="tag">calendar</span>
+<span class="tag">user</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> CISA hands feds super-tight deadline for this perfect-10, actively exploited flaw</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">default</span>
+<span class="tag">cisa</span>
+<span class="tag">super</span>
+<span class="tag">perfect</span>
+<span class="tag">actively</span>
+<span class="tag">deadline</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Developer-targeted, supply-chain attacks all the rage these days</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">developer</span>
+<span class="tag">default</span>
+<span class="tag">all</span>
+<span class="tag">chain</span>
+<span class="tag">rage</span>
+<span class="tag">attacks</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> MyPillow must decide whether to be firm or soft as ransomware crims demand pay</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">must</span>
+<span class="tag">decide</span>
+<span class="tag">crims</span>
+<span class="tag">mypillow</span>
+<span class="tag">whether</span>
+<span class="tag">ransomware</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Ordered packages via CTT? Those phishing emails could be tricky to spot</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">via</span>
+<span class="tag">default</span>
+<span class="tag">those</span>
+<span class="tag">ctt</span>
+<span class="tag">ordered</span>
+<span class="tag">emails</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> How to guarantee a speaker gig: Hack the system. Literally</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">default</span>
+<span class="tag">guarantee</span>
+<span class="tag">hack</span>
+<span class="tag">system</span>
+<span class="tag">literally</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Carnival confirms ShinyHunters cruised off with 6M customer records after April breach</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">off</span>
+<span class="tag">breach</span>
+<span class="tag">april</span>
+<span class="tag">confirms</span>
+<span class="tag">shinyhunters</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Attackers spill plaintext passwords of 46k Myspace93 users after 2021 breach</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">breach</span>
+<span class="tag">passwords</span>
+<span class="tag">spill</span>
+<span class="tag">attackers</span>
+<span class="tag">users</span>
+<span class="tag">plaintext</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> America's top cyber-defense agency left a GitHub repo open with passwords, keys, tokens – and incredibly obvious filenam</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">cybersecurity</span>
+<span class="tag">default</span>
+<span class="tag">agency</span>
+<span class="tag">cyber</span>
+<span class="tag">github</span>
+<span class="tag">america</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Zero Day Initiative &mdash; Blog</div>
+<div><span class="tag">zerodayinitiative</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://zerodayinitiative.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">default</span>
+<span class="tag">mdash</span>
+<span class="tag">blog</span>
+<span class="tag">zero</span>
+<span class="tag">day</span>
+<span class="tag">initiative</span>
+</div>
+</div>
+<h2>💰 Affiliate Opportunities</h2>
+<ul>
+<li>ClickBank Antivirus</li>
+<li>ClickBank DevSecOps</li>
+<li>ClickBank ID Theft Protection</li>
+<li>NordLayer</li>
+<li>NordPass</li>
+<li>NordVPN</li>
+</ul>
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-29</div>
+</div>
+</body>
+</html>

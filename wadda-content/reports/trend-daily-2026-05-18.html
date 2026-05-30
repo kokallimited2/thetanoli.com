@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Trend Agent — Daily Monitor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Trend Agent — Daily Monitor</h1>
+  <div class="meta">Generated: 2026-05-18 05:00 UTC<br>Source: Reddit (r/netsec, r/cybersecurity, r/privacy, r/artificial), HaveIBeenPwned, BleepingComputer, TechCrunch Security, TheRegister, Kaspersky Securelist, ZeroDay.cloud</div>
+  <h2>Scan Summary</h2>
+<div class="stats">
+  <div class="stat"><div class="stat-value">75</div><div class="stat-label">Total Events in Queue</div></div>
+  <div class="stat"><div class="stat-value">8</div><div class="stat-label">New Events Today</div></div>
+  <div class="stat"><div class="stat-value">20</div><div class="stat-label">Critical (U:10)</div></div>
+  <div class="stat"><div class="stat-value">7</div><div class="stat-label">High (U:8-9)</div></div>
+</div>
+
+<h2>🚨 Urgency 10 — Critical Alerts</h2>
+<p>No new urgency-10 events detected today. The 20 critical events are carryovers from previous days (Fragnesia, Fast16 nuclear sabotage, FBI router scrub, BitLocker bypass, etc.) — all scored in earlier runs.</p>
+
+<h2>⚠️ New Events Today (U:8-9)</h2>
+
+<div class="card">
+  <div class="card-title">CVE-2026-2006: PostgreSQL pgcrypto RCE</div>
+  <span class="tag">U:9 Critical Vulnerability</span><span class="tag">ZeroDay.cloud</span>
+  <p style="margin-top:0.5rem">Critical RCE vulnerability in PostgreSQL pgcrypto extension. Encoding bug allows arbitrary code execution on database servers worldwide.</p>
+  <p><strong>Affiliates:</strong> Bitdefender GravityZone, SentinelOne, Acronis, Backblaze</p>
+  <p><strong>Priority:</strong> P1 — Publish within 24 hours</p>
+</div>
+
+<div class="card">
+  <div class="card-title">VoidStealer Trojan Bypasses Chrome Data Protection</div>
+  <span class="tag">U:9 Malware</span><span class="tag">Kaspersky Securelist</span>
+  <p style="margin-top:0.5rem">New VoidStealer Trojan bypasses Chrome's encrypted stored data protection. Steals saved passwords, cookies, and autofill data from Chrome users.</p>
+  <p><strong>Affiliates:</strong> Bitdefender, Malwarebytes, Norton, 1Password, NordPass</p>
+  <p><strong>Priority:</strong> P1 — Publish within 24 hours</p>
+</div>
+
+<div class="card">
+  <div class="card-title">Home Depot Facial Recognition Tracking</div>
+  <span class="tag">U:9 Privacy</span><span class="tag">Reddit r/privacy</span>
+  <p style="margin-top:0.5rem">Consumer reports facial recognition tracking at Home Depot. 418 upvotes in 3 hours on r/privacy — strong community engagement.</p>
+  <p><strong>Affiliates:</strong> NordVPN, ExpressVPN, Bitdefender</p>
+  <p><strong>Priority:</strong> P1 — Publish within 24 hours</p>
+</div>
+
+<div class="card">
+  <div class="card-title">Texas Sues Netflix Over Data Collection</div>
+  <span class="tag">U:9 Privacy Litigation</span><span class="tag">Reddit r/privacy</span>
+  <p style="margin-top:0.5rem">Texas Attorney General files lawsuit against Netflix for deceptive data collection. Major privacy litigation with high search traffic potential.</p>
+  <p><strong>Affiliates:</strong> NordVPN, ExpressVPN, Aura, LifeLock</p>
+  <p><strong>Priority:</strong> P1 — Publish within 24 hours</p>
+</div>
+
+<div class="card">
+  <div class="card-title">Cache-Poisoning Attack on TanStack npm Packages</div>
+  <span class="tag">U:9 Supply Chain Attack</span><span class="tag">TheRegister, r/netsec</span>
+  <p style="margin-top:0.5rem">Sophisticated cache-poisoning attack on TanStack npm packages. Six-minute supply chain compromise window. Affects thousands of downstream projects.</p>
+  <p><strong>Affiliates:</strong> Bitdefender, SentinelOne, NordVPN, 1Password</p>
+  <p><strong>Priority:</strong> P1 — Publish within 24 hours</p>
+</div>
+
+<div class="card">
+  <div class="card-title">Three Major MCP Security Flaws Discovered</div>
+  <span class="tag">U:9 Critical Vulnerability</span><span class="tag">TheRegister</span>
+  <p style="margin-top:0.5rem">Security researcher discovers three critical MCP protocol flaws affecting AI agent infrastructure. One vendor refuses to patch.</p>
+  <p><strong>Affiliates:</strong> Bitdefender GravityZone, SentinelOne, NordVPN, 1Password</p>
+  <p><strong>Priority:</strong> P1 — Publish within 24 hours</p>
+</div>
+
+<div class="card">
+  <div class="card-title">Romance Scammers: £102M Annual Payday</div>
+  <span class="tag">U:8 Scam/Fraud</span><span class="tag">TheRegister</span>
+  <p style="margin-top:0.5rem">Romance scams net £102M/year in UK. AI-enabled romance fraud rising. Evergreen content with strong search volume.</p>
+  <p><strong>Affiliates:</strong> Bitdefender, Norton, Aura, LifeLock, Malwarebytes</p>
+  <p><strong>Priority:</strong> P2 — Publish within 72 hours</p>
+</div>
+
+<div class="card">
+  <div class="card-title">AI-Enabled Phishing Epidemic</div>
+  <span class="tag">U:8 Phishing</span><span class="tag">TheRegister, KnowBe4</span>
+  <p style="margin-top:0.5rem">Majority of modern phishing campaigns now AI-generated. Convincing language and personalization make AI phishing nearly undetectable.</p>
+  <p><strong>Affiliates:</strong> Bitdefender, Norton, 1Password, NordPass, Malwarebytes</p>
+  <p><strong>Priority:</strong> P2 — Publish within 72 hours</p>
+</div>
+
+<h2>Sources Scanned</h2>
+<ul>
+  <li>✅ Reddit r/netsec (14 security posts found)</li>
+  <li>✅ Reddit r/cybersecurity (12 security posts found)</li>
+  <li>✅ Reddit r/privacy (18 security posts found) — highest-value source</li>
+  <li>✅ Reddit r/artificial (4 security posts found) — low yield, as expected</li>
+  <li>✅ HaveIBeenPwned (1 breach in last 14 days: Cushman & Wakefield, 310K records)</li>
+  <li>✅ BleepingComputer (headline: Microsoft May 2026 Patch Tuesday)</li>
+  <li>✅ TechCrunch Security (24 security headlines)</li>
+  <li>✅ TheRegister Security (18 security headlines)</li>
+  <li>✅ Kaspersky Securelist (18 headlines — gamers security, VoidStealer, MD5)</li>
+  <li>✅ ZeroDay.cloud (PostgreSQL CVE-2026-2006)</li>
+  <li>❌ CyberNews (empty page returned)</li>
+</ul>
+
+<h2>Affiliate Opportunities Detected</h2>
+<div class="stats">
+  <div class="stat"><div class="stat-value">NordVPN/ExpressVPN</div><div class="stat-label">Privacy, Litigation, Tracking</div></div>
+  <div class="stat"><div class="stat-value">1Password/NordPass</div><div class="stat-label">Password Security, Chrome Theft</div></div>
+  <div class="stat"><div class="stat-value">Bitdefender/SentinelOne</div><div class="stat-label">Malware, Supply Chain, MCP Flaws</div></div>
+  <div class="stat"><div class="stat-value">Aura/LifeLock</div><div class="stat-label">Data Breach, Romance Scams</div></div>
+</div>
+
+<h2>Key Patterns</h2>
+<ul>
+  <li><strong>Privacy litigation wave continues:</strong> Texas/Netflix lawsuit follows OpenAI/ChatGPT litigation pattern from prior days. Expected 500K+ search volume.</li>
+  <li><strong>Supply chain attacks diversifying:</strong> TanStack npm marks third supply-chain event (after DAEMON Tools, JDownloader) within two weeks.</li>
+  <li><strong>AI tool security emerging as category:</strong> MCP protocol flaws signal growing attack surface for agent-to-agent communication.</li>
+  <li><strong>Chrome ecosystem targeted:</strong> VoidStealer specifically bypasses Chrome's data protection — unique angle for password manager promotion.</li>
+  <li><strong>r/privacy remains top source:</strong> Highest engagement consumer stories (Home Depot facial recognition at 418 upvotes in 3h).</li>
+  <li><strong>Duplicate detection working:</strong> Fragnesia (May 15-16), CopyFail (May 10), Meta encryption (May 10), UK water fine (May 17) all correctly matched to existing queue entries.</li>
+</ul>
+
+<h2>Queue Health</h2>
+<table style="width:100%; border-collapse: collapse; margin: 0.5rem 0;">
+  <tr style="background: #1f2937;"><th style="padding:0.5rem; text-align:left; border:1px solid #30363d;">Metric</th><th style="padding:0.5rem; text-align:right; border:1px solid #30363d;">Value</th></tr>
+  <tr><td style="padding:0.3rem 0.5rem; border:1px solid #30363d;">Total Events in Queue</td><td style="padding:0.3rem 0.5rem; border:1px solid #30363d; text-align:right;">75</td></tr>
+  <tr style="background: #161b22;"><td style="padding:0.3rem 0.5rem; border:1px solid #30363d;">Critical (U:10)</td><td style="padding:0.3rem 0.5rem; border:1px solid #30363d; text-align:right;">20</td></tr>
+  <tr><td style="padding:0.3rem 0.5rem; border:1px solid #30363d;">High (U:8-9)</td><td style="padding:0.3rem 0.5rem; border:1px solid #30363d; text-align:right;">48</td></tr>
+  <tr style="background: #161b22;"><td style="padding:0.3rem 0.5rem; border:1px solid #30363d;">Medium (U:7)</td><td style="padding:0.3rem 0.5rem; border:1px solid #30363d; text-align:right;">7</td></tr>
+  <tr><td style="padding:0.3rem 0.5rem; border:1px solid #30363d;">HIBP Breaches (14d)</td><td style="padding:0.3rem 0.5rem; border:1px solid #30363d; text-align:right;">1</td></tr>
+</table>
+
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-18 05:00 UTC</div>
+</div>
+</body>
+</html>

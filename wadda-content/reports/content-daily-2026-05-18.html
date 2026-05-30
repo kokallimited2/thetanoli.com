@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Content Agent — Article Generation</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Content Agent — Article Generation</h1>
+  <div class="meta">Generated: 2026-05-18<br>Source: Content Briefs from SEO Agent</div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value">14</div>
+      <div class="stat-label">Total Drafts</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">3</div>
+      <div class="stat-label">Authority / TOFU</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">2</div>
+      <div class="stat-label">Conversion / BOFU</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">9</div>
+      <div class="stat-label">Reactive Content</div>
+    </div>
+  </div>
+
+  <h2>Run Status</h2>
+  <div class="card">
+    <p>✅ <strong>No new briefs</strong> — all 14 briefs in <code>content-briefs.json</code> have corresponding drafts already generated in previous runs. No new articles were written today.</p>
+    <p>This is expected: the SEO Agent generates briefs from the same pool of affiliate programs and reactive events. The Content Agent only needs to produce articles when genuinely new briefs appear.</p>
+  </div>
+
+  <h2>Existing Draft Inventory</h2>
+
+  <h3>Authority / TOFU (3 articles)</h3>
+  <div class="card">
+    <div class="card-title">1. The Complete Small Business Cybersecurity Guide: Protect Your Company in 2026</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-05-cybersecurity-small-business-guide.md</code></li>
+      <li><strong>Words:</strong> ~3,894 (target: 4,500 — YAML frontmatter overhead ~250, body ~3,644)</li>
+      <li><strong>Keywords:</strong> cybersecurity for small business (90,500/mo)</li>
+      <li><strong>Affiliates:</strong> Bitdefender, NordVPN/NordPass, 1Password, Hostinger</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">2. The Ultimate Cybersecurity Toolkit 2026: Best VPNs, Antivirus, and Password Managers Compared</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-17-ultimate-cybersecurity-toolkit-2026.md</code></li>
+      <li><strong>Words:</strong> ~2,285 (target: 3,500 — shorter draft, may need expansion)</li>
+      <li><strong>Keywords:</strong> best cybersecurity tools 2026 (65,000/mo)</li>
+      <li><strong>Affiliates:</strong> NordVPN/NordPass, Bitdefender, Norton, 1Password, NordPass, Malwarebytes, ExpressVPN, Bitwarden</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">3. Bluekit: The AI-Powered Phishing Platform That Makes Cybercrime Scarily Easy</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-05-bluekit-ai-phishing-platform.md</code></li>
+      <li><strong>Words:</strong> ~2,144 (target: 2,200)</li>
+      <li><strong>Keywords:</strong> Bluekit phishing (40,000/mo)</li>
+      <li><strong>Affiliates:</strong> Bitdefender, Norton</li>
+    </ul>
+  </div>
+
+  <h3>Conversion / BOFU (2 articles)</h3>
+  <div class="card">
+    <div class="card-title">4. Best VPN for Small Business in 2026: Tested & Compared</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-05-best-vpn-small-business-2026.md</code></li>
+      <li><strong>Words:</strong> ~3,499 (target: 3,500)</li>
+      <li><strong>Keywords:</strong> best VPN for small business (12,100/mo)</li>
+      <li><strong>Affiliates:</strong> NordLayer, Perimeter 81, PureVPN, NordVPN</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">5. Best Secure WordPress Hosting in 2026: 7 Providers Compared</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-17-best-secure-wordpress-hosting-2026.md</code></li>
+      <li><strong>Words:</strong> ~2,847 (target: 4,000 — may need expansion)</li>
+      <li><strong>Keywords:</strong> best managed WordPress hosting security (18,000/mo)</li>
+      <li><strong>Affiliates:</strong> WP Engine, Kinsta, Cloudways, Liquid Web/Nexcess, Hostinger, Bluehost, Scala Hosting</li>
+    </ul>
+  </div>
+
+  <h3>Reactive Content (9 articles)</h3>
+  <div class="card">
+    <div class="card-title">6. cPanel CVE-2026-41940: 44,000 Servers Hacked — Immediate Fix Guide</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-05-cpanel-cve-2026-41940-fix-guide.md</code></li>
+      <li><strong>Words:</strong> ~2,021 (target: 2,500)</li>
+      <li><strong>Keywords:</strong> cPanel CVE-2026-41940 (150,000/mo)</li>
+      <li><strong>Affiliates:</strong> Liquid Web/Nexcess, Hostinger, Bitdefender</li>
+      <li><strong>Priority:</strong> P0</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">7. Canvas Data Breach 2026: 275 Million Students Affected</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-05-canvas-data-breach-2026.md</code></li>
+      <li><strong>Words:</strong> ~2,455 (target: 2,200)</li>
+      <li><strong>Keywords:</strong> Canvas data breach (200,000/mo)</li>
+      <li><strong>Affiliates:</strong> 1Password, NordVPN</li>
+      <li><strong>Priority:</strong> P0</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">8. Cushman & Wakefield Breach: 500K Records Stolen</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-05-cushman-wakefield-shinyhunters-breach.md</code></li>
+      <li><strong>Words:</strong> ~1,388 (target: 2,000 — shortest draft, may need expansion)</li>
+      <li><strong>Keywords:</strong> Cushman Wakefield breach (80,000/mo)</li>
+      <li><strong>Affiliates:</strong> HubSpot</li>
+      <li><strong>Priority:</strong> P0</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">9. Medtronic Hacked: Medical Device Giant Hit by ShinyHunters</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-05-medtronic-shinyhunters-breach.md</code></li>
+      <li><strong>Words:</strong> ~1,465 (target: 1,800 — adequate)</li>
+      <li><strong>Keywords:</strong> Medtronic breach (60,000/mo)</li>
+      <li><strong>Affiliates:</strong> Bitdefender</li>
+      <li><strong>Priority:</strong> P1</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">10. Fast16 Malware Sabotaged Nuclear Weapons Tests</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-17-fast16-nuclear-sabotage-malware.md</code></li>
+      <li><strong>Words:</strong> ~1,647 (target: 2,500)</li>
+      <li><strong>Keywords:</strong> Fast16 malware nuclear sabotage (500,000/mo)</li>
+      <li><strong>Affiliates:</strong> NordVPN/NordPass, Bitdefender, ExpressVPN, 1Password</li>
+      <li><strong>Priority:</strong> P0</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">11. FBI Remotely Cleared Russian Malware from Thousands of Routers</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-17-fbi-router-cleanup-gru-malware.md</code></li>
+      <li><strong>Words:</strong> ~1,698 (target: 2,800 — may need expansion)</li>
+      <li><strong>Keywords:</strong> FBI removes Russian malware from routers (350,000/mo)</li>
+      <li><strong>Affiliates:</strong> NordVPN/NordPass, ExpressVPN, Bitdefender, 1Password</li>
+      <li><strong>Priority:</strong> P0</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">12. Microsoft BitLocker Encryption Bypassed</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-17-bitlocker-bypass-yellowkey.md</code></li>
+      <li><strong>Words:</strong> ~1,889 (target: 2,600)</li>
+      <li><strong>Keywords:</strong> BitLocker bypass vulnerability (200,000/mo)</li>
+      <li><strong>Affiliates:</strong> NordVPN/NordPass, ExpressVPN, 1Password, Malwarebytes</li>
+      <li><strong>Priority:</strong> P0</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">13. OpenAI Lawsuit: ChatGPT Shared Your Data with Google and Meta</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-17-openai-privacy-lawsuit-chatgpt.md</code></li>
+      <li><strong>Words:</strong> ~1,916 (target: 2,500)</li>
+      <li><strong>Keywords:</strong> OpenAI privacy lawsuit ChatGPT data sharing (500,000/mo)</li>
+      <li><strong>Affiliates:</strong> NordVPN/NordPass, ExpressVPN, 1Password, NordPass</li>
+      <li><strong>Priority:</strong> P1</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">14. Linux Zero-Day Crisis: From CopyFail to SSH Key Theft</div>
+    <ul>
+      <li><strong>File:</strong> <code>2026-05-17-linux-zero-day-crisis-may-2026.md</code></li>
+      <li><strong>Words:</strong> ~2,251 (target: 3,000)</li>
+      <li><strong>Keywords:</strong> Linux kernel SSH host key theft vulnerability (200,000/mo)</li>
+      <li><strong>Affiliates:</strong> Bitdefender, Malwarebytes, NordVPN/NordPass, 1Password</li>
+      <li><strong>Priority:</strong> P0</li>
+    </ul>
+  </div>
+
+  <h2>Template Types Used</h2>
+  <ul>
+    <li><strong>Comparison + Buyer's Guide</strong> — Best VPN (BOFU), WordPress Hosting (BOFU), Cybersecurity Toolkit (TOFU)</li>
+    <li><strong>Pillar Guide</strong> — Small Business Cybersecurity (TOFU)</li>
+    <li><strong>Newsjacking + Protection Guide</strong> — cPanel, Canvas, Cushman, Medtronic, Fast16, FBI Router, BitLocker, OpenAI, Linux Zero-Day, Bluekit (all reactive)</li>
+  </ul>
+
+  <h2>Affiliate Link Status</h2>
+  <div class="card">
+    <p><span class="warn">⚠️ ALL programs are in 'discovered' or 'alerted' status</span> — no 'active' programs with real affiliate links exist. Every article uses <code>[AFFILIATE_LINK:{program_name}]</code> placeholders.</p>
+    <h3>Most-Used Programs (Cross-Article)</h3>
+    <ul>
+      <li><strong>NordVPN / NordPass</strong> — 11 of 14 articles (VPN + password manager cross-sell)</li>
+      <li><strong>1Password</strong> — 8 of 14 articles (password manager for reactive content)</li>
+      <li><strong>Bitdefender</strong> — 9 of 14 articles (antivirus across all categories)</li>
+      <li><strong>ExpressVPN</strong> — 4 of 14 articles (premium VPN in reactive content)</li>
+      <li><strong>Hostinger</strong> — 3 of 14 articles (budget hosting)</li>
+      <li><strong>WP Engine</strong> — hosting comparison anchor ($200+/sale, 180-day cookie)</li>
+      <li><strong>Malwarebytes</strong> — 3 of 14 articles (secondary scanner)</li>
+    </ul>
+    <p><strong>Priority programs for link provisioning:</strong> NordVPN/NordPass, Bitdefender, 1Password, WP Engine, ExpressVPN</p>
+  </div>
+
+  <h2>Quality Notes</h2>
+  <ul>
+    <li>✅ All articles include FTC disclosure at top of body copy</li>
+    <li>✅ All articles use H2/H3 heading hierarchy for readability</li>
+    <li>✅ All articles include JSON-LD schema suggestions in frontmatter</li>
+    <li>✅ All articles end with clear CTA routing through affiliate placeholders</li>
+    <li>✅ HPASCA framework applied: Hook → Problem → Agitate → Solution → Credibility → Action</li>
+    <li>⚠️ Internal link placeholders present but no live interlinking yet</li>
+    <li>⚠️ Some articles below target word count (Cushman 1,388, Fast16 1,647, FBI Router 1,698 — may need expansion pass)</li>
+  </ul>
+
+  <h2>Action Items</h2>
+  <div class="card">
+    <h3>Priority Publishing Order</h3>
+    <ol>
+      <li><strong>P0:</strong> cPanel CVE, Canvas Breach, Fast16 Nuclear, FBI Router, BitLocker, Linux Zero-Day, Cushman Wakefield (high search volume + breaking news)</li>
+      <li><strong>P1-P2:</strong> Cybersecurity Small Business Guide, Cybersecurity Toolkit, Best VPN, WordPress Hosting, Medtronic, OpenAI Lawsuit, Bluekit</li>
+    </ol>
+    <h3>Missing Links</h3>
+    <p>No real affiliate links provisioned yet across all 14 articles. Run the Sign-up Reminder Agent to transition highest-scoring programs to 'alerted' status. Highest priority: NordVPN/NordPass (11 articles), Bitdefender (9 articles), 1Password (8 articles).</p>
+  </div>
+
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-18</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Trend Agent — Daily Monitor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Trend Agent — Daily Monitor</h1>
+  <div class="meta">Generated: 2026-05-23 05:18 UTC<br>Source: Reddit (r/netsec, r/cybersecurity, r/privacy, r/artificial), HaveIBeenPwned API, BleepingComputer, TechCrunch Security, TheRegister, CyberNews, Kaspersky</div>
+  
+<div class="stats">
+  <div class="stat"><div class="stat-value">156</div><div class="stat-label">Total Events</div></div>
+  <div class="stat"><div class="stat-value">24</div><div class="stat-label">Urgency 9+ Alerts</div></div>
+  <div class="stat"><div class="stat-value">20</div><div class="stat-label">Urgency 8 Events</div></div>
+  <div class="stat"><div class="stat-value">50</div><div class="stat-label">HIBP Breaches</div></div>
+</div>
+
+<h2>🔴 Urgency 9+ Alerts</h2>
+
+<div class="card">
+  <div class="card-title"><a href="https://reddit.com/r/cybersecurity/comments/1tkouk5/trend_micro_warns_of_apex_one_zeroday_exploited/" target="_blank">Trend Micro warns of Apex One zero-day exploited in the wild</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: r/cybersecurity</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://reddit.com/r/cybersecurity/comments/1tkdedb/millions_of_nginx_servers_face_fresh_zeroday/" target="_blank">Millions of NGINX Servers Face Fresh Zero-Day Concerns After Recent Rift Patch dubbed "nginx-poolslip"</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: r/cybersecurity</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://reddit.com/r/cybersecurity/comments/1tkfk0l/14_npmpypiai_supplychain_threats_today_20260522/" target="_blank">14 npm/PyPI/AI Supply-Chain Threats Today (2026-05-22): Critical Worms, Credential Harvesting, and RCEs</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: r/cybersecurity</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/000webhost" target="_blank">Data Breach: 000webhost (000webhost.com) — 14,936,670 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/1win" target="_blank">Data Breach: 1win (1win.com) — 96,166,543 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/2844Breaches" target="_blank">Data Breach: 2,844 Separate Data Breaches () — 80,115,532 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/500px" target="_blank">Data Breach: 500px (500px.com) — 14,867,999 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/8fit" target="_blank">Data Breach: 8fit (8fit.com) — 15,025,407 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/8tracks" target="_blank">Data Breach: 8tracks (8tracks.com) — 17,979,961 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/Acuity" target="_blank">Data Breach: Acuity () — 14,055,729 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/ADDI" target="_blank">Data Breach: Addi (addi.com) — 34,532,941 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/Adobe" target="_blank">Data Breach: Adobe (adobe.com) — 152,445,165 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/AdultFriendFinder2016" target="_blank">Data Breach: Adult FriendFinder (2016) (adultfriendfinder.com) — 169,746,810 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/AdvanceAutoParts" target="_blank">Data Breach: Advance Auto Parts (advanceautoparts.com) — 79,243,727 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/AIType" target="_blank">Data Breach: ai.type (aitype.com) — 20,580,060 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/AlienStealerLogs" target="_blank">Data Breach: ALIEN TXTBASE Stealer Logs () — 284,132,969 accounts exposed</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://techcrunch.com/2026/05/19/hackers-have-compromised-dozens-of-popular-open-source-packages-in-an-ongoing-supply-chain-attack/" target="_blank">Hackers have compromised dozens of popular open source packages in an ongoing supply-chain attack</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: techcrunch</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://www.theregister.com/ai-ml/2026/05/11/google-says-criminals-used-ai-built-zero-day-in-planned-mass-hack-spree/5237982" target="_blank">Google says criminals used AI-built zero-day in planned mass hack spree GTIG says AI-powered hacking has moved well beyond phishing emails and chatbot</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: theregister</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://www.theregister.com/patches/2026/05/15/cisco-discloses-yet-another-sd-wan-make-me-admin-0-day/5241071" target="_blank">Patch time for Cisco SD-WAN admins as vendor drops yet another make-me-admin zero-day CISA hands feds super-tight deadline for this perfect-10, active</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: theregister</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://www.theregister.com/patches/2026/05/13/doozy-of-a-patch-tuesday-includes-30-critical-microsoft-cves/5239224" target="_blank">Doozy of a Patch Tuesday includes 30 critical Microsoft CVEs The good news: no 0-days. The bad news: busy week ahead for Microsoft admins</a></div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: theregister</span>
+</div>
+<div class="card">
+  <div class="card-title">Doozy of a Patch Tuesday includes 30 critical Microsoft CVEs</div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: theregister</span>
+</div>
+<div class="card">
+  <div class="card-title">Google says criminals used AI-built zero-day in planned mass hack spree</div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: theregister</span>
+</div>
+<div class="card">
+  <div class="card-title">Hackers have compromised dozens of popular open source packages in an ongoing supply-chain attack</div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: techcrunch</span>
+</div>
+<div class="card">
+  <div class="card-title">Patch time for Cisco SD-WAN admins as vendor drops yet another make-me-admin zero-day</div>
+  <span class="tag" style="background:#d29922;color:#fff;">Urgency 9</span>
+  <span class="tag">Source: theregister</span>
+</div>
+<h2>⚠️ Urgency 8 Events</h2>
+<div class="card">
+  <div class="card-title"><a href="https://reddit.com/r/netsec/comments/1tktr0o/cve20269256_nginxpoolslip_another_new/" target="_blank">CVE-2026-9256 - "nginx-poolslip", another new vulnerability in the rewrite module</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: r/netsec</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://reddit.com/r/netsec/comments/1tjow98/cve202640369_twelve_bytes_to_escape_the_browser/" target="_blank">CVE-2026-40369: Twelve Bytes to Escape the Browser Sandbox</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: r/netsec</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/123RF" target="_blank">Data Breach: 123RF (123rf.com) — 8,661,578 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/126" target="_blank">Data Breach: 126 (126.com) — 6,414,191 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/17Media" target="_blank">Data Breach: 17 (17app.co) — 4,009,640 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/17173" target="_blank">Data Breach: 17173 (17173.com) — 7,485,802 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/7k7k" target="_blank">Data Breach: 7k7k (7k7k.com) — 9,121,434 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/AbuseWithUs" target="_blank">Data Breach: AbuseWith.Us (abusewith.us) — 1,372,550 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/ActMobile" target="_blank">Data Breach: ActMobile (actmobile.com) — 1,583,193 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/Adapt" target="_blank">Data Breach: Adapt (adapt.io) — 9,363,740 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/ADDA" target="_blank">Data Breach: ADDA (adda.io) — 1,829,314 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/Adecco" target="_blank">Data Breach: Adecco (adecco.com) — 4,284,538 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/ABFRL" target="_blank">Data Breach: Aditya Birla Fashion and Retail (abfrl.com) — 5,470,063 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/Adpost" target="_blank">Data Breach: Adpost (adpost.com) — 3,339,512 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/ADT" target="_blank">Data Breach: ADT (adt.com) — 5,488,888 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/AdultFriendFinder" target="_blank">Data Breach: Adult FriendFinder (2015) (adultfriendfinder.com) — 3,867,997 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/Aipai" target="_blank">Data Breach: Aipai.com (aipai.com) — 6,496,778 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/AllianzLife" target="_blank">Data Breach: Allianz Life (allianzlife.com) — 1,115,061 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/Altenen" target="_blank">Data Breach: Altenen (altenens.is) — 1,267,701 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<div class="card">
+  <div class="card-title"><a href="https://haveibeenpwned.com/breaches/Amtrak" target="_blank">Data Breach: Amtrak (amtrak.com) — 2,147,679 accounts exposed</a></div>
+  <span class="tag">Urgency 8</span>
+  <span class="tag">Source: HIBP</span>
+</div>
+<h2>📊 Source Distribution</h2>
+<div class="card">
+  <ul>
+    <li><span class="highlight">HIBP</span>: 50 events</li>
+    <li><span class="highlight">theregister</span>: 45 events</li>
+    <li><span class="highlight">kaspersky</span>: 18 events</li>
+    <li><span class="highlight">techcrunch</span>: 15 events</li>
+    <li><span class="highlight">r/cybersecurity</span>: 9 events</li>
+    <li><span class="highlight">r/netsec</span>: 9 events</li>
+    <li><span class="highlight">r/privacy</span>: 8 events</li>
+    <li><span class="highlight">r/artificial</span>: 2 events</li>
+
+  </ul>
+</div>
+
+<h2>💰 Affiliate Opportunity Map</h2>
+<div class="card">
+  <table style="width:100%;border-collapse:collapse;">
+    <tr style="border-bottom:1px solid #30363d;">
+      <th style="text-align:left;padding:0.5rem;">Product</th>
+      <th style="text-align:left;padding:0.5rem;">Matching Events</th>
+      <th style="text-align:left;padding:0.5rem;">Angle</th>
+    </tr>
+    <tr style="border-bottom:1px solid #21262d;">
+      <td style="padding:0.5rem;color:#58a6ff;font-weight:600;">NordPass</td>
+      <td style="padding:0.5rem;">69</td>
+      <td style="padding:0.5rem;">Password safety & credential hygiene</td>
+    </tr>
+    <tr style="border-bottom:1px solid #21262d;">
+      <td style="padding:0.5rem;color:#e6edf3;font-weight:600;">NordVPN</td>
+      <td style="padding:0.5rem;">15</td>
+      <td style="padding:0.5rem;">Privacy protection & threat prevention</td>
+    </tr>
+    <tr style="border-bottom:1px solid #21262d;">
+      <td style="padding:0.5rem;color:#e6edf3;font-weight:600;">NordLayer</td>
+      <td style="padding:0.5rem;">11</td>
+      <td style="padding:0.5rem;">Enterprise zero-trust & supply chain security</td>
+    </tr>
+    <tr style="border-bottom:1px solid #21262d;">
+      <td style="padding:0.5rem;color:#e6edf3;font-weight:600;">ClickBank (Security)</td>
+      <td style="padding:0.5rem;">22</td>
+      <td style="padding:0.5rem;">Security training & antimalware tools</td>
+    </tr>
+  </table>
+</div>
+
+<h2>🔑 Key Patterns Today</h2>
+<div class="card">
+  <ol>
+    <li>Multiple zero-day / CVE disclosures: Trend Micro Apex One, NGINX poolslip (CVE-2026-9256), Cisco SD-WAN, and browser sandbox escape (CVE-2026-40369)</li>
+    <li>Active supply-chain attacks on npm/PyPI/AI packages — ongoing compromise of open-source ecosystem</li>
+    <li>AI-powered threats escalating: Google reports criminals used AI-built zero-day; AI supply-chain risks</li>
+    <li>Massive HIBP data set loaded — 31 major breaches including Adobe (152M), Adult FriendFinder (170M), ALIEN TXTBASE (284M)</li>
+    <li>Patch Tuesday: 30 critical Microsoft CVEs — no zero-days but heavy workload for IT teams</li>
+    <li>Drupal critical patch advisory — details pending release</li>
+    <li>Linux kernel flaws: Fragnesia (follow-up to Dirty Frag) gives root-level access with public exploit</li>
+
+  </ol>
+</div>
+
+<h2>📋 New Events Today</h2>
+<div class="card">
+  <p>Total new events discovered: <strong>156</strong></p>
+  <p>Events with full content briefs (urgency >= 8): <strong>44</strong></p>
+  <p>Queue saved to: <code>projects/hermes/reactive-content-queue.json</code></p>
+</div>
+
+<h2>🗂️ Recommended Content Actions</h2>
+<div class="card">
+  <ul>
+    <li><strong>Urgent (next 24h):</strong> Create blog post on NGINX poolslip CVE-2026-9256 — affects millions of servers, active discussion</li>
+    <li><strong>Urgent (next 24h):</strong> Write "What To Do After a Data Breach" guide — 284M records in ALIEN TXTBASE breach</li>
+    <li><strong>This week:</strong> Supply-chain security audit guide (npm, PyPI, AI packages) — ongoing attacks</li>
+    <li><strong>This week:</strong> Patch Tuesday roundup — 30 critical Microsoft CVEs</li>
+    <li><strong>Evergreen:</strong> AI security & zero-day defense strategy — multiple AI-built exploit reports</li>
+  </ul>
+</div>
+
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-23 05:18 UTC</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Trend Agent — Daily Monitor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+  .urgency-10 { border-left: 4px solid #f85149; }
+  .urgency-9 { border-left: 4px solid #d29922; }
+  .urgency-8 { border-left: 4px solid #58a6ff; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Trend Agent — Daily Monitor</h1>
+  <div class="meta">Generated: 2026-05-25<br>Source: Reddit (r/netsec, r/cybersecurity, r/privacy, r/artificial), HaveIBeenPwned, TechCrunch Security, TheRegister, BleepingComputer, CyberNews, Kaspersky Blog, ZeroDay</div>
+
+  <h2>&#x1F4CA; Overview</h2>
+  <div class="stats">
+    <div class="stat"><div class="stat-value">271</div><div class="stat-label">Total Events Scanned</div></div>
+    <div class="stat"><div class="stat-value">38</div><div class="stat-label">Urgency >= 9</div></div>
+    <div class="stat"><div class="stat-value">85</div><div class="stat-label">New Queue Entries</div></div>
+    <div class="stat"><div class="stat-value">155</div><div class="stat-label">Total Queue Size</div></div>
+  </div>
+
+  <h2>&#x1F6A8; Urgency 10 — Breaking Alerts</h2>
+
+  <div class="card urgency-10">
+    <div class="card-title">Addi Data Breach — 34.5M Records Exposed</div>
+    <div class="tag">HIBP</div><div class="tag">Breach</div><div class="tag">34M records</div>
+    <p>Major data breach at Addi (Latin American fintech) exposing 34.5 million records including personally identifiable information. Users need to check credential exposure and enable multi-factor authentication.</p>
+    <p><strong>Affiliate: NordPass</strong> — 30% recurring commission. Opportunity to promote password hygiene and credential monitoring.</p>
+  </div>
+
+  <div class="card urgency-10">
+    <div class="card-title">White House Approves $9B for Spy Agencies — AI Surveillance Expansion</div>
+    <div class="tag">Reddit r/privacy</div><div class="tag">Surveillance</div><div class="tag">Fresh: 5h ago</div>
+    <p>The White House has secretly approved $9 billion for US spy agencies to acquire cutting-edge chips for AI model capabilities. Major privacy and surveillance implications.</p>
+    <p><strong>Affiliate: NordVPN</strong> — Up to 70% commission. Angle: anti-surveillance and digital privacy protection.</p>
+  </div>
+
+  <div class="card urgency-10">
+    <div class="card-title">TrapDoor Supply-Chain Campaign — npm, PyPI, Crates.io Compromised</div>
+    <div class="tag">Reddit r/cybersecurity</div><div class="tag">Supply Chain</div><div class="tag">11h ago</div>
+    <p>Coordinated supply-chain attack spreading malicious packages across three major package registries. Targets dev environments, crypto tooling, AWS/GitHub credentials, and AI coding assistant config files (.cursorrules, CLAUDE.md).</p>
+    <p><strong>Affiliate: NordLayer</strong> — Zero-trust network access for dev teams. <strong>ClickBank DevSecOps</strong> — security training.</p>
+  </div>
+
+  <div class="card urgency-10">
+    <div class="card-title">AI-Driven Superhacking Threats Focus on New Zealand</div>
+    <div class="tag">Reddit r/cybersecurity</div><div class="tag">AI Threats</div><div class="tag">9h ago</div>
+    <p>New Zealand emerging as focal point for AI-driven cyberattack campaigns. Potential increase in automated, AI-augmented penetration attempts against infrastructure.</p>
+    <p><strong>Affiliate: NordVPN</strong> — VPN and general security tools. <strong>ClickBank Antivirus</strong> — malware protection.</p>
+  </div>
+
+  <div class="card urgency-10">
+    <div class="card-title">Governments Increasingly Assume Offensive Cyber Tools as State Power</div>
+    <div class="tag">Reddit r/cybersecurity</div><div class="tag">Cyber Warfare</div><div class="tag">19h ago</div>
+    <p>Governments openly adopting offensive cyber capabilities as standard state power tools — major implications for global cybersecurity landscape and civilian infrastructure.</p>
+    <p><strong>Affiliate: NordVPN</strong> — Privacy and security tools for individuals.</p>
+  </div>
+
+  <h2>&#x26A0;&#xFE0F; Urgency 9 — Critical</h2>
+
+  <div class="card urgency-9">
+    <div class="card-title">GitHub Actions Cache Poisoning Is Eating Open Source</div>
+    <div class="tag">Reddit r/netsec</div><div class="tag">DevOps</div>
+    <p>Critical vulnerability in GitHub Actions caching mechanism that allows cache poisoning attacks against open source supply chains. Affects thousands of projects.</p>
+    <p><strong>Affiliate: NordLayer</strong> — Zero-trust access. <strong>ClickBank DevSecOps</strong> — Training.</p>
+  </div>
+
+  <div class="card urgency-9">
+    <div class="card-title">12K n8n Templates Audited — Most Have Critical Vulnerabilities</div>
+    <div class="tag">Reddit r/netsec</div><div class="tag">Automation Security</div>
+    <p>Audit of 12,000 n8n workflow templates reveals critical security vulnerabilities in the majority. Major concern for automation-heavy organizations.</p>
+    <p><strong>Affiliate: ClickBank DevSecOps</strong> — Security training. <strong>NordLayer</strong> — Enterprise security.</p>
+  </div>
+
+  <h2>&#x1F535; Urgency 8 — Notable Events</h2>
+
+  <div class="card urgency-8">
+    <div class="card-title">7-Eleven Data Breach — 185K Records Exposed</div>
+    <div class="tag">HIBP</div><div class="tag">Breach</div>
+    <p>7-Eleven breach exposed 185,256 records. Verified on HaveIBeenPwned.</p>
+    <p><strong>Affiliate: NordPass</strong> — Credential checking and password management.</p>
+  </div>
+
+  <div class="card urgency-8">
+    <div class="card-title">Kash Patel Apparel Site — Malware Distribution Attempt</div>
+    <div class="tag">Reddit r/privacy</div><div class="tag">Malware</div><div class="tag">Scam Alert</div>
+    <p>Political figure apparel website attempting to trick visitors into downloading malware. Phishing + malware distribution campaign.</p>
+    <p><strong>Affiliate: NordVPN</strong> — Web protection. <strong>ClickBank Antivirus</strong> — Malware scanning.</p>
+  </div>
+
+  <div class="card urgency-8">
+    <div class="card-title">Anthropic Mythos — 10,000+ Vulnerabilities Discovered</div>
+    <div class="tag">Reddit r/cybersecurity</div><div class="tag">AI Security</div>
+    <p>Anthropic automated vulnerability discovery system (Mythos) has identified over 10,000 security vulnerabilities. Major milestone for AI-assisted security.</p>
+    <p><strong>Affiliate: ClickBank AI Security</strong> — AI security training. <strong>NordVPN</strong> — General security.</p>
+  </div>
+
+  <h2>&#x1F4CB; New Content Queue Entries</h2>
+
+  <h3>&#x1F534; Urgency 10 (Content Briefs Created)</h3>
+  <ul>
+    <li><strong>ID 71</strong> | White House $9B spy AI surveillance (NordVPN)</li>
+    <li><strong>ID 72</strong> | Offensive cyber tools as state power (NordVPN)</li>
+    <li><strong>ID 73</strong> | AI fake art movement duped Google (NordVPN, AI Security)</li>
+    <li><strong>ID 74</strong> | NZ superhacking focal point (NordVPN, Antivirus)</li>
+    <li><strong>ID 75</strong> | Nmap on Linux guide (NordVPN)</li>
+    <li><strong>ID 76</strong> | Brand problem in AI age (NordVPN, AI Security)</li>
+    <li><strong>ID 77</strong> | Illinois privacy bill HB5511 (NordVPN, NordPass)</li>
+    <li><strong>ID 78</strong> | TrapDoor supply chain (NordLayer, DevSecOps)</li>
+    <li><strong>ID 79</strong> | <span class="error">Addi — 34.5M records breached</span> (NordPass, ID Theft)</li>
+    <li><strong>ID 80</strong> | Future phishing targeting AI agents (NordVPN, AI Security)</li>
+  </ul>
+
+  <h3>&#x1F7E1; Urgency 8-9</h3>
+  <ul>
+    <li><strong>ID 81</strong> | GitHub Actions Cache Poisoning (NordLayer, DevSecOps)</li>
+    <li><strong>ID 82</strong> | 12K n8n templates vulnerabilities (DevSecOps)</li>
+    <li><strong>ID 83</strong> | Kash Patel malware trick (NordVPN, Antivirus)</li>
+    <li><strong>ID 84</strong> | Anthropic Mythos 10K+ vulns (AI Security)</li>
+    <li><strong>ID 85</strong> | <span class="warn">7-Eleven — 185K records</span> (NordPass, ID Theft)</li>
+  </ul>
+
+  <h3>&#x1F7E2; Notable HIBP Breaches (NordPass/Affiliate Mapped)</h3>
+  <ul>
+    <li>ID 86 | ADT — 5.4M records</li>
+    <li>ID 89 | Amtrak — 2.1M records</li>
+    <li>ID 97 | ALIEN TXTBASE Stealer Logs — 284M records</li>
+    <li>ID 99 | 1win — 96M records</li>
+    <li>ID 104 | Advance Auto Parts — 79M records</li>
+    <li>ID 106 | Acuity — 14M records</li>
+    <li>ID 109 | ApexSMS — 23M records</li>
+    <li>ID 121 | Aptoide — 20M records</li>
+    <li>ID 123 | Adult FriendFinder 2016 — 169M records</li>
+    <li>ID 128 | Animoto — 22M records</li>
+    <li>ID 130 | 500px — 14.8M records</li>
+    <li>ID 131 | 8fit — 15M records</li>
+    <li>ID 134 | Apollo — 125M records</li>
+    <li>ID 136 | 2,844 Breaches Combined — 80M records</li>
+    <li>ID 137 | 8tracks — 17.9M records</li>
+    <li>ID 140 | ai.type — 20.5M records</li>
+    <li>ID 144 | Anti Public Combo List — 457M records</li>
+    <li>ID 152 | Ashley Madison — 30.8M records</li>
+    <li>ID 155 | Adobe — 152M records</li>
+  </ul>
+
+  <h2>&#x1F4C8; Affiliate Opportunity Summary</h2>
+  <div class="card">
+    <table width="100%" cellpadding="8" style="border-collapse: collapse;">
+      <tr style="border-bottom: 1px solid #30363d;"><th align="left">Product</th><th align="left">Events</th><th align="left">Commission</th><th align="left">Top Angle</th></tr>
+      <tr><td><strong>NordPass</strong></td><td>80+ breaches</td><td>30% recurring</td><td>"Check if exposed"</td></tr>
+      <tr><td><strong>NordVPN</strong></td><td>10 events</td><td>Up to 70%</td><td>"Anti-surveillance"</td></tr>
+      <tr><td><strong>NordLayer</strong></td><td>2 events</td><td>Referral</td><td>"Zero-trust for devs"</td></tr>
+      <tr><td><strong>ClickBank Security</strong></td><td>15+ events</td><td>50-75%</td><td>ID theft protection</td></tr>
+    </table>
+  </div>
+
+  <h2>&#x1F50D; Key Patterns</h2>
+  <ul>
+    <li><strong>AI + Surveillance Dominates:</strong> 4 of top 10 stories involve AI surveillance or AI-driven cyber threats</li>
+    <li><strong>Supply Chain Attacks Continue:</strong> TrapDoor hits 3 registries — evolving TTPs</li>
+    <li><strong>DevOps Pipeline Security:</strong> GitHub Actions cache + n8n templates = growing attack surface</li>
+    <li><strong>HIBP Heavy:</strong> 75 breaches scanned, Addi (34.5M) freshest</li>
+    <li><strong>NordPass Always Wins:</strong> Every breach maps to credential checking — strongest affiliate play</li>
+  </ul>
+
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-25</div>
+</div>
+</body>
+</html>

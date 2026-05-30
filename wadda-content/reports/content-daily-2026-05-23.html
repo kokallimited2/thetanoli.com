@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Content Agent — Article Generation</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Content Agent — Article Generation</h1>
+  <div class="meta">Generated: 2026-05-23<br>Source: Content Briefs from SEO Agent</div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-value">11</div><div class="stat-label">Articles Generated</div></div>
+    <div class="stat"><div class="stat-value">25,044</div><div class="stat-label">Total Words</div></div>
+    <div class="stat"><div class="stat-value">2,277</div><div class="stat-label">Avg Words/Article</div></div>
+    <div class="stat"><div class="stat-value">9</div><div class="stat-label">Content Briefs Used</div></div>
+  </div>
+
+  <h2>📋 Articles Generated — May 23, 2026</h2>
+
+  <div class="card">
+    <div class="card-title">1. cPanel CVE-2026-41940: 44,000 Servers Hacked</div>
+    <strong>File:</strong> <code>2026-05-23-cpanel-cve-2026-41940.md</code><br>
+    <strong>Words:</strong> 2,377 | <strong>Funnel:</strong> TOFU/MOFU | <strong>Template:</strong> Breaking News + Emergency Action<br>
+    <strong>Target KD:</strong> cPanel CVE-2026-41940 (150K/mo)<br>
+    <strong>Affiliates:</strong> Liquid Web/Nexcess, Hostinger, Bitdefender<br>
+    <strong>Schema:</strong> NewsArticle, HowTo, FAQPage<br>
+    <strong>Priority:</strong> P0 | <strong>Brief:</strong> HERMES-BRIEF-2026-0505-003
+  </div>
+
+  <div class="card">
+    <div class="card-title">2. Canvas Data Breach: 275 Million Students Affected</div>
+    <strong>File:</strong> <code>2026-05-23-canvas-data-breach.md</code><br>
+    <strong>Words:</strong> 2,542 | <strong>Funnel:</strong> TOFU/MOFU | <strong>Template:</strong> Breaking News + Impact Analysis + Protection<br>
+    <strong>Target KD:</strong> Canvas data breach (200K/mo)<br>
+    <strong>Affiliates:</strong> 1Password, NordVPN<br>
+    <strong>Schema:</strong> NewsArticle, FAQPage, HowTo<br>
+    <strong>Priority:</strong> P0 | <strong>Brief:</strong> HERMES-BRIEF-2026-0505-004
+  </div>
+
+  <div class="card">
+    <div class="card-title">3. Cushman & Wakefield Breach: 500K Records Stolen</div>
+    <strong>File:</strong> <code>2026-05-23-cushman-wakefield-breach.md</code><br>
+    <strong>Words:</strong> 1,984 | <strong>Funnel:</strong> TOFU/MOFU | <strong>Template:</strong> News Analysis + Enterprise Security Guide<br>
+    <strong>Target KD:</strong> Cushman Wakefield breach (80K/mo)<br>
+    <strong>Affiliates:</strong> HubSpot<br>
+    <strong>Schema:</strong> NewsArticle, FAQPage<br>
+    <strong>Priority:</strong> P0 | <strong>Brief:</strong> HERMES-BRIEF-2026-0505-005
+  </div>
+
+  <div class="card">
+    <div class="card-title">4. Fast16 Malware: Nuclear Weapons Tests Sabotaged</div>
+    <strong>File:</strong> <code>2026-05-23-fast16-malware-nuclear-sabotage.md</code><br>
+    <strong>Words:</strong> 2,329 | <strong>Funnel:</strong> TOFU/MOFU | <strong>Template:</strong> Breaking News Analysis + Protection<br>
+    <strong>Target KD:</strong> Fast16 malware nuclear sabotage (500K/mo)<br>
+    <strong>Affiliates:</strong> NordVPN/NordPass, Bitdefender, ExpressVPN, 1Password<br>
+    <strong>Schema:</strong> NewsArticle, FAQPage, HowTo<br>
+    <strong>Priority:</strong> P0 | <strong>Brief:</strong> HERMES-BRIEF-20260517-010
+  </div>
+
+  <div class="card">
+    <div class="card-title">5. FBI Remotely Cleared Russian Malware from Thousands of Routers</div>
+    <strong>File:</strong> <code>2026-05-23-fbi-router-malware-removal.md</code><br>
+    <strong>Words:</strong> 2,660 | <strong>Funnel:</strong> TOFU/MOFU | <strong>Template:</strong> Breaking News + Router Security Audit<br>
+    <strong>Target KD:</strong> FBI removes Russian malware from routers (350K/mo)<br>
+    <strong>Affiliates:</strong> NordVPN/NordPass, ExpressVPN, Bitdefender, 1Password<br>
+    <strong>Schema:</strong> NewsArticle, HowTo, FAQPage<br>
+    <strong>Priority:</strong> P0 | <strong>Brief:</strong> HERMES-BRIEF-20260517-011
+  </div>
+
+  <div class="card">
+    <div class="card-title">6. Microsoft BitLocker Encryption Bypassed</div>
+    <strong>File:</strong> <code>2026-05-23-bitlocker-bypass-vulnerability.md</code><br>
+    <strong>Words:</strong> 2,046 | <strong>Funnel:</strong> TOFU/MOFU | <strong>Template:</strong> Breaking News + Data Protection Guide<br>
+    <strong>Target KD:</strong> BitLocker bypass vulnerability (200K/mo)<br>
+    <strong>Affiliates:</strong> NordVPN/NordPass, ExpressVPN, 1Password, Bitdefender<br>
+    <strong>Schema:</strong> NewsArticle, FAQPage, HowTo<br>
+    <strong>Priority:</strong> P0 | <strong>Brief:</strong> HERMES-BRIEF-20260517-012
+  </div>
+
+  <div class="card">
+    <div class="card-title">7. Bluekit: AI-Powered Phishing Platform</div>
+    <strong>File:</strong> <code>2026-05-23-bluekit-phishing-platform.md</code><br>
+    <strong>Words:</strong> 1,901 | <strong>Funnel:</strong> TOFU/MOFU | <strong>Template:</strong> Threat Intelligence + Defense Guide<br>
+    <strong>Target KD:</strong> Bluekit phishing (40K/mo)<br>
+    <strong>Affiliates:</strong> Bitdefender, Norton<br>
+    <strong>Schema:</strong> NewsArticle, FAQPage, HowTo<br>
+    <strong>Priority:</strong> P2 | <strong>Brief:</strong> HERMES-BRIEF-2026-0505-007
+  </div>
+
+  <div class="card">
+    <div class="card-title">8. Small Business Cybersecurity Guide (Pillar)</div>
+    <strong>File:</strong> <code>2026-05-23-small-business-cybersecurity-guide.md</code><br>
+    <strong>Words:</strong> 3,120 | <strong>Funnel:</strong> TOFU/MOFU | <strong>Template:</strong> Comprehensive Pillar Guide<br>
+    <strong>Target KD:</strong> cybersecurity for small business (90K/mo)<br>
+    <strong>Affiliates:</strong> NordVPN/NordPass, Bitdefender<br>
+    <strong>Schema:</strong> Article, FAQPage, HowTo<br>
+    <strong>Priority:</strong> P1 | <strong>Brief:</strong> HERMES-BRIEF-2026-0505-001
+  </div>
+
+  <div class="card">
+    <div class="card-title">9. Best VPN for Small Business 2026</div>
+    <strong>File:</strong> <code>2026-05-23-best-vpn-small-business.md</code><br>
+    <strong>Words:</strong> 2,260 | <strong>Funnel:</strong> BOFU | <strong>Template:</strong> Comparison Review<br>
+    <strong>Target KD:</strong> best VPN for small business (12K/mo, transactional)<br>
+    <strong>Affiliates:</strong> NordLayer (primary), Perimeter 81, PureVPN, NordVPN<br>
+    <strong>Schema:</strong> Article, Product, Review, FAQPage<br>
+    <strong>Priority:</strong> P0 | <strong>Brief:</strong> HERMES-BRIEF-2026-0505-002
+  </div>
+
+  <div class="card">
+    <div class="card-title">10. Ultimate Cybersecurity Toolkit 2026</div>
+    <strong>File:</strong> <code>2026-05-23-ultimate-cybersecurity-toolkit-2026.md</code><br>
+    <strong>Words:</strong> 1,725 | <strong>Funnel:</strong> MOFU | <strong>Template:</strong> Buyer's Guide<br>
+    <strong>Target KD:</strong> best cybersecurity tools 2026 (65K/mo)<br>
+    <strong>Affiliates:</strong> NordVPN/NordPass, Bitdefender, Norton, 1Password, Malwarebytes, ExpressVPN, Bitwarden<br>
+    <strong>Schema:</strong> Article, FAQPage<br>
+    <strong>Priority:</strong> P1 | <strong>Brief:</strong> HERMES-BRIEF-20260517-008
+  </div>
+
+  <div class="card">
+    <div class="card-title">11. Best Secure WordPress Hosting 2026</div>
+    <strong>File:</strong> <code>2026-05-23-best-secure-wordpress-hosting.md</code><br>
+    <strong>Words:</strong> 2,100 | <strong>Funnel:</strong> BOFU | <strong>Template:</strong> Comparison Review + Security Audit<br>
+    <strong>Target KD:</strong> best managed WordPress hosting security (18K/mo, transactional)<br>
+    <strong>Affiliates:</strong> WP Engine, Kinsta, Cloudways, Liquid Web/Nexcess, Hostinger, Bluehost, Scala Hosting<br>
+    <strong>Schema:</strong> Article, Product, Review, FAQPage<br>
+    <strong>Priority:</strong> P0 | <strong>Brief:</strong> HERMES-BRIEF-20260517-009
+  </div>
+
+  <h2>📊 Template Types Used</h2>
+  <ul>
+    <li><strong>Breaking News + Emergency Action Guide (x4):</strong> cPanel CVE, Canvas Breach, Fast16, FBI Router</li>
+    <li><strong>Breaking News + Protection Guide (x2):</strong> BitLocker Bypass, Bluekit Phishing</li>
+    <li><strong>News Analysis + Enterprise Guide (x1):</strong> Cushman & Wakefield Breach</li>
+    <li><strong>Comprehensive Pillar Guide (x1):</strong> Small Business Cybersecurity Guide</li>
+    <li><strong>Comparison Review (x2):</strong> Best VPN for SMB, Best Secure WordPress Hosting</li>
+    <li><strong>Buyer's Guide (x1):</strong> Ultimate Cybersecurity Toolkit 2026</li>
+  </ul>
+
+  <h2>🔗 Affiliate Program Usage</h2>
+  <ul>
+    <li><span class="highlight">NordVPN/NordPass</span> — Used in 7 articles (top seller)</li>
+    <li><span class="highlight">Bitdefender</span> — Used in 7 articles</li>
+    <li><span class="highlight">1Password</span> — Used in 5 articles</li>
+    <li><span class="highlight">ExpressVPN</span> — Used in 3 articles</li>
+    <li><span class="highlight">Hostinger</span> — Used in 3 articles</li>
+    <li><span class="highlight">Liquid Web/Nexcess</span> — Used in 2 articles</li>
+    <li><span class="highlight">Norton</span> — Used in 2 articles</li>
+    <li><span class="highlight">NordLayer</span> — Used in 1 article</li>
+    <li><span class="highlight">Perimeter 81</span> — Used in 1 article</li>
+    <li><span class="highlight">PureVPN</span> — Used in 1 article</li>
+    <li><span class="highlight">WP Engine</span> — Used in 1 article</li>
+    <li><span class="highlight">Kinsta</span> — Used in 1 article</li>
+    <li><span class="highlight">Cloudways</span> — Used in 1 article</li>
+    <li><span class="highlight">Bluehost</span> — Used in 1 article</li>
+    <li><span class="highlight">Scala Hosting</span> — Used in 1 article</li>
+    <li><span class="highlight">HubSpot</span> — Used in 1 article</li>
+    <li><span class="highlight">Malwarebytes</span> — Used in 1 article</li>
+    <li><span class="highlight">Bitwarden</span> — Used in 1 article</li>
+  </ul>
+
+  <h2>📝 Quality Notes</h2>
+  <ul>
+    <li>All articles include FTC disclosure as first line</li>
+    <li>All articles include JSON-LD schema suggestions (NewsArticle, FAQPage, HowTo, Product as appropriate)</li>
+    <li>All articles include HPASCA framework: Hook, Problem, Agitate, Solution, Credibility, Action</li>
+    <li>Internal links use slug-based URLs for consistent cross-linking between articles</li>
+    <li>Affiliate links use [AFFILIATE_LINK:program_name] placeholder format — replace with actual affiliate URLs before publishing</li>
+    <li>Secondary keywords naturally integrated throughout each article</li>
+    <li>Catchy titles designed for both search CTR and social sharing</li>
+    <li>Each article ends with a clear CTA that routes through affiliate links</li>
+    <li>Articles reference real 2026 events (cPanel CVE, Canvas breach, Fast16, FBI operation) for timeliness</li>
+    <li><span class="warn">⚠ Note:</span> Articles are content-complete but should be reviewed for tone consistency and affiliate link placement before publication</li>
+  </ul>
+
+  <h2>📁 File Locations</h2>
+  <p>All articles saved to: <code>/home/tanoli_folio/.hermes/workspace/projects/hermes/content/drafts/</code></p>
+  <p>Report: <code>/home/tanoli_folio/.hermes/workspace/projects/hermes/reports/content-daily-2026-05-23.html</code></p>
+
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-23</div>
+</div>
+</body>
+</html>

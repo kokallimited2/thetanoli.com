@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Research Agent — Daily Scan</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  .tag-high { display: inline-block; background: #1a3a1a; color: #7ee787; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  .tag-med { display: inline-block; background: #3a2a1a; color: #d29922; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  .tag-low { display: inline-block; background: #3a1a1a; color: #f85149; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  .stat-value-alerted { font-size: 1.5rem; font-weight: 700; color: #7ee787; }
+  .stat-value-backlog { font-size: 1.5rem; font-weight: 700; color: #f85149; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th { background: #1f2937; color: #8b949e; font-size: 0.85rem; text-transform: uppercase; padding: 0.5rem; text-align: left; border-bottom: 2px solid #30363d; }
+  td { padding: 0.5rem; border-bottom: 1px solid #21262d; }
+  tr:hover { background: #1c2128; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Research Agent — Daily Scan</h1>
+  <div class="meta">Generated: 2026-05-22<br>Source: Affiliate Collective (13 niches) + UpPromote (VPN, hosting)</div>
+
+  <h2>📊 Pipeline Overview</h2>
+  <div class="stats">
+    <div class="stat"><div class="stat-value">721</div><div class="stat-label">Total Programs</div></div>
+    <div class="stat"><div class="stat-value-alerted">91</div><div class="stat-label">Alerted (Needs Sign-up)</div></div>
+    <div class="stat"><div class="stat-value-backlog">154</div><div class="stat-label">80+ Backlog (Unalerted)</div></div>
+    <div class="stat"><div class="stat-value">630</div><div class="stat-label">Discovered (Pending Review)</div></div>
+  </div>
+
+  <h2>🔍 Sources Scanned</h2>
+  <div class="card">
+    <ul>
+      <li><strong>Affiliate Collective</strong> — 13 niches (905 programs fetched): VPN, Antivirus, Web Hosting, Financial, SaaS, Crypto, Investing, Banking, Budgeting, Identity Protection, Email Marketing, Productivity, Small Business</li>
+      <li><strong>UpPromote</strong> — VPN page (16 programs), Web Hosting page (35 programs)</li>
+    </ul>
+    <p style="margin-top:0.5rem;color:#8b949e;">Result: <strong>0 new programs</strong> from Affiliate Collective (all 905 were already in DB after improved dedup). <strong>4 new programs</strong> from UpPromote.</p>
+  </div>
+
+  <h2>🆕 New Programs Discovered (May 22)</h2>
+  
+  <div class="card">
+    <div class="card-title">🟢 Proton Drive <span class="tag-high">88/140 AGGRESSIVE PROMOTE</span></div>
+    <table>
+      <tr><td style="width:140px;color:#8b949e;">Category</td><td>VPN</td></tr>
+      <tr><td style="color:#8b949e;">Commission</td><td>30% per sale</td></tr>
+      <tr><td style="color:#8b949e;">Cookie</td><td>30 days</td></tr>
+      <tr><td style="color:#8b949e;">Network</td><td>UpPromote</td></tr>
+      <tr><td style="color:#8b949e;">Status</td><td><span class="tag-high">Alerted (auto-transitioned)</span></td></tr>
+      <tr><td style="color:#8b949e;">Notes</td><td>Proton cloud storage — companion to ProtonVPN. Strong brand trust from Proton ecosystem.</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🟢 JohnnyVPS <span class="tag-high">86/140 AGGRESSIVE PROMOTE</span></div>
+    <table>
+      <tr><td style="width:140px;color:#8b949e;">Category</td><td>Web Hosting</td></tr>
+      <tr><td style="color:#8b949e;">Commission</td><td>200% per sale</td></tr>
+      <tr><td style="color:#8b949e;">Cookie</td><td>90 days</td></tr>
+      <tr><td style="color:#8b949e;">Network</td><td>UpPromote</td></tr>
+      <tr><td style="color:#8b949e;">Status</td><td><span class="tag-med">Discovered</span></td></tr>
+      <tr><td style="color:#8b949e;">Notes</td><td>200% commission with 90-day cookie — excellent high-ticket hosting program.</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🟢 Proton Pass <span class="tag-high">86/140 AGGRESSIVE PROMOTE</span></div>
+    <table>
+      <tr><td style="width:140px;color:#8b949e;">Category</td><td>Password Managers</td></tr>
+      <tr><td style="color:#8b949e;">Commission</td><td>50% per sale</td></tr>
+      <tr><td style="color:#8b949e;">Cookie</td><td>30 days</td></tr>
+      <tr><td style="color:#8b949e;">Network</td><td>UpPromote</td></tr>
+      <tr><td style="color:#8b949e;">Status</td><td><span class="tag-med">Discovered</span></td></tr>
+      <tr><td style="color:#8b949e;">Notes</td><td>Proton password manager. 50% commission, excellent for password-manager content.</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🟡 Cactus VPN <span class="tag-med">75/140 SELECTIVE TEST</span></div>
+    <table>
+      <tr><td style="width:140px;color:#8b949e;">Category</td><td>VPN</td></tr>
+      <tr><td style="color:#8b949e;">Commission</td><td>25% per sale</td></tr>
+      <tr><td style="color:#8b949e;">Cookie</td><td>Not stated</td></tr>
+      <tr><td style="color:#8b949e;">Network</td><td>UpPromote</td></tr>
+      <tr><td style="color:#8b949e;">Status</td><td><span class="tag-med">Discovered</span></td></tr>
+      <tr><td style="color:#8b949e;">Notes</td><td>Small niche VPN. Lower commission, no cookie info. Worth monitoring.</td></tr>
+    </table>
+  </div>
+
+  <h2>🔄 Auto-Transitioned to Alerted</h2>
+  <p style="color:#8b949e;margin-bottom:0.8rem;">Top 10 highest-scoring discovered programs promoted to <code>alerted</code> for sign-up reminders:</p>
+  
+  <table>
+    <tr><th>Program</th><th>Category</th><th>Score</th></tr>
+    <tr><td>Norton LifeLock</td><td>Identity Protection</td><td>107/140</td></tr>
+    <tr><td>Calendly</td><td>SaaS</td><td>102/140</td></tr>
+    <tr><td>Coinbase</td><td>Finance Tools</td><td>100/140</td></tr>
+    <tr><td>Google Workspace</td><td>SaaS</td><td>99/140</td></tr>
+    <tr><td>Stripe</td><td>SaaS</td><td>99/140</td></tr>
+    <tr><td>BigCommerce</td><td>SaaS</td><td>98/140</td></tr>
+    <tr><td>The Motley Fool</td><td>Finance Tools</td><td>98/140</td></tr>
+    <tr><td>Vivint</td><td>Home Security</td><td>98/140</td></tr>
+    <tr><td>Liquid Web</td><td>Web Hosting</td><td>98/140</td></tr>
+    <tr><td>Sucuri</td><td>Antivirus</td><td>98/140</td></tr>
+  </table>
+
+  <h2>⚠️ Backlog Alert</h2>
+  <div class="card" style="border-color: #f85149;">
+    <p style="color:#f85149;font-weight:600;">Backlog: 154 unalerted 80+ programs</p>
+    <p style="color:#d29922;margin-top:0.5rem;">⚠️ This exceeds the 20-program threshold by a significant margin (154).</p>
+    <p style="margin-top:0.8rem;">Top backlog programs needing prioritisation:</p>
+    <ol>
+      <li><strong>Answerbase</strong> — 86/140 (SaaS)</li>
+      <li><strong>eUKhost Ltd</strong> — 86/140 (Web Hosting)</li>
+      <li><strong>E-file.com</strong> — 86/140 (Financial)</li>
+      <li><strong>Ticker Tocker</strong> — 86/140 (Financial)</li>
+      <li><strong>Benzinga</strong> — 86/140 (Financial)</li>
+      <li><strong>Freshworks</strong> — 86/140 (SaaS)</li>
+      <li><strong>The Accountant Beside You</strong> — 86/140 (Small Business)</li>
+      <li><strong>Wise</strong> — 86/140 (Small Business)</li>
+      <li><strong>JohnnyVPS</strong> — 86/140 (Web Hosting) — <span class="tag-high">NEW today</span></li>
+      <li><strong>Proton Pass</strong> — 86/140 (Password Managers) — <span class="tag-high">NEW today</span></li>
+    </ol>
+    <p style="margin-top:0.8rem;"><strong>Recommendation:</strong> Manually process the top 15 highest-scorers — sign up, get affiliate links, update status to <code>link-received</code>. The Sign-up Reminder cron (09:00) will prompt for the 10 just transitioned, but 154 more await.</p>
+  </div>
+
+  <h2>🔎 Source Health</h2>
+  <div class="card">
+    <table>
+      <tr><th>Source</th><th>Status</th><th>Notes</th></tr>
+      <tr><td>Affiliate Collective</td><td style="color:#7ee787;">✅ OK</td><td>All 13 niches fetched successfully. __NEXT_DATA__ extraction works. No new programs today.</td></tr>
+      <tr><td>UpPromote VPN</td><td style="color:#7ee787;">✅ OK</td><td>Table parsing works. 16 programs listed, 2 new (Proton Drive, Cactus VPN).</td></tr>
+      <tr><td>UpPromote Hosting</td><td style="color:#7ee787;">✅ OK</td><td>Table parsing works. 35 programs listed, 2 new (JohnnyVPS, Maine Hosting Solutions - added JohnnyVPS only).</td></tr>
+      <tr><td>UpPromote Antivirus</td><td style="color:#d29922;">⚠️ No tables</td><td>Antivirus page has different layout — no HTML tables found. Skipped.</td></tr>
+      <tr><td>AffiliateVault</td><td style="color:#d29922;">⚠️ React SPA</td><td>curl returns loading shell only. Requires browser. Skipped.</td></tr>
+    </table>
+  </div>
+
+  <h2>📦 Category Distribution</h2>
+  <div class="card">
+    <table>
+      <tr><th>Category</th><th>Count</th></tr>
+      <tr><td>Financial</td><td>259</td></tr>
+      <tr><td>SaaS</td><td>140</td></tr>
+      <tr><td>Web Hosting</td><td>75</td></tr>
+      <tr><td>VPN</td><td>44</td></tr>
+      <tr><td>Cryptocurrency</td><td>41</td></tr>
+      <tr><td>Small Business</td><td>32</td></tr>
+      <tr><td>Antivirus</td><td>29</td></tr>
+      <tr><td>Finance Tools</td><td>28</td></tr>
+      <tr><td>Productivity</td><td>24</td></tr>
+      <tr><td>Password Managers</td><td>9</td></tr>
+      <tr><td>Home Security</td><td>9</td></tr>
+      <tr><td>Email Marketing</td><td>7</td></tr>
+      <tr><td>Identity Protection</td><td>6</td></tr>
+      <tr><td>Investing</td><td>5</td></tr>
+      <tr><td>Budgeting</td><td>0</td></tr>
+      <tr><td>Banking</td><td>0</td></tr>
+    </table>
+  </div>
+
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-22</div>
+</div>
+</body>
+</html>

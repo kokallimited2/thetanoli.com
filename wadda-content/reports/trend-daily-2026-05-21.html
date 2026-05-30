@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Trend Agent — Daily Monitor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+  .priority-p0 { background: #3b1a1a; border-left: 4px solid #f85149; }
+  .priority-p1 { background: #3b2d1a; border-left: 4px solid #d29922; }
+  .priority-p2 { background: #1a2d3b; border-left: 4px solid #58a6ff; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Trend Agent — Daily Monitor</h1>
+  <div class="meta">Generated: 2026-05-21 05:00 UTC<br>Source: Reddit (r/netsec, r/cybersecurity, r/privacy, r/artificial), HIBP, Security News Outlets (TechCrunch, TheRegister, Kaspersky, ZeroDay, BleepingComputer), NewsAPI</div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value">15</div>
+      <div class="stat-label">New Events Today</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">129</div>
+      <div class="stat-label">Total Queue</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" style="color:#f85149">0</div>
+      <div class="stat-label">Urgency 10 Alerts</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" style="color:#d29922">9</div>
+      <div class="stat-label">U:8-9 Events</div>
+    </div>
+  </div>
+
+  <h2>Source Status</h2>
+  <div class="card">
+    <ul>
+      <li><span class="highlight">✅</span> Reddit r/netsec — 25 posts fetched, 3 security-relevant (GitHub VSCode ext, GhostTree, AudioHijack)</li>
+      <li><span class="highlight">✅</span> Reddit r/cybersecurity — 25 posts fetched, 10 security-relevant (Microsoft passkeys, YellowKey bypass, CISA leak, GitHub breach, Huawei zero-day, Discord E2EE)</li>
+      <li><span class="highlight">✅</span> Reddit r/privacy — 25 posts fetched, 4 security-relevant (Trump Mobile leak, Disney facial rec, Google smart glasses, FaceTec biometrics)</li>
+      <li><span class="warn">⚠️</span> Reddit r/artificial — 0 security-relevant (AI models, Karpathy joining Anthropic, copyright settlement)</li>
+      <li><span class="highlight">✅</span> HIBP — No new breaches within 14 days (most recent: Cushman & Wakefield on May 5)</li>
+      <li><span class="highlight">✅</span> TechCrunch Security — 37 headlines, 4 security-relevant (Trump Mobile, GitHub breach, hotel passport leak, Discord E2EE)</li>
+      <li><span class="highlight">✅</span> TheRegister Security — 24 headlines, 10 security-relevant (Fragnesia, Shai-Hulud 314 pkgs, code-signing takedown, MCP flaws, TanStack)</li>
+      <li><span class="highlight">✅</span> Kaspersky Securelist — 24 headlines, 5 security-relevant (ExifTool Mac vuln, Kimsuky PebbleDash, DAEMON Tools, OceanLotus)</li>
+      <li><span class="warn">⚠️</span> ZeroDay.cloud — 1 headline (PostgreSQL CVE-2026-2006 — May 4, not breaking)</li>
+      <li><span class="error">❌</span> BleepingComputer — Cloudflare blocked (shell page, ~5KB)</li>
+      <li><span class="error">❌</span> CyberNews — Empty shell page (~4.5KB)</li>
+    </ul>
+  </div>
+
+  <h2>Top Events Today</h2>
+
+  <div class="card priority-p1">
+    <div class="card-title">Huawei Zero-Day Attack Behind Last Year's Crash of Luxembourg's Entire Telecoms Network</div>
+    <div>
+      <span class="tag">U:9</span>
+      <span class="tag">HIGH</span>
+      <span class="tag">r/cybersecurity (33, 9.9h)</span>
+      <span class="tag">The Record</span>
+    </div>
+    <p style="margin-top:0.8rem; color:#8b949e;">A Huawei zero-day vulnerability was responsible for crashing Luxembourg's entire telecoms network last year. Newly disclosed analysis reveals the depth of the attack on critical European infrastructure.</p>
+    <p style="margin-top:0.5rem;"><strong>Suggested Title:</strong> "Huawei Zero-Day Took Down Luxembourg's Entire Telecom Network: 5G Security Analysis"</p>
+    <p><strong>Traffic:</strong> 200,000-400,000 monthly searches</p>
+    <p><strong>Affiliates:</strong> NordVPN, ExpressVPN, Endpoint protection</p>
+    <p><strong>Priority:</strong> P1 - Publish within 24 hours</p>
+  </div>
+
+  <div class="card priority-p1">
+    <div class="card-title">GitHub Hit by a Compromised VSCode Extension Stealing Credentials</div>
+    <div>
+      <span class="tag">U:9</span>
+      <span class="tag">HIGH</span>
+      <span class="tag">r/netsec (106, 16.4h)</span>
+    </div>
+    <p style="margin-top:0.8rem; color:#8b949e;">GitHub acknowledges a compromised VSCode extension that stole developer credentials. Supply chain attack on the most popular code editor extension ecosystem.</p>
+    <p style="margin-top:0.5rem;"><strong>Suggested Title:</strong> "VSCode Extension Compromised: GitHub Credentials Stolen in Supply Chain Attack"</p>
+    <p><strong>Traffic:</strong> 150,000-300,000 monthly searches</p>
+    <p><strong>Affiliates:</strong> 1Password, Dashlane, NordPass (developer credentials)</p>
+    <p><strong>Priority:</strong> P1 - Publish within 24 hours</p>
+  </div>
+
+  <div class="card priority-p1">
+    <div class="card-title">Microsoft Shuts Down Illegal Code-Signing Operation Used by Ransomware Criminals</div>
+    <div>
+      <span class="tag">U:8</span>
+      <span class="tag">HIGH</span>
+      <span class="tag">TheRegister, r/cybersecurity (11, 7.9h)</span>
+    </div>
+    <p style="margin-top:0.8rem; color:#8b949e;">Microsoft disrupted an illegal code-signing service that allowed ransomware groups to sign malware with legitimate certificates.</p>
+    <p><strong>Affiliates:</strong> Bitdefender, Backblaze, NordPass</p>
+    <p><strong>Priority:</strong> P1 - Publish within 24 hours</p>
+  </div>
+
+  <div class="card priority-p1">
+    <div class="card-title">Microsoft is Pulling the Plug on SMS Codes, Wants You to Switch to Passkeys</div>
+    <div>
+      <span class="tag">U:8</span>
+      <span class="tag">HIGH</span>
+      <span class="tag">r/cybersecurity (595, 10.6h)</span>
+    </div>
+    <p style="margin-top:0.8rem; color:#8b949e;">Microsoft phasing out SMS authentication in favor of passkeys. 595 upvotes — massive community engagement. Major passkey/password manager content opportunity.</p>
+    <p><strong>Affiliates:</strong> 1Password, Dashlane, NordPass, Bitwarden (all with passkey support)</p>
+    <p><strong>Priority:</strong> P1 - Publish within 24 hours</p>
+  </div>
+
+  <div class="card priority-p1">
+    <div class="card-title">Discord Rolls Out End-to-End Encryption on Voice and Video Calls for Every User</div>
+    <div>
+      <span class="tag">U:8</span>
+      <span class="tag">HIGH</span>
+      <span class="tag">r/cybersecurity (215, 20.5h)</span>
+    </div>
+    <p style="margin-top:0.8rem; color:#8b949e;">Discord enables E2EE for voice and video calls for all 200M+ users. Major privacy milestone.</p>
+    <p><strong>Affiliates:</strong> NordVPN, ExpressVPN (Discord IP privacy)</p>
+    <p><strong>Priority:</strong> P1 - Publish within 24 hours</p>
+  </div>
+
+  <h2>New Events Added to Queue</h2>
+  <div class="card">
+    <table style="width:100%; border-collapse:collapse;">
+      <tr style="border-bottom:1px solid #30363d;">
+        <th style="text-align:left;padding:0.5rem;color:#8b949e;">ID</th>
+        <th style="text-align:left;padding:0.5rem;color:#8b949e;">Title</th>
+        <th style="text-align:center;padding:0.5rem;color:#8b949e;">U</th>
+        <th style="text-align:center;padding:0.5rem;color:#8b949e;">Priority</th>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">184</td>
+        <td style="padding:0.4rem;">Huawei Zero-Day Behind Luxembourg Telecom Crash</td>
+        <td style="text-align:center;color:#d29922;padding:0.4rem;">9</td>
+        <td style="text-align:center;padding:0.4rem;"><span style="color:#f85149;">P1</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">185</td>
+        <td style="padding:0.4rem;">GitHub VSCode Extension Credential Theft</td>
+        <td style="text-align:center;color:#d29922;padding:0.4rem;">9</td>
+        <td style="text-align:center;padding:0.4rem;"><span style="color:#f85149;">P1</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">186</td>
+        <td style="padding:0.4rem;">Shai-Hulud npm Worm: 314 Packages Infected</td>
+        <td style="text-align:center;color:#d29922;padding:0.4rem;">8</td>
+        <td style="text-align:center;padding:0.4rem;"><span style="color:#f85149;">P1</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">187</td>
+        <td style="padding:0.4rem;">Microsoft Kills SMS Codes for Passkeys</td>
+        <td style="text-align:center;color:#d29922;padding:0.4rem;">8</td>
+        <td style="text-align:center;padding:0.4rem;"><span style="color:#f85149;">P1</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">188</td>
+        <td style="padding:0.4rem;">Trump Mobile Site Exposing Private Data</td>
+        <td style="text-align:center;color:#d29922;padding:0.4rem;">8</td>
+        <td style="text-align:center;padding:0.4rem;"><span style="color:#f85149;">P1</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">189</td>
+        <td style="padding:0.4rem;">Second Claude Code Sandbox Bypass</td>
+        <td style="text-align:center;color:#d29922;padding:0.4rem;">8</td>
+        <td style="text-align:center;padding:0.4rem;"><span style="color:#f85149;">P1</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">190</td>
+        <td style="padding:0.4rem;">Discord E2EE Voice/Video Encryption</td>
+        <td style="text-align:center;color:#d29922;padding:0.4rem;">8</td>
+        <td style="text-align:center;padding:0.4rem;"><span style="color:#f85149;">P1</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">191</td>
+        <td style="padding:0.4rem;">Microsoft Code-Signing Ring Takedown</td>
+        <td style="text-align:center;color:#d29922;padding:0.4rem;">8</td>
+        <td style="text-align:center;padding:0.4rem;"><span style="color:#f85149;">P1</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">192</td>
+        <td style="padding:0.4rem;">Hotel Check-In 1M Passports Exposed</td>
+        <td style="text-align:center;color:#d29922;padding:0.4rem;">8</td>
+        <td style="text-align:center;padding:0.4rem;"><span style="color:#f85149;">P1</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">193</td>
+        <td style="padding:0.4rem;">Three Critical MCP Flaws Discovered</td>
+        <td style="text-align:center;color:#d29922;padding:0.4rem;">8</td>
+        <td style="text-align:center;padding:0.4rem;"><span style="color:#f85149;">P1</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">194</td>
+        <td style="padding:0.4rem;">Mac ExifTool CVE-2026-3102 Image Vuln</td>
+        <td style="text-align:center;color:#58a6ff;padding:0.4rem;">7</td>
+        <td style="text-align:center;padding:0.4rem;">P2</td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">195</td>
+        <td style="padding:0.4rem;">FaceTec Biometric Data Storage Concerns</td>
+        <td style="text-align:center;color:#58a6ff;padding:0.4rem;">7</td>
+        <td style="text-align:center;padding:0.4rem;">P2</td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">196</td>
+        <td style="padding:0.4rem;">Kimsuky APT PebbleDash Tools</td>
+        <td style="text-align:center;color:#58a6ff;padding:0.4rem;">7</td>
+        <td style="text-align:center;padding:0.4rem;">P2</td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">197</td>
+        <td style="padding:0.4rem;">Google Gemini AI Smart Glasses Privacy</td>
+        <td style="text-align:center;color:#58a6ff;padding:0.4rem;">7</td>
+        <td style="text-align:center;padding:0.4rem;">P2</td>
+      </tr>
+      <tr style="border-bottom:1px solid #21262d;">
+        <td style="padding:0.4rem;font-size:0.8rem;color:#8b949e;">198</td>
+        <td style="padding:0.4rem;">Shai-Hulud Copycat + TanStack Invite-Only</td>
+        <td style="text-align:center;color:#d29922;padding:0.4rem;">8</td>
+        <td style="text-align:center;padding:0.4rem;"><span style="color:#f85149;">P1</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <h2>Affiliate Opportunities</h2>
+  <div class="card">
+    <ul>
+      <li><strong>NordVPN:</strong> 10 new articles — Most-used affiliate across all categories (telecom breach, Discord, smart glasses, hotel leak, MCP, etc.)</li>
+      <li><strong>1Password:</strong> 7 new articles — Developer credential security (VSCode, npm, MCP, Claude sandbox)</li>
+      <li><strong>NordPass:</strong> 4 new articles — Password manager (passkeys, code-signing, credential rotation)</li>
+      <li><strong>ExpressVPN:</strong> 3 new articles — Gaming/Discord/Telecom privacy</li>
+      <li><strong>Dashlane:</strong> 3 new articles — Business/developer credentials</li>
+      <li><strong>Aura:</strong> 3 new articles — Identity theft (Trump Mobile, hotel leak, biometrics)</li>
+      <li><strong>LifeLock:</strong> 2 new articles — Credit monitoring</li>
+      <li><strong>Bitdefender:</strong> 2 new articles — Ransomware protection, Mac security</li>
+      <li><strong>Backblaze:</strong> 2 new articles — Backup</li>
+    </ul>
+    <p style="margin-top:1rem;"><strong>Top priorities for link retrieval:</strong> NordVPN, 1Password, NordPass, ExpressVPN — these appear in the most articles across categories.</p>
+  </div>
+
+  <h2>Key Patterns This Run</h2>
+  <div class="card">
+    <ul>
+      <li><strong>Supply chain attacks dominate</strong> — 4 of 15 events are supply chain related (VSCode ext, Shai-Hulud 314 pkgs, Shai-Hulud copycat, code-signing fraud)</li>
+      <li><strong>r/privacy delivering high-engagement stories</strong> — Trump Mobile (431), Disney facial rec (396), Google glasses (289) — all privacy-first consumer stories</li>
+      <li><strong>Microsoft in the news on 3 fronts</strong> — Passwordless shift (595 upvotes), code-signing takedown, BitLocker bypass mitigation</li>
+      <li><strong>No urgency 10 events today</strong> — Existing queue's YellowKey/Fragnesia/Foxconn stories already cover the biggest ongoing stories</li>
+      <li><strong>BleepingComputer and CyberNews still blocked</strong> — All data routed through TheRegister/TechCrunch/Reddit which covered the same stories</li>
+      <li><strong>Passkey/passwordless content angle is huge</strong> — Microsoft's announcement opens a major educational content opportunity for password managers</li>
+    </ul>
+  </div>
+
+  <h2>Action Items</h2>
+  <div class="card" style="background:#1a2d3b; border:1px solid #58a6ff;">
+    <ol>
+      <li><strong>Priority P1 articles to publish (today):</strong> Huawei zero-day telecom crash, GitHub VSCode ext compromise, Microsoft code-signing takedown</li>
+      <li><strong>SMS-to-passkeys educational content:</strong> High conversion potential — all password managers support passkeys, massive search volume</li>
+      <li><strong>Check latest queue IDs 184-198</strong> — verify content briefs are complete before SEO Agent picks them up at 05:30</li>
+      <li><strong>Link retrieval needed:</strong> NordVPN in 10 articles, 1Password in 7, NordPass in 4 — have these links ready for Content Agent</li>
+    </ol>
+  </div>
+
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-21 05:00 UTC</div>
+</div>
+</body>
+</html>

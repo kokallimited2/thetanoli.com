@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Trend Agent — Daily Monitor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Trend Agent — Daily Monitor</h1>
+  <div class="meta">Generated: 2026-05-17<br>Source: Reddit r/netsec, r/cybersecurity, r/privacy, r/artificial, HaveIBeenPwned, TechCrunch, TheRegister, Kaspersky Securelist, ZeroDay.cloud</div>
+  <h2>📊 Scan Summary</h2>
+<div class="stats">
+  <div class="stat"><div class="stat-value">35</div><div class="stat-label">Candidate Events</div></div>
+  <div class="stat"><div class="stat-value">11</div><div class="stat-label">New Events Added</div></div>
+  <div class="stat"><div class="stat-value">4</div><div class="stat-label">Urgency 10 (CRITICAL)</div></div>
+  <div class="stat"><div class="stat-value">67</div><div class="stat-label">Total Queue</div></div>
+</div>
+
+<h2>🚨 Urgency 10 Alerts — Publish Within 4 Hours</h2>
+
+<div class="card">
+  <div class="card-title">🔴 Fast16 Malware Sabotaging Nuclear Weapons Tests (Iran)</div>
+  <div><span class="tag">U:10/10</span> <span class="tag">Reddit r/cybersecurity</span> <span class="tag">Score: 193</span></div>
+  <p><strong>Source:</strong> Zetter ZeroDay — confirmed malware operation targeting nuclear weapons testing infrastructure, likely Iran</p>
+  <p><strong>Affiliate:</strong> VPN + antivirus/endpoint protection + backup solutions</p>
+  <p><strong>Est. Traffic:</strong> 500K-1M monthly searches</p>
+</div>
+
+<div class="card">
+  <div class="card-title">🔴 FBI Remotely Scrubbs Russian Malware from Thousands of Routers</div>
+  <div><span class="tag">U:10/10</span> <span class="tag">Reddit r/privacy</span> <span class="tag">Score: 501</span></div>
+  <p><strong>Source:</strong> TechRadar — FBI disrupts GRU botnet targeting critical infrastructure via compromised TP-Link routers</p>
+  <p><strong>Affiliate:</strong> VPN + router security suite + password managers</p>
+  <p><strong>Est. Traffic:</strong> 300K-600K monthly searches</p>
+</div>
+
+<div class="card">
+  <div class="card-title">🔴 Microsoft BitLocker Encryption Bypassed</div>
+  <div><span class="tag">U:10/10</span> <span class="tag">Reddit r/privacy</span> <span class="tag">Score: 267</span></div>
+  <p><strong>Source:</strong> r/privacy — BitLocker full disk encryption vulnerability confirmed, massive implications for laptop theft security</p>
+  <p><strong>Affiliate:</strong> VPN (encrypt in transit) + password managers + backup solutions</p>
+  <p><strong>Est. Traffic:</strong> 200K-400K monthly searches</p>
+</div>
+
+<div class="card">
+  <div class="card-title">🔴 4th Linux Kernel Flaw This Month — SSH Host Key Theft</div>
+  <div><span class="tag">U:10/10</span> <span class="tag">Reddit r/cybersecurity</span> <span class="tag">Score: 795</span></div>
+  <p><strong>Source:</strong> ZDNet/Qualys — SSH host key compromise enables persistent undetectable MITM attacks (already in queue as HERMES-20260516-073)</p>
+  <p><strong>Affiliate:</strong> Linux endpoint protection + SSH key management + VPN</p>
+  <p><strong>Est. Traffic:</strong> 200K-400K monthly searches</p>
+</div>
+
+<h2>🆕 New Events Today (11 total)</h2>
+
+<div class="card">
+  <div class="card-title"><span class="highlight">NEW</span> Experts Confirm the Fast16 Malware Was Sabotaging Nuclear Weapons Tests, Likely in Iran</div>
+  <div><span class="tag">U:10</span> <span class="tag">ID:087</span> <span class="tag">Reddit r/cybersecurity</span></div>
+  <p>State-level offensive cyber operation targeting national security infrastructure. 193 upvotes in 13.8h. Huge mainstream media potential.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="highlight">NEW</span> FBI Remotely Scrubbs Russian Malware from Thousands of Compromised Routers</div>
+  <div><span class="tag">U:10</span> <span class="tag">ID:088</span> <span class="tag">Reddit r/privacy</span></div>
+  <p>GRU botnet targeting military/gov/critical infrastructure disrupted by FBI counter-op. 501 upvotes — highest today. High mainstream appeal.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="highlight">NEW</span> Microsoft BitLocker Encryption Bypassed!</div>
+  <div><span class="tag">U:10</span> <span class="tag">ID:089</span> <span class="tag">Reddit r/privacy</span></div>
+  <p>Full disk encryption vulnerability confirmed. 267 upvotes. Compounds the YellowKey zero-day campaign.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="highlight">NEW</span> Funnel Builder WordPress Plugin Bug Exploited to Steal Credit Cards</div>
+  <div><span class="tag">U:8</span> <span class="tag">ID:090</span> <span class="tag">Reddit r/cybersecurity</span></div>
+  <p>Active WordPress plugin exploit stealing credit card data. Good web hosting affiliate opportunity.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="highlight">NEW</span> OpenAI Data Stolen After Latest Code Security Issue</div>
+  <div><span class="tag">U:8</span> <span class="tag">ID:091</span> <span class="tag">TechCrunch Security</span></div>
+  <p>OpenAI confirms data theft. AI-company breach pattern continues. 300K-600K search traffic potential.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="highlight">NEW</span> CISA Hands Feds Super-Tight Deadline for Perfect-10 Exploit</div>
+  <div><span class="tag">U:8</span> <span class="tag">ID:092</span> <span class="tag">TheRegister</span></div>
+  <p>Emergency CISA directive for actively exploited CVSS 10.0 vulnerability. Enterprise IT urgency.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="highlight">NEW</span> Patch Tuesday: 30 Critical Microsoft CVEs</div>
+  <div><span class="tag">U:8</span> <span class="tag">ID:093</span> <span class="tag">TheRegister</span></div>
+  <p>May 2026 — no zero-days but 30 critical patches. Major IT admin workload.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="highlight">NEW</span> Apple and Google Bring Cross-Platform E2EE to Texting</div>
+  <div><span class="tag">U:8</span> <span class="tag">ID:094</span> <span class="tag">TheRegister</span></div>
+  <p>Green bubble encryption finally here. Massive mainstream interest — 400K-800K searches.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="highlight">NEW</span> Vercel Typosquatting → macOS Malware Loader</div>
+  <div><span class="tag">U:8</span> <span class="tag">ID:095</span> <span class="tag">Reddit r/netsec</span></div>
+  <p>Supply chain attack targeting developers through Vercel lookalike domains.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="highlight">NEW</span> State of Ransomware 2026 — Kaspersky Report</div>
+  <div><span class="tag">U:7</span> <span class="tag">ID:096</span> <span class="tag">Kaspersky Securelist</span></div>
+  <p>Annual ransomware trends report. Good for evergreen content with backup affiliate angle.</p>
+</div>
+
+<div class="card">
+  <div class="card-title"><span class="highlight">NEW</span> CVE-2025-68670: xrdp RCE Vulnerability</div>
+  <div><span class="tag">U:7</span> <span class="tag">ID:097</span> <span class="tag">Kaspersky Securelist</span></div>
+  <p>Remote code execution in Linux remote desktop protocol. VPN as alternative to direct RDP.</p>
+</div>
+
+<h2>🔄 Already in Queue (No Duplicate Added)</h2>
+<ul>
+  <li>4th Linux kernel flaw — SSH host keys (ID:073, U:10) — top story, 795 upvotes</li>
+  <li>Microsoft Exchange zero-day active exploit + Pwn2Own (ID:074, U:10)</li>
+  <li>YellowKey Microsoft zero-day leaks (ID:063, U:9)</li>
+  <li>US bank AI data sharing (ID:078, U:8)</li>
+  <li>Hotel passport data exposure (ID:079, U:8)</li>
+  <li>BWH Hotels breach (ID:085, U:7)</li>
+  <li>Foxconn ransomware (ID:064, U:9)</li>
+  <li>Canvas/Instructure breaches (multiple entries)</li>
+</ul>
+
+<h2>📡 Sources Checked</h2>
+<ul>
+  <li>✅ Reddit r/netsec — 5 security-relevant posts parsed</li>
+  <li>✅ Reddit r/cybersecurity — 10 security-relevant posts parsed</li>
+  <li>✅ Reddit r/privacy — 4 security-relevant posts parsed (3 major)</li>
+  <li>✅ Reddit r/artificial — 0 security-relevant posts (filtered)</li>
+  <li>✅ HaveIBeenPwned — Cushman & Wakefield (310K records, May 5)</li>
+  <li>✅ TechCrunch Security — 37 headlines extracted</li>
+  <li>✅ TheRegister — 97 headlines extracted</li>
+  <li>✅ Kaspersky Securelist — 11 headlines extracted</li>
+  <li>✅ ZeroDay.cloud — Multiple PostgreSQL CVEs (May 4, stale)</li>
+  <li>❌ BleepingComputer — Cloudflare-blocked curl</li>
+  <li>❌ CyberNews — Cloudflare-blocked</li>
+</ul>
+
+<h2>💼 Affiliate Opportunities Detected</h2>
+<ul>
+  <li><strong>VPN (NordVPN, ExpressVPN):</strong> FBI router operation, BitLocker bypass, OpenAI breach, E2EE messaging, CISA directive</li>
+  <li><strong>Password Managers (NordPass, 1Password, Dashlane):</strong> BitLocker bypass, OpenAI breach, FBI router op, Patch Tuesday</li>
+  <li><strong>Identity Theft Protection (Aura, LifeLock):</strong> OpenAI breach, Fast16 nuclear, US bank data, E2EE messaging</li>
+  <li><strong>Endpoint Protection (Bitdefender, SentinelOne):</strong> Fast16 malware, Linux SSH flaw, Patch Tuesday, CISA directive</li>
+  <li><strong>Backup Solutions (Backblaze, Acronis):</strong> Ransomware report, Patch Tuesday prep, Linux SSH flaw</li>
+  <li><strong>Web Hosting (A2 Hosting, SiteGround, Cloudways):</strong> Funnel Builder WordPress exploit, cPanel mass exploit</li>
+</ul>
+
+<h2>📈 Key Patterns Observed</h2>
+<ul>
+  <li><strong>r/privacy validated again:</strong> 3 of top 5 stories came from r/privacy (FBI router, BitLocker bypass, E2EE). This is now the highest-value subreddit for consumer-facing security stories.</li>
+  <li><strong>Nuclear/Sabotage angle:</strong> Fast16 malware targeting nuclear tests is a new category — state-level cyber sabotage with huge mainstream news potential.</li>
+  <li><strong>AI company breach pattern:</strong> OpenAI becomes the 3rd AI company breach this month (Braintrust, Foxconn supply chain, OpenAI). Growing niche for content.</li>
+  <li><strong>Linux vulnerability crisis continues:</strong> 4th Linux kernel flaw this month. SSH key theft adds MITM threat.</li>
+  <li><strong>Zero-day leak campaigns:</strong> YellowKey continues releasing Microsoft exploits. This is a sustained campaign, not a one-off.</li>
+</ul>
+
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-17</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Performance Agent — Weekly Report</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+  .priority-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .priority-card { background: #161b22; border: 1px solid #30363d; border-left: 4px solid #58a6ff; border-radius: 6px; padding: 1rem; }
+  .priority-card.p1 { border-left-color: #f85149; }
+  .priority-card.p2 { border-left-color: #d29922; }
+  .priority-card.p3 { border-left-color: #58a6ff; }
+  .priority-rank { font-size: 0.75rem; color: #8b949e; font-weight: 700; text-transform: uppercase; }
+  .alert-card { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; margin: 0.5rem 0; display: flex; justify-content: space-between; align-items: center; }
+  .alert-card .severity { padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+  .severity-high { background: #3d1a1a; color: #f85149; }
+  .severity-medium { background: #3d2e1a; color: #d29922; }
+  .severity-low { background: #1a2d3d; color: #58a6ff; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Performance Agent — Weekly Report</h1>
+  <div class="meta">Generated: 2026-05-24<br>Source: Content Pipeline, Affiliate Programs, Content Queue</div>
+
+  <h2>📊 Weekly Stats</h2>
+  <div class="stats">
+    <div class="stat"><div class="stat-value">55</div><div class="stat-label">Total Drafts</div></div>
+    <div class="stat"><div class="stat-value">41</div><div class="stat-label">Articles This Week</div></div>
+    <div class="stat"><div class="stat-value">178K</div><div class="stat-label">Est. Word Count</div></div>
+    <div class="stat"><div class="stat-value">721</div><div class="stat-label">Affiliate Programs</div></div>
+    <div class="stat"><div class="stat-value">124</div><div class="stat-label">Unsent Alerts</div></div>
+    <div class="stat"><div class="stat-value">154</div><div class="stat-label">Queue Items</div></div>
+    <div class="stat"><div class="stat-value error">0</div><div class="stat-label">Published Articles</div></div>
+    <div class="stat"><div class="stat-value error">0</div><div class="stat-label">Enrolled Programs</div></div>
+  </div>
+
+  <h2>📈 Content Pipeline</h2>
+  <div class="card">
+    <div class="card-title">This Week's Activity</div>
+    <ul>
+      <li><span class="highlight">41 new articles</span> drafted (up from 10 last week — <strong>+310%</strong>)</li>
+      <li>Estimated <strong>134,600 words</strong> produced this week alone</li>
+      <li>Average article: <strong>3,280 words</strong> (up from 1,507 last week)</li>
+      <li>Categories covered: Zero-Day/Exploits (9), Cybersecurity (5), VPN (5), Data Breaches (4), Malware (4), Web Hosting (4), SaaS (4), AI Security (3), Identity (2), Antivirus (1)</li>
+      <li><span class="error">0 articles published to blog</span> — all 55 drafts sitting in /drafts/</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Duplicate Topics (Needs Cleanup)</div>
+    <ul>
+      <li><span class="warn">Ultimate Cybersecurity Toolkit</span> — 3 versions (May 17, 23, 24)</li>
+      <li><span class="warn">Best Secure WordPress Hosting</span> — 3 versions</li>
+      <li><span class="warn">Best VPN Small Business</span> — 3 versions</li>
+      <li><span class="warn">Canvas Data Breach</span> — 3 versions</li>
+      <li><span class="warn">Small Business Cybersecurity</span> — 2 versions back-to-back</li>
+      <li>Total: <strong>10 topics</strong> with 2-3 versions each</li>
+    </ul>
+  </div>
+
+  <h2>📋 Affiliate Programs</h2>
+  <div class="card">
+    <div class="card-title">Status Breakdown</div>
+    <ul>
+      <li><span class="highlight">Discovered</span>: 600 (+111 vs last week)</li>
+      <li><span class="warn">Alerted</span>: 121 (+14)</li>
+      <li><span class="error">Enrolled/Active</span>: <strong>0</strong> — No change from last week</li>
+      <li>Top scorer: <strong>Norton Lifelock</strong> (107/140 — AGGRESSIVE PROMOTE)</li>
+      <li><span class="error">124 unsent alerts</span> for programs scoring ≥80</li>
+    </ul>
+  </div>
+
+  <h2>⚡ Top 5 Priorities</h2>
+  <div class="priority-grid">
+    <div class="priority-card p1">
+      <div class="priority-rank">#1 Priority</div>
+      <h3>Publish Top 10 Drafts</h3>
+      <p>Push highest-impact drafts to blog. Revenue not possible until content is live.</p>
+      <span class="tag">Revenue</span>
+      <span class="tag">High impact</span>
+    </div>
+    <div class="priority-card p1">
+      <div class="priority-rank">#2 Priority</div>
+      <h3>Enroll Top 5 Affiliate Programs</h3>
+      <p>Score ≥98 — Norton, Calendly, Coinbase, Google Workspace, Stripe. Low effort, direct revenue.</p>
+      <span class="tag">Revenue</span>
+      <span class="tag">Quick win</span>
+    </div>
+    <div class="priority-card p2">
+      <div class="priority-rank">#3 Priority</div>
+      <h3>Process CRITICAL Reactive Queue</h3>
+      <p>49 critical items, oldest from May 9 (15 days). Publish or downgrade.</p>
+      <span class="tag">SEO timing</span>
+      <span class="tag">Aging</span>
+    </div>
+    <div class="priority-card p2">
+      <div class="priority-rank">#4 Priority</div>
+      <h3>Launch Finance Tools Vertical</h3>
+      <p>300+ financial programs, 0 articles. Massive untapped revenue potential.</p>
+      <span class="tag">New vertical</span>
+      <span class="tag">High effort</span>
+    </div>
+    <div class="priority-card p3">
+      <div class="priority-rank">#5 Priority</div>
+      <h3>Clean Duplicate Content</h3>
+      <p>Keep latest drafts, archive old versions. Pipeline hygiene.</p>
+      <span class="tag">Low effort</span>
+      <span class="tag">Quick win</span>
+    </div>
+  </div>
+
+  <h2>📉 Trend Analysis</h2>
+  <div class="card">
+    <div class="card-title">What's Working</div>
+    <ul>
+      <li><span class="highlight">Content velocity is exceptional</span> — 41 articles/week is industrial scale</li>
+      <li>Cybersecurity and VPN verticals have strong coverage</li>
+      <li>Reactive content pipeline is richly populated (154 items)</li>
+      <li>Affiliate program discovery is outpacing everything else (+125 this week)</li>
+      <li>Average article quality improving (3,280 words vs 1,507 last week)</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">What's Not Working</div>
+    <ul>
+      <li><span class="error">Zero published articles</span> — content creation without publishing is inventory, not revenue</li>
+      <li><span class="error">Zero enrolled affiliate programs</span> — 121 alerted, 0 actioned</li>
+      <li><span class="error">Finance vertical completely untapped</span> — 259+ programs, 0 articles</li>
+      <li><span class="warn">Content duplication</span> — 10+ topics rewritten instead of published</li>
+      <li><span class="warn">Aging CRITICAL queue items</span> — 15-day-old urgent events losing SEO relevance</li>
+      <li>Password managers (9 programs) and antivirus (29 programs) severely under-covered</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">Content Gaps Identified</div>
+    <ul>
+      <li><strong>Finance/Crypto</strong>: 300+ programs, 0 articles — <span class="error">largest gap</span></li>
+      <li><strong>Antivirus comparisons</strong>: 29 programs, 0 dedicated comparison articles</li>
+      <li><strong>Password manager reviews</strong>: 9 programs, 0 dedicated reviews</li>
+      <li><strong>Tutorials/how-to guides</strong>: Limited coverage for affiliate tools</li>
+      <li><strong>Ecommerce (beyond Shopify)</strong>: WooCommerce, BigCommerce not covered</li>
+    </ul>
+  </div>
+
+  <h2>🔔 Alerts</h2>
+  <div class="alert-card">
+    <span><strong>0 articles published this week</strong> — All 55 drafts in /drafts/</span>
+    <span class="severity severity-high">HIGH</span>
+  </div>
+  <div class="alert-card">
+    <span><strong>121 alerted programs, 0 enrolled</strong> — Revenue pipeline stalled</span>
+    <span class="severity severity-high">HIGH</span>
+  </div>
+  <div class="alert-card">
+    <span><strong>49 CRITICAL reactive items aging</strong> — Oldest from May 9 (15 days)</span>
+    <span class="severity severity-medium">MEDIUM</span>
+  </div>
+  <div class="alert-card">
+    <span><strong>124 unsent alerts accumulating</strong> — Backlog needs clearing</span>
+    <span class="severity severity-medium">MEDIUM</span>
+  </div>
+  <div class="alert-card">
+    <span><strong>10+ duplicate topic clusters</strong> — Pipeline cleanup recommended</span>
+    <span class="severity severity-low">LOW</span>
+  </div>
+
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-24</div>
+</div>
+</body>
+</html>

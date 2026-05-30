@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Content Agent — Article Generation</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Content Agent — Article Generation</h1>
+  <div class="meta">Generated: 2026-05-28<br>Source: Content Briefs from SEO Agent</div>
+  
+<h2>Article Generation Summary — 2026-05-28</h2>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-value">12</div>
+    <div class="stat-label">Articles Generated</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">19,687</div>
+    <div class="stat-label">Total Words (wc -w)</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">2,492,100</div>
+    <div class="stat-label">Total Search Volume</div>
+  </div>
+</div>
+
+<h2>Articles Generated</h2>
+
+<div class="card">
+  <div class="card-title">Fast16 Malware Sabotaged Nuclear Weapons Tests: State-Level Cyber Warfare's New Frontier</div>
+  <div>
+    <span class="tag">📊 Vol: 500,000</span>
+    <span class="tag">📝 1,594 words</span>
+    <span class="tag">🔑 Fast16 malware nuclear sabotage</span>
+    <span class="tag">🎯 TOFU/MOFU</span>
+    <span class="tag">📄 Breaking News Analysis + Cybersecurity Implications + Protection Guide</span>
+  </div>
+  <div style="margin-top:0.5rem;font-size:0.85rem;color:#8b949e;">
+    <code>drafts/2026-05-28-fast16-malware-nuclear-sabotage.md</code>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">OpenAI Lawsuit: ChatGPT Shared Your Data with Google and Meta — How to Protect Your Privacy</div>
+  <div>
+    <span class="tag">📊 Vol: 500,000</span>
+    <span class="tag">📝 1,568 words</span>
+    <span class="tag">🔑 OpenAI privacy lawsuit ChatGPT data sharing</span>
+    <span class="tag">🎯 TOFU/MOFU</span>
+    <span class="tag">📄 Breaking News Analysis + AI Privacy Protection Guide</span>
+  </div>
+  <div style="margin-top:0.5rem;font-size:0.85rem;color:#8b949e;">
+    <code>drafts/2026-05-28-openai-privacy-lawsuit.md</code>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">FBI Remotely Cleared Russian Malware from Thousands of Routers: How to Check Yours Is Safe</div>
+  <div>
+    <span class="tag">📊 Vol: 350,000</span>
+    <span class="tag">📝 1,772 words</span>
+    <span class="tag">🔑 FBI removes Russian malware from routers</span>
+    <span class="tag">🎯 TOFU/MOFU</span>
+    <span class="tag">📄 Breaking News + Router Security Audit Guide</span>
+  </div>
+  <div style="margin-top:0.5rem;font-size:0.85rem;color:#8b949e;">
+    <code>drafts/2026-05-28-fbi-router-malware-removal.md</code>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Canvas Data Breach 2026: 275 Million Students Affected — What You Need to Do</div>
+  <div>
+    <span class="tag">📊 Vol: 200,000</span>
+    <span class="tag">📝 1,737 words</span>
+    <span class="tag">🔑 Canvas data breach</span>
+    <span class="tag">🎯 TOFU/MOFU</span>
+    <span class="tag">📄 Breaking News + Impact Analysis + Protection Guide</span>
+  </div>
+  <div style="margin-top:0.5rem;font-size:0.85rem;color:#8b949e;">
+    <code>drafts/2026-05-28-canvas-data-breach.md</code>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Microsoft BitLocker Encryption Bypassed: Your Encrypted Laptop May Not Be Secure — What To Do</div>
+  <div>
+    <span class="tag">📊 Vol: 200,000</span>
+    <span class="tag">📝 1,757 words</span>
+    <span class="tag">🔑 BitLocker bypass vulnerability</span>
+    <span class="tag">🎯 TOFU/MOFU</span>
+    <span class="tag">📄 Breaking News + Data Protection Guide</span>
+  </div>
+  <div style="margin-top:0.5rem;font-size:0.85rem;color:#8b949e;">
+    <code>drafts/2026-05-28-bitlocker-bypass.md</code>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Linux Zero-Day Crisis: From CopyFail to SSH Key Theft — The Complete May 2026 Vulnerability Roundup</div>
+  <div>
+    <span class="tag">📊 Vol: 200,000</span>
+    <span class="tag">📝 1,741 words</span>
+    <span class="tag">🔑 Linux kernel SSH host key theft vulnerability</span>
+    <span class="tag">🎯 TOFU</span>
+    <span class="tag">📄 Vulnerability Roundup + Emergency Protection Guide</span>
+  </div>
+  <div style="margin-top:0.5rem;font-size:0.85rem;color:#8b949e;">
+    <code>drafts/2026-05-28-linux-zero-day-may-2026.md</code>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">NGINX CVE-2026-42945: Critical Heap Buffer Overflow Threatens Millions of Web Servers — Emergency Guide</div>
+  <div>
+    <span class="tag">📊 Vol: 200,000</span>
+    <span class="tag">📝 1,459 words</span>
+    <span class="tag">🔑 NGINX CVE-2026-42945</span>
+    <span class="tag">🎯 TOFU</span>
+    <span class="tag">📄 News + Emergency Action Guide</span>
+  </div>
+  <div style="margin-top:0.5rem;font-size:0.85rem;color:#8b949e;">
+    <code>drafts/2026-05-28-nginx-cve-2026-42945.md</code>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">cPanel CVE-2026-41940: 44,000 Servers Hacked — Immediate Fix Guide [2026]</div>
+  <div>
+    <span class="tag">📊 Vol: 150,000</span>
+    <span class="tag">📝 1,756 words</span>
+    <span class="tag">🔑 cPanel CVE-2026-41940</span>
+    <span class="tag">🎯 TOFU/MOFU</span>
+    <span class="tag">📄 Breaking News + Emergency Action</span>
+  </div>
+  <div style="margin-top:0.5rem;font-size:0.85rem;color:#8b949e;">
+    <code>drafts/2026-05-28-cpanel-cve-2026-41940.md</code>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Cushman & Wakefield Breach: 500K Records Stolen by ShinyHunters — Enterprise Security Alert</div>
+  <div>
+    <span class="tag">📊 Vol: 80,000</span>
+    <span class="tag">📝 1,421 words</span>
+    <span class="tag">🔑 Cushman Wakefield breach</span>
+    <span class="tag">🎯 TOFU/MOFU</span>
+    <span class="tag">📄 News Analysis + Enterprise Security Guide</span>
+  </div>
+  <div style="margin-top:0.5rem;font-size:0.85rem;color:#8b949e;">
+    <code>drafts/2026-05-28-cushman-wakefield-breach.md</code>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Medtronic Hacked: Medical Device Giant Hit by ShinyHunters — Patient Data Alert</div>
+  <div>
+    <span class="tag">📊 Vol: 60,000</span>
+    <span class="tag">📝 1,378 words</span>
+    <span class="tag">🔑 Medtronic breach</span>
+    <span class="tag">🎯 TOFU/MOFU</span>
+    <span class="tag">📄 News + Healthcare Security Analysis</span>
+  </div>
+  <div style="margin-top:0.5rem;font-size:0.85rem;color:#8b949e;">
+    <code>drafts/2026-05-28-medtronic-breach.md</code>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Bluekit: The AI-Powered Phishing Platform That Makes Cybercrime Scarily Easy</div>
+  <div>
+    <span class="tag">📊 Vol: 40,000</span>
+    <span class="tag">📝 1,511 words</span>
+    <span class="tag">🔑 Bluekit phishing</span>
+    <span class="tag">🎯 TOFU/MOFU</span>
+    <span class="tag">📄 Threat Intelligence + Defense Guide</span>
+  </div>
+  <div style="margin-top:0.5rem;font-size:0.85rem;color:#8b949e;">
+    <code>drafts/2026-05-28-bluekit-phishing.md</code>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">Best VPN for Small Business in 2026: Tested & Compared (NordLayer vs Perimeter 81 vs PureVPN)</div>
+  <div>
+    <span class="tag">📊 Vol: 12,100</span>
+    <span class="tag">📝 1,993 words</span>
+    <span class="tag">🔑 best VPN for small business</span>
+    <span class="tag">🎯 BOFU</span>
+    <span class="tag">📄 Comparison Review with Testing Methodology</span>
+  </div>
+  <div style="margin-top:0.5rem;font-size:0.85rem;color:#8b949e;">
+    <code>drafts/2026-05-28-best-vpn-small-business-2026.md</code>
+  </div>
+</div>
+
+<h2>Affiliate Links Used</h2>
+<div class="card">
+  <h3>Active Program Links (Placeholder Format)</h3>
+  <ul>
+    <li><code>[AFFILIATE_LINK:NordVPN / NordPass]</code> — Used in 7 articles (VPN, router, nuclear, BitLocker, FBI, OpenAI, Bluekit)</li>
+    <li><code>[AFFILIATE_LINK:NordLayer]</code> — Used in Best VPN for Small Business</li>
+    <li><code>[AFFILIATE_LINK:Perimeter 81]</code> — Used in Best VPN for Small Business</li>
+    <li><code>[AFFILIATE_LINK:PureVPN]</code> — Used in Best VPN for Small Business</li>
+    <li><code>[AFFILIATE_LINK:1Password]</code> — Used in 7 articles (Canvas, Cushman, Medtronic, BitLocker, FBI, OpenAI, Fast16)</li>
+    <li><code>[AFFILIATE_LINK:Bitdefender]</code> — Used in 8 articles (cPanel, Medtronic, Fast16, FBI, BitLocker, Linux, Bluekit, NGINX)</li>
+    <li><code>[AFFILIATE_LINK:ExpressVPN]</code> — Used in 4 articles (Fast16, FBI, BitLocker, OpenAI)</li>
+    <li><code>[AFFILIATE_LINK:Malwarebytes]</code> — Used in 2 articles (BitLocker, Linux)</li>
+    <li><code>[AFFILIATE_LINK:Hostinger]</code> — Used in 2 articles (cPanel, NGINX)</li>
+    <li><code>[AFFILIATE_LINK:Liquid Web / Nexcess]</code> — Used in 3 articles (cPanel, NGINX, Linux)</li>
+    <li><code>[AFFILIATE_LINK:Norton]</code> — Used in 1 article (Bluekit)</li>
+    <li><code>[AFFILIATE_LINK:HubSpot]</code> — Used in Cushman & Wakefield article</li>
+    <li><code>[AFFILIATE_LINK:Kinsta]</code> — Used in NGINX article</li>
+    <li><code>[AFFILIATE_LINK:WP Engine]</code> — Used in NGINX article</li>
+    <li><code>[AFFILIATE_LINK:Cloudways]</code> — Used in NGINX article</li>
+  </ul>
+</div>
+
+<h2>Template Types Used</h2>
+<div class="card">
+  <table style="width:100%;border-collapse:collapse;">
+    <tr style="border-bottom:1px solid #30363d;">
+      <th style="padding:0.5rem;text-align:left;color:#58a6ff;">Template</th>
+      <th style="padding:0.5rem;text-align:center;color:#58a6ff;">Count</th>
+    </tr>
+    <tr style="border-bottom:1px solid #30363d;">
+      <td style="padding:0.5rem;">Breaking News + Emergency Action Guide</td>
+      <td style="text-align:center;">3</td>
+    </tr>
+    <tr style="border-bottom:1px solid #30363d;">
+      <td style="padding:0.5rem;">Breaking News + Impact Analysis + Protection Guide</td>
+      <td style="text-align:center;">3</td>
+    </tr>
+    <tr style="border-bottom:1px solid #30363d;">
+      <td style="padding:0.5rem;">Threat Intelligence + Defense Guide</td>
+      <td style="text-align:center;">2</td>
+    </tr>
+    <tr style="border-bottom:1px solid #30363d;">
+      <td style="padding:0.5rem;">Vulnerability Roundup + Emergency Protection</td>
+      <td style="text-align:center;">2</td>
+    </tr>
+    <tr style="border-bottom:1px solid #30363d;">
+      <td style="padding:0.5rem;">Comparison Review + Testing Methodology</td>
+      <td style="text-align:center;">1</td>
+    </tr>
+    <tr style="border-bottom:1px solid #30363d;">
+      <td style="padding:0.5rem;">News Analysis + Enterprise Security Guide</td>
+      <td style="text-align:center;">1</td>
+    </tr>
+  </table>
+</div>
+
+<h2>Quality Notes</h2>
+<div class="card">
+  <ul>
+    <li>All 12 articles include FTC disclosure as first line (mandatory for affiliate content)</li>
+    <li>HPASCA framework applied across all articles (Hook, Problem, Agitate, Solution, Credibility, Action)</li>
+    <li>JSON-LD schema included: NewsArticle (all), FAQPage (11/12), HowTo (9/12), Product/Review (2/12)</li>
+    <li>Internal link placeholders use slug-based URLs for cross-linking</li>
+    <li>Word counts from <code>wc -w</code> include markdown formatting + JSON-LD (~10-15% overhead). Actual prose ~1200-1700 words per article</li>
+    <li>Articles written as standalone content with data tables, comparisons, and frameworks</li>
+    <li>All CTAs route through affiliate link placeholders</li>
+  </ul>
+</div>
+
+<h2>Briefs Status Summary</h2>
+<div class="card">
+  <p>Total briefs in content-briefs.json: <strong>44</strong></p>
+  <p>Articles generated this session: <strong>12</strong></p>
+  <p style="color:#d29922;">Remaining briefs not processed in this batch: 32 (authority/conversion briefs with lower urgency)</p>
+  <p>Top remaining opportunities (volume):</p>
+  <ul>
+    <li><code>critical infrastructure cyberattack 2026</code> — 250K vol (reactive)</li>
+    <li><code>identity theft protection 2026</code> — 250K vol (authority)</li>
+    <li><code>web hosting comparison 2026</code> — 240K vol (authority)</li>
+    <li><code>best antivirus 2026</code> — 320K vol (BOFU conversion)</li>
+    <li><code>Shopify pricing plans 2026</code> — 250K vol (BOFU conversion)</li>
+    <li><code>Linus Torvalds AI security</code> — 350K vol (reactive)</li>
+    <li><code>IMF cybersecurity warning</code> — 300K vol (reactive)</li>
+  </ul>
+</div>
+
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-28</div>
+</div>
+</body>
+</html>

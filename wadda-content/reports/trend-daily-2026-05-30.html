@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HERMES Trend Agent — Daily Monitor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
+  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
+  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
+  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
+  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .highlight { color: #7ee787; }
+  .warn { color: #d29922; }
+  .error { color: #f85149; }
+  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .timestamp { color: #8b949e; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>HERMES Trend Agent — Daily Monitor</h1>
+  <div class="meta">Generated: 2026-05-30<br>Source: Reddit (blocked), HIBP, Security News Outlets</div>
+  <div class="stats">
+<div class="stat"><div class="stat-value">7</div><div class="stat-label">New Events Today</div></div>
+<div class="stat"><div class="stat-value">7</div><div class="stat-label">Urgency 10 Alerts</div></div>
+<div class="stat"><div class="stat-value">0</div><div class="stat-label">New Data Breaches</div></div>
+<div class="stat"><div class="stat-value">1171</div><div class="stat-label">Queue Total</div></div>
+</div>
+<h2>📊 Source Breakdown</h2>
+<ul>
+<li><strong>theregister</strong>: 6 events</li>
+<li><strong>techcrunch</strong>: 1 events</li>
+</ul>
+<div class="card"><span class="warn">⚠</span> Note: Reddit API currently blocking requests. News parsing limited by static HTML scraping.</div>
+<h2>🚨 Urgency 10 — Breaking Alerts</h2>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Hackers are trying to steal Signal users&#8217; backups in new wave of widespread attacks</div>
+<div><span class="tag">techcrunch</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://techcrunch.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">backups</span>
+<span class="tag">default</span>
+<span class="tag">trying</span>
+<span class="tag">steal</span>
+<span class="tag">hackers</span>
+<span class="tag">signal</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> ShinyHunters adds Charter to trophy shelf after 4.9M customer records leak</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">adds</span>
+<span class="tag">shinyhunters</span>
+<span class="tag">records</span>
+<span class="tag">leak</span>
+<span class="tag">trophy</span>
+<span class="tag">cybersecurity</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> No fix yet for critical RCE bug in open-source Git service Gogs - exploit module is out</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">rce</span>
+<span class="tag">fix</span>
+<span class="tag">open</span>
+<span class="tag">bug</span>
+<span class="tag">default</span>
+<span class="tag">source</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> 23andMe inherits lawsuit over 'disturbing' DNA data breach</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">data</span>
+<span class="tag">dna</span>
+<span class="tag">cybersecurity</span>
+<span class="tag">inherits</span>
+<span class="tag">disturbing</span>
+<span class="tag">breach</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Dutch cops wrest 17M devices from mystery botnet's clutches</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>ClickBank Antivirus</div>
+<div><strong>Keywords: </strong>
+<span class="tag">mystery</span>
+<span class="tag">botnet</span>
+<span class="tag">dutch</span>
+<span class="tag">clutches</span>
+<span class="tag">wrest</span>
+<span class="tag">devices</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> Russia-linked threat group put ChatGPT to work from lure to payload</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordVPN</div>
+<div><strong>Keywords: </strong>
+<span class="tag">group</span>
+<span class="tag">lure</span>
+<span class="tag">russia</span>
+<span class="tag">work</span>
+<span class="tag">default</span>
+<span class="tag">chatgpt</span>
+</div>
+</div>
+<div class="card">
+<div class="card-title"><span class="error">⬤</span> California AG claims genetics biz downplayed 2023 mega-leak while paying ransom to attacker</div>
+<div><span class="tag">theregister</span> <span class="tag warn">Urgency: 10</span></div>
+<div><a href="https://theregister.com">Source link</a></div>
+<div style="margin-top: 0.5rem;"><strong>Affiliate: </strong>NordPass</div>
+<div><strong>Keywords: </strong>
+<span class="tag">genetics</span>
+<span class="tag">mega</span>
+<span class="tag">leak</span>
+<span class="tag">claims</span>
+<span class="tag">biz</span>
+<span class="tag">downplayed</span>
+</div>
+</div>
+<h2>💰 Affiliate Opportunities</h2>
+<ul>
+<li>ClickBank Antivirus</li>
+<li>ClickBank ID Theft Protection</li>
+<li>NordPass</li>
+<li>NordVPN</li>
+</ul>
+  <hr>
+  <div class="timestamp">Auto-generated by Hermes Agent — 2026-05-30</div>
+</div>
+</body>
+</html>
