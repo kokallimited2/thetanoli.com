@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<title>Trading Strategy Research — Day 1</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0d1117; color:#c9d1d9; font-family:'Inter',sans-serif; padding:32px; max-width:960px; margin:0 auto; }
+  h1 { font-size:1.5rem; margin-bottom:4px; }
+  .subtitle { color:#8b949e; font-size:0.85rem; margin-bottom:20px; }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-bottom:24px; }
+  .stat-card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:14px; }
+  .stat-card .num { font-size:1.6rem; font-weight:700; color:#58a6ff; }
+  .stat-card .label { font-size:0.75rem; color:#8b949e; text-transform:uppercase; }
+  .stat-card.warn { border-color:#da3633; }
+  .stat-card.warn .num { color:#f85149; }
+  .section { margin-bottom:24px; }
+  .section h2 { font-size:1.1rem; color:#58a6ff; margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid #30363d; }
+  .asset-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(440px,1fr)); gap:12px; }
+  .asset-card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:14px; }
+  .asset-card h3 { color:#f0f6fc; font-size:0.95rem; margin-bottom:8px; text-transform:capitalize; }
+  .asset-card .stat-line { font-size:0.8rem; color:#8b949e; margin-bottom:6px; }
+  .asset-card ul { font-size:0.82rem; line-height:1.6; }
+  .asset-card ul li { margin-bottom:4px; list-style:none; padding-left:12px; }
+  .asset-card ul li::before { content:"▸"; color:#58a6ff; margin-right:6px; }
+  .alert-box { background:#1a1a2e; border:1px solid #da3633; border-radius:8px; padding:16px; margin-bottom:24px; }
+  .alert-box h3 { color:#f85149; font-size:0.95rem; margin-bottom:8px; }
+  .alert-box p { color:#c9d1d9; font-size:0.85rem; line-height:1.6; }
+  .alert-box code { background:#0d1117; color:#d2a8ff; padding:2px 6px; border-radius:3px; font-size:0.8rem; }
+  .daily-progress { margin-bottom:24px; }
+  .day-bar { display:flex; gap:6px; align-items:center; margin-bottom:4px; }
+  .day-bar .day-label { min-width:100px; font-size:0.8rem; color:#8b949e; }
+  .day-bar .bar { height:18px; border-radius:3px; background:#2ea043; }
+  .day-bar .bar.warn { background:#da3633; }
+  .day-bar .count { font-size:0.75rem; color:#8b949e; margin-left:6px; }
+  .fix-list { font-size:0.82rem; line-height:1.8; }
+  .fix-list li { color:#d2a8ff; margin-bottom:6px; list-style:none; padding-left:12px; }
+  .fix-list li::before { content:"→"; color:#58a6ff; margin-right:6px; }
+  .footer { text-align:center; color:#484f58; font-size:0.7rem; margin-top:32px; padding-top:16px; border-top:1px solid #30363d; }
+</style>
+</head>
+<body>
+<h1> Trading Strategy Research</h1>
+<p class="subtitle">Day 1 · 2026-05-30 · Auto-improving daily</p>
+
+<div class="stats">
+  <div class="stat-card warn"><div class="num">0</div><div class="label">Total<br>Videos Analysed</div></div>
+  <div class="stat-card warn"><div class="num">0</div><div class="label">New Today</div></div>
+  <div class="stat-card warn"><div class="num">0</div><div class="label">Strategies<br>Extracted Today</div></div>
+  <div class="stat-card warn"><div class="num">0</div><div class="label">Unique<br>Concepts Today</div></div>
+  <div class="stat-card warn"><div class="num">80</div><div class="label">Videos<br>Found (search)</div></div>
+</div>
+
+<div class="alert-box">
+  <h3>⚠️ Infrastructure Blocker — Day 1</h3>
+  <p>
+    YouTube IP block detected. 80 videos were discovered (20 per asset class across 100 searches) but
+    <strong>all transcript downloads failed with HTTP 429 (Too Many Requests)</strong>.
+    YouTube is blocking the VPS/WSL IP from both direct yt-dlp and YouTube Transcript API calls.
+  </p>
+  <p style="margin-top:8px;">
+    <strong>Root cause:</strong> The initial 100 search requests triggered YouTube's rate limiter. Subsequent
+    transcript extraction requests <code>yt-dlp --write-auto-subs</code> are all getting 429'd.
+    Also, <code>--flat-playlist</code> search mode returns minimal metadata (no channels, views, durations),
+    making the "best findings" list meaningless.
+  </p>
+</div>
+
+<div class="section daily-progress">
+  <h2> Daily Progress</h2>
+  <div class="day-bar">
+    <span class="day-label">2026-05-30</span>
+    <div class="bar warn" style="width:5%"></div>
+    <span class="count">0 transcripts (80 found)</span>
+  </div>
+</div>
+
+<div class="section">
+  <h2> Asset Search Results</h2>
+  <div class="asset-grid">
+    <div class="asset-card">
+      <h3> CRYPTO</h3>
+      <div class="stat-line">Found: 20 videos | Strategies: 0 | Queries: 25</div>
+      <ul><li style="color:#484f58;">Transcripts blocked — no strategies extracted yet</li></ul>
+    </div>
+    <div class="asset-card">
+      <h3> OPTIONS</h3>
+      <div class="stat-line">Found: 20 videos | Strategies: 0 | Queries: 25</div>
+      <ul><li style="color:#484f58;">Transcripts blocked — no strategies extracted yet</li></ul>
+    </div>
+    <div class="asset-card">
+      <h3> FOREX</h3>
+      <div class="stat-line">Found: 20 videos | Strategies: 0 | Queries: 25</div>
+      <ul><li style="color:#484f58;">Transcripts blocked — no strategies extracted yet</li></ul>
+    </div>
+    <div class="asset-card">
+      <h3> GOLD</h3>
+      <div class="stat-line">Found: 20 videos | Strategies: 0 | Queries: 25</div>
+      <ul><li style="color:#484f58;">Transcripts blocked — no strategies extracted yet</li></ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2> Search Queries Used (100 total)</h2>
+  <div class="top-concepts">
+    <span style="color:#7ee787;">crypto: 25 queries</span>
+    <span style="color:#58a6ff;">options: 25 queries</span>
+    <span style="color:#d2a8ff;">forex: 25 queries</span>
+    <span style="color:#f0883e;">gold: 25 queries</span>
+  </div>
+  <p style="color:#8b949e; font-size:0.8rem; margin-top:8px;">
+    All 100 searches returned exactly 1 result each (yt-dlp <code>ytsearch3</code> likely hit by same rate limiter).
+    Expected: up to 3 per query = 300 results.
+  </p>
+</div>
+
+<div class="section">
+  <h2> Fixes Applied — Ready for Day 2</h2>
+  <ul class="fix-list">
+    <li><strong>PATCHED:</strong> <code>download_transcript()</code> now has rate-limit handling (2.5s delays, 429 retry with exponential backoff 15s/30s/45s)</li>
+    <li><strong>ADDED:</strong> Playwright-based transcript extractor script at <code>~/.hermes/scripts/yt-transcript-playwright.py</code></li>
+    <li><strong>DOCUMENTED:</strong> Search focus adjustments saved in state for tomorrow's run</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2> Recommended Fixes for Day 2</h2>
+  <ul class="fix-list">
+    <li><strong>Primary:</strong> Install <code>python-curl-cffi</code> for yt-dlp <code>--impersonate</code> support — bypasses YouTube bot detection</li>
+    <li><strong>Secondary:</strong> Use Playwright batch transcript extraction — open one browser session, fetch all 80 transcripts sequentially</li>
+    <li><strong>Metadata:</strong> Change <code>search_youtube()</code> from flat-playlist to full extraction for channel, view count, duration data</li>
+    <li><strong>Fallback:</strong> On 429, reduce max_results to 1 per query and add 10s inter-query delay for search phase too</li>
+  </ul>
+</div>
+
+<div class="footer">
+  Trading Strategy Research · Day 1 · 2026-05-30<br>
+  Auto-researches 80+ YouTube videos daily across crypto, options, forex, gold
+</div>
+</body></html>
