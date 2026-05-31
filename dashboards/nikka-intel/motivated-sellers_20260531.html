@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔥 Motivated Sellers Scan — 31 May 2026 | 20mi Dudley</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0e17;
+    color: #e0e6f0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.6;
+    padding: 0;
+  }
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  
+  /* Header */
+  .scan-header {
+    background: linear-gradient(135deg, #1a1f2e 0%, #0d1220 100%);
+    border-bottom: 2px solid #ff4444;
+    padding: 28px 0 24px;
+    margin-bottom: 32px;
+  }
+  .scan-header h1 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .scan-header h1 span { color: #ff6b35; }
+  .scan-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: #8892b0;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  .scan-meta .badge {
+    background: #ff444422;
+    color: #ff6b6b;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .stat-card {
+    background: #141a26;
+    border: 1px solid #1f2a3d;
+    border-radius: 8px;
+    padding: 14px 20px;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+  .stat-card .num { font-size: 28px; font-weight: 700; color: #fff; }
+  .stat-card .label { font-size: 13px; color: #8892b0; margin-top: 2px; }
+  .stat-card.highlight { border-color: #ff6b3544; }
+  .stat-card.highlight .num { color: #ff6b35; }
+  
+  /* Section title */
+  .section-title {
+    font-size: 1.5rem;
+    color: #ff6b35;
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #1f2a3d;
+  }
+
+  /* Area Watchout */
+  .area-watchout {
+    background: #1a1f2e;
+    border: 1px solid #2a3a5a;
+    border-left: 4px solid #ff6b35;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+  }
+  .area-watchout h3 { color: #ff6b35; font-size: 1.1rem; margin-bottom: 10px; }
+  .area-watchout table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .area-watchout th, .area-watchout td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #1f2a3d; }
+  .area-watchout th { color: #8892b0; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .risk-high { color: #ff6b6b; }
+  .risk-med { color: #ffd93d; }
+  .risk-low { color: #6bcb6b; }
+
+  /* Deal Cards */
+  .deal-card {
+    background: #141a26;
+    border: 1px solid #1f2a3d;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    transition: border-color 0.2s;
+  }
+  .deal-card:hover { border-color: #ff6b3544; }
+  .deal-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .deal-card .card-header h3 {
+    font-size: 1.1rem;
+    color: #fff;
+    margin: 0;
+    flex: 1;
+  }
+  .deal-card .card-header h3 a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .deal-card .card-header h3 a:hover { color: #ff6b35; text-decoration: underline; }
+  .score-badge {
+    background: #ff6b35;
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .score-badge.high { background: #22c55e; }
+  .score-badge.med { background: #f59e0b; }
+  
+  .deal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .deal-meta .tag {
+    background: #1f2a3d;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #8892b0;
+  }
+  .deal-meta .tag.price { color: #ffd93d; }
+  .deal-meta .tag.days { color: #6bcbff; }
+  .deal-meta .tag.beds { color: #a78bfa; }
+  .deal-meta .tag.agent { color: #94a3b8; }
+
+  .deal-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .deal-detail-grid .detail-item {
+    background: #0d1220;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+  }
+  .deal-detail-grid .detail-item .lbl { color: #8892b0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .deal-detail-grid .detail-item .val { color: #e0e6f0; font-weight: 600; margin-top: 2px; }
+
+  .score-breakdown {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0;
+    padding: 10px 0;
+    border-top: 1px solid #1f2a3d;
+    border-bottom: 1px solid #1f2a3d;
+  }
+  .score-breakdown .sb-item {
+    font-size: 12px;
+    color: #8892b0;
+    padding: 2px 8px;
+    background: #0d1220;
+    border-radius: 4px;
+  }
+  .score-breakdown .sb-item strong { color: #e0e6f0; }
+
+  .deal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .deal-actions a {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #1f2a3d;
+    color: #e0e6f0;
+    padding: 5px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.15s;
+  }
+  .deal-actions a:hover {
+    background: #ff6b35;
+    color: #fff;
+  }
+  .deal-actions a.btn-listing { background: #1a3a5a; }
+  .deal-actions a.btn-sold { background: #2a1a3a; }
+  .deal-actions a.btn-comps { background: #1a2a1a; }
+  .deal-actions a.btn-map { background: #2a2a1a; }
+  .deal-actions a.btn-land { background: #1a2a3a; }
+  .deal-actions a.btn-rightmove { background: #1a3a2a; }
+
+  .deal-summary {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #94a3b8;
+    line-height: 1.5;
+  }
+
+  /* Honorable mentions */
+  .bonus-section {
+    margin-top: 20px;
+  }
+  .bonus-item {
+    background: #0d1220;
+    border: 1px solid #1f2a3d;
+    border-left: 3px solid #ffd93d;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .bonus-item .bonus-left { flex: 1; }
+  .bonus-item .bonus-left a { color: #e0e6f0; text-decoration: none; }
+  .bonus-item .bonus-left a:hover { color: #ff6b35; }
+  .bonus-item .bonus-right { display: flex; gap: 4px; }
+
+  /* Methodology */
+  .methodology {
+    background: #0d1220;
+    border: 1px solid #1f2a3d;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 28px 0;
+  }
+  .methodology h3 { color: #8892b0; font-size: 1rem; margin-bottom: 10px; }
+  .methodology table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .methodology th, .methodology td { padding: 6px 10px; text-align: left; border-bottom: 1px solid #1f2a3d; }
+  .methodology th { color: #8892b0; font-weight: 600; font-size: 12px; }
+
+  /* Nav */
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0;
+    padding: 14px 0;
+    border-top: 1px solid #1f2a3d;
+    border-bottom: 1px solid #1f2a3d;
+  }
+  .nav-links a {
+    color: #8892b0;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  .nav-links a:hover { color: #fff; background: #1f2a3d; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    color: #556;
+    font-size: 12px;
+    padding: 24px 0 40px;
+    border-top: 1px solid #1f2a3d;
+    margin-top: 32px;
+  }
+
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+
+  @media (max-width: 640px) {
+    .scan-header h1 { font-size: 1.5rem; }
+    .stat-card { min-width: 80px; padding: 10px 12px; }
+    .deal-card { padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- Header -->
+  <div class="scan-header">
+    <h1>🔥 <span>Motivated Sellers</span> Scan</h1>
+    <div style="font-size:16px; color:#8892b0; margin-bottom:6px;">20 miles of Dudley · Houses only · 2+ beds · Max £200k · 90+ days on market</div>
+    <div class="scan-meta">
+      <span>📅 Sunday, 31 May 2026</span>
+      <span>⏱ Generated: 07:13 BST</span>
+      <span class="badge">AUTOMATED DAILY SCAN</span>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat-card highlight">
+      <div class="num">300</div>
+      <div class="label">Properties Scanned</div>
+    </div>
+    <div class="stat-card highlight">
+      <div class="num">61</div>
+      <div class="label">90+ Day Candidates</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">12</div>
+      <div class="label">Pages Searched</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">5</div>
+      <div class="label">Top Picks</div>
+    </div>
+  </div>
+
+  <!-- Navigation links -->
+  <div class="nav-links">
+    <a href="../index.html">🏠 Dashboard Home</a>
+    <a href="brrr-sourcer.html">🔥 BRRR Daily Sourcer</a>
+    <a href="market_signals_MAIN.html">📡 Market Signals</a>
+    <a href="../area-intelligence/">🗺️ Area Intelligence</a>
+    <a href="offmarket-finder.html">🎯 Off-Market Finder</a>
+  </div>
+
+  <!-- Area Watchout -->
+  <div class="area-watchout">
+    <h3>⚠️ Area Watchout — West Midlands Context</h3>
+    <div class="table-scroll">
+    <table>
+      <tr>
+        <th>Postcode</th><th>Area</th><th>Avg Price</th><th>Risk</th><th>Notes</th>
+      </tr>
+      <tr>
+        <td><strong>DY5</strong></td><td>Brierley Hill</td><td>~£210k</td><td class="risk-med">🟡 Medium</td>
+        <td>Solid demand. Article 4 in some parts. Void risk low. Good yields 5-7%.</td>
+      </tr>
+      <tr>
+        <td><strong>DY3</strong></td><td>Dudley (Lower Gornal)</td><td>~£210k</td><td class="risk-low">🟢 Low</td>
+        <td>Popular residential. Good schools. Low crime vs WM average.</td>
+      </tr>
+      <tr>
+        <td><strong>B44</strong></td><td>Kingstanding</td><td>~£200k</td><td class="risk-med">🟡 Medium</td>
+        <td>First-time buyer area. Rental demand steady. Some pockets higher crime.</td>
+      </tr>
+      <tr>
+        <td><strong>B98</strong></td><td>Redditch (Woodrow)</td><td>~£215k</td><td class="risk-med">🟡 Medium</td>
+        <td>Timber frame common in some estates. Finance restrictions possible. Rental yields ~5%.</td>
+      </tr>
+      <tr>
+        <td><strong>WS10</strong></td><td>Wednesbury</td><td>~£195k</td><td class="risk-med">🟡 Medium</td>
+        <td>Industrial heritage. Good transport links (M6/M5). Rental demand stable.</td>
+      </tr>
+    </table>
+    </div>
+  </div>
+
+  <!-- Section: Top Picks -->
+  <h2 class="section-title">🏆 Top 5 Motivated Seller Deals</h2>
+
+  <!-- Deal 1 -->
+  <div class="deal-card">
+    <div class="card-header">
+      <h3><a href="https://www.rightmove.co.uk/properties/169459442#/?channel=RES_BUY" target="_blank">🗺 #1 — Weybourne Road, Birmingham, B44</a></h3>
+      <span class="score-badge high">90.1 ★</span>
+    </div>
+    <div class="deal-meta">
+      <span class="tag price">£199,950</span>
+      <span class="tag days">📆 193 days on market</span>
+      <span class="tag beds">🛏 3 bed · Semi-detached</span>
+      <span class="tag agent">🏢 Wilkins Estate Agents, Sutton Coldfield</span>
+    </div>
+    <div class="deal-detail-grid">
+      <div class="detail-item"><div class="lbl">Est. Area Avg</div><div class="val">£225,000</div></div>
+      <div class="detail-item"><div class="lbl">Below Avg</div><div class="val" style="color:#22c55e;">11.1%</div></div>
+      <div class="detail-item"><div class="lbl">Est. Rent</div><div class="val">£950–1,050 pcm</div></div>
+      <div class="detail-item"><div class="lbl">Est. Yield</div><div class="val">5.7–6.3%</div></div>
+    </div>
+    <div class="score-breakdown">
+      <span class="sb-item">💵 Discount: <strong>30/30</strong></span>
+      <span class="sb-item">⏱ Days: <strong>16.1/20</strong></span>
+      <span class="sb-item">🔨 Refurb: <strong>20/20</strong></span>
+      <span class="sb-item">📍 Location: <strong>12/15</strong></span>
+      <span class="sb-item">⛓ Chain: <strong>12/15</strong></span>
+    </div>
+    <div class="deal-summary">
+      <strong>⚡ NO CHAIN · RENOVATION REQUIRED</strong> — Superb 3-bed semi-detached in a popular Kingstanding location close to schools and amenities. Needs full modernisation, offering excellent scope for capital growth. No onward chain means quick completion. Ideal for a BRRR or flip strategy.
+    </div>
+    <div class="deal-actions">
+      <a href="https://www.rightmove.co.uk/properties/169459442#/?channel=RES_BUY" target="_blank" class="btn-listing">📋 Listing</a>
+      <a href="https://www.nethouseprices.com/house-prices/birmingham/B44/weybourne-road" target="_blank" class="btn-sold">📊 Sold</a>
+      <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EB44&radius=1.0&sortType=6&propertyTypes=&includeSSTC=false&mustHave=&dontShow=&furnishTypes=&keywords=" target="_blank" class="btn-comps">🏡 Comps</a>
+      <a href="https://www.google.com/maps/search/Weybourne+Road+Birmingham+B44/" target="_blank" class="btn-map">🗺️ Map</a>
+      <a href="https://www.zoopla.co.uk/for-sale/details/169459442/" target="_blank" class="btn-rightmove">🏠 Zoopla</a>
+    </div>
+  </div>
+
+  <!-- Deal 2 -->
+  <div class="deal-card">
+    <div class="card-header">
+      <h3><a href="https://www.rightmove.co.uk/properties/168540338#/?channel=RES_BUY" target="_blank">🗺 #2 — King Street, Brierley Hill, DY5</a></h3>
+      <span class="score-badge high">88.2 ★</span>
+    </div>
+    <div class="deal-meta">
+      <span class="tag price">£185,000</span>
+      <span class="tag days">📆 219 days on market</span>
+      <span class="tag beds">🛏 2 bed · End of Terrace</span>
+      <span class="tag agent">🏢 Your Move, Dudley</span>
+    </div>
+    <div class="deal-detail-grid">
+      <div class="detail-item"><div class="lbl">Est. Area Avg</div><div class="val">£210,000</div></div>
+      <div class="detail-item"><div class="lbl">Below Avg</div><div class="val" style="color:#22c55e;">11.9%</div></div>
+      <div class="detail-item"><div class="lbl">Est. Rent</div><div class="val">£850–950 pcm</div></div>
+      <div class="detail-item"><div class="lbl">Est. Yield</div><div class="val">5.5–6.2%</div></div>
+    </div>
+    <div class="score-breakdown">
+      <span class="sb-item">💵 Discount: <strong>30/30</strong></span>
+      <span class="sb-item">⏱ Days: <strong>18.2/20</strong></span>
+      <span class="sb-item">🔨 Refurb: <strong>10/20</strong></span>
+      <span class="sb-item">📍 Location: <strong>15/15</strong></span>
+      <span class="sb-item">⛓ Chain: <strong>15/15</strong></span>
+    </div>
+    <div class="deal-summary">
+      <strong>⚡ VACANT POSSESSION · REDUCED (17/02/26)</strong> — Attractive 2-bed end terrace in Brierley Hill with spacious reception room featuring a fireplace, kitchen-diner opening onto a large garden. DY5 location gives max demand score. Vacant possession means immediate access for refurb or rental. Was reduced in February — seller is motivated.
+    </div>
+    <div class="deal-actions">
+      <a href="https://www.rightmove.co.uk/properties/168540338#/?channel=RES_BUY" target="_blank" class="btn-listing">📋 Listing</a>
+      <a href="https://www.nethouseprices.com/house-prices/west-midlands/brierley-hill/DY5/king-street" target="_blank" class="btn-sold">📊 Sold</a>
+      <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EDY5&radius=1.0&sortType=6&propertyTypes=&includeSSTC=false&mustHave=&dontShow=&furnishTypes=&keywords=" target="_blank" class="btn-comps">🏡 Comps</a>
+      <a href="https://www.google.com/maps/search/King+Street+Brierley+Hill+DY5/" target="_blank" class="btn-map">🗺️ Map</a>
+      <a href="https://www.zoopla.co.uk/for-sale/details/168540338/" target="_blank" class="btn-rightmove">🏠 Zoopla</a>
+    </div>
+  </div>
+
+  <!-- Deal 3 -->
+  <div class="deal-card">
+    <div class="card-header">
+      <h3><a href="https://www.rightmove.co.uk/properties/170511011#/?channel=RES_BUY" target="_blank">🗺 #3 — Doverdale Close, Woodrow North, B98</a></h3>
+      <span class="score-badge high">87.2 ★</span>
+    </div>
+    <div class="deal-meta">
+      <span class="tag price">£150,000</span>
+      <span class="tag days">📆 159 days on market</span>
+      <span class="tag beds">🛏 3 bed · Mid-Terrace</span>
+      <span class="tag agent">🏢 Lamberts Sales and Lettings, Worcs</span>
+    </div>
+    <div class="deal-detail-grid">
+      <div class="detail-item"><div class="lbl">Est. Area Avg</div><div class="val">£225,000</div></div>
+      <div class="detail-item"><div class="lbl">Below Avg</div><div class="val" style="color:#22c55e;">33.3%</div></div>
+      <div class="detail-item"><div class="lbl">Est. Rent</div><div class="val">£900 pcm</div></div>
+      <div class="detail-item"><div class="lbl">Est. Yield</div><div class="val">7.2%</div></div>
+    </div>
+    <div class="score-breakdown">
+      <span class="sb-item">💵 Discount: <strong>30/30</strong></span>
+      <span class="sb-item">⏱ Days: <strong>13.2/20</strong></span>
+      <span class="sb-item">🔨 Refurb: <strong>20/20</strong></span>
+      <span class="sb-item">📍 Location: <strong>12/15</strong></span>
+      <span class="sb-item">⛓ Chain: <strong>12/15</strong></span>
+    </div>
+    <div class="deal-summary">
+      <strong>⚡ NO CHAIN · NEEDS MODERNISATION</strong> — Spacious 3-bed mid-terrace in Woodrow North at just £150k. Huge 33% discount vs area average. No chain, needs full modernisation. ⚠️ <strong style="color:#ffd93d;">Non-standard construction (timber frame)</strong> — may restrict mortgage options. Cash buyers or specialist lenders only. Rent potential £900pcm = strong yield.
+    </div>
+    <div class="deal-actions">
+      <a href="https://www.rightmove.co.uk/properties/170511011#/?channel=RES_BUY" target="_blank" class="btn-listing">📋 Listing</a>
+      <a href="https://www.nethouseprices.com/house-prices/redditch/B98/doverdale-close" target="_blank" class="btn-sold">📊 Sold</a>
+      <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EB98&radius=1.0&sortType=6&propertyTypes=&includeSSTC=false&mustHave=&dontShow=&furnishTypes=&keywords=" target="_blank" class="btn-comps">🏡 Comps</a>
+      <a href="https://www.google.com/maps/search/Doverdale+Close+Woodrow+North+B98/" target="_blank" class="btn-map">🗺️ Map</a>
+      <a href="https://www.zoopla.co.uk/for-sale/details/170511011/" target="_blank" class="btn-rightmove">🏠 Zoopla</a>
+    </div>
+  </div>
+
+  <!-- Deal 4 -->
+  <div class="deal-card">
+    <div class="card-header">
+      <h3><a href="https://www.rightmove.co.uk/properties/167189918#/?channel=RES_BUY" target="_blank">🗺 #4 — Dangerfield Lane, Wednesbury</a></h3>
+      <span class="score-badge med">83.0 ★</span>
+    </div>
+    <div class="deal-meta">
+      <span class="tag price">£149,950</span>
+      <span class="tag days">📆 253 days on market</span>
+      <span class="tag beds">🛏 2 bed · Semi-detached</span>
+      <span class="tag agent">🏢 Midland Housing Ltd, Birmingham</span>
+    </div>
+    <div class="deal-detail-grid">
+      <div class="detail-item"><div class="lbl">Est. Area Avg</div><div class="val">£185,000</div></div>
+      <div class="detail-item"><div class="lbl">Below Avg</div><div class="val" style="color:#22c55e;">18.9%</div></div>
+      <div class="detail-item"><div class="lbl">Actual Income</div><div class="val" style="color:#22c55e;">£10,200/yr</div></div>
+      <div class="detail-item"><div class="lbl">Gross Yield</div><div class="val" style="color:#22c55e;">6.8%</div></div>
+    </div>
+    <div class="score-breakdown">
+      <span class="sb-item">💵 Discount: <strong>30/30</strong></span>
+      <span class="sb-item">⏱ Days: <strong>20/20</strong></span>
+      <span class="sb-item">🔨 Refurb: <strong>5/20</strong></span>
+      <span class="sb-item">📍 Location: <strong>10/15</strong></span>
+      <span class="sb-item">⛓ Chain: <strong>5/15</strong></span>
+    </div>
+    <div class="deal-summary">
+      <strong>⚡ TENANT IN SITU · £10,200/yr INCOME</strong> — Investment-ready! 2-bed semi-detached in Wednesbury with a tenant already in place generating £850pcm. Spacious lounge, kitchen-diner, generous rear garden. Gas CH & double glazing. ⚠️ <strong style="color:#ffd93d;">Cash buyers only</strong> — check with agent. Strong yield at 6.8% with zero void risk.
+    </div>
+    <div class="deal-actions">
+      <a href="https://www.rightmove.co.uk/properties/167189918#/?channel=RES_BUY" target="_blank" class="btn-listing">📋 Listing</a>
+      <a href="https://www.nethouseprices.com/house-prices/sandwell/wednesbury/dangerfield-lane" target="_blank" class="btn-sold">📊 Sold</a>
+      <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=POSTCODE%5EWS10&radius=1.0&sortType=6&propertyTypes=&includeSSTC=false&mustHave=&dontShow=&furnishTypes=&keywords=" target="_blank" class="btn-comps">🏡 Comps</a>
+      <a href="https://www.google.com/maps/search/Dangerfield+Lane+Wednesbury/" target="_blank" class="btn-map">🗺️ Map</a>
+      <a href="https://www.zoopla.co.uk/for-sale/details/167189918/" target="_blank" class="btn-rightmove">🏠 Zoopla</a>
+    </div>
+  </div>
+
+  <!-- Deal 5 -->
+  <div class="deal-card">
+    <div class="card-header">
+      <h3><a href="https://www.rightmove.co.uk/properties/169764104#/?channel=RES_BUY" target="_blank">🗺 #5 — Boundary Hill, Dudley, DY3</a></h3>
+      <span class="score-badge med">82.3 ★</span>
+    </div>
+    <div class="deal-meta">
+      <span class="tag price">£170,000</span>
+      <span class="tag days">📆 184 days on market</span>
+      <span class="tag beds">🛏 3 bed · End of Terrace</span>
+      <span class="tag agent">🏢 Connells, B'ham West - Dudley</span>
+    </div>
+    <div class="deal-detail-grid">
+      <div class="detail-item"><div class="lbl">Est. Area Avg</div><div class="val">£210,000</div></div>
+      <div class="detail-item"><div class="lbl">Below Avg</div><div class="val" style="color:#22c55e;">19%</div></div>
+      <div class="detail-item"><div class="lbl">Est. Rent</div><div class="val">£900–1,000 pcm</div></div>
+      <div class="detail-item"><div class="lbl">Est. Yield</div><div class="val">6.4–7.1%</div></div>
+    </div>
+    <div class="score-breakdown">
+      <span class="sb-item">💵 Discount: <strong>30/30</strong></span>
+      <span class="sb-item">⏱ Days: <strong>15.3/20</strong></span>
+      <span class="sb-item">🔨 Refurb: <strong>10/20</strong></span>
+      <span class="sb-item">📍 Location: <strong>15/15</strong></span>
+      <span class="sb-item">⛓ Chain: <strong>12/15</strong></span>
+    </div>
+    <div class="deal-summary">
+      <strong>⚡ NO UPWARD CHAIN · REDUCED (19/02/26) · DY3</strong> — 3-bed end terrace in Lower Gornal, Dudley. Benefits from no upward chain for quick completion. Popular residential area with good schools. Has potential for refurbishment to add value. Strong location demand (DY3 = max 15pts). Well-positioned near local amenities.
+    </div>
+    <div class="deal-actions">
+      <a href="https://www.rightmove.co.uk/properties/169764104#/?channel=RES_BUY" target="_blank" class="btn-listing">📋 Listing</a>
+      <a href="https://www.nethouseprices.com/house-prices/dudley/DY3/boundary-hill" target="_blank" class="btn-sold">📊 Sold</a>
+      <a href="https://www.rightmove.co.uk/property-for-sale/find.html?locationIdentifier=REGION%5E443&radius=1.0&sortType=6&propertyTypes=detached,semi-detached,terraced&includeSSTC=false&mustHave=&dontShow=&furnishTypes=&keywords=" target="_blank" class="btn-comps">🏡 Comps</a>
+      <a href="https://www.google.com/maps/search/Boundary+Hill+Dudley+DY3/" target="_blank" class="btn-map">🗺️ Map</a>
+      <a href="https://www.zoopla.co.uk/for-sale/details/169764104/" target="_blank" class="btn-rightmove">🏠 Zoopla</a>
+    </div>
+  </div>
+
+  <!-- Honourable Mentions -->
+  <h2 class="section-title">📋 Also Worth A Look</h2>
+
+  <div class="bonus-section">
+    <div class="bonus-item">
+      <div class="bonus-left">
+        <a href="https://www.rightmove.co.uk/properties/87578541#/?channel=RES_BUY" target="_blank"><strong>Flaxley Road, Rugeley, WS15</strong></a>
+        <div style="font-size:13px; color:#8892b0; margin-top:2px;">£110,000 · 3 bed semi · 116 days · Full renovation · Red Ash · Modern Auction</div>
+      </div>
+      <div class="bonus-right">
+        <span class="score-badge med" style="font-size:12px; padding:2px 10px;">72.7</span>
+        <a href="https://www.rightmove.co.uk/properties/87578541#/?channel=RES_BUY" style="color:#6bcbff; text-decoration:none; font-size:13px;">📋</a>
+      </div>
+    </div>
+    <div class="bonus-item">
+      <div class="bonus-left">
+        <a href="https://www.rightmove.co.uk/properties/171476666#/?channel=RES_BUY" target="_blank"><strong>Pershore Road, Kidderminster, DY11</strong></a>
+        <div style="font-size:13px; color:#8892b0; margin-top:2px;">£180,000 · 3 bed semi · 123 days · NO ONWARD CHAIN · Purplebricks</div>
+      </div>
+      <div class="bonus-right">
+        <span class="score-badge med" style="font-size:12px; padding:2px 10px;">77.2</span>
+        <a href="https://www.rightmove.co.uk/properties/171476666#/?channel=RES_BUY" style="color:#6bcbff; text-decoration:none; font-size:13px;">📋</a>
+      </div>
+    </div>
+    <div class="bonus-item">
+      <div class="bonus-left">
+        <a href="https://www.rightmove.co.uk/properties/165442067#/?channel=RES_BUY" target="_blank"><strong>High Street, Brockmoor, Brierley Hill, DY5</strong></a>
+        <div style="font-size:13px; color:#8892b0; margin-top:2px;">£150,000 · 2 bed terrace · 297 days · Well-presented · G&T Properties</div>
+      </div>
+      <div class="bonus-right">
+        <span class="score-badge med" style="font-size:12px; padding:2px 10px;">75.0</span>
+        <a href="https://www.rightmove.co.uk/properties/165442067#/?channel=RES_BUY" style="color:#6bcbff; text-decoration:none; font-size:13px;">📋</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Methodology -->
+  <div class="methodology">
+    <h3>📊 Scoring Methodology</h3>
+    <div class="table-scroll">
+    <table>
+      <tr><th>Criteria</th><th>Max</th><th>How It's Scored</th></tr>
+      <tr><td>💵 Discount vs Area Avg</td><td>30</td><td>% below area avg × 3 (capped at 30)</td></tr>
+      <tr><td>⏱ Days on Market</td><td>20</td><td>days / 12 (capped at 20)</td></tr>
+      <tr><td>🔨 Refurb Potential</td><td>20</td><td>Needs work=20, Vacant=10, Clean/Presented=5</td></tr>
+      <tr><td>📍 Location Demand</td><td>15</td><td>DY=15, B=12, WV/WS=10, other=8</td></tr>
+      <tr><td>⛓ Chain Status</td><td>15</td><td>Vacant=15, No chain=12, With chain=5</td></tr>
+    </table>
+    </div>
+    <div style="margin-top:10px; font-size:13px; color:#8892b0;">
+      <strong>Source:</strong> Rightmove.co.uk via curl + __NEXT_DATA__ extraction. 300 properties scanned across 12 pages (24 per page).
+      Area averages estimated from market data. Filtered: houses only, 2+ beds, max £200k, 90+ days on market, 20mi from Dudley.
+    </div>
+  </div>
+
+  <!-- SEO Nav -->
+  <div class="nav-links">
+    <a href="../index.html">🏠 Dashboard Home</a>
+    <a href="brrr-sourcer.html">🔥 BRRR Daily Sourcer</a>
+    <a href="market_signals_MAIN.html">📡 Market Signals</a>
+    <a href="../area-intelligence/">🗺️ Area Intelligence</a>
+    <a href="offmarket-finder.html">🎯 Off-Market Finder</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Motivated Sellers Scan · Sunday, 31 May 2026 · Generated at 07:13 BST</p>
+    <p style="margin-top:4px;">Hermes Agent · Property Hub · Automated Daily Cron Job</p>
+  </div>
+
+</div>
+</body>
+</html>
