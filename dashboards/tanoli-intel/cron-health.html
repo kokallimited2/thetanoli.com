@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Health Dashboard — Cron Jobs</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 1.5rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  h1 { font-size: 1.6rem; color: #58a6ff; margin-bottom: 0.3rem; }
+  .subtitle { color: #8b949e; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; margin-bottom: 1.5rem; }
+  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; text-align: center; }
+  .stat-value { font-size: 1.8rem; font-weight: 700; }
+  .stat-label { font-size: 0.8rem; color: #8b949e; margin-top: 0.3rem; }
+  .stat-total .stat-value { color: #58a6ff; }
+  .stat-ok .stat-value { color: #7ee787; }
+  .stat-error .stat-value { color: #f85149; }
+  .stat-new .stat-value { color: #d2a8ff; }
+  .stat-paused .stat-value { color: #8b949e; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { background: #161b22; color: #8b949e; text-align: left; padding: 0.6rem 0.8rem; border-bottom: 2px solid #30363d; position: sticky; top: 0; z-index: 2; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; }
+  td { padding: 0.5rem 0.8rem; border-bottom: 1px solid #21262d; vertical-align: top; }
+  tr:hover td { background: #161b22; }
+  .cat-header td { background: #1c2128; color: #f0883e; font-weight: 600; font-size: 0.85rem; padding: 0.6rem 0.8rem; border-bottom: 1px solid #30363d; }
+  .name-cell { max-width: 300px; word-break: break-word; }
+  .badge { display: inline-block; font-size: 0.65rem; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 3px; margin-right: 0.4rem; text-transform: uppercase; letter-spacing: 0.3px; }
+  .badge-ok { background: #0c3d26; color: #7ee787; }
+  .badge-error { background: #3d0c0c; color: #f85149; animation: pulse 2s infinite; }
+  .badge-new { background: #2a0c3d; color: #d2a8ff; }
+  .badge-paused { background: #1f2937; color: #8b949e; }
+  .badge-other { background: #1f2937; color: #d29922; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+  .tag { display: inline-block; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 3px; }
+  .tag-noagent { background: #161b22; color: #8b949e; border: 1px solid #30363d; }
+  .tag-model { background: #1c2128; color: #58a6ff; border: 1px solid #1f6feb; }
+  .tag-default { background: #161b22; color: #8b949e; }
+  .sched { color: #e6edf3; }
+  .sched-raw { color: #8b949e; font-size: 0.7rem; font-family: monospace; }
+  .time-warn { color: #d29922; }
+  .time-red { color: #f85149; font-weight: 600; }
+  .error-row td { padding: 0.2rem 0.8rem 0.6rem 3rem; border-bottom: 1px solid #3d0c0c; }
+  .error-text { color: #f85149; font-size: 0.78rem; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
+  .footer { color: #8b949e; font-size: 0.8rem; text-align: center; margin-top: 1.5rem; }
+  .alerts { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+  .alerts h3 { color: #f0883e; font-size: 1rem; margin-bottom: 0.5rem; }
+  .alerts ul { list-style: none; padding: 0; }
+  .alerts li { padding: 0.3rem 0; color: #e6edf3; font-size: 0.85rem; }
+  .alerts li::before { content: "⚠️ "; }
+  .toggle-btn { background: #1f6feb; color: white; border: none; padding: 0.4rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem; margin-bottom: 0.5rem; }
+  .toggle-btn:hover { background: #388bfd; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🩺 System Health Dashboard</h1>
+  <div class="subtitle">Generated: 2026-05-31 03:09 UTC | 42 cron jobs monitored</div>
+
+  <div class="stats">
+    <div class="stat stat-total"><div class="stat-value">42</div><div class="stat-label">Total Jobs</div></div>
+    <div class="stat stat-ok"><div class="stat-value">35</div><div class="stat-label">Healthy</div></div>
+    <div class="stat stat-error"><div class="stat-value">4</div><div class="stat-label">Failed</div></div>
+    <div class="stat stat-new"><div class="stat-value">3</div><div class="stat-label">Never Run</div></div>
+    <div class="stat stat-paused"><div class="stat-value">1</div><div class="stat-label">Paused</div></div>
+  </div>
+
+  <div class="alerts">
+    <h3>🚨 Alerts & Recommendations</h3>
+    <ul>
+<li><strong>4 jobs in ERROR state:</strong> Mid-Session Stock Scan — US Sc · US Options Scanner v2 — Daily  · Crypto Signal Scanner + Deploy · Options Performance Analysis —</li>
+<li>All 4 errors are OpenRouter credit depletion — same root cause. Fix: <a href="https://openrouter.ai/settings/credits" style="color:#58a6ff">top up credits</a> or switch model from gpt-4o to deepseek-chat in these jobs</li>
+<li><strong>High density at 5:00 (4 jobs):</strong> Possible resource contention</li>
+<li><strong>High density at 8:00 (4 jobs):</strong> Possible resource contention</li>
+<li><strong>High density at 9:00 (3 jobs):</strong> Possible resource contention</li>
+<li><strong>High density at 10:00 (3 jobs):</strong> Possible resource contention</li>
+<li><strong>High density at 13:00 (3 jobs):</strong> Possible resource contention</li>
+<li><strong>High density at 14:00 (4 jobs):</strong> Possible resource contention</li>
+<li><strong>High density at 15:00 (4 jobs):</strong> Possible resource contention</li>
+<li><strong>High density at 18:00 (3 jobs):</strong> Possible resource contention</li>
+<li><strong>High density at 20:00 (3 jobs):</strong> Possible resource contention</li>
+<li><strong>High density at 21:00 (3 jobs):</strong> Possible resource contention</li>
+<li><strong>3 jobs never ran:</strong> Bi-Weekly Trade Assessment — Combined Review · Weekly Options Strategy Autopsy — Khan Lala · Confluence Scorer — check if they're properly configured</li>
+<li><strong>3 active jobs haven't run in 2+ days</strong> — may be stuck or misconfigured</li>
+<li><strong>Known timing issue (from May audit):</strong> Signal Executor runs at 14:15, scanners at 14:00-14:45 — verify no stale signal execution</li>
+    </ul>
+    <button class="toggle-btn" onclick="toggleErrors()">🔍 Show/Hide Error Details</button>
+  </div>
+
+  <div style="overflow-x: auto;">
+  <table>
+    <thead>
+      <tr><th>Job Name</th><th>Schedule</th><th>Last Run</th><th>Next Run</th><th>Model</th></tr>
+    </thead>
+    <tbody>
+<tr class="cat-header"><td colspan="5">📊 Scanners & Screeners (11)</td></tr><tr>
+                <td class="name-cell"><span class="badge badge-error">ERROR</span> US Options Scanner v2 — Daily Scan + Deploy</td>
+                <td><span class="sched">@14:30 on 1-5</span><br><span class="sched-raw">30 14 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-model">gpt-4o</span></td>
+            </tr><tr class="error-row"><td></td><td colspan="4"><span class="error-text">❌ RuntimeError: HTTP 402: This request requires more credits, or fewer max_tokens. You requested up to...</span></td></tr><tr>
+                <td class="name-cell"><span class="badge badge-error">ERROR</span> Mid-Session Stock Scan — US Scanner</td>
+                <td><span class="sched">@14:00 on 1-5</span><br><span class="sched-raw">0 14 * * 1-5</span></td>
+                <td class="">3h ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-model">gpt-4o</span></td>
+            </tr><tr class="error-row"><td></td><td colspan="4"><span class="error-text">❌ RuntimeError: HTTP 402: This request requires more credits, or fewer max_tokens. You requested up to...</span></td></tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Forex Screener — London/NY Overlap Scan</td>
+                <td><span class="sched">@13:15 on 1-5</span><br><span class="sched-raw">15 13 * * 1-5</span></td>
+                <td class="">2d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Morning Stock Scan — Learning Agent + Pre-Market</td>
+                <td><span class="sched">@08:00 on 1-5</span><br><span class="sched-raw">0 8 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-model">deepseek-chat</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Catalyst Screener — daily deploy</td>
+                <td><span class="sched">@08:30 on 1-5</span><br><span class="sched-raw">30 8 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Forex Screener — London Open Scan</td>
+                <td><span class="sched">@08:45 on 1-5</span><br><span class="sched-raw">45 8 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Gold Screener — COMEX Open Scan</td>
+                <td><span class="sched">@13:30 on 1-5</span><br><span class="sched-raw">30 13 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Micro-Stock Runner Screener v2 — Daily Scan + Deploy</td>
+                <td><span class="sched">@14:15 on 1-5</span><br><span class="sched-raw">15 14 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Whale Stock Scanner — Institutional Flow Detection</td>
+                <td><span class="sched">@15:00 on 1-5</span><br><span class="sched-raw">0 15 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Whale Options Scanner — Institutional Flow Detection</td>
+                <td><span class="sched">@14:45 on 1-5</span><br><span class="sched-raw">45 14 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Micro-Stock Performance Analysis — Post-Trade + Deploy</td>
+                <td><span class="sched">@20:45 on 1-5</span><br><span class="sched-raw">45 20 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr class="cat-header"><td colspan="5">💱 FX / Crypto / Gold (5)</td></tr><tr>
+                <td class="name-cell"><span class="badge badge-error">ERROR</span> Crypto Signal Scanner + Deploy</td>
+                <td><span class="sched">@4,18:30</span><br><span class="sched-raw">30 4,18 * * *</span></td>
+                <td class="">8h ago</td>
+                <td>in 1h</td>
+                <td><span class="tag tag-model">gpt-4o</span></td>
+            </tr><tr class="error-row"><td></td><td colspan="4"><span class="error-text">❌ RuntimeError: HTTP 402: This request requires more credits, or fewer max_tokens. You requested up to...</span></td></tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Forex Risk Check — End of Day</td>
+                <td><span class="sched">@21:00 on 1-5</span><br><span class="sched-raw">0 21 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Hermes Crypto Micro-Trading Intelligence</td>
+                <td><span class="sched">@04:00</span><br><span class="sched-raw">0 4 * * *</span></td>
+                <td class="">23h ago</td>
+                <td>in 50m</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Crypto Paper Trading — Strategy Testing</td>
+                <td><span class="sched">@06:06</span><br><span class="sched-raw">6 6 * * *</span></td>
+                <td class="">21h ago</td>
+                <td>in 2h</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Crypto Trade Monitor — scoring + deploy</td>
+                <td><span class="sched">@6,18:15</span><br><span class="sched-raw">15 6,18 * * *</span></td>
+                <td class="">8h ago</td>
+                <td>in 3h</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr class="cat-header"><td colspan="5">⚡ Trade Execution & Risk (11)</td></tr><tr>
+                <td class="name-cell"><span class="badge badge-error">ERROR</span> Options Performance Analysis — Post-Trade + Deploy</td>
+                <td><span class="sched">@20:00 on 1-5</span><br><span class="sched-raw">0 20 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-model">gpt-4o</span></td>
+            </tr><tr class="error-row"><td></td><td colspan="4"><span class="error-text">❌ RuntimeError: HTTP 402: This request requires more credits, or fewer max_tokens. You requested up to...</span></td></tr><tr>
+                <td class="name-cell"><span class="badge badge-new">NEW</span> Confluence Scorer</td>
+                <td><span class="sched">@15:30 on 1-5</span><br><span class="sched-raw">30 15 * * 1-5</span></td>
+                <td class="time-warn">never</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-noagent">script</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> IB Gateway — Start Paper Trading</td>
+                <td><span class="sched">@13:00 on 1-5</span><br><span class="sched-raw">0 13 * * 1-5</span></td>
+                <td class="">2d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Strategy Mapper — KB enrichment</td>
+                <td><span class="sched">@05:45 on 1-5</span><br><span class="sched-raw">45 5 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Reminder: IB Gateway JAR + Options Paper Trading</td>
+                <td><span class="sched">@10:00 on 1-5</span><br><span class="sched-raw">0 10 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Options Paper Trade — Scanner + Execute Pipeline</td>
+                <td><span class="sched">@15:45 on 1-5</span><br><span class="sched-raw">45 15 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Signal Executor — auto-buy</td>
+                <td><span class="sched">@15:15 on 1-5</span><br><span class="sched-raw">15 15 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Power Hour Check — monitor & exit</td>
+                <td><span class="sched">@19:30 on 1-5</span><br><span class="sched-raw">30 19 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Trade Performance — Post-Trade Analysis + Deploy</td>
+                <td><span class="sched">@21:45 on 1-5</span><br><span class="sched-raw">45 21 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> IB Gateway — Stop After Market</td>
+                <td><span class="sched">@21:30 on 1-5</span><br><span class="sched-raw">30 21 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Options Risk Manager — Monitor Open Positions</td>
+                <td><span class="sched">@20,23:30 on 1-5</span><br><span class="sched-raw">30 20,23 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr class="cat-header"><td colspan="5">🔁 Content Pipeline Agents (6)</td></tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> HERMES Performance Agent — Weekly Report</td>
+                <td><span class="sched">@10:00 on Sun</span><br><span class="sched-raw">0 10 * * 0</span></td>
+                <td class="time-warn">6d ago</td>
+                <td>in 6h</td>
+                <td><span class="tag tag-model">deepseek-chat</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> TrendVault — Daily Content Generation</td>
+                <td><span class="sched">@09:15 on 1-5</span><br><span class="sched-raw">15 9 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> HERMES Affiliate Sign-up Reminder</td>
+                <td><span class="sched">@09:00 on 1-5</span><br><span class="sched-raw">0 9 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> HERMES Research Agent — Daily Scan</td>
+                <td><span class="sched">@05:00</span><br><span class="sched-raw">0 5 * * *</span></td>
+                <td class="">21h ago</td>
+                <td>in 1h</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> HERMES Trend Agent — Daily Monitor</td>
+                <td><span class="sched">@05:15</span><br><span class="sched-raw">15 5 * * *</span></td>
+                <td class="">21h ago</td>
+                <td>in 2h</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> HERMES SEO Agent — Keyword Briefing</td>
+                <td><span class="sched">@05:30</span><br><span class="sched-raw">30 5 * * *</span></td>
+                <td class="">21h ago</td>
+                <td>in 2h</td>
+                <td><span class="tag tag-model">deepseek-chat</span></td>
+            </tr><tr class="cat-header"><td colspan="5">📝 Content Sites (1)</td></tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> TrendVault — Daily Trend Scan</td>
+                <td><span class="sched">@08:00 on 1-5</span><br><span class="sched-raw">0 8 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr class="cat-header"><td colspan="5">📋 Reports & Analysis (7)</td></tr><tr>
+                <td class="name-cell"><span class="badge badge-new">NEW</span> Bi-Weekly Trade Assessment — Combined Review</td>
+                <td><span class="sched">@10:15 on Mon</span><br><span class="sched-raw">15 10 * * 1</span></td>
+                <td class="time-warn">never</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-new">NEW</span> Weekly Options Strategy Autopsy — Khan Lala</td>
+                <td><span class="sched">@09:15 on Mon</span><br><span class="sched-raw">15 9 * * 1</span></td>
+                <td class="time-warn">never</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Weekly Agent Self-Improvement — Build Assets That Compound</td>
+                <td><span class="sched">@03:00 on Sun</span><br><span class="sched-raw">0 3 * * 0</span></td>
+                <td class="time-warn">7d ago</td>
+                <td>in 6d</td>
+                <td><span class="tag tag-model">deepseek-chat</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Weekly Self-Review Audit</td>
+                <td><span class="sched">@18:00 on Sun</span><br><span class="sched-raw">0 18 * * 0</span></td>
+                <td class="time-warn">6d ago</td>
+                <td>in 14h</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Trading KB Generator (YouTube transcribe + classify + KB build)</td>
+                <td><span class="sched">@07:00 on 1-5</span><br><span class="sched-raw">0 7 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Portfolio Update + Dashboard + Deploy</td>
+                <td><span class="sched">@16:00</span><br><span class="sched-raw">0 16 * * *</span></td>
+                <td class="">11h ago</td>
+                <td>in 12h</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr>
+                <td class="name-cell"><span class="badge badge-ok">OK</span> Trading Strategy Research — YouTube Research Pipeline</td>
+                <td><span class="sched">@17:00</span><br><span class="sched-raw">0 17 * * *</span></td>
+                <td class="">9h ago</td>
+                <td>in 13h</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr><tr class="cat-header"><td colspan="5">🔧 Other (1)</td></tr><tr>
+                <td class="name-cell"><span class="badge badge-paused">PAUSED</span> Pre-Market Swing Scanner — 09:30</td>
+                <td><span class="sched">@09:30 on 1-5</span><br><span class="sched-raw">30 9 * * 1-5</span></td>
+                <td class="">1d ago</td>
+                <td>in 1d</td>
+                <td><span class="tag tag-default">default</span></td>
+            </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <hr>
+  <div class="footer">
+    <p>🩺 Cron Health Dashboard — Auto-generated by Khan Lala</p>
+    <p style="margin-top: 0.3rem;">💡 To see all cron output files: <code>~/.hermes/cron/output/</code></p>
+  </div>
+</div>
+
+<script>
+function toggleErrors() {
+  var rows = document.querySelectorAll('.error-row');
+  var allHidden = true;
+  for (var i = 0; i < rows.length; i++) {
+    if (rows[i].style.display !== 'none') allHidden = false;
+  }
+  for (var i = 0; i < rows.length; i++) {
+    rows[i].style.display = allHidden ? 'table-row' : 'none';
+  }
+}
+// Initially hide errors
+document.addEventListener('DOMContentLoaded', function() {
+  var rows = document.querySelectorAll('.error-row');
+  for (var i = 0; i < rows.length; i++) {
+    rows[i].style.display = 'none';
+  }
+});
+</script>
+</body>
+</html>
