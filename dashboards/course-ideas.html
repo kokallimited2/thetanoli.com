@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course Ideas Dashboard — Market Problems → Course Solutions</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f1a; color: #e0e0e0; line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+  h1 { font-size: 2rem; color: #f59e0b; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.4rem; color: #fbbf24; margin: 2rem 0 1rem; border-bottom: 1px solid #2a2a3e; padding-bottom: 0.5rem; }
+  h3 { color: #f59e0b; margin-bottom: 0.5rem; }
+  .subtitle { color: #888; margin-bottom: 2rem; font-size: 0.95rem; }
+  .meta-bar { display: flex; gap: 1.5rem; flex-wrap: wrap; padding: 1rem 0; margin-bottom: 1.5rem; border-bottom: 1px solid #2a2a3e; }
+  .meta-item { display: flex; flex-direction: column; }
+  .meta-label { font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+  .meta-value { font-size: 1.1rem; color: #fbbf24; font-weight: 600; }
+
+  /* Categories */
+  .category-section { margin-bottom: 2.5rem; }
+  .category-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+  .category-icon { font-size: 1.5rem; }
+  .category-count { background: #1a1a2e; color: #888; padding: 0.15rem 0.6rem; border-radius: 10px; font-size: 0.8rem; }
+
+  .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1rem; }
+  .course-card { background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 12px; padding: 1.25rem; transition: border-color 0.2s; }
+  .course-card:hover { border-color: #f59e0b55; }
+  .course-card .title { font-size: 1.05rem; font-weight: 600; color: #fbbf24; margin-bottom: 0.4rem; }
+  .course-card .problem { font-size: 0.85rem; color: #ef4444; margin-bottom: 0.5rem; }
+  .course-card .solution { font-size: 0.85rem; color: #ccc; margin-bottom: 0.75rem; }
+  .course-card .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.5rem; }
+  .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 5px; font-size: 0.7rem; font-weight: 600; }
+  .tag-platform { background: #4c1d9520; color: #a78bfa; border: 1px solid #4c1d95; }
+  .tag-yt { background: #dc262620; color: #f87171; border: 1px solid #dc2626; }
+  .tag-udemy { background: #0891b220; color: #22d3ee; border: 1px solid #0891b2; }
+  .tag-gumroad { background: #05966920; color: #34d399; border: 1px solid #059669; }
+  .tag-podcast { background: #d946ef20; color: #e879f9; border: 1px solid #d946ef; }
+  .tag-hot { background: #f59e0b20; color: #fbbf24; border: 1px solid #f59e0b; }
+  .card-footer { display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; color: #666; border-top: 1px solid #1e1e32; padding-top: 0.6rem; margin-top: 0.3rem; }
+  .demand-meter { display: flex; align-items: center; gap: 0.3rem; }
+  .demand-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .demand-high { background: #22c55e; }
+  .demand-med { background: #f59e0b; }
+  .demand-low { background: #ef4444; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .stat-card { background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 10px; padding: 1rem; text-align: center; }
+  .stat-card .num { font-size: 1.8rem; font-weight: 700; color: #fbbf24; }
+  .stat-card .desc { font-size: 0.8rem; color: #888; margin-top: 0.2rem; }
+
+  .last-updated { text-align: center; color: #555; font-size: 0.8rem; padding: 2rem 0; border-top: 1px solid #1e1e32; margin-top: 2rem; }
+  .note { background: #1a1a2e; border-left: 3px solid #f59e0b; padding: 0.75rem 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-size: 0.85rem; color: #aaa; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📚 Course Ideas Dashboard</h1>
+  <p class="subtitle">Problems people are discussing online → Course/product opportunities for Udemy, Gumroad, YouTube, Podcasts</p>
+
+  <div class="meta-bar">
+    <div class="meta-item"><span class="meta-label">Last Updated</span><span class="meta-value">31 May 2026</span></div>
+    <div class="meta-item"><span class="meta-label">Total Ideas</span><span class="meta-value" id="total-count">0</span></div>
+    <div class="meta-item"><span class="meta-label">Categories</span><span class="meta-value" id="category-count">0</span></div>
+    <div class="meta-item"><span class="meta-label">Research Source</span><span class="meta-value">YouTube (50+ queries) + Reddit + Web</span></div>
+    <div class="meta-item"><span class="meta-label">Update Cadence</span><span class="meta-value">Weekly (Sunday)</span></div>
+  </div>
+
+  <div class="stats-row" id="stats-row">
+    <!-- Populated by JS -->
+  </div>
+
+  <div class="note">
+    <strong>How this works:</strong> Each idea comes from real search volumes, YouTube view counts, and forum discussions showing people actively seeking solutions. Demand ratings: <span style="color:#22c55e;">● High</span> = 500K+ YouTube views / many Reddit threads / clear buying intent. <span style="color:#f59e0b;">● Medium</span> = 100K-500K views / some discussion. <span style="color:#ef4444;">● Low</span> = early signal, needs validation.
+  </div>
+
+  <div id="content">
+    <!-- Populated by JS -->
+  </div>
+
+  <div class="last-updated">Last updated: 31 May 2026 · Next update: 7 June 2026 · Built from 50+ YouTube searches + Reddit + broader web research</div>
+</div>
+
+<script>
+const courseData = [
+  // ===== CATEGORY 1: MAKING MONEY ONLINE / SIDE HUSTLES =====
+  {
+    category: "💰 Making Money Online",
+    icon: "💰",
+    courses: [
+      { title: "Side Hustles for People With No Money & No Skills", problem: "People with $0 savings and no marketable skills feel stuck. They want realistic ways to start earning.", solution: "Step-by-step system covering 20+ zero-cost side hustles (surveys, reselling, micro-tasks, content repurposing). Includes first-week action plan.", platforms: ["Udemy", "Gumroad", "YouTube"], demand: "high", evidence: "\"7 Side Hustles Students Can Start In 2026\" — 2.3M views. \"How to Actually Make Money Online No-BS Guide\" — 2.1M views." },
+      { title: "Faceless YouTube Channel Blueprint (No Face, No Voice)", problem: "People want YouTube income but fear being on camera. 99% of faceless channels fail because they don't know the real strategy.", solution: "Complete system covering niche selection, AI scripting, stock footage sourcing, voiceover, thumbnail design, and algorithm compliance in 2026.", platforms: ["Udemy", "YouTube", "Gumroad"], demand: "high", evidence: "\"Why 99% of Faceless Channels Fail\" — 565K views. \"FREE COURSE: YouTube Automation\" — 1.7M views. \"How to Start a Monetizable Faceless Channel\" — 168K views." },
+      { title: "7 Quiet Ways Introverts Can Make Money Online", problem: "Introverts feel the online money space is built for extroverts (networking, video, sales calls). They want methods that don't require being 'on'.", solution: "Course covering writing-based income, print-on-demand, digital products, affiliate sites, stock asset creation — all solo, all low-face.", platforms: ["Gumroad", "YouTube", "Udemy"], demand: "high", evidence: "\"7 quiet ways introverts can make money online\" — 79K views. Strong search volume on introvert-focused money content." },
+      { title: "The Anti-Productivity System: How to Get More Done By Doing Less", problem: "Productivity content overwhelms people. 4.4M views on procrastination videos. People know they should be productive but can't execute.", solution: "Counterintuitive system: strategic laziness, 80/20 prioritisation, single-tasking, energy management over time management. Based on proven psychology.", platforms: ["Udemy", "Gumroad", "YouTube", "Podcast", "Book"], demand: "high", evidence: "\"The ONLY Way To Stop Procrastinating\" — 4.4M views. \"How to Be So Productive it Feels ILLEGAL\" — 1.6M views. \"Discipline Expert\" — 2.3M views." },
+    ]
+  },
+  // ===== CATEGORY 2: FREELANCING & CAREER =====
+  {
+    category: "💼 Freelancing & Career Change",
+    icon: "💼",
+    courses: [
+      { title: "Freelancing from Zero: Complete Beginner Roadmap", problem: "People want to freelance but don't know where to start: no portfolio, no clients, no confidence. High search demand.", solution: "Step-by-step: identify your first service, build portfolio with zero clients, win first 3 gigs, price your work, scale to full-time.", platforms: ["Udemy", "YouTube", "Gumroad"], demand: "high", evidence: "\"How to Start Freelancing in 2026\" — 395K views. \"Step-by-Step Roadmap\" — 411K views. Multiple courses with 100K+ views on same topic." },
+      { title: "Career Change Without Starting Over: The Pivot Playbook", problem: "People feel stuck in careers but switching seems impossible. 950K views on career advice content. They need a practical pivot plan.", solution: "Framework for identifying transferable skills, upskilling in 90 days, networking strategies, and transitioning without income drop.", platforms: ["Udemy", "YouTube", "Podcast"], demand: "high", evidence: "\"My Career Advice For Anyone Feeling Stuck In Life\" — 950K views. \"Career Change: The Questions You Need\" — 1.3M TEDx views. \"How to Choose A Career You Won't Regret\" — 298K views." },
+      { title: "Getting Your First Freelance Client (Even With No Experience)", problem: "New freelancers' #1 struggle: finding that first paying client. Portfolio? Don't have one. Network? Non-existent.", solution: "5 client-acquisition methods that work for absolute beginners. Cold outreach templates, free-to-paid conversion scripts, portfolio hacks.", platforms: ["Gumroad", "Udemy", "YouTube"], demand: "high", evidence: "\"How to get First Freelancing Project\" — 14K but very consistent search intent across multiple videos. Strong problem-signal." },
+    ]
+  },
+  // ===== CATEGORY 3: ECOMMERCE & DROPSHIPPING =====
+  {
+    category: "🛒 Ecommerce & Dropshipping",
+    icon: "🛒",
+    courses: [
+      { title: "Dropshipping in 2026: What Actually Works Now", problem: "Dropshipping is 'dead' according to most gurus but people still want in. AI has changed the game. The old model (AliExpress → Shopify) doesn't work.", solution: "Modern dropshipping playbook covering AI product research, Zendrop/Spocket sourcing, TikTok organic traffic, and one-product-store strategy.", platforms: ["Udemy", "YouTube", "Gumroad"], demand: "high", evidence: "\"AI just Killed Dropshipping\" — 107K views. \"Dropshipping is DEAD\" — 85K views. \"The UGLY Truth\" — 1.6M views. Clear pain point: people know old model is broken." },
+      { title: "Print on Demand: Surviving the Etsy Apocalypse", problem: "Etsy sellers are hitting serious headwinds (algorithm changes, increased competition, lower margins). POD beginners make 7 fatal mistakes.", solution: "Multi-platform POD strategy (Etsy + Shopify + Amazon + eBay). Design frameworks that convert. Marketing beyond Etsy search. Pricing for profit.", platforms: ["Udemy", "YouTube", "Gumroad"], demand: "medium", evidence: "\"7 WORST Beginner POD Mistakes\" — 668K views. \"The Etsy Collapse Has Started\" — 31K views. \"Is POD Still Worth It\" — 135K views." },
+      { title: "Ecommerce 101: The 50 Terms Every Beginner Must Know", problem: "Ecommerce newbies are overwhelmed by jargon: ROAS, CTR, AOV, LTV, CPC, SKU, PPC, CVR. They don't understand the basics before spending money.", solution: "Plain-English glossary + frameworks course. Each term explained with real examples and calculators. Multiple-choice quizzes to test understanding.", platforms: ["Udemy", "Gumroad"], demand: "medium", evidence: "\"50 Terms (Beginners Must Watch)\" — 23K views. Strong intent signal: beginners explicitly searching for fundamentals." },
+      { title: "eBay Reselling: From Charity Shop to Full-Time Income", problem: "People see reselling income online but don't know what to buy, where to source, how to price, or how to scale from hobby to business.", solution: "Complete reseller system: sourcing strategies (charity shops, auctions, FB Marketplace), item identification, pricing formulas, listing optimisation, international selling.", platforms: ["Udemy", "YouTube"], demand: "high", evidence: "\"THRIFTING FOR RESALE\" — 3.3M views. \"How to ACTUALLY Start Reselling\" — 199K views. \"After 30,000 EBAY Sales\" — 410K views. \"5 Items I NEVER Pass Up\" — 1.6M views." },
+    ]
+  },
+  // ===== CATEGORY 4: CODING & TECH =====
+  {
+    category: "💻 Coding & Tech Skills",
+    icon: "💻",
+    courses: [
+      { title: "Is Coding Still Worth It in 2026? The Truth + Action Plan", problem: "AI is disrupting coding careers. People are confused — should they still learn to code? 536K views on this exact question show mass uncertainty.", solution: "Honest assessment of which coding roles survive AI. Learning path for the new landscape. Focus on AI-augmented coding, not traditional CRUD.", platforms: ["Udemy", "YouTube"], demand: "high", evidence: "\"Is Learning to Code Still Worth It in 2026?\" — 536K views. \"Coding in 2026: What No One Tells You\" — 52K views. \"Learn To Code Like a GENIUS\" — 3M views." },
+      { title: "AI Won't Replace You: How to Become an AI-Augmented Developer", problem: "Junior devs fear AI will take their jobs. The truth: AI replaces tasks, not developers who know how to use it effectively.", solution: "Practical course teaching developers how to use Cursor, Claude Code, Copilot, and n8n to 10x their output. Real workflows, not theory.", platforms: ["Udemy", "Gumroad"], demand: "high", evidence: "Consistent search volume on 'AI coding tools', 'Cursor tutorial', 'Claude Code'. Multiple 500K+ view videos on coding in the age of AI." },
+      { title: "Learn to Code Without Wasting Years (2026 Roadmap)", problem: "Beginners waste years on wrong resources. 530K views on 'how to learn coding' shows massive demand but most courses are outdated.", solution: "Curated 90-day roadmap focusing on practical skills: choose the right language, build real projects, avoid tutorial hell, land your first gig.", platforms: ["Udemy", "YouTube"], demand: "high", evidence: "\"How to Learn to Code in 2026\" — 530K views. \"How to Learn to Code (Without Wasting Time)\" — 219K views. Both titles explicitly address the time-waste pain." },
+    ]
+  },
+  // ===== CATEGORY 5: AI & AUTOMATION =====
+  {
+    category: "🤖 AI, Automation & No-Code",
+    icon: "🤖",
+    courses: [
+      { title: "AI Overwhelm to AI Competent: The Beginner's Roadmap", problem: "AI is moving too fast. People feel behind, anxious, and don't know where to start. 1.9M views on 'You're not behind' videos.", solution: "Curated learning path: start with the ONE AI tool that matters most, master it, then expand. No hype, no FOMO, just practical competence.", platforms: ["Udemy", "YouTube", "Gumroad"], demand: "high", evidence: "\"You're Not Behind: How to Learn AI in 18 minutes\" — 1.9M views. \"You're Not Behind: Become AI-Native\" — 1.4M views. Clear emotional pain: FOMO + overwhelm." },
+      { title: "n8n Automation: From Zero to Income-Generating Workflows", problem: "People know automation is valuable but n8n has a learning curve. 263K views on learning n8n from scratch. They want practical, money-making workflows.", solution: "Project-based n8n course: build real automations for lead gen, affiliate marketing, content repurposing, and data enrichment. Each project generates income.", platforms: ["Udemy", "Gumroad", "YouTube"], demand: "high", evidence: "\"How I'd Learn n8n if I had to Start Over\" — 263K views. \"Stop Learning n8n\" — 255K views (contrarian views = engagement). \"What I'd Learn Instead of Automation\" — 461K views." },
+      { title: "AI Automation Agency: How to Get Your First $5K/Month Client", problem: "People want to start an AI automation agency but don't know how to price, sell, or deliver. The 'how to get clients' question is universal.", solution: "Complete AAA blueprint: niche selection, service packaging, outbound sales scripts, delivery workflows, retainer structure. Case studies included.", platforms: ["Udemy", "Gumroad"], demand: "medium", evidence: "\"I've Built 500 AI Workflows, This is What Businesses Want\" — 209K views. \"The AI Automation Roadmap\" — steady search volume." },
+    ]
+  },
+  // ===== CATEGORY 6: MARKETING & CONTENT =====
+  {
+    category: "📢 Marketing, Content & Copywriting",
+    icon: "📢",
+    courses: [
+      { title: "Copywriting for People Who Hate Selling", problem: "People know they need copywriting skills but feel sleazy or manipulative. 427K views on copywriting for beginners.", solution: "Ethical copywriting framework: write to help, not manipulate. Templates for emails, landing pages, social posts. No sleaze, all value.", platforms: ["Udemy", "YouTube", "Gumroad"], demand: "high", evidence: "\"Copywriting for Beginners: From Zero to Persuasive\" — 427K views. \"FREE 8 Hour Copywriting Course\" — 1M views. \"How To Learn Copywriting Without Courses\" — 231K views." },
+      { title: "SEO in the Age of AI Search (2026 Playbook)", problem: "Traditional SEO is dying. Google's AI overviews, Perplexity, ChatGPT search — old SEO rules don't work. SEOs feel lost.", solution: "Updated SEO framework covering AI-optimised content, entity-based SEO, featured snippet targeting, topical authority, and search intent mapping.", platforms: ["Udemy", "YouTube"], demand: "medium", evidence: "\"Why Traditional SEO Is Dying in 2026\" — engagement signal. \"9 Must-Know Technical SEO Practices\" — 26K views. Clear shift in search landscape creating demand." },
+      { title: "Email Marketing for Beginners: Build Your List From Zero", problem: "Marketing newbies can't get traffic and don't have an email list. 645K views on learning email marketing. The 'list from zero' problem is huge.", solution: "No-traffic email list building: lead magnets that convert, low-cost ads, content upgrades, cross-promotions. Nurture sequences that sell.", platforms: ["Udemy", "YouTube", "Gumroad"], demand: "high", evidence: "\"Learn Email Marketing in 39 Minutes\" — 645K views. \"Free Cold Email Marketing Course\" — 142K views. \"How To Build An Email List From Scratch\" — 143K views." },
+      { title: "Content Creator's Survival Guide: Growth Without Burnout", problem: "Content creators burn out trying to post everywhere. 200K views on creator burnout content. They need a sustainable system.", solution: "Content repurposing system: create once, distribute everywhere. AI-assisted content batching. Scheduling frameworks. Platform-specific strategies for Instagram, TikTok, YouTube Shorts.", platforms: ["Udemy", "YouTube", "Gumroad", "Podcast"], demand: "medium", evidence: "\"Honest advice for content creators\" — 200K views. \"Why More People Are Choosing Analog\" — 121K views (burnout signal). \"Best Instagram Marketing Strategy\" — 45K views." },
+    ]
+  },
+  // ===== CATEGORY 7: INVESTING & PERSONAL FINANCE =====
+  {
+    category: "🏦 Investing & Personal Finance",
+    icon: "🏦",
+    courses: [
+      { title: "Investing for Absolute Beginners (2026 UK Edition)", problem: "People want to invest but are confused by options: ISAs, S&S, crypto, property, ETFs. 1.3M views on investing for beginners content.", solution: "UK-focused beginner investing course: how ISAs work, index fund investing, pound-cost averaging, risk management. No jargon, no fluff.", platforms: ["Udemy", "YouTube", "Podcast"], demand: "high", evidence: "\"How to Invest for Beginners in 2026\" multiple videos totalling 3M+ combined views. \"Ex-Banker Explains\" — 1.4M views. \"Paycheck Routine\" — 4.9M views." },
+      { title: "UK Property Investing: Start With £0 to £20K", problem: "People think property investing requires £100K+ deposit. They don't know about BRR, HMO, lease options, or joint ventures.", solution: "Low-capital UK property strategies: BRR (Buy-Refurbish-Refinance), HMO setup costs, property sourcing, JVs. Real case studies with actual numbers.", platforms: ["Udemy", "YouTube", "Podcast"], demand: "medium", evidence: "\"How I'd Start Property Investing With £20K\" — 2.5K views. \"The Beginner's Guide to UK Property\" — 98K views. \"How I'd Start With Just 50K\" — 60K views. Niche but high-intent audience." },
+      { title: "The 5-Step Money System: Budget, Save, Invest, Grow", problem: "Personal finance overwhelm. People don't have a system. They get paid, spend, and wonder where it went. 4.9M views on paycheck routines.", solution: "Simple 5-step personal finance system: tracking, budgeting (envelope/zero-based), emergency fund, investing automation, wealth building. Templates included.", platforms: ["Udemy", "Gumroad", "YouTube"], demand: "high", evidence: "\"Do This EVERY Time You Get Paid\" — 4.9M views. \"If I Started Investing In 2026\" — 1.7M views. \"How To Manage Your Money Like The 1%\" — 2.9M views." },
+    ]
+  },
+  // ===== CATEGORY 8: DIGITAL PRODUCTS & COURSES =====
+  {
+    category: "📦 Digital Products & Course Creation",
+    icon: "📦",
+    courses: [
+      { title: "How to Sell Your First Digital Product (0→$1K in 30 Days)", problem: "People create digital products but nobody buys. 775K views on selling digital products. The 'how to sell' gap is massive.", solution: "Launch system for digital products: pre-build audience, launch sequence, pricing psychology, platform strategy (Gumroad vs Shopify vs Etsy).", platforms: ["Udemy", "Gumroad", "YouTube"], demand: "high", evidence: "\"How I Made 10 Million Selling Digital Products\" — 774K views. \"Watch Me Create & Sell A Digital Product\" — 280K views. \"How I Would Sell Digital Products\" — 300K views." },
+      { title: "The Sunday Course Creator: Build a Course in 8 Weekends", problem: "People want to create a course but think it takes months. They have jobs, families, and no extra time.", solution: "Weekend-by-weekend blueprint: outline Saturday, record Sunday, edit midweek. Repeat. Full course ready in 8 weeks with 4 hours per weekend.", platforms: ["Udemy", "Gumroad", "YouTube"], demand: "medium", evidence: "\"How to ACTUALLY Sell Online Courses\" — 59K views. \"Beginner's Guide to Making Money with Online Courses\" — 467K views. Time constraint is universal pain." },
+      { title: "Why Your Digital Products Aren't Selling (The 5 Gaps)", problem: "Creators launch products and get zero sales. 96K views on 'digital products that don't sell'. The problem is market fit, not product quality.", solution: "Diagnostic framework identifying the 5 gaps: audience, positioning, pricing, distribution, copy. Fix your specific gap and restart.", platforms: ["Gumroad", "YouTube"], demand: "medium", evidence: "\"5 Digital Products that DON'T SELL\" — 96K views. \"How to start selling digital products using AI\" — 99K views. Clear frustration signal." },
+    ]
+  },
+  // ===== CATEGORY 9: TRADING & CRYPTO =====
+  {
+    category: "📈 Trading & Crypto",
+    icon: "📈",
+    courses: [
+      { title: "Stock Market Basics: Not Gambling, Not Boring", problem: "Beginners either treat stocks as gambling or find it too dry. They want a middle ground that's practical and profitable.", solution: "Foundation course: technical analysis fundamentals, options basics, risk management, position sizing. Focus on systematic trading, not tips.", platforms: ["Udemy", "YouTube"], demand: "medium", evidence: "Consistent search volume on stock market basics. Related to the 200K+ view stock analysis content on our platform." },
+      { title: "Book Publishing Fast Track: Write & Publish in 30 Days", problem: "People want to write a book but think it takes 6+ months. They get stuck on perfection, structure, and formatting.", solution: "Day-by-day publishing system: outline in 3 days, write in 14, edit in 7, format and publish in 6. KDP-specific guidance. Amazon bestseller strategy.", platforms: ["Udemy", "Gumroad", "Podcast"], demand: "medium", evidence: "Strong overlap with our existing book publishing skills. Related to the 'start before you're ready' philosophy." },
+    ]
+  },
+  // ===== CATEGORY 10: NICHE MONEY SKILLS =====
+  {
+    category: "🔧 Niche Money Skills",
+    icon: "🔧",
+    courses: [
+      { title: "Notion for Non-Techies: Build Your Life System in a Weekend", problem: "Notion is powerful but overwhelming. Most beginners bounce off. 4M views on Notion beginner guides. The 'without losing your mind' angle is gold.", solution: "Template-based Notion course: pre-built systems for project management, finances, content planning, and affiliate tracking. Plug-and-play.", platforms: ["Udemy", "Gumroad", "YouTube"], demand: "high", evidence: "\"How to get started in Notion *without losing your mind*\" — 4M views. \"the ULTIMATE guide to learning notion\" — 258K views. \"Notion for Complete Beginners\" — consistent." },
+      { title: "Affiliate Marketing Without a Following (2026 System)", problem: "People think you need a big audience for affiliate income. 4.4K views on Claude AI + affiliate marketing. The 'no audience' pain is real.", solution: "SEO-driven affiliate system: build content assets that rank, drive organic traffic, and earn passive commissions. No audience required.", platforms: ["Udemy", "YouTube", "Podcast"], demand: "medium", evidence: "\"How To Use Claude AI To Make Money With Affiliate Marketing\" — 4.4K views. Combined with on-site YouTube automation search results." },
+    ]
+  }
+];
+
+// Populate stats
+const allCourses = courseData.flatMap(c => c.courses);
+document.getElementById('total-count').textContent = allCourses.length;
+document.getElementById('category-count').textContent = courseData.length;
+
+const statsHTML = `
+  <div class="stat-card"><div class="num">${allCourses.length}</div><div class="desc">Total Course Ideas</div></div>
+  <div class="stat-card"><div class="num">${courseData.length}</div><div class="desc">Categories</div></div>
+  <div class="stat-card"><div class="num">${allCourses.filter(c => c.demand === 'high').length}</div><div class="desc">High Demand</div></div>
+  <div class="stat-card"><div class="num">${allCourses.filter(c => c.demand === 'medium').length}</div><div class="desc">Medium Demand</div></div>
+  <div class="stat-card"><div class="num">${new Set(allCourses.flatMap(c => c.platforms)).size}</div><div class="desc">Platforms Covered</div></div>
+  <div class="stat-card"><div class="num">50+</div><div class="desc">YouTube Queries Analysed</div></div>
+`;
+document.getElementById('stats-row').innerHTML = statsHTML;
+
+// Build content
+let contentHTML = '';
+courseData.forEach(cat => {
+  contentHTML += `<div class="category-section">`;
+  contentHTML += `<div class="category-header"><span class="category-icon">${cat.icon}</span><h2>${cat.category}</h2><span class="category-count">${cat.courses.length} ideas</span></div>`;
+  contentHTML += `<div class="course-grid">`;
+  cat.courses.forEach(course => {
+    const demandClass = course.demand === 'high' ? 'demand-high' : course.demand === 'medium' ? 'demand-med' : 'demand-low';
+    const demandLabel = course.demand === 'high' ? '🔥 High Demand' : course.demand === 'medium' ? '📊 Medium' : '🔍 Early';
+    const platformTags = course.platforms.map(p => {
+      const cls = p === 'YouTube' ? 'tag-yt' : p === 'Udemy' ? 'tag-udemy' : p === 'Gumroad' ? 'tag-gumroad' : p === 'Podcast' ? 'tag-podcast' : 'tag-platform';
+      return `<span class="tag ${cls}">${p}</span>`;
+    }).join('');
+
+    contentHTML += `<div class="course-card">`;
+    contentHTML += `<div class="title">${course.title}</div>`;
+    contentHTML += `<div class="problem">❌ ${course.problem}</div>`;
+    contentHTML += `<div class="solution">✅ ${course.solution}</div>`;
+    contentHTML += `<div class="tags">${platformTags}${course.demand === 'high' ? '<span class="tag tag-hot">🔥 HIGH DEMAND</span>' : ''}</div>`;
+    contentHTML += `<div class="card-footer">`;
+    contentHTML += `<div class="demand-meter"><span class="demand-dot ${demandClass}"></span> ${demandLabel}</div>`;
+    contentHTML += `<span>${course.evidence.substring(0, 60)}...</span>`;
+    contentHTML += `</div></div>`;
+  });
+  contentHTML += `</div></div>`;
+});
+document.getElementById('content').innerHTML = contentHTML;
+</script>
+</body>
+</html>
