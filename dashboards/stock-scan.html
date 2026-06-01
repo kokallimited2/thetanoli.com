@@ -5,664 +5,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>US Stock Market Scanner — 2026-06-01</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 2rem; }
-  .container { max-width: 900px; margin: 0 auto; }
-  h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 0.5rem; }
-  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #30363d; padding-bottom: 1rem; }
-  h2 { font-size: 1.3rem; color: #f0883e; margin: 1.5rem 0 0.8rem; }
-  h3 { font-size: 1.1rem; color: #d2a8ff; margin: 1.2rem 0 0.5rem; }
-  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; }
-  .card-title { font-weight: 600; color: #58a6ff; margin-bottom: 0.5rem; }
-  .tag { display: inline-block; background: #1f2937; color: #8b949e; font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 4px; margin: 0.2rem; }
-  ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
-  li { margin: 0.3rem 0; }
-  .highlight { color: #7ee787; }
-  .warn { color: #d29922; }
-  .error { color: #f85149; }
-  code { background: #1f2937; color: #ffa657; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.85rem; }
-  pre { background: #1f2937; padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 0.5rem 0; }
-  hr { border: none; border-top: 1px solid #30363d; margin: 1.5rem 0; }
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 1rem 0; }
-  .stat { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 1rem; text-align: center; }
-  .stat-value { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
-  .stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.3rem; }
-  a { color: #58a6ff; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .timestamp { color: #8b949e; font-size: 0.8rem; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0d1117; color: #c9d1d9; line-height: 1.6;
+  max-width: 1000px; margin: 0 auto; padding: 2rem 1rem;
+}
+h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #f0f6fc; }
+h2 { font-size: 1.3rem; margin: 1.5rem 0 1rem; color: #f0f6fc; border-bottom: 1px solid #30363d; padding-bottom: 0.5rem; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 1rem 0; }
+.stat { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; text-align: center; }
+.stat-value { font-size: 2rem; font-weight: 700; color: #58a6ff; }
+.stat-label { font-size: 0.85rem; color: #8b949e; margin-top: 0.25rem; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; }
+.card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; color: #f0f6fc; }
+.highlight { color: #7ee787; }
+.tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.8rem; }
+.footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #30363d; color: #8b949e; font-size: 0.85rem; }
+.chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 700px) { .chart-row { grid-template-columns: 1fr; } }
+.table-wrap { overflow-x: auto; background: #161b22; border: 1px solid #30363d; border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th { background: #21262d; padding: 0.6rem 0.8rem; text-align: left; color: #8b949e; font-weight: 600; border-bottom: 1px solid #30363d; }
+td { padding: 0.5rem 0.8rem; border-bottom: 1px solid #21262d; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #1c2128; }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>US Stock Market Scanner — 2026-06-01</h1>
-  <div class="meta">Generated: 2026-06-01 16:06<br>Source: Yahoo Finance + Reddit (WSB, stocks, pennystocks)</div>
-  
+<h1>US Stock Market Scanner — 2026-06-01</h1>
+<div style="color:#8b949e;margin-bottom:1rem">2026-06-01 20:32 · Yahoo Finance + Reddit (WSB, stocks, pennystocks)</div>
+
     <h2>Market Scan Results</h2>
     
     <div class="stats">
-        <div class="stat"><div class="stat-value">93</div><div class="stat-label">Scanned</div></div>
-        <div class="stat"><div class="stat-value">80</div><div class="stat-label">Buy Signals</div></div>
-        <div class="stat"><div class="stat-value">7</div><div class="stat-label">Sell Signals</div></div>
-        <div class="stat"><div class="stat-value">82</div><div class="stat-label">Open Positions</div></div>
-    </div>
-    
-    <h2>Sector Breakdown</h2>
-    
-    <div class="stat-row">
-        <span class="stat-label" style="min-width:140px">Tech Mega</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:28.57142857142857%;background:#7ee787"></span></span>
-        <span class="stat-value">2 buy / 3 sell / 7 scanned</span>
-    </div>
-    <div class="stat-row">
-        <span class="stat-label" style="min-width:140px">Semiconductors</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:92.3076923076923%;background:#7ee787"></span></span>
-        <span class="stat-value">12 buy / 1 sell / 13 scanned</span>
-    </div>
-    <div class="stat-row">
-        <span class="stat-label" style="min-width:140px">Software Saas</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:90.0%;background:#7ee787"></span></span>
-        <span class="stat-value">9 buy / 1 sell / 10 scanned</span>
-    </div>
-    <div class="stat-row">
-        <span class="stat-label" style="min-width:140px">Fintech Financials</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:91.66666666666666%;background:#7ee787"></span></span>
-        <span class="stat-value">11 buy / 1 sell / 12 scanned</span>
-    </div>
-    <div class="stat-row">
-        <span class="stat-label" style="min-width:140px">Consumer</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:90.0%;background:#7ee787"></span></span>
-        <span class="stat-value">9 buy / 0 sell / 10 scanned</span>
-    </div>
-    <div class="stat-row">
-        <span class="stat-label" style="min-width:140px">Healthcare</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#7ee787"></span></span>
-        <span class="stat-value">4 buy / 0 sell / 4 scanned</span>
-    </div>
-    <div class="stat-row">
-        <span class="stat-label" style="min-width:140px">Ecommerce Social</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:83.33333333333334%;background:#7ee787"></span></span>
-        <span class="stat-value">5 buy / 1 sell / 6 scanned</span>
-    </div>
-    <div class="stat-row">
-        <span class="stat-label" style="min-width:140px">Industrials Energy</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:80.0%;background:#7ee787"></span></span>
-        <span class="stat-value">12 buy / 0 sell / 15 scanned</span>
-    </div>
-    <div class="stat-row">
-        <span class="stat-label" style="min-width:140px">Ev Auto</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#7ee787"></span></span>
-        <span class="stat-value">2 buy / 0 sell / 2 scanned</span>
-    </div>
-    <div class="stat-row">
-        <span class="stat-label" style="min-width:140px">Cybersecurity</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#7ee787"></span></span>
-        <span class="stat-value">4 buy / 0 sell / 4 scanned</span>
-    </div>
-    <div class="stat-row">
-        <span class="stat-label" style="min-width:140px">Etfs</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#7ee787"></span></span>
-        <span class="stat-value">9 buy / 0 sell / 9 scanned</span>
+        <div class="stat"><div class="stat-value">15</div><div class="stat-label">Scanned</div></div>
+        <div class="stat"><div class="stat-value">6</div><div class="stat-label">Buy Signals</div></div>
+        <div class="stat"><div class="stat-value">5</div><div class="stat-label">Sell Signals</div></div>
+        <div class="stat"><div class="stat-value">10</div><div class="stat-label">Open Positions</div></div>
     </div>
     
     <h2>Buy Signals</h2>
     
     <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">META — <span class="highlight">BUY</span></div>
-        <div>$614.75 | RSI: 59.0 | MACD: 2.136 | Vol: 0.59x</div>
-        <p>MACD bullish crossover; At EMA50 support ($622.5)</p>
+        <div class="card-title">MSFT — <span class="highlight">BUY</span></div>
+        <div>$463.25 | RSI: 77.5 | MACD: 3.599 | Vol: 1.14x</div>
+        <p>MACD bullish crossover; Price above EMA20 ($423.0); EMA20 > EMA50 (bullish structure)</p>
+        
+        
+    </div>
+    <div class="card" style="border-left: 3px solid #7ee787;">
+        <div class="card-title">GOOGL — <span class="highlight">BUY</span></div>
+        <div>$378.23 | RSI: 41.1 | MACD: -4.14 | Vol: 0.58x</div>
+        <p>RSI neutral-bullish at 41.1; EMA20 > EMA50 (bullish structure); Near BB lower band (5.9%); Near recent low ($373.52)</p>
+        
+        
+    </div>
+    <div class="card" style="border-left: 3px solid #7ee787;">
+        <div class="card-title">NVDA — <span class="highlight">WEAK BUY</span></div>
+        <div>$223.98 | RSI: 53.6 | MACD: -1.393 | Vol: 0.98x</div>
+        <p>Price above EMA20 ($215.11); EMA20 > EMA50 (bullish structure)</p>
+        
+        
+    </div>
+    <div class="card" style="border-left: 3px solid #7ee787;">
+        <div class="card-title">PLTR — <span class="highlight">BUY</span></div>
+        <div>$160.86 | RSI: 75.2 | MACD: 2.788 | Vol: 1.07x</div>
+        <p>MACD bullish crossover; Price above EMA20 ($141.41)</p>
         
         
     </div>
     <div class="card" style="border-left: 3px solid #7ee787;">
         <div class="card-title">SOFI — <span class="highlight">BUY</span></div>
-        <div>$18.03 | RSI: 64.8 | MACD: 0.312 | Vol: 0.47x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($16.55)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">AMZN — <span class="highlight">BUY</span></div>
-        <div>$264.01 | RSI: 45.1 | MACD: -1.29 | Vol: 0.42x</div>
-        <p>RSI neutral-bullish at 45.1; EMA20 > EMA50 (bullish structure); Near BB lower band (22.7%)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">ASTS — <span class="highlight">BUY</span></div>
-        <div>$102.78 | RSI: 60.1 | MACD: 3.298 | Vol: 0.43x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($97.72); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">AVGO — <span class="highlight">BUY</span></div>
-        <div>$455.47 | RSI: 61.7 | MACD: 0.849 | Vol: 0.54x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($422.85); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">ORCL — <span class="highlight">BUY</span></div>
-        <div>$237.62 | RSI: 74.2 | MACD: 3.468 | Vol: 0.76x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($195.57); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">CRM — <span class="highlight">BUY</span></div>
-        <div>$209.75 | RSI: 72.7 | MACD: 2.812 | Vol: 0.81x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($182.24); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">NOW — <span class="highlight">BUY</span></div>
-        <div>$134.06 | RSI: 82.1 | MACD: 3.825 | Vol: 1.17x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($103.79); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">ADBE — <span class="highlight">BUY</span></div>
-        <div>$270.83 | RSI: 65.2 | MACD: 1.658 | Vol: 0.74x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($249.05); EMA20 > EMA50 (bullish structure)</p>
+        <div>$18.60 | RSI: 69.0 | MACD: 0.349 | Vol: 1.27x</div>
+        <p>MACD bullish crossover; Price above EMA20 ($16.6); Volume spike (1.27x avg)</p>
         
         
     </div>
     <div class="card" style="border-left: 3px solid #7ee787;">
         <div class="card-title">RKLB — <span class="highlight">WEAK BUY</span></div>
-        <div>$123.02 | RSI: 52.8 | MACD: -0.186 | Vol: 0.51x</div>
-        <p>Price above EMA20 ($122.78); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">COIN — <span class="highlight">WEAK BUY</span></div>
-        <div>$179.29 | RSI: 31.5 | MACD: -2.085 | Vol: 0.34x</div>
-        <p>RSI oversold at 31.5; Near BB lower band (16.5%)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">MRVL — <span class="highlight">BUY</span></div>
-        <div>$213.16 | RSI: 70.9 | MACD: 1.549 | Vol: 0.47x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($184.97); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">KLAC — <span class="highlight">BUY</span></div>
-        <div>$1897.78 | RSI: 54.2 | MACD: 3.901 | Vol: 0.2x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($1855.78); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">INTC — <span class="highlight">BUY</span></div>
-        <div>$111.19 | RSI: 31.7 | MACD: -2.271 | Vol: 0.43x</div>
-        <p>RSI oversold at 31.7; Price above EMA20 ($111.0); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">QCOM — <span class="highlight">STRONG BUY</span></div>
-        <div>$233.01 | RSI: 48.6 | MACD: 1.136 | Vol: 0.33x</div>
-        <p>RSI neutral-bullish at 48.6; MACD bullish crossover; Price above EMA20 ($213.42); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">NFLX — <span class="highlight">BUY</span></div>
-        <div>$85.55 | RSI: 50.4 | MACD: 0.042 | Vol: 0.32x</div>
-        <p>MACD bullish crossover; Near BB lower band (10.2%); Near recent low ($85.32)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">TXN — <span class="highlight">BUY</span></div>
-        <div>$290.10 | RSI: 46.0 | MACD: -3.28 | Vol: 0.4x</div>
-        <p>RSI neutral-bullish at 46.0; EMA20 > EMA50 (bullish structure); Near BB lower band (29.5%); Near recent low ($289.97)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">DIS — <span class="highlight">STRONG BUY</span></div>
-        <div>$101.49 | RSI: 39.5 | MACD: -0.422 | Vol: 0.28x</div>
-        <p>RSI oversold at 39.5; EMA20 > EMA50 (bullish structure); Near BB lower band (21.6%); Near recent low ($100.31); At EMA50 support ($102.72)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">LRCX — <span class="highlight">BUY</span></div>
-        <div>$312.93 | RSI: 58.3 | MACD: 1.326 | Vol: 0.31x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($296.33); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">AMAT — <span class="highlight">BUY</span></div>
-        <div>$450.03 | RSI: 53.1 | MACD: 0.931 | Vol: 0.23x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($430.36); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">MU — <span class="highlight">BUY</span></div>
-        <div>$1034.23 | RSI: 70.9 | MACD: 20.808 | Vol: 0.39x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($784.9); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">WMT — <span class="highlight">BUY</span></div>
-        <div>$114.10 | RSI: 27.1 | MACD: -1.837 | Vol: 0.41x</div>
-        <p>RSI oversold at 27.1; Near BB lower band (2.6%); Near recent low ($114.09)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">JPM — <span class="highlight">WEAK BUY</span></div>
-        <div>$295.48 | RSI: 45.2 | MACD: -0.726 | Vol: 0.18x</div>
-        <p>RSI neutral-bullish at 45.2; Near BB lower band (15.2%); Near recent low ($293.67)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">BAC — <span class="highlight">BUY</span></div>
-        <div>$51.22 | RSI: 55.3 | MACD: 0.013 | Vol: 0.19x</div>
-        <p>MACD bullish crossover; EMA20 > EMA50 (bullish structure); At EMA50 support ($51.28)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">GS — <span class="highlight">BUY</span></div>
-        <div>$1027.85 | RSI: 74.7 | MACD: 5.226 | Vol: 0.23x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($972.57); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">V — <span class="highlight">BUY</span></div>
-        <div>$321.73 | RSI: 48.2 | MACD: -0.998 | Vol: 0.38x</div>
-        <p>RSI neutral-bullish at 48.2; EMA20 > EMA50 (bullish structure); Near recent low ($320.9); At EMA50 support ($319.67)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">MA — <span class="highlight">WEAK BUY</span></div>
-        <div>$492.61 | RSI: 44.6 | MACD: -0.266 | Vol: 0.35x</div>
-        <p>RSI neutral-bullish at 44.6; Near BB lower band (27.0%); Near recent low ($486.35)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">TGT — <span class="highlight">BUY</span></div>
-        <div>$122.05 | RSI: 57.3 | MACD: -0.009 | Vol: 0.19x</div>
-        <p>EMA20 > EMA50 (bullish structure); Near BB lower band (29.3%); At EMA50 support ($123.86)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">COST — <span class="highlight">STRONG BUY</span></div>
-        <div>$945.36 | RSI: 39.0 | MACD: -11.896 | Vol: 0.37x</div>
-        <p>RSI oversold at 39.0; EMA20 > EMA50 (bullish structure); Near BB lower band (-0.9%); Near recent low ($944.29)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">HD — <span class="highlight">WEAK BUY</span></div>
-        <div>$308.71 | RSI: 47.8 | MACD: 1.54 | Vol: 0.18x</div>
-        <p>RSI neutral-bullish at 47.8; MACD bullish crossover</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">LOW — <span class="highlight">BUY</span></div>
-        <div>$208.84 | RSI: 29.1 | MACD: -0.474 | Vol: 0.21x</div>
-        <p>RSI oversold at 29.1; Near BB lower band (2.7%); Near recent low ($208.0)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">TSM — <span class="highlight">BUY</span></div>
-        <div>$438.28 | RSI: 64.5 | MACD: 1.49 | Vol: 0.6x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($408.56); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">SNPS — <span class="highlight">STRONG BUY</span></div>
-        <div>$475.26 | RSI: 33.5 | MACD: -6.331 | Vol: 0.36x</div>
-        <p>RSI oversold at 33.5; EMA20 > EMA50 (bullish structure); Near BB lower band (3.5%); Near recent low ($469.37); At EMA50 support ($478.68)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">SPGI — <span class="highlight">BUY</span></div>
-        <div>$424.35 | RSI: 53.0 | MACD: 1.555 | Vol: 0.28x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($418.75); At EMA50 support ($422.24)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">MCO — <span class="highlight">BUY</span></div>
-        <div>$455.68 | RSI: 55.8 | MACD: 1.324 | Vol: 0.25x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($448.14); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">BLK — <span class="highlight">STRONG BUY</span></div>
-        <div>$1020.37 | RSI: 34.2 | MACD: -7.578 | Vol: 0.26x</div>
-        <p>RSI oversold at 34.2; EMA20 > EMA50 (bullish structure); Near BB lower band (-4.3%); Near recent low ($1015.31)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">SCHW — <span class="highlight">WEAK BUY</span></div>
-        <div>$87.42 | RSI: 48.8 | MACD: -0.301 | Vol: 0.25x</div>
-        <p>RSI neutral-bullish at 48.8; Near BB lower band (23.2%)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">IBKR — <span class="highlight">WEAK BUY</span></div>
-        <div>$87.46 | RSI: 55.9 | MACD: -0.22 | Vol: 0.21x</div>
-        <p>Price above EMA20 ($83.42); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">ARM — <span class="highlight">BUY</span></div>
-        <div>$406.75 | RSI: 84.8 | MACD: 13.98 | Vol: 0.85x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($275.84); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">ASML — <span class="highlight">BUY</span></div>
-        <div>$1607.60 | RSI: 54.5 | MACD: 3.6 | Vol: 0.29x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($1552.69); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">CDNS — <span class="highlight">BUY</span></div>
-        <div>$394.77 | RSI: 65.5 | MACD: 1.628 | Vol: 0.48x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($359.77); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">NVO — <span class="highlight">STRONG BUY</span></div>
-        <div>$44.23 | RSI: 38.0 | MACD: -0.307 | Vol: 0.35x</div>
-        <p>RSI oversold at 38.0; EMA20 > EMA50 (bullish structure); Near BB lower band (22.3%); Near recent low ($43.74)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">GE — <span class="highlight">BUY</span></div>
-        <div>$316.35 | RSI: 61.1 | MACD: 3.149 | Vol: 0.24x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($303.89); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">BA — <span class="highlight">BUY</span></div>
-        <div>$223.78 | RSI: 38.2 | MACD: -0.284 | Vol: 0.35x</div>
-        <p>RSI oversold at 38.2; EMA20 > EMA50 (bullish structure); At EMA50 support ($223.08)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">RTX — <span class="highlight">BUY</span></div>
-        <div>$174.62 | RSI: 44.6 | MACD: 0.928 | Vol: 0.2x</div>
-        <p>RSI neutral-bullish at 44.6; MACD bullish crossover; Near recent low ($170.29)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">CAT — <span class="highlight">STRONG BUY</span></div>
-        <div>$857.93 | RSI: 34.2 | MACD: -7.268 | Vol: 0.27x</div>
-        <p>RSI oversold at 34.2; EMA20 > EMA50 (bullish structure); Near BB lower band (11.9%); Near recent low ($845.55)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">ISRG — <span class="highlight">WEAK BUY</span></div>
-        <div>$416.26 | RSI: 48.0 | MACD: -1.202 | Vol: 0.32x</div>
-        <p>RSI neutral-bullish at 48.0; Near BB lower band (10.9%); Near recent low ($414.16)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">VRTX — <span class="highlight">BUY</span></div>
-        <div>$435.35 | RSI: 50.1 | MACD: 0.84 | Vol: 0.18x</div>
-        <p>MACD bullish crossover; Near recent low ($426.01); At EMA50 support ($439.25)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">REGN — <span class="highlight">WEAK BUY</span></div>
-        <div>$605.11 | RSI: 18.6 | MACD: -5.135 | Vol: 0.19x</div>
-        <p>Near BB lower band (12.4%); Near recent low ($602.91)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">CEG — <span class="highlight">BUY</span></div>
-        <div>$271.61 | RSI: 37.8 | MACD: -0.304 | Vol: 1.32x</div>
-        <p>RSI oversold at 37.8; Near BB lower band (25.4%); Volume spike (1.32x avg)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">VST — <span class="highlight">BUY</span></div>
-        <div>$155.90 | RSI: 53.4 | MACD: 1.815 | Vol: 0.27x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($153.5); At EMA50 support ($154.27)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">TLN — <span class="highlight">STRONG BUY</span></div>
-        <div>$373.18 | RSI: 47.1 | MACD: 1.9 | Vol: 0.28x</div>
-        <p>RSI neutral-bullish at 47.1; MACD bullish crossover; Price above EMA20 ($366.14); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">GEV — <span class="highlight">STRONG BUY</span></div>
-        <div>$943.49 | RSI: 29.3 | MACD: -14.666 | Vol: 0.43x</div>
-        <p>RSI oversold at 29.3; EMA20 > EMA50 (bullish structure); Near BB lower band (-8.3%); Near recent low ($939.0)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">NEE — <span class="highlight">WEAK BUY</span></div>
-        <div>$84.75 | RSI: 20.6 | MACD: -0.728 | Vol: 0.26x</div>
-        <p>Near BB lower band (5.1%); Near recent low ($84.71)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">EOG — <span class="highlight">BUY</span></div>
-        <div>$137.93 | RSI: 57.8 | MACD: -0.384 | Vol: 0.24x</div>
-        <p>Price above EMA20 ($137.06); EMA20 > EMA50 (bullish structure); At EMA50 support ($136.76)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">CVX — <span class="highlight">WEAK BUY</span></div>
-        <div>$187.83 | RSI: 56.5 | MACD: -0.27 | Vol: 0.27x</div>
-        <p>Price above EMA20 ($187.08); At EMA50 support ($188.48)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">OXY — <span class="highlight">BUY</span></div>
-        <div>$59.77 | RSI: 66.8 | MACD: 0.089 | Vol: 0.43x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($57.94)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">DASH — <span class="highlight">BUY</span></div>
-        <div>$161.77 | RSI: 54.1 | MACD: 0.306 | Vol: 0.18x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($160.67); At EMA50 support ($163.06)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">LCID — <span class="highlight">BUY</span></div>
-        <div>$6.76 | RSI: 65.7 | MACD: 0.181 | Vol: 0.35x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($6.33)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">SNAP — <span class="highlight">WEAK BUY</span></div>
-        <div>$5.89 | RSI: 54.2 | MACD: -0.004 | Vol: 0.24x</div>
-        <p>Price above EMA20 ($5.75); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">RIVN — <span class="highlight">BUY</span></div>
-        <div>$16.75 | RSI: 71.7 | MACD: 0.347 | Vol: 0.51x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($14.91)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">ABNB — <span class="highlight">WEAK BUY</span></div>
-        <div>$133.19 | RSI: 41.4 | MACD: -0.277 | Vol: 0.22x</div>
-        <p>RSI neutral-bullish at 41.4; At EMA50 support ($134.93)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">PINS — <span class="highlight">BUY</span></div>
-        <div>$21.09 | RSI: 52.3 | MACD: 0.088 | Vol: 0.28x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($19.95); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">U — <span class="highlight">BUY</span></div>
-        <div>$31.17 | RSI: 77.2 | MACD: 0.324 | Vol: 0.34x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($27.49); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">TTD — <span class="highlight">BUY</span></div>
-        <div>$22.58 | RSI: 56.3 | MACD: 0.078 | Vol: 0.29x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($22.05); At EMA50 support ($22.48)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">CRWD — <span class="highlight">BUY</span></div>
-        <div>$762.22 | RSI: 89.3 | MACD: 11.677 | Vol: 0.5x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($613.97); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">DDOG — <span class="highlight">BUY</span></div>
-        <div>$270.68 | RSI: 89.0 | MACD: 3.493 | Vol: 0.51x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($207.75); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">ZS — <span class="highlight">WEAK BUY</span></div>
-        <div>$154.45 | RSI: 52.1 | MACD: -2.859 | Vol: 0.75x</div>
-        <p>Price above EMA20 ($152.88); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">MDB — <span class="highlight">BUY</span></div>
-        <div>$387.25 | RSI: 73.0 | MACD: 3.924 | Vol: 0.81x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($312.92); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">NET — <span class="highlight">BUY</span></div>
-        <div>$261.97 | RSI: 83.2 | MACD: 4.869 | Vol: 0.56x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($218.77); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">PANW — <span class="highlight">BUY</span></div>
-        <div>$293.57 | RSI: 83.6 | MACD: 3.798 | Vol: 0.51x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($239.62); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">FXI — <span class="highlight">BUY</span></div>
-        <div>$35.18 | RSI: 28.1 | MACD: -0.196 | Vol: 0.29x</div>
-        <p>RSI oversold at 28.1; Near BB lower band (17.8%); Near recent low ($34.63)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">KWEB — <span class="highlight">WEAK BUY</span></div>
-        <div>$27.22 | RSI: 34.2 | MACD: -0.174 | Vol: 0.29x</div>
-        <p>RSI oversold at 34.2; Near BB lower band (26.0%)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">XBI — <span class="highlight">STRONG BUY</span></div>
-        <div>$132.33 | RSI: 45.5 | MACD: 0.137 | Vol: 0.42x</div>
-        <p>RSI neutral-bullish at 45.5; MACD bullish crossover; EMA20 > EMA50 (bullish structure); At EMA50 support ($132.0)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">SMH — <span class="highlight">BUY</span></div>
-        <div>$603.49 | RSI: 59.6 | MACD: 0.16 | Vol: 0.27x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($563.45); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">SPY — <span class="highlight">WEAK BUY</span></div>
-        <div>$755.77 | RSI: 66.7 | MACD: -0.198 | Vol: 0.28x</div>
-        <p>Price above EMA20 ($739.75); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">IBB — <span class="highlight">STRONG BUY</span></div>
-        <div>$168.37 | RSI: 46.6 | MACD: 0.209 | Vol: 0.26x</div>
-        <p>RSI neutral-bullish at 46.6; MACD bullish crossover; EMA20 > EMA50 (bullish structure); At EMA50 support ($169.59)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">IWM — <span class="highlight">BUY</span></div>
-        <div>$287.20 | RSI: 52.3 | MACD: 0.189 | Vol: 0.33x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($283.18); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">QQQ — <span class="highlight">BUY</span></div>
-        <div>$739.61 | RSI: 67.2 | MACD: 0.138 | Vol: 0.31x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($710.15); EMA20 > EMA50 (bullish structure)</p>
-        
-        
-    </div>
-    <div class="card" style="border-left: 3px solid #7ee787;">
-        <div class="card-title">DIA — <span class="highlight">BUY</span></div>
-        <div>$509.33 | RSI: 67.8 | MACD: 0.532 | Vol: 0.48x</div>
-        <p>MACD bullish crossover; Price above EMA20 ($500.72); EMA20 > EMA50 (bullish structure)</p>
+        <div>$124.17 | RSI: 53.4 | MACD: -0.114 | Vol: 1.0x</div>
+        <p>Price above EMA20 ($122.89); EMA20 > EMA50 (bullish structure)</p>
         
         
     </div>
@@ -670,696 +93,110 @@
     <h2>Sell Signals</h2>
     
     <div class="card" style="border-left: 3px solid #f85149;">
-        <div class="card-title">AAPL — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: +3.1%</div>
-        <p>RSI overbought at 72.3</p>
+        <div class="card-title">META — <span style="color:#f85149">SELL</span></div>
+        <div>PnL: -5.3%</div>
+        <p>Price below EMA20 ($619.54); Stop loss triggered (-5.3%)</p>
     </div>
     <div class="card" style="border-left: 3px solid #f85149;">
-        <div class="card-title">MSFT — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: +9.3%</div>
-        <p>RSI overbought at 77.1</p>
-    </div>
-    <div class="card" style="border-left: 3px solid #f85149;">
-        <div class="card-title">AMD — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: +6.4%</div>
-        <p>RSI at 63.1 with profit — protect gains</p>
-    </div>
-    <div class="card" style="border-left: 3px solid #f85149;">
-        <div class="card-title">PLTR — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: +19.5%</div>
-        <p>RSI overbought at 73.8; Take profit target hit (19.5%)</p>
-    </div>
-    <div class="card" style="border-left: 3px solid #f85149;">
-        <div class="card-title">GOOGL — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: -5.6%</div>
-        <p>MACD bearish crossover; Price below EMA20 ($382.05); Stop loss triggered (-5.6%)</p>
+        <div class="card-title">COIN — <span style="color:#f85149">SELL</span></div>
+        <div>PnL: +2.0%</div>
+        <p>MACD bearish crossover; Price below EMA20 ($190.05)</p>
     </div>
     <div class="card" style="border-left: 3px solid #f85149;">
         <div class="card-title">HOOD — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: +14.2%</div>
-        <p>Take profit target hit (14.2%)</p>
+        <div>PnL: +7.7%</div>
+        <p>RSI at 61.2 with profit — protect gains</p>
+    </div>
+    <div class="card" style="border-left: 3px solid #f85149;">
+        <div class="card-title">ASTS — <span style="color:#f85149">SELL</span></div>
+        <div>PnL: +4.4%</div>
+        <p>RSI at 62.2 with profit — protect gains</p>
     </div>
     <div class="card" style="border-left: 3px solid #f85149;">
         <div class="card-title">IONQ — <span style="color:#f85149">SELL</span></div>
-        <div>PnL: +15.8%</div>
-        <p>RSI overbought at 70.0; Take profit target hit (15.8%)</p>
+        <div>PnL: +3.8%</div>
+        <p>RSI at 67.6 with profit — protect gains</p>
     </div>
     
     <h2>Open Positions</h2>
     
     <div class="card">
-        <div class="card-title">NVDA</div>
-        <div>Entry: $227.10 | Current: $219.44 | <span style="color:#f85149">PnL: -3.4%</span></div>
+        <div class="card-title">AAPL</div>
+        <div>Entry: $308.39 | Current: $307.54 | <span style="color:#f85149">PnL: -0.3%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $277.37 (+22.1%) · 🛑 $194.07 (-14.5%)
-            <br>Entered: 2026-05-18
+            Signal: BUY · 🎯 $334.00 (+8.3%) · 🛑 $287.11 (-6.9%)
+            <br>Entered: 2026-05-26
         </div>
     </div>
     <div class="card">
         <div class="card-title">TSLA</div>
-        <div>Entry: $424.35 | Current: $418.83 | <span style="color:#f85149">PnL: -1.3%</span></div>
+        <div>Entry: $431.10 | Current: $418.04 | <span style="color:#f85149">PnL: -3.0%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $474.05 (+11.7%) · 🛑 $389.69 (-8.2%)
-            <br>Entered: 2026-05-22
+            Signal: WEAK BUY · 🎯 $491.73 (+14.1%) · 🛑 $389.69 (-9.6%)
+            <br>Entered: 2026-05-26
         </div>
     </div>
     <div class="card">
-        <div class="card-title">META</div>
-        <div>Entry: $614.75 | Current: $614.75 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div class="card-title">AMD</div>
+        <div>Entry: $503.77 | Current: $511.95 | <span style="color:#7ee787">PnL: +1.6%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $647.01 (+5.2%) · 🛑 $588.86 (-4.2%)
+            Signal: BUY · 🎯 $506.96 (+0.6%) · 🛑 $389.43 (-22.7%)
+            <br>Entered: 2026-05-26
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">AMZN</div>
+        <div>Entry: $264.68 | Current: $263.68 | <span style="color:#f85149">PnL: -0.4%</span></div>
+        <div style="color:#8b949e;font-size:0.85rem">
+            Signal: BUY · 🎯 $274.75 (+3.8%) · 🛑 $252.64 (-4.5%)
+            <br>Entered: 2026-06-01
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">MSFT</div>
+        <div>Entry: $463.25 | Current: $463.25 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div style="color:#8b949e;font-size:0.85rem">
+            Signal: BUY · 🎯 $550.09 (+18.7%) · 🛑 $405.48 (-12.5%)
+            <br>Entered: 2026-06-01
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">GOOGL</div>
+        <div>Entry: $378.23 | Current: $378.23 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div style="color:#8b949e;font-size:0.85rem">
+            Signal: BUY · 🎯 $390.78 (+3.3%) · 🛑 $369.78 (-2.2%)
+            <br>Entered: 2026-06-01
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">NVDA</div>
+        <div>Entry: $223.98 | Current: $223.98 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div style="color:#8b949e;font-size:0.85rem">
+            Signal: WEAK BUY · 🎯 $248.57 (+11.0%) · 🛑 $206.69 (-7.7%)
+            <br>Entered: 2026-06-01
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-title">PLTR</div>
+        <div>Entry: $160.86 | Current: $160.86 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div style="color:#8b949e;font-size:0.85rem">
+            Signal: BUY · 🎯 $163.69 (+1.8%) · 🛑 $130.02 (-19.2%)
             <br>Entered: 2026-06-01
         </div>
     </div>
     <div class="card">
         <div class="card-title">SOFI</div>
-        <div>Entry: $18.03 | Current: $18.03 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div>Entry: $18.60 | Current: $18.60 | <span style="color:#7ee787">PnL: +0.0%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $18.59 (+3.1%) · 🛑 $14.77 (-18.1%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">AMZN</div>
-        <div>Entry: $264.01 | Current: $264.01 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $274.75 (+4.1%) · 🛑 $252.64 (-4.3%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">ASTS</div>
-        <div>Entry: $102.78 | Current: $102.78 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $106.17 (+3.3%) · 🛑 $77.87 (-24.2%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">AVGO</div>
-        <div>Entry: $455.47 | Current: $455.47 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $535.74 (+17.6%) · 🛑 $401.80 (-11.8%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">ORCL</div>
-        <div>Entry: $237.62 | Current: $237.62 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $245.46 (+3.3%) · 🛑 $177.01 (-25.5%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">CRM</div>
-        <div>Entry: $209.75 | Current: $209.75 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $216.67 (+3.3%) · 🛑 $169.93 (-19.0%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">NOW</div>
-        <div>Entry: $134.06 | Current: $134.06 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $139.20 (+3.8%) · 🛑 $96.52 (-28.0%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">ADBE</div>
-        <div>Entry: $270.83 | Current: $270.83 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $326.12 (+20.4%) · 🛑 $234.29 (-13.5%)
+            Signal: BUY · 🎯 $18.80 (+1.1%) · 🛑 $14.77 (-20.6%)
             <br>Entered: 2026-06-01
         </div>
     </div>
     <div class="card">
         <div class="card-title">RKLB</div>
-        <div>Entry: $123.02 | Current: $123.02 | <span style="color:#7ee787">PnL: +0.0%</span></div>
+        <div>Entry: $124.17 | Current: $124.17 | <span style="color:#7ee787">PnL: +0.0%</span></div>
         <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $135.62 (+10.2%) · 🛑 $114.08 (-7.3%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">COIN</div>
-        <div>Entry: $179.29 | Current: $179.29 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $195.66 (+9.1%) · 🛑 $167.48 (-6.6%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">MRVL</div>
-        <div>Entry: $213.16 | Current: $213.16 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $218.26 (+2.4%) · 🛑 $161.22 (-24.4%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">KLAC</div>
-        <div>Entry: $1897.78 | Current: $1897.78 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $2233.52 (+17.7%) · 🛑 $1673.38 (-11.8%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">INTC</div>
-        <div>Entry: $111.19 | Current: $111.19 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $125.41 (+12.8%) · 🛑 $101.38 (-8.8%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">QCOM</div>
-        <div>Entry: $233.01 | Current: $233.01 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: STRONG BUY · 🎯 $259.92 (+11.5%) · 🛑 $189.11 (-18.8%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">NFLX</div>
-        <div>Entry: $85.55 | Current: $85.55 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $91.48 (+6.9%) · 🛑 $84.47 (-1.3%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">TXN</div>
-        <div>Entry: $290.10 | Current: $290.10 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $331.51 (+14.3%) · 🛑 $287.07 (-1.0%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">DIS</div>
-        <div>Entry: $101.49 | Current: $101.49 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: STRONG BUY · 🎯 $105.25 (+3.7%) · 🛑 $99.31 (-2.1%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">LRCX</div>
-        <div>Entry: $312.93 | Current: $312.93 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $333.33 (+6.5%) · 🛑 $261.07 (-16.6%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">AMAT</div>
-        <div>Entry: $450.03 | Current: $450.03 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $536.03 (+19.1%) · 🛑 $392.91 (-12.7%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">MU</div>
-        <div>Entry: $1034.23 | Current: $1034.23 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $1068.36 (+3.3%) · 🛑 $645.69 (-37.6%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">WMT</div>
-        <div>Entry: $114.10 | Current: $114.10 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $135.16 (+18.5%) · 🛑 $112.95 (-1.0%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">JPM</div>
-        <div>Entry: $295.48 | Current: $295.48 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $309.93 (+4.9%) · 🛑 $290.73 (-1.6%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">BAC</div>
-        <div>Entry: $51.22 | Current: $51.22 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $53.65 (+4.7%) · 🛑 $49.22 (-3.9%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">GS</div>
-        <div>Entry: $1027.85 | Current: $1027.85 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $1196.19 (+16.4%) · 🛑 $914.57 (-11.0%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">V</div>
-        <div>Entry: $321.73 | Current: $321.73 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $335.17 (+4.2%) · 🛑 $317.69 (-1.3%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">MA</div>
-        <div>Entry: $492.61 | Current: $492.61 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $512.90 (+4.1%) · 🛑 $481.49 (-2.3%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">TGT</div>
-        <div>Entry: $122.05 | Current: $122.05 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $130.14 (+6.6%) · 🛑 $115.88 (-5.1%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">COST</div>
-        <div>Entry: $945.36 | Current: $945.36 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: STRONG BUY · 🎯 $1096.50 (+16.0%) · 🛑 $934.85 (-1.1%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">HD</div>
-        <div>Entry: $308.71 | Current: $308.71 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $340.44 (+10.3%) · 🛑 $286.21 (-7.3%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">LOW</div>
-        <div>Entry: $208.84 | Current: $208.84 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $222.65 (+6.6%) · 🛑 $205.92 (-1.4%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">TSM</div>
-        <div>Entry: $438.28 | Current: $438.28 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $524.39 (+19.6%) · 🛑 $381.21 (-13.0%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">SNPS</div>
-        <div>Entry: $475.26 | Current: $475.26 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: STRONG BUY · 🎯 $504.46 (+6.1%) · 🛑 $464.68 (-2.2%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">SPGI</div>
-        <div>Entry: $424.35 | Current: $424.35 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $460.09 (+8.4%) · 🛑 $398.24 (-6.2%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">MCO</div>
-        <div>Entry: $455.68 | Current: $455.68 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $502.07 (+10.2%) · 🛑 $422.74 (-7.2%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">BLK</div>
-        <div>Entry: $1020.37 | Current: $1020.37 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: STRONG BUY · 🎯 $1098.07 (+7.6%) · 🛑 $1005.16 (-1.5%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">SCHW</div>
-        <div>Entry: $87.42 | Current: $87.42 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $93.02 (+6.4%) · 🛑 $83.12 (-4.9%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">IBKR</div>
-        <div>Entry: $87.46 | Current: $87.46 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $100.95 (+15.4%) · 🛑 $78.33 (-10.4%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">ARM</div>
-        <div>Entry: $406.75 | Current: $406.75 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $411.00 (+1.0%) · 🛑 $200.98 (-50.6%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">ASML</div>
-        <div>Entry: $1607.60 | Current: $1607.60 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $1876.66 (+16.7%) · 🛑 $1426.90 (-11.2%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">CDNS</div>
-        <div>Entry: $394.77 | Current: $394.77 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $407.80 (+3.3%) · 🛑 $328.24 (-16.9%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">NVO</div>
-        <div>Entry: $44.23 | Current: $44.23 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: STRONG BUY · 🎯 $46.05 (+4.1%) · 🛑 $43.30 (-2.1%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">GE</div>
-        <div>Entry: $316.35 | Current: $316.35 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $371.86 (+17.5%) · 🛑 $279.22 (-11.7%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">BA</div>
-        <div>Entry: $223.78 | Current: $223.78 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $232.30 (+3.8%) · 🛑 $211.86 (-5.3%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">RTX</div>
-        <div>Entry: $174.62 | Current: $174.62 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $181.63 (+4.0%) · 🛑 $168.59 (-3.5%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">CAT</div>
-        <div>Entry: $857.93 | Current: $857.93 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: STRONG BUY · 🎯 $891.58 (+3.9%) · 🛑 $837.09 (-2.4%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">ISRG</div>
-        <div>Entry: $416.26 | Current: $416.26 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $449.77 (+8.1%) · 🛑 $410.02 (-1.5%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">VRTX</div>
-        <div>Entry: $435.35 | Current: $435.35 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $450.46 (+3.5%) · 🛑 $421.75 (-3.1%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">REGN</div>
-        <div>Entry: $605.11 | Current: $605.11 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $670.31 (+10.8%) · 🛑 $596.88 (-1.4%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">CEG</div>
-        <div>Entry: $271.61 | Current: $271.61 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $296.71 (+9.2%) · 🛑 $253.54 (-6.7%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">VST</div>
-        <div>Entry: $155.90 | Current: $155.90 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $193.50 (+24.1%) · 🛑 $131.33 (-15.8%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">TLN</div>
-        <div>Entry: $373.18 | Current: $373.18 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: STRONG BUY · 🎯 $394.63 (+5.7%) · 🛑 $306.27 (-17.9%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">GEV</div>
-        <div>Entry: $943.49 | Current: $943.49 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: STRONG BUY · 🎯 $1095.00 (+16.1%) · 🛑 $929.61 (-1.5%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">NEE</div>
-        <div>Entry: $84.75 | Current: $84.75 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $91.60 (+8.1%) · 🛑 $83.86 (-1.1%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">EOG</div>
-        <div>Entry: $137.93 | Current: $137.93 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $147.28 (+6.8%) · 🛑 $130.83 (-5.1%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">CVX</div>
-        <div>Entry: $187.83 | Current: $187.83 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $199.85 (+6.4%) · 🛑 $178.60 (-4.9%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">OXY</div>
-        <div>Entry: $59.77 | Current: $59.77 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $66.36 (+11.0%) · 🛑 $55.14 (-7.7%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">DASH</div>
-        <div>Entry: $161.77 | Current: $161.77 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $185.98 (+15.0%) · 🛑 $145.34 (-10.2%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">LCID</div>
-        <div>Entry: $6.76 | Current: $6.76 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $6.95 (+2.8%) · 🛑 $5.49 (-18.8%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">SNAP</div>
-        <div>Entry: $5.89 | Current: $5.89 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $6.75 (+14.6%) · 🛑 $5.31 (-9.8%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">RIVN</div>
-        <div>Entry: $16.75 | Current: $16.75 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $16.85 (+0.6%) · 🛑 $12.52 (-25.3%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">ABNB</div>
-        <div>Entry: $133.19 | Current: $133.19 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $137.26 (+3.1%) · 🛑 $126.92 (-4.7%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">PINS</div>
-        <div>Entry: $21.09 | Current: $21.09 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $26.06 (+23.6%) · 🛑 $17.84 (-15.4%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">U</div>
-        <div>Entry: $31.17 | Current: $31.17 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $31.59 (+1.3%) · 🛑 $24.75 (-20.6%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">TTD</div>
-        <div>Entry: $22.58 | Current: $22.58 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $26.40 (+16.9%) · 🛑 $20.02 (-11.3%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">CRWD</div>
-        <div>Entry: $762.22 | Current: $762.22 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $787.37 (+3.3%) · 🛑 $581.50 (-23.7%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">DDOG</div>
-        <div>Entry: $270.68 | Current: $270.68 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $279.61 (+3.3%) · 🛑 $201.17 (-25.7%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">ZS</div>
-        <div>Entry: $154.45 | Current: $154.45 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $157.54 (+2.0%) · 🛑 $121.09 (-21.6%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">MDB</div>
-        <div>Entry: $387.25 | Current: $387.25 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $400.03 (+3.3%) · 🛑 $289.79 (-25.2%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">NET</div>
-        <div>Entry: $261.97 | Current: $261.97 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $270.62 (+3.3%) · 🛑 $190.87 (-27.1%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">PANW</div>
-        <div>Entry: $293.57 | Current: $293.57 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $303.26 (+3.3%) · 🛑 $232.91 (-20.7%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">FXI</div>
-        <div>Entry: $35.18 | Current: $35.18 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $36.39 (+3.4%) · 🛑 $34.28 (-2.6%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">KWEB</div>
-        <div>Entry: $27.22 | Current: $27.22 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $28.50 (+4.7%) · 🛑 $25.97 (-4.6%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">XBI</div>
-        <div>Entry: $132.33 | Current: $132.33 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: STRONG BUY · 🎯 $144.08 (+8.9%) · 🛑 $123.82 (-6.4%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">SMH</div>
-        <div>Entry: $603.49 | Current: $603.49 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $725.84 (+20.3%) · 🛑 $522.59 (-13.4%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">SPY</div>
-        <div>Entry: $755.77 | Current: $755.77 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: WEAK BUY · 🎯 $794.99 (+5.2%) · 🛑 $724.21 (-4.2%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">IBB</div>
-        <div>Entry: $168.37 | Current: $168.37 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: STRONG BUY · 🎯 $178.55 (+6.0%) · 🛑 $160.46 (-4.7%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">IWM</div>
-        <div>Entry: $287.20 | Current: $287.20 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $314.01 (+9.3%) · 🛑 $267.92 (-6.7%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">QQQ</div>
-        <div>Entry: $739.61 | Current: $739.61 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $811.38 (+9.7%) · 🛑 $688.30 (-6.9%)
-            <br>Entered: 2026-06-01
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-title">DIA</div>
-        <div>Entry: $509.33 | Current: $509.33 | <span style="color:#7ee787">PnL: +0.0%</span></div>
-        <div style="color:#8b949e;font-size:0.85rem">
-            Signal: BUY · 🎯 $536.58 (+5.4%) · 🛑 $487.57 (-4.3%)
+            Signal: WEAK BUY · 🎯 $138.63 (+11.6%) · 🛑 $114.08 (-8.1%)
             <br>Entered: 2026-06-01
         </div>
     </div>
@@ -1367,8 +204,6 @@
     <h2>Forum Sentiment</h2>
     <p style="color: #8b949e;">No forum data available.</p>
     
-  <hr>
-  <div class="timestamp">Auto-generated by Hermes Agent — 2026-06-01 16:06</div>
-</div>
+<div class="footer">Generated by Hermes Trading · Stock & Options Scanners</div>
 </body>
 </html>
