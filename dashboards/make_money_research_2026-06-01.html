@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money-Making Research Report — 2026-06-01</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#e2e2e8;line-height:1.7;padding:0}
+  .container{max-width:1200px;margin:0 auto;padding:2rem}
+  header{background:linear-gradient(135deg,#0f0f1a 0%,#1a1a2e 100%);padding:3rem 2rem;border-bottom:1px solid #2a2a3e;text-align:center}
+  header h1{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#00d4ff,#7b61ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem}
+  header .date{color:#8888aa;font-size:1.1rem}
+  header .badge{display:inline-block;background:#2a2a3e;color:#00d4ff;padding:0.3rem 1rem;border-radius:20px;font-size:0.85rem;margin-top:1rem;border:1px solid #3a3a5e}
+  section{margin:3rem 0}
+  h2{font-size:1.8rem;font-weight:700;color:#f0f0ff;margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:2px solid #2a2a3e}
+  h3{font-size:1.3rem;font-weight:600;color:#c0c0e0;margin:1.5rem 0 1rem}
+  .exec-summary{background:linear-gradient(135deg,#1a1a2e,#0f1a2e);padding:2rem;border-radius:16px;border:1px solid #2a2a4e}
+  .exec-summary p{color:#b0b0cc;margin-bottom:0.8rem}
+  .exec-summary .highlight{color:#00d4ff;font-weight:600}
+  .opportunity-card{background:#12121e;border:1px solid #2a2a3e;border-radius:16px;padding:2rem;margin-bottom:2rem;transition:all 0.3s}
+  .opportunity-card:hover{border-color:#4a4a7e;transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+  .opportunity-card .rank{display:inline-block;background:linear-gradient(135deg,#00d4ff,#7b61ff);color:#fff;font-weight:700;padding:0.2rem 0.8rem;border-radius:8px;font-size:0.85rem;margin-bottom:1rem}
+  .opportunity-card h3{margin-top:0;color:#f0f0ff}
+  .opportunity-card .meta{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.8rem;margin:1.2rem 0;padding:1rem;background:#0a0a12;border-radius:12px}
+  .opportunity-card .meta-item{}
+  .opportunity-card .meta-item .label{font-size:0.75rem;color:#6666aa;text-transform:uppercase;letter-spacing:0.5px}
+  .opportunity-card .meta-item .value{font-size:0.95rem;color:#e0e0f0}
+  .opportunity-card .source{font-size:0.85rem;color:#6666aa;margin:0.5rem 0}
+  .opportunity-card .source a{color:#7b61ff;text-decoration:none}
+  .opportunity-card .source a:hover{text-decoration:underline}
+  .opportunity-card .actions{margin-top:1rem;padding-top:1rem;border-top:1px solid #2a2a3e}
+  .opportunity-card .actions h4{font-size:0.9rem;color:#00d4ff;margin-bottom:0.5rem}
+  .opportunity-card .actions ol{padding-left:1.5rem}
+  .opportunity-card .actions li{font-size:0.9rem;color:#b0b0cc;margin-bottom:0.3rem}
+  .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+  .video-card{background:#12121e;border:1px solid #1a1a2e;border-radius:12px;padding:1.2rem;transition:all 0.3s}
+  .video-card:hover{border-color:#3a3a5e}
+  .video-card .new-badge{display:inline-block;background:#00d4ff;color:#0a0a0f;font-size:0.7rem;font-weight:700;padding:0.1rem 0.5rem;border-radius:4px;margin-right:0.5rem}
+  .video-card .title{font-weight:600;color:#e0e0f0;margin-bottom:0.4rem;font-size:0.95rem}
+  .video-card .channel{font-size:0.8rem;color:#6666aa}
+  .video-card .stats{font-size:0.8rem;color:#8888aa;margin-top:0.3rem}
+  .video-card a{color:#c0c0e0;text-decoration:none}
+  .video-card a:hover{color:#00d4ff}
+  table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.9rem}
+  th,td{padding:0.8rem 1rem;text-align:left;border-bottom:1px solid #1a1a2e}
+  th{color:#6666aa;font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.5px;background:#0a0a12}
+  td{color:#b0b0cc}
+  tr:hover td{background:#1a1a2e}
+  .action-plan{background:#0f1a1a;border:1px solid #1a3a2e;border-radius:16px;padding:2rem}
+  .action-plan ol li{margin-bottom:1rem;color:#b0b0cc}
+  .action-plan ol li strong{color:#e0e0f0}
+  .risk-high{color:#ff5555;font-weight:600}
+  .risk-medium{color:#ffaa55;font-weight:600}
+  .risk-low{color:#55ff55;font-weight:600}
+  .opportunity-card .rating-row{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}
+  .rating-chip{background:#1a1a2e;border-radius:20px;padding:0.3rem 1rem;font-size:0.85rem;color:#c0c0e0}
+  .tag{display:inline-block;background:#2a2a4e;color:#b0b0e0;font-size:0.75rem;padding:0.15rem 0.6rem;border-radius:6px;margin:0.15rem}
+  footer{text-align:center;padding:2rem;color:#444466;font-size:0.85rem;border-top:1px solid #1a1a2e}
+</style>
+</head>
+<body>
+<header>
+<h1>📊 Money-Making Research Report</h1>
+<div class="date">Monday, 2026-06-01 | 08:00 BST | UK-Focused</div>
+<div class="badge">🎯 Daily Research Scan — 13 Focus Areas</div>
+</header>
+<div class="container">
+
+<!-- Executive Summary -->
+<section>
+<h2>📋 Executive Summary</h2>
+<div class="exec-summary">
+<p><span class="highlight">Top Opportunity:</span> <strong>AI Implementation & Training Services for UK Businesses</strong> — Multiple creators (Sabrina Ramonov🍄, Dan Martell) highlighted that <strong>Claude/ChatGPT training for businesses</strong> and <strong>AI marketing automations</strong> are the highest-leverage opportunities for 2026. UK SMEs are behind on AI adoption but urgently need it. With your technical skills, this is a natural fit.</p>
+<p><span class="highlight">Trending:</span> YouTube's new C2PA/SynthID requirements for AI-generated content are reshaping faceless channels. Creators who adapt early (disclose AI use + write for AI Overviews) will benefit from reduced competition as others are demonetised.</p>
+<p><span class="highlight">UK-Specific:</span> eBay wholesale reselling (3 days ago), Vinted reselling experiments (6 days ago), and TikTok Shop UK all show active UK opportunities. Print-on-demand via UK-based Teemill is also seeing traction.</p>
+<p><span class="highlight">Zero-Credit Mode:</span> web_search and web_extract credits were exhausted. All data gathered via built-in browser (YouTube + Hacker News only).</p>
+</div>
+</section>
+
+<!-- Top 10 Opportunities -->
+<section>
+<h2>🏆 Top 10 Money-Making Opportunities</h2>
+
+<!-- Opp 1 -->
+<div class="opportunity-card">
+<div class="rank">#1</div>
+<h3>AI Training & Implementation Services for UK Businesses</h3>
+<div class="source">Sources: <a href="https://www.youtube.com/watch?v=5W0vR1Osd1o">Sabrina Ramonov🍄 — 5 Ways to Make Money in 2026 (with AI)</a> (223k views, 4wk ago), Dan Martell (700k, 1mo ago)</div>
+<p><strong>What it is:</strong> Offer training sessions and implementation services to UK businesses adopting AI tools — Claude, ChatGPT, Make.com automations, AI agents. Sabrina Ramonov specifically highlighted Claude training as "blowing up in 2026." Businesses are overwhelmed by AI options and will pay £500-£2000/day for someone to set up their workflows and train their teams.</p>
+<div class="meta">
+<div class="meta-item"><span class="label">Startup Cost</span><div class="value">£0-£100</div></div>
+<div class="meta-item"><span class="label">Difficulty</span><div class="value">4/10</div></div>
+<div class="meta-item"><span class="label">Time to First £</span><div class="value">1-4 weeks</div></div>
+<div class="meta-item"><span class="label">Scalability</span><div class="value">★★★★★ Create courses, hire trainers</div></div>
+<div class="meta-item"><span class="label">Competition</span><div class="value">Medium (growing fast)</div></div>
+<div class="meta-item"><span class="label">UK Suitability</span><div class="value">★★★★★ Excellent — UK SMEs desperate for AI help</div></div>
+<div class="meta-item"><span class="label">Automation</span><div class="value">★★★★☆ Build repeatable training packages</div></div>
+<div class="meta-item"><span class="label">Risk</span><div class="value risk-medium">Medium — market will commoditise</div></div>
+</div>
+<div class="actions">
+<h4>🎯 First 3 Actions</h4>
+<ol>
+<li>Create a landing page offering "AI Readiness Audit" for local UK businesses (free 30-min call)</li>
+<li>Build 3 case studies by offering free automation setups to 3 small businesses (e.g., accountants, estate agents, ecommerce stores)</li>
+<li>Package your services: Bronze (2h training £497), Silver (day workshop £997), Gold (full setup + 3mo support £2,997)</li>
+</ol>
+</div>
+</div>
+
+<!-- Opp 2 -->
+<div class="opportunity-card">
+<div class="rank">#2</div>
+<h3>Faceless YouTube Channels — AI-First Approach (2026 Algorithm Update)</h3>
+<div class="source">Sources: <a href="https://www.youtube.com/watch?v=YugvtIavKl4">Romayroh — How To Beat The NEW YouTube Algorithm in 2026</a> (20k views, 1 day ago, New), <a href="https://www.youtube.com/watch?v=FfpXBn4VK0I">Saad Rashid — Start Faceless Channel with AI Automation</a> (11k views, 1 day ago, New)</div>
+<p><strong>What it is:</strong> YouTube's 2026 algorithm update introduced C2PA/SynthID requirements forcing AI-generated content disclosure. This is creating a bifurcation: poorly-made AI content gets suppressed, while transparent, high-quality AI-assisted channels thrive. Romayroh's video (uploaded yesterday) details 4 key fixes: (1) Disclose altered content, (2) Write for AI Overviews, (3) Build off-platform authority on Pinterest/Medium, (4) Link a store. Saad Rashid demonstrates a complete toolchain: Text-to-Image, Image-to-Video, AI Idea-to-Video.</p>
+<div class="meta">
+<div class="meta-item"><span class="label">Startup Cost</span><div class="value">£50-200/mo (AI tools)</div></div>
+<div class="meta-item"><span class="label">Difficulty</span><div class="value">5/10</div></div>
+<div class="meta-item"><span class="label">Time to Revenue</span><div class="value">3-6 months (monetisation)</div></div>
+<div class="meta-item"><span class="label">Scalability</span><div class="value">★★★★☆ Multiple channels possible</div></div>
+<div class="meta-item"><span class="label">Competition</span><div class="value">Medium (algorithm update thins out low-effort creators)</div></div>
+<div class="meta-item"><span class="label">UK Suitability</span><div class="value">★★★★☆ Works globally, UK niches underserved</div></div>
+<div class="meta-item"><span class="label">Automation</span><div class="value">★★★★★ AI handles scripting, VO, video assembly</div></div>
+<div class="meta-item"><span class="label">Risk</span><div class="value risk-medium">Medium — platform dependency + algorithm changes</div></div>
+</div>
+<div class="actions">
+<h4>🎯 First 3 Actions</h4>
+<ol>
+<li>Pick a niche with strong UK demand (UK personal finance, UK property, British history)</li>
+<li>Set up AI pipeline: ChatGPT/Claude for scripts, ElevenLabs for VO, Leonardo/Pika for visuals, CapCut for assembly</li>
+<li>Follow Romayroh's 4-fix strategy — especially "Link A Store" (affiliate/store products) and build Pinterest presence</li>
+</ol>
+</div>
+</div>
+
+<!-- Opp 3 -->
+<div class="opportunity-card">
+<div class="rank">#3</div>
+<h3>AI Marketing Automation Agency (HighLevel + Make.com)</h3>
+<div class="source">Sources: <a href="https://www.youtube.com/watch?v=5W0vR1Osd1o">Sabrina Ramonov🍄 — Method 5: AI Marketing Automations</a>, Alex Hormozi (205k, 1mo), Jordan Platten — Lead Gen Agency (32k, 3mo), Chris Koerner — HighLevel (167k, 3mo)</div>
+<p><strong>What it is:</strong> Offer UK businesses automated marketing workflows using GoHighLevel, Make.com, and ManyChat. Set up follow-up sequences, lead scoring, appointment booking, review management, SMS campaigns. Monthly retainer model (£500-£2,000/mo per client). Sabrina's detailed chapter breakdown shows three plays: (1) GoHighLevel Setup-as-a-Service, (2) ManyChat AI for Instagram+Facebook, (3) LinkedIn automation (carefully).</p>
+<div class="meta">
+<div class="meta-item"><span class="label">Startup Cost</span><div class="value">£97-£297/mo (HighLevel)</div></div>
+<div class="meta-item"><span class="label">Difficulty</span><div class="value">6/10</div></div>
+<div class="meta-item"><span class="label">Time to Revenue</span><div class="value">2-4 weeks</div></div>
+<div class="meta-item"><span class="label">Scalability</span><div class="value">★★★★★ High — systemise and hire VAs</div></div>
+<div class="meta-item"><span class="label">Competition</span><div class="value">Medium-Low (still early in UK local market)</div></div>
+<div class="meta-item"><span class="label">UK Suitability</span><div class="value">★★★★★ Perfect for UK local businesses</div></div>
+<div class="meta-item"><span class="label">Automation</span><div class="value">★★★★★ The core service IS automation</div></div>
+<div class="meta-item"><span class="label">Risk</span><div class="value risk-low">Low — recurring revenue model, sticky clients</div></div>
+</div>
+<div class="actions">
+<h4>🎯 First 3 Actions</h4>
+<ol>
+<li>Get GoHighLevel Agency account (£297/mo white-label) and build your own funnel as a demo</li>
+<li>Target UK service businesses: dentists, vets, solicitors, estate agents, gyms — all need lead gen automation</li>
+<li>Create a "done-with-you" package: "I'll set up your entire marketing automation in 7 days for £997 + £297/mo"</li>
+</ol>
+</div>
+</div>
+
+<!-- Opp 4 -->
+<div class="opportunity-card">
+<div class="rank">#4</div>
+<h3>eBay Wholesale Reselling (UK Focus)</h3>
+<div class="source">Sources: <a href="https://www.youtube.com/watch?v=0cUY1n4p0N4">RALLI ROOTS — Find Wholesale Inventory to Sell on eBay in 2026</a> (6.9k views, 3 days ago), Culture Force, Millennial Profit</div>
+<p><strong>What it is:</strong> Source wholesale inventory (vintage apparel, electronics, collectibles) and resell on eBay. RALLI ROOTS (3 days ago upload) demonstrates practical strategies: sourcing through social media, networking with other resellers, bulk shipment evaluation. UK-specific advantage: strong charity shop culture + growing eBay marketplace. HMRC now requires reporting on eBay sales above £1,000 — so compliant approach is essential.</p>
+<div class="meta">
+<div class="meta-item"><span class="label">Startup Cost</span><div class="value">£200-£500</div></div>
+<div class="meta-item"><span class="label">Difficulty</span><div class="value">4/10</div></div>
+<div class="meta-item"><span class="label">Time to Revenue</span><div class="value">1-2 weeks</div></div>
+<div class="meta-item"><span class="label">Scalability</span><div class="value">★★★☆☆ Limiting (inventory management)</div></div>
+<div class="meta-item"><span class="label">Competition</span><div class="value">Medium</div></div>
+<div class="meta-item"><span class="label">UK Suitability</span><div class="value">★★★★★ Excellent UK marketplace</div></div>
+<div class="meta-item"><span class="label">Automation</span><div class="value">★★☆☆☆ Manual sourcing, auto-listing tools exist</div></div>
+<div class="meta-item"><span class="label">Risk</span><div class="value risk-low">Low — start small, test demand</div></div>
+</div>
+<div class="actions">
+<h4>🎯 First 3 Actions</h4>
+<ol>
+<li>Start with items you already own (clothes, electronics) to test the platform at zero cost</li>
+<li>Visit charity shops/car boot sales this weekend — look for branded clothing, vintage electronics</li>
+<li>Use eBay's sold listings to identify what's actually selling vs what's just listed</li>
+</ol>
+</div>
+</div>
+
+<!-- Opp 5 -->
+<div class="opportunity-card">
+<div class="rank">#5</div>
+<h3>Vibe Coding — Micro SaaS for UK Niches</h3>
+<div class="source">Sources: Sabrina Ramonov🍄 — Method 4: Vibe Coding (223k views), Mikey No Code — SaaS Ideas $10k+/mo (80k, 2mo), Simon Høiberg — 5 OS SaaS Ideas (15k, 3mo)</div>
+<p><strong>What it is:</strong> Use AI coding tools (Claude Code, Cursor, Replit Agent) to build small SaaS products without being a professional developer. Sabrina's key insight: "Build one feature only" — launch an MVP with a single core feature. Mikey No Code highlights 5 SaaS ideas including AI Content Creation, Property Management Automation, and Restaurant Inventory. Simon Høiberg suggests open-source affiliate tools, agentic QA testing, and self-hostable AI video/image tools.</p>
+<div class="meta">
+<div class="meta-item"><span class="label">Startup Cost</span><div class="value">£20-£100/mo (AI tools)</div></div>
+<div class="meta-item"><span class="label">Difficulty</span><div class="value">5/10 with AI tools</div></div>
+<div class="meta-item"><span class="label">Time to Revenue</span><div class="value">2-6 weeks</div></div>
+<div class="meta-item"><span class="label">Scalability</span><div class="value">★★★★★ Software scales to millions</div></div>
+<div class="meta-item"><span class="label">Competition</span><div class="value">Varies by niche — UK-specific niches are underserved</div></div>
+<div class="meta-item"><span class="label">UK Suitability</span><div class="value">★★★★☆ Build for UK-specific regulations/needs</div></div>
+<div class="meta-item"><span class="label">Automation</span><div class="value">★★★★★ SaaS is inherently automated</div></div>
+<div class="meta-item"><span class="label">Risk</span><div class="value risk-medium">Medium — most SaaS products fail</div></div>
+</div>
+<div class="actions">
+<h4>🎯 First 3 Actions</h4>
+<ol>
+<li>Identify a painful admin task for a specific UK professional (solicitors need case tracking, estate agents need property lead management, accountants need MTD compliance)</li>
+<li>Use Claude Code/Cursor to build a single-feature MVP in one week</li>
+<li>Launch on a niche UK community (UK Business Forums, LinkedIn UK groups) before Product Hunt</li>
+</ol>
+</div>
+</div>
+
+<!-- Opp 6 -->
+<div class="opportunity-card">
+<div class="rank">#6</div>
+<h3>TikTok Shop UK — Print-on-Demand & Dropshipping</h3>
+<div class="source">Sources: Jon Reiter — Beginners Guide to TikTok Shop Seller (7.2k, 1mo), Ac Hampton — How To Make Money On TikTok (70k, 4mo), Kostify — 3 Days on TikTok Shop (31k, 3mo)</div>
+<p><strong>What it is:</strong> TikTok Shop in the UK is growing rapidly with integrated shopping. Jon Reiter's 5-hour course covers the full workflow: POD vs physical, how to go viral, leveraging TikTok affiliates (125k/mo strategy), onboarding affiliates. TikTok's algorithm still rewards organic reach, making it cheaper than Facebook ads for product testing. Key insight from chapter list: "GMV Max Ads" — TikTok's performance ad platform for shop sellers.</p>
+<div class="meta">
+<div class="meta-item"><span class="label">Startup Cost</span><div class="value">£0-£100 (POD integration)</div></div>
+<div class="meta-item"><span class="label">Difficulty</span><div class="value">5/10</div></div>
+<div class="meta-item"><span class="label">Time to Revenue</span><div class="value">1-3 weeks</div></div>
+<div class="meta-item"><span class="label">Scalability</span><div class="value">★★★★☆</div></div>
+<div class="meta-item"><span class="label">Competition</span><div class="value">Medium-Low in UK (less saturated than US)</div></div>
+<div class="meta-item"><span class="label">UK Suitability</span><div class="value">★★★★★ TikTok Shop UK is live and growing</div></div>
+<div class="meta-item"><span class="label">Automation</span><div class="value">★★★☆☆ AutoDS for order fulfilment</div></div>
+<div class="meta-item"><span class="label">Risk</span><div class="value risk-medium">Medium — platform dependency, returns/refunds</div></div>
+</div>
+<div class="actions">
+<h4>🎯 First 3 Actions</h4>
+<ol>
+<li>Sign up for TikTok Shop UK seller account (free, UK business details required)</li>
+<li>Connect Printful/Printify for POD products (design t-shirts, mugs, accessories)</li>
+<li>Create 5-10 organic product videos daily using the affiliate program to recruit creators</li>
+</ol>
+</div>
+</div>
+
+<!-- Opp 7 -->
+<div class="opportunity-card">
+<div class="rank">#7</div>
+<h3>Vinted Reselling (UK Fashion)</h3>
+<div class="source">Sources: Culture Force — I Tried Vinted Reselling Again in 2026 (11k views, 6 days ago, New), Cfabastin — Beginners Guide (39k, 4mo)</div>
+<p><strong>What it is:</strong> Vinted remains the UK's top peer-to-peer fashion marketplace with zero seller fees. Culture Force (uploaded 6 days ago) tested whether Vinted reselling still works in 2026. Key findings: curated fashion collections sell fast, high-demand brands (Nike, Adidas, Zara, Carhartt) move within 24 hours at the right price, and account reputation still matters for trust/easy sales.</p>
+<div class="meta">
+<div class="meta-item"><span class="label">Startup Cost</span><div class="value">£0-£50</div></div>
+<div class="meta-item"><span class="label">Difficulty</span><div class="value">2/10</div></div>
+<div class="meta-item"><span class="label">Time to Revenue</span><div class="value">1-7 days</div></div>
+<div class="meta-item"><span class="label">Scalability</span><div class="value">★★☆☆☆ Labour-intensive with sizing/returns</div></div>
+<div class="meta-item"><span class="label">Competition</span><div class="value">High on popular items</div></div>
+<div class="meta-item"><span class="label">UK Suitability</span><div class="value">★★★★★ Vinted is huge in UK</div></div>
+<div class="meta-item"><span class="label">Automation</span><div class="value">★★☆☆☆ Minimal — mostly manual listing</div></div>
+<div class="meta-item"><span class="label">Risk</span><div class="value risk-low">Low — start with own wardrobe for free</div></div>
+</div>
+<div class="actions">
+<h4>🎯 First 3 Actions</h4>
+<ol>
+<li>Clear out your wardrobe and list 20-30 items on Vinted this week</li>
+<li>Photograph on a plain background with good lighting (this is #1 factor for Vinted sales)</li>
+<li>Research what sold recently using Cfabastin's strategy: search brands, filter "sold items", note the price range</li>
+</ol>
+</div>
+</div>
+
+<!-- Opp 8 -->
+<div class="opportunity-card">
+<div class="rank">#8</div>
+<h3>Digital Products on Etsy (UK-Specific Templates)</h3>
+<div class="source">Sources: Dania Batiste — 5 Unsaturated Digital Products (26k, 8mo), LaCresha Sims — 5 Trending Digital Products (15k, 4mo), Money With Mak (48k, 1mo)</div>
+<p><strong>What it is:</strong> Etsy digital products remain a strong low-effort revenue stream. Key trend from June 2026 research: UK-specific digital planners, budget trackers, and business templates that reference UK tax years (April-April), VAT thresholds, and HMRC terminology outperform generic ones. LaCresha Sims' chapter mentions "rapid production techniques that bypass complex design work" — using Canva + AI to create digital assets in bulk.</p>
+<div class="meta">
+<div class="meta-item"><span class="label">Startup Cost</span><div class="value">£0-£20</div></div>
+<div class="meta-item"><span class="label">Difficulty</span><div class="value">3/10</div></div>
+<div class="meta-item"><span class="label">Time to Revenue</span><div class="value">1-4 weeks</div></div>
+<div class="meta-item"><span class="label">Scalability</span><div class="value">★★★★☆ Create once, sell infinite times</div></div>
+<div class="meta-item"><span class="label">Competition</span><div class="value">High (UK-specific reduces competition)</div></div>
+<div class="meta-item"><span class="label">UK Suitability</span><div class="value">★★★★★ Massive opportunity for UK-specific products</div></div>
+<div class="meta-item"><span class="label">Automation</span><div class="value">★★★★★ Fully passive once listed</div></div>
+<div class="meta-item"><span class="label">Risk</span><div class="value risk-low">Low — no inventory or shipping</div></div>
+</div>
+<div class="actions">
+<h4>🎯 First 3 Actions</h4>
+<ol>
+<li>Create 5 UK-specific digital products (e.g., "UK Self Assessment Tax Tracker Spreadsheet", "UK Property Purchase Checklist")</li>
+<li>Use Canva + ChatGPT to rapidly design product covers and previews</li>
+<li>Optimise Etsy SEO with UK keywords — include "UK", "British", "HMRC", "£" in titles and tags</li>
+</ol>
+</div>
+</div>
+
+<!-- Opp 9 -->
+<div class="opportunity-card">
+<div class="rank">#9</div>
+<h3>Print-on-Demand via UK Suppliers (Teemill/Printful)</h3>
+<div class="source">Sources: Money With Mak — Start Over POD in 2026 (15k, 1mo), Wholesale Ted — Is POD Worth It (135k, 9mo), Teemill UK advertising</div>
+<p><strong>What it is:</strong> Print-on-demand remains viable with niche targeting. Key 2026 shift: UK-based suppliers like Teemill (sustainable, UK-printed) solve the Brexit customs headache and reduce delivery times. Money With Mak's latest video covers: choose a niche + design, upload to Printify, email marketing, Etsy growth. The chapter notes "pop-up method" — limited-time drops to create urgency without holding inventory.</p>
+<div class="meta">
+<div class="meta-item"><span class="label">Startup Cost</span><div class="value">£0-£50</div></div>
+<div class="meta-item"><span class="label">Difficulty</span><div class="value">4/10</div></div>
+<div class="meta-item"><span class="label">Time to Revenue</span><div class="value">2-6 weeks</div></div>
+<div class="meta-item"><span class="label">Scalability</span><div class="value">★★★☆☆ Print-on-demand margins are thin</div></div>
+<div class="meta-item"><span class="label">Competition</span><div class="value">High (niche selection is critical)</div></div>
+<div class="meta-item"><span class="label">UK Suitability</span><div class="value">★★★★★ Teemill solves UK-specific fulfilment</div></div>
+<div class="meta-item"><span class="label">Automation</span><div class="value">★★★★☆ Printify/Printful auto-fulfil orders</div></div>
+<div class="meta-item"><span class="label">Risk</span><div class="value risk-low">Low — no inventory risk</div></div>
+</div>
+<div class="actions">
+<h4>🎯 First 3 Actions</h4>
+<ol>
+<li>Create a Teemill account (UK-based, free to start) and design 3-5 products for a specific niche</li>
+<li>Use Etsy as primary sales channel + TikTok organic content as secondary</li>
+<li>Test with £20-£30 in Etsy ads on your best 2 designs to validate demand</li>
+</ol>
+</div>
+</div>
+
+<!-- Opp 10 -->
+<div class="opportunity-card">
+<div class="rank">#10</div>
+<h3>AI Agent Services for SMBs (Building & Selling AI Agents)</h3>
+<div class="source">Sources: Liam Ottley — Build & Sell AI Agents Guide (163k, 2mo), Rob Nool — AI Automation Agency (15k, 8mo), Make.com sponsored ad — "Build AI Agents You Can Trust"</div>
+<p><strong>What it is:</strong> Build and sell custom AI agents to small/medium businesses. Liam Ottley's 3-hour guide covers the full playbook: building agents on n8n/Make.com, setting up GPT actions, selling to local businesses. Applications: customer support agents, lead qualification bots, appointment scheduling, invoice chasing. Recurring revenue model — charge £1,000-£3,000 setup + £200-£500/mo maintenance.</p>
+<div class="meta">
+<div class="meta-item"><span class="label">Startup Cost</span><div class="value">£0-£100/mo (Make.com)</div></div>
+<div class="meta-item"><span class="label">Difficulty</span><div class="value">6/10</div></div>
+<div class="meta-item"><span class="label">Time to Revenue</span><div class="value">2-6 weeks</div></div>
+<div class="meta-item"><span class="label">Scalability</span><div class="value">★★★★☆ Productise and template agents</div></div>
+<div class="meta-item"><span class="label">Competition</span><div class="value">Low-Medium (early market)</div></div>
+<div class="meta-item"><span class="label">UK Suitability</span><div class="value">★★★★☆ SMBs in UK are ready for AI agents</div></div>
+<div class="meta-item"><span class="label">Automation</span><div class="value">★★★★★ The product is automation itself</div></div>
+<div class="meta-item"><span class="label">Risk</span><div class="value risk-medium">Medium — client education required</div></div>
+</div>
+<div class="actions">
+<h4>🎯 First 3 Actions</h4>
+<ol>
+<li>Watch Liam Ottley's 3-hour guide for the complete playbook</li>
+<li>Build 2 agent templates (e.g., "Customer Support Agent" and "Lead Qualifier Bot") on Make.com</li>
+<li>Offer free 14-day trials to 3 local businesses — the risk-free offer closes more deals</li>
+</ol>
+</div>
+</div>
+</section>
+
+<!-- Videos Uploaded in Last 24 Hours -->
+<section>
+<h2>🎬 Recently Uploaded Videos (Last 7 Days)</h2>
+<div class="video-grid">
+<div class="video-card"><span class="new-badge">NEW</span><div class="title"><a href="https://www.youtube.com/watch?v=YugvtIavKl4">How To Beat The NEW YouTube Algorithm in 2026 (For Faceless Channels)</a></div><div class="channel">Romayroh</div><div class="stats">20k views • 1 day ago • New badge</div></div>
+<div class="video-card"><span class="new-badge">NEW</span><div class="title"><a href="https://www.youtube.com/watch?v=FfpXBn4VK0I">How to Start Faceless Channel with AI Automation in 2026 (Step By Step) NO FACE</a></div><div class="channel">Saad Rashid</div><div class="stats">11k views • 1 day ago • New badge</div></div>
+<div class="video-card"><span class="new-badge">NEW</span><div class="title"><a href="https://www.youtube.com/watch?v=0cUY1n4p0N4">How We Find Wholesale Inventory to Sell on eBay in 2026</a></div><div class="channel">RALLI ROOTS</div><div class="stats">6.9k views • 3 days ago • New badge</div></div>
+<div class="video-card"><span class="new-badge">NEW</span><div class="title"><a href="https://www.youtube.com/watch?v=dB5nTgCGvGg">If you're trying to get rich with AI, you need to hear this…</a></div><div class="channel">Dan Martell</div><div class="stats">81k views • 3 days ago • New badge</div></div>
+<div class="video-card"><span class="new-badge">NEW</span><div class="title"><a href="https://www.youtube.com/watch?v=9XGzFcN5Fz0">I Tried Vinted Reselling Again in 2026</a></div><div class="channel">Culture Force</div><div class="stats">11k views • 6 days ago • New badge</div></div>
+</div>
+</section>
+
+<!-- Hacker News -->
+<section>
+<h2>🔬 Hacker News Front Page (May 31, 2026)</h2>
+<table>
+<tr><th>Story</th><th>Points</th><th>Relevance</th></tr>
+<tr><td>Cloudflare Turnstile requiring fingerprintable WebGL</td><td>623 pts</td><td>Implications for bot detection/anti-fingerprinting in automation tools</td></tr>
+<tr><td>Codex found a "workaround" of not having sudo on my PC</td><td>501 pts</td><td>AI coding tools getting more autonomous — relevant for vibe coding/micro SaaS</td></tr>
+<tr><td>AV2 Video Standard Released (Final v1.0 Specification)</td><td>347 pts</td><td>Future video compression — relevant for faceless YouTube/content creation</td></tr>
+<tr><td>1-Bit Bonsai Image 4B Image Generation for Local Devices</td><td>360 pts</td><td>Local AI image generation becoming viable without cloud costs</td></tr>
+</table>
+</section>
+
+<!-- AI Agent Tools & Platforms -->
+<section>
+<h2>🛠️ New Tools & Platforms Discovered</h2>
+<div class="opportunity-card" style="background:#12121e">
+<h3>Notable AI/No-Code Platform Updates (June 2026)</h3>
+<ul style="color:#b0b0cc;line-height:2;padding-left:1.5rem">
+<li><strong>Make.com</strong> — Sponsored ad on YouTube: "Build AI Agents You Can Trust". New orchestration features for AI agents.</li>
+<li><strong>Codex (OpenAI)</strong> — Found "workarounds" for system access (HN front page, 501 pts). Codex CLI becoming more autonomous.</li>
+<li><strong>1-Bit Bonsai Image 4B</strong> — New local-first image generation model at 360 HN pts. Could enable local faceless video creation at lower cost.</li>
+<li><strong>Base44</strong> — No-code SaaS builder featured in Mikey No Code's video. AI-first approach to building web apps.</li>
+<li><strong>Teemill</strong> — UK-based sustainable POD. Eliminates Brexit customs issues for UK sellers.</li>
+<li><strong>HighLevel</strong> — Added new AI features including GoHighLevel's agent-building capabilities.</li>
+</ul>
+</div>
+</section>
+
+<!-- UK Suitability Analysis -->
+<section>
+<h2>🇬🇧 UK Suitability Analysis</h2>
+<table>
+<tr><th>Opportunity</th><th>UK Rating</th><th>Why</th></tr>
+<tr><td>AI Training for Businesses</td><td>★★★★★</td><td>UK SMEs are behind on AI adoption; high willingness to pay</td></tr>
+<tr><td>AI Marketing Automation Agency</td><td>★★★★★</td><td>UK service businesses need lead gen; HighLevel + ManyChat work well</td></tr>
+<tr><td>eBay Wholesale Reselling</td><td>★★★★★</td><td>Strong UK eBay market; charity shops = cheap sourcing</td></tr>
+<tr><td>TikTok Shop UK</td><td>★★★★★</td><td>Live platform with UK-specific growth</td></tr>
+<tr><td>Vinted Reselling</td><td>★★★★★</td><td>Zero seller fees, huge UK user base</td></tr>
+<tr><td>Digital Products Etsy</td><td>★★★★☆</td><td>Opportunity in UK-specific templates/planners</td></tr>
+<tr><td>Faceless YouTube</td><td>★★★★☆</td><td>UK financial/property niches underserved</td></tr>
+<tr><td>POD UK</td><td>★★★★☆</td><td>Teemill solves Brexit, but margins remain tight</td></tr>
+<tr><td>Vibe Coding SaaS</td><td>★★★★☆</td><td>UK regulations create niche SaaS opportunities</td></tr>
+<tr><td>AI Agent Services</td><td>★★★★☆</td><td>SMBs in UK ready; need education + trust-building</td></tr>
+</table>
+</section>
+
+<!-- Action Plan -->
+<section>
+<h2>✅ Recommended Action Plan (This Week)</h2>
+<div class="action-plan">
+<ol>
+<li><strong>Day 1-2:</strong> Set up a landing page for "AI Readiness Audit" (free 30-min call for UK businesses). Use Carrd or a simple HTML page.</li>
+<li><strong>Day 1-3:</strong> Watch Sabrina Ramonov's "5 Ways to Make Money" video for the complete AI playbook. Pay special attention to the Claude Training and AI Marketing Automation methods.</li>
+<li><strong>Day 2-3:</strong> Reach out to 5 local UK businesses (accountants, dentists, estate agents) on LinkedIn offering a free AI workflow audit.</li>
+<li><strong>Day 3-4:</strong> Start a faceless YouTube channel in a UK-specific niche. Use the Romayroh strategy (disclosure, AI Overviews, off-platform authority on Pinterest).</li>
+<li><strong>Day 4-5:</strong> List 20-30 items on Vinted/eBay from your own wardrobe or charity shop finds to establish selling history.</li>
+<li><strong>Day 5-7:</strong> Create 5 UK-specific digital products for Etsy (tax planners, property checklists) using Canva + ChatGPT.</li>
+<li><strong>Weekend:</strong> Build one micro SaaS MVP using Claude Code — pick the simplest UK-problem you can solve in a weekend.</li>
+</ol>
+</div>
+</section>
+
+<!-- Sources -->
+<section>
+<h2>📚 Full Source List</h2>
+<table>
+<tr><th>Title</th><th>Source</th><th>Date</th><th>Type</th></tr>
+<tr><td>How To Beat The NEW YouTube Algorithm in 2026</td><td>YouTube — Romayroh</td><td>1 day ago</td><td>Video</td></tr>
+<tr><td>How to Start Faceless Channel with AI Automation in 2026</td><td>YouTube — Saad Rashid</td><td>1 day ago</td><td>Video</td></tr>
+<tr><td>If you're trying to get rich with AI, you need to hear this…</td><td>YouTube — Dan Martell</td><td>3 days ago</td><td>Video</td></tr>
+<tr><td>How We Find Wholesale Inventory to Sell on eBay in 2026</td><td>YouTube — RALLI ROOTS</td><td>3 days ago</td><td>Video</td></tr>
+<tr><td>I Tried Vinted Reselling Again in 2026</td><td>YouTube — Culture Force</td><td>6 days ago</td><td>Video</td></tr>
+<tr><td>5 Ways to Make Money in 2026 (with AI)</td><td>YouTube — Sabrina Ramonov🍄</td><td>4 wk ago</td><td>Video</td></tr>
+<tr><td>The Only 14 Ways to Make Money with AI in 2026</td><td>YouTube — Dan Martell</td><td>1 mo ago</td><td>Video</td></tr>
+<tr><td>How to Use AI in Your Business in 2026</td><td>YouTube — Alex Hormozi</td><td>1 mo ago</td><td>Video</td></tr>
+<tr><td>Best SaaS Ideas to Make $10k+/month In 2026</td><td>YouTube — Mikey No Code</td><td>2 mo ago</td><td>Video</td></tr>
+<tr><td>Build & Sell AI Agents in 2026: Ultimate Beginner's Guide</td><td>YouTube — Liam Ottley</td><td>2 mo ago</td><td>Video</td></tr>
+<tr><td>5 Profitable Micro SaaS Ideas 2026</td><td>YouTube — Code Brew Labs</td><td>5 mo ago</td><td>Video</td></tr>
+<tr><td>Best Side Hustles for the Time Poor (UK)</td><td>YouTube — Nick JM</td><td>Recent</td><td>Video</td></tr>
+<tr><td>How To Make Money On TikTok in 2026</td><td>YouTube — Ac Hampton</td><td>4 mo ago</td><td>Video</td></tr>
+<tr><td>Beginners Guide to TikTok Shop Seller in 2026</td><td>YouTube — Jon Reiter</td><td>1 mo ago</td><td>Video</td></tr>
+<tr><td>Is Print On Demand Still Worth It In 2026?</td><td>YouTube — Wholesale Ted</td><td>9 mo ago</td><td>Video</td></tr>
+<tr><td>How I Would Start POD in 2026</td><td>YouTube — Money With Mak</td><td>1 mo ago</td><td>Video</td></tr>
+<tr><td>5 UNSATURATED Digital Products to Sell on Etsy 2026</td><td>YouTube — Dania Batiste</td><td>8 mo ago</td><td>Video</td></tr>
+<tr><td>How to Start an AI Lead Gen Agency in 2026</td><td>YouTube — Jordan Platten</td><td>3 mo ago</td><td>Video</td></tr>
+<tr><td>Cloudflare Turnstile requiring fingerprintable WebGL</td><td>Hacker News</td><td>16h ago</td><td>Discussion</td></tr>
+<tr><td>Codex found a "workaround" for no sudo on PC</td><td>Hacker News</td><td>12h ago</td><td>Discussion</td></tr>
+<tr><td>AV2 Video Standard Released (Final v1.0)</td><td>Hacker News</td><td>1 day ago</td><td>News</td></tr>
+<tr><td>1-Bit Bonsai Image 4B Image Generation</td><td>Hacker News</td><td>16h ago</td><td>Product</td></tr>
+</table>
+</section>
+
+</div>
+<footer>
+Generated by Hermes Agent — Daily Money-Making Research — 2026-06-01 08:00 BST<br>
+Built-in browser research mode (Zero-Credit Mode) — YouTube + Hacker News<br>
+Next scan: Tomorrow 11:00 BST
+</footer>
+</body>
+</html>
