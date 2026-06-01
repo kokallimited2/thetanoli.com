@@ -280,6 +280,51 @@ def calculate_flip(purchase: float, refurb: float, arv: float,
         "verdict": verdict,
     }
 
+def calculate_hmo(purchase: float, refurb: float, beds: int = 3,
+                  rooms: int = None, rent_per_room: float = 500,
+                  licencing_fee: float = 1300, legals: float = 2500) -> dict:
+    """HMO calculator — max score 10. Refurb costs 35-50% higher than BRRR."""
+    rooms = rooms or beds
+    if rooms < 3:
+        return {"score": 0, "reason": "HMO requires 3+ bedrooms", "verdict": "Reject"}
+    gross_monthly = rooms * rent_per_room
+    management = gross_monthly * 0.15  # HMO mgmt is 15% vs BTL 12%
+    utilities = gross_monthly * 0.10    # Bills included for HMO
+    maintenance = gross_monthly * 0.08
+    total_opex = management + utilities + maintenance
+    net_monthly = gross_monthly - total_opex
+    net_annual = net_monthly * 12
+    gross_yield = (gross_monthly * 12 / purchase * 100) if purchase > 0 else 0
+    net_yield = (net_annual / (purchase + refurb) * 100) if (purchase + refurb) > 0 else 0
+    # Scoring
+    score = 0
+    if gross_yield >= 12: score += 4
+    elif gross_yield >= 10: score += 3
+    elif gross_yield >= 8: score += 2
+    else: score += 1
+    if net_yield >= 8: score += 3
+    elif net_yield >= 6: score += 2
+    elif net_yield >= 4: score += 1
+    if net_monthly >= 600: score += 2
+    elif net_monthly >= 300: score += 1
+    if rooms >= 5: score += 1  # economies of scale
+    score = min(score, 10)
+    verdict = "Strong Buy" if score >= 8 else ("Consider" if score >= 6.5 else ("Watchlist" if score >= 4.5 else "Reject"))
+    return {
+        "score": round(score, 1),
+        "rooms": rooms,
+        "gross_monthly": round(gross_monthly),
+        "net_monthly": round(net_monthly),
+        "gross_yield": round(gross_yield, 1),
+        "net_yield": round(net_yield, 1),
+        "management": round(management),
+        "utilities": round(utilities),
+        "licencing_fee": licencing_fee,
+        "verdict": verdict,
+        "refurb_cost": round(refurb),
+        "refurb_contingency": round(refurb * 0.20),
+    }
+
 # ──────────────────────────────────────────────
 # Full Property Analysis
 # ──────────────────────────────────────────────
@@ -380,13 +425,29 @@ def analyse_property(address: str = "", beds: int = None, price: float = None,
         price = 200000
     if not rent_est:
         rent_est = price * 0.006  # ~0.6% monthly rent rule
+    # Strategy-specific refurb estimates (only if user didn't provide one)
     if not refurb_est:
-        refurb_est = 30000
+        # Estimate based on beds and strategy type
+        brrr_refurb = min(5000 * (beds or 3) + 5000, 35000)
+        flip_refurb = min(5000 * (beds or 3) + 10000, 40000)
+        hmo_refurb = min(7500 * (beds or 3) + 5000, 55000)
+        refurb_est = brrr_refurb  # default for display / "our estimate"
+    else:
+        # User provided a number — use same for all (they know their builder)
+        brrr_refurb = refurb_est
+        flip_refurb = refurb_est
+        hmo_refurb = refurb_est
 
-    # Run calculators
+    # Contingency
+    brrr_contingency = brrr_refurb * 0.15
+    flip_contingency = flip_refurb * 0.15
+    hmo_contingency = hmo_refurb * 0.20
+
+    # Run calculators with strategy-specific costs
     btl = calculate_btl(price, rent_est)
-    brrr = calculate_brrr(price, refurb_est, price + refurb_est + 20000, rent_est)
-    flip = calculate_flip(price, refurb_est, price + refurb_est * 2.5)
+    brrr = calculate_brrr(price, brrr_refurb, price + brrr_refurb + 20000, rent_est)
+    flip = calculate_flip(price, flip_refurb, price + flip_refurb * 2.5)
+    hmo = calculate_hmo(price, hmo_refurb, beds or 3)
 
     # Area intel page check
     area_intel_path = os.path.join(HOME, "thetanoli.com", "dashboards", "nikka-intel",
@@ -394,7 +455,7 @@ def analyse_property(address: str = "", beds: int = None, price: float = None,
     has_area_page = os.path.exists(area_intel_path) if area_intel_path else False
 
     # Best strategy
-    strategies = [("BTL", btl), ("BRRR", brrr), ("Flip", flip)]
+    strategies = [("BTL", btl), ("BRRR", brrr), ("Flip", flip), ("HMO", hmo)]
     best = max(strategies, key=lambda s: s[1]["score"])
 
     return {
@@ -407,6 +468,12 @@ def analyse_property(address: str = "", beds: int = None, price: float = None,
             "type": prop_type or ("unknown" if not rightmove_data else "rightmove"),
             "estimated_rent": round(rent_est),
             "refurb_estimate": round(refurb_est),
+            "refurb_source": "user" if refurb_est else "estimated",
+            "refurb_breakdown": {
+                "brrr": round(brrr_refurb),
+                "flip": round(flip_refurb),
+                "hmo": round(hmo_refurb),
+            },
             "rightmove_url": rightmove_url,
             "rightmove_scraped": rightmove_data.get("scraped", False) if rightmove_data else False,
         },
@@ -419,6 +486,7 @@ def analyse_property(address: str = "", beds: int = None, price: float = None,
         "btl": btl,
         "brrr": brrr,
         "flip": flip,
+        "hmo": hmo,
         "best_strategy": best[0],
         "best_score": best[1]["score"],
         "best_verdict": best[1]["verdict"],
@@ -435,6 +503,7 @@ def generate_report(analysis: dict, page_title: str = "PropIQ Report") -> str:
     btl = analysis["btl"]
     brrr = analysis["brrr"]
     flip = analysis["flip"]
+    hmo = analysis["hmo"]
 
     def score_bar(s):
         """Generate inline score bar"""
