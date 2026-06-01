@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortgage Affordability Calculator — UK Property Tools</title>
+<style>
+:root { --bg: #0a0f1e; --bg2: #111827; --card: #1e293b; --border: #334155; --accent: #f59e0b; --green: #22c55e; --red: #ef4444; --blue: #3b82f6; --text: #f1f5f9; --text2: #94a3b8; --text3: #64748b; --rad: 12px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 14px; padding: 20px; max-width: 700px; margin: 0 auto; }
+.nav { margin-bottom: 16px; } .nav a { color: var(--accent); text-decoration: none; font-size: 0.85rem; }
+.hero { background: linear-gradient(135deg,#0a0f1e,#1e3a5f);padding:32px 24px;text-align:center;border-radius:var(--rad);margin-bottom:20px;}
+.hero h1 { font-size: 1.6rem; color: #fff; } .hero h1 span { color: var(--accent); }
+.hero p { color: var(--text2); font-size: 0.9rem; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 20px; margin-bottom: 16px; }
+.card h3 { font-size: 0.85rem; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+label { display: block; font-size: 0.85rem; color: var(--text2); margin-bottom: 4px; margin-top: 10px; } label:first-child { margin-top: 0; }
+input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 10px 14px; border-radius: 8px; font-size: 1rem; outline: none; }
+input:focus { border-color: var(--accent); }
+.result-box { background: var(--bg2); border-radius: var(--rad); padding: 24px; text-align: center; margin: 16px 0; }
+.result-box .big { font-size: 2.4rem; font-weight: 700; color: var(--accent); }
+.result-box .label { color: var(--text2); font-size: 0.8rem; margin-top: 4px; }
+.mr { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+.mr:last-child { border-bottom: none; }
+.ml { color: var(--text2); } .mv { font-weight: 600; }
+.affiliate-box { background: linear-gradient(135deg,var(--bg2),#1a2332);border:1px solid var(--border);border-radius:var(--rad);padding:16px 20px;margin:16px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.affiliate-box p { color: var(--text2); font-size: 0.85rem; }
+.affiliate-box a { color: var(--accent); text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="index.html">← Back to Property Tools Hub</a></div>
+<div class="hero"><h1>🏦 <span>Mortgage Affordability</span></h1><p>How much could you borrow? — UK residential & BTL</p></div>
+
+<div class="card">
+  <h3>Your Finances</h3>
+  <label>Annual Household Income (£)</label><input type="number" id="income" value="55000" oninput="calc()">
+  <label>Deposit Available (£)</label><input type="number" id="deposit" value="30000" oninput="calc()">
+  <label>Monthly Commitments (loans, credit cards, childcare) (£)</label><input type="number" id="commitments" value="200" oninput="calc()">
+  
+  <div style="margin-top: 12px;">
+    <label>Type</label>
+    <select id="type" onchange="calc()" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:8px;font-size:1rem;">
+      <option value="residential">Residential (home mover)</option>
+      <option value="ftb">First-Time Buyer</option>
+      <option value="btl">Buy-to-Let</option>
+    </select>
+  </div>
+  
+  <div id="btlFields" style="display:none;margin-top:12px;">
+    <label>Expected Monthly Rent (£)</label><input type="number" id="btlRent" value="950" oninput="calc()">
+    <label>Interest Rate Expected (%)</label><input type="number" id="btlRate" value="4.5" step="0.1" oninput="calc()">
+  </div>
+</div>
+
+<div class="result-box">
+  <div class="big" id="borrowAmount">£164,000</div>
+  <div class="label">Estimated Maximum Borrowing</div>
+  <div style="margin-top: 8px; font-size: 0.85rem;" id="propertyBudget">Plus your £30,000 deposit: £194,000 total budget</div>
+</div>
+
+<div class="card">
+  <h3>Affordability Breakdown</h3>
+  <div class="mr"><span class="ml">Income Multiple Used</span><span class="mv" id="multiple">4.5x</span></div>
+  <div class="mr"><span class="ml">Max Loan (income based)</span><span class="mv" id="maxLoanIncome">£247,500</span></div>
+  <div class="mr"><span class="ml">Max Loan (affordability based)</span><span class="mv" id="maxLoanAfford">£164,000</span></div>
+  <div class="mr"><span class="ml">Est. Monthly Payment</span><span class="mv amber" id="monthlyPayment">£943</span></div>
+  <div class="mr"><span class="ml">Payment-to-Income Ratio</span><span class="mv" id="ptiRatio">20.6%</span></div>
+  <div class="mr"><span class="ml">Borrowing Capacity Used</span><span class="mv green" id="capacityUsed">66%</span></div>
+</div>
+
+<div class="affiliate-box">
+  <div><p>🔍 Get a real mortgage decision with <strong>L&C Mortgages</strong> — free UK broker</p></div>
+  <a href="https://go.nordvpn.net/aff_c?offer_id=15&aff_id=147369&url_id=902" target="_blank" class="btn" style="display:inline-block;background:var(--accent);color:#000;padding:8px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.8rem;">Get Decision →</a>
+</div>
+
+<p style="text-align:center;color:var(--text3);font-size:0.75rem;">📌 Illustrative only. Actual offers depend on lender criteria, credit score, and property valuation.</p>
+
+<script>
+function calc() {
+  const income = parseFloat(document.getElementById('income').value) || 0;
+  const deposit = parseFloat(document.getElementById('deposit').value) || 0;
+  const commitments = parseFloat(document.getElementById('commitments').value) || 0;
+  const type = document.getElementById('type').value;
+  const btlRent = parseFloat(document.getElementById('btlRent').value) || 0;
+  const btlRate = parseFloat(document.getElementById('btlRate').value) || 0;
+
+  const btlFields = document.getElementById('btlFields');
+  btlFields.style.display = type === 'btl' ? 'block' : 'none';
+
+  let maxBorrow = 0;
+  let multiple = 0;
+  let monthlyPayment = 0;
+  let rate = 0;
+
+  if (type === 'btl') {
+    rate = btlRate;
+    // BTL: typically rent must cover 125-145% of mortgage payment at 5-6% stress rate
+    const stressRate = Math.max(rate + 1, 5.5);
+    const annualRent = btlRent * 12;
+    const requiredCover = 1.25; // 125% interest coverage ratio
+    const maxMortgagePayment = annualRent / requiredCover;
+    const monthlyStressPayment = maxMortgagePayment / 12;
+    maxBorrow = (maxMortgagePayment / (stressRate / 100));
+    monthlyPayment = maxBorrow * (rate / 100) / 12;
+    multiple = maxBorrow / income;
+    document.getElementById('maxLoanIncome').textContent = '£' + Math.round(maxBorrow).toLocaleString();
+    document.getElementById('maxLoanAfford').textContent = '£' + Math.round(maxBorrow).toLocaleString();
+  } else {
+    rate = type === 'ftb' ? 4.2 : 4.5;
+    // Standard: 4.5x income for most, up to 5x for high earners
+    multiple = income >= 75000 ? 5 : 4.5;
+    const incomeBased = income * multiple;
+    
+    // Affordability check: payment shouldn't exceed ~35% of net monthly income
+    const monthlyIncome = income / 12;
+    const maxPayment = (monthlyIncome * 0.35) - commitments;
+    // At 4.5% over 25 years
+    const mRate = rate / 100 / 12;
+    const termMonths = 300;
+    const affBased = maxPayment > 0 ? (maxPayment * ((1 - 1 / Math.pow(1 + mRate, termMonths)) / mRate)) : 0;
+    
+    maxBorrow = Math.min(incomeBased, affBased);
+    monthlyPayment = maxBorrow * (mRate * Math.pow(1 + mRate, termMonths)) / (Math.pow(1 + mRate, termMonths) - 1) || 0;
+    
+    document.getElementById('maxLoanIncome').textContent = '£' + Math.round(incomeBased).toLocaleString();
+    document.getElementById('maxLoanAfford').textContent = '£' + Math.round(affBased).toLocaleString();
+  }
+
+  document.getElementById('borrowAmount').textContent = '£' + Math.round(maxBorrow).toLocaleString();
+  document.getElementById('propertyBudget').textContent = `Plus your £${Math.round(deposit).toLocaleString()} deposit: £${Math.round(maxBorrow + deposit).toLocaleString()} total budget`;
+  document.getElementById('multiple').textContent = multiple.toFixed(1) + 'x';
+  document.getElementById('monthlyPayment').textContent = '£' + Math.round(monthlyPayment).toLocaleString();
+  
+  const monthlyIncome = income / 12;
+  const pti = monthlyIncome > 0 ? (monthlyPayment / monthlyIncome) * 100 : 0;
+  document.getElementById('ptiRatio').textContent = pti.toFixed(1) + '%';
+  
+  const capacity = income * 4.5 > 0 ? (maxBorrow / (income * 4.5)) * 100 : 0;
+  document.getElementById('capacityUsed').textContent = Math.min(capacity, 100).toFixed(0) + '%';
+}
+calc();
+</script>
+</body>
+</html>

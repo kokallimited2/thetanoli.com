@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landlord Tax Deduction Checklist — UK Property Tools</title>
+<style>
+:root { --bg: #0a0f1e; --bg2: #111827; --card: #1e293b; --border: #334155; --accent: #f59e0b; --green: #22c55e; --red: #ef4444; --blue: #3b82f6; --purple: #8b5cf6; --teal: #0d9488; --text: #f1f5f9; --text2: #94a3b8; --text3: #64748b; --rad: 12px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 14px; padding: 20px; max-width: 800px; margin: 0 auto; }
+.nav { margin-bottom: 16px; } .nav a { color: var(--accent); text-decoration: none; font-size: 0.85rem; }
+.hero { background: linear-gradient(135deg,#0a0f1e,#1e3a5f);padding:32px 24px;text-align:center;border-radius:var(--rad);margin-bottom:20px;}
+.hero h1 { font-size: 1.6rem; color: #fff; } .hero h1 span { color: var(--accent); }
+.hero p { color: var(--text2); font-size: 0.9rem; }
+.stats { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 14px 20px; flex: 1; min-width: 120px; text-align: center; }
+.stat-card .num { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+.stat-card .lbl { font-size: 0.75rem; color: var(--text2); margin-top: 2px; }
+.cat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 16px 20px; margin-bottom: 12px; }
+.cat-card h3 { font-size: 1rem; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+.cat-card .cat-sub { color: var(--text2); font-size: 0.8rem; margin-bottom: 12px; }
+.item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+.item:last-child { border-bottom: none; }
+.item input[type="checkbox"] { margin-top: 3px; accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
+.item .info { flex: 1; }
+.item .info .title { font-size: 0.9rem; color: var(--text); }
+.item .info .desc { font-size: 0.78rem; color: var(--text3); margin-top: 2px; }
+.item.checked .title { text-decoration: line-through; color: var(--text3); }
+.actions { display: flex; gap: 8px; margin: 16px 0; flex-wrap: wrap; }
+.btn { display:inline-block;background:var(--accent);color:#000;padding:10px 20px;border-radius:8px;font-weight:600;font-size:0.85rem;cursor:pointer;border:none;text-decoration:none;}
+.btn:hover { opacity:0.9; }
+.btn.ghost { background:transparent;color:var(--accent);border:1px solid var(--accent); }
+.btn.green { background:var(--green);color:#000; }
+.affiliate-box { background: linear-gradient(135deg,var(--bg2),#1a2332);border:1px solid var(--border);border-radius:var(--rad);padding:16px 20px;margin:16px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.affiliate-box p { color: var(--text2); font-size: 0.85rem; }
+.affiliate-box a { color: var(--accent); text-decoration: none; font-weight: 600; }
+@media print { body { background: #fff; color: #000; } .btn, .nav, .affiliate-box, .actions { display: none; } .hero { background: #f5f5f5; padding: 20px; } .hero h1 { color: #000; } .cat-card { border: 1px solid #ddd; } }
+</style>
+</head>
+<body>
+<div class="nav"><a href="index.html">← Back to Property Tools Hub</a></div>
+<div class="hero"><h1>💰 <span>Landlord Tax</span> Deduction Checklist</h1><p>40+ expenses you can claim — check off what applies to your property</p></div>
+
+<div class="stats">
+  <div class="stat-card"><div class="num" id="checkedCount">0</div><div class="lbl">Claimed</div></div>
+  <div class="stat-card"><div class="num" id="totalCount">41</div><div class="lbl">Total Items</div></div>
+  <div class="stat-card"><div class="num" id="estimatedSave">£0</div><div class="lbl">Est. Annual Saving</div></div>
+</div>
+
+<div class="actions">
+  <button class="btn" onclick="printChecklist()">🖨️ Print / Export PDF</button>
+  <button class="btn ghost" onclick="resetAll()">🗑️ Reset All</button>
+</div>
+
+<div id="checklist"></div>
+
+<div class="affiliate-box">
+  <div><p>🏦 Save on taxes — compare <strong>landlord insurance</strong> & <strong>accounting software</strong></p></div>
+  <a href="https://www.simplybusiness.co.uk/landlord-insurance/" target="_blank" class="btn ghost">Compare →</a>
+</div>
+
+<p style="text-align:center;color:var(--text3);font-size:0.75rem;margin-top:16px;">📌 This is for guidance only. Always consult a qualified accountant or tax adviser. HMRC rules change.</p>
+
+<script>
+const categories = [
+  { name: '🏠 Property Costs', desc: 'Direct property expenditure', items: [
+    { title: 'Mortgage interest', desc: 'Interest on BTL mortgage (restricted to basic rate tax relief since 2020)', val: 500 },
+    { title: 'Buildings insurance', desc: 'Premium for landlord buildings insurance policy', val: 250 },
+    { title: 'Contents insurance', desc: 'For furnished or part-furnished properties', val: 100 },
+    { title: 'Ground rent', desc: 'Annual ground rent payment to freeholder', val: 150 },
+    { title: 'Service charges', desc: 'Leasehold service charges and maintenance fees', val: 800 },
+    { title: 'Council tax', desc: 'Council tax paid during void periods between tenancies', val: 200 }
+  ]},
+  { name: '🔧 Repairs & Maintenance', desc: 'Repair costs vs improvements (improvements are capital, not deductible)', items: [
+    { title: 'Plumbing & electrical repairs', desc: 'Fix leaks, replace sockets, boiler repairs', val: 300 },
+    { title: 'Decorating & redecorating', desc: 'Paint, wallpaper, plastering between tenancies', val: 500 },
+    { title: 'Appliance repair/replacement', desc: 'Washing machines, fridges, cookers (like-for-like replacements)', val: 250 },
+    { title: 'Garden maintenance', desc: 'Lawn mowing, hedge trimming, garden clearance', val: 200 },
+    { title: 'Damp & mould treatment', desc: 'Professional damp proofing or mould removal', val: 300 },
+    { title: 'Roof & gutter repairs', desc: 'Fixing leaks, clearing gutters, minor roof repairs', val: 400 },
+    { title: 'Boiler service & gas safety', desc: 'Annual gas safety certificate and boiler servicing', val: 100 },
+    { title: 'PAT testing', desc: 'Portable appliance testing — recommended annually', val: 80 }
+  ]},
+  { name: '👔 Letting & Management', desc: 'Costs related to finding tenants and managing the property', items: [
+    { title: 'Letting agent fees', desc: 'Commission for finding tenants and full management', val: 960 },
+    { title: 'Tenant referencing', desc: 'Credit checks, right to rent checks, referencing fees', val: 50 },
+    { title: 'Tenancy agreement', desc: 'Solicitor or agent fees for drafting tenancy agreements', val: 75 },
+    { title: 'Inventory check', desc: 'Check-in/check-out inventory clerk fees', val: 120 },
+    { title: 'EPC certificate', desc: 'Energy Performance Certificate (valid 10 years)', val: 60 },
+    { title: 'Gas safety certificate', desc: 'Annual gas safety record (CP12)', val: 90 },
+    { title: 'Electrical condition report', desc: 'EICR — required every 5 years legally', val: 180 },
+    { title: 'Property portal listings', desc: 'Fees for Rightmove, Zoopla, OnTheMarket listings', val: 150 }
+  ]},
+  { name: '📋 Legal & Professional', desc: 'Professional services fees', items: [
+    { title: 'Accountant fees', desc: 'Tax return preparation, bookkeeping, advice', val: 400 },
+    { title: 'Solicitor fees', desc: 'Legal advice on tenancy disputes, lease reviews', val: 350 },
+    { title: 'Tax return preparation', desc: 'Self-assessment tax return filing fees', val: 150 },
+    { title: 'Eviction costs', desc: 'Section 21/8 notices, court fees, bailiff costs (not fines)', val: 500 },
+    { title: 'Certificates & licences', desc: 'HMO licence fees, selective licence, planning consents', val: 500 }
+  ]},
+  { name: '🚗 Travel & Transport', desc: 'Travel costs wholly for the property business', items: [
+    { title: 'Mileage to/from property', desc: '45p per mile for first 10K business miles, 25p after', val: 500 },
+    { title: 'Public transport', desc: 'Train/bus/taxi fares for property visits, inspections, repairs', val: 100 },
+    { title: 'Parking & tolls', desc: 'Parking charges, congestion charge, ULEZ when visiting', val: 80 }
+  ]},
+  { name: '📱 Office & Admin', desc: 'General business running costs', items: [
+    { title: 'Phone & internet', desc: 'Proportion of mobile/broadband used for landlord business', val: 120 },
+    { title: 'Stationery & printing', desc: 'Tenancy agreements, forms, labels, receipts folders', val: 50 },
+    { title: 'Software & subscriptions', desc: 'Property management software (eg. Plentific, Fixflo)', val: 150 },
+    { title: 'Advertising & marketing', desc: 'To let boards, Facebook ads, Google ads for tenants', val: 200 },
+    { title: 'Postage & courier', desc: 'Sending contracts, certificates, keys to tenants', val: 30 }
+  ]},
+  { name: '⚡ Utilities & Bills', desc: 'Only deductible when paid by landlord (not recharged to tenant)', items: [
+    { title: 'Gas & electricity (voids)', desc: 'Utility bills during periods between tenancies', val: 300 },
+    { title: 'Water rates (voids)', desc: 'Water charges when property is vacant', val: 100 },
+    { title: 'TV licence (voids)', desc: 'Required if property is empty and has a TV', val: 53 }
+  ]},
+  { name: '🏗️ Other', desc: 'Miscellaneous allowable expenses', items: [
+    { title: 'Redundancy insurance', desc: 'Rent guarantee or legal expenses insurance premiums', val: 100 },
+    { title: 'Membership fees', desc: 'NRLA, RLA, or similar landlord association fees', val: 120 },
+    { title: 'Bank charges', desc: 'Landlord bank account fees, standing order charges', val: 60 },
+    { title: 'Capital allowances', desc: 'Furniture, fixtures, white goods (renewals basis or 10% wear & tear)', val: 300 }
+  ]}
+];
+
+function render() {
+  const container = document.getElementById('checklist');
+  let html = '';
+  categories.forEach((cat, ci) => {
+    html += `<div class="cat-card"><h3>${cat.name}</h3><div class="cat-sub">${cat.desc}</div>`;
+    cat.items.forEach((item, ii) => {
+      const id = `c${ci}i${ii}`;
+      const checked = localStorage.getItem(id) === 'true';
+      html += `<div class="item ${checked ? 'checked' : ''}" onclick="toggle('${id}', ${ci}, ${ii})">
+        <input type="checkbox" id="${id}" ${checked ? 'checked' : ''} onchange="toggle('${id}', ${ci}, ${ii})">
+        <div class="info"><div class="title">${item.title}</div><div class="desc">${item.desc}</div></div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  container.innerHTML = html;
+  updateStats();
+}
+
+function toggle(id, ci, ii) {
+  const el = document.getElementById(id);
+  const checked = el.checked;
+  localStorage.setItem(id, checked);
+  el.closest('.item').classList.toggle('checked', checked);
+  updateStats();
+}
+
+function updateStats() {
+  let checked = 0;
+  let totalSave = 0;
+  categories.forEach((cat, ci) => {
+    cat.items.forEach((item, ii) => {
+      if (localStorage.getItem(`c${ci}i${ii}`) === 'true') {
+        checked++;
+        totalSave += item.val;
+      }
+    });
+  });
+  document.getElementById('checkedCount').textContent = checked;
+  let total = 0;
+  categories.forEach(c => c.items.forEach(() => total++));
+  document.getElementById('totalCount').textContent = total;
+  document.getElementById('estimatedSave').textContent = '£' + totalSave.toLocaleString();
+}
+
+function resetAll() {
+  if (!confirm('Reset all checklist items?')) return;
+  categories.forEach((cat, ci) => {
+    cat.items.forEach((item, ii) => {
+      localStorage.removeItem(`c${ci}i${ii}`);
+    });
+  });
+  render();
+}
+
+function printChecklist() {
+  window.print();
+}
+
+render();
+</script>
+</body>
+</html>
