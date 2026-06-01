@@ -1,15 +1,17 @@
 {
   "report_name": "biweekly_trade_assessment",
-  "report_date": "2026-05-27T06:01:04.297174",
-  "period": "2026-05-27",
+  "report_date": "2026-06-01T10:15:26.586973",
+  "period": "2026-06-01",
   "grade": "A",
   "grade_description": "Excellent \u2014 everything clicking",
   "combined": {
     "total_closed": 15,
-    "total_open": 9,
+    "total_open": 477,
     "stock_trades": 15,
-    "options_tracked": 0,
+    "options_tracked": 465,
     "options_closed": 0,
+    "micro_resolved": 0,
+    "micro_tracked": 3,
     "combined_win_rate": 86.7
   },
   "stocks": {
@@ -53,9 +55,9 @@
     "best_score_bracket": "2-4"
   },
   "options": {
-    "total_tracked": 0,
+    "total_tracked": 465,
     "closed_trades": 0,
-    "open_trades": 0,
+    "open_trades": 465,
     "win_rate": 0,
     "avg_win": 0,
     "avg_loss": 0,
@@ -65,12 +67,35 @@
     "direction_accuracy": 0,
     "best_signal_types": [],
     "worst_signal_types": [],
-    "best_dte_bucket": "N/A",
-    "open_types_by_signal": {}
+    "best_dte_bucket": null,
+    "open_types_by_signal": {
+      "BEARISH_PUT": 206,
+      "MEGA_BLOCK_CALL": 145,
+      "BULLISH_CALL": 102,
+      "PREMIUM_SURGE_CALL": 95,
+      "MEGA_BLOCK_PUT": 45,
+      "PREMIUM_SURGE_PUT": 44
+    }
+  },
+  "micro_stocks": {
+    "total_tracked": 3,
+    "resolved": 0,
+    "open_trades": 3,
+    "win_rate": 0,
+    "avg_win": 0,
+    "avg_loss": 0,
+    "total_pnl_pct": 0,
+    "expectancy": 0,
+    "profit_factor": 0,
+    "best_signal_type": null,
+    "best_sector": null,
+    "best_score_bracket": null
   },
   "findings": [],
   "recommendations": [
     "\ud83d\udcca Stock data: Only 15 closed trades \u2014 need 20+ for meaningful patterns",
-    "\ud83d\udcca Options data: Only 0 closed trades \u2014 needs more time to resolve"
+    "\ud83d\udcca Options data: Only 0 closed trades \u2014 needs more time to resolve",
+    "\ud83d\ude80 Micro-stock data: Only 0 resolved trades \u2014 needs more time",
+    "\u26a0\ufe0f 477 open positions/tracked \u2014 consider closing weak positions to reduce noise in the journal"
   ]
 }
