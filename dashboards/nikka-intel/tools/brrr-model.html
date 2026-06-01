@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRRR Deal Model</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 24px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .container {
+    max-width: 1100px;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+    background: linear-gradient(135deg, #58a6ff, #3fb950);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .subtitle {
+    color: #8b949e;
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  /* Input Panel */
+  .input-panel {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .input-panel h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #c9d1d9;
+    margin-bottom: 18px;
+  }
+  .input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 14px;
+  }
+  .input-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .input-group label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #8b949e;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .input-group input {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #e6edf3;
+    font-size: 15px;
+    font-family: inherit;
+    font-weight: 500;
+    transition: border 0.2s;
+  }
+  .input-group input:focus {
+    outline: none;
+    border-color: #58a6ff;
+    box-shadow: 0 0 0 3px rgba(88,166,255,0.15);
+  }
+  .input-group input::-webkit-outer-spin-button,
+  .input-group input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .input-group input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  /* Metrics */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .metric-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .metric-card .label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 6px;
+  }
+  .metric-card .value {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .metric-card .value.positive { color: #3fb950; }
+  .metric-card .value.negative { color: #f85149; }
+  .metric-card .value.neutral  { color: #58a6ff; }
+  .metric-card .value.warm     { color: #d29922; }
+
+  /* Scenario Table */
+  .scenario-section h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #c9d1d9;
+    margin-bottom: 14px;
+  }
+  .scenario-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .scenario-table thead th {
+    background: #1c2333;
+    padding: 12px 16px;
+    text-align: right;
+    font-size: 13px;
+    font-weight: 600;
+    color: #8b949e;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-bottom: 1px solid #30363d;
+  }
+  .scenario-table thead th:first-child {
+    text-align: left;
+  }
+  .scenario-table tbody td {
+    padding: 11px 16px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid #21262d;
+    color: #e6edf3;
+  }
+  .scenario-table tbody td:first-child {
+    text-align: left;
+    color: #8b949e;
+    font-weight: 400;
+    font-size: 13px;
+  }
+  .scenario-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .scenario-table .pos { color: #3fb950; }
+  .scenario-table .neg { color: #f85149; }
+  .scenario-table .neu { color: #58a6ff; }
+  .scenario-table .warm { color: #d29922; }
+
+  /* Brand */
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 12px;
+    color: #484f58;
+  }
+
+  @media (max-width: 640px) {
+    body { padding: 14px; }
+    .input-grid { grid-template-columns: 1fr 1fr; }
+    .metrics { grid-template-columns: 1fr 1fr; }
+    .scenario-table { font-size: 12px; }
+    .scenario-table thead th, .scenario-table tbody td { padding: 8px 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>BRRR Deal Model</h1>
+  <div class="subtitle">Buy · Rehab · Rent · Refinance · Repeat</div>
+
+  <!-- Inputs -->
+  <div class="input-panel">
+    <h2>Deal Inputs</h2>
+    <div class="input-grid">
+      <div class="input-group">
+        <label>Purchase Price ($)</label>
+        <input type="number" id="purchasePrice" value="150000" step="5000" min="0">
+      </div>
+      <div class="input-group">
+        <label>Refurb Cost ($)</label>
+        <input type="number" id="refurbCost" value="40000" step="5000" min="0">
+      </div>
+      <div class="input-group">
+        <label>GDV ($)</label>
+        <input type="number" id="gdv" value="240000" step="5000" min="0">
+      </div>
+      <div class="input-group">
+        <label>Monthly Rent ($)</label>
+        <input type="number" id="monthlyRent" value="2200" step="100" min="0">
+      </div>
+      <div class="input-group">
+        <label>Interest Rate (%)</label>
+        <input type="number" id="interestRate" value="5.5" step="0.25" min="0">
+      </div>
+    </div>
+  </div>
+
+  <!-- Base Case Metrics -->
+  <div class="metrics" id="baseMetrics"></div>
+
+  <!-- 3-Scenario Comparison -->
+  <div class="scenario-section">
+    <h2>Scenario Comparison</h2>
+    <table class="scenario-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>🐻 Bear</th>
+          <th>⚡ Base</th>
+          <th>🐂 Bull</th>
+        </tr>
+      </thead>
+      <tbody id="scenarioBody"></tbody>
+    </table>
+  </div>
+
+  <div class="footer">brrr-model · interactive deal analysis</div>
+</div>
+
+<script>
+  const fmt = (n) => '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  const fmt1 = (n) => '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  const pct = (n) => Number(n).toFixed(1) + '%';
+  const cls = (n) => n > 0 ? 'positive' : (n < 0 ? 'negative' : 'neutral');
+  const clsTd = (n) => n > 0 ? 'pos' : (n < 0 ? 'neg' : 'neu');
+
+  function compute(pp, refurb, gdv, rent, rate) {
+    const totalCost = pp + refurb;
+    const refinance = gdv * 0.75;
+    const cashLeftIn = totalCost - refinance;
+    const monthlyInterest = refinance * (rate / 100) / 12;
+    const monthlyCashflow = rent - monthlyInterest;
+    const annualCashflow = monthlyCashflow * 12;
+    const roce = cashLeftIn > 0 ? (annualCashflow / cashLeftIn) * 100 : 0;
+    const equityCreated = gdv - totalCost;
+    return { totalCost, refinance, cashLeftIn, monthlyCashflow, roce, equityCreated };
+  }
+
+  function render() {
+    const pp = parseFloat(document.getElementById('purchasePrice').value) || 0;
+    const refurb = parseFloat(document.getElementById('refurbCost').value) || 0;
+    const gdv = parseFloat(document.getElementById('gdv').value) || 0;
+    const rent = parseFloat(document.getElementById('monthlyRent').value) || 0;
+    const rate = parseFloat(document.getElementById('interestRate').value) || 0;
+
+    // Scenarios
+    const scenarios = {
+      bear: { pp: pp * 1.10, refurb: refurb * 1.15, gdv: gdv * 0.90, rent: rent * 0.90, rate: rate + 1.5 },
+      base: { pp, refurb, gdv, rent, rate },
+      bull: { pp: pp * 0.92, refurb: refurb * 0.90, gdv: gdv * 1.08, rent: rent * 1.10, rate: Math.max(rate - 1.0, 0.5) }
+    };
+
+    const results = {};
+    for (const [key, sc] of Object.entries(scenarios)) {
+      results[key] = compute(sc.pp, sc.refurb, sc.gdv, sc.rent, sc.rate);
+    }
+
+    // Base case metrics cards
+    const b = results.base;
+    document.getElementById('baseMetrics').innerHTML = `
+      <div class="metric-card"><div class="label">Total Cost</div><div class="value neutral">${fmt(b.totalCost)}</div></div>
+      <div class="metric-card"><div class="label">Refinance (75% LTV)</div><div class="value neutral">${fmt(b.refinance)}</div></div>
+      <div class="metric-card"><div class="label">Cash Left In</div><div class="value ${cls(b.cashLeftIn)}">${fmt(b.cashLeftIn)}</div></div>
+      <div class="metric-card"><div class="label">Monthly Cashflow</div><div class="value ${cls(b.monthlyCashflow)}">${fmt(b.monthlyCashflow)}</div></div>
+      <div class="metric-card"><div class="label">ROCE</div><div class="value warm">${pct(b.roce)}</div></div>
+      <div class="metric-card"><div class="label">Equity Created</div><div class="value ${cls(b.equityCreated)}">${fmt(b.equityCreated)}</div></div>
+    `;
+
+    // Scenario table
+    const rows = [
+      { label: 'Purchase Price', key: 'pp', fmt: fmt, cls: 'neu', raw: (s) => scenarios[s].pp },
+      { label: 'Refurb Cost',    key: 'refurb', fmt: fmt, cls: 'neu', raw: (s) => scenarios[s].refurb },
+      { label: 'GDV',            key: 'gdv', fmt: fmt, cls: 'neu', raw: (s) => scenarios[s].gdv },
+      { label: 'Total Cost',     key: 'totalCost', fmt: fmt, cls: 'neu' },
+      { label: 'Refinance (75%)', key: 'refinance', fmt: fmt, cls: 'neu' },
+      { label: 'Cash Left In',   key: 'cashLeftIn', fmt: fmt, cls: (v) => clsTd(v) },
+      { label: 'Monthly Rent',   key: 'rent', fmt: fmt, cls: 'neu', raw: (s) => scenarios[s].rent },
+      { label: 'Interest Rate',  key: 'rate', fmt: (v) => pct(v), cls: 'neu', raw: (s) => scenarios[s].rate },
+      { label: 'Monthly Interest', key: 'monthlyInterest', fmt: fmt, cls: 'neu', 
+        raw: (s) => { const r = results[s]; return r.refinance * (scenarios[s].rate / 100) / 12; } },
+      { label: 'Monthly Cashflow', key: 'monthlyCashflow', fmt: fmt, cls: (v) => clsTd(v) },
+      { label: 'Annual Cashflow', key: 'annualCashflow', fmt: fmt, cls: (v) => clsTd(v),
+        raw: (s) => results[s].monthlyCashflow * 12 },
+      { label: 'ROCE',           key: 'roce', fmt: (v) => pct(v), cls: 'warm' },
+      { label: 'Equity Created',  key: 'equityCreated', fmt: fmt, cls: (v) => clsTd(v) },
+    ];
+
+    let html = '';
+    for (const row of rows) {
+      let v1, v2, v3;
+      if (row.raw) {
+        v1 = row.raw('bear'); v2 = row.raw('base'); v3 = row.raw('bull');
+      } else {
+        v1 = results.bear[row.key]; v2 = results.base[row.key]; v3 = results.bull[row.key];
+      }
+      const c1 = typeof row.cls === 'function' ? row.cls(v1) : row.cls;
+      const c2 = typeof row.cls === 'function' ? row.cls(v2) : row.cls;
+      const c3 = typeof row.cls === 'function' ? row.cls(v3) : row.cls;
+      html += `<tr>
+        <td>${row.label}</td>
+        <td class="${c1}">${row.fmt(v1)}</td>
+        <td class="${c2}">${row.fmt(v2)}</td>
+        <td class="${c3}">${row.fmt(v3)}</td>
+      </tr>`;
+    }
+    document.getElementById('scenarioBody').innerHTML = html;
+  }
+
+  // Auto-recalculate on any input change
+  document.querySelectorAll('input').forEach(el => {
+    el.addEventListener('input', render);
+  });
+
+  render();
+</script>
+</body>
+</html>

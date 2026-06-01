@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>UK Mortgage Affordability Calculator</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg-primary: #0f1117;
+    --bg-card: #1a1d28;
+    --bg-input: #252836;
+    --bg-gauge: #1e2130;
+    --text-primary: #e4e6ef;
+    --text-secondary: #8b8fa3;
+    --text-muted: #5c6070;
+    --border: #2c3040;
+    --accent: #6c5ce7;
+    --accent-hover: #7f71ed;
+    --green: #00c853;
+    --green-bg: rgba(0,200,83,0.12);
+    --amber: #ff9100;
+    --amber-bg: rgba(255,145,0,0.12);
+    --red: #ff1744;
+    --red-bg: rgba(255,23,68,0.12);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.3);
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .container {
+    width: 100%;
+    max-width: 820px;
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h1 .flag { font-size: 26px; }
+  .subtitle {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-bottom: 28px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .field { margin-bottom: 6px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .field .optional {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--text-muted);
+    font-size: 11px;
+  }
+  .field input {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 15px;
+    font-weight: 500;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .field input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(108,92,231,0.15);
+  }
+  .field input::placeholder { color: var(--text-muted); font-weight: 400; }
+  .field .prefix-wrap { position: relative; }
+  .field .prefix-wrap .pre {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 15px;
+    font-weight: 500;
+    pointer-events: none;
+  }
+  .field .prefix-wrap .suf {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+    pointer-events: none;
+  }
+  .field .prefix-wrap input { padding-left: 26px; }
+  .field .prefix-wrap.suffix input { padding-right: 36px; }
+
+  /* Results */
+  .results { margin-top: 28px; }
+  .results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .results-header h2 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .result-card {
+    background: var(--bg-input);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .result-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .result-card .value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .result-card .value.currency::before { content: '\00a3'; }
+  .result-card.highlight {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, rgba(108,92,231,0.08), rgba(108,92,231,0.02));
+  }
+
+  /* Affordability Rating */
+  .rating-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 18px 20px;
+    background: var(--bg-input);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .rating-section .rating-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .rating-section .rating-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .badge.green { background: var(--green-bg); color: var(--green); }
+  .badge.amber { background: var(--amber-bg); color: var(--amber); }
+  .badge.red { background: var(--red-bg); color: var(--red); }
+  .rating-section .multi-val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .rating-section .multi-val span { color: var(--text-secondary); font-weight: 400; }
+
+  /* Gauge */
+  .gauge-wrap {
+    margin-top: 20px;
+    padding: 20px 20px 22px;
+    background: var(--bg-gauge);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+  }
+  .gauge-wrap .gauge-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+  .gauge-wrap .gauge-header .gauge-title { font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+  .gauge-track {
+    position: relative;
+    width: 100%;
+    height: 12px;
+    background: #252836;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .gauge-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.5s ease, background 0.5s ease;
+    position: relative;
+  }
+  .gauge-tick {
+    position: absolute;
+    top: -4px;
+    width: 3px;
+    height: 20px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transform: translateX(-50%);
+    z-index: 2;
+    opacity: 0.7;
+  }
+  .gauge-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .gauge-value-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .gauge-value-wrap .gauge-pct {
+    font-size: 28px;
+    font-weight: 700;
+  }
+  .gauge-value-wrap .gauge-detail {
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-align: right;
+  }
+
+  /* Disclaimer */
+  .disclaimer {
+    margin-top: 24px;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.03);
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .container { padding: 20px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr 1fr; }
+    .rating-section { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 400px) {
+    .results-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1><span class="flag">🇬🇧</span> Mortgage Affordability Calculator</h1>
+  <p class="subtitle">Standard UK lending rule &mdash; 4.5&times; income multiple</p>
+
+  <div class="grid-2">
+    <div class="field">
+      <label for="income">Annual Income</label>
+      <div class="prefix-wrap"><span class="pre">£</span><input type="number" id="income" placeholder="50,000" min="0" step="1000"></div>
+    </div>
+    <div class="field">
+      <label for="jointIncome">Joint Income <span class="optional">(optional)</span></label>
+      <div class="prefix-wrap"><span class="pre">£</span><input type="number" id="jointIncome" placeholder="0" min="0" step="1000"></div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="field">
+      <label for="deposit">Deposit</label>
+      <div class="prefix-wrap"><span class="pre">£</span><input type="number" id="deposit" placeholder="20,000" min="0" step="1000"></div>
+    </div>
+    <div class="field">
+      <label for="debts">Monthly Debt Commitments</label>
+      <div class="prefix-wrap"><span class="pre">£</span><input type="number" id="debts" placeholder="200" min="0" step="10"></div>
+    </div>
+    <div class="field">
+      <label for="rate">Interest Rate</label>
+      <div class="prefix-wrap suffix"><input type="number" id="rate" placeholder="4.5" min="0" max="20" step="0.1"><span class="suf">%</span></div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="field">
+      <label for="term">Mortgage Term</label>
+      <div class="prefix-wrap suffix"><input type="number" id="term" placeholder="25" min="1" max="40" step="1" value="25"><span class="suf">years</span></div>
+    </div>
+    <div style="display:flex;align-items:flex-end;">
+      <button id="calcBtn" style="width:100%;padding:11px;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-sm);font-size:15px;font-weight:600;cursor:pointer;transition:background 0.2s;">Calculate</button>
+    </div>
+  </div>
+
+  <div class="results" id="resultsArea" style="display:none;">
+    <div class="results-header">
+      <h2>Your Results</h2>
+    </div>
+    <div class="results-grid">
+      <div class="result-card highlight">
+        <div class="label">Max Borrowing</div>
+        <div class="value currency" id="maxBorrowing">£0</div>
+      </div>
+      <div class="result-card highlight">
+        <div class="label">Max Property Price</div>
+        <div class="value currency" id="maxProperty">£0</div>
+      </div>
+      <div class="result-card">
+        <div class="label">Monthly Payment</div>
+        <div class="value currency" id="monthlyPayment">£0</div>
+      </div>
+      <div class="result-card">
+        <div class="label">Income Multiple</div>
+        <div class="value" id="incomeMultiple">0.0x</div>
+      </div>
+    </div>
+
+    <div class="rating-section">
+      <div class="rating-info">
+        <span class="rating-label">Affordability Rating</span>
+        <span class="badge" id="ratingBadge">—</span>
+      </div>
+      <div class="multi-val" id="ratingDetail">Income: <span>£0</span> &middot; Borrowing: <span>£0</span></div>
+    </div>
+
+    <div class="gauge-wrap">
+      <div class="gauge-header">
+        <span class="gauge-title">Affordability Gauge</span>
+        <span id="gaugePctLabel">0% of max</span>
+      </div>
+      <div class="gauge-track">
+        <div class="gauge-fill" id="gaugeFill" style="width:0%;background:var(--green);"></div>
+        <div class="gauge-tick" style="left:50%;"></div>
+        <div class="gauge-tick" style="left:75%;"></div>
+      </div>
+      <div class="gauge-labels">
+        <span>Conservative</span>
+        <span>Standard</span>
+        <span>Maximum</span>
+      </div>
+      <div class="gauge-value-wrap">
+        <div class="gauge-pct" id="gaugePct">0%</div>
+        <div class="gauge-detail" id="gaugeDetail">You are using <strong>0%</strong> of the maximum lending capacity</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This calculator provides an estimate based on the standard UK 4.5&times; income multiple rule. Actual affordability depends on lender criteria, credit history, loan-to-value ratio, and other factors. Always consult a qualified mortgage adviser.
+  </div>
+</div>
+
+<script>
+(function() {
+  const $ = id => document.getElementById(id);
+  const inputIncome = $('income');
+  const inputJoint = $('jointIncome');
+  const inputDeposit = $('deposit');
+  const inputDebts = $('debts');
+  const inputRate = $('rate');
+  const inputTerm = $('term');
+  const calcBtn = $('calcBtn');
+  const resultsArea = $('resultsArea');
+  const elMaxBorrow = $('maxBorrowing');
+  const elMaxProp = $('maxProperty');
+  const elMonthly = $('monthlyPayment');
+  const elMultiple = $('incomeMultiple');
+  const elBadge = $('ratingBadge');
+  const elRatingDetail = $('ratingDetail');
+  const elGaugeFill = $('gaugeFill');
+  const elGaugePct = $('gaugePct');
+  const elGaugePctLabel = $('gaugePctLabel');
+  const elGaugeDetail = $('gaugeDetail');
+
+  function fmt(n) {
+    return Number(n).toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  }
+
+  function fmtCurrency(n) {
+    return '\u00a3' + fmt(n);
+  }
+
+  function calc() {
+    const income = parseFloat(inputIncome.value.replace(/,/g,'')) || 0;
+    const joint = parseFloat(inputJoint.value.replace(/,/g,'')) || 0;
+    const deposit = parseFloat(inputDeposit.value.replace(/,/g,'')) || 0;
+    const debts = parseFloat(inputDebts.value.replace(/,/g,'')) || 0;
+    const ratePct = parseFloat(inputRate.value.replace(/,/g,'')) || 0;
+    const term = parseFloat(inputTerm.value.replace(/,/g,'')) || 25;
+
+    const totalIncome = income + joint;
+
+    if (totalIncome <= 0) {
+      resultsArea.style.display = 'none';
+      return;
+    }
+
+    // Standard UK rule: 4.5x income multiple
+    const MULTIPLE = 4.5;
+    const maxBorrowing = totalIncome * MULTIPLE;
+
+    // Total property price = borrowing + deposit
+    const maxPropertyPrice = maxBorrowing + deposit;
+
+    // Monthly payment (capital repayment)
+    const loanAmount = maxBorrowing;
+    const monthlyRate = (ratePct / 100) / 12;
+    const numPayments = term * 12;
+    let monthlyPayment = 0;
+
+    if (monthlyRate > 0 && numPayments > 0) {
+      monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
+    } else if (monthlyRate === 0 && numPayments > 0) {
+      monthlyPayment = loanAmount / numPayments;
+    }
+
+    // Income multiple used (actual borrowing vs total income)
+    const incomeMultiple = maxBorrowing / totalIncome;
+
+    // Affordability rating
+    // Check if monthly payment + debts exceed ~50% of monthly take-home (gross / 12 * ~0.7)
+    // Simplified: compare monthly payment + debts to gross monthly income
+    const grossMonthly = totalIncome / 12;
+    const totalMonthlyOutgo = monthlyPayment + debts;
+    const dtiRatio = totalMonthlyOutgo / grossMonthly;
+
+    let rating, badgeClass, gaugePct;
+    if (dtiRatio <= 0.35) {
+      rating = 'Green';
+      badgeClass = 'green';
+      gaugePct = Math.min(100, (dtiRatio / 0.50) * 100);
+    } else if (dtiRatio <= 0.50) {
+      rating = 'Amber';
+      badgeClass = 'amber';
+      gaugePct = Math.min(100, (dtiRatio / 0.50) * 100);
+    } else {
+      rating = 'Red';
+      badgeClass = 'red';
+      gaugePct = Math.min(100, (dtiRatio / 0.50) * 100);
+    }
+
+    // Gauge colour
+    let gaugeColor;
+    if (gaugePct <= 50) gaugeColor = 'var(--green)';
+    else if (gaugePct <= 75) gaugeColor = 'var(--amber)';
+    else gaugeColor = 'var(--red)';
+
+    // Update UI
+    resultsArea.style.display = 'block';
+    elMaxBorrow.textContent = fmtCurrency(maxBorrowing);
+    elMaxProp.textContent = fmtCurrency(maxPropertyPrice);
+    elMonthly.textContent = fmtCurrency(monthlyPayment);
+    elMultiple.textContent = incomeMultiple.toFixed(1) + 'x';
+
+    elBadge.textContent = rating;
+    elBadge.className = 'badge ' + badgeClass;
+
+    elRatingDetail.innerHTML = 'Total Income: <span>' + fmtCurrency(totalIncome) + '</span> &middot; Borrowing: <span>' + fmtCurrency(maxBorrowing) + '</span>';
+
+    // Gauge
+    const gaugeDisplay = Math.round(gaugePct);
+    elGaugeFill.style.width = gaugeDisplay + '%';
+    elGaugeFill.style.background = gaugeColor;
+    elGaugePct.textContent = gaugeDisplay + '%';
+    elGaugePctLabel.textContent = gaugeDisplay + '% of max';
+    elGaugeDetail.innerHTML = 'Debt-to-income ratio: <strong>' + (dtiRatio * 100).toFixed(1) + '%</strong> (monthly commitments &divide; gross income)';
+  }
+
+  calcBtn.addEventListener('click', calc);
+
+  // Allow Enter key on inputs
+  document.querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') calc(); });
+    // Strip commas on blur
+    inp.addEventListener('blur', function() {
+      this.value = this.value.replace(/,/g, '');
+    });
+  });
+
+  // Auto-calculate on load with defaults
+  window.addEventListener('DOMContentLoaded', () => {
+    inputIncome.value = '50000';
+    inputDeposit.value = '20000';
+    inputRate.value = '4.5';
+    inputTerm.value = '25';
+    calc();
+  });
+})();
+</script>
+</body>
+</html>

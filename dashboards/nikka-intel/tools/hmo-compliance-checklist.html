@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HMO Compliance Checklist</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;background:#0d1117;color:#c9d1d9;padding:20px;min-height:100vh}
+  .container{max-width:900px;margin:0 auto}
+  h1{font-size:1.8rem;color:#f0f6fc;margin-bottom:4px}
+  .subtitle{color:#8b949e;font-size:.9rem;margin-bottom:24px}
+  /* Status Bar */
+  .status-bar{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:20px;margin-bottom:24px}
+  .status-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .score-wrap{text-align:center}
+  .score-number{font-size:2.8rem;font-weight:700;color:#f0f6fc;line-height:1}
+  .score-label{font-size:.8rem;color:#8b949e;margin-top:2px}
+  .score-ring{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:700;border:4px solid;flex-shrink:0}
+  .ring-green{border-color:#3fb950;color:#3fb950}
+  .ring-amber{border-color:#d29922;color:#d29922}
+  .ring-red{border-color:#f85149;color:#f85149}
+  .status-badges{display:flex;gap:16px;flex-wrap:wrap}
+  .badge{display:flex;align-items:center;gap:6px;font-size:.85rem;color:#8b949e}
+  .badge-num{font-weight:600;color:#f0f6fc;font-size:1.1rem}
+  .badge-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .dot-green{background:#3fb950}
+  .dot-amber{background:#d29922}
+  .dot-red{background:#f85149}
+  .dot-gray{background:#484f58}
+  .progress-track{background:#21262d;border-radius:8px;height:8px;margin-top:14px;overflow:hidden;display:flex}
+  .progress-seg{height:100%;transition:width .4s ease}
+  .seg-green{background:#3fb950}
+  .seg-amber{background:#d29922}
+  .seg-red{background:#f85149}
+  /* Categories */
+  .cat-card{background:#161b22;border:1px solid #30363d;border-radius:12px;margin-bottom:16px;overflow:hidden}
+  .cat-header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;cursor:pointer;user-select:none;transition:background .15s}
+  .cat-header:hover{background:#1c2128}
+  .cat-left{display:flex;align-items:center;gap:12px}
+  .cat-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;flex-shrink:0}
+  .cat-info{}
+  .cat-name{font-size:1.05rem;font-weight:600;color:#f0f6fc}
+  .cat-meta{font-size:.8rem;color:#8b949e;margin-top:1px}
+  .cat-right{display:flex;align-items:center;gap:12px}
+  .cat-bar-wrap{width:100px;height:6px;background:#21262d;border-radius:4px;overflow:hidden}
+  .cat-bar-fill{height:100%;border-radius:4px;transition:width .4s ease,background .3s}
+  .bar-green{background:#3fb950}
+  .bar-amber{background:#d29922}
+  .bar-red{background:#f85149}
+  .cat-pct{font-size:.9rem;font-weight:600;min-width:36px;text-align:right}
+  .cat-arrow{color:#484f58;font-size:.75rem;transition:transform .25s}
+  .cat-arrow.open{transform:rotate(180deg)}
+  .cat-body{display:none;border-top:1px solid #21262d;padding:12px 20px 16px}
+  .cat-body.open{display:block}
+  .q-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid #21262d}
+  .q-item:last-child{border-bottom:none;padding-bottom:8px}
+  .q-toggle{flex-shrink:0;margin-top:1px}
+  .q-toggle input{display:none}
+  .q-toggle label{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.88rem;color:#c9d1d9}
+  .q-toggle label::before{content:'';display:inline-block;width:20px;height:20px;border:2px solid #484f58;border-radius:4px;background:#0d1117;transition:all .15s;flex-shrink:0}
+  .q-toggle input:checked+label::before{background:#3fb950;border-color:#3fb950}
+  .q-toggle input:checked+label::after{content:'✓';position:absolute;color:#fff;font-size:14px;font-weight:700;line-height:20px;text-align:center;width:20px;margin-left:2px}
+  .q-toggle{position:relative}
+  .q-text{flex:1;font-size:.9rem;color:#c9d1d9;line-height:1.4}
+  .q-text .highlight{color:#f0883e;font-weight:500}
+  .q-num{color:#484f58;font-size:.75rem;margin-right:4px}
+  /* Red Flags & Actions */
+  .panel-row{display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+  .panel-row>div{flex:1;min-width:260px}
+  .panel{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:18px 20px}
+  .panel h3{font-size:.95rem;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .panel h3 .ic{font-size:1rem}
+  .red-flag{background:#2d1215;border:1px solid #571f24;border-radius:8px;padding:10px 14px;margin-bottom:8px;font-size:.85rem;color:#f85149;display:flex;align-items:flex-start;gap:10px}
+  .red-flag:last-child{margin-bottom:0}
+  .red-flag .flag-dot{flex-shrink:0;margin-top:3px;width:8px;height:8px;border-radius:50%;background:#f85149;display:inline-block}
+  .action-item{background:#1c2128;border:1px solid #30363d;border-radius:8px;padding:10px 14px;margin-bottom:8px;font-size:.85rem;color:#c9d1d9;display:flex;align-items:flex-start;gap:10px}
+  .action-item:last-child{margin-bottom:0}
+  .action-item .act-dot{flex-shrink:0;margin-top:3px;width:8px;height:8px;border-radius:50%;background:#d29922;display:inline-block}
+  .empty-state{padding:18px 0;text-align:center;color:#484f58;font-size:.88rem}
+  /* Reset btn */
+  .reset-wrap{text-align:center;margin-top:8px;margin-bottom:32px}
+  .reset-btn{background:#21262d;border:1px solid #30363d;color:#c9d1d9;padding:10px 28px;border-radius:8px;cursor:pointer;font-size:.9rem;transition:all .15s}
+  .reset-btn:hover{background:#30363d;border-color:#484f58}
+  /* Footer */
+  .footer{text-align:center;color:#484f58;font-size:.78rem;padding:20px 0 10px;border-top:1px solid #21262d;margin-top:24px}
+  /* Responsive */
+  @media(max-width:600px){
+    .status-top{flex-direction:column;align-items:stretch;text-align:center}
+    .status-badges{justify-content:center}
+    .cat-header{flex-wrap:wrap;gap:8px}
+    .cat-bar-wrap{width:70px}
+    .panel-row>div{min-width:100%}
+    .score-ring{margin:0 auto}
+    h1{font-size:1.4rem}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🏠 HMO Compliance Checklist</h1>
+<p class="subtitle">House in Multiple Occupation — Interactive Self-Assessment (30 questions)</p>
+
+<!-- Status Bar -->
+<div class="status-bar" id="statusBar">
+  <div class="status-top">
+    <div class="score-wrap">
+      <div class="score-number" id="overallScore">0%</div>
+      <div class="score-label">Overall Compliance</div>
+    </div>
+    <div class="status-badges">
+      <span class="badge"><span class="badge-dot dot-green"></span> Pass: <span class="badge-num" id="passCount">0</span></span>
+      <span class="badge"><span class="badge-dot dot-red"></span> Fail: <span class="badge-num" id="failCount">0</span></span>
+      <span class="badge"><span class="badge-dot dot-gray"></span> Pending: <span class="badge-num" id="pendingCount">30</span></span>
+    </div>
+  </div>
+  <div class="progress-track">
+    <div class="progress-seg seg-green" id="progGreen" style="width:0%"></div>
+    <div class="progress-seg seg-amber" id="progAmber" style="width:0%"></div>
+    <div class="progress-seg seg-red" id="progRed" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- Red Flags & Action Items Panels -->
+<div class="panel-row">
+  <div>
+    <div class="panel">
+      <h3><span class="ic">🚩</span> Red Flags</h3>
+      <div id="redFlagsList">
+        <div class="empty-state">No red flags — all critical items passed.</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="panel">
+      <h3><span class="ic">📋</span> Action Items</h3>
+      <div id="actionItemsList">
+        <div class="empty-state">No outstanding actions. Looking good!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Categories -->
+<div id="categoriesContainer"></div>
+
+<!-- Reset -->
+<div class="reset-wrap">
+  <button class="reset-btn" onclick="resetAll()">🔄 Reset All Answers</button>
+</div>
+
+<div class="footer">HMO Compliance Checklist v1.0 — For self-assessment purposes only. Always consult a qualified professional.</div>
+</div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+const CATEGORIES = [
+  {
+    id:'fire', name:'Fire Safety', icon:'🔥', color:'#d29922',
+    questions:[
+      {id:'f1', text:'Are all <span class="highlight">fire doors</span> (FD30/FD60) installed to the correct rooms and corridors?', critical:true},
+      {id:'f2', text:'Is a Grade D (LD2) <span class="highlight">fire alarm system</span> installed with interlinked smoke/heat detectors?', critical:true},
+      {id:'f3', text:'Are <span class="highlight">fire extinguishers</span> provided on every floor (min. 2kg rated)?', critical:false},
+      {id:'f4', text:'Are <span class="highlight">escape routes</span> clear and unobstructed at all times?', critical:true},
+      {id:'f5', text:'Is <span class="highlight">emergency lighting</span> installed in hallways and escape routes?', critical:true},
+      {id:'f6', text:'Are there <span class="highlight">fire blankets</span> in the kitchen area?', critical:false},
+      {id:'f7', text:'Are <span class="highlight">smoke alarms</span> tested monthly and records kept?', critical:true},
+      {id:'f8', text:'Is a <span class="highlight">fire risk assessment</span> completed and reviewed annually?', critical:true}
+    ]
+  },
+  {
+    id:'gas', name:'Gas / Electrical', icon:'⚡', color:'#f0883e',
+    questions:[
+      {id:'g1', text:'Is there a valid <span class="highlight">Gas Safe Certificate</span> (annual check) for all gas appliances?', critical:true},
+      {id:'g2', text:'Is there a valid <span class="highlight">EICR</span> (Electrical Installation Condition Report) — max 5 years old?', critical:true},
+      {id:'g3', text:'Has <span class="highlight">PAT testing</span> been carried out on all portable appliances?', critical:false},
+      {id:'g4', text:'Are there <span class="highlight">RCD-protected consumer units</span> (or RCD sockets) installed?', critical:true},
+      {id:'g5', text:'Is the <span class="highlight">gas meter/pipework</span> accessible and free from obstruction?', critical:false}
+    ]
+  },
+  {
+    id:'rooms', name:'Room Sizes', icon:'📐', color:'#58a6ff',
+    questions:[
+      {id:'r1', text:'Are all <span class="highlight">single bedrooms</span> ≥ 6.5 m² (minimum legal size)?', critical:true},
+      {id:'r2', text:'Are all <span class="highlight">double bedrooms</span> ≥ 10.2 m² (minimum legal size)?', critical:true},
+      {id:'r3', text:'Is <span class="highlight">ceiling height</span> at least 2.3 m in all habitable rooms?', critical:true},
+      {id:'r4', text:'Is the <span class="highlight">floor area calculation</span> documented for each letting room?', critical:false}
+    ]
+  },
+  {
+    id:'licensing', name:'Licensing', icon:'📜', color:'#bc8cff',
+    questions:[
+      {id:'l1', text:'Is the property covered by <span class="highlight">Mandatory HMO Licensing</span> (if ≥5 occupiers)?', critical:true},
+      {id:'l2', text:'Is <span class="highlight">Additional HMO Licensing</span> obtained from the local council (if required)?', critical:true},
+      {id:'l3', text:'Is the property <span class="highlight">registered with the council</span> as required by local scheme?', critical:true},
+      {id:'l4', text:'Are all <span class="highlight">license conditions</span> being met and documented?', critical:false},
+      {id:'l5', text:'Are the <span class="highlight">license fees</span> paid up to date?', critical:false}
+    ]
+  },
+  {
+    id:'management', name:'Management', icon:'⚙️', color:'#8b949e',
+    questions:[
+      {id:'m1', text:'Is a written <span class="highlight">waste management strategy</span> in place (bins, collection, recycling)?', critical:false},
+      {id:'m2', text:'Is there a written <span class="highlight">management plan</span> for the HMO (tenant rules, maintenance)?', critical:true},
+      {id:'m3', text:'Are <span class="highlight">HMO manager details</span> (name, phone, address) displayed in the property?', critical:true},
+      {id:'m4', text:'Are <span class="highlight">tenant contact details</span> recorded and emergency contacts logged?', critical:false},
+      {id:'m5', text:'Are <span class="highlight">communal area cleaning schedules</span> in place and followed?', critical:false}
+    ]
+  },
+  {
+    id:'amenities', name:'Amenities', icon:'🚿', color:'#79c0ff',
+    questions:[
+      {id:'a1', text:'Does the <span class="highlight">kitchen</span> have adequate facilities (hob, oven, sink, fridge, worktop)?', critical:true},
+      {id:'a2', text:'Is there 1 <span class="highlight">bathroom/WC</span> per 5 occupiers (minimum legal ratio)?', critical:true},
+      {id:'a3', text:'Are <span class="highlight">washing facilities</span> (sink with hot/cold water) in or near each letting room?', critical:true},
+      {id:'a4', text:'Is there adequate <span class="highlight">ventilation</span> in all kitchens, bathrooms, and WCs?', critical:false},
+      {id:'a5', text:'Are <span class="highlight">refuse/recycling bins</span> adequate for the number of occupants?', critical:false}
+    ]
+  }
+];
+
+const RED_FLAG_QUESTIONS = new Set([
+  'f1','f2','f4','f5','f7','f8',   // fire criticals
+  'g1','g2','g4',                    // gas/elec criticals
+  'r1','r2','r3',                    // room size criticals
+  'l1','l2','l3',                    // licensing criticals
+  'm2','m3',                         // management criticals
+  'a1','a2','a3'                     // amenities criticals
+]);
+
+// ─── STATE ──────────────────────────────────────────────────────────────────
+let answers = {}; // qid -> true/false/undefined
+
+// ─── RENDER ─────────────────────────────────────────────────────────────────
+function render(){
+  const totalQ = CATEGORIES.reduce((s,c)=>s+c.questions.length,0);
+  let answered=0, passed=0, failed=0;
+  const catResults = [];
+
+  // per category
+  CATEGORIES.forEach(cat=>{
+    let catPass=0, catFail=0, catPending=0;
+    cat.questions.forEach(q=>{
+      const a=answers[q.id];
+      if(a===true){ catPass++; }
+      else if(a===false){ catFail++; }
+      else{ catPending++; }
+    });
+    const catTotal = cat.questions.length;
+    const pct = catTotal ? Math.round((catPass/catTotal)*100) : 0;
+    catResults.push({...cat, pass:catPass, fail:catFail, pending:catPending, pct});
+    passed+=catPass; failed+=catFail; answered+=(catPass+catFail);
+  });
+
+  const totalPct = totalQ ? Math.round((passed/totalQ)*100) : 0;
+  const pending = totalQ - answered;
+
+  // ── status bar ──
+  document.getElementById('overallScore').textContent = totalPct+'%';
+  document.getElementById('passCount').textContent = passed;
+  document.getElementById('failCount').textContent = failed;
+  document.getElementById('pendingCount').textContent = pending;
+
+  // Score ring color
+  const ring = document.getElementById('statusBar').querySelector('.score-ring');
+  if(ring){
+    if(totalPct>=80) { ring.className='score-ring ring-green'; ring.textContent=totalPct+'%'; }
+    else if(totalPct>=50) { ring.className='score-ring ring-amber'; ring.textContent=totalPct+'%'; }
+    else { ring.className='score-ring ring-red'; ring.textContent=totalPct+'%'; }
+  }
+
+  // progress bar segments
+  const pGreen = totalQ ? (passed/totalQ)*100 : 0;
+  const pAmber = totalQ ? (pending/totalQ)*100 : 0;
+  const pRed = totalQ ? (failed/totalQ)*100 : 0;
+  document.getElementById('progGreen').style.width = pGreen+'%';
+  document.getElementById('progAmber').style.width = pAmber+'%';
+  document.getElementById('progRed').style.width = pRed+'%';
+
+  // ── render category cards ──
+  const container = document.getElementById('categoriesContainer');
+  container.innerHTML = '';
+  catResults.forEach((cat, ci)=>{
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+
+    // header
+    const header = document.createElement('div');
+    header.className = 'cat-header';
+    header.onclick = ()=>{ toggleCat(ci); };
+    const barCls = cat.pct>=80 ? 'bar-green' : (cat.pct>=50 ? 'bar-amber' : 'bar-red');
+    header.innerHTML = `
+      <div class="cat-left">
+        <div class="cat-icon" style="background:${cat.color}22;color:${cat.color}">${cat.icon}</div>
+        <div class="cat-info">
+          <div class="cat-name">${cat.name}</div>
+          <div class="cat-meta">${cat.pass}/${cat.questions.length} passed · ${cat.fail} failed · ${cat.pending} pending</div>
+        </div>
+      </div>
+      <div class="cat-right">
+        <div class="cat-bar-wrap"><div class="cat-bar-fill ${barCls}" style="width:${cat.pct}%"></div></div>
+        <div class="cat-pct" style="color:${cat.color}">${cat.pct}%</div>
+        <span class="cat-arrow" id="arrow-${ci}">▼</span>
+      </div>
+    `;
+    card.appendChild(header);
+
+    // body
+    const body = document.createElement('div');
+    body.className = 'cat-body';
+    body.id = `catBody-${ci}`;
+    cat.questions.forEach(q=>{
+      const val = answers[q.id];
+      const checked = val===true ? 'checked' : '';
+      const item = document.createElement('div');
+      item.className = 'q-item';
+      item.innerHTML = `
+        <div class="q-toggle">
+          <input type="checkbox" id="q-${q.id}" ${checked} onchange="toggleAnswer('${q.id}')">
+          <label for="q-${q.id}"></label>
+        </div>
+        <div class="q-text"><span class="q-num">${q.id.toUpperCase()}.</span> ${q.text}</div>
+      `;
+      body.appendChild(item);
+    });
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+
+  // ── red flags ──
+  const redFlagsDiv = document.getElementById('redFlagsList');
+  const failingCritical = [];
+  CATEGORIES.forEach(cat=>{
+    cat.questions.forEach(q=>{
+      if(RED_FLAG_QUESTIONS.has(q.id) && answers[q.id]===false){
+        // get plain text from HTML
+        const txt = q.text.replace(/<[^>]*>/g,'');
+        failingCritical.push({id:q.id.toUpperCase(), text:txt, cat:cat.name});
+      }
+    });
+  });
+  if(failingCritical.length===0){
+    redFlagsDiv.innerHTML = '<div class="empty-state">✅ No red flags — all critical items passed.</div>';
+  } else {
+    redFlagsDiv.innerHTML = failingCritical.map(f=>
+      `<div class="red-flag"><span class="flag-dot"></span><div><strong>${f.id}</strong> — ${f.text}<br><span style="color:#8b949e;font-size:.78rem">${f.cat}</span></div></div>`
+    ).join('');
+  }
+
+  // ── action items ──
+  const actionDiv = document.getElementById('actionItemsList');
+  const failedNonCritical = [];
+  CATEGORIES.forEach(cat=>{
+    cat.questions.forEach(q=>{
+      if(!RED_FLAG_QUESTIONS.has(q.id) && answers[q.id]===false){
+        const txt = q.text.replace(/<[^>]*>/g,'');
+        failedNonCritical.push({id:q.id.toUpperCase(), text:txt, cat:cat.name});
+      }
+    });
+  });
+  const pendingItems = [];
+  CATEGORIES.forEach(cat=>{
+    cat.questions.forEach(q=>{
+      if(answers[q.id]===undefined){
+        const txt = q.text.replace(/<[^>]*>/g,'');
+        const isCritical = RED_FLAG_QUESTIONS.has(q.id);
+        pendingItems.push({id:q.id.toUpperCase(), text:txt, cat:cat.name, critical:isCritical});
+      }
+    });
+  });
+
+  let actionHtml = '';
+  if(failedNonCritical.length===0 && pendingItems.length===0){
+    actionHtml = '<div class="empty-state">✨ No outstanding actions. Looking good!</div>';
+  } else {
+    failedNonCritical.forEach(f=>{
+      actionHtml += `<div class="action-item"><span class="act-dot"></span><div><strong>${f.id}</strong> — ${f.text}<br><span style="color:#8b949e;font-size:.78rem">${f.cat} · Needs attention</span></div></div>`;
+    });
+    pendingItems.forEach(p=>{
+      const label = p.critical ? '⚠️ Critical · Pending' : 'Pending';
+      actionHtml += `<div class="action-item"><span class="act-dot" style="background:${p.critical?'#f85149':'#d29922'}"></span><div><strong>${p.id}</strong> — ${p.text}<br><span style="color:#8b949e;font-size:.78rem">${p.cat} · ${label}</span></div></div>`;
+    });
+  }
+  actionDiv.innerHTML = actionHtml;
+}
+
+// ─── TOGGLE ANSWER ──────────────────────────────────────────────────────────
+function toggleAnswer(qid){
+  const el = document.getElementById('q-'+qid);
+  if(el.checked){
+    answers[qid] = true;
+  } else {
+    answers[qid] = false;
+  }
+  render();
+  // re-open same category
+  const catIdx = CATEGORIES.findIndex(c=>c.questions.some(q=>q.id===qid));
+  if(catIdx>=0){
+    document.getElementById(`catBody-${catIdx}`).classList.add('open');
+    const arrow = document.getElementById(`arrow-${catIdx}`);
+    if(arrow) arrow.classList.add('open');
+  }
+}
+
+// ─── TOGGLE CATEGORY ────────────────────────────────────────────────────────
+function toggleCat(idx){
+  const body = document.getElementById(`catBody-${idx}`);
+  const arrow = document.getElementById(`arrow-${idx}`);
+  if(body.classList.contains('open')){
+    body.classList.remove('open');
+    if(arrow) arrow.classList.remove('open');
+  } else {
+    body.classList.add('open');
+    if(arrow) arrow.classList.add('open');
+  }
+}
+
+// ─── RESET ──────────────────────────────────────────────────────────────────
+function resetAll(){
+  if(!confirm('Reset all answers?')) return;
+  answers = {};
+  document.querySelectorAll('.cat-body').forEach(b=>b.classList.remove('open'));
+  document.querySelectorAll('.cat-arrow').forEach(a=>a.classList.remove('open'));
+  render();
+}
+
+// ─── INIT ───────────────────────────────────────────────────────────────────
+// Add score ring to status bar on load
+window.addEventListener('DOMContentLoaded',()=>{
+  const statusTop = document.querySelector('.status-top');
+  if(statusTop){
+    const wrap = document.createElement('div');
+    wrap.className = 'score-ring ring-red';
+    wrap.id = 'scoreRingEl';
+    wrap.textContent = '0%';
+    statusTop.insertBefore(wrap, statusTop.firstChild);
+  }
+  render();
+});
+</script>
+</body>
+</html>
