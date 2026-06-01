@@ -1,39 +1,44 @@
 {
-  "generated": "2026-05-26",
-  "week": 22,
-  "week_label": "W22 (2026-05-26)",
+  "generated": "2026-06-01",
+  "week": 23,
+  "week_label": "W23 (2026-06-01)",
   "portfolio": {
     "domains_scanned": 7,
-    "total_impressions": 452,
-    "total_content_gaps": 7,
+    "total_impressions": 573,
+    "total_content_gaps": 10,
     "total_meta_wins": 3,
     "domains": {
       "bestpasswordgenerator.org": {
-        "impressions": 322,
-        "content_gaps": 6,
+        "impressions": 352,
+        "content_gaps": 9,
         "meta_wins": 3,
         "top_gap": {
           "page": "/blog/posts/2fa-app-comparison-google-authenticator-vs-authy-vs-microsoft-authenticator",
           "query": "authy vs microsoft authenticator",
-          "position": 11.7,
-          "impressions": 36,
-          "fix": "Redirect deployed \u2192 /blog/google-authenticator-vs-microsoft-authenticator-2026.html"
+          "position": 10.5,
+          "impressions": 93,
+          "fix": "Already fixed \u2014 full content + canonical deployed May 25. Waiting for authority consolidation (2-6 weeks)."
         }
       },
       "securekeygenerator.com": {
-        "impressions": 59,
+        "impressions": 94,
         "content_gaps": 1,
         "meta_wins": 0,
         "top_gap": {
           "page": "/",
           "query": "security key generator",
-          "position": 23.8,
-          "impressions": 4,
-          "fix": "low priority \u2014 homepage needs stronger meta description"
+          "position": 21.0,
+          "impressions": 5,
+          "fix": "Low priority \u2014 homepage ranks for own brand at pos 21. Title is 78 chars (over 60 limit)."
         }
       },
+      "titanpasswords.com": {
+        "impressions": 41,
+        "content_gaps": 0,
+        "meta_wins": 0
+      },
       "freestrongpassword.com": {
-        "impressions": 5,
+        "impressions": 9,
         "content_gaps": 0,
         "meta_wins": 0
       },
@@ -43,17 +48,12 @@
         "meta_wins": 0
       },
       "instantpasswordgenerator.org": {
-        "impressions": 3,
-        "content_gaps": 0,
-        "meta_wins": 0
-      },
-      "titanpasswords.com": {
-        "impressions": 39,
+        "impressions": 10,
         "content_gaps": 0,
         "meta_wins": 0
       },
       "ironvaultkeys.com": {
-        "impressions": 23,
+        "impressions": 66,
         "content_gaps": 0,
         "meta_wins": 0
       }
@@ -66,7 +66,61 @@
       "impressions": 452,
       "gaps_found": 7,
       "gaps_fixed": 1,
-      "new_gaps": 7
+      "new_gaps": 7,
+      "notes": "First scan. Fixed top BPG 2fa redirect (full content + canonical)."
+    },
+    {
+      "week": 23,
+      "week_label": "W23 (2026-06-01)",
+      "impressions": 573,
+      "gaps_found": 10,
+      "gaps_fixed": 6,
+      "new_gaps": 9,
+      "notes": "6 dead URL redirects deployed on BPG (have-i-been-pwned, password-manager-vs-browser, top-10-common, how-long-crack, small-business-policy, 2fa-guide). Scan caught 9 BPG query+page gaps (mostly from old 2fa page still ranking)."
+    }
+  ],
+  "fixes": [
+    {
+      "domain": "bestpasswordgenerator.org",
+      "what": "Created redirect: /blog/posts/have-i-been-pwned-how-to-check-if-your-password-was-leaked \u2192 /blog/how-to-check-if-password-leaked-dark-web-2026-guide.html",
+      "when": "1 June 2026",
+      "impact": "65 wasted imp at pos 9.8 recovered"
+    },
+    {
+      "domain": "bestpasswordgenerator.org",
+      "what": "Created redirect: /blog/posts/password-manager-vs-browser-password-saving-which-is-safer \u2192 /blog/best-password-managers-2026.html",
+      "when": "1 June 2026",
+      "impact": "109 combined wasted imp recovered"
+    },
+    {
+      "domain": "bestpasswordgenerator.org",
+      "what": "Created redirect: /blog/posts/the-top-10-most-common-passwords-and-why-you-must-avoid-them \u2192 /blog/how-to-create-strong-passwords-2026.html",
+      "when": "1 June 2026",
+      "impact": "13 combined wasted imp recovered"
+    },
+    {
+      "domain": "bestpasswordgenerator.org",
+      "what": "Created redirect: /blog/posts/how-long-would-it-take-to-crack-your-password \u2192 /blog/how-to-create-strong-passwords-2026.html",
+      "when": "1 June 2026",
+      "impact": "12 wasted imp recovered"
+    },
+    {
+      "domain": "bestpasswordgenerator.org",
+      "what": "Created redirect: /blog/posts/securing-your-small-business-password-policies-that-actually-work \u2192 /blog/the-complete-small-business-cybersecurity-guide-protect.html",
+      "when": "1 June 2026",
+      "impact": "4 wasted imp recovered"
+    },
+    {
+      "domain": "bestpasswordgenerator.org",
+      "what": "Created redirect: /blog/posts/two-factor-authentication-the-extra-lock-on-your-digital-life \u2192 /blog/mfa-guide-2026.html",
+      "when": "1 June 2026",
+      "impact": "1 wasted imp recovered"
+    },
+    {
+      "domain": "bestpasswordgenerator.org",
+      "what": "Full content + canonical fix on /blog/posts/2fa-app-comparison-google-authenticator-vs-authy-vs-microsoft-authenticator (from prev week) \u2014 now serving 11.5KB full content. Authority consolidation in progress.",
+      "when": "25 May 2026",
+      "impact": "749 imp page now serves real content (was 788-byte thin redirect)"
     }
   ]
 }
