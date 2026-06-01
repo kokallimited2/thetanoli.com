@@ -9,30 +9,26 @@ h1 { color: #58a6ff; font-size: 1.3rem; margin: 0 0 16px 0; }
 .metric { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; text-align: center; }
 .metric .value { font-size: 1.4em; font-weight: bold; }
 .metric .label { font-size: 0.8em; color: #8b949e; margin-top: 4px; }
-.red { color: #f85149; }
 .green { color: #3fb950; }
+.yellow { color: #d29922; }
 .blue { color: #58a6ff; }
-.issue { background: rgba(248,81,73,0.1); border: 1px solid #f85149; border-radius: 6px; padding: 12px; margin: 16px 0; font-size: 0.85em; }
-.issue h3 { color: #f85149; margin: 0 0 8px 0; font-size: 0.95rem; }
+.status { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
+.gateway-running { background: rgba(63,185,80,0.15); color: #3fb950; }
+.gateway-stopped { background: rgba(248,81,73,0.15); color: #f85149; }
+.pipeline { font-size: 0.9em; margin: 16px 0; line-height: 1.6; }
 </style></head><body>
 <div class="card">
 <h1>📝 Options Paper Trading</h1>
-<p style="color:#8b949e;font-size:0.85em;margin-bottom:16px">2026-05-29 14:54</p>
+<p style="color:#8b949e;font-size:0.85em;margin-bottom:16px">2026-06-01 14:47</p>
 <div class="metrics">
-    <div class="metric"><div class="value red">⚠️</div><div class="label">Gateway Status</div></div>
+    <div class="metric"><div class="value red">❌</div><div class="label">Gateway Status</div></div>
     <div class="metric"><div class="value blue">0</div><div class="label">Today's Trades</div></div>
     <div class="metric"><div class="value blue">0</div><div class="label">Total Journal Trades</div></div>
-    <div class="metric"><div class="value green">437</div><div class="label">Signals Today</div></div>
-</div>
-<div class="issue">
-<h3>⚠️ Gateway Not Connected</h3>
-<p style="margin:0;color:#c9d1d9">IB Gateway process (PID 50703) is running but the API port 4002 is not open. The gateway is at the login screen waiting for credentials.</p>
-<p style="margin:8px 0 0 0;color:#8b949e"><b>Fix:</b> Run <code>xvfb-run ~/ibkr/gateway/installed/ibgateway</code>, log in manually once, and check "Save credentials" for auto-login on future restarts.</p>
+    <div class="metric"><div class="value blue">0</div><div class="label">Signals Today</div></div>
 </div>
 <div class="pipeline">
-<div><b>Scanner:</b> 79/103 tickers scanned · 437 signals (78 bullish, 138 bearish) · 19 high-strength alerts</div>
-<div><b>Executed:</b> 0 trades (gateway not connected)</div>
-<div><b>Skipped:</b> 437 signals</div>
-<div style="margin-top:8px;font-size:0.8em;color:#8b949e">Scanner bug: tracked_trades.json corruption fixed (race condition). Patched with threading.Lock. Restored to 1328 trades.</div>
+<div><b>Last Pipeline Run:</b> 2026-06-01 14:47</div>
+<div><b>Executed:</b> 0 trades</div>
+<div><b>Skipped:</b> 0 signals</div>
 </div>
 </div></body></html>
