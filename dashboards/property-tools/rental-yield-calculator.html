@@ -106,8 +106,9 @@ function calculate() {
   const mgtPct = parseFloat(document.getElementById('managementPct').value) || 0;
   const vw = parseFloat(document.getElementById('voidWeeks').value) || 0;
 
-  const annualRentGross = mr * 52;
-  const voidLoss = mr * vw;
+  const annualRentGross = mr * 12;
+  const weeklyRent = annualRentGross / 52;
+  const voidLoss = weeklyRent * vw;
   const effectiveRent = annualRentGross - voidLoss;
   const mgtFee = effectiveRent * (mgtPct / 100);
   const grossYield = pp > 0 ? (annualRentGross / pp) * 100 : 0;
