@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rental Yield Calculator — UK Property Tools</title>
+<style>
+:root { --bg: #0a0f1e; --bg2: #111827; --card: #1e293b; --border: #334155; --accent: #f59e0b; --green: #22c55e; --red: #ef4444; --blue: #3b82f6; --purple: #8b5cf6; --teal: #0d9488; --text: #f1f5f9; --text2: #94a3b8; --text3: #64748b; --rad: 12px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 14px; padding: 20px; max-width: 800px; margin: 0 auto; }
+.nav { margin-bottom: 16px; }
+.nav a { color: var(--accent); text-decoration: none; font-size: 0.85rem; }
+.nav a:hover { text-decoration: underline; }
+.hero { background: linear-gradient(135deg, #0a0f1e, #1e3a5f); padding: 32px 24px; text-align: center; border-radius: var(--rad); margin-bottom: 20px; }
+.hero h1 { font-size: 1.6rem; color: #fff; } .hero h1 span { color: var(--accent); }
+.hero p { color: var(--text2); font-size: 0.9rem; margin-top: 6px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 20px; }
+.card h3 { font-size: 0.85rem; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+label { display: block; font-size: 0.85rem; color: var(--text2); margin-bottom: 4px; margin-top: 12px; }
+label:first-child { margin-top: 0; }
+input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 10px 14px; border-radius: 8px; font-size: 1rem; outline: none; }
+input:focus { border-color: var(--accent); }
+input[type="range"] { padding: 0; accent-color: var(--accent); }
+.results { background: var(--card); border: 1px solid var(--border); border-radius: var(--rad); padding: 20px; margin-bottom: 16px; }
+.results h3 { font-size: 0.85rem; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+.metric-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.metric-row:last-child { border-bottom: none; }
+.metric-label { color: var(--text2); font-size: 0.9rem; }
+.metric-value { font-weight: 600; font-size: 1rem; }
+.metric-value.green { color: var(--green); }
+.metric-value.amber { color: var(--accent); }
+.metric-value.red { color: var(--red); }
+.big-number { text-align: center; padding: 16px; background: var(--bg2); border-radius: var(--rad); }
+.big-number .num { font-size: 2.4rem; font-weight: 700; color: var(--accent); }
+.big-number .label { color: var(--text2); font-size: 0.8rem; }
+.btn { display: inline-block; background: var(--accent); color: #000; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.85rem; cursor: pointer; border: none; margin-right: 8px; margin-top: 8px; }
+.btn:hover { opacity: 0.9; }
+.btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.affiliate-box { background: linear-gradient(135deg, var(--bg2), #1a2332); border: 1px solid var(--border); border-radius: var(--rad); padding: 16px 20px; margin: 16px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.affiliate-box p { color: var(--text2); font-size: 0.85rem; }
+.affiliate-box a { color: var(--accent); text-decoration: none; font-weight: 600; }
+@media(max-width:600px){ .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="nav"><a href="index.html">← Back to Property Tools Hub</a></div>
+<div class="hero"><h1>📊 <span>Rental Yield</span> Calculator</h1><p>Calculate gross & net yield for UK buy-to-let properties</p></div>
+
+<div class="grid">
+  <div class="card">
+    <h3>Property Details</h3>
+    <label>Purchase Price (£)</label>
+    <input type="number" id="purchasePrice" value="200000" oninput="calculate()">
+    <label>Monthly Rent (£)</label>
+    <input type="number" id="monthlyRent" value="950" oninput="calculate()">
+    <label>Deposit (%)</label>
+    <input type="range" id="depositPct" min="25" max="40" value="25" oninput="document.getElementById('depositPctVal').textContent=this.value+'%'; calculate()">
+    <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--text2);"><span>25%</span><span id="depositPctVal">25%</span><span>40%</span></div>
+  </div>
+  <div class="card">
+    <h3>Annual Costs</h3>
+    <label>Mortgage Rate (%)</label>
+    <input type="number" id="mortgageRate" value="4.5" step="0.1" oninput="calculate()">
+    <label>Service Charge & Ground Rent (£/yr)</label>
+    <input type="number" id="serviceCharge" value="1200" oninput="calculate()">
+    <label>Insurance (£/yr)</label>
+    <input type="number" id="insurance" value="300" oninput="calculate()">
+    <label>Maintenance Reserve (£/yr)</label>
+    <input type="number" id="maintenance" value="1000" oninput="calculate()">
+    <label>Management Fee (%)</label>
+    <input type="number" id="managementPct" value="10" step="0.5" oninput="calculate()">
+    <label>Void Period (weeks/yr)</label>
+    <input type="number" id="voidWeeks" value="2" oninput="calculate()">
+  </div>
+</div>
+
+<div class="results">
+  <h3>📈 Results</h3>
+  <div class="big-number"><div class="num" id="netYieldNum">4.8%</div><div class="label">Net Yield</div></div>
+  <div class="metric-row"><span class="metric-label">Gross Yield</span><span class="metric-value amber" id="grossYield">5.70%</span></div>
+  <div class="metric-row"><span class="metric-label">Annual Rent</span><span class="metric-value" id="annualRent">£11,400</span></div>
+  <div class="metric-row"><span class="metric-label">Annual Costs</span><span class="metric-value red" id="annualCosts">£6,540</span></div>
+  <div class="metric-row"><span class="metric-label">Net Annual Income</span><span class="metric-value green" id="netIncome">£4,860</span></div>
+  <div class="metric-row"><span class="metric-label">Monthly Cash Flow</span><span class="metric-value" id="monthlyCF">£405</span></div>
+  <div class="metric-row"><span class="metric-label">Total Investment (deposit + costs)</span><span class="metric-value" id="totalInvestment">£50,000</span></div>
+  <div class="metric-row"><span class="metric-label">ROCE (Return on Capital Employed)</span><span class="metric-value green" id="roce">9.72%</span></div>
+</div>
+
+<div class="affiliate-box">
+  <div><p>🏦 Compare BTL mortgage rates with <strong>L&C Mortgages</strong></p><p style="font-size:0.75rem;color:var(--text3);">Free broker — no obligation</p></div>
+  <a href="https://go.nordvpn.net/aff_c?offer_id=15&aff_id=147369&url_id=902" target="_blank" class="btn ghost">Compare Rates →</a>
+</div>
+
+<p style="text-align:center;color:var(--text3);font-size:0.75rem;margin-top:16px;">📌 This is an illustrative tool. Always verify with a qualified financial adviser before making investment decisions.</p>
+
+<script>
+function calculate() {
+  const pp = parseFloat(document.getElementById('purchasePrice').value) || 0;
+  const mr = parseFloat(document.getElementById('monthlyRent').value) || 0;
+  const dp = parseFloat(document.getElementById('depositPct').value) || 25;
+  const mRate = parseFloat(document.getElementById('mortgageRate').value) || 0;
+  const sc = parseFloat(document.getElementById('serviceCharge').value) || 0;
+  const ins = parseFloat(document.getElementById('insurance').value) || 0;
+  const maint = parseFloat(document.getElementById('maintenance').value) || 0;
+  const mgtPct = parseFloat(document.getElementById('managementPct').value) || 0;
+  const vw = parseFloat(document.getElementById('voidWeeks').value) || 0;
+
+  const annualRentGross = mr * 52;
+  const voidLoss = mr * vw;
+  const effectiveRent = annualRentGross - voidLoss;
+  const mgtFee = effectiveRent * (mgtPct / 100);
+  const grossYield = pp > 0 ? (annualRentGross / pp) * 100 : 0;
+  const mortgageAmt = pp * (1 - dp / 100);
+  const annualMortgage = mortgageAmt > 0 ? mortgageAmt * (mRate / 100) : 0;
+  const totalCosts = annualMortgage + sc + ins + maint + mgtFee;
+  const netIncome = effectiveRent - totalCosts;
+  const netYield = pp > 0 ? (netIncome / pp) * 100 : 0;
+  const deposit = pp * (dp / 100);
+  // assume 3% purchase costs (SDLT + legal + survey)
+  const purchaseCosts = pp * 0.03;
+  const totalInv = deposit + purchaseCosts;
+  const roce = totalInv > 0 ? (netIncome / totalInv) * 100 : 0;
+
+  document.getElementById('grossYield').textContent = grossYield.toFixed(2) + '%';
+  document.getElementById('annualRent').textContent = '£' + annualRentGross.toLocaleString();
+  document.getElementById('annualCosts').textContent = '£' + Math.round(totalCosts).toLocaleString();
+  document.getElementById('netIncome').textContent = '£' + Math.round(netIncome).toLocaleString();
+  document.getElementById('monthlyCF').textContent = '£' + Math.round(netIncome / 12).toLocaleString();
+  document.getElementById('totalInvestment').textContent = '£' + Math.round(totalInv).toLocaleString();
+  document.getElementById('roce').textContent = roce.toFixed(2) + '%';
+  document.getElementById('netYieldNum').textContent = netYield.toFixed(1) + '%';
+  // colour code net yield
+  const nyEl = document.getElementById('netYieldNum');
+  nyEl.style.color = netYield >= 6 ? 'var(--green)' : netYield >= 4 ? 'var(--accent)' : 'var(--red)';
+}
+calculate();
+</script>
+</body>
+</html>
