@@ -1,34 +1,49 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Options Paper Trading | Tanoli Intel</title>
 <style>
 body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 20px; }
-.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; max-width: 600px; }
-h1 { color: #58a6ff; font-size: 1.3rem; margin: 0 0 16px 0; }
-.metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; max-width: 680px; }
+h1 { color: #58a6ff; font-size: 1.3rem; margin: 0 0 4px 0; }
+.subtitle { color: #8b949e; font-size: 0.85rem; margin-bottom: 16px; }
+.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
 .metric { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; text-align: center; }
-.metric .value { font-size: 1.4em; font-weight: bold; }
-.metric .label { font-size: 0.8em; color: #8b949e; margin-top: 4px; }
-.green { color: #3fb950; }
-.yellow { color: #d29922; }
-.blue { color: #58a6ff; }
-.status { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
-.gateway-running { background: rgba(63,185,80,0.15); color: #3fb950; }
-.gateway-stopped { background: rgba(248,81,73,0.15); color: #f85149; }
-.pipeline { font-size: 0.9em; margin: 16px 0; line-height: 1.6; }
+.metric .value { font-size: 1.5em; font-weight: bold; }
+.metric .label { font-size: 0.75em; color: #8b949e; margin-top: 4px; }
+.green { color: #3fb950; } .yellow { color: #d29922; } .blue { color: #58a6ff; } .red { color: #f85149; }
+.gateway-row { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #0d1117; border: 1px solid #30363d; border-radius: 6px; margin-bottom: 16px; font-size: 0.9rem; }
+.gw-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; background: #d29922; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.82rem; }
+.tag { color: #8b949e; min-width: 90px; } .tag-val { color: #c9d1d9; font-weight: 600; }
+.section-title { color: #8b949e; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; margin: 14px 0 8px 0; }
+.alert { background: rgba(210,153,34,0.1); border: 1px solid rgba(210,153,34,0.3); border-radius: 6px; padding: 10px 14px; font-size: 0.8rem; color: #d29922; margin-top: 12px; line-height: 1.5; }
 </style></head><body>
 <div class="card">
 <h1>📝 Options Paper Trading</h1>
-<p style="color:#8b949e;font-size:0.85em;margin-bottom:16px">2026-06-01 14:47</p>
-<div class="metrics">
-    <div class="metric"><div class="value red">❌</div><div class="label">Gateway Status</div></div>
-    <div class="metric"><div class="value blue">0</div><div class="label">Today's Trades</div></div>
-    <div class="metric"><div class="value blue">0</div><div class="label">Total Journal Trades</div></div>
-    <div class="metric"><div class="value blue">0</div><div class="label">Signals Today</div></div>
+<div class="subtitle">2026-06-01 16:16 | Paper: 4002</div>
+
+<div class="gateway-row">
+  <span class="gw-dot"></span>
+  <span><b>Gateway:</b> 🟡 Running</span>
+  <span style="margin-left:auto;color:#8b949e">Today's signals: <b>496</b></span>
 </div>
-<div class="pipeline">
-<div><b>Last Pipeline Run:</b> 2026-06-01 14:47</div>
-<div><b>Executed:</b> 0 trades</div>
-<div><b>Skipped:</b> 0 signals</div>
+
+<div class="metrics">
+  <div class="metric"><div class="value yellow">496</div><div class="label">Signals</div></div>
+  <div class="metric"><div class="value blue">NVDA</div><div class="label">Top Ticker</div></div>
+  <div class="metric"><div class="value blue">0</div><div class="label">Today's Trades</div></div>
+</div>
+
+<div class="section-title">📊 Signal Breakdown</div>
+<div class="tags"><span class="tag">IV_SPIKE</span><span class="tag-val">242</span><span class="tag">BEARISH_PUT</span><span class="tag-val">102</span><span class="tag">BULLISH_CALL</span><span class="tag-val">84</span><span class="tag">BULLISH_FLOW</span><span class="tag-val">35</span><span class="tag">OI_BUILD_CALL</span><span class="tag-val">28</span><span class="tag">BEARISH_FLOW</span><span class="tag-val">5</span></div>
+
+<div class="section-title">🏷️ Top Tickers</div>
+<div class="tags"><span class="tag">NVDA</span><span class="tag-val">5</span><span class="tag">AAPL</span><span class="tag-val">5</span><span class="tag">AMZN</span><span class="tag-val">5</span><span class="tag">META</span><span class="tag-val">5</span><span class="tag">TSLA</span><span class="tag-val">5</span><span class="tag">AMD</span><span class="tag-val">5</span><span class="tag">PLTR</span><span class="tag-val">5</span><span class="tag">SOFI</span><span class="tag-val">5</span><span class="tag">GOOGL</span><span class="tag-val">5</span><span class="tag">MSFT</span><span class="tag-val">5</span></div>
+
+<div class="alert">
+⚠️ Gateway requires manual login (one-time setup). Run:<br>
+<code>xvfb-run ~/ibkr/gateway/installed/ibgateway</code> → log in → check "Save password"<br>
+After that, auto-login works and execution pipeline runs fully.
 </div>
 </div></body></html>
