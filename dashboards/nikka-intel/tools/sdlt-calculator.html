@@ -159,7 +159,7 @@
 <body>
 <div class="container">
   <h1>🏡 Stamp Duty Land Tax Calculator</h1>
-  <div class="subtitle">2025/26 rates · Estimates for England &amp; NI</div>
+  <div class="subtitle">2025/26 rates · Corrected June 2026 · England &amp; NI</div>
 
   <div class="form-group">
     <label for="price">Purchase Price</label>
@@ -172,11 +172,15 @@
   <div class="checkbox-group">
     <label>
       <input type="checkbox" id="secondHome">
-      Is second home
+      Additional property / company purchase (+5%)
     </label>
     <label>
       <input type="checkbox" id="firstTime">
-      Is first-time buyer
+      First-time buyer
+    </label>
+    <label>
+      <input type="checkbox" id="nonResident">
+      Non-UK resident (+2%)
     </label>
   </div>
 
@@ -191,7 +195,7 @@
       <span class="value" id="displayPrice">£0</span>
     </div>
     <div class="result-row">
-      <span class="label">Second home surcharge</span>
+      <span class="label">Surcharges</span>
       <span class="value" id="surchargeAmount">£0</span>
     </div>
 
@@ -210,6 +214,7 @@
 const priceInput = document.getElementById('price');
 const secondHomeCb = document.getElementById('secondHome');
 const firstTimeCb = document.getElementById('firstTime');
+const nonResidentCb = document.getElementById('nonResident');
 const totalSDLT = document.getElementById('totalSDLT');
 const displayPrice = document.getElementById('displayPrice');
 const surchargeAmount = document.getElementById('surchargeAmount');
@@ -217,35 +222,42 @@ const bandBreakdown = document.getElementById('bandBreakdown');
 const effectiveRate = document.getElementById('effectiveRate');
 const ftbNote = document.getElementById('ftbNote');
 
+// Correct 2025/26 residential SDLT bands (nil-rate band reverted to £125k on 1 Apr 2025)
 const RATES = [
-  { from: 0,      to: 250000,  pct: 0 },
-  { from: 250000, to: 925000,  pct: 5 },
-  { from: 925000, to: 1500000, pct: 10 },
-  { from: 1500000, to: Infinity, pct: 12 },
+  { from: 0,        to: 125000,  pct: 0 },
+  { from: 125000,   to: 250000,  pct: 2 },
+  { from: 250000,   to: 925000,  pct: 5 },
+  { from: 925000,   to: 1500000, pct: 10 },
+  { from: 1500000,  to: Infinity, pct: 12 },
 ];
 
-const FTB_LIMIT = 425000;
-const FTB_MAX_PRICE = 625000;
-const SECOND_HOME_SURCHARGE = 5;
+// Correct FTB relief from 1 Apr 2025: 0% up to £300k, 5% on £300k-£500k, lost above £500k
+const FTB_NIL = 300000;
+const FTB_CAP = 500000;
 
-function calcSDLT(price, isSecond, isFTB) {
-  if (price <= 0) return { total: 0, bands: [], surcharge: 0, ftbDiscount: false };
+// Surcharges
+const ADDITIONAL_SURCHARGE = 5;    // +5% on whole price (rose from 3% on 31 Oct 2024)
+const NON_RESIDENT_SURCHARGE = 2;  // +2% on whole price
+
+function calcSDLT(price, isAdditional, isFTB, isNonRes) {
+  if (price <= 0) return { total: 0, bands: [], surcharges: [], ftbDiscount: false };
 
   let ftbDiscount = false;
   let adjustedRates = RATES;
 
-  if (isFTB && price <= FTB_MAX_PRICE) {
-    // FTB: 0% on first £425k
+  // FTB relief: 0% up to £300k, 5% £300k-£500k, lost above £500k
+  if (isFTB && !isAdditional && price <= FTB_CAP) {
     ftbDiscount = true;
     adjustedRates = [
-      { from: 0,      to: FTB_LIMIT, pct: 0 },
-      { from: FTB_LIMIT, to: 925000,  pct: 5 },
-      { from: 925000, to: 1500000, pct: 10 },
-      { from: 1500000, to: Infinity, pct: 12 },
+      { from: 0,       to: FTB_NIL,    pct: 0 },
+      { from: FTB_NIL, to: FTB_CAP,    pct: 5 },
+      { from: FTB_CAP, to: 925000,     pct: 5 },
+      { from: 925000,  to: 1500000,    pct: 10 },
+      { from: 1500000, to: Infinity,   pct: 12 },
     ];
   }
 
-  // Calculate base SDLT
+  // Calculate banded SDLT
   let total = 0;
   const bands = [];
   for (const band of adjustedRates) {
@@ -259,14 +271,20 @@ function calcSDLT(price, isSecond, isFTB) {
     }
   }
 
-  // Second home surcharge
-  let surcharge = 0;
-  if (isSecond) {
-    surcharge = price * (SECOND_HOME_SURCHARGE / 100);
-    total += surcharge;
+  // Surcharges (flat on whole price, per-band increases give same total)
+  const surcharges = [];
+  if (isAdditional) {
+    const amt = price * (ADDITIONAL_SURCHARGE / 100);
+    total += amt;
+    surcharges.push({ label: "Additional property +5%", amount: amt });
+  }
+  if (isNonRes) {
+    const amt = price * (NON_RESIDENT_SURCHARGE / 100);
+    total += amt;
+    surcharges.push({ label: "Non-resident +2%", amount: amt });
   }
 
-  return { total, bands, surcharge, ftbDiscount };
+  return { total, bands, surcharges, ftbDiscount };
 }
 
 function formatCurrency(n) {
@@ -282,14 +300,18 @@ function update() {
   let price = parseFloat(raw);
   if (isNaN(price) || price < 0) price = 0;
 
-  const isSecond = secondHomeCb.checked;
+  const isAdditional = secondHomeCb.checked;
   const isFTB = firstTimeCb.checked;
+  const isNonRes = nonResidentCb.checked;
 
-  const result = calcSDLT(price, isSecond, isFTB);
+  const result = calcSDLT(price, isAdditional, isFTB, isNonRes);
 
   displayPrice.textContent = formatCurrency(price);
   totalSDLT.textContent = formatCurrency(result.total);
-  surchargeAmount.textContent = formatCurrency(result.surcharge);
+
+  // Surcharge total
+  const surchargeTotal = result.surcharges.reduce((s, x) => s + x.amount, 0);
+  surchargeAmount.textContent = formatCurrencyDecimal(surchargeTotal);
 
   // Effective rate
   const effRate = price > 0 ? (result.total / price) * 100 : 0;
@@ -304,25 +326,25 @@ function update() {
     html += '<span class="band-value">' + formatCurrencyDecimal(band.tax) + '</span>';
     html += '</div>';
   }
-  if (result.surcharge > 0) {
+  for (const s of result.surcharges) {
     html += '<div class="band-row">';
-    html += '<span class="band-label">Second home surcharge <span class="band-pct">5%</span></span>';
-    html += '<span class="band-value">' + formatCurrencyDecimal(result.surcharge) + '</span>';
+    html += '<span class="band-label">' + s.label + ' <span class="band-pct">on full price</span></span>';
+    html += '<span class="band-value">' + formatCurrencyDecimal(s.amount) + '</span>';
     html += '</div>';
   }
   bandBreakdown.innerHTML = html;
 
   // FTB note
   if (isFTB) {
-    if (price <= FTB_MAX_PRICE) {
-      if (price <= FTB_LIMIT) {
-        ftbNote.textContent = '✔ First-time buyer relief: no SDLT on first £425,000. You pay £0 SDLT!';
+    if (price <= FTB_CAP) {
+      if (price <= FTB_NIL) {
+        ftbNote.textContent = '✔ First-time buyer relief: no SDLT on first £300,000. You pay £0 SDLT!';
       } else {
-        ftbNote.textContent = '✔ First-time buyer relief applies (0% on first £425k).';
+        ftbNote.textContent = '✔ FTB relief: 0% on first £300k, 5% on the next £200k.';
       }
       ftbNote.classList.add('visible');
     } else {
-      ftbNote.textContent = '✖ First-time buyer relief only applies up to £625,000. Above that, standard rates apply.';
+      ftbNote.textContent = '✖ FTB relief only applies up to £500,000. Above that, standard rates apply.';
       ftbNote.classList.add('visible');
     }
   } else {
@@ -331,7 +353,7 @@ function update() {
   }
 }
 
-[priceInput, secondHomeCb, firstTimeCb].forEach(el => {
+[priceInput, secondHomeCb, firstTimeCb, nonResidentCb].forEach(el => {
   el.addEventListener('input', update);
   el.addEventListener('change', update);
 });
