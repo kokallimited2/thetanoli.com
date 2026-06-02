@@ -1,10 +1,37 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Micro-Stock Performance | Tanoli Intel</title><style>
+* { box-sizing:border-box; }
 body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0d1117; color:#c9d1d9; padding:20px; }
-.card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:20px; }
-h1 { color:#58a6ff; } .status { color:#8b949e; }
-</style></head><body><div class="card">
-<h1>🚀 Micro-Stock Trade Performance</h1>
-<p class="status">No resolved trades yet — data will populate as the screener runs daily.</p>
-<p>Generated: 2026-06-01 20:45</p>
-</div></body></html>
+.card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:20px; margin-bottom:20px; }
+h1, h2, h4 { color:#58a6ff; margin:0 0 12px 0; }
+h2 { font-size:1.2em; border-bottom:1px solid #30363d; padding-bottom:8px; margin-top:20px; }
+.metrics { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; margin-bottom:20px; }
+.metric { background:#0d1117; border:1px solid #30363d; border-radius:6px; padding:12px; text-align:center; }
+.metric .value { font-size:1.5em; font-weight:bold; }
+.metric .label { font-size:0.8em; color:#8b949e; margin-top:4px; }
+.green { color:#3fb950; } .red { color:#f85149; } .orange { color:#d29922; }
+.stat-row { display:flex; align-items:center; gap:8px; margin:6px 0; }
+.stat-label { min-width:70px; font-weight:500; }
+.stat-bar { flex:1; height:12px; background:#0d1117; border-radius:6px; overflow:hidden; }
+.bar-fill { height:100%; border-radius:6px; }
+.stat-value { min-width:200px; text-align:right; font-size:0.85em; color:#8b949e; }
+.rec { background:#0d1117; border-left:3px solid #58a6ff; padding:8px 12px; margin:6px 0; font-size:0.9em; }
+.header { display:flex; justify-content:space-between; align-items:center; }
+.header .date { color:#8b949e; font-size:0.85em; }
+</style></head><body>
+<div class="card"><div class="header"><h1>🚀 Micro-Stock Performance</h1><span class="date">2026-06-02 20:45</span></div>
+<div class="metrics">
+<div class="metric"><div class="value green">4</div><div class="label">Resolved</div></div>
+<div class="metric"><div class="value">20</div><div class="label">Open</div></div>
+<div class="metric"><div class="value green">100.0%</div><div class="label">Win Rate</div></div>
+<div class="metric"><div class="value green">20.1%</div><div class="label">Avg Win</div></div>
+<div class="metric"><div class="value red">0.0%</div><div class="label">Avg Loss</div></div>
+<div class="metric"><div class="value red">0.00</div><div class="label">Expectancy</div></div>
+<div class="metric"><div class="value green">infx</div><div class="label">Profit Factor</div></div>
+<div class="metric"><div class="value">24</div><div class="label">Total Tracked</div></div>
+</div></div>
+<div class="card"><h4>📋 Recommendations</h4><div class="rec">📊 Only 4 resolved trades — need more data for meaningful patterns</div><div class="rec">🟢 Micro-stock win rate 100.0% — system picking winners</div></div>
+<div class="card"><h4>📈 By Signal Type</h4><div class="stat-row"><span class="stat-label" style="min-width:120px">GO_FOR_IT</span><span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span><span class="stat-value">100.0% WR (2W/0L)</span></div><div class="stat-row"><span class="stat-label" style="min-width:120px">GOOD_TO_GO</span><span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span><span class="stat-value">100.0% WR (2W/0L)</span></div></div>
+<div class="card"><h4>💯 By Score Bracket</h4><div class="stat-row"><span class="stat-label" style="min-width:160px">80+ (GO FOR IT)</span><span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span><span class="stat-value">100.0% (2 trades)</span></div><div class="stat-row"><span class="stat-label" style="min-width:160px">65-79 (GOOD TO GO)</span><span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span><span class="stat-value">100.0% (2 trades)</span></div></div>
+<div class="card"><h4>🏢 By Sector</h4><div class="stat-row"><span class="stat-label" style="min-width:120px">Mobile/Tech</span><span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span><span class="stat-value">100.0% (1 trades)</span></div><div class="stat-row"><span class="stat-label" style="min-width:120px">Gaming</span><span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span><span class="stat-value">100.0% (1 trades)</span></div><div class="stat-row"><span class="stat-label" style="min-width:120px">Meme/Entertainment</span><span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span><span class="stat-value">100.0% (1 trades)</span></div><div class="stat-row"><span class="stat-label" style="min-width:120px">Space</span><span class="stat-bar"><span class="bar-fill" style="width:100.0%;background:#3fb950"></span></span><span class="stat-value">100.0% (1 trades)</span></div></div>
+</body></html>
