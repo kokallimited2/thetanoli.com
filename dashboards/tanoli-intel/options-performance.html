@@ -32,30 +32,64 @@ tr:hover { background: #1c2128; }
 <div class="card">
 <div class="header">
 <h1>📊 Options Trade Performance</h1>
-<span class="date">2026-06-01 20:02</span>
+<span class="date">2026-06-02 20:02</span>
 </div>
 <div class="metrics">
-    <div class="metric"><div class="value green">1696</div><div class="label">Total Tracked</div></div>
-    <div class="metric"><div class="value green">1604</div><div class="label">Closed</div></div>
-    <div class="metric"><div class="value red">15.5%</div><div class="label">Win Rate</div></div>
-    <div class="metric"><div class="value green">231.4%</div><div class="label">Avg Win</div></div>
-    <div class="metric"><div class="value red">84.3%</div><div class="label">Avg Loss</div></div>
-    <div class="metric"><div class="value red">-35.53</div><div class="label">Expectancy</div></div>
+    <div class="metric"><div class="value green">1900</div><div class="label">Total Tracked</div></div>
+    <div class="metric"><div class="value green">1628</div><div class="label">Closed</div></div>
+    <div class="metric"><div class="value red">15.6%</div><div class="label">Win Rate</div></div>
+    <div class="metric"><div class="value green">232.3%</div><div class="label">Avg Win</div></div>
+    <div class="metric"><div class="value red">84.2%</div><div class="label">Avg Loss</div></div>
+    <div class="metric"><div class="value red">-34.78</div><div class="label">Expectancy</div></div>
     <div class="metric"><div class="value red">0.5x</div><div class="label">Profit Factor</div></div>
-    <div class="metric"><div class="value">125.0%</div><div class="label">Dir Accuracy</div></div>
-    <div class="metric"><div class="value red">-56986.5%</div><div class="label">Net P&L</div></div>
-    <div class="metric"><div class="value">92</div><div class="label">Still Open</div></div>
+    <div class="metric"><div class="value">58.6%</div><div class="label">Dir Accuracy</div></div>
+    <div class="metric"><div class="value red">-56627.3%</div><div class="label">Net P&L</div></div>
+    <div class="metric"><div class="value">272</div><div class="label">Still Open</div></div>
     
+    <div class="metric"><div class="value green">117</div><div class="label">Near-Expiry (0-3 DTE)</div></div>
+    <div class="metric"><div class="value green">0</div><div class="label">Profitable ✅</div></div>
+    <div class="metric"><div class="value orange">60</div><div class="label">ITM but Premium Loss ⚠️</div></div>
+    <div class="metric"><div class="value red">57</div><div class="label">OTM - Expected Loss ❌</div></div>
+    <div class="metric"><div class="value" style="color:#d29922">0.0%</div><div class="label">Projected Win Rate</div></div>
+    <div class="metric"><div class="value" style="color:#d29922">51.3%</div><div class="label">Direction Accuracy</div></div>
 </div>
 </div>
 
+<div class="card">
+<h4>⏰ Near-Expiry Trades (0-3 DTE)</h4>
 
+    <div class="stat-row">
+        <span class="stat-label" style="min-width:130px">MEGA_BLOCK_CALL</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:0.0%;background:#f85149"></span></span>
+        <span class="stat-value">0.0% (0✅/97❌) avg -99.6%</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label" style="min-width:130px">PREMIUM_SURGE_CALL</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:0.0%;background:#f85149"></span></span>
+        <span class="stat-value">0.0% (0✅/16❌) avg -99.5%</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label" style="min-width:130px">PREMIUM_SURGE_PUT</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:0.0%;background:#f85149"></span></span>
+        <span class="stat-value">0.0% (0✅/3❌) avg -100.0%</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label" style="min-width:130px">MEGA_BLOCK_PUT</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:0.0%;background:#f85149"></span></span>
+        <span class="stat-value">0.0% (0✅/1❌) avg -100.0%</span>
+    </div>
+</div>
+
+<div class="card">
+<h4>🔍 Top Near-Expiry Trades by Interest</h4>
+<div style="overflow-x:auto;"><table class="trade-table"><tr><th>Ticker</th><th>Signal</th><th>Strike</th><th>Spot</th><th>Intrinsic</th><th>Premium</th><th>Est P&L</th><th>Status</th><th>Strength</th></tr><tr><td>PLTR</td><td>MEGA_BLOCK_CALL</td><td>$185.0</td><td>$152.28</td><td>$0.00</td><td>$32.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>10.0</td></tr><tr><td>OXY</td><td>PREMIUM_SURGE_CALL</td><td>$61.0</td><td>$59.35</td><td>$0.00</td><td>$43.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>6.6</td></tr><tr><td>PLTR</td><td>MEGA_BLOCK_CALL</td><td>$180.0</td><td>$152.28</td><td>$0.00</td><td>$50.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>10.0</td></tr><tr><td>PLTR</td><td>PREMIUM_SURGE_CALL</td><td>$177.5</td><td>$152.28</td><td>$0.00</td><td>$67.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>9.4</td></tr><tr><td>META</td><td>MEGA_BLOCK_CALL</td><td>$650.0</td><td>$601.16</td><td>$0.00</td><td>$71.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>10.0</td></tr><tr><td>OXY</td><td>MEGA_BLOCK_CALL</td><td>$60.0</td><td>$59.35</td><td>$0.00</td><td>$72.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>10.0</td></tr><tr><td>PLTR</td><td>MEGA_BLOCK_CALL</td><td>$175.0</td><td>$152.28</td><td>$0.00</td><td>$88.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>10.0</td></tr><tr><td>META</td><td>MEGA_BLOCK_CALL</td><td>$640.0</td><td>$601.16</td><td>$0.00</td><td>$97.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>7.9</td></tr><tr><td>SE</td><td>PREMIUM_SURGE_CALL</td><td>$100.0</td><td>$92.87</td><td>$0.00</td><td>$100.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>8.4</td></tr><tr><td>META</td><td>MEGA_BLOCK_CALL</td><td>$670.0</td><td>$601.16</td><td>$0.00</td><td>$108.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>7.1</td></tr><tr><td>OXY</td><td>PREMIUM_SURGE_CALL</td><td>$59.0</td><td>$59.35</td><td>$0.35</td><td>$115.0</td><td style='color:#f85149'>-99.7%</td><td>⚠️ ITM_BUT_PREMIUM_LOSS</td><td>7.5</td></tr><tr><td>PLTR</td><td>MEGA_BLOCK_CALL</td><td>$172.5</td><td>$152.28</td><td>$0.00</td><td>$115.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>10.0</td></tr><tr><td>META</td><td>MEGA_BLOCK_CALL</td><td>$635.0</td><td>$601.16</td><td>$0.00</td><td>$118.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>7.2</td></tr><tr><td>META</td><td>PREMIUM_SURGE_CALL</td><td>$632.5</td><td>$601.16</td><td>$0.00</td><td>$132.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>6.2</td></tr><tr><td>META</td><td>MEGA_BLOCK_CALL</td><td>$660.0</td><td>$601.16</td><td>$0.00</td><td>$139.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>10.0</td></tr><tr><td>META</td><td>MEGA_BLOCK_CALL</td><td>$630.0</td><td>$601.16</td><td>$0.00</td><td>$153.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>10.0</td></tr><tr><td>PLTR</td><td>MEGA_BLOCK_CALL</td><td>$170.0</td><td>$152.28</td><td>$0.00</td><td>$153.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>10.0</td></tr><tr><td>META</td><td>MEGA_BLOCK_CALL</td><td>$655.0</td><td>$601.16</td><td>$0.00</td><td>$157.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>7.2</td></tr><tr><td>MDB</td><td>PREMIUM_SURGE_PUT</td><td>$355.0</td><td>$398.97</td><td>$0.00</td><td>$165.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>7.1</td></tr><tr><td>META</td><td>PREMIUM_SURGE_CALL</td><td>$627.5</td><td>$601.16</td><td>$0.00</td><td>$168.0</td><td style='color:#f85149'>-100.0%</td><td>❌ OTM_EXPECT_LOSS</td><td>6.1</td></tr></table>
+</div>
 
 <div class="card">
 <h4>📋 Recommendations</h4>
 <div class="rec">🔴 Options win rate below 40% — review signal thresholds, especially for OTM plays</div>
-<div class="rec">✅ Best signal type: BEARISH_PUT (19.3% WR on 212 trades) — prioritize these</div>
-<div class="rec">✅ Best signal type: BULLISH_CALL (19.2% WR on 203 trades) — prioritize these</div>
+<div class="rec">✅ Best signal type: BEARISH_PUT (19.9% WR on 231 trades) — prioritize these</div>
+<div class="rec">✅ Best signal type: BULLISH_CALL (19.2% WR on 208 trades) — prioritize these</div>
 <div class="rec">✅ Best signal type: MEGA_BLOCK_CALL (15.5% WR on 548 trades) — prioritize these</div>
 <div class="rec">❌ Worst signal type: PREMIUM_SURGE_PUT (8.7% WR on 126 trades) — avoid or reduce size</div>
 <div class="rec">❌ Worst signal type: MEGA_BLOCK_PUT (13.1% WR on 176 trades) — avoid or reduce size</div>
@@ -80,13 +114,13 @@ tr:hover { background: #1c2128; }
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:130px">BEARISH_PUT</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:19.3%;background:#f85149"></span></span>
-        <span class="stat-value">19.3% WR (41W/84L/87X)</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:19.9%;background:#f85149"></span></span>
+        <span class="stat-value">19.9% WR (46W/98L/87X)</span>
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:130px">BULLISH_CALL</span>
         <span class="stat-bar"><span class="bar-fill" style="width:19.2%;background:#f85149"></span></span>
-        <span class="stat-value">19.2% WR (39W/40L/124X)</span>
+        <span class="stat-value">19.2% WR (40W/44L/124X)</span>
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:130px">MEGA_BLOCK_PUT</span>
@@ -105,8 +139,8 @@ tr:hover { background: #1c2128; }
 
     <div class="stat-row">
         <span class="stat-label" style="min-width:140px">0-7d (weekly)</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:18.2%;background:#f85149"></span></span>
-        <span class="stat-value">18.2% (230W/0L)</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:18.4%;background:#f85149"></span></span>
+        <span class="stat-value">18.4% (235W/0L)</span>
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:140px">15-30d (monthly)</span>
@@ -115,8 +149,8 @@ tr:hover { background: #1c2128; }
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:140px">8-14d (biweekly)</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:10.2%;background:#f85149"></span></span>
-        <span class="stat-value">10.2% (18W/0L)</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:10.6%;background:#f85149"></span></span>
+        <span class="stat-value">10.6% (19W/0L)</span>
     </div>
 </div>
 
@@ -125,8 +159,8 @@ tr:hover { background: #1c2128; }
 
     <div class="stat-row">
         <span class="stat-label" style="min-width:140px">Semiconductors</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:12.9%;background:#f85149"></span></span>
-        <span class="stat-value">12.9% (472 trades)</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:13.2%;background:#f85149"></span></span>
+        <span class="stat-value">13.2% (484 trades)</span>
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:140px">Tech Mega</span>
@@ -135,8 +169,13 @@ tr:hover { background: #1c2128; }
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:140px">Ecommerce Social</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:9.9%;background:#f85149"></span></span>
-        <span class="stat-value">9.9% (192 trades)</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:9.8%;background:#f85149"></span></span>
+        <span class="stat-value">9.8% (193 trades)</span>
+    </div>
+    <div class="stat-row">
+        <span class="stat-label" style="min-width:140px">Consumer</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:1.4%;background:#f85149"></span></span>
+        <span class="stat-value">1.4% (147 trades)</span>
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:140px">Software Saas</span>
@@ -144,14 +183,9 @@ tr:hover { background: #1c2128; }
         <span class="stat-value">40.4% (141 trades)</span>
     </div>
     <div class="stat-row">
-        <span class="stat-label" style="min-width:140px">Consumer</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:1.4%;background:#f85149"></span></span>
-        <span class="stat-value">1.4% (141 trades)</span>
-    </div>
-    <div class="stat-row">
         <span class="stat-label" style="min-width:140px">Fintech Financials</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:26.5%;background:#f85149"></span></span>
-        <span class="stat-value">26.5% (98 trades)</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:28.7%;background:#f85149"></span></span>
+        <span class="stat-value">28.7% (101 trades)</span>
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:140px">Other</span>
@@ -161,12 +195,12 @@ tr:hover { background: #1c2128; }
     <div class="stat-row">
         <span class="stat-label" style="min-width:140px">Healthcare</span>
         <span class="stat-bar"><span class="bar-fill" style="width:3.1%;background:#f85149"></span></span>
-        <span class="stat-value">3.1% (64 trades)</span>
+        <span class="stat-value">3.1% (65 trades)</span>
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:140px">Industrials Energy</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:4.8%;background:#f85149"></span></span>
-        <span class="stat-value">4.8% (63 trades)</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:4.7%;background:#f85149"></span></span>
+        <span class="stat-value">4.7% (64 trades)</span>
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:140px">Etfs</span>
@@ -225,8 +259,8 @@ tr:hover { background: #1c2128; }
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:60px">MU</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:21.7%;background:#f85149"></span></span>
-        <span class="stat-value">21.7% WR · 83 trades · -1968.8%</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:21.2%;background:#f85149"></span></span>
+        <span class="stat-value">21.2% WR · 85 trades · -2113.3%</span>
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:60px">ASTS</span>
@@ -234,14 +268,14 @@ tr:hover { background: #1c2128; }
         <span class="stat-value">12.5% WR · 80 trades · -4590.6%</span>
     </div>
     <div class="stat-row">
+        <span class="stat-label" style="min-width:60px">AMD</span>
+        <span class="stat-bar"><span class="bar-fill" style="width:1.5%;background:#f85149"></span></span>
+        <span class="stat-value">1.5% WR · 68 trades · -5728.0%</span>
+    </div>
+    <div class="stat-row">
         <span class="stat-label" style="min-width:60px">COIN</span>
         <span class="stat-bar"><span class="bar-fill" style="width:25.0%;background:#f85149"></span></span>
         <span class="stat-value">25.0% WR · 68 trades · -2004.2%</span>
-    </div>
-    <div class="stat-row">
-        <span class="stat-label" style="min-width:60px">AMD</span>
-        <span class="stat-bar"><span class="bar-fill" style="width:1.5%;background:#f85149"></span></span>
-        <span class="stat-value">1.5% WR · 66 trades · -5614.8%</span>
     </div>
     <div class="stat-row">
         <span class="stat-label" style="min-width:60px">CRM</span>
