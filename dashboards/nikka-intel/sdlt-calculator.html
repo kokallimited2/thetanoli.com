@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK Stamp Duty Land Tax Calculator 2025/26</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: #0d1117;
+    color: #c9d1d9;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .container {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 32px 36px;
+    max-width: 560px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #f0f6fc;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: #8b949e;
+    margin-bottom: 24px;
+  }
+  .form-group { margin-bottom: 18px; }
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #c9d1d9;
+    margin-bottom: 5px;
+  }
+  .price-input-wrap {
+    position: relative;
+  }
+  .price-input-wrap .pound {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8b949e;
+    font-size: 16px;
+    pointer-events: none;
+  }
+  input[type="number"] {
+    width: 100%;
+    padding: 10px 12px 10px 28px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #f0f6fc;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    -moz-appearance: textfield;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type="number"]:focus { border-color: #58a6ff; }
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  .checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  .checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #58a6ff;
+    cursor: pointer;
+  }
+  .results {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid #30363d;
+  }
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 6px 0;
+    font-size: 14px;
+  }
+  .result-row.total {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f0f6fc;
+    padding: 10px 0 6px;
+    border-bottom: 1px solid #30363d;
+    margin-bottom: 10px;
+  }
+  .result-row.total .value { color: #f0f6fc; }
+  .result-row .label { color: #8b949e; }
+  .result-row .value { color: #f0f6fc; font-family: 'SF Mono', 'Consolas', monospace; }
+  .band-breakdown { margin-top: 10px; }
+  .band-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 13px;
+  }
+  .band-row .band-label { color: #8b949e; }
+  .band-row .band-value { color: #c9d1d9; font-family: 'SF Mono', 'Consolas', monospace; }
+  .band-row .band-pct { color: #484f58; font-size: 12px; margin-left: 6px; }
+  .effective-rate {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #21262d;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+  }
+  .effective-rate .label { color: #8b949e; font-weight: 500; }
+  .effective-rate .value { color: #58a6ff; font-weight: 600; font-family: 'SF Mono', 'Consolas', monospace; }
+  .ftb-note {
+    font-size: 12px;
+    color: #484f58;
+    margin-top: 10px;
+    padding: 8px 10px;
+    background: #0d1117;
+    border-radius: 6px;
+    border: 1px solid #21262d;
+  }
+  .ftb-note.visible { color: #8b949e; }
+  .error-msg {
+    color: #f85149;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none;
+  }
+  @media (max-width: 480px) {
+    .container { padding: 20px 18px; }
+    .checkbox-group { flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🏡 Stamp Duty Land Tax Calculator</h1>
+  <div class="subtitle">2025/26 rates · Estimates for England &amp; NI</div>
+
+  <div class="form-group">
+    <label for="price">Purchase Price</label>
+    <div class="price-input-wrap">
+      <span class="pound">£</span>
+      <input type="number" id="price" min="0" step="1000" value="350000" placeholder="e.g. 350000">
+    </div>
+  </div>
+
+  <div class="checkbox-group">
+    <label>
+      <input type="checkbox" id="secondHome">
+      Is second home
+    </label>
+    <label>
+      <input type="checkbox" id="firstTime">
+      Is first-time buyer
+    </label>
+  </div>
+
+  <div class="results" id="results">
+    <div class="result-row total">
+      <span class="label">Total SDLT</span>
+      <span class="value" id="totalSDLT">£0</span>
+    </div>
+
+    <div class="result-row">
+      <span class="label">Purchase price</span>
+      <span class="value" id="displayPrice">£0</span>
+    </div>
+    <div class="result-row">
+      <span class="label">Second home surcharge</span>
+      <span class="value" id="surchargeAmount">£0</span>
+    </div>
+
+    <div class="band-breakdown" id="bandBreakdown"></div>
+
+    <div class="effective-rate">
+      <span class="label">Effective rate</span>
+      <span class="value" id="effectiveRate">0.00%</span>
+    </div>
+
+    <div class="ftb-note" id="ftbNote"></div>
+  </div>
+</div>
+
+<script>
+const priceInput = document.getElementById('price');
+const secondHomeCb = document.getElementById('secondHome');
+const firstTimeCb = document.getElementById('firstTime');
+const totalSDLT = document.getElementById('totalSDLT');
+const displayPrice = document.getElementById('displayPrice');
+const surchargeAmount = document.getElementById('surchargeAmount');
+const bandBreakdown = document.getElementById('bandBreakdown');
+const effectiveRate = document.getElementById('effectiveRate');
+const ftbNote = document.getElementById('ftbNote');
+
+const RATES = [
+  { from: 0,      to: 250000,  pct: 0 },
+  { from: 250000, to: 925000,  pct: 5 },
+  { from: 925000, to: 1500000, pct: 10 },
+  { from: 1500000, to: Infinity, pct: 12 },
+];
+
+const FTB_LIMIT = 425000;
+const FTB_MAX_PRICE = 625000;
+const SECOND_HOME_SURCHARGE = 5;
+
+function calcSDLT(price, isSecond, isFTB) {
+  if (price <= 0) return { total: 0, bands: [], surcharge: 0, ftbDiscount: false };
+
+  let ftbDiscount = false;
+  let adjustedRates = RATES;
+
+  if (isFTB && price <= FTB_MAX_PRICE) {
+    // FTB: 0% on first £425k
+    ftbDiscount = true;
+    adjustedRates = [
+      { from: 0,      to: FTB_LIMIT, pct: 0 },
+      { from: FTB_LIMIT, to: 925000,  pct: 5 },
+      { from: 925000, to: 1500000, pct: 10 },
+      { from: 1500000, to: Infinity, pct: 12 },
+    ];
+  }
+
+  // Calculate base SDLT
+  let total = 0;
+  const bands = [];
+  for (const band of adjustedRates) {
+    const bandStart = Math.max(band.from, 0);
+    const bandEnd = Math.min(band.to, price);
+    if (bandEnd > bandStart) {
+      const taxable = bandEnd - bandStart;
+      const tax = taxable * (band.pct / 100);
+      total += tax;
+      bands.push({ from: bandStart, to: bandEnd, pct: band.pct, tax, taxable });
+    }
+  }
+
+  // Second home surcharge
+  let surcharge = 0;
+  if (isSecond) {
+    surcharge = price * (SECOND_HOME_SURCHARGE / 100);
+    total += surcharge;
+  }
+
+  return { total, bands, surcharge, ftbDiscount };
+}
+
+function formatCurrency(n) {
+  return '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+}
+
+function formatCurrencyDecimal(n) {
+  return '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function update() {
+  const raw = priceInput.value.trim();
+  let price = parseFloat(raw);
+  if (isNaN(price) || price < 0) price = 0;
+
+  const isSecond = secondHomeCb.checked;
+  const isFTB = firstTimeCb.checked;
+
+  const result = calcSDLT(price, isSecond, isFTB);
+
+  displayPrice.textContent = formatCurrency(price);
+  totalSDLT.textContent = formatCurrency(result.total);
+  surchargeAmount.textContent = formatCurrency(result.surcharge);
+
+  // Effective rate
+  const effRate = price > 0 ? (result.total / price) * 100 : 0;
+  effectiveRate.textContent = effRate.toFixed(2) + '%';
+
+  // Band breakdown
+  let html = '';
+  for (const band of result.bands) {
+    const pctLabel = band.pct + '%';
+    html += '<div class="band-row">';
+    html += '<span class="band-label">' + formatCurrency(band.from) + ' – ' + formatCurrency(band.to) + ' <span class="band-pct">' + pctLabel + '</span></span>';
+    html += '<span class="band-value">' + formatCurrencyDecimal(band.tax) + '</span>';
+    html += '</div>';
+  }
+  if (result.surcharge > 0) {
+    html += '<div class="band-row">';
+    html += '<span class="band-label">Second home surcharge <span class="band-pct">5%</span></span>';
+    html += '<span class="band-value">' + formatCurrencyDecimal(result.surcharge) + '</span>';
+    html += '</div>';
+  }
+  bandBreakdown.innerHTML = html;
+
+  // FTB note
+  if (isFTB) {
+    if (price <= FTB_MAX_PRICE) {
+      if (price <= FTB_LIMIT) {
+        ftbNote.textContent = '✔ First-time buyer relief: no SDLT on first £425,000. You pay £0 SDLT!';
+      } else {
+        ftbNote.textContent = '✔ First-time buyer relief applies (0% on first £425k).';
+      }
+      ftbNote.classList.add('visible');
+    } else {
+      ftbNote.textContent = '✖ First-time buyer relief only applies up to £625,000. Above that, standard rates apply.';
+      ftbNote.classList.add('visible');
+    }
+  } else {
+    ftbNote.textContent = '';
+    ftbNote.classList.remove('visible');
+  }
+}
+
+[priceInput, secondHomeCb, firstTimeCb].forEach(el => {
+  el.addEventListener('input', update);
+  el.addEventListener('change', update);
+});
+
+update();
+</script>
+</body>
+</html>

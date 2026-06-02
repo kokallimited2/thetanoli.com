@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landlord Tax Deduction Checklist</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-card: #1c2333;
+    --bg-input: #0d1117;
+    --border: #30363d;
+    --border-focus: #58a6ff;
+    --text-primary: #f0f6fc;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    --accent: #2ea043;
+    --accent-hover: #3fb950;
+    --accent-dim: #1a3a2a;
+    --blue: #58a6ff;
+    --blue-dim: #1a2a4a;
+    --purple: #bc8cff;
+    --gold: #d29922;
+    --red: #f85149;
+    --orange: #d4760a;
+    --cyan: #39d2c0;
+    --pink: #f778ba;
+    --green-bg: #0b2e1a;
+    --category-header-bg: #21262d;
+    --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.4);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+    --radius: 8px;
+    --radius-sm: 6px;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+  }
+
+  /* ── Header ── */
+  header {
+    text-align: center;
+    padding: 32px 0 28px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 28px;
+  }
+  header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #f0f6fc 0%, #58a6ff 50%, #bc8cff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 6px;
+  }
+  header p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  /* ── Tax Rate Selector ── */
+  .tax-rate-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    padding: 16px 24px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    flex-wrap: wrap;
+  }
+  .tax-rate-bar label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
+  }
+  .rate-btns {
+    display: flex;
+    gap: 0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .rate-btn {
+    padding: 8px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    background: var(--bg-input);
+    color: var(--text-secondary);
+    transition: all 0.15s ease;
+    font-family: inherit;
+    position: relative;
+  }
+  .rate-btn:not(:last-child) {
+    border-right: 1px solid var(--border);
+  }
+  .rate-btn:hover {
+    background: var(--bg-card);
+    color: var(--text-primary);
+  }
+  .rate-btn.active {
+    background: var(--blue-dim);
+    color: var(--blue);
+    border-color: var(--blue);
+    z-index: 1;
+  }
+  .rate-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: var(--blue);
+    border-radius: 1px;
+  }
+
+  /* ── Summary Cards ── */
+  .summary-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .summary-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .summary-card:first-child { border-color: #2ea04340; }
+  .summary-card:last-child  { border-color: #58a6ff40; }
+  .summary-card .label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .summary-card .value {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .summary-card:first-child .value { color: var(--accent); }
+  .summary-card:last-child .value  { color: var(--blue); }
+  .summary-card .sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ── Category Breakdown ── */
+  .breakdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px;
+    border: none;
+    background: none;
+    font-family: inherit;
+    transition: color 0.15s;
+    width: 100%;
+  }
+  .breakdown-toggle:hover { color: var(--text-primary); }
+  .breakdown-toggle .arrow {
+    transition: transform 0.2s ease;
+    display: inline-block;
+  }
+  .breakdown-toggle .arrow.open { transform: rotate(180deg); }
+
+  .breakdown-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+    margin-bottom: 24px;
+    padding: 16px 20px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: none;
+  }
+  .breakdown-grid.show { display: grid; }
+  .breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    font-size: 13px;
+  }
+  .breakdown-item .cat-name {
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+  .breakdown-item .cat-val {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Category Sections ── */
+  .category {
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-card);
+    transition: border-color 0.2s;
+  }
+  .category:hover { border-color: #30363d; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: var(--category-header-bg);
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .category-header:hover { background: #252b33; }
+  .category-header .cat-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .category-header .cat-icon {
+    font-size: 16px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: var(--bg-input);
+  }
+  .category-header .cat-title {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+  }
+  .category-header .cat-count {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    background: var(--bg-input);
+    padding: 2px 10px;
+    border-radius: 12px;
+  }
+  .category-header .cat-total {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    min-width: 70px;
+    text-align: right;
+  }
+
+  .category-body {
+    padding: 4px 0;
+  }
+
+  /* ── Item Rows ── */
+  .item-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 20px;
+    border-bottom: 1px solid #21262d;
+    transition: background 0.1s;
+  }
+  .item-row:last-child { border-bottom: none; }
+  .item-row:hover { background: #1f2838; }
+
+  .item-row .checkbox-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+  }
+  .item-row input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    background: var(--bg-input);
+    position: relative;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .item-row input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .item-row input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  .item-row input[type="checkbox"]:hover {
+    border-color: var(--text-secondary);
+  }
+
+  .item-row .item-label {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-primary);
+    cursor: pointer;
+    line-height: 1.4;
+  }
+  .item-row .item-label.checked {
+    color: var(--text-muted);
+    text-decoration: line-through;
+  }
+
+  .item-row .amount-wrap {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    min-width: 120px;
+  }
+  .item-row .amount-wrap .currency {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .item-row input[type="number"] {
+    width: 100px;
+    padding: 5px 8px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    text-align: right;
+    outline: none;
+    transition: border-color 0.15s;
+    font-variant-numeric: tabular-nums;
+    -moz-appearance: textfield;
+  }
+  .item-row input[type="number"]::-webkit-outer-spin-button,
+  .item-row input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .item-row input[type="number"]:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 2px #1f6feb40;
+  }
+  .item-row input[type="number"]:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* ── Bottom Bar ── */
+  .bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    padding: 18px 24px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    flex-wrap: wrap;
+  }
+  .bottom-bar .items-checked {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .bottom-bar .items-checked strong { color: var(--text-primary); }
+
+  .btn {
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 0 20px #2ea04340;
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+  }
+  .btn-danger-outline {
+    background: transparent;
+    color: var(--red);
+    border: 1px solid #f8514940;
+  }
+  .btn-danger-outline:hover {
+    background: #f8514910;
+    border-color: var(--red);
+  }
+
+  /* ── Print Styles ── */
+  @media print {
+    body {
+      background: #fff !important;
+      color: #000 !important;
+    }
+    .container { max-width: 100% !important; padding: 20px !important; }
+    header h1 { -webkit-text-fill-color: #000 !important; color: #000 !important; background: none !important; }
+    header p { color: #555 !important; }
+    .tax-rate-bar, .bottom-bar, .breakdown-toggle, .category-header .cat-icon,
+    .category-header .cat-count, .category-header .cat-total,
+    .item-row input[type="checkbox"] { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .category { border-color: #ccc !important; break-inside: avoid; }
+    .category-header { background: #eee !important; }
+    .item-row { border-bottom-color: #e0e0e0 !important; }
+    .item-row input[type="checkbox"]:checked { background: #000 !important; border-color: #000 !important; }
+    .summary-card { border-color: #ccc !important; }
+    .summary-card .value { color: #000 !important; }
+    .rate-btn.active { background: #e0e0e0 !important; color: #000 !important; border-color: #999 !important; }
+    .breakdown-grid { display: grid !important; }
+    .no-print { display: none !important; }
+    .item-row input[type="number"] { border: 1px solid #ccc !important; color: #000 !important; background: #f9f9f9 !important; }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .container { padding: 16px; }
+    header h1 { font-size: 22px; }
+    .summary-row { grid-template-columns: 1fr; }
+    .breakdown-grid { grid-template-columns: 1fr; }
+    .item-row { grid-template-columns: auto 1fr; }
+    .item-row .amount-wrap { grid-column: 1 / -1; padding-left: 30px; }
+    .item-row .amount-wrap input[type="number"] { width: 100%; max-width: 140px; }
+    .bottom-bar { flex-direction: column; align-items: stretch; text-align: center; }
+    .rate-btn { padding: 8px 16px; font-size: 13px; }
+    .category-header { padding: 12px 16px; }
+    .item-row { padding: 8px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ══ HEADER ══ -->
+  <header>
+    <h1>🏠 Landlord Tax Deduction Checklist</h1>
+    <p>Track deductible expenses for your rental property &mdash; all in one place</p>
+  </header>
+
+  <!-- ══ TAX RATE SELECTOR ══ -->
+  <div class="tax-rate-bar">
+    <label>Your tax rate</label>
+    <div class="rate-btns" id="rateBtns">
+      <button class="rate-btn" data-rate="0.20">20%</button>
+      <button class="rate-btn active" data-rate="0.40">40%</button>
+      <button class="rate-btn" data-rate="0.45">45%</button>
+    </div>
+    <span style="font-size:12px;color:var(--text-muted)">— determines tax saved on deductions</span>
+  </div>
+
+  <!-- ══ SUMMARY CARDS ══ -->
+  <div class="summary-row">
+    <div class="summary-card">
+      <div class="label">Total Deductions</div>
+      <div class="value" id="totalDeductions">£0</div>
+      <div class="sub">sum of all checked items</div>
+    </div>
+    <div class="summary-card">
+      <div class="label">Estimated Tax Saved</div>
+      <div class="value" id="taxSaved">£0</div>
+      <div class="sub">based on selected tax rate</div>
+    </div>
+  </div>
+
+  <!-- ══ BREAKDOWN TOGGLE ══ -->
+  <button class="breakdown-toggle no-print" id="breakdownToggle">
+    <span>📊 Category Breakdown</span>
+    <span class="arrow" id="breakdownArrow">▼</span>
+  </button>
+  <div class="breakdown-grid" id="breakdownGrid"></div>
+
+  <!-- ══ CATEGORIES ══ -->
+  <div id="checklist"></div>
+
+  <!-- ══ BOTTOM BAR ══ -->
+  <div class="bottom-bar no-print">
+    <span class="items-checked"><strong id="checkedCount">0</strong> / <strong id="totalCount">43</strong> items checked</span>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="window.print()">🖨️ Print Checklist</button>
+      <button class="btn btn-danger-outline" onclick="resetAll()">🗑️ Reset All</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // ── DATA ──
+  const categories = [
+    {
+      name: 'Repairs & Maintenance',
+      icon: '🔧',
+      items: [
+        'Plumbing repairs',
+        'Electrical repairs',
+        'Heating system repair / boiler service',
+        'Roof repairs',
+        'Damp & mould treatment',
+        'Decorating & painting',
+        'Garden maintenance',
+        'General building repairs'
+      ]
+    },
+    {
+      name: 'Professional Fees',
+      icon: '👔',
+      items: [
+        'Letting agent fees',
+        'Accountant / bookkeeping fees',
+        'Property management fees',
+        'Surveyor / valuation fees',
+        'Architect fees',
+        'Legal fees for lease renewals (&lt; 50 years)'
+      ]
+    },
+    {
+      name: 'Insurance',
+      icon: '🛡️',
+      items: [
+        'Landlord building insurance',
+        'Landlord contents insurance',
+        'Public liability insurance',
+        'Rent guarantee / loss of rent insurance'
+      ]
+    },
+    {
+      name: 'Utilities & Council Tax',
+      icon: '⚡',
+      items: [
+        'Gas & electricity (void periods)',
+        'Water rates & sewerage',
+        'Council tax (void periods)',
+        'Broadband & telephone',
+        'TV licence (void periods)'
+      ]
+    },
+    {
+      name: 'Finance & Legal',
+      icon: '⚖️',
+      items: [
+        'Mortgage interest (residential)',
+        'Bank charges & loan interest',
+        'Legal fees for tenant eviction',
+        'Court costs & possession order fees',
+        'Debt collection agency fees',
+        'Solicitor fees for contract reviews'
+      ]
+    },
+    {
+      name: 'Travel & Transport',
+      icon: '🚗',
+      items: [
+        'Mileage to / from property',
+        'Parking fees & tolls',
+        'Public transport fares',
+        'Overnight accommodation (property visits)'
+      ]
+    },
+    {
+      name: 'Compliance',
+      icon: '📋',
+      items: [
+        'Gas safety certificate (CP12)',
+        'Electrical installation condition report (EICR)',
+        'Energy performance certificate (EPC)',
+        'Fire risk assessment',
+        'Right to Rent checks'
+      ]
+    },
+    {
+      name: 'Other',
+      icon: '📦',
+      items: [
+        'Advertising & tenant finder fees',
+        'Cleaning & inventory check',
+        'Ground rent & service charges',
+        'Tools & materials (small repairs)',
+        'Professional indemnity insurance'
+      ]
+    }
+  ];
+
+  const totalItems = categories.reduce((sum, cat) => sum + cat.items.length, 0);
+
+  // ── State ──
+  let taxRate = 0.40;
+  const state = {};  // key: "catIdx-itemIdx" => { checked: bool, amount: number }
+  let breakdownVisible = false;
+
+  // ── DOM refs ──
+  const checklistEl = document.getElementById('checklist');
+  const totalDeductionsEl = document.getElementById('totalDeductions');
+  const taxSavedEl = document.getElementById('taxSaved');
+  const checkedCountEl = document.getElementById('checkedCount');
+  const totalCountEl = document.getElementById('totalCount');
+  const breakdownGrid = document.getElementById('breakdownGrid');
+  const breakdownToggle = document.getElementById('breakdownToggle');
+  const breakdownArrow = document.getElementById('breakdownArrow');
+
+  totalCountEl.textContent = totalItems;
+
+  // ── Init state ──
+  categories.forEach((cat, ci) => {
+    cat.items.forEach((_, ii) => {
+      state[ci + '-' + ii] = { checked: false, amount: 0 };
+    });
+  });
+
+  // ── Render ──
+  function render() {
+    let html = '';
+    categories.forEach((cat, ci) => {
+      let catTotal = 0;
+      let catChecked = 0;
+      cat.items.forEach((item, ii) => {
+        const s = state[ci + '-' + ii];
+        if (s.checked && s.amount > 0) catTotal += s.amount;
+        if (s.checked) catChecked++;
+      });
+      const catLabel = cat.name + (catChecked > 0 ? ` (${catChecked})` : '');
+
+      html += `<div class="category">`;
+      html += `<div class="category-header" onclick="toggleCategory(${ci})">`;
+      html += `<div class="cat-left"><span class="cat-icon">${cat.icon}</span><span class="cat-title">${catLabel}</span></div>`;
+      html += `<span style="display:flex;align-items:center;gap:10px;">`;
+      html += `<span class="cat-count">${catChecked}/${cat.items.length}</span>`;
+      html += `<span class="cat-total">£${fmt(catTotal)}</span>`;
+      html += `</span></div>`;
+      html += `<div class="category-body" id="catBody-${ci}">`;
+
+      cat.items.forEach((item, ii) => {
+        const key = ci + '-' + ii;
+        const s = state[key];
+        const checkedAttr = s.checked ? 'checked' : '';
+        const labelClass = s.checked ? 'item-label checked' : 'item-label';
+        const disabledAttr = s.checked ? '' : 'disabled';
+
+        html += `<div class="item-row">`;
+        html += `<div class="checkbox-wrap">`;
+        html += `<input type="checkbox" id="chk-${key}" ${checkedAttr} onchange="toggleItem(${ci},${ii})">`;
+        html += `</div>`;
+        html += `<label for="chk-${key}" class="${labelClass}">${item}</label>`;
+        html += `<div class="amount-wrap">`;
+        html += `<span class="currency">£</span>`;
+        html += `<input type="number" id="amt-${key}" min="0" step="0.01" value="${s.amount || ''}" placeholder="0.00" ${disabledAttr} oninput="updateAmount(${ci},${ii})" onfocus="this.select()">`;
+        html += `</div>`;
+        html += `</div>`;
+      });
+
+      html += `</div></div>`;
+    });
+
+    checklistEl.innerHTML = html;
+    updateSummary();
+    renderBreakdown();
+  }
+
+  // ── Toggle category collapse ──
+  window.toggleCategory = function(ci) {
+    const body = document.getElementById('catBody-' + ci);
+    if (body) {
+      body.style.display = body.style.display === 'none' ? '' : 'none';
+    }
+  };
+
+  // ── Toggle item ──
+  window.toggleItem = function(ci, ii) {
+    const key = ci + '-' + ii;
+    const s = state[key];
+    s.checked = !s.checked;
+    const chk = document.getElementById('chk-' + key);
+    const amt = document.getElementById('amt-' + key);
+    const lbl = chk ? chk.nextElementSibling : null;
+    if (chk) chk.checked = s.checked;
+    if (amt) {
+      amt.disabled = !s.checked;
+      if (!s.checked) { amt.value = ''; s.amount = 0; }
+      else { amt.focus(); }
+    }
+    if (lbl) {
+      lbl.classList.toggle('checked', s.checked);
+    }
+    render();
+  };
+
+  // ── Update amount ──
+  window.updateAmount = function(ci, ii) {
+    const key = ci + '-' + ii;
+    const amt = document.getElementById('amt-' + key);
+    const val = parseFloat(amt.value);
+    state[key].amount = (isNaN(val) || val < 0) ? 0 : val;
+    updateSummary();
+    renderBreakdown();
+    // re-render category totals without full re-render
+    updateCategoryTotals();
+  };
+
+  function updateCategoryTotals() {
+    categories.forEach((cat, ci) => {
+      let total = 0;
+      let checked = 0;
+      cat.items.forEach((item, ii) => {
+        const s = state[ci + '-' + ii];
+        if (s.checked && s.amount > 0) total += s.amount;
+        if (s.checked) checked++;
+      });
+      const header = document.querySelectorAll('.category')[ci];
+      if (!header) return;
+      const totalEl = header.querySelector('.cat-total');
+      const countEl = header.querySelector('.cat-count');
+      const titleEl = header.querySelector('.cat-title');
+      if (totalEl) totalEl.textContent = '£' + fmt(total);
+      if (countEl) countEl.textContent = checked + '/' + cat.items.length;
+      if (titleEl) titleEl.textContent = cat.name + (checked > 0 ? ` (${checked})` : '');
+    });
+  }
+
+  // ── Summary ──
+  function updateSummary() {
+    let total = 0;
+    let checked = 0;
+    Object.keys(state).forEach(key => {
+      const s = state[key];
+      if (s.checked) {
+        checked++;
+        if (s.amount > 0) total += s.amount;
+      }
+    });
+    const taxSaved = total * taxRate;
+    totalDeductionsEl.textContent = '£' + fmt(total);
+    taxSavedEl.textContent = '£' + fmt(taxSaved);
+    checkedCountEl.textContent = checked;
+  }
+
+  // ── Breakdown ──
+  function renderBreakdown() {
+    let html = '';
+    categories.forEach((cat, ci) => {
+      let total = 0;
+      cat.items.forEach((item, ii) => {
+        const s = state[ci + '-' + ii];
+        if (s.checked && s.amount > 0) total += s.amount;
+      });
+      html += `<div class="breakdown-item"><span class="cat-name">${cat.icon} ${cat.name}</span><span class="cat-val">£${fmt(total)}</span></div>`;
+    });
+    breakdownGrid.innerHTML = html;
+    if (breakdownVisible) {
+      breakdownGrid.classList.add('show');
+      breakdownArrow.classList.add('open');
+    } else {
+      breakdownGrid.classList.remove('show');
+      breakdownArrow.classList.remove('open');
+    }
+  }
+
+  // ── Tax rate ──
+  document.querySelectorAll('.rate-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.rate-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      taxRate = parseFloat(this.dataset.rate);
+      updateSummary();
+    });
+  });
+
+  // ── Breakdown toggle ──
+  breakdownToggle.addEventListener('click', function() {
+    breakdownVisible = !breakdownVisible;
+    renderBreakdown();
+  });
+
+  // ── Reset ──
+  window.resetAll = function() {
+    if (!confirm('Reset all deductions to zero?')) return;
+    Object.keys(state).forEach(key => {
+      state[key] = { checked: false, amount: 0 };
+    });
+    render();
+  };
+
+  // ── Format ──
+  function fmt(n) {
+    return n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  // ── Init ──
+  render();
+
+})();
+</script>
+
+</body>
+</html>

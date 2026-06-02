@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK Rental Yield Calculator</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d28;
+    --surface2: #242838;
+    --border: #2e3348;
+    --text: #e8eaf0;
+    --text-muted: #8b90a8;
+    --accent: #6c5ce7;
+    --accent-glow: rgba(108,92,231,.25);
+    --green: #00ce8e;
+    --red: #ff6b6b;
+    --yellow: #feca57;
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+  html { font-size: 16px; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .container {
+    max-width: 880px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  header h1 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--accent), #a29bfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 4px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h2 .icon { font-size: 1.2rem; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+  .input-group { display: flex; flex-direction: column; gap: 4px; }
+  .input-group label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .input-group .input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .input-group .input-wrap .prefix,
+  .input-group .input-wrap .suffix {
+    position: absolute;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+  .input-group .input-wrap .prefix { left: 14px; }
+  .input-group .input-wrap .suffix { right: 14px; }
+  .input-group input {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border .2s, box-shadow .2s;
+    outline: none;
+  }
+  .input-group input.has-prefix { padding-left: 30px; }
+  .input-group input.has-suffix { padding-right: 30px; }
+  .input-group input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+  }
+  .input-group input[type="number"] { -moz-appearance: textfield; }
+  .input-group input[type="number"]::-webkit-inner-spin-button,
+  .input-group input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    background: var(--surface2);
+    border-radius: 99px;
+    outline: none;
+    margin-top: 6px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: 2px solid var(--surface);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: 2px solid var(--surface);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .result-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    text-align: center;
+    transition: border .2s;
+  }
+  .result-card .label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .result-card .value {
+    font-size: 1.55rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+  .result-card .value.positive { color: var(--green); }
+  .result-card .value.negative { color: var(--red); }
+  .result-card .value.neutral { color: var(--yellow); }
+  .result-card .value.accent { color: var(--accent); }
+  .result-card .sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 3px;
+  }
+  .full-width { grid-column: 1 / -1; }
+  .result-card.colspan-2 { grid-column: span 2; }
+  .divider { height: 1px; background: var(--border); margin: 20px 0; }
+  .footer-note {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    margin-top: 12px;
+    opacity: 0.6;
+  }
+  @media (max-width: 700px) {
+    .card { padding: 20px 16px; }
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr 1fr; }
+    .result-card.colspan-2 { grid-column: span 1; }
+    header h1 { font-size: 1.35rem; }
+  }
+  @media (max-width: 450px) {
+    .results-grid { grid-template-columns: 1fr; }
+    .container { padding: 0; }
+    body { padding: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>🏠 UK Rental Yield Calculator</h1>
+    <p>Analyse property returns — gross yield, net yield, cashflow &amp; more</p>
+  </header>
+
+  <!-- INPUTS -->
+  <div class="card">
+    <h2><span class="icon">📋</span> Property &amp; Income</h2>
+    <div class="grid-2">
+      <div class="input-group">
+        <label for="purchasePrice">Purchase Price</label>
+        <div class="input-wrap">
+          <span class="prefix">£</span>
+          <input type="number" id="purchasePrice" class="has-prefix" value="250000" min="0" step="1000">
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="monthlyRent">Monthly Rent</label>
+        <div class="input-wrap">
+          <span class="prefix">£</span>
+          <input type="number" id="monthlyRent" class="has-prefix" value="1200" min="0" step="50">
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2><span class="icon">📊</span> Annual Costs</h2>
+    <div class="grid-4">
+      <div class="input-group">
+        <label for="mgmtPct">Management Fee</label>
+        <div class="input-wrap">
+          <input type="number" id="mgmtPct" value="10" min="0" max="100" step="0.5">
+          <span class="suffix">%</span>
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="maintPct">Maintenance</label>
+        <div class="input-wrap">
+          <input type="number" id="maintPct" value="5" min="0" max="100" step="0.5">
+          <span class="suffix">%</span>
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="insurance">Insurance</label>
+        <div class="input-wrap">
+          <span class="prefix">£</span>
+          <input type="number" id="insurance" class="has-prefix" value="300" min="0" step="10">
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="voidPct">Void Rate</label>
+        <div class="input-wrap">
+          <input type="number" id="voidPct" value="5" min="0" max="100" step="0.5">
+          <span class="suffix">%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="card">
+    <h2><span class="icon">📈</span> Results</h2>
+    <div class="results-grid" id="resultsGrid">
+      <div class="result-card">
+        <div class="label">Gross Yield</div>
+        <div class="value accent" id="grossYield">—</div>
+        <div class="sub">annual rent ÷ price</div>
+      </div>
+      <div class="result-card">
+        <div class="label">Net Yield</div>
+        <div class="value accent" id="netYield">—</div>
+        <div class="sub">after all costs</div>
+      </div>
+      <div class="result-card">
+        <div class="label">Cash-on-Cash ROI</div>
+        <div class="value neutral" id="cashROI">—</div>
+        <div class="sub">return on invested cash</div>
+      </div>
+      <div class="result-card">
+        <div class="label">Monthly Cashflow</div>
+        <div class="value positive" id="monthlyCashflow">—</div>
+        <div class="sub">rent − costs</div>
+      </div>
+      <div class="result-card colspan-2">
+        <div class="label">Annual Return</div>
+        <div class="value positive" id="annualReturn">—</div>
+        <div class="sub">net annual profit</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-note">All figures are for illustrative purposes — always consult a qualified accountant or financial advisor.</p>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const $ = id => document.getElementById(id);
+  const inputs = [
+    $('purchasePrice'),
+    $('monthlyRent'),
+    $('mgmtPct'),
+    $('maintPct'),
+    $('insurance'),
+    $('voidPct')
+  ];
+
+  function fmt(num) {
+    if (!isFinite(num)) return '—';
+    return num.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+  }
+
+  function fmtMoney(num) {
+    if (!isFinite(num)) return '—';
+    return '£' + num.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  }
+
+  function fmtPct(num) {
+    if (!isFinite(num)) return '—';
+    return num.toFixed(2) + '%';
+  }
+
+  function compute() {
+    const price      = parseFloat($('purchasePrice').value) || 0;
+    const rent       = parseFloat($('monthlyRent').value) || 0;
+    const mgmtPct    = parseFloat($('mgmtPct').value) || 0;
+    const maintPct   = parseFloat($('maintPct').value) || 0;
+    const insurance  = parseFloat($('insurance').value) || 0;
+    const voidPct    = parseFloat($('voidPct').value) || 0;
+
+    const annualRent = rent * 12;
+    const voidLoss   = annualRent * (voidPct / 100);
+    const effectiveRent = annualRent - voidLoss;
+
+    const mgmtCost   = effectiveRent * (mgmtPct / 100);
+    const maintCost  = effectiveRent * (maintPct / 100);
+    const totalCosts = mgmtCost + maintCost + insurance;
+
+    const netIncome  = effectiveRent - totalCosts;
+
+    const grossYield = price > 0 ? (annualRent / price) * 100 : 0;
+    const netYield   = price > 0 ? (netIncome / price) * 100 : 0;
+    const monthlyCF  = netIncome / 12;
+    const annualRet  = netIncome;
+
+    // Cash-on-Cash ROI — assumes 25% deposit (typical BTL), plus 3% stamp duty
+    const depositPct = 0.25;
+    const sdltPct    = 0.03;
+    const cashInvested = price * (depositPct + sdltPct);
+    const cashROI    = cashInvested > 0 ? (netIncome / cashInvested) * 100 : 0;
+
+    // Update DOM
+    $('grossYield').textContent       = fmtPct(grossYield);
+    $('netYield').textContent         = fmtPct(netYield);
+    $('cashROI').textContent          = fmtPct(cashROI);
+    $('monthlyCashflow').textContent  = fmtMoney(monthlyCF);
+    $('annualReturn').textContent     = fmtMoney(annualRet);
+
+    // Color classes
+    const mcfEl = $('monthlyCashflow');
+    const arEl  = $('annualReturn');
+    const croiEl = $('cashROI');
+
+    mcfEl.className = 'value ' + (monthlyCF >= 0 ? 'positive' : 'negative');
+    arEl.className  = 'value ' + (annualRet >= 0 ? 'positive' : 'negative');
+    croiEl.className = 'value ' + (cashROI >= 0 ? 'neutral' : 'negative');
+  }
+
+  // Bind events
+  inputs.forEach(el => {
+    el.addEventListener('input', compute);
+    el.addEventListener('change', compute);
+  });
+
+  // Initial calculation
+  compute();
+})();
+</script>
+</body>
+</html>

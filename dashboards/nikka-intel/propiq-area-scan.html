@@ -3,258 +3,598 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PropertyData Area Scan — West Midlands | Nikka Intel</title>
+<title>Nikka Intel — PropertyData Area Scan: West Midlands</title>
 <style>
-:root {
-  --bg: #0a0f1e;
-  --card: #1e293b;
-  --card2: #273549;
-  --accent: #f59e0b;
-  --accent2: #10b981;
-  --danger: #ef4444;
-  --text: #e2e8f0;
-  --text2: #94a3b8;
-  --border: #334155;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 2rem; }
-.container { max-width: 1200px; margin: 0 auto; }
-h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--accent); }
-.subtitle { color: var(--text2); margin-bottom: 2rem; font-size: 0.95rem; }
-.summary-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-.card { background: var(--card); border-radius: 12px; padding: 1.25rem; border: 1px solid var(--border); }
-.card .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text2); margin-bottom: 0.3rem; }
-.card .value { font-size: 1.5rem; font-weight: 700; }
-.card .value.high { color: var(--accent2); }
-.card .value.warn { color: var(--accent); }
-.card .value.danger { color: var(--danger); }
-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-th { background: var(--card2); padding: 0.75rem 1rem; text-align: left; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text2); border-bottom: 2px solid var(--border); }
-td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-tr:last-child td { border-bottom: none; }
-tr:hover td { background: rgba(245, 158, 11, 0.05); }
-.highlight-yield { background: rgba(16, 185, 129, 0.1); }
-.highlight-yield td:first-child { border-left: 3px solid var(--accent2); }
-.highlight-cheap { background: rgba(245, 158, 11, 0.1); }
-.highlight-cheap td:first-child { border-left: 3px solid var(--accent); }
-.badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
-.badge-yield { background: rgba(16, 185, 129, 0.2); color: var(--accent2); }
-.badge-cheap { background: rgba(245, 158, 11, 0.2); color: var(--accent); }
-.badge-crime { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
-.footer { margin-top: 2rem; padding: 1rem; text-align: center; color: var(--text2); font-size: 0.8rem; border-top: 1px solid var(--border); }
-@media (max-width: 768px) {
-  body { padding: 1rem; }
-  table { font-size: 0.8rem; }
-  th, td { padding: 0.5rem; }
-}
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0f;
+    color: #e2e8f0;
+    font-family: 'Inter', -apple-system, sans-serif;
+    padding: 2rem;
+    min-height: 100vh;
+  }
+  .container { max-width: 1400px; margin: 0 auto; }
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #facc15, #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.25rem;
+  }
+  .subtitle { color: #94a3b8; font-size: 0.9rem; margin-bottom: 2rem; }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: #13131f;
+    border: 1px solid #1e1e32;
+    border-radius: 12px;
+    padding: 1.25rem;
+  }
+  .stat-card .label { color: #64748b; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .stat-card .value { font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem; }
+  .stat-hotspot .value { color: #facc15; }
+  .stat-cheap .value { color: #34d399; }
+  .stat-crime .value { color: #ef4444; }
+  .stat-total .value { color: #60a5fa; }
+  .insight-section {
+    background: #13131f;
+    border: 1px solid #1e1e32;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .insight-section h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #1e1e32;
+  }
+  .insight-list { list-style: none; }
+  .insight-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #16162a;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .insight-list li:last-child { border-bottom: none; }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .badge-yield { background: rgba(250,204,21,0.15); color: #facc15; }
+  .badge-cheap { background: rgba(52,211,153,0.15); color: #34d399; }
+  .badge-crime { background: rgba(239,68,68,0.15); color: #ef4444; }
+  .badge-hot { background: rgba(251,146,60,0.15); color: #fb923c; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+  thead th {
+    background: #13131f;
+    padding: 0.75rem 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #1e1e32;
+    position: sticky;
+    top: 0;
+  }
+  tbody td {
+    padding: 0.65rem 0.75rem;
+    border-bottom: 1px solid #16162a;
+    vertical-align: middle;
+  }
+  tbody tr:hover { background: rgba(30,30,50,0.5); }
+  tbody tr.hotspot-row { background: rgba(250,204,21,0.04); }
+  tbody tr.cheap-row { background: rgba(52,211,153,0.04); }
+  .yield-highlight { color: #facc15; font-weight: 600; }
+  .price-value { font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+  .crime-unknown { color: #64748b; }
+  .crime-none { color: #34d399; }
+  .crime-high { color: #ef4444; }
+  .verdict-watchlist { color: #facc15; }
+  .verdict-reject { color: #ef4444; }
+  .strategy-brrr { color: #60a5fa; }
+  .strategy-flip { color: #a78bfa; }
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #1e1e32;
+    color: #475569;
+    font-size: 0.75rem;
+    text-align: center;
+  }
 </style>
 </head>
 <body>
 <div class="container">
-  <h1>📍 PropertyData Area Scan — West Midlands</h1>
-  <p class="subtitle">Scan date: 31 May 2026 · 20 postcodes · 3-bed terraced baseline</p>
+  <h1>🏠 PropIQ Area Scan</h1>
+  <div class="subtitle">West Midlands Postcodes — 20 scanned / 6 errors · 2026-06-02</div>
 
-  <div class="summary-cards">
-    <div class="card">
+  <div class="stats-grid">
+    <div class="stat-card stat-total">
       <div class="label">Postcodes Scanned</div>
       <div class="value">20</div>
     </div>
-    <div class="card">
-      <div class="label">Highest Yield</div>
-      <div class="value high">WV1 — 5.5%</div>
+    <div class="stat-card stat-hotspot">
+      <div class="label">Yield Hotspots (≥6%)</div>
+      <div class="value">0</div>
     </div>
-    <div class="card">
-      <div class="label">Cheapest Area</div>
-      <div class="value warn">WV1 — £183,476</div>
+    <div class="stat-card stat-cheap">
+      <div class="label">Cheap Areas (&lt;£150k)</div>
+      <div class="value">0</div>
     </div>
-    <div class="card">
-      <div class="label">Most Expensive</div>
-      <div class="value danger">DY9 — £421,402</div>
-    </div>
-    <div class="card">
-      <div class="label">Yield Hotspots (6%+)</div>
-      <div class="value">0 ❌</div>
-    </div>
-    <div class="card">
-      <div class="label">Cheap Areas (<£150k)</div>
-      <div class="value">0 ❌</div>
+    <div class="stat-card stat-crime">
+      <div class="label">High Crime Areas</div>
+      <div class="value">0</div>
     </div>
   </div>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Postcode</th>
-        <th>Avg Price</th>
-        <th>Gross Yield</th>
-        <th>Crime Rating</th>
-        <th>Flags</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>WV1</strong></td>
-        <td>£183,476</td>
-        <td><strong>5.5%</strong></td>
-        <td>Unknown</td>
-        <td><span class="badge badge-yield">Highest yield</span> <span class="badge badge-cheap">Cheapest</span></td>
-      </tr>
-      <tr>
-        <td><strong>WV2</strong></td>
-        <td>£202,683</td>
-        <td><strong>5.3%</strong></td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>WV10</strong></td>
-        <td>£252,088</td>
-        <td><strong>5.1%</strong></td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>DY4</strong></td>
-        <td>£246,041</td>
-        <td><strong>5.0%</strong></td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>WV11</strong></td>
-        <td>£244,141</td>
-        <td><strong>5.0%</strong></td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>WV12</strong></td>
-        <td>£245,773</td>
-        <td>4.8%</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>DY5</strong></td>
-        <td>£228,852</td>
-        <td>4.7%</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>DY6</strong></td>
-        <td>£289,498</td>
-        <td>4.6%</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>WV4</strong></td>
-        <td>£293,431</td>
-        <td>4.6%</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>DY1</strong></td>
-        <td>£243,057</td>
-        <td>4.3%</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>DY2</strong></td>
-        <td>£233,135</td>
-        <td>4.3%</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>DY3</strong></td>
-        <td>£287,405</td>
-        <td>4.3%</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>DY8</strong></td>
-        <td>£285,059</td>
-        <td>4.3%</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>DY9</strong></td>
-        <td>£421,402</td>
-        <td>2.8%</td>
-        <td>Unknown</td>
-        <td><span class="badge badge-yield">Lowest yield</span></td>
-      </tr>
-      <tr>
-        <td><strong>WV3</strong></td>
-        <td>N/A</td>
-        <td>3.8%</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>WV5</strong></td>
-        <td>N/A</td>
-        <td>3.5%</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>WV6</strong></td>
-        <td>N/A</td>
-        <td>N/A</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>WV7</strong></td>
-        <td>£413,372</td>
-        <td>N/A</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>WV8</strong></td>
-        <td>£332,070</td>
-        <td>N/A</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><strong>WV9</strong></td>
-        <td>£270,227</td>
-        <td>N/A</td>
-        <td>Unknown</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div style="margin-top:2rem;">
-    <h2 style="color:var(--accent);font-size:1.2rem;margin-bottom:1rem;">📊 Key Insights</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;">
-      <div class="card">
-        <h3 style="font-size:1rem;margin-bottom:0.5rem;">🏆 Top Yield Areas</h3>
-        <p>WV1 leads at <strong>5.5%</strong> (closest to hotspot threshold). WV2 (5.3%) and WV10 (5.1%) follow. No postcodes hit the 6%+ yield hotspot target in this batch.</p>
-      </div>
-      <div class="card">
-        <h3 style="font-size:1rem;margin-bottom:0.5rem;">💰 Cheapest Entry Points</h3>
-        <p>WV1 (£183k) is the most affordable — closest to the £150k cheap-area threshold. DY2 (£233k) is the cheapest Dudley postcode. None dip under £150k.</p>
-      </div>
-      <div class="card">
-        <h3 style="font-size:1rem;margin-bottom:0.5rem;">⚠️ Crime Data Gap</h3>
-        <p>Crime ratings returned as "Unknown" for all postcodes — PropAI crime data may need a separate enrichment pass. Not possible to flag high-crime areas from this scan.</p>
-      </div>
+  <div class="insight-section">
+    <h2>🎯 Best Value Picks (Hot Yield + Affordable)</h2>
+    <ul class="insight-list">
+      <li><strong>WV2</strong> — £202,615 | Gross Yield: 5.4% | BTL: 6.8% | Strategy: BRRR</li>
+      <li><strong>WV11</strong> — £243,805 | Gross Yield: 4.9% | BTL: 6.4% | Strategy: BRRR</li>
+      <li><strong>WV12</strong> — £245,773 | Gross Yield: 4.8% | BTL: 6.4% | Strategy: BRRR</li>
+      <li><strong>DY5</strong> — £229,624 | Gross Yield: 4.6% | BTL: 6.8% | Strategy: BRRR</li>
+      <li><strong>DY1</strong> — £244,181 | Gross Yield: 4.3% | BTL: 6.4% | Strategy: BRRR</li>
+    </ul>
+  </div>
+  <div class="insight-section">
+    <h2>📊 BTL Yield Rankings (Estimated)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Postcode</th>
+          <th>Avg Price</th>
+          <th>Gross Yield</th>
+          <th>BTL Yield</th>
+          <th>Best Strategy</th>
+          <th>Score</th>
+          <th>Verdict</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="">
+          <td>1</td>
+          <td><strong>WV2</strong></td>
+          <td class="price-value">£202,615</td>
+          <td class=" yield-highlight">5.4%</td>
+          <td class="yield-highlight">6.8%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>2</td>
+          <td><strong>DY5</strong></td>
+          <td class="price-value">£229,624</td>
+          <td class=" yield-highlight">4.6%</td>
+          <td class="yield-highlight">6.8%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>3</td>
+          <td><strong>WV1</strong></td>
+          <td class="price-value">£185,855</td>
+          <td class="">—</td>
+          <td class="yield-highlight">6.8%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>4</td>
+          <td><strong>WV6</strong></td>
+          <td class="price-value">£355,194</td>
+          <td class="">3.7%</td>
+          <td class="yield-highlight">6.5%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>5</td>
+          <td><strong>DY9</strong></td>
+          <td class="price-value">£425,661</td>
+          <td class="">—</td>
+          <td class="yield-highlight">6.5%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>6</td>
+          <td><strong>WV5</strong></td>
+          <td class="price-value">£405,199</td>
+          <td class="">—</td>
+          <td class="yield-highlight">6.5%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>7</td>
+          <td><strong>WV7</strong></td>
+          <td class="price-value">£405,707</td>
+          <td class="">—</td>
+          <td class="yield-highlight">6.5%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>8</td>
+          <td><strong>WV11</strong></td>
+          <td class="price-value">£243,805</td>
+          <td class=" yield-highlight">4.9%</td>
+          <td class="yield-highlight">6.4%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>9</td>
+          <td><strong>WV12</strong></td>
+          <td class="price-value">£245,773</td>
+          <td class=" yield-highlight">4.8%</td>
+          <td class="yield-highlight">6.4%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>10</td>
+          <td><strong>DY1</strong></td>
+          <td class="price-value">£244,181</td>
+          <td class="">4.3%</td>
+          <td class="yield-highlight">6.4%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>11</td>
+          <td><strong>DY4</strong></td>
+          <td class="price-value">£246,810</td>
+          <td class="">—</td>
+          <td class="yield-highlight">6.4%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>12</td>
+          <td><strong>DY8</strong></td>
+          <td class="price-value">£283,886</td>
+          <td class="">—</td>
+          <td class="yield-highlight">6.4%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>13</td>
+          <td><strong>WV4</strong></td>
+          <td class="price-value">£294,766</td>
+          <td class="">—</td>
+          <td class="yield-highlight">6.4%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+        <tr class="">
+          <td>14</td>
+          <td><strong>WV8</strong></td>
+          <td class="price-value">£330,284</td>
+          <td class="">—</td>
+          <td class="yield-highlight">6.4%</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight-section">
+    <h2>📋 Full Area Scan — All Postcodes</h2>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>Postcode</th>
+          <th>Avg Price</th>
+          <th>Gross Yield</th>
+          <th>BTL Yield</th>
+          <th>Crime</th>
+          <th>Property Type</th>
+          <th>Strategy</th>
+          <th>Score</th>
+          <th>Verdict</th>
+          <th>Flags</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="">
+          <td><strong>WV2</strong></td>
+          <td class="price-value">£202,615</td>
+          <td class=" yield-highlight">5.4%</td>
+          <td>6.8%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Terraced House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>WV11</strong></td>
+          <td class="price-value">£243,805</td>
+          <td class=" yield-highlight">4.9%</td>
+          <td>6.4%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Semi-Detached House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>WV12</strong></td>
+          <td class="price-value">£245,773</td>
+          <td class=" yield-highlight">4.8%</td>
+          <td>6.4%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Semi-Detached House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>DY5</strong></td>
+          <td class="price-value">£229,624</td>
+          <td class=" yield-highlight">4.6%</td>
+          <td>6.8%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Terraced House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>DY1</strong></td>
+          <td class="price-value">£244,181</td>
+          <td class="">4.3%</td>
+          <td>6.4%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Terraced House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>DY2</strong></td>
+          <td class="price-value">—</td>
+          <td class="">4.3%</td>
+          <td>6.8%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Unknown</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>WV6</strong></td>
+          <td class="price-value">£355,194</td>
+          <td class="">3.7%</td>
+          <td>6.5%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Terraced House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>DY3</strong></td>
+          <td class="price-value">—</td>
+          <td class="">—</td>
+          <td>6.8%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Unknown</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>DY4</strong></td>
+          <td class="price-value">£246,810</td>
+          <td class="">—</td>
+          <td>6.4%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Semi-Detached House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>DY6</strong></td>
+          <td class="price-value">—</td>
+          <td class="">—</td>
+          <td>6.8%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Unknown</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>DY8</strong></td>
+          <td class="price-value">£283,886</td>
+          <td class="">—</td>
+          <td>6.4%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Flat</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>DY9</strong></td>
+          <td class="price-value">£425,661</td>
+          <td class="">—</td>
+          <td>6.5%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Semi-Detached House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>WV1</strong></td>
+          <td class="price-value">£185,855</td>
+          <td class="">—</td>
+          <td>6.8%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Terraced House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>WV3</strong></td>
+          <td class="price-value">—</td>
+          <td class="">—</td>
+          <td>6.8%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Unknown</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>WV4</strong></td>
+          <td class="price-value">£294,766</td>
+          <td class="">—</td>
+          <td>6.4%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Terraced House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>WV5</strong></td>
+          <td class="price-value">£405,199</td>
+          <td class="">—</td>
+          <td>6.5%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Terraced House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>WV7</strong></td>
+          <td class="price-value">£405,707</td>
+          <td class="">—</td>
+          <td>6.5%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Semi-Detached House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>WV8</strong></td>
+          <td class="price-value">£330,284</td>
+          <td class="">—</td>
+          <td>6.4%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Terraced House</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>WV9</strong></td>
+          <td class="price-value">—</td>
+          <td class="">—</td>
+          <td>6.8%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Unknown</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+        <tr class="">
+          <td><strong>WV10</strong></td>
+          <td class="price-value">—</td>
+          <td class="">—</td>
+          <td>6.8%</td>
+          <td class="crime-unknown">Unknown</td>
+          <td>Unknown</td>
+          <td class="strategy-brrr">BRRR</td>
+          <td>6</td>
+          <td class="verdict-watchlist">Watchlist</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
     </div>
+  </div>
+  <div class="insight-section">
+    <h2>⚠️ Scan Errors</h2>
+    <ul class="insight-list">
+      <li><strong>DY2</strong>: unsupported format string passed to NoneType.__format__</li>
+      <li><strong>DY3</strong>: unsupported format string passed to NoneType.__format__</li>
+      <li><strong>DY6</strong>: unsupported format string passed to NoneType.__format__</li>
+      <li><strong>WV3</strong>: unsupported format string passed to NoneType.__format__</li>
+      <li><strong>WV9</strong>: unsupported format string passed to NoneType.__format__</li>
+      <li><strong>WV10</strong>: unsupported format string passed to NoneType.__format__</li>
+    </ul>
   </div>
 
   <div class="footer">
-    Nikka Intel · PropertyData Area Scan · Generated 31 May 2026 · Batch 1 of 7 (20 postcodes per day)
+    Nikka Intel · PropIQ Area Scan · West Midlands · 20 postcodes · Generated 2026-06-02T04:01:19.485946
   </div>
 </div>
 </body>

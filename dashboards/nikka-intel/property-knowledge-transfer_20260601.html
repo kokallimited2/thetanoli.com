@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📋 Property Operations — Knowledge Transfer to Nikka Khan</title>
+<style>
+:root {
+  --bg: #0a0f1e; --bg2: #111827; --card: #1e293b; --border: #334155;
+  --accent: #f59e0b; --green: #22c55e; --red: #ef4444; --blue: #3b82f6;
+  --purple: #8b5cf6; --teal: #0d9488; --pink: #ec4899;
+  --text: #f1f5f9; --text2: #94a3b8; --text3: #64748b;
+  --rad: 12px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; font-size: 14px;
+}
+.wrap { max-width: 1100px; margin: 0 auto; padding: 16px 20px 60px; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #0a0f1e 0%, #1e3a5f 40%, #0d9488 100%);
+  padding: 50px 24px 40px; text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative; overflow: hidden;
+}
+.hero h1 { font-size: 2.2rem; font-weight: 800; }
+.hero h1 em { color: var(--accent); font-style: normal; }
+.hero p { color: var(--text2); font-size: 15px; margin-top: 8px; max-width: 550px; margin-inline: auto; }
+.hero .meta { margin-top: 12px; font-size: 12px; color: var(--text3); }
+
+/* Sections */
+section { margin-top: 32px; }
+section h2 {
+  font-size: 1.3rem; font-weight: 700; padding-bottom: 10px;
+  border-bottom: 2px solid var(--border); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+section h2 .badge-count {
+  font-size: 11px; background: var(--accent); color: #0a0f1e;
+  padding: 2px 10px; border-radius: 20px; font-weight: 600;
+}
+
+/* Cards */
+.card-grid { display: flex; flex-direction: column; gap: 12px; }
+.card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--rad);
+  padding: 18px 20px; transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--accent); }
+.card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.card .tag {
+  display: inline-block; font-size: 11px; padding: 2px 10px; border-radius: 20px;
+  font-weight: 600; margin-bottom: 8px;
+}
+.tag-green { background: rgba(34,197,94,0.15); color: var(--green); }
+.tag-blue { background: rgba(59,130,246,0.15); color: var(--blue); }
+.tag-amber { background: rgba(245,158,11,0.15); color: var(--accent); }
+.tag-purple { background: rgba(139,92,246,0.15); color: var(--purple); }
+.tag-red { background: rgba(239,68,68,0.15); color: var(--red); }
+.tag-teal { background: rgba(13,148,136,0.15); color: var(--teal); }
+.tag-pink { background: rgba(236,72,153,0.15); color: var(--pink); }
+.card p, .card li { font-size: 13px; color: var(--text2); line-height: 1.6; }
+.card ul { margin-top: 6px; padding-left: 18px; }
+.card li { margin-bottom: 4px; }
+.card code {
+  background: rgba(255,255,255,0.06); padding: 2px 6px; border-radius: 4px;
+  font-size: 12px; color: var(--teal);
+}
+.card .file-path {
+  display: inline-block; font-family: monospace; font-size: 12px;
+  background: rgba(13,148,136,0.1); color: var(--teal);
+  padding: 3px 8px; border-radius: 4px; margin-top: 6px;
+}
+
+/* Mini grid for domains */
+.domain-grid { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+.domain-card {
+  flex: 1; min-width: 180px; background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px; text-align: center;
+}
+.domain-card .dm { font-size: 13px; font-weight: 600; color: var(--accent); }
+.domain-card .dm-desc { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+/* Key-value list */
+.kv-list { margin-top: 8px; }
+.kv-list .kv { display: flex; gap: 8px; margin-bottom: 6px; font-size: 13px; }
+.kv-list .kv .k { color: var(--text3); font-weight: 600; min-width: 120px; }
+.kv-list .kv .v { color: var(--text2); }
+
+/* Info boxes */
+.info { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 8px; padding: 14px 16px; margin: 12px 0; font-size: 13px; color: var(--text2); }
+.info strong { color: var(--text); }
+.warn { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); border-radius: 8px; padding: 14px 16px; margin: 12px 0; font-size: 13px; color: var(--text2); }
+.warn strong { color: var(--accent); }
+.good { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 8px; padding: 14px 16px; margin: 12px 0; font-size: 13px; color: var(--text2); }
+
+/* TOC */
+.toc { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--rad); padding: 18px 20px; margin-bottom: 24px; }
+.toc h3 { font-size: 13px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+.toc ol { padding-left: 20px; }
+.toc li { font-size: 13px; color: var(--text2); line-height: 1.8; }
+.toc a { color: var(--blue); text-decoration: none; }
+.toc a:hover { color: var(--accent); text-decoration: underline; }
+
+/* Pre code blocks */
+pre {
+  background: #0d1117; border: 1px solid var(--border); border-radius: 8px;
+  padding: 14px 16px; overflow-x: auto; margin: 10px 0;
+  font-size: 12px; line-height: 1.5; color: #c9d1d9;
+}
+pre .key { color: #f97583; }
+pre .str { color: #9ecbff; }
+pre .cmt { color: #8b949e; }
+code { font-family: 'JetBrains Mono', 'Consolas', monospace; }
+
+/* Footer links section */
+.links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 700px) { .links-grid { grid-template-columns: 1fr; } }
+.link-card {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+  padding: 14px; text-decoration: none; color: var(--text2); transition: all 0.2s;
+  display: block;
+}
+.link-card:hover { border-color: var(--accent); }
+.link-card .lc-title { font-weight: 600; color: var(--text); font-size: 13px; }
+.link-card .lc-desc { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+@media print {
+  body { background: white; color: #333; }
+  .wrap { max-width: 100%; }
+  .hero { background: #f5f5f5 !important; color: #333; }
+  .card { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>📋 Property Operations <em>Knowledge Base</em></h1>
+  <p>Complete reference for Nikka Khan: domains, skills, tools, analysis frameworks, deployment workflows, and dashboards</p>
+  <div class="meta">Compiled June 1, 2026 — Wadda → Nikka transfer · <span style="color:var(--accent)">🟢 Active</span></div>
+</div>
+
+<div class="wrap">
+
+<div class="toc">
+  <h3>📑 Table of Contents</h3>
+  <ol>
+    <li><a href="#ecosystem">Property Ecosystem Overview</a></li>
+    <li><a href="#division">Division of Labour (Who Does What)</a></li>
+    <li><a href="#skill">property-intelligence Skill</a></li>
+    <li><a href="#reference-files">Reference Files (7 documents)</a></li>
+    <li><a href="#property-search-engine">Property Search Engine — Cloudflare Worker</a></li>
+    <li><a href="#dashboard">Property Dashboard Format</a></li>
+    <li><a href="#propiq">PropIQ — AI Deal Analyser</a></li>
+    <li><a href="#sdlt">SDLT Calculator Reference</a></li>
+    <li><a href="#deployment">Site Deployment Patterns & Pitfalls</a></li>
+    <li><a href="#lead-generation">Lead Generation Methods</a></li>
+    <li><a href="#instructions">Instructions & Advice for Nikka</a></li>
+    <li><a href="#quick-links">Quick Links</a></li>
+  </ol>
+</div>
+
+<!-- 1. Ecosystem -->
+<section id="ecosystem">
+  <h2>🏘️ Property Ecosystem <span class="badge-count">3 domains</span></h2>
+
+  <div class="domain-grid">
+    <div class="domain-card">
+      <div class="dm">pforprofits.com</div>
+      <div class="dm-desc">Tools, guides, calculators, BRRR strategy</div>
+    </div>
+    <div class="domain-card">
+      <div class="dm">pforproperty.co.uk</div>
+      <div class="dm-desc">Investment hub — market intelligence</div>
+    </div>
+    <div class="domain-card">
+      <div class="dm">dfordeals.co.uk</div>
+      <div class="dm-desc">Deal sourcing — warm amber/charcoal theme</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <div class="tag tag-amber">🗂 Infrastructure</div>
+    <div class="kv-list">
+      <div class="kv"><span class="k">Hosting</span><span class="v">GitHub Pages + Cloudflare (all proxied)</span></div>
+      <div class="kv"><span class="k">Deployment</span><span class="v">Push to GH repo → auto-deploys via Pages</span></div>
+      <div class="kv"><span class="k">Caching</span><span class="v">Cloudflare edge cache · 2hr default TTL · purge via API</span></div>
+      <div class="kv"><span class="k">Owner</span><span class="v"><strong style="color:var(--accent)">Nikka Khan</strong> — full ownership since May 19, 2026</span></div>
+      <div class="kv"><span class="k">Wadda Role</span><span class="v">Uploads dashboard once daily at 7am (data from Nikka via WS)</span></div>
+    </div>
+  </div>
+
+  <div class="info"><strong>⚠️ Cloudflare cache pitfall:</strong> After deploying assets, Cloudflare serves old versions for up to 2 hours. Always verify with <code>?_cb=1</code> query param. To force-purge: Cloudflare Dashboard → Caching → Purge Everything.</div>
+</section>
+
+<!-- 2. Division of Labour -->
+<section id="division">
+  <h2>👥 Division of Labour</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-green">✅ Nikka Khan owns</div>
+      <ul>
+        <li>ALL property cron jobs (pforprofits weekly blog, daily news scan, r2r-sa-intelligence, postcode-strategy-intelligence)</li>
+        <li>ALL property domain content (3 sites)</li>
+        <li>ALL property research, deal analysis, BRRR/HMO/flip assessments</li>
+        <li>Area intelligence, market reports, blog writing</li>
+        <li>Dashboard data generation (push updated <code>property-data.json</code>)</li>
+        <li><strong>New:</strong> Property Search Engine deployment & operation (see §5)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="tag tag-red">❌ Wadda does NOT do</div>
+      <ul>
+        <li>Run property crons or research</li>
+        <li>Accept property analysis requests (delegate to Nikka)</li>
+        <li>Micro-update dashboard during the day</li>
+        <li>Modify property site content</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="tag tag-blue">🔄 Wadda handles</div>
+      <ul>
+        <li>Receives dashboard-ready JSON from Nikka via WS broadcast (topic: "dashboard-data")</li>
+        <li>Batch-uploads to thetanoli.com/dashboards/property-dashboard.html at 7am daily</li>
+        <li>No other property work</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Skill -->
+<section id="skill">
+  <h2>📚 property-intelligence Skill <span class="badge-count">v2.2</span></h2>
+
+  <div class="card">
+    <div class="tag tag-purple">Core Skill</div>
+    <p style="margin-bottom:8px">This Hermes Agent skill contains the complete property operations framework. Located at:</p>
+    <div class="file-path">~/.hermes/skills/property-intelligence/SKILL.md</div>
+
+    <h3 style="font-size:13px; color:var(--text); margin-top:14px; margin-bottom:8px;">📖 What it covers:</h3>
+    <ul>
+      <li><strong>Deal Analysis Framework</strong> — BTL, BRRR, HMO, Flip, Title Split, Commercial Conversion</li>
+      <li><strong>Scoring Criteria</strong> — 7 criteria (1-5), total /35 → Strong/Moderate/Weak/Pass</li>
+      <li><strong>Cash Flow Calculation</strong> — template with all deductions (mortgage, mgmt, insurance, maintenance, voids, HMO licenses, etc.)</li>
+      <li><strong>ROI Calculation</strong> — (Annual CF + Capital Appreciation) / Total Investment</li>
+      <li><strong>BRRR Specifics</strong> — PRV, refinance at 75% LTV, capital recycled, money left in. Quick test: purchase price ≤ 80% of PRV</li>
+      <li><strong>BRRR Fail Signals</strong> — price >80% of area avg, already modern, EPC D+, >£15K left in after refinance</li>
+      <li><strong>Site architecture</strong> — folder layout, schema strategy, blog content pattern</li>
+      <li><strong>Footer standardisation</strong> — 4-column pattern</li>
+      <li><strong>Logo asset trio</strong> — logo.svg, favicon.svg, og-image.svg</li>
+      <li><strong>Weekly autonomous blog publishing</strong> — cron config for Monday 8am</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 4. Reference Files -->
+<section id="reference-files">
+  <h2>📎 Reference Files <span class="badge-count">7 docs</span></h2>
+
+  <div class="links-grid">
+    <a href="https://thetanoli.com/dashboards/property-dashboard.html" class="link-card">
+      <div class="lc-title">📊 Property Dashboard (live)</div>
+      <div class="lc-desc">Nikka's output hub — deals, areas, intel, leads</div>
+    </a>
+    <a class="link-card" style="cursor:default">
+      <div class="lc-title">📄 property-dashboard.md</div>
+      <div class="lc-desc">Dashboard JSON schema, colour scheme, section layout</div>
+      <div class="file-path" style="margin-top:4px">references/property-dashboard.md</div>
+    </a>
+    <a class="link-card" style="cursor:default">
+      <div class="lc-title">🤖 Propiq-analyser.md</div>
+      <div class="lc-desc">AI property analyser app at pforprofits.com — 9 metrics, monetization (4 options)</div>
+      <div class="file-path" style="margin-top:4px">references/propiq-analyser.md</div>
+    </a>
+    <a class="link-card" style="cursor:default">
+      <div class="lc-title">🧮 SDLT Calculator Reference</div>
+      <div class="lc-desc">UK Stamp Duty rates, JS logic, verif examples, UI pattern, schema</div>
+      <div class="file-path" style="margin-top:4px">references/sdlt-calculator-reference.md</div>
+    </a>
+    <a class="link-card" style="cursor:default">
+      <div class="lc-title">✅ SDLT Test Cases</div>
+      <div class="lc-desc">10+ validated scenarios (FTB, surcharges, band boundaries)</div>
+      <div class="file-path" style="margin-top:4px">references/sdlt-test-cases.md</div>
+    </a>
+    <a class="link-card" style="cursor:default">
+      <div class="lc-title">🔌 Portal Extraction Workarounds</div>
+      <div class="lc-desc">Bypass Rightmove/Zoopla Cloudflare blocks — OCR, cached pages, API alternatives</div>
+      <div class="file-path" style="margin-top:4px">references/portal-extraction-workarounds.md</div>
+    </a>
+    <a class="link-card" style="cursor:default">
+      <div class="lc-title">🚀 Site Deployment & Cache</div>
+      <div class="lc-desc">GH Pages + Cloudflare deployment, cache-busting, verification</div>
+      <div class="file-path" style="margin-top:4px">references/site-deployment-and-cache.md</div>
+    </a>
+    <a class="link-card" style="cursor:default">
+      <div class="lc-title">📝 pforprofits Blog System</div>
+      <div class="lc-desc">Full blog infra reference — post.json, schemas, cron, initial posts</div>
+      <div class="file-path" style="margin-top:4px">references/pforprofits-blog-system.md</div>
+    </a>
+    <a class="link-card" style="cursor:default">
+      <div class="lc-title">🔬 Autonomous Research Sessions</div>
+      <div class="lc-desc">Structured research session workflows for property</div>
+      <div class="file-path" style="margin-top:4px">references/autonomous-research-sessions.md</div>
+    </a>
+  </div>
+</section>
+
+<!-- 5. Property Search Engine -->
+<section id="property-search-engine">
+  <h2>🔍 Property Search Engine <span class="badge-count">NEW — June 2026</span></h2>
+
+  <div class="card">
+    <div class="tag tag-teal">Cloudflare Worker</div>
+    <h3>PropertyData-powered deal finder</h3>
+    <p style="margin-bottom:8px">Scans 30+ property strategy lists (unmodernised, repossessed, auction, chain-free, HMO, etc.) and scores each property for BRRR/BTL/Flip with area-level market data.</p>
+
+    <div class="kv-list">
+      <div class="kv"><span class="k">Source</span><span class="v"><code>~/property-search-engine/</code></span></div>
+      <div class="kv"><span class="k">Stack</span><span class="v">Cloudflare Workers + PropertyData API + static frontend</span></div>
+      <div class="kv"><span class="k">Frontend</span><span class="v">Dark-theme single-page app (search by postcode or single URL)</span></div>
+      <div class="kv"><span class="k">Lists</span><span class="v">30 property strategies — unmodernised, repossession, auction, HMO, holiday let, planning granted, cheap/sqft, etc.</span></div>
+      <div class="kv"><span class="k">Analysis</span><span class="v">Scores each property BRRR/BTL/Flip (0-100), weighted overall, STRONG_BUY/BUY/NEUTRAL/PASS verdict</span></div>
+      <div class="kv"><span class="k">Area Data</span><span class="v">Yields, 5yr growth, avg prices, avg £/sqft, rental demand — 1 call per search not per property</span></div>
+    </div>
+
+    <div class="info" style="margin-top:12px">
+      <strong>⚠️ Not yet deployed.</strong> Needs: Cloudflare API token with Workers permissions, thetanoli.com zone ID, and a PropertyData API key (<code>PROPERTYDATA_API_KEY</code>).<br>
+      Once deployed, it lives at <code>thetanoli.com/property-search/</code> and feeds the property dashboard.
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <div class="tag tag-blue">📋 Strategy Lists (30 total)</div>
+    <p style="margin-bottom:6px;font-size:13px">Core strategies:</p>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">
+      <span style="background:rgba(245,158,11,0.12);color:var(--accent);padding:2px 8px;border-radius:4px;font-size:11px">Unmodernised</span>
+      <span style="background:rgba(239,68,68,0.12);color:var(--red);padding:2px 8px;border-radius:4px;font-size:11px">Repossessed</span>
+      <span style="background:rgba(34,197,94,0.12);color:var(--green);padding:2px 8px;border-radius:4px;font-size:11px">Cash Buyers Only</span>
+      <span style="background:rgba(139,92,246,0.12);color:var(--purple);padding:2px 8px;border-radius:4px;font-size:11px">Auction</span>
+      <span style="background:rgba(59,130,246,0.12);color:var(--blue);padding:2px 8px;border-radius:4px;font-size:11px">Slow to Sell (180d+)</span>
+      <span style="background:rgba(236,72,153,0.12);color:var(--pink);padding:2px 8px;border-radius:4px;font-size:11px">Recently Reduced</span>
+      <span style="background:rgba(13,148,136,0.12);color:var(--teal);padding:2px 8px;border-radius:4px;font-size:11px">Back on Market</span>
+      <span style="background:rgba(245,158,11,0.12);color:var(--accent);padding:2px 8px;border-radius:4px;font-size:11px">Derelict</span>
+      <span style="background:rgba(34,197,94,0.12);color:var(--green);padding:2px 8px;border-radius:4px;font-size:11px">Cheap per sqft</span>
+      <span style="background:rgba(139,92,246,0.12);color:var(--purple);padding:2px 8px;border-radius:4px;font-size:11px">Short Lease</span>
+      <span style="background:rgba(59,130,246,0.12);color:var(--blue);padding:2px 8px;border-radius:4px;font-size:11px">High Yield</span>
+      <span style="background:rgba(13,148,136,0.12);color:var(--teal);padding:2px 8px;border-radius:4px;font-size:11px">HMO Licensed</span>
+      <span style="background:rgba(236,72,153,0.12);color:var(--pink);padding:2px 8px;border-radius:4px;font-size:11px">Holiday Let</span>
+      <span style="background:rgba(245,158,11,0.12);color:var(--accent);padding:2px 8px;border-radius:4px;font-size:11px">Planning Granted</span>
+      <span style="background:rgba(34,197,94,0.12);color:var(--green);padding:2px 8px;border-radius:4px;font-size:11px">No Chain</span>
+    </div>
+    <p style="font-size:12px;color:var(--text3)">See full list in the Worker source at <code>PROPERTY_LISTS</code> constant (src/worker.js line 307-337)</p>
+  </div>
+</section>
+
+<!-- 6. Dashboard -->
+<section id="dashboard">
+  <h2>📊 Property Dashboard Format</h2>
+
+  <div class="card">
+    <div class="tag tag-green">Live at</div>
+    <p><a href="https://thetanoli.com/dashboards/property-dashboard.html" style="color:var(--blue)">thetanoli.com/dashboards/property-dashboard.html</a></p>
+
+    <h3 style="font-size:13px;color:var(--text);margin-top:14px;margin-bottom:8px">Data Architecture</h3>
+    <p style="margin-bottom:8px">100% client-side HTML. Loads all content from <code>property-data.json</code> (same directory). Update the JSON → dashboard auto-refreshes.</p>
+
+    <h3 style="font-size:13px;color:var(--text);margin-bottom:8px">JSON Schema</h3>
+    <pre>{
+  "updated_at": "June 1, 2026 23:00",
+  "agent": "nikka-khan",
+  "deals": [
+    {
+      "title": "3-Bed Semi, DY1",
+      "location": "DY1, Dudley, West Midlands",
+      "strategy": "BRRR",
+      "score": 30,
+      "verdict": "buy",           // "buy" | "investigate" | "pass"
+      "price": 150000,
+      "yield": 6.2,
+      "roi": 18.5,
+      "monthly_cashflow": 320,
+      "notes": "Strong BRRR candidate...",
+      "added_at": "June 1"
+    }
+  ],
+  "areas": [
+    { "postcode", "region", "avg_price",
+      "yield", "avg_rent", "crime",
+      "transport", "demand" }
+  ],
+  "intel": [
+    { "date", "title", "summary" }
+  ],
+  "leads": [
+    { "source", "ref/address", "type",
+      "price", "status", "added_at" }
+  ],
+  "reports": [
+    { "title", "category", "date",
+      "summary", "url" }
+  ]
+}</pre>
+
+    <h3 style="font-size:13px;color:var(--text);margin-top:14px;margin-bottom:8px">Sections</h3>
+    <ol style="padding-left:18px;font-size:13px;color:var(--text2)">
+      <li><strong>Stats Row</strong> — deal count, watchlist, buy signals, intel, leads, total monthly CF</li>
+      <li><strong>Active Deals</strong> — score/35, strategy tag, price/yield/ROI/CF, buy/investigate/pass verdict</li>
+      <li><strong>Area Watchlist</strong> — postcode cards with area stats</li>
+      <li><strong>Market Intelligence</strong> — news/updates</li>
+      <li><strong>Lead Pipeline</strong> — table with source/address/price/status</li>
+      <li><strong>Recent Reports</strong> — report cards with optional links</li>
+    </ol>
+
+    <h3 style="font-size:13px;color:var(--text);margin-top:14px;margin-bottom:8px">Update Workflow</h3>
+    <ol style="padding-left:18px;font-size:13px;color:var(--text2)">
+      <li>Nikka: update <code>property-data.json</code> with latest deals/areas/intel/leads</li>
+      <li>Nikka: commit + push to thetanoli.com repo</li>
+      <li>Wadda: batch-uploads to thetanoli.com at 7am daily (or Nikka can push directly)</li>
+    </ol>
+  </div>
+</section>
+
+<!-- 7. PropIQ -->
+<section id="propiq">
+  <h2>🤖 PropIQ — AI Deal Analyser</h2>
+
+  <div class="card">
+    <div class="tag tag-purple">Deployed at pforprofits.com</div>
+    <p>Single-page web app that evaluates UK property deals instantly via Claude + web search for live comparable data.</p>
+
+    <h3 style="font-size:13px;color:var(--text);margin-top:12px;margin-bottom:6px">9 Investment Metrics</h3>
+    <ul>
+      <li><strong>Pricing:</strong> Ideal offer vs asking vs market value</li>
+      <li><strong>Refurb:</strong> Item-by-item breakdown (kitchen, baths, electrics) with low/high ranges</li>
+      <li><strong>Financial:</strong> ROI, ROCE, GDV, net profit, all-in cost</li>
+      <li><strong>Income:</strong> Gross yield, net yield, monthly rent, monthly cashflow</li>
+      <li><strong>Tax:</strong> SDLT with BTL 3% surcharge, first-time buyer relief</li>
+      <li><strong>Strategy:</strong> BTL, Flip, BRR, HMO, Primary Residence modes</li>
+    </ul>
+
+    <h3 style="font-size:13px;color:var(--text);margin-top:12px;margin-bottom:6px">Monetization Options</h3>
+    <ul>
+      <li><strong>B2B SaaS:</strong> Basic £9.99/mo · Pro £29.99/mo · Team £99/mo</li>
+      <li><strong>Affiliate:</strong> Rightmove/Zoopla referrals (£50-200), surveyor/mortgage (£50-300)</li>
+      <li><strong>White-Label:</strong> Estate agents at £500-2K/mo per agent</li>
+      <li><strong>B2C + Community:</strong> Free 5 analyses/mo · Premium £4.99 unlimited</li>
+    </ul>
+
+    <p style="margin-top:8px;font-size:12px;color:var(--text3)">See <code>references/propiq-analyser.md</code> for full competitive positioning (vs Rightmove, Zoopla, WhichProperty) and deployment guide.</p>
+  </div>
+</section>
+
+<!-- 8. SDLT -->
+<section id="sdlt">
+  <h2>🧮 SDLT Calculator Reference</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-amber">Current Rates (England & NI, May 2026)</div>
+      <ul>
+        <li><strong>Up to £250k</strong> — 0%</li>
+        <li><strong>£250k–£925k</strong> — 5%</li>
+        <li><strong>£925k–£1.5M</strong> — 10%</li>
+        <li><strong>Above £1.5M</strong> — 12%</li>
+        <li><strong>FTB relief:</strong> 0% up to £425k, 5% on £425k-£625k, standard above £625k</li>
+        <li><strong>Additional property:</strong> +5% surcharge on all bands</li>
+        <li><strong>Non-UK resident:</strong> +2% surcharge</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="tag tag-teal">Verification Examples</div>
+      <ul>
+        <li>FTB @ £400k → <strong>£0</strong></li>
+        <li>Standard @ £500k → <strong>£12,500</strong></li>
+        <li>Additional @ £300k → <strong>£17,500</strong></li>
+        <li>Additional @ £500k → <strong>£37,500</strong></li>
+        <li>Non-UK @ £300k → <strong>£8,500</strong></li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:6px;font-size:12px;color:var(--text3)">Full JS logic + UI pattern + HowTo schema in <code>references/sdlt-calculator-reference.md</code>. ⚠️ Rates change with each UK Budget — verify at <a href="https://www.gov.uk/stamp-duty-land-tax" style="color:var(--blue)">gov.uk/stamp-duty-land-tax</a> before reusing.</p>
+</section>
+
+<!-- 9. Deployment -->
+<section id="deployment">
+  <h2>🚀 Site Deployment Patterns</h2>
+
+  <div class="card">
+    <div class="tag tag-red">⚠️ Cloudflare Cache Pitfall</div>
+    <ul>
+      <li>GH Pages deploy is instant, but Cloudflare edge serves old content for up to <strong>2 hours</strong></li>
+      <li>Always verify with cache-bust: <code>curl -sI "https://domain.com/page?_cb=1"</code></li>
+      <li>Manual purge: Cloudflare Dashboard → Caching → Purge Everything</li>
+      <li>API purge: <code>curl -X POST "https://api.cloudflare.com/client/v4/zones/{ZONE_ID}/purge_cache" -H "Authorization: Bearer {TOKEN}" -d '{"purge_everything":true}'</code></li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <div class="tag tag-blue">Standard Site Architecture</div>
+    <pre>domain.com/
+├── index.html              # Homepage — hero, tool cards, lead capture, FAQ schema
+├── calculators/
+│   ├── brrr.html           # BRRR calculator w/ HowTo schema
+│   ├── rental-yield.html   # Rental yield calculator w/ HowTo schema
+│   └── deal-analyser.html
+├── guides/                 # Area guides, strategy articles
+├── blog/
+│   ├── index.html          # Blog listing (or root /blog.html)
+│   └── post-*.html         # {slug}.html
+├── assets/
+│   ├── logo.svg | favicon.svg | og-image.svg
+├── post.json               # Blog post index (append-only)
+├── sitemap.xml
+└── robots.txt</pre>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <div class="tag tag-green">Schema Strategy</div>
+    <ul>
+      <li><strong>WebApplication</strong> — calculator pages (rich result as app)</li>
+      <li><strong>Organization</strong> — all pages (brand authority)</li>
+      <li><strong>HowTo</strong> — each calculator (step-by-step → triggers rich result)</li>
+      <li><strong>FAQPage</strong> — listing/index pages (5+ Q&A)</li>
+      <li><strong>BreadcrumbList</strong> — all pages</li>
+      <li><strong>Article</strong> — blog posts (author: real name for E-E-A-T)</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <div class="tag tag-amber">Blog Content Standards</div>
+    <ul>
+      <li>Min 1200 words, practical authoritative tone — no fluff</li>
+      <li>Table of Contents at top, h2 sections with matching id anchors</li>
+      <li>FAQ section at end (5+ questions minimum)</li>
+      <li>Highlight box for key takeaways / CTAs</li>
+      <li>Internal links to calculators: <code>/brrr-calculator</code>, <code>/#yield-calc</code></li>
+      <li>Author attribution: real name + Person schema (e.g. "Ateeq Yousif")</li>
+      <li>Blog cards: newest first, prepend to .blog-grid</li>
+      <li>Update: post.json, blog/index.html (prepend), sitemap.xml</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 10. Lead Generation -->
+<section id="lead-generation">
+  <h2>🎯 Lead Generation Methods</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="tag tag-amber">1. Property Portal Filtering</div>
+      <ul>
+        <li>Filter: reduced >10%, long-listed, chain-free, probate, auction</li>
+        <li>Watch for SSTC falling through → relisted</li>
+        <li>⚠️ Rightmove/Zoopla use aggressive Cloudflare bot protection</li>
+        <li>Workaround: OCR from screenshots, cached pages (Google cache, Bing cache), API alternatives — see <code>references/portal-extraction-workarounds.md</code></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="tag tag-green">2. Probate Leads</div>
+      <ul>
+        <li>Search "probate [area]" on portals</li>
+        <li>Check local probate registry listings</li>
+        <li>Cross-reference with Zoopla/Rightmove for matching addresses</li>
+        <li>Direct mail to probate executors</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="tag tag-purple">3. Expired Listings</div>
+      <ul>
+        <li>Properties removed from market without selling</li>
+        <li>Check agent websites for SSTC that reverts to For Sale</li>
+        <li>Direct mail to owners of long-listed properties (180d+)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="tag tag-red">4. Auctions</div>
+      <ul>
+        <li>Monitor: SDL Auctions, IAMSOLD, Auction House, Purple Bricks</li>
+        <li>Look for: no chain, below-guide prices, unusual property types</li>
+        <li>Forced sale timeline = motivated vendor</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 11. Instructions -->
+<section id="instructions">
+  <h2>📝 Instructions & Advice for Nikka</h2>
+
+  <div class="card">
+    <div class="tag tag-amber">🎯 Key Operating Principles</div>
+    <ol style="padding-left:18px;margin-top:8px">
+      <li><strong>You own property—fully.</strong> All three domains (pforprofits, pforproperty, dfordeals) are yours to operate, publish, and optimize. Wadda only does the dashboard upload at 7am.</li>
+      <li><strong>Use the Property Search Engine.</strong> Once deployed, it's your most powerful tool — scans 30+ deal types per postcode, scores BRRR/BTL/Flip, feeds your dashboard. Deploy it as soon as we get the API keys.</li>
+      <li><strong>Dashboard is your output hub.</strong> Update <code>property-data.json</code> with deals, area research, market intel, and leads. Push to the repo → Wadda picks it up at 7am.</li>
+      <li><strong>Blog weekly (Monday 8am).</strong> 1200+ words, practical UK property content. Use the pforprofits blog system reference. Update post.json, prepend to blog-grid, update sitemap.</li>
+      <li><strong>Portal scraping is broken.</strong> Rightmove/Zoopla blocks bots with Cloudflare. Use the extraction workarounds in the reference docs — OCR screenshots, cached pages, or manual entry.</li>
+      <li><strong>Cache-bust everything.</strong> After deploying to GH Pages behind Cloudflare, verify with <code>?_cb=1</code>. The edge cache will show stale content for 2 hours otherwise.</li>
+      <li><strong>BRRR quick test:</strong> Purchase price ≤ 80% of post-refurb value. If not, it's a BTL hold, not a BRRR.</li>
+      <li><strong>SDLT rates change with budgets.</strong> Verify <a href="https://www.gov.uk/stamp-duty-land-tax" style="color:var(--blue)">gov.uk/stamp-duty-land-tax</a> before using in client-facing materials.</li>
+      <li><strong>PropIQ can be monetized.</strong> 4 models available — B2B SaaS (£9.99-99/mo), affiliate partnerships, white-label to agents, or freemium B2C. Pick one and run with it.</li>
+      <li><strong>Coordinate via WS hub.</strong> Send dashboard updates as WS broadcast (topic: "dashboard-data"). For urgent items, use topic "urgent" with <code>needsReply</code> flag.</li>
+    </ol>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <div class="tag tag-green">✅ What Success Looks Like</div>
+    <ul>
+      <li>Prop Search Engine deployed and feeding live deal data to dashboard</li>
+      <li>Weekly blog posts publishing on Monday 8am without fail</li>
+      <li>Dashboard updated daily with real deals, area analysis, and intel</li>
+      <li>At least one deal lead generated per week (from auctions, expired listings, probate)</li>
+      <li>Property dashboard shows improvement over time: more deals scored, stronger pipeline</li>
+      <li>PropIQ or SDLT calculator driving traffic to pforprofits.com</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 12. Quick Links -->
+<section id="quick-links">
+  <h2>🔗 Quick Links</h2>
+
+  <div class="links-grid">
+    <a href="https://thetanoli.com/dashboards/property-dashboard.html" class="link-card">
+      <div class="lc-title">📊 Property Dashboard</div>
+      <div class="lc-desc">Nikka's deal analysis, area research, intel, leads</div>
+    </a>
+    <a href="https://pforprofits.com" class="link-card">
+      <div class="lc-title">🏠 pforprofits.com</div>
+      <div class="lc-desc">Tools, guides, calculators, BRRR strategy</div>
+    </a>
+    <a href="https://pforproperty.co.uk" class="link-card">
+      <div class="lc-title">🏘️ pforproperty.co.uk</div>
+      <div class="lc-desc">Investment hub — market intelligence</div>
+    </a>
+    <a href="https://dfordeals.co.uk" class="link-card">
+      <div class="lc-title">💰 dfordeals.co.uk</div>
+      <div class="lc-desc">Deal sourcing — warm amber theme</div>
+    </a>
+    <a href="https://thetanoli.com/dashboards/" class="link-card">
+      <div class="lc-title">📋 All Dashboards</div>
+      <div class="lc-desc">Back to thetanoli.com dashboard hub</div>
+    </a>
+    <a href="https://thetanoli.com" class="link-card">
+      <div class="lc-title">🏠 thetanoli.com</div>
+      <div class="lc-desc">Main hub — dashboard card grid</div>
+    </a>
+  </div>
+</section>
+
+</div>
+
+</body>
+</html>

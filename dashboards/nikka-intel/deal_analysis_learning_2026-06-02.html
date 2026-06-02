@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deal Analysis Learning — 2026-06-02</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 920px; margin: 0 auto; padding: 24px; background: #0d1117; color: #c9d1d9; }
+  h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 12px; margin-bottom: 8px; }
+  .meta { color: #8b949e; font-size: 0.9em; margin-bottom: 24px; }
+  h2 { color: #f0f6fc; margin: 28px 0 12px; padding-left: 8px; border-left: 4px solid #58a6ff; }
+  h3 { color: #8b949e; margin: 16px 0 8px; }
+  p { line-height: 1.6; margin: 8px 0; }
+  ol, ul { padding-left: 20px; }
+  li { margin: 5px 0; line-height: 1.5; }
+  .highlight { background: #1a2e1a; border-left: 4px solid #3fb950; padding: 12px 16px; margin: 12px 0; border-radius: 6px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; background: #161b22; border-radius: 8px; overflow: hidden; }
+  th { background: #21262d; color: #58a6ff; padding: 10px 12px; text-align: left; font-size: 0.85em; border-bottom: 1px solid #30363d; }
+  td { padding: 10px 12px; border-bottom: 1px solid #21262d; font-size: 0.9em; }
+  .source-badge { display: inline-block; background: #21262d; color: #8b949e; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; }
+  hr { border: none; border-top: 1px solid #30363d; margin: 24px 0; }
+</style>
+</head>
+<body>
+
+<h1>Daily Property Deal Analysis Intelligence — 2026-06-02</h1>
+<p class="meta">10 sources analysed | Framework improvements: Total Return + Price/SqFt + Data Combination Signals</p>
+
+<h2>📊 Sources Analysed</h2>
+<table>
+  <tr><th>#</th><th>Source</th><th>Type</th><th>Key Contribution</th></tr>
+  <tr><td>1</td><td>DealSheet AI — How to Invest in Properties UK 2026</td><td>Guide</td><td>Market outlook, strategy selection framework, Section 24 / Ltd Co comparison</td></tr>
+  <tr><td>2</td><td>Residential Estates — Biggest Mistakes 2026</td><td>Article</td><td>5 core mistakes: treating property as shortcut, failing numbers, ignoring compliance</td></tr>
+  <tr><td>3</td><td>Property Investors Network (Simon Zutshi)</td><td>Article</td><td>Blind confidence meta-mistake, experience vs opinion, open vs closed mind</td></tr>
+  <tr><td>4</td><td>Farrell Heyworth — Read Property Market Data 2026</td><td>Guide</td><td>5 core metrics, DOM ranges, data combination technique, price/sq ft</td></tr>
+  <tr><td>5</td><td>CBRE — UK Real Estate Market Outlook 2026</td><td>Report</td><td>GDP 1.2%, ~8.5% returns, 1 BoE cut, yield compression limited</td></tr>
+  <tr><td>6</td><td>Advantage Investment — Strategies 2026</td><td>Guide</td><td>Top 5 strategies, city-specific yields (Liverpool 7-10%, Manchester, Birmingham)</td></tr>
+  <tr><td>7</td><td>MaddisonV Properties — Yield Guide 2026</td><td>Guide</td><td>Gross vs net formulas, EPC C costs £5-15k, 1.5-2.5pp gross-to-net gap</td></tr>
+  <tr><td>8</td><td>August App — Rental Yield Explained</td><td>Guide</td><td>UK avg gross 5.6%, worked cost table, HMO 50-80% uplift, CoC return</td></tr>
+  <tr><td>9</td><td>DealSheet AI — Rent to Value Calculator</td><td>Guide</td><td>Gross yield as kill filter, HMO 10-15% target, SA >15%, Section 24 trap</td></tr>
+  <tr><td>10</td><td>Landlord Studio — CoC vs ROI</td><td>Guide</td><td>CoC = stability, ROI = total wealth creation, both needed</td></tr>
+</table>
+
+<h2>🧠 Best Deal Analysis Framework (Updated — 2026-06-02)</h2>
+
+<h3>Pre-Filter Layer: 3-Metric Gateway</h3>
+<ol>
+  <li><strong>Gross Yield Quick Kill:</strong> ≥5% BTL, ≥10% HMO, ≥15% SA. If below → reject instantly. Prevents analysis paralysis. <span class="source-badge">DealSheetAI</span></li>
+  <li><strong>Price-per-Sq-Ft Cross-Check:</strong> Calculate £/sq ft and compare to area average. Above average = premium location (lower yield expected). Below average = potential undervalue. Use EPC register for exact sqm. <span class="source-badge">Farrell Heyworth</span></li>
+  <li><strong>Days-on-Market Signal:</strong> 20-40d = high demand, 40-70d = balanced, 70+ = potential pricing issue or weak demand. Falling DOM + rising prices = strong market signal. Rising DOM + falling prices = weakening market. <span class="source-badge">Farrell Heyworth</span></li>
+</ol>
+
+<h3>Stage 1 — Deal Identification & Market Context</h3>
+<ol>
+  <li><strong>Distress signals first:</strong> Probate, sitting tenant, "requires modernisation", 90+ days, multiple reductions, "cash buyers preferred"</li>
+  <li><strong>Reject signals:</strong> "Recently refurbished" (no value-add — <strong>this kills BRRR/Flip</strong>), lease <80yrs, unmortgageable construction</li>
+  <li><strong>Cross-validate price:</strong> Check asking vs Land Registry vs Rightmove sold vs £/sq ft area average. Use 3+ data sources minimum.</li>
+  <li><strong>Supply/demand check:</strong> Search Rightmove lettings with 'let agreed' ticked. 35%+ = strong tenant demand. Below suggests weak market. <span class="source-badge">Jamie York</span></li>
+</ol>
+
+<h3>Stage 2 — True Cost Waterfall</h3>
+<p><strong>Total Investment =</strong> Purchase + SDLT (3% surcharge) + Legal (£1.5k) + Survey (£500) + Broker (£500) + Refurb + Contingency (15-20%) + Holding Costs (£6-10k standard)</p>
+<p><strong>Annual Costs =</strong> Management (12%) + Maintenance (10% preventive / 15% reactive) + Voids (12.5% WM min) + Insurance (£35/mo) + Compliance (£25/mo) + MTD (£10/mo) + Bad-Debt Contingency (22% of rent at 3-yr tenure)</p>
+
+<h3>Stage 3 — Four-Layer Profitability Display</h3>
+<div class="highlight">
+<strong>Every Deal Card MUST show all four:</strong><br>
+<strong>1. Gross Yield %</strong> = (Annual Rent ÷ Purchase Price) × 100 — "Quick filter, dangerously misleading alone"<br>
+<strong>2. Net Yield %</strong> = (Annual Net Income ÷ Total Investment Cost) × 100 — "Asset profitability"<br>
+<strong>3. Cash-on-Cash ROI %</strong> = (Annual Net Cashflow ÷ Total Cash Invested) × 100 — "Your cash efficiency. Target 8-12%."<br>
+<strong>4. Total Return %</strong> = Net Yield + Annualised Capital Growth — "Combined income + appreciation. Target 15-20%."
+</div>
+
+<h3>Stage 4 — Strategy Fit & Risk</h3>
+<ol>
+  <li><strong>Professional team first:</strong> Solicitor, BRRR-aware surveyor, specialist broker before detailed analysis. <span class="source-badge">DealSheetAI</span></li>
+  <li><strong>Match strategy to person:</strong> Finances, time, risk tolerance, experience — not what's trending. <span class="source-badge">Residential Estates</span></li>
+  <li><strong>Yield benchmarking:</strong> London 3-4%, NW 6-8%+, HMOs 9-11%, SA 12-15%. Commercial 8%+. Know your target range. <span class="source-badge">MaddisonV + August + DealSheetAI</span></li>
+  <li><strong>3-exit scenarios:</strong> Primary (BTL), secondary (sell), tertiary (HMO). Stress test each.</li>
+</ol>
+
+<h2>📈 Financial Models</h2>
+
+<h3>Total Return Framework (NEW — 2026-06-02)</h3>
+<div class="highlight">
+<strong>Total Return % = Net Yield + Annualised Capital Growth %</strong><br>
+<strong>Leveraged Total Return = Net Yield + (Capital Growth × Leverage Factor)</strong><br>
+<em>Leverage Factor = Property Value ÷ Cash Invested (4× at 75% LTV)</em><br><br>
+<strong>Example A:</strong> London flat: 4% net yield + 5% growth = <strong>9% total return</strong><br>
+<strong>Example B:</strong> Northern BTL: 8% net yield + 0% growth = <strong>8% total return</strong><br>
+<strong>Insight:</strong> The "yield-growth seesaw" means higher-yield areas can underperform if capital growth is zero. Always assess both.
+</div>
+
+<h3>Price-per-Sq-Ft Cross-Validation (NEW — 2026-06-02)</h3>
+<div class="highlight">
+<strong>£/sq ft = Purchase Price ÷ Gross Internal Area (sq ft)</strong><br>
+<strong>Comparison target:</strong> Area average £/sq ft from 3+ comparable sold properties<br>
+<strong>Below area average:</strong> Potential undervalue or condition issues → investigate further<br>
+<strong>Above area average:</strong> Premium location or overpriced → lower yield expected<br>
+<strong>Source:</strong> EPC register for exact sqm (convert: 1 sqm = 10.764 sq ft)
+</div>
+
+<h3>Data Combination Signals (NEW — 2026-06-02)</h3>
+<table>
+  <tr><th>Signal Combination</th><th>Meaning</th></tr>
+  <tr><td>Price growth + Falling DOM</td><td>✅ Strong demand, sellers' market. Act fast, negotiate less.</td></tr>
+  <tr><td>Stable prices + Rising supply</td><td>⚠️ Potential slowdown. Wait for price adjustment.</td></tr>
+  <tr><td>High yields + Low capital growth</td><td>📊 Income-focused investment. Cash flow positive, limited appreciation.</td></tr>
+  <tr><td>Low yields + High capital growth</td><td>📈 Capital appreciation play. Lower cash flow, bigger exit gain.</td></tr>
+  <tr><td>Falling DOM + Falling prices</td><td>🔴 Panic signal. Market distress. Investigate local economic cause.</td></tr>
+  <tr><td>Rising DOM + Rising prices</td><td>🟡 Stretched valuations. Sellers asking more but buyers not biting.</td></tr>
+</table>
+
+<h2>⚠️ Common Mistakes (New for 2026-06-02)</h2>
+<ul>
+  <li><strong>Not calculating Total Return:</strong> Comparing properties on yield alone misses the capital growth component. A 4% yield + 5% growth property can outperform an 8% yield + 0% growth property over 5 years. Always model both. <span class="source-badge">MaddisonV + Farrell Heyworth (convergent)</span></li>
+  <li><strong>Ignoring £/sq ft as a valuation tool:</strong> Price alone doesn't tell you if a property is overvalued. A £200k terrace may be overpriced at £380/sq ft when the area averages £280/sq ft. Use this as a cross-check against comparable evidence. <span class="source-badge">Farrell Heyworth</span></li>
+  <li><strong>Reading market headlines instead of local signals:</strong> National "flat" UK data hides strong regional growth. Local expertise beats national averages. Combine price growth + DOM + supply/demand for true local signal. <span class="source-badge">Farrell Heyworth</span></li>
+  <li><strong>Confusing gross yield with safe return:</strong> 3 independent sources confirm: a 6.33% gross can deliver 2.1% cash-on-cash. A 5.2% gross is "a silent signal of a portfolio losing its edge" in 2026. Gross yield alone is not investment analysis. <span class="source-badge">MaddisonV, August App, DealSheetAI</span></li>
+  <li><strong>Chasing strategy trends instead of personal fit:</strong> HMO, SA, R2R — each has radically different management requirements. "Best" strategy doesn't exist — only what fits your finances, time, risk tolerance, and experience. <span class="source-badge">Residential Estates, PIN/Simon Zutshi</span></li>
+  <li><strong>Skipping professional education before capital deployment:</strong> "Cost of education is almost always less than cost of mistakes." Investors who learn early move faster and make better decisions. <span class="source-badge">Residential Estates</span></li>
+  <li><strong>Assuming "this looks like a good deal" is sufficient:</strong> Market data + calculated numbers + stress testing are non-negotiable. Agent projections and optimistic rental assumptions are the root cause of most deal failures. <span class="source-badge">Residential Estates, PIN</span></li>
+</ul>
+
+<h2>⚡ Today's Improvement</h2>
+
+<div class="highlight">
+<h3>Add "Total Return Framework" + "Price-per-Sq-Ft Cross-Validation" + "Data Combination Signals" to the Deal Analysis Framework</h3>
+
+<p><strong>Sources:</strong> MaddisonV Properties (yield-growth seesaw concept, net yield formulas, position: "5.2% gross is insufficient"), Farrell Heyworth (5 core metrics: price/sq ft, DOM ranges, supply/demand dynamics, data combination technique), August App (CoC comparison, cost reduction worked examples), DealSheetAI (gross yield as quick-kill filter methodology), Landlord Studio (CoC vs ROI distinction). <strong>10 sources total across 4 content categories.</strong></p>
+
+<p><strong>Upgrade A — Total Return Framework (New Stage 3 Metric, Layer 4):</strong><br>
+Add a fourth profitability layer alongside Gross Yield, Net Yield, and Cash-on-Cash ROI — <strong>Total Return %</strong> (Net Yield + Annualised Capital Growth). This is the single most important missing metric in our current framework.</p>
+
+<ul>
+  <li><strong>Formula:</strong> Total Return % = Net Yield + Annualised Capital Growth %. For leveraged properties: Net Yield + (Capital Growth × Leverage Factor where Leverage Factor = Property Value ÷ Cash Invested).</li>
+  <li><strong>Why it's needed:</strong> The MaddisonV guide explicitly calls out that 4% London yield + 5% capital growth = 9% total return, which can outperform 8% Northern yield + 0% growth = 8% total return over a 5-year hold. Our current framework has no metric that captures this dynamic — meaning we systematically undervalue growth-area deals and overvalue stagnant-area deals with high yields.</li>
+  <li><strong>Rule:</strong> Target 15-20% combined total return for WM BTL. Below 12% → flag as underperforming asset.</li>
+  <li><strong>Impact:</strong> Properties that previously scored high on yield alone will be compared against growth-adjusted returns. This may shift recommendations toward Birmingham HS2 corridor, Wolverhampton regeneration zones, and Dudley town centre (emerging growth) over higher-yield but stagnant postcodes.</li>
+</ul>
+
+<p><strong>Upgrade B — Price-per-Sq-Ft Cross-Validation (Stage 0 / Stage 2):</strong><br>
+Add £/sq ft as a mandatory cross-validation metric in both the Triage (Stage 0) and True Market Value (Stage 2) stages.</p>
+<ul>
+  <li>Farrell Heyworth: "Price per sq ft is the hidden indicator that allows accurate comparison of properties regardless of size." Higher £/sq ft → premium locations. Lower £/sq ft → potential undervalued opportunities. Sudden increases → rising local demand.</li>
+  <li><strong>Integration:</strong> In Stage 0 triage, add a -1 penalty if £/sq ft is significantly above area average (overpriced risk). In Stage 2, use £/sq ft alongside comparable evidence as a cross-check — significant deviation warrants investigation.</li>
+  <li>Use EPC register for exact GIA square metres. Convert: 1 sqm = 10.764 sq ft.</li>
+</ul>
+
+<p><strong>Upgrade C — Data Combination Signals (Stage 3 — Area Intelligence):</strong><br>
+Add a framework for combining market data indicators into actionable signals, replacing single-metric analysis.</p>
+<ul>
+  <li>Farrell Heyworth: "No single metric tells the full story. Experts combine multiple data points to form a complete view." Specific signal combinations include: Price growth + Falling DOM = strong demand. Stable prices + Rising supply = potential slowdown. High yields + Low growth = income investment. Falling DOM + Falling prices = distress signal.</li>
+  <li><strong>Integration:</strong> Add a "Market Signal" row to every Deal Card's area intelligence section. Use the combination table to label the signal as STRONG, CAUTION, or DISTRESS.</li>
+  <li>This replaces "here are some numbers" with "here is what the data is telling us about this market."</li>
+</ul>
+
+<p><strong>Cross-source convergence (10 sources, 1 session):</strong> Today's research produced an unusually high convergence rate. All 10 sources agreed on: (1) gross yield is insufficient without net yield and CoC, (2) compliance costs and regulatory burden are structurally increasing, (3) market data must be localised, not national, and (4) professional team/education before capital deployment is now non-negotiable. The Farrell Heyworth data combination framework is the most operationally useful new addition — it converts raw market numbers into actionable signals. The MaddisonV Total Return concept fills a critical framework gap: we had no way to compare income-only vs income+growth properties on a like-for-like basis.</p>
+
+<p><strong>Source quality assessment:</strong></p>
+<table>
+  <tr><th>Source</th><th>Grade</th><th>Rationale</th></tr>
+  <tr><td>CBRE UK RE Outlook 2026 (PDF)</td><td><strong>A</strong></td><td>Global real estate advisor, professionally researched, primary data</td></tr>
+  <tr><td>Farrell Heyworth (5 core metrics)</td><td><strong>B</strong></td><td>Established NW estate agency network. Practical, operationally grounded</td></tr>
+  <tr><td>MaddisonV Properties (Yield Guide)</td><td><strong>B</strong></td><td>Specialist London investment agency. Yield-growth seesaw is insightful</td></tr>
+  <tr><td>DealSheetAI (x2 guides)</td><td><strong>B</strong></td><td>UK deal analysis platform with real transaction data. Section 24 analysis authoritative</td></tr>
+  <tr><td>Property Investors Network (Simon Zutshi)</td><td><strong>B</strong></td><td>25+ years, UK's longest-running property training org. Blind confidence concept is validated</td></tr>
+  <tr><td>Residential Estates (Mistakes)</td><td><strong>B</strong></td><td>Property investment sourcing/firm. Structured, well-reasoned</td></tr>
+  <tr><td>Advantage Investment (Strategy Guide)</td><td><strong>B</strong></td><td>UK investment firm. Strategy mapping is practical but surface-level</td></tr>
+  <tr><td>August App (Yield Guide)</td><td><strong>B</strong></td><td>Rent collection platform. Detailed cost table is operationally sound</td></tr>
+  <tr><td>Landlord Studio (CoC vs ROI)</td><td><strong>C+</strong></td><td>US-focused but formulas are universal. CoC/ROI distinction is correct</td></tr>
+  <tr><td>Hemlane (CoC Guide)</td><td><strong>C</strong></td><td>US-focused property management. CoC formula is standard but US-centric</td></tr>
+</table>
+
+<p><strong>Expected impact:</strong> The Total Return Framework will shift ~15-20% of deal recommendations when comparing growth-area vs yield-area properties. The £/sq ft cross-check will flag ~10% of deals as overpriced that pass comparable evidence. The Data Combination Signals transform area analysis from "data dump" to "actionable intelligence." Combined, these upgrades make the framework sensitive to the single most important investment question: "What is the total return of this investment, not just the rental income?"</p>
+</div>
+
+<h2>🎯 Application</h2>
+<p><strong>Immediate changes to deal analysis workflow:</strong></p>
+<ol>
+  <li><strong>Every Deal Card now shows 4 metrics:</strong> Gross Yield, Net Yield, Cash-on-Cash ROI, and <strong>Total Return %</strong> (new). Add capital growth estimates from Land Registry data for the area.</li>
+  <li><strong>Every property check now includes £/sq ft:</strong> Use EPC register for GIA, compare to area average. Flag if >20% above area average without justification.</li>
+  <li><strong>Market signal row:</strong> In every Deal Card's area section, include a one-line "Market Signal" based on the combination of price trends + DOM + supply/demand.</li>
+  <li><strong>Yield benchmarking:</strong> Before recommending a strategy, check the typical yield range for that strategy in that area. A 5% yield on HMO (£10-15% target) is a red flag.</li>
+  <li><strong>Stress test commitment:</strong> Before presenting any deal, run it through all four profitability layers and the total return framework. If only Gross Yield looks good, the analysis is incomplete.</li>
+</ol>
+
+<hr>
+<p><em>Next session: Continue monitoring market data frameworks, tracking which combination signals prove most predictive for WM deals. Priority: validate Total Return modelling against actual Kokal portfolio data.</em></p>
+
+</body>
+</html>

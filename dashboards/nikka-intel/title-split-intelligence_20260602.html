@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏘️ Title Split Intelligence — 2 June 2026</title>
+<style>
+:root {
+  --bg: #0d1117; --card: #161b22; --border: #30363d; --accent: #58a6ff;
+  --green: #3fb950; --orange: #d29922; --red: #f85149; --text: #c9d1d9;
+  --text-dim: #8b949e; --gold: #ffd700;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.6; }
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+h1 { font-size: 2rem; margin-bottom: 4px; color: var(--gold); }
+.subtitle { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 24px; }
+.section { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+.section h2 { font-size: 1.2rem; margin-bottom: 16px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.table-scroll { overflow-x: auto; margin: 12px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th { background: #1c2333; color: var(--text-dim); font-weight: 600; text-align: left; padding: 10px 8px; border-bottom: 2px solid var(--border); }
+td { padding: 10px 8px; border-bottom: 1px solid var(--border); }
+tr:hover { background: #1a1f2e; }
+.score-10 { color: var(--green); font-weight: 700; }
+.score-7 { color: var(--orange); font-weight: 700; }
+a { color: var(--accent); }
+.badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-right: 4px; }
+.badge-green { background: #1a3a2a; color: var(--green); }
+.badge-blue { background: #0a2a4a; color: var(--accent); }
+.badge-yellow { background: #3d3d00; color: var(--gold); }
+.badge-red { background: #3d1111; color: var(--red); }
+.card { background: #1c2333; border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+.card h3 { color: #e6edf3; font-size: 1rem; margin-bottom: 6px; }
+.card p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 4px; }
+.card-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(48,54,61,0.5); }
+.action-btn { display: inline-flex; align-items: center; gap: 3px; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 500; text-decoration: none; transition: all 0.15s; }
+.action-btn:hover { transform: translateY(-1px); }
+.action-otm { background: #1a3a2e; color: #22c55e; }
+.action-maps { background: #1e293b; color: #ef4444; }
+.action-sold { background: #1e293b; color: #58a6ff; }
+ul { padding-left: 20px; }
+li { margin-bottom: 4px; }
+hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+.warn-box { background: linear-gradient(135deg, #3d2e00, #3d1111); border: 1px solid var(--orange); border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+.warn-box h3 { color: var(--orange); font-size: 0.95rem; margin-bottom: 6px; }
+.warn-box.green { background: linear-gradient(135deg, #0a3a1a, #0d1117); border-color: var(--green); }
+.warn-box.green h3 { color: var(--green); }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.stat-card { background: #1c2333; border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; }
+.stat-number { font-size: 28px; font-weight: 700; color: var(--gold); }
+.stat-label { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+.related-section { margin-top: 36px; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 24px; }
+.related-card { display: flex; flex-direction: column; gap: 4px; background: #1e293b; border: 1px solid #30363d; border-radius: 10px; padding: 14px; text-decoration: none; transition: all 0.2s; }
+.related-card:hover { border-color: #58a6ff; background: #273548; transform: translateY(-2px); }
+.related-icon { font-size: 24px; }
+.related-title { font-size: 15px; font-weight: 600; color: #e6edf3; }
+.related-desc { font-size: 12px; color: #8b949e; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<h1>🏘️ Title Split Intelligence — 2 June 2026</h1>
+<div class="subtitle">Daily report | Engine run #16 | Data outage: Day 12 (Tavily down) | OnTheMarket curl: ✅ Working</div>
+
+<div class="warn-box">
+  <h3>⚠️ Day 12 — Prolonged Data Source Outage Continues</h3>
+  <p><strong>Tavily down (Day 12).</strong> Rightmove fully blocked. Bond Wolfe mostly behind Cloudflare. <strong>OnTheMarket direct curl</strong> is the sole working data source.</p>
+  <p>Engine in Day 3+ mode: synthetic signals + auction countdown management.</p>
+  <p><strong>⭐⭐ CONFIRMED — Bond Wolfe 9 July 2026 Catalogue Published:</strong> 165 Pershore Rd B15 (9 flats, £595k), 660 Streetsbrook Rd Solihull (£395k, dev plot), 13 Foxyards Rd Tipton DY4 (£99k), 5 Medina Rd Sparkhill B11 (£39k) ALL CONFIRMED.</p>
+</div>
+
+<div class="warn-box green">
+  <h3>🆕 NEW FINDING: Station Road, Acocks Green B27 — 5 Flats on Single Freehold Title</h3>
+  <p><strong>Price: £400,000 | 5 flats (3x 1-bed + 2x studio) | Freehold</strong></p>
+  <p>Apartment block currently configured as 3 one-bed and 2 studio flats on a single freehold title. Tenants in situ. Perfect freehold-to-leasehold play: grant 999-year peppercorn leases and sell/refinance individually. Estimated combined GDV: £350k-£400k (studios at ~£60k, 1-beds at ~£75k). <strong>New find today — no construction, no planning</strong>.</p>
+  <div class="card-actions">
+    <a href="https://www.onthemarket.com/details/19148771/" class="action-btn action-otm" target="_blank">🔗 View on OnTheMarket</a>
+    <a href="https://nethouseprices.com/house-prices/search?search=B27+6DN" class="action-btn action-sold" target="_blank">📊 Nethouseprices B27</a>
+    <a href="https://www.google.com/maps/place/Station+Road,+Acocks+Green,+Birmingham+B27+6DN" class="action-btn action-maps" target="_blank">🗺️ Google Maps</a>
+  </div>
+</div>
+
+<div class="section">
+  <h2>🔥 URGENT — Auction Countdown</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Auction</th><th>Date</th><th>Countdown</th><th>Key Property</th><th>Split Angle</th><th>Action</th></tr>
+    <tr style="background: #3d1111;">
+      <td><strong>🔴 Under The Hammer</strong></td>
+      <td><strong>10 June 2026</strong></td>
+      <td style="color:var(--red);font-weight:700">🔥 8 DAYS</td>
+      <td><a href="https://www.onthemarket.com/details/19281624/" target="_blank" style="color:#58a6ff;font-weight:600">197-198 Wolverhampton St, Dudley DY1</a></td>
+      <td><strong>6 self-contained flats on single freehold title</strong>. £350k guide. £41,640 PA income (12.09% yield). Freehold->6 leasehold titles = £420k-£480k GDV. <strong>No construction, no planning.</strong></td>
+      <td><strong>START PRE-AUCTION DD NOW</strong><br>CON29M, legal pack, finance in principle</td>
+    </tr>
+    <tr>
+      <td><strong>🟡 Bond Wolfe</strong></td>
+      <td><strong>09 July 2026</strong></td>
+      <td style="color:var(--red);font-weight:700">🔴 37 DAYS</td>
+      <td><a href="https://www.onthemarket.com/details/19579933/" target="_blank" style="color:#58a6ff;font-weight:600">165 Pershore Rd, Edgbaston B15</a></td>
+      <td>⭐⭐ <strong>9 self-contained flats on single freehold</strong>. £595k guide. GDV £980k-£1.19M. Peppercorn Law at ~£995/flat.</td>
+      <td>Begin DD. Biggest opportunity to date.</td>
+    </tr>
+  </table>
+  </div>
+</div>
+
+<div class="section">
+  <h2>📋 Today's Title Split Candidates — 2 June 2026</h2>
+  <p style="color:var(--text-dim);margin-bottom:12px;">Scanned 196 properties via 9 OnTheMarket searches. Found 1 new freehold->leasehold candidate, 8 strong split-potential properties, and 85 large houses worth checking.</p>
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Address</th>
+        <th>Property Links</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Split Angle</th>
+        <th>Score</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- NEW TODAY — 2 June 2026 -->
+      <tr>
+        <td>🆕1</td>
+        <td><a href="https://www.onthemarket.com/details/19148771/" target="_blank" style="color:#58a6ff;font-weight:600">Station Road, Acocks Green B27 6DN</a></td>
+        <td>
+          <a href="https://nethouseprices.com/house-prices/search?search=B27+6DN" class="action-btn action-sold" target="_blank" style="font-size:10px">📊Sold</a>
+          <a href="https://www.google.com/maps/place/Station+Road,+Acocks+Green,+Birmingham+B27+6DN" class="action-btn action-maps" target="_blank" style="font-size:10px">🗺️Map</a>
+        </td>
+        <td><strong>5 apartments on single freehold title</strong></td>
+        <td>£400,000</td>
+        <td><strong>Freehold->5 leasehold titles</strong>. 3x1-bed + 2xstudio. Tenants in situ. No construction needed. Peppercorn Law at ~£995/flat.</td>
+        <td class="score-10">8.5/10</td>
+        <td><span class="badge badge-green">✅ NEW — ACTIVE</span></td>
+      </tr>
+      <tr>
+        <td>🆕2</td>
+        <td><a href="https://www.onthemarket.com/details/19328071/" target="_blank" style="color:#58a6ff;font-weight:600">Gate Street, Sedgley DY3</a></td>
+        <td>
+          <a href="https://nethouseprices.com/house-prices/search?search=DY3" class="action-btn action-sold" target="_blank" style="font-size:10px">📊Sold</a>
+          <a href="https://www.google.com/maps/place/Gate+Street,+Sedgley,+DY3" class="action-btn action-maps" target="_blank" style="font-size:10px">🗺️Map</a>
+        </td>
+        <td>5/6 bed end terrace, freehold, auction</td>
+        <td>£280,000</td>
+        <td>5/6 bed with versatile layout. Strong conversion potential to 2-3 units. Auction with buy-it-now option.</td>
+        <td class="score-7">7.5/10</td>
+        <td><span class="badge badge-yellow">🆕 AUCTION</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 style="color:var(--accent);margin:16px 0 12px">Strong Split Potential (Existing Tracked + New)</h3>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Address</th><th>Property Links</th><th>Details</th><th>Score</th></tr>
+    <tr>
+      <td><a href="https://www.onthemarket.com/details/18495131/" target="_blank" style="color:#58a6ff">Kipling Avenue, Wolverhampton WV14</a></td>
+      <td><a href="https://nethouseprices.com/house-prices/search?search=WV14" class="action-btn action-sold" target="_blank" style="font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Kipling+Avenue,+Wolverhampton+WV14" class="action-btn action-maps" target="_blank" style="font-size:10px">🗺️Map</a></td>
+      <td>£270k. 3/4 bed semi. Garage conversion = self-contained space with separate entrance. Strong split potential.</td>
+      <td class="score-7">7.5/10</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.onthemarket.com/details/19172074/" target="_blank" style="color:#58a6ff">Marshall Lake Road, Shirley, Solihull</a></td>
+      <td><a href="https://nethouseprices.com/house-prices/search?search=Solihull" class="action-btn action-sold" target="_blank" style="font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Marshall+Lake+Road,+Shirley,+Solihull" class="action-btn action-maps" target="_blank" style="font-size:10px">🗺️Map</a></td>
+      <td>£415k. 1,600+ sqft with separate annex. Potential to split main house and annex titles.</td>
+      <td class="score-7">7.0/10</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.onthemarket.com/details/19605705/" target="_blank" style="color:#58a6ff">Taylors Lane, Smethwick B67</a></td>
+      <td><a href="https://nethouseprices.com/house-prices/search?search=B67" class="action-btn action-sold" target="_blank" style="font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Taylors+Lane,+Smethwick+B67" class="action-btn action-maps" target="_blank" style="font-size:10px">🗺️Map</a></td>
+      <td>£350k. 1,560 sqft detached. Recently converted/modernised. No chain.</td>
+      <td class="score-7">7.0/10</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.onthemarket.com/details/19617502/" target="_blank" style="color:#58a6ff">Woodshires Road, Solihull B92</a></td>
+      <td><a href="https://nethouseprices.com/house-prices/search?search=B92" class="action-btn action-sold" target="_blank" style="font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Woodshires+Road,+Solihull+B92" class="action-btn action-maps" target="_blank" style="font-size:10px">🗺️Map</a></td>
+      <td>£550k. 1,915 sqft executive detached. Marketed for HMO/supported living. High-value area.</td>
+      <td class="score-7">7.0/10</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.onthemarket.com/details/18084996/" target="_blank" style="color:#58a6ff">Hartland Road, Tipton DY4</a></td>
+      <td><a href="https://nethouseprices.com/house-prices/search?search=DY4" class="action-btn action-sold" target="_blank" style="font-size:10px">📊Sold</a> <a href="https://www.google.com/maps/place/Hartland+Road,+Tipton+DY4" class="action-btn action-maps" target="_blank" style="font-size:10px">🗺️Map</a></td>
+      <td>£430k. Substantially extended 4-bed detached. HMO/split potential.</td>
+      <td class="score-7">6.5/10</td>
+    </tr>
+  </table>
+  </div>
+</div>
+
+<div class="section">
+  <h2>📊 Cumulative Status — 2 June 2026</h2>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-number">41</div><div class="stat-label">Total Opps Found (+2 today)</div></div>
+    <div class="stat-card"><div class="stat-number">21</div><div class="stat-label">Score ≥8.0/10</div></div>
+    <div class="stat-card"><div class="stat-number">12</div><div class="stat-label">Active Right Now</div></div>
+    <div class="stat-card"><div class="stat-number">2</div><div class="stat-label">Upcoming Auctions</div></div>
+    <div class="stat-card"><div class="stat-number">11</div><div class="stat-label">Freehold→Leasehold</div></div>
+    <div class="stat-card"><div class="stat-number">12</div><div class="stat-label">Mixed-Use Candidates</div></div>
+    <div class="stat-card"><div class="stat-number">12</div><div class="stat-label">Days Data Outage</div></div>
+    <div class="stat-card"><div class="stat-number">16</div><div class="stat-label">Engine Runs</div></div>
+  </div>
+  <ul>
+    <li><strong>Total opportunities found (all-time):</strong> 41 (+2 new today)</li>
+    <li><strong>🆕 New today:</strong> Station Road, Acocks Green B27 (5 flats, £400k, freehold→5 leasehold) | Gate Street, Sedgley DY3 (£280k 5/6 bed, auction)</li>
+    <li><strong>Active opportunities right now:</strong> 12+ (score 6+/10)</li>
+    <li><strong>🔥 URGENT — 8 DAYS TO AUCTION:</strong> 197-198 Wolverhampton St DY1 (10 June, 6 flats, £350k). <strong>START DD NOW.</strong></li>
+    <li><strong>⭐⭐ HIGHEST VALUE:</strong> 165 Pershore Road, Edgbaston B15 (9 flats, £595k, Bond Wolfe 9 July — 37 days)</li>
+    <li><strong>✅ Bond Wolfe 9 July catalogue confirmed:</strong> Pershore Rd B15, Streetsbrook Rd B91, Foxyards Rd DY4, Medina Rd B11 — all still available</li>
+    <li><strong>⚠️ 25 Waterloo Road WV1:</strong> Auction was 28 May — result STILL unconfirmed. Manual check needed.</li>
+    <li><strong>Best available NOW:</strong> Station Road Acocks Green B27 (5 flats, £400k) | Great Arthur St Smethwick (£300k, planning granted) | 54 West Bromwich St Walsall (£195k, 2 flats+retail)</li>
+    <li><strong>Data source status:</strong> Tavily DOWN (Day 12). Rightmove blocked. Bond Wolfe mostly blocked. <strong>OnTheMarket ✅ Working.</strong></li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>📅 Auction Calendar — 2 June 2026</h2>
+  <div class="table-scroll">
+  <table>
+    <tr><th>Auction House</th><th>Date</th><th>Countdown</th><th>Key Lots</th><th>Status</th></tr>
+    <tr>
+      <td><strong>🔴 Under The Hammer</strong></td>
+      <td><strong>10 June 2026</strong></td>
+      <td style="color:var(--red);font-weight:700">🔥 8 DAYS</td>
+      <td>🔥 <a href="https://www.onthemarket.com/details/19281624/" target="_blank">197-198 Wolverhampton St DY1</a> — 6 flats, £350k, £41,640 PA</td>
+      <td><span class="badge badge-red">URGENT — START DD</span></td>
+    </tr>
+    <tr>
+      <td><strong>🟡 Bond Wolfe</strong></td>
+      <td><strong>09 July 2026</strong></td>
+      <td style="color:var(--red);font-weight:700">🔴 37 DAYS</td>
+      <td>⭐ <a href="https://www.onthemarket.com/details/19579933/" target="_blank">165 Pershore Rd B15</a> (9 flats, £595k)<br>
+          <a href="https://www.onthemarket.com/details/19580341/" target="_blank">660 Streetsbrook Rd Solihull</a> (£395k, dev plot)<br>
+          <a href="https://www.onthemarket.com/details/19579814/" target="_blank">13 Foxyards Rd Tipton DY4</a> (£99k)<br>
+          <a href="https://www.onthemarket.com/details/19603284/" target="_blank">5 Medina Rd Sparkhill B11</a> (£39k)</td>
+      <td><span class="badge badge-blue">CATALOGUE CONFIRMED</span></td>
+    </tr>
+    <tr>
+      <td>BTG Eddisons</td>
+      <td>28 May 2026</td>
+      <td style="color:var(--orange)">❓ PAST</td>
+      <td>🏚️ 25 Waterloo Road, Wolverhampton WV1 (£350k)</td>
+      <td><span class="badge badge-yellow">RESULT UNKNOWN</span></td>
+    </tr>
+  </table>
+  </div>
+</div>
+
+<div class="section">
+  <h2>⏰ Priority Action Items — 2 June 2026</h2>
+  <ol>
+    <li><strong>🔴 URGENT — PRIORITY 1:</strong> PRE-AUCTION DD FOR 197-198 WOLVERHAMPTON STREET DY1. 8 days to auction (10 June). Legal pack, title search, CON29M, finance in principle, desktop valuation. <a href="https://www.onthemarket.com/details/19281624/" target="_blank">View on OTM</a></li>
+    <li><strong>🔴 THIS WEEK — PRIORITY 2:</strong> Check 25 Waterloo Road WV1 auction result (auction was 28 May, still unconfirmed after 5 days). Contact BTG Eddisons. If unsold, make offer.</li>
+    <li><strong>🔴 THIS WEEK — PRIORITY 3:</strong> Enquire on Station Road, Acocks Green B27 (£400k, 5 flats on single title). Contact Shipways estate agents 0121 721 4339. This is the second-best freehold→leasehold play found.</li>
+    <li><strong>🔴 THIS MONTH — PRIORITY 4:</strong> Pre-auction DD for 165 Pershore Road B15 (9 July, 37 days). Biggest opportunity. Don't let it slip.</li>
+    <li><strong>🟡 THIS WEEK:</strong> Contact agent on 54 West Bromwich St, Walsall (£195k, 2 flats+retail). Verify still available. Tracked since 25 May.</li>
+    <li><strong>🟡 THIS WEEK:</strong> Check Gate Street, Sedgley DY3 (£280k, 5/6 bed, auction). Request legal pack. At £280k for a 5/6 bed with auction buy-it-now, this could work for 2-3 unit split.</li>
+    <li><strong>🟢 INVESTIGATE:</strong> Kipling Avenue, Wolverhampton WV14 (£270k) — self-contained space from garage conversion with separate entrance.</li>
+    <li><strong>🟢 INVESTIGATE:</strong> Marshall Lake Road, Shirley (£415k) — has separate annex, potential to split title.</li>
+    <li><strong>🟢 ONGOING:</strong> Set OnTheMarket alerts for "self-contained flats", "block of flats", "investment" in B, DY, WV postcodes.</li>
+  </ol>
+</div>
+
+<hr>
+
+<div class="related-section">
+  <h2 style="color:#e6edf3;font-size:22px;margin:28px 0 14px">🔗 Related Resources</h2>
+  <div class="related-grid">
+    <a href="index.html" class="related-card">
+      <span class="related-icon">🏠</span>
+      <span class="related-title">Dashboard Home</span>
+      <span class="related-desc">All Nikka Intel reports &amp; tools</span>
+    </a>
+    <a href="title-split-intelligence_MAIN.html" class="related-card">
+      <span class="related-icon">🏘️</span>
+      <span class="related-title">MAIN Report</span>
+      <span class="related-desc">Cumulative title split intelligence</span>
+    </a>
+    <a href="commercial_high_street_MAIN.html" class="related-card">
+      <span class="related-icon">🏪</span>
+      <span class="related-title">Commercial High Street</span>
+      <span class="related-desc">Mixed-use shop+flat intelligence</span>
+    </a>
+    <a href="brrr-sourcer.html" class="related-card">
+      <span class="related-icon">🔥</span>
+      <span class="related-title">BRRR Daily Sourcer</span>
+      <span class="related-desc">Daily BRRR deals scanned</span>
+    </a>
+  </div>
+</div>
+
+<div style="text-align: center; color: var(--text-dim); font-size: 0.8rem; padding: 16px;">
+  <p>🏘️ Hermes Title Split Intelligence Engine — Daily Report 2 June 2026</p>
+  <p>Reports: <a href="title-split-intelligence_20260602.html">2 June 2026</a> | <a href="title-split-intelligence_20260531.html">31 May 2026</a> | <a href="title-split-intelligence_20260528.html">28 May 2026</a></p>
+</div>
+
+</div>
+</body>
+</html>

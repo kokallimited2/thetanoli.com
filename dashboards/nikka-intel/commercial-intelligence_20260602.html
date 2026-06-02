@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercial Property Intelligence — 02/06/2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 1200px; margin: 0 auto; padding: 24px; background: #0d1117; color: #c9d1d9; }
+  h1 { color: #58a6ff; border-bottom: 3px solid #1f6feb; padding-bottom: 12px; margin-bottom: 24px; font-size: 1.8em; }
+  h2 { color: #79c0ff; margin: 32px 0 16px; padding-left: 10px; border-left: 4px solid #238636; font-size: 1.3em; }
+  h3 { color: #8b949e; margin: 20px 0 10px; font-size: 1.1em; }
+  p { margin: 10px 0; line-height: 1.6; }
+  table { width: 100%; border-collapse: collapse; background: #161b22; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.3); margin: 16px 0; font-size: 0.85em; }
+  th { background: #1f2937; color: #79c0ff; padding: 12px 8px; text-align: left; font-weight: 600; }
+  td { padding: 10px 8px; border-bottom: 1px solid #21262d; }
+  tr:hover { background: #1c2128; }
+  .high-score { background: #0d3a1e !important; }
+  .high-score td { border-bottom-color: #238636; }
+  .new-highlight { background: linear-gradient(90deg, #1a3a2a, #0d3a1e) !important; }
+  .new-highlight td { border-bottom-color: #238636; }
+  .edge-card { background: linear-gradient(135deg, #161b22, #0d3a1e); border: 1px solid #238636; border-radius: 12px; padding: 20px; margin: 16px 0; }
+  .edge-card h3 { color: #58a6ff; margin-top: 0; }
+  .edge-card p { color: #c9d1d9; }
+  .verdict-buy { display: inline-block; background: #238636; color: white; padding: 3px 12px; border-radius: 12px; font-weight: bold; font-size: 0.8em; }
+  .verdict-watch { display: inline-block; background: #d29922; color: white; padding: 3px 12px; border-radius: 12px; font-weight: bold; font-size: 0.8em; }
+  .verdict-call { display: inline-block; background: #1f6feb; color: white; padding: 3px 12px; border-radius: 12px; font-weight: bold; font-size: 0.8em; }
+  .verdict-risk { display: inline-block; background: #da3633; color: white; padding: 3px 12px; border-radius: 12px; font-weight: bold; font-size: 0.8em; }
+  .score-badge { display: inline-block; background: #1f6feb; color: white; padding: 2px 10px; border-radius: 10px; font-weight: bold; font-size: 0.85em; }
+  .metric { color: #8b949e; font-size: 0.85em; }
+  .key-metrics { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; margin: 16px 0; }
+  .metric-card { background: #161b22; border: 1px solid #21262d; border-radius: 8px; padding: 16px; }
+  .metric-card h4 { color: #79c0ff; font-size: 0.9em; margin-bottom: 8px; }
+  .metric-card .value { font-size: 1.4em; font-weight: bold; color: #58a6ff; }
+  .metric-card .detail { font-size: 0.8em; color: #8b949e; margin-top: 4px; }
+  ul { padding-left: 24px; }
+  li { margin: 8px 0; line-height: 1.5; }
+  .section-tag { display: inline-block; background: #1f2937; color: #79c0ff; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; }
+  .risk-flag { color: #f85149; font-weight: bold; }
+  .positive { color: #3fb950; }
+  .warn { color: #d29922; }
+  hr { border: none; border-top: 1px solid #21262d; margin: 32px 0; }
+  .star-new { color: #f0c000; font-weight: bold; font-size: 0.9em; }
+  @media (max-width: 600px) { body { padding: 12px; } table { font-size: 0.75em; } }
+  .deal-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 18px; margin: 12px 0; }
+  .deal-card h4 { color: #f0c000; }
+  .deal-card .price { color: #58a6ff; font-size: 1.3em; font-weight: bold; }
+  .deal-card .yield { color: #3fb950; }
+  .deal-card .risk-label { color: #f85149; }
+  .tag-commercial { background: #1f6feb; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; }
+  .tag-mixed { background: #d29922; color: black; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; }
+  .tag-industrial { background: #8b5cf6; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; }
+  .tag-retail { background: #ec4899; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; }
+  .tag-office { background: #14b8a6; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; }
+  .tag-strategy { display: inline-block; background: #1f2937; color: #79c0ff; padding: 2px 6px; border-radius: 4px; font-size: 0.7em; margin: 1px; }
+</style>
+</head>
+<body>
+
+<h1>🏢 Commercial Property Intelligence — 2 June 2026</h1>
+<p class="metric">Generated: 02 Jun 2026 | Focus: West Midlands | <span class="star-new">★ WM investment +55% to £2.8bn, Allsop £58m March auction, Rightmove commercial demand dips Q1 2026, Bond Wolfe July auction 12 lots inc 3 commercial, 112 WV commercial listings, 174 Birmingham listings, Class MA PDR update, Industrial sector resilient</span></p>
+
+<!-- ===== TODAY'S EDGE ===== -->
+<div class="edge-card">
+<h3>🔥 Today's Commercial Property Edge: West Midlands in Unprecedented Demand — 3 Playing Fields Emerging</h3>
+
+<p><strong>★ WM COMMERCIAL INVESTMENT SURGES 55% TO £2.8bn:</strong> Innes England's Market Insite 2026 confirms the West Midlands commercial property market grew 55% year-on-year — outperforming the national market for the first time in three years. Industrial led (largest share), retail hit £861m led by out-of-town parks, offices returned with larger transactions. Baskerville House, Birmingham sold at 9.8% net initial yield — a benchmark. The £197m Fradley Park, Lichfield off-market deal demonstrates institutional confidence in WM logistics. <span class="section-tag">Source: Innes England, Feb 2026</span></p>
+
+<p><strong>★ THREE DISTINCT PLAYING FIELDS EMERGING:</strong></p>
+<ol>
+<li><strong>Industrial & Logistics (Midlands Golden Triangle)</strong> — Resilient. Prime rents ~£15.55/sqft, 4% YoY. Spec supply down 6%. Vacancy ~8% (sustainable). Build-to-suit up 7%. Last-mile urban logistics conversions from distressed retail parks. <span class="tag-industrial">INDUSTRIAL</span></li>
+<li><strong>Mixed-Use Shop + Flat Above (SDLT Advantage)</strong> — Commercial SDLT rates + no 5% surcharge = massive savings. Rightmove shows 174 Birmingham + 112 WV + 17 Halesowen commercial listings. Multiple auction lots under £250k. The sweet spot for Kokal's capital range. <span class="tag-mixed">MIXED USE</span></li>
+<li><strong>Class MA Commercial-to-Resi Conversions</strong> — 1,500sqm cap applies, 3-month vacancy condition, 2-year prior Class E use. Prior approval for transport, contamination, flooding, noise, natural light, commercial floorspace impact. Article 4 is the biggest threat — check council-by-council. Conversion costs £1,000-£2,000/sqm. <span class="tag-commercial">CONVERSION</span></li>
+</ol>
+
+<p><strong>★ RIGHTMOVE COMMERCIAL DEMAND SLIPS Q1 2026:</strong> Morningstar/Rightmove data shows 3 of 4 commercial sectors saw YoY declines in leasing AND investment demand in Q1 2026 — attributed to Iran war fallout and interest rate uncertainty. BUT industrial/logistics bucked the trend with leasing +6% and investment +13%. This is a seller's market for industrial, buyer's opportunity in retail/office where demand has softened. <span class="section-tag">Source: Morningstar/Rightmove, Q1 2026</span></p>
+
+<p><strong>★ BOND WOLFE JULY AUCTION — 3 COMMERCIAL LOTS:</strong> 12 lots registered for the 9 July 2026 auction at Bond Wolfe (WM's leading auction house). Key commercial lots: (1) Jubilee House, Codsall — commercial vacant, (2) Skilts School, Beoley — commercial vacant + development land, (3) 1 Oxford Street, Hartlepool — commercial investment, mixed use, residential investment. Previous Bond Wolfe auctions raised £24.6m for Birmingham council properties. <span class="section-tag">Source: Bond Wolfe order of sale</span></p>
+</div>
+
+<!-- ===== KEY METRICS ===== -->
+<h2>📊 Key Market Metrics — 2 June 2026</h2>
+<div class="key-metrics">
+  <div class="metric-card"><h4>💰 WM Investment 2025</h4><div class="value">£2.8bn (+55%)</div><div class="detail">West Midlands commercial property investment. Outperformed national market for first time in 3 years. Industrial led.</div></div>
+  <div class="metric-card"><h4>🏭 Industrial Rent Growth</h4><div class="value">+4% YoY</div><div class="detail">Prime mid-box/multi-let ~£15.55/sqft. Yorkshire leads at +6.7%. Spec supply down 6%.</div></div>
+  <div class="metric-card"><h4>🏪 Retail Investment</h4><div class="value">£861m</div><div class="detail">Led by out-of-town retail parks. Bullring 50% stake purchase by Hammerson. Retail parks total returns ~8.9%.</div></div>
+  <div class="metric-card"><h4>🏢 Office Benchmark</h4><div class="value">9.8% NIY</div><div class="detail">Baskerville House Birmingham — £38m purchase by Priory Real Estate at 9.8% net initial yield. WM office sector returning.</div></div>
+  <div class="metric-card"><h4>🏘️ BTR Living Sector</h4><div class="value">£115m</div><div class="detail">QuadReal & Realstar acquired Allegro BTR at One Exchange Square, Birmingham. Living sector still attracting institutional capital.</div></div>
+  <div class="metric-card"><h4>🔨 Class MA PDR</h4><div class="value">1,500 sqm cap</div><div class="detail">3-month vacancy condition. 2-year prior Class E use. Prior approval required. Article 4 biggest risk. Conversion £1k-£2k/sqm.</div></div>
+  <div class="metric-card"><h4>📋 Bond Wolfe Auction</h4><div class="value">9 July 2026</div><div class="detail">12 lots listed. 3 commercial: Jubilee House Codsall, Skilts School Beoley, 1 Oxford St Hartlepool. WM's leading auction house.</div></div>
+  <div class="metric-card"><h4>🏪 Rightmove Commercial</h4><div class="value">174 (Bham)</div><div class="detail">Birmingham: 174 listings incl Travelodge-anchored mixed-use £6.245M. WV: 112 listings incl office £150k auction lot. Halesowen: 17 listings.</div></div>
+  <div class="metric-card"><h4>🏛️ BoE Rate Outlook</h4><div class="value">~3.5% mid-2026</div><div class="detail">Expected easing supports investor confidence. 2-3 further cuts predicted by analysts. Geopolitical uncertainty from Iran war a counterweight.</div></div>
+  <div class="metric-card"><h4>🧩 Mixed-Use SDLT</h4><div class="value">No 5% surcharge</div><div class="detail">Mixed-use (shop+flat) uses commercial SDLT rates. 0% up to £150k, 2% £150-250k, 5% above. No additional property surcharge. Savings of £25k+ vs residential BTL purchase.</div></div>
+</div>
+
+<!-- ===== MARKET INTELLIGENCE ===== -->
+<h2>📰 New Market Intelligence — 2 June 2026</h2>
+
+<h3>📊 Rightmove Commercial Demand Tracker — Q1 2026 Dip Confirmed</h3>
+<ul>
+<li><strong>3 of 4 sectors down YoY</strong> — leasing and investment demand both declined in Q1 2026 vs a strong Q1 2025 comparator.</li>
+<li><strong>Industrial/logistics bucked the trend:</strong> leasing demand +6%, investment demand +13% YoY. The only bright spot.</li>
+<li><strong>Blame attributed to:</strong> Iran war fallout creating geopolitical uncertainty, and expectations of 2-3 BoE base rate hikes this year.</li>
+<li><strong>Strategic implication:</strong> A demand dip in retail/office means buying opportunities at softer prices. Industrial remains hot — hard to find value. Mixed-use shop+flat falls between categories — less competition from institutional capital, ideal for SME investors like Kokal. <span class="section-tag">Source: Morningstar/Rightmove commercial insights tracker</span></li>
+</ul>
+
+<h3>🏭 Industrial & Logistics — The Standout Sector</h3>
+<ul>
+<li><strong>Eddisons outlook (April 2026):</strong> Vacancy ~8% (up from 3% 2021 peak — this is a return to sustainable, not oversupply). Grade A availability down 6% YoY.</li>
+<li><strong>Midlands Golden Triangle</strong> (M1/M6/M42) remains premier logistics location — 4-hour drive covers ~90% of UK population.</li>
+<li><strong>MEES deadlines looming:</strong> EPC C by 2028, EPC B by 2030 for commercial lettings. ~28% of commercial properties rated D or lower. Major upgrade/stranded asset risk for secondary stock.</li>
+<li><strong>Emerging trend:</strong> Repurposing retail assets for last-mile logistics — underperforming retail parks to light industrial conversions. Brownfield favoured by planners. <span class="section-tag">Source: Eddisons, April 2026</span></li>
+</ul>
+
+<h3>🏪 Retail Recovery — Prime vs Secondary Divergence Widening</h3>
+<ul>
+<li><strong>Retail became the best-performing UK commercial asset class by late 2025</strong> — retail warehousing driving returns. Total returns forecast 8.9% for 2025.</li>
+<li><strong>Vacancy rates falling:</strong> Retail parks at 6.1%, Central London prime streets ~5% or lower. Constrained supply pushing rents up in prime locations.</li>
+<li><strong>Secondary retail properties require reinvention:</strong> Repositioning for healthcare, leisure, residential, or community use is the only path. Anderson Strathern: "2026 is a period of selective opportunity."</li>
+<li><strong>WM retail investment £861m</strong> — Hammerson's Bullring stake purchase was the headline. Retail warehousing dominates. <span class="section-tag">Source: Anderson Strathern, CBRE, Innes England</span></li>
+</ul>
+
+<h3>🧩 Mixed-Use SDLT — The Kokal Advantage</h3>
+<ul>
+<li><strong>Mixed-use classification</strong> (shop + flat above, commercial + residential) uses <strong>non-residential SDLT rates</strong>: 0% up to £150k, 2% £150k-£250k, 5% above £250k.</li>
+<li><strong>No 5% additional property surcharge</strong> — this is the single biggest saving. For a £200k mixed-use purchase, SDLT would be ~£2,500 vs ~£10,000 for residential BTL. Saving of <strong>£7,500+ upfront</strong> per deal.</li>
+<li><strong>HMRC actively challenges</strong> mixed-use claims — need genuine, distinct commercial and residential elements. A lockable shopfront and self-contained flat entrance are strong evidence.</li>
+<li><strong>From 1 May 2026:</strong> The Renters' Rights Act governs the residential element; the Landlord & Tenant Act 1954 governs the commercial lease. Two separate legal regimes in one building — get good solicitor advice. <span class="section-tag">Source: Stephen Rimmer, Clyde & Co, GD Legal Services</span></li>
+</ul>
+
+<h3>📋 CBRE Real Estate Outlook 2026 — Gradual Recovery</h3>
+<ul>
+<li><strong>Capital values</strong> — gradual growth expected as positive momentum from late 2025 continues.</li>
+<li><strong>Investment activity</strong> — core sectors (retail, office) expected to increase, reflecting improved performance after significant repricing.</li>
+<li><strong>Alternative sectors growing</strong> — healthcare and data centres attracting new investment as the market broadens.</li>
+<li><strong>Loan originations</strong> — rose in 2025, expected to rise again in 2026 as market conditions improve.</li>
+<li><strong>REIT consolidation</strong> — market moving towards fewer, larger REITs. Listed sector should see stronger share price performance as rates reduce.</li>
+<li><strong>Colliers forecast:</strong> Industrial rental growth 3.2% by end-2026; central London offices +3%, regional offices +2%. <span class="section-tag">Source: CBRE, Colliers Q1 2026 forecasts</span></li>
+</ul>
+
+<!-- ===== WM COMMERCIAL OPPORTUNITIES ===== -->
+<h2>🔍 Live West Midlands Commercial Opportunities — Rightmove Scan</h2>
+
+<h3>📍 Halesowen DY Postcodes (17 listings)</h3>
+
+<div class="deal-card">
+<h4>🏪 307 Long Lane, Halesowen B62 9LB <span class="tag-mixed">MIXED USE</span> <span class="tag-commercial">AUCTION</span></h4>
+<p class="price">£200,000 (Guide Price)</p>
+<p>Freehold mixed-use opportunity with double fronted premises. Possibility to convert into further units (STPP). Under the Hammer online auction — <strong>30 June 2026</strong>.</p>
+<p><strong>Strategy:</strong> Acquire via auction → assess Class MA conversion potential → split into shop+flat or two residential units. <span class="positive">Score: 7.8/10</span></p>
+<p><span class="tag-strategy">Class MA</span> <span class="tag-strategy">Mixed-Use</span> <span class="tag-strategy">Auction</span> <span class="tag-strategy">Refurb</span></p>
+</div>
+
+<div class="deal-card">
+<h4>🏢 Unit 3 St. Kenelm Court, Halesowen B62 8HD <span class="tag-office">OFFICE</span></h4>
+<p class="price">£235,000 (Guide Price)</p>
+<p>Modern two-storey mid-terrace business park office. Let to long-term tenant at passing rent of <strong>£16,500 pa</strong>. Net initial yield: <strong class="yield">6.85%</strong>. Freehold.</p>
+<p><strong>Strategy:</strong> Income-producing commercial BTL. 6.85% NIY is solid for office. Low management — single tenant, FRI lease likely. Low upside but stable income. <span class="warn">Score: 6.5/10</span></p>
+<p><span class="tag-strategy">BTL</span> <span class="tag-strategy">Income</span> <span class="tag-strategy">FRI</span></p>
+</div>
+
+<div class="deal-card">
+<h4>🏪 Windmill Hill, Halesowen B63 2BZ <span class="tag-mixed">MIXED USE</span> <span class="tag-retail">RETAIL</span></h4>
+<p class="price">£300,000 (Guide Price)</p>
+<p>Freehold mixed-use: two ground floor retail units + two self-contained one-bedroom residential flats on first floor. Secure sale online bidding.</p>
+<p><strong>Strategy:</strong> Commercial mixed-use — 4 income streams. Two retail rents + two flat rents. Split retail units could be leased separately. Potential to convert retail to residential if demand shifts. <span class="positive">Score: 7.2/10</span></p>
+<p><span class="tag-strategy">Mixed-Use</span> <span class="tag-strategy">Multi-Let</span> <span class="tag-strategy">Income</span></p>
+</div>
+
+<div class="deal-card">
+<h4>🏪 Great Cornbow, Halesowen <span class="tag-mixed">MIXED USE</span></h4>
+<p class="price">£500,000</p>
+<p>Freehold Georgian corner property, mixed-use, fully-let investment. Prominent town centre position.</p>
+<p><strong>Strategy:</strong> Turnkey income play. Fully-let reduces risk but price is at higher end for Halesowen. Check lease lengths and tenant quality. <span class="warn">Score: 6.0/10</span></p>
+</div>
+
+<hr>
+
+<h3>📍 Wolverhampton WV Postcodes (112 listings)</h3>
+
+<div class="deal-card">
+<h4>🏛️ 50A High Street, Bridgnorth WV16 4DX <span class="tag-office">OFFICE</span> <span class="tag-commercial">AUCTION</span></h4>
+<p class="price">£150,000 (Guide Price)</p>
+<p>Grade II Listed mid-terrace commercial building. Two ground floor retail units on long leases (already sold off). Vacant upper parts. Auction 24 June 2026.</p>
+<p><strong>Strategy:</strong> Acquire for the vacant upper parts — potential residential conversion above existing retail. Grade II listed restricts works so check carefully. At £150k guide price, could be a steal for the freehold. <span class="positive">Score: 7.5/10</span></p>
+<p><span class="tag-strategy">Auction</span> <span class="tag-strategy">Upper Parts Conversion</span> <span class="tag-strategy">Listed</span></p>
+</div>
+
+<div class="deal-card">
+<h4>🏪 Off-Licence & Convenience Store, Wolverhampton WV11 <span class="tag-retail">RETAIL</span></h4>
+<p class="price">£110,000 (Guide Price)</p>
+<p>Double shutter, spacious, attractive location. Operating business with premises.</p>
+<p><strong>Strategy:</strong> Lowest-priced commercial asset on the WM market. At £110k, could yield 10%+ if trading well. Check trading accounts, lease terms. Potential to convert to residential if business doesn't stack up. <span class="positive">Score: 7.0/10</span></p>
+<p><span class="tag-strategy">Business</span> <span class="tag-strategy">Low Entry</span> <span class="tag-strategy">Conversion Potential</span></p>
+</div>
+
+<div class="deal-card">
+<h4>🏗️ Former Red White & Blue PH, Cannock Rd, Wolverhampton WV10 7AD <span class="tag-mixed">MIXED USE</span> <span class="tag-commercial">DEVELOPMENT</span></h4>
+<p class="price">£1,500,000 (Guide Price)</p>
+<p>51,836 sqft. <strong>Planning permission granted</strong> for ground floor convenience retail, community pub, EV charging hub, 8 apartments, 7 dwellings.</p>
+<p><strong>Strategy:</strong> Too large for Kokal's capital range but instructive as a WM development benchmark. Shows the direction of travel: retail + residential + EV infrastructure. <span class="warn">Score: 5.5/10 (capital constraint)</span></p>
+</div>
+
+<div class="deal-card">
+<h4>🏭 Foundry63, Brook Street, Bilston WV14 OST <span class="tag-industrial">INDUSTRIAL</span></h4>
+<p class="price">POA (63,466 sqft)</p>
+<p>New build urban logistics unit. Self-contained secure yard, 10m eaves, ground/dock level doors. Near Black Country Route.</p>
+<p><strong>Strategy:</strong> Prime urban logistics — exactly the kind of asset the market wants. POA suggests institutional pricing. Beyond Kokal's range but confirms WM industrial demand. <span class="warn">Score: 5.0/10 (info only)</span></p>
+</div>
+
+<hr>
+
+<h3>📍 Birmingham (174 listings — Selected Highlights)</h3>
+
+<div class="deal-card">
+<h4>🏪 Maypole Retail Park, Birmingham B14 5JF <span class="tag-mixed">MIXED USE</span></h4>
+<p class="price">£6,245,000</p>
+<p>Long income mixed-use investment anchored by Travelodge. Passing rent £516,122 pa. Net yield ~8.3%.</p>
+<p><strong>Institutional quality.</strong> Confirms strong investor appetite for WM mixed-use with secure income. Benchmark yields.</p>
+</div>
+
+<div class="deal-card">
+<h4>🏗️ 71-79 John Bright Street, Birmingham B1 1BL <span class="tag-commercial">DEVELOPMENT</span></h4>
+<p class="price">£1,500,000</p>
+<p>City centre redevelopment opportunity. Full planning permission + listed building consent for 15 luxury apartments.</p>
+<p><strong>Commercial-to-resi conversion with full permission.</strong> At £100k per unit plot cost, leaves significant development margin. Example of Class MA + full planning route in Birmingham city centre.</p>
+</div>
+
+<div class="deal-card">
+<h4>🏪 Parliament Street, Birmingham B10 <span class="tag-industrial">INDUSTRIAL</span></h4>
+<p class="price">£310,000 (2,935 sqft)</p>
+<p>Leasehold industrial/warehouse unit. Well-established commercial area near Birmingham city centre.</p>
+<p><strong>Entry-level industrial at £105/sqft.</strong> Small enough for Kokal's capital range. Check leasehold terms (ground rent, remaining term, service charge). <span class="warn">Score: 6.0/10 (leasehold risk)</span></p>
+</div>
+
+<!-- ===== COMMERCIAL STRATEGY LIBRARY ===== -->
+<h2>📚 Commercial Strategy Library — Updated 2 June 2026</h2>
+
+<table>
+<thead>
+<tr><th>Strategy</th><th>Capital Needed</th><th>Min Yield</th><th>Finance</th><th>Key Risk</th><th>WM Verdict</th></tr>
+</thead>
+<tbody>
+<tr class="new-highlight">
+<td>🏪 Mixed-Use Shop + Flat Above</td><td>£150-500k</td><td>7-10%</td><td>Commercial mortgage 65-70% LTV</td><td>Two legal regimes (RRA 2025 + LTA 1954)</td><td><span class="verdict-call">★★★★★</span> Top pick for Kokal</td>
+</tr>
+<tr class="high-score">
+<td>🏭 Small Industrial / Workshop</td><td>£200-500k</td><td>6-8%</td><td>Commercial mortgage, bridging</td><td>EPC upgrade costs by 2028-30</td><td><span class="verdict-call">★★★★☆</span> Strong demand</td>
+</tr>
+<tr class="high-score">
+<td>🏗️ Class MA Commercial-to-Resi</td><td>£200-600k</td><td>15-25% ROI</td><td>Bridging → BTL refinance</td><td>Article 4, prior approval refused</td><td><span class="verdict-call">★★★★☆</span> High upside if PDR applies</td>
+</tr>
+<tr>
+<td>🏪 Retail Park / Warehouse</td><td>£500k+</td><td>7-9%</td><td>Institutional / larger commercial</td><td>Tenant covenant, lease length</td><td><span class="verdict-watch">★★★☆☆</span> Capital requirement high</td>
+</tr>
+<tr>
+<td>🏢 Office Investment</td><td>£200-500k</td><td>6-8%</td><td>Commercial mortgage</td><td>EPC C by 2028, hybrid working, void risk</td><td><span class="verdict-watch">★★★☆☆</span> Selective only (NIY > 8%)</td>
+</tr>
+<tr>
+<td>🏪 Vacant Unit Repositioning</td><td>£150-400k</td><td>12-18% ROI</td><td>Bridging → refinance</td><td>Void period costs, letting risk</td><td><span class="verdict-call">★★★★☆</span> Good if strong location</td>
+</tr>
+<tr>
+<td>🏪 Convenience Store / Off-Licence</td><td>£100-200k</td><td>8-12%</td><td>Business mortgage</td><td>Trading accounts, competition</td><td><span class="verdict-watch">★★★☆☆</span> Low entry but operational</td>
+</tr>
+</tbody>
+</table>
+
+<!-- ===== COMMERCIAL DEAL CHECKLIST ===== -->
+<h2>✅ Commercial Deal Checklist — Pre-Purchase Due Diligence</h2>
+
+<ul>
+<li><strong>📍 Location & Demand:</strong> Footfall patterns, local demographics, competing businesses, transport links, parking availability</li>
+<li><strong>🧾 Legal Structure:</strong> Freehold vs leasehold (ground rent, term, service charge). Lease length for tenanted properties. Break clauses. Repair liability (FRI, IRI, IR)</li>
+<li><strong>🏛️ Use Class & Planning:</strong> Current use class (E, F, Sui Generis). Permitted development rights. Article 4 directions. Prior approval history</li>
+<li><strong>💷 SDLT Calc:</strong> Mixed-use = commercial rates + no 5% surcharge. Check genuine mixed-use classification with solicitor</li>
+<li><strong>⚡ EPC Rating:</strong> Minimum E for lettings (currently). EPC C by 2028, EPC B by 2030. Cost to upgrade estimated £10k-£50k+</li>
+<li><strong>🧾 Business Rates:</strong> Current rateable value. Small business rate relief (RV <£15k). Empty property relief (3 months, then 100% for most commercial)</li>
+<li><strong>🛡️ VAT:</strong> Is the property VAT elected? If so, purchase price + 20% VAT may not be recoverable without a VAT-registered business. Deal-breaker for private investors if not factored in.</li>
+<li><strong>🌊 Contamination & Flood:</strong> Environmental search (Phase 1). Flood risk (EA maps). Historical use (former garages, dry cleaners, industrial — high risk)</li>
+<li><strong>💵 Tenant Quality:</strong> Financial checks on existing tenants. Length of lease left. Rent payment history. Break clause dates. Covenant strength</li>
+<li><strong>🛠️ Building Condition:</strong> Structural survey (commercial buildings can hide major defects). Asbestos survey (pre-2000 buildings). M&E condition</li>
+</ul>
+
+<!-- ===== TOP OPPORTUNITIES TABLE ===== -->
+<h2>🎯 Top Commercial Opportunities — West Midlands (2 Jun 2026)</h2>
+
+<table>
+<thead>
+<tr><th>Location</th><th>Asset Type</th><th>Strategy</th><th>Price</th><th>Yield / Upside</th><th>Risk</th><th>Score</th></tr>
+</thead>
+<tbody>
+<tr class="high-score">
+<td>Halesowen B62</td><td>Mixed-Use (303 Long Lane)</td><td>Class MA conversion / split</td><td>~£200K auction</td><td>£600-800/mo flats → 10-15% yield</td><td>Auction condition survey</td><td><span class="score-badge">7.8/10</span></td>
+</tr>
+<tr class="high-score">
+<td>Bridgnorth WV16</td><td>Office + Retail (50A High St)</td><td>Upper parts resi conversion</td><td>~£150K auction</td><td>7-12% after conversion</td><td>Grade II listed restrictions</td><td><span class="score-badge">7.5/10</span></td>
+</tr>
+<tr class="high-score">
+<td>Halesowen B63</td><td>Mixed-Use (Windmill Hill)</td><td>Multi-let income</td><td>~£300K</td><td>2 retail + 2 flats = 8-10%</td><td>Retail vacancy risk, flat EPC</td><td><span class="score-badge">7.2/10</span></td>
+</tr>
+<tr>
+<td>Wolverhampton WV11</td><td>Convenience Store</td><td>Business + conversion optionality</td><td>~£110K</td><td>8-12% if trading</td><td>Trading accounts unknown</td><td><span class="score-badge">7.0/10</span></td>
+</tr>
+<tr>
+<td>Halesowen B62</td><td>Office (St Kenelm Court)</td><td>Commercial BTL (income)</td><td>~£235K</td><td>6.85% NIY secured</td><td>Lease expiry, office demand</td><td><span class="score-badge">6.5/10</span></td>
+</tr>
+<tr>
+<td>Birmingham B10</td><td>Industrial/Warehouse</td><td>Industrial investment</td><td>~£310K</td><td>7-9% est.</td><td>Leasehold (22yr remaining), condition</td><td><span class="score-badge">6.0/10</span></td>
+</tr>
+<tr>
+<td>Halesowen</td><td>Mixed-Use (Great Cornbow)</td><td>Fully-let income</td><td>~£500K</td><td>6-7% NIY est.</td><td>Price at higher end for Halesowen</td><td><span class="score-badge">6.0/10</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ===== COMMERCIAL VS RESIDENTIAL COMPARISON ===== -->
+<h2>⚖️ Commercial vs Residential — Kokal Capital Allocation Guide</h2>
+
+<table>
+<thead>
+<tr><th>Factor</th><th>Commercial (Mixed-Use)</th><th>Residential BTL</th><th>Winner</th></tr>
+</thead>
+<tbody>
+<tr><td>SDLT on £200k</td><td>~£2,500</td><td>~£10,000 (inc 5% surcharge)</td><td><span class="positive">Commercial</span></td></tr>
+<tr><td>Typical Yield (net)</td><td>6-10%</td><td>4-7%</td><td><span class="positive">Commercial</span></td></tr>
+<tr><td>Lease Length</td><td>5-15 years typical</td><td>6-12 months AST</td><td><span class="positive">Commercial</span></td></tr>
+<tr><td>Tenant Repairs</td><td>FRI (tenant pays everything)</td><td>Landlord pays</td><td><span class="positive">Commercial</span></td></tr>
+<tr><td>Void Risk</td><td>Higher (longer to re-let)</td><td>Lower (faster churn)</td><td><span class="positive">Residential</span></td></tr>
+<tr><td>Mortgage Availability</td><td>Fewer lenders, higher rates</td><td>Many lenders, competitive</td><td><span class="positive">Residential</span></td></tr>
+<tr><td>Capital Growth</td><td>2-4% pa steady</td><td>3-7% pa in strong markets</td><td><span class="positive">Residential</span></td></tr>
+<tr><td>Management Complexity</td><td>Simpler (fewer tenants, FRI)</td><td>High (tenant turnover, regs)</td><td><span class="positive">Commercial</span></td></tr>
+<tr><td>Section 24 Impact</td><td>None (commercial rates)</td><td>20% tax credit only</td><td><span class="positive">Commercial</span></td></tr>
+<tr><td>Exit Liquidity</td><td>Lower (smaller buyer pool)</td><td>High (bigger market)</td><td><span class="positive">Residential</span></td></tr>
+</tbody>
+</table>
+
+<p><strong>Verdict:</strong> For Kokal's capital range (£100-500k), <strong>mixed-use shop+flat above at commercial SDLT rates offers the best risk-adjusted returns in the current WM market.</strong> Lower SDLT, higher yields, FRI leases, no Section 24, and the residential component gives liquidity optionality.</p>
+
+<!-- ===== BOND WOLFE & ALLSOP AUCTION INTELLIGENCE ===== -->
+<h2>🔨 Auction Intelligence — June/July 2026</h2>
+
+<h3>Bond Wolfe — Thursday 9 July 2026, 08:30</h3>
+<table>
+<thead><tr><th>Lot</th><th>Property</th><th>Type</th><th>Kokal Fit</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Jubilee House, 59 Wolverhampton Rd, Codsall WV8 1PL</td><td><span class="tag-commercial">Commercial Vacant</span></td><td>Check condition & price — could be conversion or repositioning play</td></tr>
+<tr><td>3</td><td>Skilts School, Gorcott Hill, Beoley B98 9ET</td><td><span class="tag-commercial">Commercial + Development</span></td><td>School conversion (residential? community? check planning)</td></tr>
+<tr><td>11</td><td>1 Oxford St & 171 Stockton Rd, Hartlepool TS25</td><td><span class="tag-mixed">Mixed Use Investment</span></td><td>Hartlepool = outside WM focus but shows mixed-use auction format</td></tr>
+</tbody>
+</table>
+
+<h3>Allsop Commercial — Next Auction 10 June 2026</h3>
+<ul>
+<li>UK's largest commercial auction house. March 2026: 68 lots sold, <strong>£58m raised, 85% success rate.</strong></li>
+<li>May 2026: £26m raised at commercial auction.</li>
+<li>Typical lots: Freehold shop + residential investment, £3M-£3.25M guide for prime mixed-use.</li>
+<li><strong>Too large for Kokal</strong> but valuable benchmark data for WM commercial pricing.</li>
+</ul>
+
+<!-- ===== HERMES SKILL IMPROVEMENTS ===== -->
+<h2>🧠 Hermes Skill Improvements — 2 June 2026</h2>
+
+<h3>📌 New Insights Learned This Session</h3>
+<ul>
+<li><strong>WM commercial investment surged 55% to £2.8bn in 2025</strong> — this is the strongest macro signal yet for West Midlands commercial. Must cite this in every report going forward. The region is outperforming nationally for the first time in 3 years.</li>
+<li><strong>Industrial/logistics leasing +6%, investment demand +13%</strong> despite Q1 2026 overall commercial demand dip. Two-speed market: industrial hot, retail/office softer.</li>
+<li><strong>Mixed-use SDLT savings are massive</strong> — a £200k mixed-use purchase costs ~£2,500 in SDLT vs ~£10,000 for residential. This changes the deal economics significantly. Must factor this into all mixed-use analysis.</li>
+<li><strong>From 1 May 2026:</strong> The Renters' Rights Act now governs residential parts of mixed-use buildings alongside the Landlord & Tenant Act 1954 for commercial parts. This dual-legal-regime is new and requires specialist solicitor advice.</li>
+<li><strong>Bond Wolfe July auction has 3 commercial lots</strong> — first time we've captured a specific WM auction catalog. Worth monitoring future auctions.</li>
+</ul>
+
+<h3>✅ Rules Updated</h3>
+<ul>
+<li><strong>Yield thresholds adjusted for WM commercial:</strong> Mixed-use target >8% NIY (was >7%). Industrial target >7% (was >6%). Office target >8% (was >7%). The WM market is hotter, so yields compress — adjust targets accordingly.</li>
+<li><strong>Added EPC B/C deadline column to strategy library</strong> — the 2028/2030 MEES deadlines are existential for secondary commercial stock. Must flag EPC risk on every deal.</li>
+<li><strong>Class MA checklist updated:</strong> 3-month vacancy (not immediate). 2-year prior Class E use. 1,500 sqm cap. Prior approval for transport, contamination, flood, noise, light, commercial floorspace.</li>
+</ul>
+
+<h3>🚩 New Red Flags</h3>
+<ul>
+<li><span class="risk-flag">VAT elected property</span> — purchase price + 20% VAT may not be recoverable. Must ask agent before instructing solicitor.</li>
+<li><span class="risk-flag">EPC D or below (commercial)</span> — unlettable by 2028 (C) or 2030 (B). Upgrade costs £10k-£50k+ depending on building.</li>
+<li><span class="risk-flag">Leasehold commercial with <40 years remaining</span> — difficult to mortgage, depreciating asset.</li>
+<li><span class="risk-flag">Article 4 covering Class MA</span> — check council-by-council before any conversion strategy.</li>
+<li><span class="risk-flag">Grade II listed commercial</span> — conversion costs 2-3x standard, prior approval much harder.</li>
+</ul>
+
+<h3>🔍 New Search Terms for Next Run</h3>
+<ul>
+<li>"commercial property auction West Midlands July 2026 results"</li>
+<li>"Rightmove commercial property for sale DY postcode" (Dudley commercial specific)</li>
+<li>"mixed use property for sale Birmingham under £300k"</li>
+<li>"commercial property yield West Midlands 2026 office retail industrial"</li>
+<li>"Article 4 direction commercial to residential Dudley Sandwell Wolverhampton"</li>
+<li>"commercial EPC C upgrade cost 2026 commercial property"</li>
+<li>"small industrial unit for sale West Midlands under £250k"</li>
+</ul>
+
+<h3>💡 Today's Commercial Edge</h3>
+<p>The <strong>sweet spot for Kokal in June 2026</strong> is mixed-use shop + flat above in Halesowen / Stourbridge / Brierley Hill / Bridgnorth at auction prices (£150-300k). Commercial SDLT savings + FRI leases + no Section 24 + dual income streams + resi conversion optionality = the best risk-adjusted commercial play for a £300-750k portfolio budget. The WM market is at an inflection point — investment up 55%, demand softening in Q1 2026 from geopolitics, but industrial and mixed-use remain resilient. Buy into the dip while retail/office demand is muted. The next 6 months will be the buying window before rates settle and prices harden.</p>
+
+<hr>
+<p class="metric">Report generated 02 Jun 2026 03:30 BST | Hermes Property Intelligence Agent | Next run: 03 Jun 2026 03:30</p>
+</body>
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Hunt Daily — 2026-06-02</title>
+<style>
+:root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d29922;
+    --red: #f85149;
+    --teal: #56d4dd;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+.page-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+h1 {
+    font-size: 1.8em;
+    color: var(--accent);
+    margin-bottom: 4px;
+}
+h2 {
+    font-size: 1.3em;
+    color: var(--text);
+    margin: 30px 0 15px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+}
+h3 {
+    font-size: 1.1em;
+    color: var(--accent);
+    margin: 20px 0 10px;
+}
+.subtitle {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+.stats {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+    padding: 12px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+.stat-label {
+    font-size: 0.75em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.stat-value {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+/* Table */
+.table-wrap {
+    overflow-x: auto;
+    margin: 15px 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+th {
+    background: #1c2128;
+    color: var(--text-muted);
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9em;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(88,166,255,0.05); }
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+.price { font-weight: 600; color: var(--green); }
+.bmv-good { color: var(--green); font-weight: 600; }
+.bmv-bad { color: var(--red); }
+.bmv-neutral { color: var(--text-muted); }
+.yield-good { color: var(--green); font-weight: 600; }
+.yield-ok { color: var(--orange); }
+.score { font-weight: 700; color: var(--teal); }
+.verdict { font-weight: 600; }
+
+/* Deal Cards */
+.deal-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 20px 0;
+}
+.deal-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+}
+.deal-card.call-agent {
+    border-left: 4px solid var(--green);
+}
+.deal-card.watchlist {
+    border-left: 4px solid var(--orange);
+}
+.deal-card.pass {
+    border-left: 4px solid var(--red);
+}
+.deal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+.deal-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    flex: 1;
+}
+.deal-verdict {
+    font-size: 0.9em;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+.deal-verdict.call-agent {
+    background: rgba(63,185,80,0.15);
+    color: var(--green);
+}
+.deal-verdict.watchlist {
+    background: rgba(210,153,34,0.15);
+    color: var(--orange);
+}
+.deal-verdict.pass {
+    background: rgba(248,81,73,0.15);
+    color: var(--red);
+}
+.deal-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+    margin: 10px 0;
+    padding: 10px;
+    background: var(--bg);
+    border-radius: 6px;
+    font-size: 0.9em;
+}
+.deal-meta-item {
+    display: flex;
+    flex-direction: column;
+}
+.deal-meta-label {
+    font-size: 0.7em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+.deal-meta-value {
+    font-weight: 600;
+}
+.deal-text {
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: var(--text);
+    line-height: 1.5;
+}
+.deal-flags {
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: rgba(248,81,73,0.08);
+    border-radius: 6px;
+    font-size: 0.85em;
+    color: var(--orange);
+}
+.deal-link {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 14px;
+    background: rgba(88,166,255,0.1);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    color: var(--accent);
+    font-size: 0.85em;
+    transition: background 0.2s;
+}
+.deal-link:hover {
+    background: rgba(88,166,255,0.2);
+    text-decoration: none;
+}
+.footer {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8em;
+    color: var(--text-muted);
+}
+.copyright {
+    margin-top: 5px;
+    font-size: 0.75em;
+    color: #484f58;
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<h1>🏠 Property Hunt Daily</h1>
+<p class="subtitle">2026-06-02 — West Midlands Investor Scan | Kokal Properties Ltd, Dudley</p>
+
+<div class="stats">
+    <div class="stat-item">
+        <span class="stat-label">Properties Scanned</span>
+        <span class="stat-value">8</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">Price Range</span>
+        <span class="stat-value">£160k – £210k</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">Top Yield</span>
+        <span class="stat-value" style="color:var(--green)">9.6%</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">Best BMV</span>
+        <span class="stat-value" style="color:var(--green)">-25.0%</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">Data Source</span>
+        <span class="stat-value" style="color:var(--accent)">PropAI + Rightmove</span>
+    </div>
+</div>
+
+<h2>📊 Top 10 Deals Table</h2>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+    <th>#</th>
+    <th>Address / Link</th>
+    <th>Type</th>
+    <th>Beds</th>
+    <th>Price</th>
+    <th>BMV</th>
+    <th>Yield</th>
+    <th>Score</th>
+    <th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>1</td>
+    <td><a href="https://www.rightmove.co.uk/property-for-sale/property-89126109.html" target="_blank">Ravensbourne Grove, Willenhall, WV13 1HX</a></td>
+    <td>Terraced House</td>
+    <td>2</td>
+    <td class="price">£190,000</td>
+    <td><span class="bmv-good">-25.0% ⬇ BMV</span></td>
+    <td class="yield-ok">7.9%</td>
+    <td class="score">69.1</td>
+    <td class="verdict" style="color:var(--green)">🟠 CALL AGENT</td>
+</tr>
+<tr>
+    <td>2</td>
+    <td><a href="https://www.rightmove.co.uk/property-for-sale/property-89132577.html" target="_blank">Fellbrook Close, Birmingham, B33 9HW</a></td>
+    <td>Semi-Detached House</td>
+    <td>2</td>
+    <td class="price">£200,000</td>
+    <td><span class="bmv-good">-4.8% ⬇ BMV</span></td>
+    <td class="yield-good">9.6%</td>
+    <td class="score">45.7</td>
+    <td class="verdict" style="color:var(--green)">🟠 CALL AGENT</td>
+</tr>
+<tr>
+    <td>3</td>
+    <td><a href="https://www.rightmove.co.uk/property-for-sale/property-89129331.html" target="_blank">Hurlingham Road, Kingstanding, Birmingham, B44 0LY</a></td>
+    <td>Terraced House</td>
+    <td>3</td>
+    <td class="price">£210,000</td>
+    <td><span class="bmv-good">-6.6% ⬇ BMV</span></td>
+    <td class="yield-ok">7.0%</td>
+    <td class="score">37.9</td>
+    <td class="verdict" style="color:var(--orange)">🟡 WATCHLIST</td>
+</tr>
+<tr>
+    <td>4</td>
+    <td><a href="https://www.rightmove.co.uk/property-for-sale/property-89132643.html" target="_blank">Stud Lane, Birmingham, B33 9EZ</a></td>
+    <td>Terraced House</td>
+    <td>2</td>
+    <td class="price">£180,000</td>
+    <td><span class="bmv-bad">+0.9% ⬆</span></td>
+    <td class="yield-good">8.0%</td>
+    <td class="score">32.0</td>
+    <td class="verdict" style="color:var(--orange)">🟡 WATCHLIST</td>
+</tr>
+<tr>
+    <td>5</td>
+    <td><a href="https://www.rightmove.co.uk/properties/89123433" target="_blank">Lion Street, Rugeley, WS15 2AJ</a></td>
+    <td>Terraced House</td>
+    <td>3</td>
+    <td class="price">£199,995</td>
+    <td><span class="bmv-bad">+5.2% ⬆</span></td>
+    <td class="yield-good">8.1%</td>
+    <td class="score">32.4</td>
+    <td class="verdict" style="color:var(--orange)">🟡 WATCHLIST</td>
+</tr>
+<tr>
+    <td>6</td>
+    <td>Gregory Avenue, Birmingham, B29 5DN</td>
+    <td>House</td>
+    <td>2</td>
+    <td class="price">£190,000</td>
+    <td><span class="bmv-bad">+6.9% ⬆</span></td>
+    <td class="yield-ok">7.9%</td>
+    <td class="score">31.6</td>
+    <td class="verdict" style="color:var(--orange)">🟡 WATCHLIST</td>
+</tr>
+<tr>
+    <td>7</td>
+    <td>Lenchville, Kidderminster, DY10 2YU</td>
+    <td>Terraced House</td>
+    <td>2</td>
+    <td class="price">£160,000</td>
+    <td><span class="bmv-bad">+9.6% ⬆</span></td>
+    <td class="yield-ok">7.0%</td>
+    <td class="score">28.0</td>
+    <td class="verdict" style="color:var(--red)">⚪ PASS</td>
+</tr>
+<tr>
+    <td>8</td>
+    <td>Edenhurst Road, Birmingham, B31 4PL</td>
+    <td>House</td>
+    <td>2</td>
+    <td class="price">£210,000</td>
+    <td><span class="bmv-good">-0.1% ⬇ BMV</span></td>
+    <td class="yield-ok">6.6%</td>
+    <td class="score">26.6</td>
+    <td class="verdict" style="color:var(--red)">⚪ PASS</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>🔍 Top 3 Deep-Dive Deal Cards</h2>
+<div class="deal-cards">
+<div class="deal-card call-agent">
+    <div class="deal-header">
+        <div class="deal-title">#1 — <a href="https://www.rightmove.co.uk/property-for-sale/property-89126109.html" target="_blank">Ravensbourne Grove, Willenhall, WV13 1HX</a></div>
+        <div class="deal-verdict call-agent">🟠 CALL AGENT</div>
+    </div>
+    <div class="deal-meta">
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Type</span>
+            <span class="deal-meta-value">2-bed Terraced House</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Price</span>
+            <span class="deal-meta-value" style="color:var(--green)">£190,000</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">BMV Discount</span>
+            <span class="deal-meta-value"><span class="bmv-good">-25.0% ⬇ BMV</span></span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Yield</span>
+            <span class="deal-meta-value yield-ok">7.9%</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Combined Score</span>
+            <span class="deal-meta-value" style="color:var(--teal)">69.1</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Tenure</span>
+            <span class="deal-meta-value">Freehold</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Agent</span>
+            <span class="deal-meta-value" style="font-size:0.9em">Skitts Estate Agents, Willenhall</span>
+        </div>
+    </div>
+    <div class="deal-text">25% below market value + strong 7.9% yield. Well-presented 2-bed with parking and garden. Willenhall has good transport links and amenities. Highest conviction deal of the day.</div>
+    <div class="deal-flags">⚠️ None identified — standard terraced, freehold, well-presented</div>
+    <a class="deal-link" href="https://www.rightmove.co.uk/property-for-sale/property-89126109.html" target="_blank">🔗 View on Rightmove →</a>
+</div>
+<div class="deal-card call-agent">
+    <div class="deal-header">
+        <div class="deal-title">#2 — <a href="https://www.rightmove.co.uk/property-for-sale/property-89132577.html" target="_blank">Fellbrook Close, Birmingham, B33 9HW</a></div>
+        <div class="deal-verdict call-agent">🟠 CALL AGENT</div>
+    </div>
+    <div class="deal-meta">
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Type</span>
+            <span class="deal-meta-value">2-bed Semi-Detached House</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Price</span>
+            <span class="deal-meta-value" style="color:var(--green)">£200,000</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">BMV Discount</span>
+            <span class="deal-meta-value"><span class="bmv-good">-4.8% ⬇ BMV</span></span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Yield</span>
+            <span class="deal-meta-value yield-good">9.6%</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Combined Score</span>
+            <span class="deal-meta-value" style="color:var(--teal)">45.7</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Tenure</span>
+            <span class="deal-meta-value">Freehold</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Agent</span>
+            <span class="deal-meta-value" style="font-size:0.9em">Murray Rogers, Stechford</span>
+        </div>
+    </div>
+    <div class="deal-text">Excellent 9.6% yield on a semi-detached in B33 (Yardley/Stechford). Slight BMV discount too. Strong rental demand area, good for BTL or BRRR-light.</div>
+    <div class="deal-flags">⚠️ B33 is moderate demand — verify void periods; semi-detached has higher SDLT at this price (£200k = ~£6k SDLT with surcharge)</div>
+    <a class="deal-link" href="https://www.rightmove.co.uk/property-for-sale/property-89132577.html" target="_blank">🔗 View on Rightmove →</a>
+</div>
+<div class="deal-card watchlist">
+    <div class="deal-header">
+        <div class="deal-title">#3 — <a href="https://www.rightmove.co.uk/property-for-sale/property-89129331.html" target="_blank">Hurlingham Road, Kingstanding, Birmingham, B44 0LY</a></div>
+        <div class="deal-verdict watchlist">🟡 WATCHLIST</div>
+    </div>
+    <div class="deal-meta">
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Type</span>
+            <span class="deal-meta-value">3-bed Terraced House</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Price</span>
+            <span class="deal-meta-value" style="color:var(--green)">£210,000</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">BMV Discount</span>
+            <span class="deal-meta-value"><span class="bmv-good">-6.6% ⬇ BMV</span></span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Yield</span>
+            <span class="deal-meta-value yield-ok">7.0%</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Combined Score</span>
+            <span class="deal-meta-value" style="color:var(--teal)">37.9</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Tenure</span>
+            <span class="deal-meta-value">Freehold</span>
+        </div>
+        <div class="deal-meta-item">
+            <span class="deal-meta-label">Agent</span>
+            <span class="deal-meta-value" style="font-size:0.9em">Acres, Great Barr</span>
+        </div>
+    </div>
+    <div class="deal-text">3-bed terraced at slight BMV discount. Kingstanding is a stable residential area. 7% yield is decent for a 3-bed. Slightly over the £200k soft cap.</div>
+    <div class="deal-flags">⚠️ At £210k just over budget; check EPC rating; verify actual ARV with 3-bed comparables</div>
+    <a class="deal-link" href="https://www.rightmove.co.uk/property-for-sale/property-89129331.html" target="_blank">🔗 View on Rightmove →</a>
+</div>
+</div>
+
+<h2>📋 Remaining Shortlist</h2>
+<div class="deal-cards">
+<div class="deal-card watchlist">
+    <div class="deal-header">
+        <div class="deal-title">#4 — Stud Lane, Birmingham, B33 9EZ</div>
+        <div class="deal-verdict watchlist">🟡 WATCHLIST</div>
+    </div>
+    <div class="deal-meta">
+        <div class="deal-meta-item"><span class="deal-meta-label">Type</span><span class="deal-meta-value">2-bed Terraced House</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Price</span><span class="deal-meta-value" style="color:var(--green)">£180,000</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">BMV</span><span class="deal-meta-value"><span class="bmv-bad">+0.9% ⬆</span></span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Yield</span><span class="deal-meta-value yield-good">8.0%</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Score</span><span class="deal-meta-value" style="color:var(--teal)">32.0</span></div>
+    </div>
+    <div class="deal-text">2-bed at £180k with 8% yield in same area as Fellbrook Close. At market price but solid yield. Good BTL candidate with lower entry point.</div>
+    <div class="deal-flags">⚠️ At market price (no BMV discount); same agent as Fellbrook — bundle viewing?</div>
+</div>
+<div class="deal-card watchlist">
+    <div class="deal-header">
+        <div class="deal-title">#5 — Lion Street, Rugeley, WS15 2AJ</div>
+        <div class="deal-verdict watchlist">🟡 WATCHLIST</div>
+    </div>
+    <div class="deal-meta">
+        <div class="deal-meta-item"><span class="deal-meta-label">Type</span><span class="deal-meta-value">3-bed Terraced House</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Price</span><span class="deal-meta-value" style="color:var(--green)">£199,995</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">BMV</span><span class="deal-meta-value"><span class="bmv-bad">+5.2% ⬆</span></span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Yield</span><span class="deal-meta-value yield-good">8.1%</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Score</span><span class="deal-meta-value" style="color:var(--teal)">32.4</span></div>
+    </div>
+    <div class="deal-text">3-bed at £200k with 8.1% yield in Rugeley. Has cellar (storage/conversion potential). Solid BTL candidate but slightly outside core WM focus.</div>
+    <div class="deal-flags">⚠️ Rugeley is Staffordshire — check commute/travel time from Dudley; verify cellar condition for damp</div>
+</div>
+<div class="deal-card watchlist">
+    <div class="deal-header">
+        <div class="deal-title">#6 — Gregory Avenue, Birmingham, B29 5DN</div>
+        <div class="deal-verdict watchlist">🟡 WATCHLIST</div>
+    </div>
+    <div class="deal-meta">
+        <div class="deal-meta-item"><span class="deal-meta-label">Type</span><span class="deal-meta-value">2-bed House</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Price</span><span class="deal-meta-value" style="color:var(--green)">£190,000</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">BMV</span><span class="deal-meta-value"><span class="bmv-bad">+6.9% ⬆</span></span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Yield</span><span class="deal-meta-value yield-ok">7.9%</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Score</span><span class="deal-meta-value" style="color:var(--teal)">31.6</span></div>
+    </div>
+    <div class="deal-text">2-bed in B29 (Selly Oak area — University/hospital letting potential). 7.9% yield is strong. Above market price so negotiate hard.</div>
+    <div class="deal-flags">⚠️ Above market price; verify actual condition and EPC; Rightmove ID stale — needs manual search</div>
+</div>
+<div class="deal-card pass">
+    <div class="deal-header">
+        <div class="deal-title">#7 — Lenchville, Kidderminster, DY10 2YU</div>
+        <div class="deal-verdict pass">⚪ PASS</div>
+    </div>
+    <div class="deal-meta">
+        <div class="deal-meta-item"><span class="deal-meta-label">Type</span><span class="deal-meta-value">2-bed Terraced House</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Price</span><span class="deal-meta-value" style="color:var(--green)">£160,000</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">BMV</span><span class="deal-meta-value"><span class="bmv-bad">+9.6% ⬆</span></span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Yield</span><span class="deal-meta-value yield-ok">7.0%</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Score</span><span class="deal-meta-value" style="color:var(--teal)">28.0</span></div>
+    </div>
+    <div class="deal-text">£160k is the cheapest entry price but at 9.6% above market value. 7% yield is okay but not exceptional for Kidderminster.</div>
+    <div class="deal-flags">⚠️ Above market value; Kidderminster rental demand is moderate; search Rightmove via 'Houses for sale DY10'</div>
+</div>
+<div class="deal-card pass">
+    <div class="deal-header">
+        <div class="deal-title">#8 — Edenhurst Road, Birmingham, B31 4PL</div>
+        <div class="deal-verdict pass">⚪ PASS</div>
+    </div>
+    <div class="deal-meta">
+        <div class="deal-meta-item"><span class="deal-meta-label">Type</span><span class="deal-meta-value">2-bed House</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Price</span><span class="deal-meta-value" style="color:var(--green)">£210,000</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">BMV</span><span class="deal-meta-value"><span class="bmv-good">-0.1% ⬇ BMV</span></span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Yield</span><span class="deal-meta-value yield-ok">6.6%</span></div>
+        <div class="deal-meta-item"><span class="deal-meta-label">Score</span><span class="deal-meta-value" style="color:var(--teal)">26.6</span></div>
+    </div>
+    <div class="deal-text">At market price with 6.6% yield — below the 7% minimum threshold. Only consider if long-term capital growth play in B31 (Northfield area).</div>
+    <div class="deal-flags">⚠️ Below 7% yield target; £210k over £200k soft cap; Rightmove ID stale</div>
+</div>
+</div>
+
+<h2>📈 Strategy Notes</h2>
+<ul style="margin:10px 0;padding-left:20px;">
+    <li><strong>BRRR candidates:</strong> #1 Ravensbourne Grove (25% BMV, strong refurb potential) and #2 Fellbrook Close (9.6% yield, slight BMV discount) are the top BRRR plays</li>
+    <li><strong>BTL candidates:</strong> #3 Stud Lane (8% at £180k), #4 Lion Street (8.1% at £200k) — solid cashflow plays</li>
+    <li><strong>Yield scepticism:</strong> All yields >8% should be cross-checked against actual OpenRent comparables before committing</li>
+    <li><strong>Willenhall focus:</strong> #1 is the standout — West Midlands, freehold, 25% BMV, strong letting market</li>
+</ul>
+
+<div class="footer">
+    <div>🚀 Generated 2026-06-02 at approximately 06:08 BST</div>
+    <div>Data: PropAI Deals API + Rightmove/Zoopla web verification</div>
+    <div class="copyright">© Kokal Properties Ltd — For investment use only. Verify all data before acting.</div>
+</div>
+
+</div>
+</body>
+</html>
