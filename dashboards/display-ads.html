@@ -33,6 +33,20 @@
   .revenue-bar { display: flex; align-items: center; gap: 1rem; margin: 0.5rem 0; }
   .revenue-bar .bar { height: 24px; border-radius: 6px; transition: width 0.3s; }
 </style>
+.tt-back-home {
+  position: fixed; top: 6px; left: 6px; z-index: 99999;
+  background: rgba(15,23,42,0.85); backdrop-filter: blur(8px);
+  color: #64748b; text-decoration: none; font-size: 11px;
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: 4px 10px; border-radius: 6px;
+  border: 1px solid rgba(51,65,85,0.6);
+  transition: all 0.15s ease;
+  letter-spacing: 0.2px;
+}
+.tt-back-home:hover {
+  color: #e2e8f0; border-color: #3b82f6; background: rgba(30,41,59,0.9);
+}
+
 </head>
 <body>
 <a href="/" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;margin-bottom:16px;color:#94a3b8;padding:6px 12px;border:1px solid #30363d;border-radius:8px;background:#161b22;transition:all .2s;float:left;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='#161b22'">🏠 Dashboard Hub</a>

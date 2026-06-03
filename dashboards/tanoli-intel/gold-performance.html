@@ -11,7 +11,21 @@ h1, h2 { color: #d4a017; margin: 0 0 12px 0; }
 .metric .label { font-size: 0.8em; color: #8b949e; margin-top: 4px; }
 .status { color: #8b949e; }
 .gold { color: #d4a017; }
-</style></head><body>
+</style>
+.tt-back-home {
+  position: fixed; top: 6px; left: 6px; z-index: 99999;
+  background: rgba(15,23,42,0.85); backdrop-filter: blur(8px);
+  color: #64748b; text-decoration: none; font-size: 11px;
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: 4px 10px; border-radius: 6px;
+  border: 1px solid rgba(51,65,85,0.6);
+  transition: all 0.15s ease;
+  letter-spacing: 0.2px;
+}
+.tt-back-home:hover {
+  color: #e2e8f0; border-color: #3b82f6; background: rgba(30,41,59,0.9);
+}
+</head><body>
 <div class="card">
 <h1>🥇 Gold Trading Performance</h1>
 <p class="status">No trades closed yet — post-reset clean slate. MGC Micro Gold Futures.</p>
