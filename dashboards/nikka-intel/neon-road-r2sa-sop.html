@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R2SA Deal Sourcing SOP — Neon Road Analysis | Nikka Intel</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;}
+body{background:#0a0f1e;color:#e2e8f0;line-height:1.7;}
+.page-wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;}
+h1{font-size:32px;color:#f59e0b;margin-bottom:0.5rem;}
+h2{font-size:26px;color:#f59e0b;margin:2rem 0 1rem;border-bottom:1px solid #1e293b;padding-bottom:0.5rem;}
+h3{font-size:18px;color:#fbbf24;margin:1.5rem 0 0.8rem;}
+p{margin-bottom:1rem;color:#cbd5e1;font-size:15px;}
+.card{background:#1e293b;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;}
+.card h3{margin-top:0;}
+.badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:4px;font-size:13px;font-weight:600;}
+.badge-form{background:#065f46;color:#a7f3d0;}
+.badge-skill{background:#1e40af;color:#bfdbfe;}
+.badge-doc{background:#7c3aed;color:#ddd6fe;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+ul,ol{margin:0.5rem 0 1rem 1.5rem;color:#cbd5e1;font-size:15px;}
+li{margin-bottom:0.3rem;}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:14px;}
+th{background:#334155;color:#f59e0b;padding:0.6rem;text-align:left;font-weight:600;}
+td{background:#1e293b;padding:0.6rem;border-bottom:1px solid #0f172a;color:#cbd5e1;}
+.section-box{border-left:3px solid #f59e0b;padding-left:1rem;margin:1.5rem 0;}
+.form-field{background:#0f172a;border-radius:6px;padding:0.8rem;margin:0.5rem 0;font-size:14px;border-left:3px solid #065f46;}
+.form-field .label{color:#f59e0b;font-weight:600;}
+.form-field .type{color:#64748b;font-size:12px;}
+.code{background:#0f172a;padding:0.8rem;border-radius:6px;font-family:monospace;font-size:13px;overflow-x:auto;margin:0.5rem 0;color:#a7f3d0;}
+.pitch{background:#0f172a;border-left:4px solid #f59e0b;padding:1rem;margin:1rem 0;border-radius:0 6px 6px 0;font-style:italic;font-size:14px;color:#cbd5e1;}
+.meta{font-size:13px;color:#64748b;margin-bottom:1.5rem;}
+@media(max-width:768px){.grid-2{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<h1>🏗️ R2SA Deal Sourcing SOP</h1>
+<p class="meta">Based on Neon Road (neonroad.co.uk) analysis · 3 June 2026 · Nikka Intel</p>
+<p>Full analysis of Neon Road's R2SA deal sourcing model — forms, documents, scripts, and operational workflows that can be adapted for our property deal pipeline.</p>
+
+<!-- ============================================ -->
+<h2>📋 Forms Found (5 Total)</h2>
+
+<div class="card">
+<h3>1️⃣ Investor Application Form</h3>
+<p><span class="badge badge-form">Squarespace / HubSpot</span> <span class="badge badge-doc">neonroad.co.uk/investor-application-form</span></p>
+<p>Used to qualify investors before sending them deal brochures. Filters time-wasters upfront.</p>
+<div class="grid-2">
+<div>
+<div class="form-field"><span class="label">Full Name</span> <span class="type">— text input</span></div>
+<div class="form-field"><span class="label">Email Address</span> <span class="type">— email input</span></div>
+<div class="form-field"><span class="label">Phone Number</span> <span class="type">— tel input</span></div>
+<div class="form-field"><span class="label">Investment Budget</span> <span class="type">— dropdown (£20k-£100k / £100k-£500k / £500k+)</span></div>
+</div>
+<div>
+<div class="form-field"><span class="label">Strategy Interest</span> <span class="type">— checkboxes (R2SA / B2SA / HMO / BMV / B2SH)</span></div>
+<div class="form-field"><span class="label">Investment Timeline</span> <span class="type">— dropdown (1-3m / 3-6m / 6-12m)</span></div>
+<div class="form-field"><span class="label">Proof of Funds</span> <span class="type">— file upload (PDF/bank statement)</span></div>
+<div class="form-field"><span class="label">Experience Level</span> <span class="type">— dropdown (New / Intermediate / Advanced)</span></div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3>2️⃣ Investment Reservation Form</h3>
+<p><span class="badge badge-form">Squarespace</span> <span class="badge badge-doc">neonroad.co.uk/investment-reservation-form</span></p>
+<p>Used after investor has seen the deal brochure and wants to reserve. Triggers invoice and payment.</p>
+<div class="grid-2">
+<div>
+<div class="form-field"><span class="label">Investor Name</span></div>
+<div class="form-field"><span class="label">Deal Reference</span></div>
+<div class="form-field"><span class="label">Property Address</span></div>
+</div>
+<div>
+<div class="form-field"><span class="label">Reservation Fee Amount</span></div>
+<div class="form-field"><span class="label">Payment Method</span></div>
+<div class="form-field"><span class="label">T&C's Acceptance (checkbox)</span></div>
+</div>
+</div>
+<p><strong>Key T&C:</strong> 24-hour cooling-off period. After 24h, fees non-refundable (except landlord/agent withdraws or referencing fails).</p>
+</div>
+
+<div class="card">
+<h3>3️⃣ Source My Property Form</h3>
+<p><span class="badge badge-form">Squarespace</span> <span class="badge badge-doc">neonroad.co.uk/deal-sourcing-source-my-property</span></p>
+<p>Bespoke sourcing request. Requires proof of funds upload. Fee £4k+ (50% upfront).</p>
+<div class="grid-2">
+<div>
+<div class="form-field"><span class="label">Full Name</span></div>
+<div class="form-field"><span class="label">Email</span></div>
+<div class="form-field"><span class="label">Strategy Preference</span> <span class="type">— R2SA / B2SA / HMO / BRRR / Other</span></div>
+<div class="form-field"><span class="label">Budget Range</span></div>
+</div>
+<div>
+<div class="form-field"><span class="label">Target Location</span></div>
+<div class="form-field"><span class="label">Proof of Funds</span> <span class="type">— file upload (REQUIRED)</span></div>
+<div class="form-field"><span class="label">Additional Requirements</span> <span class="type">— textarea</span></div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3>4️⃣ Property Qualification Form</h3>
+<p><span class="badge badge-form">Squarespace</span> <span class="badge badge-doc">neonroad.co.uk/guaranteed-rent-see-if-your-property-qualifies</span></p>
+<p>For landlords to check if their property qualifies for guaranteed R2SA rent model.</p>
+<div class="form-field"><span class="label">Property Address / Postcode</span></div>
+<div class="form-field"><span class="label">Property Type</span> <span class="type">— house / flat / HMO / commercial</span></div>
+<div class="form-field"><span class="label">Number of Bedrooms</span></div>
+<div class="form-field"><span class="label">Landlord Name & Contact</span></div>
+<div class="form-field"><span class="label">Current Tenancy Status</span> <span class="type">— vacant / tenanted / AST</span></div>
+</div>
+
+<div class="card">
+<h3>5️⃣ Talk to Us (General Contact)</h3>
+<p><span class="badge badge-form">Squarespace</span> <span class="badge badge-doc">neonroad.co.uk/deal-sourcing-talk-to-us</span></p>
+<p>Standard contact form — Name, Email, Phone, Message. Phone: 01480400704 · WhatsApp: 07920409454</p>
+</div>
+
+<!-- ============================================ -->
+<h2>📄 Key Documents</h2>
+
+<div class="grid-2">
+<div class="card">
+<h3>Terms & Conditions</h3>
+<p><span class="badge badge-doc">12 sections</span></p>
+<ul>
+<li>Scope: sourcing, advisory, interior design, furnishing, staging</li>
+<li>No guarantees on profitability or occupancy</li>
+<li>Fees payable immediately; 24h cooling-off</li>
+<li>Design fees from £500+VAT</li>
+<li>Full indemnity disclaimers</li>
+</ul>
+</div>
+<div class="card">
+<h3>Deal Sourcing Agreement</h3>
+<p><span class="badge badge-doc">Per-client</span></p>
+<ul>
+<li>Client criteria documented</li>
+<li>50% deposit required upfront</li>
+<li>Full refund if no suitable deal found</li>
+<li>Proof of funds verified before work begins</li>
+</ul>
+</div>
+<div class="card">
+<h3>Invoice</h3>
+<p><span class="badge badge-doc">Triggered on reservation</span></p>
+<ul>
+<li>Issued after reservation form submitted</li>
+<li>Payable immediately</li>
+<li>Balance cleared before handover</li>
+</ul>
+</div>
+<div class="card">
+<h3>Offer Letter</h3>
+<p><span class="badge badge-doc">Sent to agents/landlords</span></p>
+<ul>
+<li>Confirms deal terms in writing</li>
+<li>Sent after initial agent conversation</li>
+<li>Includes benefits summary</li>
+</ul>
+</div>
+</div>
+
+<!-- ============================================ -->
+<h2>📞 Agent & Landlord Pitch Scripts</h2>
+
+<div class="section-box">
+<h3>Agent Pitch (Initial WhatsApp/Call)</h3>
+<div class="pitch">
+"HI, JUST WONDERING IF [PROPERTY] IS STILL AVAILABLE? WOULD THE LANDLORD CONSIDER A 3 YEAR NO VOID PERIOD CORPORATE LET AGREEMENT ON THE PROPERTY? WE CAN OFFER YOU A £500 AGENCY FEE IF WE CAN MAKE SOMETHING WORK."
+</div>
+</div>
+
+<div class="section-box">
+<h3>What We Do (When They Ask)</h3>
+<div class="pitch">
+"WE RUN A HIGHLY RATED SERVICED ACCOMMODATION AGENCY WHERE WE SOURCE PROPERTIES NATIONWIDE FOR CLIENTS WHO ACCOMMODATE WORKING PROFESSIONALS, MEDICAL STAFF, TEACHING STAFF AND LEISURE GUESTS. A LOT OF OUR CLIENTS HAVE PARTNERSHIPS WITH LARGE NATIONAL OR INTERNATIONAL COMPANIES..."
+</div>
+</div>
+
+<div class="section-box">
+<h3>Benefits Pitch to Landlords</h3>
+<div class="pitch">
+"3-5 YEAR AGREEMENT · NO VOID PERIODS · MANAGED FOR FREE · MAINTENANCE COVERED UP TO £200/MONTH · REGULAR DEEP CLEANS · PROPERTY KEPT IN SHOW HOME CONDITION · PROTECTS FROM SECTION 21 ABOLISHMENT — CORPORATE LEASE, NOT AST. IF COMPANY DOESN'T PAY, YOU CAN LEGALLY EVICT NO QUESTIONS ASKED."
+</div>
+</div>
+
+<div class="section-box">
+<h3>⚠️ CRITICAL RULE</h3>
+<div class="pitch" style="border-left-color:#ef4444;background:#1f0a0a;">
+<strong>NEVER</strong> openly mention Airbnb or Booking.com to landlords — these are trigger words! Instead say: "working professionals, medical staff, teaching staff."
+<br><br>
+If they ask about Airbnb: "If there are gaps in the calendar we would appreciate it if we could list via online travel agents to fill those gaps."
+</div>
+</div>
+
+<!-- ============================================ -->
+<h2>🎯 Key Skills & Strategies</h2>
+
+<div class="grid-2">
+<div class="card">
+<h3>1. Investor Qualification Pipeline</h3>
+<span class="badge badge-skill">Funnel</span>
+<ol>
+<li>Application form → qualify</li>
+<li>Send deal brochure</li>
+<li>Reservation form → invoice</li>
+<li>Payment → deal secured</li>
+</ol>
+<p><strong>Filter:</strong> Proof of funds required BEFORE work starts. No POF = no deal access.</p>
+</div>
+
+<div class="card">
+<h3>2. R2SA Deal Structure</h3>
+<span class="badge badge-skill">Strategy</span>
+<ul>
+<li>3-7 year corporate let agreement</li>
+<li>12-month break clause (flexible)</li>
+<li>NO mortgage, NO huge deposit</li>
+<li>Maintenance capped at £200-250 PCM</li>
+<li>Regular deep cleaning included</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>3. Section 21 Selling Point</h3>
+<span class="badge badge-skill">Pitch</span>
+<p>Corporate lease ≠ AST. Landlords avoid Renters Reform Bill risks. This is the #1 selling point post-May 2026.</p>
+<p>Easy to evict company tenants. Clearer exit routes. Predictable income.</p>
+</div>
+
+<div class="card">
+<h3>4. Fee Model</h3>
+<span class="badge badge-skill">Revenue</span>
+<ul>
+<li>Sourcing fee: £4k+ per deal</li>
+<li>50% upfront before work begins</li>
+<li>50% on completion</li>
+<li>Full refund if no suitable deal found</li>
+<li>Design upsell: £500+VAT</li>
+<li>Agent fee: £500 per deal (incentive)</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>5. T&C Protection</h3>
+<span class="badge badge-skill">Legal</span>
+<ul>
+<li>24-hour cooling-off period only</li>
+<li>After 24h: fees non-refundable</li>
+<li>Exceptions: landlord withdraws OR referencing fails</li>
+<li>No guarantee of profitability</li>
+<li>Client responsible for own due diligence</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>6. Compliance Badges</h3>
+<span class="badge badge-skill">Trust</span>
+<p>Display prominently on every page:</p>
+<ul>
+<li>ICO (Data Protection)</li>
+<li>Property Ombudsman (TPO)</li>
+<li>HMRC AML Supervision</li>
+<li>Liability insurance</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>7. WhatsApp Deal Distribution</h3>
+<span class="badge badge-skill">Sales</span>
+<p>Two WhatsApp groups:</p>
+<ul>
+<li>Deal sourcing: exclusive R2SA + BRR + flip opportunities</li>
+<li>Quick distribution to qualified investors</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>8. Upsell: Interior Design</h3>
+<span class="badge badge-skill">Revenue</span>
+<ul>
+<li>Bold, modern design for SA + HMO</li>
+<li>Fee from £500+VAT</li>
+<li>Full furnishing + staging available</li>
+<li>Positions as "360° service"</li>
+</ul>
+</div>
+</div>
+
+<!-- ============================================ -->
+<h2>📊 Deal Strategies Offered</h2>
+
+<table>
+<tr><th>Strategy</th><th>Description</th><th>Status</th></tr>
+<tr><td><strong>R2SA</strong></td><td>Rent → sublet as serviced accommodation (Airbnb)</td><td>✅ Active (main focus)</td></tr>
+<tr><td><strong>B2SA</strong></td><td>Buy → operate as short-term accommodation</td><td>⏳ Page being finalised</td></tr>
+<tr><td><strong>B2SH</strong></td><td>Buy → lease to housing association / council</td><td>⏳ Page being finalised</td></tr>
+<tr><td><strong>R2HMO</strong></td><td>Rent → convert to HMO</td><td>⏳ Page being finalised</td></tr>
+<tr><td><strong>B2HMO</strong></td><td>Buy → convert to HMO</td><td>⏳ Page being finalised</td></tr>
+<tr><td><strong>BMV</strong></td><td>Below market value purchase (BRR/flip)</td><td>⏳ Page being finalised</td></tr>
+<tr><td><strong>Land Acquisition</strong></td><td>Planning, development, JV partnerships</td><td>✅ Active</td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2>🏢 Case Studies (from PDF + Website)</h2>
+
+<table>
+<tr><th>Deal</th><th>Location</th><th>Term</th><th>Rent</th><th>Turnover</th><th>Net Profit/mo</th></tr>
+<tr><td>Luxury Barn Conversion</td><td>Surrey</td><td>5yr</td><td>£3,750</td><td>£11,250</td><td><strong>£5,345</strong></td></tr>
+<tr><td>Shepherds Huts & Land</td><td>Herefordshire</td><td>5yr</td><td>£3,000</td><td>£8,436</td><td><strong>£2,586</strong></td></tr>
+<tr><td>3-Bed Cottage</td><td>Yorkshire</td><td>5yr</td><td>£1,500</td><td>£3,825</td><td><strong>£1,261</strong></td></tr>
+</table>
+
+<!-- ============================================ -->
+<h2>📋 SOP — How to Replicate This Model</h2>
+
+<div class="card">
+<h3>Step 1: Qualify the Investor</h3>
+<ul>
+<li>Send investor application form</li>
+<li>Request proof of funds</li>
+<li>Qualify → move to step 2. Fail → thanks, next.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Step 2: Source Deal</h3>
+<ul>
+<li>Pitch agent using script (never say Airbnb)</li>
+<li>Secure corporate let from landlord (3-7yr term)</li>
+<li>Pay £500 agent fee if needed</li>
+<li>Structure deal: fixed rent + maintenance cap + cleaning schedule</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Step 3: Package & Present</h3>
+<ul>
+<li>Send deal brochure to qualified investor</li>
+<li>Include case studies, projections, T&Cs</li>
+<li>If interested → reservation form + invoice</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Step 4: Close</h3>
+<ul>
+<li>24-hour cooling-off period</li>
+<li>After 24h: non-refundable</li>
+<li>Proceed with compliance, interior design, furnishing</li>
+<li>Handover to SA operator</li>
+</ul>
+</div>
+
+<div class="card" style="border-left:3px solid #ef4444;">
+<h3>⚠️ Key Risks to Avoid</h3>
+<ul>
+<li>Never guarantee profitability or occupancy</li>
+<li>Client must do their own due diligence (written in T&Cs)</li>
+<li>Check property licensing for short-term lets in target area</li>
+<li>Verify landlord mortgage terms allow subletting</li>
+<li>Ensure proper HMO licensing if required</li>
+<li>Protect against Renters Reform Bill / Section 8 changes</li>
+</ul>
+</div>
+
+<!-- ============================================ -->
+<h2>🔗 Neon Road Social & Contact</h2>
+<table>
+<tr><th>Channel</th><th>Link</th></tr>
+<tr><td>Website</td><td>neonroad.co.uk</td></tr>
+<tr><td>Instagram</td><td>@neonroadltd</td></tr>
+<tr><td>YouTube</td><td>@NeonRoad</td></tr>
+<tr><td>Facebook</td><td>/NeonRoadLtd</td></tr>
+<tr><td>LinkedIn</td><td>/company/neon-road</td></tr>
+<tr><td>TikTok</td><td>@neonroad</td></tr>
+<tr><td>Phone</td><td>01480 400704</td></tr>
+<tr><td>WhatsApp</td><td>07920 409454</td></tr>
+</table>
+
+<hr style="border-color:#1e293b;margin:2rem 0;">
+<p style="color:#64748b;font-size:13px;text-align:center;">Analysis generated by Nikka Khan · 3 June 2026 · Based on neonroad.co.uk + R2SA Key Note PDF</p>
+
+</div>
+</body>
+</html>
