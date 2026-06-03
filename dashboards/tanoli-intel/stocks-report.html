@@ -3,458 +3,415 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stocks Self-Learning Report — May 29, 2026</title>
+<title>Stocks Self-Learning Report — June 2, 2026</title>
 <style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-muted: #8b949e;
+    --green: #3fb950;
+    --red: #f85149;
+    --yellow: #d29922;
+    --blue: #58a6ff;
+    --orange: #f0883e;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0e17; color: #e0e6f0; line-height: 1.6; padding: 20px; }
-  .container { max-width: 1200px; margin: 0 auto; }
-  h1 { font-size: 2rem; color: #00d4ff; margin-bottom: 5px; }
-  h2 { font-size: 1.4rem; color: #a0b4d0; margin: 25px 0 15px; border-bottom: 1px solid #1a2a4a; padding-bottom: 8px; }
-  h3 { font-size: 1.1rem; color: #6c8ec0; margin: 15px 0 8px; }
-  .subtitle { color: #6c8ec0; font-size: 0.9rem; margin-bottom: 20px; }
-  .market-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 15px 0; }
-  .market-card { background: #111827; border-radius: 8px; padding: 12px; border: 1px solid #1a2a4a; }
-  .market-card .label { font-size: 0.8rem; color: #6c8ec0; }
-  .market-card .value { font-size: 1.3rem; font-weight: 700; }
-  .market-card .change { font-size: 0.9rem; }
-  .green { color: #00c853; }
-  .red { color: #ff5252; }
-  .stock-card { background: #111827; border-radius: 10px; padding: 16px; margin-bottom: 12px; border: 1px solid #1a2a4a; }
-  .stock-header { display: flex; justify-content: space-between; align-items: center; }
-  .stock-symbol { font-size: 1.3rem; font-weight: 700; color: #00d4ff; }
-  .stock-type { font-size: 0.75rem; background: #1a2a4a; padding: 2px 8px; border-radius: 4px; color: #6c8ec0; }
-  .stock-price { font-size: 1.1rem; font-weight: 600; }
-  .stock-change { font-size: 0.95rem; }
-  .score-display { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; font-weight: 700; font-size: 1.1rem; }
-  .score-buy { background: #1b5e20; color: #69f0ae; }
-  .score-watch { background: #3e2723; color: #ffd54f; }
-  .score-avoid { background: #4a0000; color: #ff8a80; }
-  .decision { font-size: 0.85rem; font-weight: 600; padding: 3px 10px; border-radius: 4px; }
-  .decision-buy { background: #1b5e20; color: #69f0ae; }
-  .decision-watch { background: #3e2723; color: #ffd54f; }
-  .decision-avoid { background: #4a0000; color: #ff8a80; }
-  .detail-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 8px 0; font-size: 0.85rem; }
-  .detail-row .item { color: #8898a8; }
-  .detail-row .val { color: #e0e6f0; text-align: right; }
-  .note { background: #0d1520; padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; margin-top: 8px; border-left: 3px solid #00d4ff; }
-  .news-item { font-size: 0.85rem; padding: 6px 0; color: #a0b4d0; }
-  .news-item::before { content: "▸ "; color: #00d4ff; }
-  .best-opp { background: #0d1f0d; border-left: 3px solid #69f0ae; }
-  .concern { background: #1f0d0d; border-left: 3px solid #ff5252; }
-  .discovered { background: #1a1a0d; border-left: 3px solid #ffd54f; }
-  .catalyst-section { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
-  .nav-links { margin: 20px 0; padding: 10px 0; border-bottom: 1px solid #1a2a4a; }
-  .nav-links a { color: #00d4ff; text-decoration: none; margin-right: 20px; font-size: 0.9rem; }
-  .nav-links a:hover { text-decoration: underline; }
-  @media (max-width: 600px) { .market-grid { grid-template-columns: 1fr 1fr; } .detail-row { grid-template-columns: 1fr; } }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 20px; }
+  .container { max-width: 1000px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; margin-bottom: 4px; color: #fff; }
+  .subtitle { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+  .market-banner { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+  .market-item { text-align: center; }
+  .market-item .label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .market-item .value { font-size: 1.2rem; font-weight: 600; margin: 2px 0; }
+  .market-item .change { font-size: 0.85rem; }
+  .green { color: var(--green); }
+  .red { color: var(--red); }
+  .yellow-text { color: var(--yellow); }
+  
+  .section-header { font-size: 1.1rem; font-weight: 600; color: #fff; margin: 24px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  
+  .stock-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+  .stock-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .stock-symbol { font-size: 1.2rem; font-weight: 700; color: #fff; }
+  .stock-name { font-size: 0.8rem; color: var(--text-muted); }
+  .stock-price-box { text-align: right; }
+  .stock-price { font-size: 1.2rem; font-weight: 600; }
+  .stock-change { font-size: 0.9rem; }
+  .stock-meta { display: flex; gap: 16px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
+  .score-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-weight: 600; font-size: 0.85rem; }
+  .score-badge.buy { background: rgba(63, 185, 80, 0.15); color: var(--green); border: 1px solid rgba(63, 185, 80, 0.3); }
+  .score-badge.watch { background: rgba(210, 153, 34, 0.15); color: var(--yellow); border: 1px solid rgba(210, 153, 34, 0.3); }
+  .score-badge.avoid { background: rgba(248, 81, 73, 0.15); color: var(--red); border: 1px solid rgba(248, 81, 73, 0.3); }
+  .stock-analysis { font-size: 0.88rem; line-height: 1.5; color: var(--text); }
+  .stock-analysis strong { color: #fff; }
+  .prev-score { font-size: 0.75rem; color: var(--text-muted); }
+  
+  .news-item { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+  .news-item:last-child { border-bottom: none; }
+  .news-time { color: var(--text-muted); font-size: 0.75rem; }
+  
+  .concern-box { background: rgba(248, 81, 73, 0.08); border: 1px solid rgba(248, 81, 73, 0.2); border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; font-size: 0.88rem; }
+  .catalyst-box { background: rgba(63, 185, 80, 0.08); border: 1px solid rgba(63, 185, 80, 0.2); border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; font-size: 0.88rem; }
+  
+  .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .summary-grid { grid-template-columns: 1fr; } }
+  
+  .change-up { color: var(--green); }
+  .change-down { color: var(--red); }
+  .change-flat { color: var(--text-muted); }
+  .status-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .status-pill { padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+  .status-pill.bg-green { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .status-pill.bg-yellow { background: rgba(210,153,34,0.15); color: var(--yellow); border: 1px solid rgba(210,153,34,0.3); }
+  .status-pill.bg-red { background: rgba(248,81,73,0.15); color: var(--red); border: 1px solid rgba(248,81,73,0.3); }
 </style>
 </head>
 <body>
 <div class="container">
 
 <h1>📊 Stocks Self-Learning Report</h1>
-<div class="subtitle">Friday, May 29, 2026 — Post-Market Analysis (4:30 PM ET)</div>
+<div class="subtitle">Tuesday, June 2, 2026 — Post-Market Analysis (4:20 PM EDT)</div>
 
-<div class="nav-links">
-  <a href="#market">Market Overview</a>
-  <a href="#stocks">Stock Analysis</a>
-  <a href="#catalysts">Catalysts & News</a>
-  <a href="#concerns">Concerns</a>
-  <a href="#lessons">Lessons Learned</a>
+<div class="market-banner">
+  <div class="market-item">
+    <div class="label">S&P 500</div>
+    <div class="value">7,609.78</div>
+    <div class="change green">+9.82 (+0.13%)</div>
+  </div>
+  <div class="market-item">
+    <div class="label">NASDAQ</div>
+    <div class="value">27,093.90</div>
+    <div class="change green">+7.09 (+0.03%)</div>
+  </div>
+  <div class="market-item">
+    <div class="label">DJIA</div>
+    <div class="value">51,307.79</div>
+    <div class="change green">+228.91 (+0.45%)</div>
+  </div>
+  <div class="market-item">
+    <div class="label">VIX</div>
+    <div class="value">15.77</div>
+    <div class="change green">-0.28 (-1.74%)</div>
+  </div>
+  <div class="market-item">
+    <div class="label">WTI Crude</div>
+    <div class="value">$93.52</div>
+    <div class="change red">+$1.36 (+1.48%)</div>
+  </div>
+  <div class="market-item">
+    <div class="label">30Y Treasury</div>
+    <div class="value">112.53</div>
+    <div class="change green">+0.28%</div>
+  </div>
 </div>
 
-<h2 id="market">📈 Market Overview</h2>
-<div class="market-grid">
-  <div class="market-card"><div class="label">S&P 500</div><div class="value green">7,580.06</div><div class="change green">+16.43 (+0.22%)</div></div>
-  <div class="market-card"><div class="label">NASDAQ</div><div class="value green">26,972.62</div><div class="change green">+55.15 (+0.21%)</div></div>
-  <div class="market-card"><div class="label">DJIA</div><div class="value green">51,032.46</div><div class="change green">+363.49 (+0.72%)</div></div>
-  <div class="market-card"><div class="label">Russell 2000</div><div class="value red">2,919.34</div><div class="change red">-17.23 (-0.59%)</div></div>
-  <div class="market-card"><div class="label">VIX</div><div class="value green">15.32</div><div class="change green">-0.42 (-2.67%)</div></div>
-  <div class="market-card"><div class="label">10-YR Yield</div><div class="value" style="color:#8ab4f8;">4.437%</div><div class="change green">-0.018</div></div>
-  <div class="market-card"><div class="label">Oil (WTI)</div><div class="value red">$87.92</div><div class="change red">-0.98 (-1.10%)</div></div>
-  <div class="market-card"><div class="label">Gold</div><div class="value" style="color:#ffd54f;">$4,576.70</div><div class="change green">+44.30 (+0.98%)</div></div>
-  <div class="market-card"><div class="label">Dollar Index</div><div class="value red">98.93</div><div class="change red">-0.09 (-0.09%)</div></div>
-  <div class="market-card"><div class="label">Nat Gas</div><div class="value red">$3.284</div><div class="change red">-0.001 (-0.03%)</div></div>
+<div class="status-bar">
+  <span class="status-pill bg-green">7 BUY</span>
+  <span class="status-pill bg-yellow">3 WATCH</span>
+  <span class="status-pill bg-red">0 AVOID</span>
 </div>
 
-<div style="background:#0d1520;padding:12px;border-radius:8px;margin:12px 0;font-size:0.85rem;">
-  <strong style="color:#00c853;">✅ BREAKING:</strong> <span style="color:#c8e6c9;">Trump lays out Iran deal demands — oil drops 20% from 2026 peak on ceasefire optimism. "Wall Street rides high into June on hopes that the war will soon come to an end."</span><br>
-  <strong style="color:#6c8ec0;">Market Context:</strong> AI & semi sector DEFINING the day. Dow +0.72% leading (value rotation). DELL +32.76% best day ever on AI server revenue blowout. Semi sector broadly surging: MSFT +5.45%, MU +5.14% (new 52W), ARM +5.37% (new 52W), QCOM +3.18% (new 52W). PCE data released — yields falling (10Y 4.437%, -0.018) supporting growth. Oil declining to $87.92 on Iran ceasefire optimism. Russell 2000 -0.59% — small caps lagging. VIX 15.32 continuing to deflate. Nikkei +2.53%, KOSPI +3.55%, Taiwan +2.51% — massive Asian rally. Gold $4,576.70 still elevated. Weakening dollar supports EM flows.<br>
-  <strong style="color:#ffd54f;">Key Data:</strong> PCE inflation data released 8:30 AM ET today — yields declining suggests in-line/mild reading. Fed's Bowman warns against hiking rates on inflation spike. Treasury yields falling on U.S.-Iran ceasefire talks.
+<div class="section-header">📈 Market Context</div>
+<div class="stock-card">
+  <div class="stock-analysis">
+    <strong>Broad Market:</strong> Marginal gains after Monday's S&P record close. Dow outperformed (+0.45%) while NASDAQ barely moved (+0.03%). VIX cooled to 15.77 (-1.74%), suggesting underlying fear is easing. Tech leadership moderated with mixed results — AAPL and MU hit new highs while MSFT and NOW sold off.<br><br>
+    <strong>Oil Watch:</strong> WTI Crude at $93.52 (+1.48%), breaching $93 threshold. Goldman Sachs: "Oil to stay at $90 into year-end even if Hormuz opens up." Iran strikes continuing but market appears to be pricing in de-escalation expectation. Key threshold remains $95 for risk-off.<br><br>
+    <strong>Key Events:</strong> MSFT Build Conference (new AI models unveiled), PANW earnings after close (+9.15% AH to new ATH), HPE best day ever (+19.47%), Alphabet plans $80B stock sale for AI buildout, "Software stocks just passed a big milestone" (CNBC).<br><br>
+    <strong>Futures (after close):</strong> Dow fair value -7.12, S&P -3.29, NASDAQ -5.39 — slightly negative bias for Wednesday's open.<br><br>
+    <strong>Sector Rotation:</strong> AI infrastructure theme dominates (DELL, HPE, MU, ARM). Software sees profit-taking (NOW -6.04%). Healthcare continues to be drained by tech rotation (LLY -1.67%). Consumer tech sees AAPL new ATH (+2.90%). 
+  </div>
 </div>
 
-<h2 id="stocks">📋 10-Stock Portfolio Analysis</h2>
+<div class="section-header">🏢 Large Cap (4)</div>
 
 <div class="stock-card">
   <div class="stock-header">
     <div>
-      <span class="stock-symbol">DELL</span>
-      <span class="stock-type">Large Cap</span>
+      <div class="stock-symbol">AAPL <span class="score-badge buy">8.3 BUY</span></div>
+      <div class="stock-name">Apple Inc.</div>
     </div>
-    <div>
-      <span class="score-display score-buy">9.0</span>
-      <span class="decision decision-buy" style="margin-left:8px;">BUY</span>
-    </div>
-  </div>
-  <div style="margin-top:8px;">
-    <span class="stock-price">$420.91</span>
-    <span class="stock-change green"> +103.86 (+32.76%)</span>
-    <span style="font-size:0.85rem;margin-left:10px;color:#6c8ec0;">AH: <span class="red">$420.07 (-0.20%)</span></span>
-  </div>
-  <div class="detail-row">
-    <div class="item">📊 Volume</div><div class="val">36,194,779</div>
-    <div class="item">📐 52W Range</div><div class="val">106.38 - 429.15</div>
-    <div class="item">🏆 52W High</div><div class="val">✅ YES (New!)</div>
-  </div>
-  <div class="note"><strong>UPGRADED from 8.5 → 9.0.</strong> BEST DAY EVER +32.76%! AI server revenue blowout. New 52W high $429.15. Peer-validation thesis SPECTACULARLY confirmed — DELL joined MU as the AI data center winner. Gap cap waived entirely (Day 2, held and expanded). "Dell shocks with booming AI server sales. Where analysts see it headed next" — CNBC. Cramer says "Nvidia is a clear winner from Dell's monster quarter." Susquehanna analyst says "Dell will be worth three-times enterprise value." AH -0.20% is negligible after a 32% day. This is a sector-defining moment.</div>
-  <div class="news-item"><strong>Catalyst:</strong> AI server revenue fastest since 2018 return to public markets. Pentagon software deal. Cramer data center favorite. Sector-level AI demand confirmed.</div>
-</div>
-
-<div class="stock-card">
-  <div class="stock-header">
-    <div>
-      <span class="stock-symbol">ARM</span>
-      <span class="stock-type">Momentum</span>
-    </div>
-    <div>
-      <span class="score-display score-buy">8.5</span>
-      <span class="decision decision-buy" style="margin-left:8px;">BUY</span>
+    <div class="stock-price-box">
+      <div class="stock-price">$315.20</div>
+      <div class="stock-change change-up">+$8.89 (+2.90%)</div>
     </div>
   </div>
-  <div style="margin-top:8px;">
-    <span class="stock-price">$353.29</span>
-    <span class="stock-change green"> +18.02 (+5.37%)</span>
-    <span style="font-size:0.85rem;margin-left:10px;color:#6c8ec0;">AH: <span class="red">$353.20 (-0.03%)</span></span>
+  <div class="stock-meta">
+    <span>⬆️ Prev: 7.8 (WATCH)</span>
+    <span>📊 52W: $195.07 - $315.45</span>
+    <span>📈 Vol: 40.3M</span>
+    <span>🕐 AH: $314.64 (-0.18%)</span>
   </div>
-  <div class="detail-row">
-    <div class="item">📊 Volume</div><div class="val">9,639,094</div>
-    <div class="item">📐 52W Range</div><div class="val">100.02 - 356.45</div>
-    <div class="item">🏆 52W High</div><div class="val">✅ YES (New!)</div>
+  <div class="stock-analysis">
+    <strong>UPGRADED from WATCH to BUY.</strong> New 52-week high $315.45! Reversed Monday's -1.84% pullback with +2.90% gain. WWDC catalyst building — premium AI features expected. Support at $305 held perfectly. Apple's consumer base less exposed to oil spike than retail discretionary. The biggest Mag 7 gainer today — capital rotating back into AAPL ahead of WWDC.
   </div>
-  <div class="note"><strong>UPGRADED from 8.2 → 8.5.</strong> NEW 52W ATH $356.45! +5.37% continuing the streak from yesterday's +10.76%. Two consecutive days of massive semi-led gains. The DELL AI server blowout directly lifts ARM's data center chip architecture thesis. AH -0.03% flat — no profit-taking. "Red-hot Arm at ATH" — CNBC. Semi rotation is the dominant theme. High-beta semiconductor pattern still works but this is now a sustained breakout, not a reversal.</div>
-  <div class="news-item"><strong>Catalyst:</strong> AI chip architecture demand. Semi sector rotation. DELL AI server blowout lifts all semi boats. Ex-OpenAI AI fund disclosure. ATH momentum.</div>
 </div>
 
 <div class="stock-card">
   <div class="stock-header">
     <div>
-      <span class="stock-symbol">MSFT</span>
-      <span class="stock-type">Large Cap</span>
+      <div class="stock-symbol">DELL <span class="score-badge buy">8.0 BUY</span></div>
+      <div class="stock-name">Dell Technologies Inc.</div>
     </div>
-    <div>
-      <span class="score-display score-buy">8.3</span>
-      <span class="decision decision-buy" style="margin-left:8px;">BUY</span>
+    <div class="stock-price-box">
+      <div class="stock-price">$435.31</div>
+      <div class="stock-change change-down">-$30.65 (-6.58%)</div>
     </div>
   </div>
-  <div style="margin-top:8px;">
-    <span class="stock-price">$450.24</span>
-    <span class="stock-change green"> +23.25 (+5.45%)</span>
-    <span style="font-size:0.85rem;margin-left:10px;color:#6c8ec0;">AH: <span class="red">$448.79 (-0.32%)</span></span>
+  <div class="stock-meta">
+    <span>⬇️ Prev: 9.0 (BUY)</span>
+    <span>📊 52W: $106.38 - $469.47</span>
+    <span>📉 Vol: 14.8M</span>
+    <span>🕐 AH: $437.37 (+0.47%)</span>
   </div>
-  <div class="detail-row">
-    <div class="item">📊 Volume</div><div class="val">65,813,228</div>
-    <div class="item">📐 52W Range</div><div class="val">356.28 - 555.45</div>
-    <div class="item">🏆 52W High</div><div class="val">❌ No</div>
+  <div class="stock-analysis">
+    <strong>DOWNGRADED from 9.0 to 8.0.</strong> -6.58% pullback after Monday's +10.70% and Friday's +32.76% — normal profit-taking from a historic AI run. Massive cumulative gains attract selling. AH slightly positive (+0.47%). The AI server thesis remains intact (HPE +19.47% confirms sector demand). DELL's parabolic move from $353 to $469 in 5 sessions needs consolidation. Entry has deteriorated but the thesis hasn't broken. Apply -0.5 profit-taking penalty.
   </div>
-  <div class="note"><strong>UPGRADED from 7.8 → 8.3.</strong> MASSIVE +5.45% day! This is the breakout from the multi-week consolidation we've been waiting for. DELL AI server demand = Azure cloud demand = MSFT benefit. SNOW's $6B AWS spend also validates enterprise cloud thesis. Volume 65.8M is the highest in weeks. The 'cheapest PE Mag 7' thesis is playing out perfectly. Still 19% below ATH $555.45 — lots of room to run. Upgraded from WATCH to BUY.</div>
-  <div class="news-item"><strong>Catalyst:</strong> AI cloud demand validated by DELL/Snow earnings. Value buying at discounted PE. Cloud sentiment lift. Mag 7 cheapest PE 21.6x.</div>
 </div>
 
 <div class="stock-card">
   <div class="stock-header">
     <div>
-      <span class="stock-symbol">MU</span>
-      <span class="stock-type">Wildcard</span>
+      <div class="stock-symbol">MSFT <span class="score-badge buy">7.8 BUY</span></div>
+      <div class="stock-name">Microsoft Corp.</div>
     </div>
-    <div>
-      <span class="score-display score-buy">8.2</span>
-      <span class="decision decision-buy" style="margin-left:8px;">BUY</span>
+    <div class="stock-price-box">
+      <div class="stock-price">$441.31</div>
+      <div class="stock-change change-down">-$19.21 (-4.17%)</div>
     </div>
   </div>
-  <div style="margin-top:8px;">
-    <span class="stock-price">$971.00</span>
-    <span class="stock-change green"> +47.48 (+5.14%)</span>
-    <span style="font-size:0.85rem;margin-left:10px;color:#6c8ec0;">AH: <span class="red">$964.03 (-0.72%)</span></span>
+  <div class="stock-meta">
+    <span>⬇️ Prev: 8.5 (BUY)</span>
+    <span>📊 52W: $356.28 - $555.45</span>
+    <span>📉 Vol: 33.5M</span>
+    <span>🕐 AH: $441.64 (+0.07%)</span>
   </div>
-  <div class="detail-row">
-    <div class="item">📊 Volume</div><div class="val">53,611,327</div>
-    <div class="item">📐 52W Range</div><div class="val">92.22 - 981.00</div>
-    <div class="item">🏆 52W High</div><div class="val">✅ YES (New!)</div>
+  <div class="stock-analysis">
+    <strong>DOWNGRADED from 8.5 to 7.8.</strong> -4.17% sell-off ON Build Conference day. New AI models unveiled (reducing OpenAI reliance), quantum chip update, but market sold the news. Wedbush's Dan Ives: "Markets are mispricing Microsoft's stock." Alphabet's $80B AI stock sale may be weighing on hyperscaler sentiment. At $441, MSFT is now 20.5% below ATH — getting cheaper on the strongest enterprise AI story. Sell-the-news on Build is a short-term pattern; fundamentals intact.
   </div>
-  <div class="note"><strong>UPGRADED from 7.8 → 8.2.</strong> NEW 52W HIGH $981! The memory cycle leader is making new highs after consolidation. Yesterday's -0.53% was the pause before today's +5.14% breakout. PE 8.9x remains absurdly cheap. The DELL AI server demand lifts ALL data center memory demand — HBM, DDR5 all benefit MU directly. SK Hynix $1T validation still in play. AH -0.72% slight profit-taking after ATH. Upgraded from WATCH to BUY.</div>
-  <div class="news-item"><strong>Catalyst:</strong> New ATH breakout. Memory cycle leader. PE 8.9x absurdly cheap. HBM demand from AI servers. SK Hynix $1T validates cycle.</div>
 </div>
 
 <div class="stock-card">
   <div class="stock-header">
     <div>
-      <span class="stock-symbol">AAPL</span>
-      <span class="stock-type">Large Cap</span>
+      <div class="stock-symbol">LLY <span class="score-badge watch">7.0 WATCH</span></div>
+      <div class="stock-name">Eli Lilly and Co.</div>
     </div>
+    <div class="stock-price-box">
+      <div class="stock-price">$1,064.15</div>
+      <div class="stock-change change-down">-$18.05 (-1.67%)</div>
+    </div>
+  </div>
+  <div class="stock-meta">
+    <span>⬇️ Prev: 7.5 (WATCH)</span>
+    <span>📊 52W: $623.78 - $1,149.10</span>
+    <span>📉 Vol: 2.2M</span>
+    <span>🕐 AH: $1,063.48 (-0.06%)</span>
+  </div>
+  <div class="stock-analysis">
+    <strong>DOWNGRADED to 7.0 — at AVOID threshold.</strong> Fourth straight decline. Dropped below $1,080 danger threshold to $1,064.15. Tech/Semi rotation continues to drain healthcare. Low volume (2.2M) suggests steady institutional selling, not panic. No catalyst this week. One more bad session from AVOID territory (<6.0). Monitoring threshold: below $1,050 triggers AVOID.
+  </div>
+</div>
+
+<div class="section-header">🚀 Momentum (4)</div>
+
+<div class="stock-card">
+  <div class="stock-header">
     <div>
-      <span class="score-display score-buy">8.0</span>
-      <span class="decision decision-buy" style="margin-left:8px;">BUY</span>
+      <div class="stock-symbol">MU <span class="score-badge buy">8.5 BUY</span></div>
+      <div class="stock-name">Micron Technology Inc.</div>
+    </div>
+    <div class="stock-price-box">
+      <div class="stock-price">$1,064.10</div>
+      <div class="stock-change change-up">+$28.60 (+2.76%)</div>
     </div>
   </div>
-  <div style="margin-top:8px;">
-    <span class="stock-price">$312.06</span>
-    <span class="stock-change red"> -0.45 (-0.14%)</span>
-    <span style="font-size:0.85rem;margin-left:10px;color:#6c8ec0;">AH: <span class="red">$311.40 (-0.21%)</span></span>
+  <div class="stock-meta">
+    <span>⬆️ Prev: 8.3 (BUY)</span>
+    <span>📊 52W: $94.40 - $1,076.56</span>
+    <span>📈 Vol: 42.4M</span>
+    <span>🕐 AH: $1,066.40 (+0.22%)</span>
   </div>
-  <div class="detail-row">
-    <div class="item">📊 Volume</div><div class="val">56,025,166</div>
-    <div class="item">📐 52W Range</div><div class="val">195.07 - 315.00</div>
-    <div class="item">🏆 52W High</div><div class="val">✅ YES (New!)</div>
+  <div class="stock-analysis">
+    <strong>UPGRADED from 8.3 to 8.5.</strong> +2.76% with 42.4M volume. New 52-week high $1,076.56. Memory cycle leader — PE 8.9x remains cheap relative to semi peers. Continued momentum in the AI memory cycle. AH holding at $1,066. No gap-fill risk. The strongest technical performer in the portfolio today. Overbought RSI penalty (-0.3) applies but fundamentals still support the score.
   </div>
-  <div class="note"><strong>UNCHANGED from 8.0.</strong> NEW 52W HIGH $315.00 (up from $313.26)! Slight -0.14% pullback from the new high is normal healthy consolidation. Volume 56M strong. AH -0.21% minor. WWDC (June) catalyst is building — this is still the most stable holding. New 52W high badge confirms momentum. AAPL remains the anchor for the portfolio.</div>
-  <div class="news-item"><strong>Catalyst:</strong> New 52W high. WWDC June catalyst approaching. Safe haven in volatile semi rotation. Near ATH.</div>
 </div>
 
 <div class="stock-card">
   <div class="stock-header">
     <div>
-      <span class="stock-symbol">QCOM</span>
-      <span class="stock-type">Momentum</span>
+      <div class="stock-symbol">HPE <span class="score-badge buy">8.5 BUY</span></div>
+      <div class="stock-name">Hewlett Packard Enterprise</div>
     </div>
-    <div>
-      <span class="score-display score-buy">7.8</span>
-      <span class="decision decision-buy" style="margin-left:8px;">BUY</span>
+    <div class="stock-price-box">
+      <div class="stock-price">$56.15</div>
+      <div class="stock-change change-up">+$9.15 (+19.47%)</div>
     </div>
   </div>
-  <div style="margin-top:8px;">
-    <span class="stock-price">$251.02</span>
-    <span class="stock-change green"> +7.73 (+3.18%)</span>
-    <span style="font-size:0.85rem;margin-left:10px;color:#6c8ec0;">AH: <span class="green">$251.02 (UNCH)</span></span>
+  <div class="stock-meta">
+    <span>⬆️ Prev: 8.0 (BUY*)</span>
+    <span>📊 52W: $17.03 - $64.25</span>
+    <span>📈 Vol: 142.2M</span>
+    <span>🕐 AH: $55.78 (-0.66%)</span>
   </div>
-  <div class="detail-row">
-    <div class="item">📊 Volume</div><div class="val">23,843,972</div>
-    <div class="item">📐 52W Range</div><div class="val">121.99 - 259.92</div>
-    <div class="item">🏆 52W High</div><div class="val">✅ YES (New!)</div>
+  <div class="stock-analysis">
+    <strong>UPGRADED — Peer-validation gap cap WAIVED.</strong> Day 2 of earnings gap — gap held above 50% retrace ($53.90). DELL peer-validation precedent applies (same infrastructure thesis, same week). +19.47% on 142M volume — best day ever. $64.25 intraday high. AH mild profit-taking (-0.66%). The gap cap is waived: the sector-level AI server catalyst is confirmed by both HPE's own guidance AND DELL's blowout. Score raised from effective 7.5 (capped) to 8.5.
   </div>
-  <div class="note"><strong>UPGRADED from 7.0 → 7.8.</strong> NEW 52W HIGH $259.92! QCOM above $245 = upgrade confirmed as predicted yesterday. $251.02 close is well above the $245 upgrade threshold. AH UNCH = no profit-taking. The $225 replacement threshold was decisively avoided. The AI device boom thesis is alive — QCOM is a survivor. Semi sector rotation lifted QCOM to a new ATH extension. Upgraded from WATCH to BUY.</div>
-  <div class="news-item"><strong>Catalyst:</strong> New 52W high. Semi sector rotation. AI device thesis alive. DELL AI server demand lifts all semi ecosystem.</div>
 </div>
 
 <div class="stock-card">
   <div class="stock-header">
     <div>
-      <span class="stock-symbol">LLY</span>
-      <span class="stock-type">Large Cap</span>
+      <div class="stock-symbol">ARM <span class="score-badge buy">8.3 BUY</span></div>
+      <div class="stock-name">Arm Holdings PLC</div>
     </div>
-    <div>
-      <span class="score-display score-watch">7.8</span>
-      <span class="decision decision-watch" style="margin-left:8px;">WATCH</span>
+    <div class="stock-price-box">
+      <div class="stock-price">$402.71</div>
+      <div class="stock-change change-down">-$6.14 (-1.50%)</div>
     </div>
   </div>
-  <div style="margin-top:8px;">
-    <span class="stock-price">$1,105.00</span>
-    <span class="stock-change red"> -21.80 (-1.93%)</span>
-    <span style="font-size:0.85rem;margin-left:10px;color:#6c8ec0;">AH: <span class="red">$1,103.88 (-0.10%)</span></span>
+  <div class="stock-meta">
+    <span>⬇️ Prev: 8.8 (BUY)</span>
+    <span>📊 52W: $100.02 - $427.99</span>
+    <span>📉 Vol: 14.2M</span>
+    <span>🕐 AH: $404.00 (+0.32%)</span>
   </div>
-  <div class="detail-row">
-    <div class="item">📊 Volume</div><div class="val">3,851,198</div>
-    <div class="item">📐 52W Range</div><div class="val">623.78 - 1,149.10</div>
-    <div class="item">🏆 52W High</div><div class="val">❌ No (Yesterday)</div>
+  <div class="stock-analysis">
+    <strong>DOWNGRADED from 8.8 to 8.3.</strong> Hit new 52W high $427.99 intraday, closed at $402.71 (-1.50%). High-beta semi profit-taking after +15.73% Monday — the Day 2 pullback pattern confirmed. Nvidia Arm PC chip catalyst still percolating. Cramer: "investors should take some profits in this AI tech giant" — referring to ARM. Co-founder says AI revolution won't trigger dot-com crash. Apply -0.5 parabolic penalty. Still a BUY at 8.3.
   </div>
-  <div class="note"><strong>DOWNGRADED from 8.0 → 7.8.</strong> Profit-taking after yesterday's +4.05% to new ATH $1,149.10. -1.93% is a normal healthy pullback, not a breakdown. Volume 3.85M is below average — no panic selling. AH -0.10% negligible. The healthcare rotation thesis is intact, but today was an AI/semi day and capital rotated out of healthcare into tech. This is CONFIRMATION that tech and healthcare DO rotate — they rallied together yesterday but today they diverged. LLY pulled back as semi stocks surged.</div>
-  <div class="news-item"><strong>Catalyst:</strong> Profit-taking off ATH. Tech rotation pulled capital from healthcare. GLP-1/Zepbound/Mounjaro demand intact. Target $1,215 still valid.</div>
 </div>
 
 <div class="stock-card">
   <div class="stock-header">
     <div>
-      <span class="stock-symbol">ROST</span>
-      <span class="stock-type">Wildcard</span>
+      <div class="stock-symbol">NVDA <span class="score-badge watch">7.3 WATCH</span></div>
+      <div class="stock-name">NVIDIA Corp.</div>
     </div>
+    <div class="stock-price-box">
+      <div class="stock-price">$222.82</div>
+      <div class="stock-change change-down">-$1.54 (-0.69%)</div>
+    </div>
+  </div>
+  <div class="stock-meta">
+    <span>⬇️ Prev: 7.5 (BUY)</span>
+    <span>📊 52W: $135.40 - $236.54</span>
+    <span>📉 Vol: 173.3M</span>
+    <span>🕐 AH: $222.80 (-0.01%)</span>
+  </div>
+  <div class="stock-analysis">
+    <strong>DOWNGRADED from BUY to WATCH.</strong> Almost flat at -0.69% with 173M volume. Wednesday's news: "Nvidia's PC chips represent CEO Huang's bid to win at every layer of AI stack." The Arm-based PC chip narrative continues but failed to extend. Structural concern still applies — DELL blowout couldn't lift NVDA last week. Today's flat close suggests institutional churn without direction. 52W ATH $236.54 — 6% above current price. Below $220 would break the bounce.
+  </div>
+</div>
+
+<div class="section-header">🌈 Wildcard (2)</div>
+
+<div class="stock-card">
+  <div class="stock-header">
     <div>
-      <span class="score-display score-watch">7.6</span>
-      <span class="decision decision-watch" style="margin-left:8px;">WATCH</span>
+      <div class="stock-symbol">NOW <span class="score-badge watch">7.0 WATCH</span></div>
+      <div class="stock-name">ServiceNow Inc.</div>
+    </div>
+    <div class="stock-price-box">
+      <div class="stock-price">$127.65</div>
+      <div class="stock-change change-down">-$8.21 (-6.04%)</div>
     </div>
   </div>
-  <div style="margin-top:8px;">
-    <span class="stock-price">$231.73</span>
-    <span class="stock-change green"> +4.53 (+1.99%)</span>
-    <span style="font-size:0.85rem;margin-left:10px;color:#6c8ec0;">AH: <span class="green">$231.73 (UNCH)</span></span>
+  <div class="stock-meta">
+    <span>⬇️ Prev: 7.8 (BUY)</span>
+    <span>📊 52W: $81.24 - $211.48</span>
+    <span>📉 Vol: 36.9M</span>
+    <span>🕐 AH: $130.19 (+1.99%)</span>
   </div>
-  <div class="detail-row">
-    <div class="item">📊 Volume</div><div class="val">9,651,004</div>
-    <div class="item">📐 52W Range</div><div class="val">124.49 - 237.41</div>
-    <div class="item">🏆 52W High</div><div class="val">❌ No</div>
+  <div class="stock-analysis">
+    <strong>DOWNGRADED from BUY to WATCH.</strong> -6.04% sell-off reverses yesterday's +9.24%. Software sector had a major profit-taking session despite "big milestone" headline. 36.9M volume confirms institutional churn. BUT: AH bouncing +1.99% to $130.19 — suggesting the sell-off may be overdone. CNBC: "Software stocks just passed a big milestone." The 36% below ATH ($211.48) cushion provides deep downside protection. Wait for tomorrow's close to confirm direction.
   </div>
-  <div class="note"><strong>UPGRADED from 7.5 → 7.6.</strong> BOUNCED back +1.99% from yesterday's -2.69% retail contagion. $225 support held EXACTLY as predicted. AH UNCH at $231.73 — stable. The off-price structural thesis is confirmed: Gap/Old Navy miss was sector contagion, not ROST-specific. Oil drop to $87.92 turbo-charges consumer tailwind. Still below ATH $237.41 but recovering well. JPMorgan retail acceleration thesis intact.</div>
-  <div class="news-item"><strong>Catalyst:</strong> Recovery from retail contagion. Oil below $90 = consumer tailwind. Off-price structural advantage. $225 support held.</div>
 </div>
 
 <div class="stock-card">
   <div class="stock-header">
     <div>
-      <span class="stock-symbol">AMD</span>
-      <span class="stock-type">Momentum</span>
+      <div class="stock-symbol">MGM <span class="score-badge watch">6.5 WATCH</span></div>
+      <div class="stock-name">MGM Resorts International</div>
     </div>
-    <div>
-      <span class="score-display score-watch">7.5</span>
-      <span class="decision decision-watch" style="margin-left:8px;">WATCH</span>
+    <div class="stock-price-box">
+      <div class="stock-price">$48.36</div>
+      <div class="stock-change change-down">-$2.33 (-4.60%)</div>
     </div>
   </div>
-  <div style="margin-top:8px;">
-    <span class="stock-price">$516.10</span>
-    <span class="stock-change red"> -1.99 (-0.38%)</span>
-    <span style="font-size:0.85rem;margin-left:10px;color:#6c8ec0;">AH: <span class="red">$514.54 (-0.30%)</span></span>
+  <div class="stock-meta">
+    <span>⬇️ Prev: 7.0 (WATCH)</span>
+    <span>📊 52W: $29.19 - $51.59</span>
+    <span>📉 Vol: 9.3M</span>
+    <span>🕐 AH: $48.48 (+0.24%)</span>
   </div>
-  <div class="detail-row">
-    <div class="item">📊 Volume</div><div class="val">26,549,877</div>
-    <div class="item">📐 52W Range</div><div class="val">108.62 - 527.20</div>
-    <div class="item">🏆 52W High</div><div class="val">❌ No</div>
+  <div class="stock-analysis">
+    <strong>DOWNGRADED to 6.5 — weak WATCH.</strong> -4.60% drop. Now trading at $48.36 — just 6 cents above the $48.30 Diller buyout offer. The M&A premium has completely evaporated. Market no longer expects a higher or competing bid. No mention of a second bidder materializing. Binary event risk — at the offer price, the upside is capped at the offer while downside is deal failure risk. Score cap at 7.0 irrelevant now (price below cap).
   </div>
-  <div class="note"><strong>DOWNGRADED from 8.0 → 7.5.</strong> -0.38% in a +5.37% ARM, +5.14% MU day is weak relative performance. AMD continues to lag peers. While the semi sector surged, AMD barely mustered -0.38%. Yesterday's +4.55% was the reversal; today suggests the reversal was a one-off. No 52W high badge. AH -0.30%. AMD is the weakest semi in the portfolio — high-beta (2.4) but failing to amplify on sector strength. This is a growing concern.</div>
-  <div class="news-item"><strong>Catalyst:</strong> Lagging semi peers. No ATH. AI chip competition narrative fading. Needs to reclaim $520+ to be credible.</div>
 </div>
 
+<div class="section-header">🎯 Best Opportunities</div>
+<div class="catalyst-box">
+  <strong>1. MU at 8.5 (BUY)</strong> — New ATH $1,076.56. Memory cycle leader. +2.76% today with strong volume. PE 8.9x still cheap.<br>
+  <strong>2. HPE at 8.5 (BUY)</strong> — Gap confirmed, peer-validation precedent applied. +19.47% best day ever. AI server sector demand confirmed.<br>
+  <strong>3. AAPL at 8.3 (BUY)</strong> — New 52W high $315.45. WWDC catalyst building. Reversal from Monday's pullback confirmed.<br>
+  <strong>4. ARM at 8.3 (BUY)</strong> — Nvidia PC chip catalyst. Hit new 52W high intraday. Minor pullback from parabolic move expected.<br>
+  <strong>5. DELL at 8.0 (BUY)</strong> — -6.58% pullback is normal consolidation after +46% in 5 sessions. Thesis intact. HPE confirms sector demand.
+</div>
+
+<div class="section-header">⚠️ Areas of Concern</div>
+<div class="concern-box">
+  <strong>LLY below $1,080 threshold:</strong> Fourth straight decline at $1,064.15. Below $1,050 = AVOID downgrade. No catalyst this week.<br>
+  <strong>NOW -6.04% reversal:</strong> Software profit-taking erased yesterday's gains. AH +1.99% bounce helps but needs confirmation.<br>
+  <strong>MGM at offer price:</strong> M&A premium evaporated. Trading at $48.36 vs $48.30 offer. Binary event risk intensifying.<br>
+  <strong>MSFT sell-the-news on Build:</strong> -4.17% despite major AI announcements. Hyperscaler spending concern from Alphabet's $80B stock sale.<br>
+  <strong>Oil at $93.52:</strong> Approaching $95 risk-off threshold. +1.48% today. Iran strikes continuing. Goldman sees $90 oil year-end.<br>
+  <strong>DELL -6.58% pullback:</strong> First real pullback after historic run. Needs to hold above $420 to avoid deeper correction.<br>
+  <strong>ARM parabolic risk:</strong> +22% in 3 days before today's -1.50%. High-beta semi reversal pattern confirmed.
+</div>
+
+<div class="section-header">📰 Key News & Catalysts</div>
 <div class="stock-card">
-  <div class="stock-header">
-    <div>
-      <span class="stock-symbol">NVDA</span>
-      <span class="stock-type">Momentum</span>
-    </div>
-    <div>
-      <span class="score-display score-avoid">6.3</span>
-      <span class="decision decision-avoid" style="margin-left:8px;">AVOID</span>
-    </div>
-  </div>
-  <div style="margin-top:8px;">
-    <span class="stock-price">$211.14</span>
-    <span class="stock-change red"> -3.11 (-1.45%)</span>
-    <span style="font-size:0.85rem;margin-left:10px;color:#6c8ec0;">AH: <span class="green">$212.54 (+0.66%)</span></span>
-  </div>
-  <div class="detail-row">
-    <div class="item">📊 Volume</div><div class="val">227,116,518</div>
-    <div class="item">📐 52W Range</div><div class="val">132.92 - 236.54</div>
-    <div class="item">🏆 52W High</div><div class="val">❌ No</div>
-  </div>
-  <div class="note"><strong>DOWNGRADED from 7.0 → 6.3 (AVOID).</strong> STILL falling. -1.45% in a day when the ENTIRE semi sector surged +3-5%+ is catastrophic relative weakness. Volume 227M is extreme — this is distribution, not accumulation. Cramer says "Nvidia is a clear winner from Dell's monster quarter" but the market disagrees. Below $208 is now imminent. The sell-the-news pattern has COMPLETELY broken. NVDA is the single worst performer in the portfolio by a wide margin. Despite Dell's AI server blowout directly benefiting NVDA chips, NVDA dropped. This is a structural concern. AH +$212.54 (+0.66%) offers a tiny bounce but not enough to save the day. <strong>RECOMMEND: Remove from portfolio.</strong></div>
-  <div class="news-item"><strong>Catalyst:</strong> None — anti-catalyst. Sell-the-news pattern unresolved. Even Dell's AI blowout couldn't lift NVDA. Structural concern.</div>
+  <div class="news-item"><strong>PANW +9.15% AH</strong> on earnings beat. AI cybersecurity urgency. New 52W high territory. <span class="news-time">AFTER CLOSE</span></div>
+  <div class="news-item"><strong>Alphabet plans $80B stock sale</strong> to fund AI buildout. Hyperscaler spending concern weighs on MSFT, cloud peers.</div>
+  <div class="news-item"><strong>MSFT Build Conference:</strong> New AI models unveiled to lessen reliance on OpenAI. Quantum chip update. Dan Ives: "Mispriced."</div>
+  <div class="news-item"><strong>HPE best day ever</strong> — +19.47% on earnings follow-through. AI server demand confirmed by guidance hike.</div>
+  <div class="news-item"><strong>Software stocks "passed a big milestone"</strong> — CNBC. Sector revival is structural despite today's profit-taking in NOW.</div>
+  <div class="news-item"><strong>Goldman Sachs:</strong> Oil to stay at $90/year-end even if Hormuz opens up. Base case for crude stability.</div>
+  <div class="news-item"><strong>Nvidia Arm-based PC chips:</strong> Huang's bid to win at every layer of AI stack. Computex momentum continues.</div>
+  <div class="news-item"><strong>Arm Co-Founder:</strong> AI revolution won't trigger dot-com-style crash. Calms parabolic fears.</div>
+  <div class="news-item"><strong>CNBC Daily Open:</strong> "Trading the signals vs the noise" — theme of the day.</div>
 </div>
 
-<h2 id="catalysts">⚡ Key Catalysts & Opportunities</h2>
-<div class="catalyst-section">
-  <div class="stock-card best-opp">
-    <h3>🔥 DELL +32.76% Best Day Ever</h3>
-    <div class="news-item">$420.91 close, new 52W high $429.15. AI server revenue fastest since 2018 return to public markets. Pentagon deal. Cramer data center favorite. "Dell will be worth 3x enterprise value" — Susquehanna. Sector-defining moment for AI data center demand.</div>
-  </div>
-  <div class="stock-card best-opp">
-    <h3>🔥 MSFT +5.45% Breakout</h3>
-    <div class="news-item">$450.24 with 65.8M volume. Broke multi-week consolidation. Cloud sentiment from SNOW + DELL AI demand. Cheapest Mag 7 PE playing out. Still 19% below ATH.</div>
-  </div>
-  <div class="stock-card best-opp">
-    <h3>🔥 MU +5.14% New ATH</h3>
-    <div class="news-item">$971.00 close, new 52W high $981.00. Memory cycle leader back to making new highs. HBM/DDR5 demand from AI data centers. PE 8.9x still cheap.</div>
-  </div>
-  <div class="stock-card best-opp">
-    <h3>🔥 QCOM New 52W High +3.18%</h3>
-    <div class="news-item">$251.02 close, new 52W high $259.92. AI device thesis confirmed. Above $245 upgrade threshold as predicted. AH UNCH.</div>
-  </div>
-  <div class="stock-card best-opp">
-    <h3>🔥 ARM New ATH +5.37%</h3>
-    <div class="news-item">$353.29 close, new ATH $356.45. Two consecutive days of massive gains. AI chip architecture demand. Semi rotation dominant theme.</div>
-  </div>
-  <div class="stock-card best-opp">
-    <h3>🔥 Iran Ceasefire Optimism</h3>
-    <div class="news-item">"Trump lays out Iran deal demands, says he's about to make final determination." Oil drops 20% from 2026 peak. Wall Street rides high into June on hopes the war comes to an end.</div>
-  </div>
-  <div class="stock-card best-opp">
-    <h3>🔥 NOW +14.38% (New Candidate)</h3>
-    <div class="news-item">$124.37 (+14.38%), volume 60.3M. ServiceNow massive move. AI enterprise demand. Consider adding to wildcard slot if NVDA is removed.</div>
-  </div>
-  <div class="stock-card best-opp">
-    <h3>🔥 AAPL New 52W High</h3>
-    <div class="news-item">$315.00 new ATH (up from $313.26). WWDC June catalyst. Most stable portfolio holding.</div>
+<div class="section-header">📐 Self-Learning Rules Discovered Today</div>
+<div class="stock-card">
+  <div class="stock-analysis">
+    <strong>1. HPE gap cap precedent fully confirmed.</strong> Day 2 gap held above 50% retrace ($53.90). DELL peer validation precedent binds. Future earnings gaps from AI server peers get Day 1 cap waived on the same logic.<br><br>
+    <strong>2. MSFT Build sell-the-news pattern.</strong> Major AI announcements (-4.17%) but Wedbush says mispriced. Distinguish between product-news selloffs (temporary) vs structural concern selloffs (permanent). Build sell-the-news typically reverses within 3 sessions.<br><br>
+    <strong>3. ARM high-beta semi pattern confirmed.</strong> After +15.73% Monday, -1.50% Tuesday. The semi rotation 3-wave model: Wave 3 (fresh entrants like DELL, HPE) still dominates while Wave 2 (followers) consolidates.<br><br>
+    <strong>4. NOW -6.04% with AH +1.99% bounce.</strong> Extreme intraday selloff with after-hours recovery often signals a bear trap. The software sector revival thesis isn't broken by one profit-taking session.<br><br>
+    <strong>5. AAPL WWDC catalyst >earnings season.</strong> Consumer tech (AAPL) and AI infrastructure (DELL, HPE, MU) can rally simultaneously when catalysts are unrelated. Distinguish between catalyst-driven moves vs sector-correlation moves.
   </div>
 </div>
 
-<h2 id="concerns">🚨 Areas of Concern</h2>
-<div class="catalyst-section">
-  <div class="stock-card concern">
-    <h3>⚠ NVDA CRITICAL — Below 6.0 Threshold</h3>
-    <div class="news-item">-1.45% in a +0.21% NASDAQ day + semi sector surge day. Extreme volume 227M = distribution. Even Dell's AI blowout (which directly benefits NVDA chips) couldn't lift it. <strong>RECOMMEND: Replace with NOW. Remove from portfolio.</strong></div>
-  </div>
-  <div class="stock-card concern">
-    <h3>⚠ AMD Lagging Peers</h3>
-    <div class="news-item">-0.38% while ARM +5.37%, MU +5.14%. High-beta (2.4) failing to amplify on sector strength. Growing concern about AI chip competition narrative.</div>
-  </div>
-  <div class="stock-card concern">
-    <h3>⚠ LLY Profit-Taking</h3>
-    <div class="news-item">-1.93% off yesterday's ATH. Healthcare rotated out as tech rotated in. Confirms tech/healthcare ARE zero-sum on some days — yesterday they rallied together, today diverged.</div>
-  </div>
-  <div class="stock-card concern">
-    <h3>⚠ Russell 2000 -0.59%</h3>
-    <div class="news-item">Small caps lagging again. The AI/semi rally is large-cap concentrated. Breadth concern for overall market health.</div>
-  </div>
-  <div class="stock-card concern">
-    <h3>⚠ Gold Still Elevated $4,576</h3>
-    <div class="news-item">Gold +0.98% despite Iran ceasefire optimism. Suggests hedgers are skeptical about deal certainty. Geopolitical risk premium not fully extinguished.</div>
-  </div>
-  <div class="stock-card concern">
-    <h3>⚠ DELL Exhaustion Risk</h3>
-    <div class="news-item">+32.76% in a single day is extreme. AH -0.20% suggests some profit-taking. Potential for consolidation or mean-reversion Monday. Monitor open.</div>
+<div class="section-header">🔄 Next Actions (Wed Jun 3)</div>
+<div class="stock-card">
+  <div class="stock-analysis">
+    • Monitor <strong>LLY</strong> — below $1,050 = downgrade to AVOID<br>
+    • Monitor <strong>NOW</strong> — above $130 confirmed = upgrade back to BUY<br>
+    • Monitor <strong>DELL</strong> — hold above $420 = pullback healthy; below = deeper correction<br>
+    • Monitor <strong>MGM</strong> — below $48.30 = deal risk; above $50 = competing bid expected<br>
+    • Monitor <strong>NVDA</strong> — below $220 = structural reversal failed<br>
+    • Watch <strong>PANW</strong> — +9.15% AH earnings. If gap holds Day 1, consider adding as wildcard replacement for MGM<br>
+    • Track oil at $93.52 — $95 threshold for risk-off<br>
+    • Iran situation: monitor Hormuz blockade headlines<br>
+    • Watch software sector for continued institutional re-entry (NOW, CRM, ADBE)<br>
+    • Friday: Jobs report
   </div>
 </div>
 
-<h2 id="lessons">📝 Discovered Rules & Lessons</h2>
-<div class="catalyst-section">
-  <div class="stock-card discovered">
-    <h3>💡 DELL Gap Cap Waived — Confirmed</h3>
-    <div class="news-item">DELL AH +16.11% Thu → +32.76% Fri. The peer-validation thesis was correct. MU +19% earlier this week at the sector level meant DELL's gap was NOT company-specific but sector-level AI data center demand confirmation. Gap cap waived on Day 2 as gap held AND expanded well above 50% retrace. Criteria updated: (1) sector peer validates within same week, (2) gap holds above 50% retrace Day 1, (3) sector thesis confirmed by third peer within 48h = gap cap waived entirely. Dell +32.76% sets new precedent for peer-validation exception.</div>
-  </div>
-  <div class="stock-card discovered">
-    <h3>💡 NVDA Sell-the-News is Structural, Not Cyclical</h3>
-    <div class="news-item">Even Dell's AI server blowout (+32.76%) which DIRECTLY benefits NVDA chips could not lift NVDA (-1.45%). This suggests the sell-the-news is NOT a temporary pattern but a structural concern. NVDA has been the hardest Mag 7/ Semi hit by: (1) competitor anxiety (AMD, custom ASICs), (2) stretched valuation after the 2023-2024 supercycle, (3) capital rotation to other AI beneficiaries (DELL, MU, ARM). The thesis that "Dell's monster quarter = Nvidia win" (Cramer) is being rejected by the market. When the AI king's own supplier has a record quarter and the king drops, something fundamental has changed.</div>
-  </div>
-  <div class="stock-card discovered">
-    <h3>💡 Tech/Healthcare Zero-Sum Re-Established</h3>
-    <div class="news-item">Yesterday (May 28) tech + healthcare rallied together. Today (May 29) healthcare LLY -1.93% while semi stocks surged +3-5%. The 'both can rally together' rule from yesterday was a one-off on a broad market strength day. When capital is concentrated into a single sector (semi/AI), healthcare DOES rotate out. The original rule (sectors are often zero-sum on concentrated rotation days) stands. The exception (both rally together) applies only on broad market strength days like yesterday.</div>
-  </div>
-  <div class="stock-card discovered">
-    <h3>💡 MSFT 'Dead-Money' Thesis — Full Rebuttal</h3>
-    <div class="news-item">MSFT went from $409.59 low (3 weeks ago) to $450.24 today (+9.9% from low). The 'cheapest PE Mag 7 = dead money' thesis was spectacularly wrong. The correction to the lesson: dead money threshold is >2 weeks of persistent underperformance at a specific PE discount. MSFT was at 21.6x PE for 3 sessions — that's not dead money, that's value buying opportunity. Today's +5.45% with 65.8M volume confirms value accumulation.</div>
-  </div>
-  <div class="stock-card discovered">
-    <h3>💡 ROST $225 Support — Confirmed</h3>
-    <div class="news-item">Yesterday predicted ROST $225 support critical. ROST bounced +1.99% from $227.20 to $231.73, confirming the off-price structural thesis. Oil below $90 ($87.92) = consumer tailwind. Gap/Old Navy retail contagion was indeed headline-driven, not structural. The thesis holds.</div>
-  </div>
-  <div class="stock-card discovered">
-    <h3>💡 Semi Sector Rotation — 3rd Wave Confirmed</h3>
-    <div class="news-item">Wave 1: MU +19% (Mon/Tue, sector leader breakout). Wave 2: Semi followers ARM +10.76%, AMD +4.55% (Thu, profit-taking Wed followed by reversal). Wave 3: DELL +32.76% (Fri, sector-level AI demand confirmation lifting all). MU new ATH +5.14%, ARM new ATH +5.37%, QCOM new ATH +3.18%. The sector rotation is NOW in its expansion phase — the leader (MU) continued to new ATH while fresh entrants (DELL) supercharged the theme.</div>
-  </div>
-</div>
-
-<h2>📊 Summary</h2>
-<div style="background:#111827;border-radius:10px;padding:16px;border:1px solid #1a2a4a;margin:15px 0;">
-  <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:12px;">
-    <div><strong style="color:#00c853;">BUY (6):</strong> DELL 9.0, ARM 8.5, MSFT 8.3, MU 8.2, AAPL 8.0, QCOM 7.8</div>
-    <div><strong style="color:#ffd54f;">WATCH (3):</strong> LLY 7.8, ROST 7.6, AMD 7.5</div>
-    <div><strong style="color:#ff5252;">AVOID (1):</strong> NVDA 6.3</div>
-  </div>
-  <div><strong>Best Opportunities:</strong> DELL (+32.76% best day ever, sector-defining), MSFT (+5.45% breakout), MU (+5.14% new ATH)</div>
-  <div><strong>Worst Performer:</strong> NVDA (-1.45%) — even Dell's AI blowout couldn't lift it. Structural concern. <strong>RECOMMEND REMOVAL.</strong></div>
-  <div><strong>New Candidate:</strong> NOW (+14.38%) — AI enterprise software catalyst. Consider for NVDA replacement.</div>
-  <div><strong>Next Actions:</strong><br>
-  • Monitor DELL Monday — risk of exhaustion/mean-reversion after +32.76% day<br>
-  • NVDA: below $208 = structural breakdown confirmed — <strong>initiate removal from portfolio</strong><br>
-  • NVDA replacement: NOW ($124.37, +14.38%, volume 60.3M, AI enterprise catalyst)<br>
-  • Monitor LLY for consolidation support — below $1,080 would suggest deeper pullback<br>
-  • ROST: above $235 = upgrade to 7.8<br>
-  • AMD: needs to reclaim $520+ to remain credible<br>
-  • PCE data implications: yields falling supports growth stocks — bullish for entire portfolio<br>
-  • Iran ceasefire: if deal finalized, oil could drop further ($80-85 range), boosting consumer stocks<br>
-  • Monday Nikkei/KOSPI/Taiwan after massive Friday +2-3.5% Asian rally — potential gap up for US futures<br>
-  • Add NOW to watchlist for NVDA replacement if catalyst holds
-  </div>
-</div>
-
-<div style="text-align:center;color:#6c8ec0;font-size:0.8rem;margin-top:30px;padding-top:15px;border-top:1px solid #1a2a4a;">
-  Generated Fri May 29, 2026 21:30 UK | Data via CNBC<br>
-  <span style="color:#ffd54f;">⚠ Trading content is a test case only. The pipeline methodology (content → transcript → classification → assessment) is the actual deliverable.</span>
-</div>
+<p style="text-align:center; color:var(--text-muted); font-size:0.8rem; margin-top:24px;">Generated June 2, 2026 21:30 UK • Post-Market Analysis • Data: CNBC</p>
 
 </div>
 </body>
