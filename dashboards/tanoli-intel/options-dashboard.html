@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Options Performance Dashboard — Clean Reset</title>
+<style>
+  :root {
+    --bg: #0f0f1a;
+    --surface: #1a1a2e;
+    --surface2: #252540;
+    --accent: #00d4aa;
+    --red: #ff4757;
+    --orange: #ffa502;
+    --text: #e0e0e0;
+    --muted: #8888aa;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding: 20px;
+  }
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--surface);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--surface2);
+  }
+  .header h1 { font-size: 1.8em; margin-bottom: 8px; }
+  .header .subtitle { color: var(--muted); font-size: 0.95em; }
+  .reset-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #0f0f1a;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-top: 12px;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--surface2);
+  }
+  .stat-card .value { font-size: 2em; font-weight: 700; color: var(--muted); }
+  .stat-card .label { font-size: 0.85em; color: var(--muted); margin-top: 4px; }
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--surface);
+    border-radius: 12px;
+    border: 1px dashed var(--surface2);
+    margin-bottom: 20px;
+  }
+  .empty-state .icon { font-size: 3em; margin-bottom: 16px; }
+  .empty-state h2 { color: var(--muted); font-size: 1.3em; margin-bottom: 8px; }
+  .empty-state p { color: var(--muted); font-size: 0.9em; max-width: 400px; margin: 0 auto; line-height: 1.5; }
+  .info-box {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 20px;
+    border: 1px solid var(--surface2);
+  }
+  .info-box h3 { color: var(--accent); margin-bottom: 12px; }
+  .info-box ul { list-style: none; }
+  .info-box li { padding: 6px 0; color: var(--muted); font-size: 0.9em; }
+  .info-box li::before { content: "→ "; color: var(--accent); }
+  .footer { text-align: center; color: var(--muted); font-size: 0.8em; padding: 20px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 Options Performance Dashboard</h1>
+  <div class="subtitle">Tanoli Saab • Updated 03 Jun 2026</div>
+  <div class="reset-badge">🔄 CLEAN RESET</div>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="value">0</div>
+    <div class="label">Closed Trades</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">—</div>
+    <div class="label">Win Rate</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">$0</div>
+    <div class="label">Total P&L</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">—</div>
+    <div class="label">Profit Factor</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">0</div>
+    <div class="label">Open Trades</div>
+  </div>
+  <div class="stat-card">
+    <div class="value">0</div>
+    <div class="label">Max Win Streak</div>
+  </div>
+</div>
+
+<div class="empty-state">
+  <div class="icon">🧹</div>
+  <h2>Clean Slate</h2>
+  <p>Options trade journal was fully reset on 3 June 2026. All pre-fix era data (1,900 trades, 5,003 signals) has been archived and cleared. New trades from today onward will build a clean, accurate performance baseline with proper P&L tracking and premium conventions.</p>
+</div>
+
+<div class="info-box">
+  <h3>What Changed</h3>
+  <ul>
+    <li>1,900 stale trades removed (only 272 had correct P&L tracking)</li>
+    <li>5,003 signal log entries cleared</li>
+    <li>12 old scan reports archived</li>
+    <li>Weekly autopsy log reset</li>
+    <li>Backups retained at ~/options-trader/*.reset-bak.20260603-0521</li>
+    <li>Crons will rebuild data starting next scan</li>
+  </ul>
+</div>
+
+<div class="footer">
+  Data starts fresh from next options scanner run • Cron: 14:30 Mon-Fri
+</div>
+
+</body>
+</html>
