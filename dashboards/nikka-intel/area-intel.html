@@ -62,16 +62,16 @@ tr:hover td { background: #1c2333; }
 <div class="container">
 
 <h1>🏘️ West Midlands Area Intelligence Dashboard</h1>
-<p class="subtitle">Nikka Intel — Kokal Properties Ltd | Auto-updated: 03 June 2026 12:06</p>
+<p class="subtitle">Nikka Intel — Kokal Properties Ltd | Auto-updated: 03 June 2026 14:08</p>
 
 <div class="stats-row">
-  <div class="stat-box"><div class="num">10</div><div class="label">Areas Complete</div></div>
-  <div class="stat-box"><div class="num">95</div><div class="label">Remaining</div></div>
+  <div class="stat-box"><div class="num">11</div><div class="label">Areas Complete</div></div>
+  <div class="stat-box"><div class="num">94</div><div class="label">Remaining</div></div>
   <div class="stat-box"><div class="num">105</div><div class="label">Total in Scope</div></div>
-  <div class="stat-box"><div class="num">9.5%</div><div class="label">Coverage</div></div>
+  <div class="stat-box"><div class="num">10.5%</div><div class="label">Coverage</div></div>
 </div>
 
-<div class="progress-bar"><div class="fill" style="width: 9.5%;"></div></div>
+<div class="progress-bar"><div class="fill" style="width: 10.5%;"></div></div>
 
 <h2>📍 Completed Areas</h2>
 <div class="area-grid" id="areaGrid">
@@ -83,9 +83,9 @@ tr:hover td { background: #1c2333; }
   <div class="area-cell done">DY6</div>
   <div class="area-cell done">DY7</div>
   <div class="area-cell done">DY8</div>
-  <div class="area-cell current" title="Just added">DY9 ⭐</div>
+  <div class="area-cell done">DY9</div>
   <div class="area-cell done">DY10</div>
-  <div class="area-cell pending">WV1</div>
+  <div class="area-cell current" title="Just added">WV1 ⭐</div>
   <div class="area-cell pending">WV2</div>
   <div class="area-cell pending">WV3</div>
   <div class="area-cell pending">WV4</div>
@@ -251,9 +251,23 @@ tr:hover td { background: #1c2333; }
     <td>—</td>
     <td><span class="badge green">BUY</span></td>
   </tr>
+  <tr>
+    <td style="background:#002d61;color:#58a6ff;font-weight:bold;">11</td>
+    <td style="background:#002d61;color:#58a6ff;font-weight:bold;"><strong>WV1 ⭐</strong></td>
+    <td style="background:#002d61;">Wolverhampton City Centre</td>
+    <td style="background:#002d61;">£174K (overall)<br><span style="font-size:0.8em">Semi:£211K Terr:£159K Flat:£112K</span></td>
+    <td style="background:#002d61;color:#f85149;">-3%</td>
+    <td style="background:#002d61;color:#3fb950;">+9%</td>
+    <td style="background:#002d61;">87.5/1k ↓8%</td>
+    <td style="background:#002d61;">—</td>
+    <td style="background:#002d61;color:#3fb950;">5-8% ⬆</td>
+    <td style="background:#002d61;"><span class="badge red">A4</span></td>
+    <td style="background:#002d61;color:#3fb950;"><strong>£4.4B</strong></td>
+    <td style="background:#002d61;"><span class="badge green">STRONG BUY</span></td>
+  </tr>
 </table>
 </div>
-<p style="color: #8b949e; font-size: 0.8em; margin-top: 8px;">⭐ = Most recently completed (this session). Data for earlier DY postcodes from area_intel_crawler cache. A4 = Borough-wide Article 4 Direction active.</p>
+<p style="color: #8b949e; font-size: 0.8em; margin-top: 8px;">⭐ = Most recently completed (this session). Data for earlier DY postcodes from area_intel_crawler cache. WV1 data researched live via web search + PropAI Deals + HM Land Registry + ONS + Police.uk. A4 = Borough-wide Article 4 Direction active.</p>
 
 <!-- ====== DY9 DETAIL CARD ====== -->
 <div class="detail-card" id="dy9" style="border-color: #1f6feb;">
@@ -314,19 +328,83 @@ tr:hover td { background: #1c2333; }
   <p style="color: #8b949e; font-size: 0.8em; margin-top: 8px;">Data: HM Land Registry, Rightmove, Police.uk, ONS, Environment Agency, Dudley Council, Hunters Estate Agents, HouseMetric. Crawled 2026-06-03.</p>
 </div>
 
+<!-- ====== WV1 DETAIL CARD ====== -->
+<div class="detail-card" id="wv1" style="border-color: #3fb950;">
+  <div class="card-header">
+    <h3>📍 WV1 — Wolverhampton City Centre</h3>
+    <span class="score-box strong-buy">STRONG BUY</span>
+  </div>
+
+  <div class="metrics">
+    <div class="metric green"><div class="v">£174,015</div><div class="l">Avg Sold Price (12mo)</div></div>
+    <div class="metric yellow"><div class="v">-3%</div><div class="l">12-Mo Change</div></div>
+    <div class="metric green"><div class="v">+9%</div><div class="l">Since 2023 Peak</div></div>
+    <div class="metric green"><div class="v">87.5/1k</div><div class="l">Crime Rate (↓8% YoY)</div></div>
+    <div class="metric green"><div class="v">£970/mo</div><div class="l">Avg House Rent</div></div>
+    <div class="metric green"><div class="v">+11.9%</div><div class="l">Rent Growth (YoY)</div></div>
+    <div class="metric blue"><div class="v">£4.4B</div><div class="l">Regen Pipeline</div></div>
+    <div class="metric green"><div class="v">6.2x</div><div class="l">Price-to-Earnings</div></div>
+  </div>
+
+  <h3>🏡 Prices by Type</h3>
+  <table>
+    <tr><th>Type</th><th>Avg Price</th><th>Est Rent/mo</th><th>Gross Yield</th><th>Notes</th></tr>
+    <tr><td>Semi-Detached</td><td>£211,023</td><td>£1,000-1,200</td><td>5-6%</td><td>Family demand near schools</td></tr>
+    <tr><td>Terraced</td><td>£158,923</td><td>£850-1,000</td><td>5.5-7%</td><td>Best BTL entry — Whitmore Reans, East Park</td></tr>
+    <tr><td>Flat</td><td>£111,771</td><td>£550-800</td><td>6-8%</td><td>City centre regeneration zone — highest growth</td></tr>
+    <tr><td>Cheapest sector</td><td>WV1 3 — £134K</td><td>£700-850</td><td>6-7%</td><td>Entry-level investment</td></tr>
+  </table>
+
+  <h3>🚆 Transport</h3>
+  <table>
+    <tr><td>🚄 Railway Station</td><td>Birmingham 20min, London ~2h, Manchester 1h</td></tr>
+    <tr><td>🚊 Metro</td><td>Full integration — Bilston, Wednesbury, West Bromwich, Birmingham</td></tr>
+    <tr><td>🛣️ M6 J10</td><td>3 miles — regional + national connectivity</td></tr>
+    <tr><td>🚌 Bus</td><td>City centre hub — National Express, local routes</td></tr>
+  </table>
+
+  <h3>📈 Regeneration — £4.4B Pipeline</h3>
+  <table>
+    <tr><th>Project</th><th>Status</th><th>Impact</th></tr>
+    <tr><td>Smithgate (£1B)</td><td><span class="badge green">Under construction</span></td><td>12-acre city centre, 1,000 homes, 331 apartments (Phase 1 Bicycle Works)</td></tr>
+    <tr><td>Canalside South (£150M)</td><td><span class="badge green">First residents Summer 2026</span></td><td>533 EPC-A homes, "Canalside Halo Effect" boosting values</td></tr>
+    <tr><td>City Learning Quarter (£61M)</td><td><span class="badge green">Operational 2026</span></td><td>College + Library + Adult Ed — rental demand surge</td></tr>
+    <tr><td>i54 Business Park</td><td><span class="badge green">Expanding</span></td><td>JLR, Moog, green-tech. Investment Zone status.</td></tr>
+  </table>
+  <p style="color:#3fb950;font-size:0.85em;margin-top:6px;"><strong>JLL forecast:</strong> Rental values +18.1% | Property values +23% over 5 years in WV1 regeneration zone.</p>
+
+  <h3>⚠️ Article 4</h3>
+  <p><span class="badge red">BOROUGH-WIDE ARTICLE 4 DIRECTION</span> — Active since 14 Sep 2017. HMOs of 3+ occupants need full planning permission. HMO strategy NOT viable in WV1.</p>
+
+  <h3>🎯 Strategy Fit</h3>
+  <table>
+    <tr><th>Strategy</th><th>Score</th><th>Key Takeaway</th></tr>
+    <tr><td>BTL</td><td><span class="badge green">85/100</span></td><td>5-6% yields + 11.9% rent growth + £4.4B regen = compelling. Target terraced £140-180K near regeneration zones.</td></tr>
+    <tr><td>Capital Growth</td><td><span class="badge green">90/100</span></td><td><strong>Top score.</strong> £4.4B pipeline under construction. JLL 23% forecast. Buy in Canalside Halo or Smithgate zone.</td></tr>
+    <tr><td>BRRR</td><td><span class="badge yellow">65/100</span></td><td>Possible in lower bands. Need BMV >15%. Target Whitmore Reans / East Park sub-£160K.</td></tr>
+    <tr><td>Flip</td><td><span class="badge yellow">50/100</span></td><td>-3% market makes thin margins. Only if <80% market value purchase.</td></tr>
+    <tr><td>HMO</td><td><span class="badge red">20/100</span></td><td>Article 4 blocks. Full planning required. Not recommended.</td></tr>
+  </table>
+
+  <p style="color: #8b949e; font-size: 0.85em; margin-top: 12px;">
+    <strong>Bottom line:</strong> WV1 is the strongest regeneration play in the West Midlands. £4.4B of infrastructure already under construction — not speculative. Buy flats £80-120K (6-8% yield) or terraced £140-180K (5-6% yield) within the Canalside Halo Zone. Avoid HMO. Crime rates are falling sharply (-46% robbery, -21% burglary). The -3% YoY price dip is a buying opportunity ahead of 23% forecast growth.
+  </p>
+  <p style="color: #8b949e; font-size: 0.8em; margin-top: 8px;">Data: HM Land Registry, Rightmove, PropAI Deals, ONS, Police.uk, Environment Agency, Wolverhampton Council, Joseph Mews, Plumplot, CrimeRate, Belvoir. Crawled 2026-06-03.</p>
+</div>
+
 <h2>📋 Remaining by District</h2>
 <table>
   <tr><th>District</th><th>Postcodes</th><th>Complete</th><th>Remaining</th><th>Status</th></tr>
   <tr><td>Dudley</td><td>DY1-DY10</td><td>10</td><td>0</td><td><span class="badge green">✅ DONE</span></td></tr>
-  <tr><td>Wolverhampton</td><td>WV1-WV15</td><td>0</td><td>15</td><td><span class="badge yellow">Next up</span></td></tr>
+  <tr><td>Wolverhampton</td><td>WV1-WV15</td><td>1</td><td>14</td><td><span class="badge green">⭐ WV1 done</span></td></tr>
   <tr><td>Sandwell</td><td>B65-71, WS10</td><td>0</td><td>8</td><td><span class="badge gray">Pending</span></td></tr>
   <tr><td>Walsall</td><td>WS1-WS9</td><td>0</td><td>9</td><td><span class="badge gray">Pending</span></td></tr>
   <tr><td>Birmingham</td><td>B1-B50</td><td>0</td><td>~55</td><td><span class="badge gray">Pending</span></td></tr>
-  <tr><td><strong>Total</strong></td><td></td><td><strong>10</strong></td><td><strong>95</strong></td><td><strong>9.5% done</strong></td></tr>
+  <tr><td><strong>Total</strong></td><td></td><td><strong>11</strong></td><td><strong>94</strong></td><td><strong>10.5% done</strong></td></tr>
 </table>
 
 <div class="footer">
-  Kokal Properties Ltd — Nikka Intel | Auto-generated by Hermes Property Intelligence System | West Midlands Area Intelligence | Updated 2026-06-03 12:06 | Next: WV postcodes
+  Kokal Properties Ltd — Nikka Intel | Auto-generated by Hermes Property Intelligence System | West Midlands Area Intelligence | Updated 2026-06-03 14:08 | Next: WV2 (Wolverhampton) 
 </div>
 
 </div>
