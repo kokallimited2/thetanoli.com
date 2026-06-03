@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Midlands Area Intelligence Dashboard — Nikka Intel</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; padding: 30px 20px; }
+.container { max-width: 1200px; margin: 0 auto; }
+h1 { color: #58a6ff; font-size: 2em; margin-bottom: 4px; }
+h1 span { color: #8b949e; font-size: 0.5em; }
+.subtitle { color: #8b949e; font-size: 0.95em; margin-bottom: 25px; }
+h2 { color: #f0f6fc; font-size: 1.3em; margin: 30px 0 15px; border-bottom: 1px solid #21262d; padding-bottom: 8px; }
+h3 { color: #58a6ff; font-size: 1em; margin-bottom: 10px; }
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 20px 0; }
+.stat-box { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px; text-align: center; }
+.stat-box .num { font-size: 1.8em; font-weight: 700; color: #58a6ff; }
+.stat-box .label { font-size: 0.8em; color: #8b949e; margin-top: 4px; }
+.progress-bar { background: #21262d; border-radius: 20px; height: 24px; overflow: hidden; margin: 15px 0; }
+.progress-bar .fill { height: 100%; border-radius: 20px; background: linear-gradient(90deg, #58a6ff, #3fb950); transition: width 1s; }
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.85em; }
+th { background: #161b22; color: #8b949e; font-weight: 600; padding: 10px 8px; text-align: left; border-bottom: 2px solid #30363d; position: sticky; top: 0; }
+td { padding: 8px; border-bottom: 1px solid #21262d; color: #c9d1d9; }
+tr:hover td { background: #1c2333; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75em; font-weight: 600; }
+.badge.green { background: #0e4429; color: #3fb950; }
+.badge.red { background: #3d1112; color: #f85149; }
+.badge.yellow { background: #3d2e00; color: #d29922; }
+.badge.blue { background: #002d61; color: #58a6ff; }
+.badge.gray { background: #21262d; color: #8b949e; }
+.badge.purple { background: #2a1455; color: #a371f7; }
+.area-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 6px; margin: 15px 0; }
+.area-cell { padding: 10px 6px; text-align: center; border-radius: 6px; font-size: 0.8em; font-weight: 600; }
+.area-cell.done { background: #0e4429; color: #3fb950; border: 1px solid #238636; }
+.area-cell.pending { background: #21262d; color: #484f58; border: 1px solid #30363d; }
+.area-cell.current { background: #002d61; color: #58a6ff; border: 1px solid #1f6feb; }
+.detail-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px; margin: 20px 0; }
+.detail-card .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+.detail-card .card-header h3 { margin: 0; font-size: 1.2em; color: #f0f6fc; }
+.score-box { padding: 4px 14px; border-radius: 16px; font-size: 0.9em; font-weight: 700; }
+.score-box.buy { background: #0e4429; color: #3fb950; border: 1px solid #238636; }
+.score-box.mixed { background: #3d2e00; color: #d29922; border: 1px solid #9e6a03; }
+.score-box.strong-buy { background: #0e4429; color: #3fb950; border: 2px solid #3fb950; }
+.score-box.avoid { background: #3d1112; color: #f85149; border: 1px solid #da3633; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin: 15px 0; }
+.metric { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 12px; text-align: center; }
+.metric .v { font-size: 1.3em; font-weight: 700; color: #58a6ff; }
+.metric .l { font-size: 0.75em; color: #8b949e; margin-top: 3px; }
+.metric.green .v { color: #3fb950; }
+.metric.yellow .v { color: #d29922; }
+.metric.red .v { color: #f85149; }
+.footer { margin-top: 30px; padding-top: 16px; border-top: 1px solid #21262d; color: #8b949e; font-size: 0.8em; text-align: center; }
+.tag { display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: 0.7em; margin: 1px; }
+.tag.btl { background: #0e4429; color: #3fb950; }
+.tag.growth { background: #002d61; color: #58a6ff; }
+.tag.hmo { background: #3d1112; color: #f85149; }
+.tag.brrr { background: #3d2e00; color: #d29922; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🏘️ West Midlands Area Intelligence Dashboard</h1>
+<p class="subtitle">Nikka Intel — Kokal Properties Ltd | Auto-updated: 03 June 2026 12:06</p>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="num">10</div><div class="label">Areas Complete</div></div>
+  <div class="stat-box"><div class="num">95</div><div class="label">Remaining</div></div>
+  <div class="stat-box"><div class="num">105</div><div class="label">Total in Scope</div></div>
+  <div class="stat-box"><div class="num">9.5%</div><div class="label">Coverage</div></div>
+</div>
+
+<div class="progress-bar"><div class="fill" style="width: 9.5%;"></div></div>
+
+<h2>📍 Completed Areas</h2>
+<div class="area-grid" id="areaGrid">
+  <div class="area-cell done">DY1</div>
+  <div class="area-cell done">DY2</div>
+  <div class="area-cell done">DY3</div>
+  <div class="area-cell done">DY4</div>
+  <div class="area-cell done">DY5</div>
+  <div class="area-cell done">DY6</div>
+  <div class="area-cell done">DY7</div>
+  <div class="area-cell done">DY8</div>
+  <div class="area-cell current" title="Just added">DY9 ⭐</div>
+  <div class="area-cell done">DY10</div>
+  <div class="area-cell pending">WV1</div>
+  <div class="area-cell pending">WV2</div>
+  <div class="area-cell pending">WV3</div>
+  <div class="area-cell pending">WV4</div>
+  <div class="area-cell pending">WV5</div>
+  <div class="area-cell pending">WV6</div>
+  <div class="area-cell pending">WV7</div>
+  <div class="area-cell pending">WV8</div>
+  <div class="area-cell pending">WV9</div>
+  <div class="area-cell pending">WV10</div>
+  <div class="area-cell pending">WV11</div>
+  <div class="area-cell pending">WV12</div>
+  <div class="area-cell pending">WV13</div>
+  <div class="area-cell pending">WV14</div>
+  <div class="area-cell pending">WV15</div>
+  <div class="area-cell pending">B65</div>
+  <div class="area-cell pending">B66</div>
+  <div class="area-cell pending">B67</div>
+  <div class="area-cell pending">B68</div>
+  <div class="area-cell pending">B69</div>
+  <div class="area-cell pending">B70</div>
+  <div class="area-cell pending">B71</div>
+  <div class="area-cell pending">WS10</div>
+  <div class="area-cell pending">WS1-WS9</div>
+  <div class="area-cell pending">B1-B50</div>
+</div>
+
+<h2>📋 Master Comparison Table</h2>
+<div style="overflow-x: auto;">
+<table>
+  <tr>
+    <th>#</th>
+    <th>Area</th>
+    <th>District</th>
+    <th>Avg Price</th>
+    <th>12mo Change</th>
+    <th>5yr Change</th>
+    <th>Crime/1k</th>
+    <th>Avg Days</th>
+    <th>Yields</th>
+    <th>HMO A4</th>
+    <th>Regen</th>
+    <th>Score</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td><strong>DY1</strong></td>
+    <td>Dudley</td>
+    <td>£140-180K</td>
+    <td>—</td><td>—</td>
+    <td>—</td><td>—</td>
+    <td>~6-7%</td>
+    <td><span class="badge red">A4</span></td>
+    <td>—</td>
+    <td><span class="badge green">BUY</span></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><strong>DY2</strong></td>
+    <td>Dudley</td>
+    <td>£150-190K</td>
+    <td>—</td><td>—</td>
+    <td>—</td><td>—</td>
+    <td>~6-7%</td>
+    <td><span class="badge red">A4</span></td>
+    <td>—</td>
+    <td><span class="badge green">BUY</span></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><strong>DY3</strong></td>
+    <td>Dudley</td>
+    <td>£170-220K</td>
+    <td>—</td><td>—</td>
+    <td>—</td><td>—</td>
+    <td>~5-6%</td>
+    <td><span class="badge red">A4</span></td>
+    <td>—</td>
+    <td><span class="badge yellow">MIXED</span></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td><strong>DY4</strong></td>
+    <td>Dudley</td>
+    <td>£130-170K</td>
+    <td>—</td><td>—</td>
+    <td>—</td><td>—</td>
+    <td>~6-8%</td>
+    <td><span class="badge red">A4</span></td>
+    <td>—</td>
+    <td><span class="badge green">BUY</span></td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td><strong>DY5</strong></td>
+    <td>Brierley Hill</td>
+    <td>£160-210K</td>
+    <td>—</td><td>—</td>
+    <td>3,788/12mo</td><td>—</td>
+    <td>~5-7%</td>
+    <td><span class="badge red">A4</span></td>
+    <td>—</td>
+    <td><span class="badge green">BUY</span></td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td><strong>DY6</strong></td>
+    <td>Kingswinford</td>
+    <td>£200-280K</td>
+    <td>—</td><td>—</td>
+    <td>—</td><td>—</td>
+    <td>~4-5%</td>
+    <td><span class="badge red">A4</span></td>
+    <td>—</td>
+    <td><span class="badge yellow">MIXED</span></td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td><strong>DY7</strong></td>
+    <td>Stourbridge (rural)</td>
+    <td>£250-400K</td>
+    <td>—</td><td>—</td>
+    <td>—</td><td>—</td>
+    <td>~3-4%</td>
+    <td><span class="badge red">A4</span></td>
+    <td>—</td>
+    <td><span class="badge yellow">MIXED</span></td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td><strong>DY8</strong></td>
+    <td>Stourbridge</td>
+    <td>£220-300K</td>
+    <td>—</td><td>—</td>
+    <td>—</td><td>—</td>
+    <td>~4-5%</td>
+    <td><span class="badge red">A4</span></td>
+    <td>—</td>
+    <td><span class="badge yellow">MIXED</span></td>
+  </tr>
+  <tr>
+    <td style="background:#002d61;color:#58a6ff;font-weight:bold;">9</td>
+    <td style="background:#002d61;color:#58a6ff;font-weight:bold;"><strong>DY9 ⭐</strong></td>
+    <td style="background:#002d61;">Stourbridge/Hagley</td>
+    <td style="background:#002d61;">£269K (overall)<br><span style="font-size:0.8em">Terr:£234K Semi:£302K</span></td>
+    <td style="background:#002d61;color:#3fb950;">+3.5%</td>
+    <td style="background:#002d61;color:#3fb950;">+20.2%</td>
+    <td style="background:#002d61;">70.8/1k</td>
+    <td style="background:#002d61;">82</td>
+    <td style="background:#002d61;">4-6.5%</td>
+    <td style="background:#002d61;"><span class="badge red">A4</span></td>
+    <td style="background:#002d61;color:#58a6ff;"><strong>HIGH</strong></td>
+    <td style="background:#002d61;"><span class="badge yellow">MIXED/BUY</span></td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td><strong>DY10</strong></td>
+    <td>Kidderminster</td>
+    <td>£200-270K</td>
+    <td>—</td><td>—</td>
+    <td>—</td><td>—</td>
+    <td>~5-6%</td>
+    <td><span class="badge green">No A4</span></td>
+    <td>—</td>
+    <td><span class="badge green">BUY</span></td>
+  </tr>
+</table>
+</div>
+<p style="color: #8b949e; font-size: 0.8em; margin-top: 8px;">⭐ = Most recently completed (this session). Data for earlier DY postcodes from area_intel_crawler cache. A4 = Borough-wide Article 4 Direction active.</p>
+
+<!-- ====== DY9 DETAIL CARD ====== -->
+<div class="detail-card" id="dy9" style="border-color: #1f6feb;">
+  <div class="card-header">
+    <h3>📍 DY9 — Stourbridge, Lye, Hagley, Pedmore, Wollescote</h3>
+    <span class="score-box mixed">MIXED / BUY</span>
+  </div>
+
+  <div class="metrics">
+    <div class="metric green"><div class="v">£268,937</div><div class="l">Avg Price (overall)</div></div>
+    <div class="metric green"><div class="v">+3.5%</div><div class="l">12-Mo Change</div></div>
+    <div class="metric green"><div class="v">+20.2%</div><div class="l">5-Year Change</div></div>
+    <div class="metric yellow"><div class="v">82d</div><div class="l">Avg Days to Sell</div></div>
+    <div class="metric red"><div class="v">232</div><div class="l">Sales (↓57% YoY)</div></div>
+    <div class="metric yellow"><div class="v">3,349</div><div class="l">Crimes/12mo</div></div>
+    <div class="metric green"><div class="v">70.8</div><div class="l">Crime Rate (LOW)</div></div>
+    <div class="metric blue"><div class="v">£39,565</div><div class="l">Avg Income</div></div>
+  </div>
+
+  <h3>🏡 Prices by Type</h3>
+  <table>
+    <tr><th>Type</th><th>Avg Price</th><th>Est Rent/mo</th><th>Gross Yield</th><th>Best Streets</th></tr>
+    <tr><td>Terraced</td><td>£234,034</td><td>£850-950</td><td>4.4-4.9%</td><td>Stourbridge Rd (£87K), Star St (£113K)</td></tr>
+    <tr><td>Semi-Detached</td><td>£301,814</td><td>£1,000-1,200</td><td>4.0-4.8%</td><td>Dobbins Oak Rd (£89K)</td></tr>
+    <tr><td>Detached</td><td>£616,949</td><td>£1,500-2,000</td><td>2.9-3.9%</td><td>AVOID for investment</td></tr>
+    <tr><td>Lye area (DY9 8)</td><td>£87-160K</td><td>£700-850</td><td>5.5-6.5%</td><td>Chapel St, Brook St</td></tr>
+  </table>
+
+  <h3>🚆 Transport</h3>
+  <table>
+    <tr><td>🚄 Stourbridge Junction</td><td>Birmingham 25min, Worcester 30min, London ~2.5h</td></tr>
+    <tr><td>🛣️ M5 J3/J4</td><td>2-3 miles — Birmingham 20min, Bristol 1.5h</td></tr>
+    <tr><td>🚌 Bus</td><td>Regular to Birmingham, Dudley, Wolverhampton</td></tr>
+  </table>
+
+  <h3>📈 Regeneration</h3>
+  <table>
+    <tr><th>Project</th><th>Status</th><th>Impact</th></tr>
+    <tr><td>Stourbridge AAP 2026 (final phase)</td><td><span class="badge green">Active</span></td><td>Last wave of permissions before new Local Plan</td></tr>
+    <tr><td>Bell St Car Park & Crown Centre</td><td><span class="badge yellow">Planning</span></td><td>Higher-density resi + commercial</td></tr>
+    <tr><td>£3m Town Centre Upgrades</td><td><span class="badge green">Approved</span></td><td>Foster St, Market St, Ryemarket - crossings, trees</td></tr>
+    <tr><td>Canal Quarter Infill</td><td><span class="badge blue">Proposed</span></td><td>Sensitive housing + small retail</td></tr>
+  </table>
+
+  <h3>🎯 Strategy Fit</h3>
+  <table>
+    <tr><th>Strategy</th><th>Score</th><th>Key Takeaway</th></tr>
+    <tr><td>BTL</td><td><span class="badge yellow">65/100</span></td><td>Stable 4-5% yields, family demand. Focus on terraced near schools.</td></tr>
+    <tr><td>BRRR</td><td><span class="badge yellow">50/100</span></td><td>Thin margins at £200K+. Target Lye/Wollescote.</td></tr>
+    <tr><td>Flip</td><td><span class="badge yellow">55/100</span></td><td>Possible in lower streets. Need <£150K purchase.</td></tr>
+    <tr><td>HMO</td><td><span class="badge red">30/100</span></td><td>Article 4 borough-wide. Full planning needed. Not recommended.</td></tr>
+    <tr><td>Capital Growth</td><td><span class="badge green">70/100</span></td><td>DY9 7 up 11.7% in 12mo. AAP driving values. Best bet near town centre.</td></tr>
+  </table>
+
+  <p style="color: #8b949e; font-size: 0.85em; margin-top: 12px;">
+    <strong>Bottom line:</strong> DY9 is a capital growth play with modest yields. Buy near regeneration zones for uplift. Avoid HMO. Best value in Lye (DY9 8) for BRRR/Flip. Market slowing (sales -57% YoY) creates negotiation opportunity.
+  </p>
+  <p style="color: #8b949e; font-size: 0.8em; margin-top: 8px;">Data: HM Land Registry, Rightmove, Police.uk, ONS, Environment Agency, Dudley Council, Hunters Estate Agents, HouseMetric. Crawled 2026-06-03.</p>
+</div>
+
+<h2>📋 Remaining by District</h2>
+<table>
+  <tr><th>District</th><th>Postcodes</th><th>Complete</th><th>Remaining</th><th>Status</th></tr>
+  <tr><td>Dudley</td><td>DY1-DY10</td><td>10</td><td>0</td><td><span class="badge green">✅ DONE</span></td></tr>
+  <tr><td>Wolverhampton</td><td>WV1-WV15</td><td>0</td><td>15</td><td><span class="badge yellow">Next up</span></td></tr>
+  <tr><td>Sandwell</td><td>B65-71, WS10</td><td>0</td><td>8</td><td><span class="badge gray">Pending</span></td></tr>
+  <tr><td>Walsall</td><td>WS1-WS9</td><td>0</td><td>9</td><td><span class="badge gray">Pending</span></td></tr>
+  <tr><td>Birmingham</td><td>B1-B50</td><td>0</td><td>~55</td><td><span class="badge gray">Pending</span></td></tr>
+  <tr><td><strong>Total</strong></td><td></td><td><strong>10</strong></td><td><strong>95</strong></td><td><strong>9.5% done</strong></td></tr>
+</table>
+
+<div class="footer">
+  Kokal Properties Ltd — Nikka Intel | Auto-generated by Hermes Property Intelligence System | West Midlands Area Intelligence | Updated 2026-06-03 12:06 | Next: WV postcodes
+</div>
+
+</div>
+</body>
+</html>
