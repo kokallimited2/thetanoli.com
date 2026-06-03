@@ -5,596 +5,285 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Off-Market Finder — Nikka Khan 🔵</title>
 <style>
-:root { --bg: #0a0f1e; --card: #1e293b; --border: #30363d; --accent: #58a6ff; --green: #22c55e; --amber: #f59e0b; --red: #ef4444; --text: #c9d1d9; --text-dim: #8b949e; --text-bright: #e6edf3; }
+:root { --bg: #0a0f1e; --card: #1e293b; --border: #30363d; --accent: #58a6ff; --green: #22c55e; --amber: #f59e0b; --red: #ef4444; --purple: #a855f7; --pink: #ec4899; --text: #c9d1d9; --td: #8b949e; --tb: #e6edf3; }
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; background:var(--bg); color:var(--text); overflow-wrap:break-word; word-break:break-word; }
-.page-wrap { max-width:1100px; margin:0 auto; padding:24px 16px 60px; }
-h1 { font-size:28px; color:var(--text-bright); margin-bottom:4px; }
-.subtitle { color:var(--text-dim); font-size:14px; margin-bottom:24px; }
-.stats-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin-bottom:24px; }
-.stat-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px; text-align:center; }
-.stat-card .num { font-size:28px; font-weight:700; }
-.stat-card .num.green { color:var(--green); }
-.stat-card .num.amber { color:var(--amber); }
-.stat-card .num.red { color:var(--red); }
-.stat-card .num.blue { color:var(--accent); }
-.stat-card .label { font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.5px; margin-top:4px; }
-
-.section { margin-bottom:32px; }
-.section-title { font-size:18px; color:var(--text-bright); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--border); }
-
-.table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
-table { width:100%; border-collapse:collapse; font-size:14px; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; background:var(--bg); color:var(--text); overflow-wrap:break-word;word-break:break-word; }
+.wrap { max-width:1200px; margin:0 auto; padding:24px 16px 60px; }
+h1 { font-size:28px; color:var(--tb); margin-bottom:4px; }
+.sub { color:var(--td); font-size:14px; margin-bottom:24px; }
+.sr { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin-bottom:24px; }
+.sc { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px; text-align:center; }
+.sc .n { font-size:28px; font-weight:700; }
+.sc .l { font-size:11px; color:var(--td); text-transform:uppercase; letter-spacing:0.5px; margin-top:4px; }
+.sec { margin-bottom:32px; }
+.st { font-size:18px; color:var(--tb); margin-bottom:8px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+.st span { font-size:13px; color:var(--td); font-weight:400; }
+.ts { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
 th, td { padding:8px 10px; text-align:left; border-bottom:1px solid var(--border); white-space:nowrap; }
-th { color:var(--text-dim); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; }
+th { color:var(--td); font-weight:600; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; }
 tr:hover td { background:rgba(88,166,255,0.04); }
-
-.badge { display:inline-block; padding:2px 8px; border-radius:12px; font-size:11px; font-weight:500; }
-.badge-unsold { background:#3a1a1a; color:#f87171; }
-.badge-stale { background:#3a3a1a; color:#facc15; }
-.badge-high { background:#3a1a1a; color:#ef4444; }
-.badge-medium { background:#3a3a1a; color:#f59e0b; }
-.badge-low { background:#1a3a1e; color:#22c55e; }
-
-.tiny-link { color:var(--accent); font-size:12px; text-decoration:none; }
-.tiny-link:hover { text-decoration:underline; }
-
-.insight-box { background:var(--card); border:1px solid var(--accent); border-radius:10px; padding:16px; margin-bottom:20px; }
-.insight-box h3 { color:var(--accent); font-size:15px; margin-bottom:8px; }
-.insight-box p { color:var(--text-dim); font-size:13px; line-height:1.5; }
-
-.actions-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:10px; margin-bottom:20px; }
-.action-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px; text-decoration:none; transition:all .2s; }
-.action-card:hover { border-color:var(--accent); transform:translateY(-2px); }
-.action-card .icon { font-size:24px; }
-.action-card h3 { font-size:15px; color:var(--text-bright); margin:4px 0; }
-.action-card p { font-size:12px; color:var(--text-dim); }
-
-.footer { margin-top:40px; padding-top:16px; border-top:1px solid var(--border); font-size:13px; color:var(--text-dim); text-align:center; }
+.badge { display:inline-block; padding:2px 8px; border-radius:12px; font-size:10px; font-weight:600; }
+.b-red { background:#3a1a1a; color:#f87171; }
+.b-amber { background:#3a3a1a; color:#facc15; }
+.b-green { background:#1a3a1e; color:#22c55e; }
+.b-blue { background:#1a2a3e; color:#60a5fa; }
+.b-purple { background:#2a1a3e; color:#c084fc; }
+.b-pink { background:#3a1a2e; color:#f472b6; }
+.ib { background:var(--card); border:1px solid var(--accent); border-radius:10px; padding:16px; margin-bottom:20px; }
+.ib h3 { color:var(--accent); font-size:15px; margin-bottom:6px; }
+.ib p, .ib li { color:var(--td); font-size:13px; line-height:1.5; }
+.ib ul { margin:6px 0 0 16px; }
+.ib li { margin:3px 0; }
+.ag { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; margin-bottom:20px; }
+.ac { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px; text-decoration:none; }
+.ac:hover { border-color:var(--accent); transform:translateY(-2px); }
+.ac .ic { font-size:22px; }
+.ac h3 { font-size:14px; color:var(--tb); margin:4px 0; }
+.ac p { font-size:11px; color:var(--td); line-height:1.4; }
+.ac .tag { font-size:9px; padding:2px 6px; border-radius:8px; font-weight:600; }
+.ft { margin-top:40px; padding-top:16px; border-top:1px solid var(--border); font-size:12px; color:var(--td); text-align:center; }
+.ch-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:12px; margin-bottom:20px; }
+.ch-card { background:var(--card); border:1px solid var(--border); border-left:3px solid var(--accent); border-radius:10px; padding:16px; }
+.ch-card h3 { font-size:14px; color:var(--tb); margin-bottom:6px; }
+.ch-card .status { font-size:11px; color:var(--td); margin-bottom:6px; }
+.ch-card p, .ch-card li { font-size:12px; color:var(--td); line-height:1.5; }
+.ch-card ul { margin:6px 0 0 14px; }
+.ch-card li { margin:2px 0; }
+.ch-card code { background:#1a2332; padding:1px 5px; border-radius:3px; font-size:11px; }
 </style>
 </head>
 <body>
-<div class="page-wrap">
+<div class="wrap">
 
 <h1>🎯 Off-Market Property Finder</h1>
-<div class="subtitle">Daily scan — auction unsold + stale listings + agent outreach pipeline · 3 June 2026 05:10</div>
+<p class="sub">Expanded sourcing pipeline — 6 channels · 03 June 2026</p>
 
-<div class="stats-row">
-    <div class="stat-card"><div class="num amber">0</div><div class="label">Auction Unsold</div></div>
-    <div class="stat-card"><div class="num green">136</div><div class="label">Stale Listings (60d+)</div></div>
-    <div class="stat-card"><div class="num red">1</div><div class="label">Agents to Call</div></div>
-    <div class="stat-card"><div class="num blue">136</div><div class="label">Total Leads Today</div></div>
+<div class="sr">
+    <div class="sc"><div class="n" style="color:var(--amber)">0</div><div class="l">Auction Unsold</div></div>
+    <div class="sc"><div class="n" style="color:var(--green)">50</div><div class="l">Stale Listings (60d+)</div></div>
+    <div class="sc"><div class="n" style="color:var(--purple)">🔲</div><div class="l">Co House Liquidation</div></div>
+    <div class="sc"><div class="n" style="color:var(--pink)">🔲</div><div class="l">Empty Homes CTax</div></div>
+    <div class="sc"><div class="n" style="color:var(--accent)">🔲</div><div class="l">Probate Signal</div></div>
+    <div class="sc"><div class="n" style="color:var(--red)">1</div><div class="l">Agents to Call</div></div>
 </div>
 
-<div class="insight-box">
-    <h3>💡 Agent Outreach Priority</h3>
-    <p>Call the <strong>stale agents</strong> first — they know the vendor is frustrated. Script: <em>"You've got X properties that have been listed a while. Is the vendor open to an off-market offer? I can move fast — chain-free, cash buyer."</em></p>
-    <p style="margin-top:6px">Time cost: ~5 min per call. Expected yield: 1 viewing per 10 calls → 1 offer per 5 viewings.</p>
+<div class="ib">
+    <h3>💡 Pipeline Status — 3 Active · 3 Ready to Build</h3>
+    <p>Currently scanning <strong>stale listings (Rightmove)</strong>, <strong>auction unsold</strong>, and <strong>agent outreach</strong>. Three new channels researched and ready to implement below — Companies House liquidation watch, council tax empty homes mining, and probate signal detection. Each channel targets distressed/motivated vendors at different points in their timeline.</p>
 </div>
 
-<!-- ===== AGENTS TO CALL ===== -->
-<div class="section">
-    <h2 class="section-title">📞 Agents to Call Today (1)</h2>
-    <div class="table-scroll">
+<!-- ============================================================ -->
+<!-- CHANNEL 1: STALE LISTINGS (EXISTING)                         -->
+<!-- ============================================================ -->
+<div class="sec">
+    <h2 class="st">📋 Channel 1: Stale Listings <span>— Live · 50 today</span></h2>
+    <p style="color:var(--td);font-size:13px;margin-bottom:8px">Properties on market 60+ days = frustrated vendors. Those 180+ days are desperate. Scan runs daily at 5:10AM.</p>
+    <div class="ts">
         <table>
-            <thead><tr><th>Agent</th><th>Stale Count</th><th>Areas</th><th>Priority</th><th>Suggested Approach</th></tr></thead>
+            <thead><tr><th>Address</th><th>Postcode</th><th>Price</th><th>Days</th><th>Meter</th></tr></thead>
+            <tbody><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Highley Park Homes, Highley</td><td>WV16</td><td>£115,000</td><td>665d</td><td><span style="color:#ef4444">█████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Woodhill Road, Highley</td><td>WV16</td><td>£130,000</td><td>646d</td><td><span style="color:#ef4444">█████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Aston Lane, Wolverhampton</td><td>WV5</td><td>£90,000</td><td>510d</td><td><span style="color:#ef4444">█████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Bellefield Road, Birmingham</td><td>B18</td><td>£150,000</td><td>508d</td><td><span style="color:#ef4444">█████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Padstone Drive, Sutton Coldfield</td><td>B72</td><td>£119,000</td><td>458d</td><td><span style="color:#ef4444">█████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Harden Keep, Smethwick</td><td>B66</td><td>£115,000</td><td>433d</td><td><span style="color:#ef4444">█████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Walsall Road, Willenhall</td><td>WV13</td><td>£150,000</td><td>368d</td><td><span style="color:#ef4444">█████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Riverside Park, Bridgnorth</td><td>WV15</td><td>£140,000</td><td>340d</td><td><span style="color:#ef4444">█████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Mount Street, Cannock</td><td>WS12</td><td>£135,000</td><td>308d</td><td><span style="color:#ef4444">█████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Birmingham Road, Bromsgrove</td><td>B61</td><td>£135,000</td><td>286d</td><td><span style="color:#ef4444">████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Blithfield Road, Walsall</td><td>WS8</td><td>£135,000</td><td>283d</td><td><span style="color:#ef4444">████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Ivanhoe Street, Dudley</td><td>DY2</td><td>£150,000</td><td>270d</td><td><span style="color:#ef4444">████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Warwick Road, Acocks Green</td><td>B27</td><td>£99,950</td><td>256d</td><td><span style="color:#ef4444">████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Eva Road, Birmingham</td><td>B18</td><td>£140,000</td><td>277d</td><td><span style="color:#ef4444">████</span> 🔥 Very stale</td></tr><tr><td style="max-width:220px;overflow:hidden;text-overflow:ellipsis">Colliery Road, Wolverhampton</td><td>WV1</td><td>£145,000</td><td>207d</td><td><span style="color:#ef4444">███</span> 🔥 Very stale</td></tr></tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHANNEL 2: AUCTION UNSOLD (EXISTING)                         -->
+<!-- ============================================================ -->
+<div class="sec">
+    <h2 class="st">🏛️ Channel 2: Auction Unsold Lots <span>— Live · 0 today</span></h2>
+    <p style="color:var(--td);font-size:13px;margin-bottom:8px">~22% of auction lots go unsold nationally. Best targets: properties with fixable complexities (short leases, sitting tenants) that scare off the herd. Approach post-auction with a reduced offer.</p>
+    <div class="ts">
+        <table>
+            <thead><tr><th>Postcode</th><th>Source</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody><tr><td colspan="4" style="color:var(--td);text-align:center;padding:20px">No auction unsold found today — check Bond Wolfe, SDL, Pugh catalogues</td></tr></tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHANNEL 3: COMPANIES HOUSE LIQUIDATION (NEW)                 -->
+<!-- ============================================================ -->
+<div class="sec">
+    <h2 class="st">🏢 Channel 3: Companies House Liquidation Watch <span>— 🔲 Ready to Build</span></h2>
+    <div class="ch-grid">
+        <div class="ch-card" style="border-left-color:var(--purple)">
+            <h3>🎯 How It Works</h3>
+            <p>When a property company is dissolved, its assets become <strong>bona vacantia</strong> (Crown property). Pre-dissolution, directors must sell off assets. The Companies House API lets us track this in real-time.</p>
+            <ul>
+                <li><strong>API:</strong> <code>GET https://api.company-information.service.gov.uk/dissolved-search/companies</code></li>
+                <li><strong>SIC codes:</strong> 68100 (buying/selling), 68209 (letting), 68320 (management)</li>
+                <li><strong>Filter:</strong> <code>company_status=liquidation|dissolved|administration</code></li>
+                <li><strong>Area:</strong> Filter by registered address in WM postcodes (DY, WV, B, WS)</li>
+            </ul>
+        </div>
+        <div class="ch-card" style="border-left-color:var(--purple)">
+            <h3>📋 Implementation</h3>
+            <p><strong>Step 1:</strong> Get free CH API key at <code>developer.company-information.service.gov.uk</code></p>
+            <p><strong>Step 2:</strong> Build daily scraper: query dissolved-search with SIC 68100 + postcode filter</p>
+            <p><strong>Step 3:</strong> Check Gazette notice for property status — contact directors before dissolution</p>
+            <p><strong>Step 4:</strong> Cross-reference dissolved companies with Land Registry property titles</p>
+            <p style="margin-top:6px"><span class="badge b-amber">⏳ Needs API key + script</span></p>
+        </div>
+        <div class="ch-card" style="border-left-color:var(--purple)">
+            <h3>📞 Outreach Script</h3>
+            <p><em>"Hi [Director], I see [Company Name] is being dissolved. I'm a property investor — are you looking to sell the company's property assets before striking off? I can move quickly, cash buyer, no chain."</em></p>
+            <p style="margin-top:6px;color:var(--td)">🎯 <strong>Hit rate:</strong> Directors under time pressure to dispose of assets before dissolution deadline. Usually 2-3 month window.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHANNEL 4: COUNCIL TAX EMPTY HOMES (NEW)                    -->
+<!-- ============================================================ -->
+<div class="sec">
+    <h2 class="st">🏚️ Channel 4: Council Tax Empty Homes Mining <span>— 🔲 Ready to Build</span></h2>
+    <div class="ch-grid">
+        <div class="ch-card" style="border-left-color:var(--pink)">
+            <h3>🎯 How It Works</h3>
+            <p>261,189 long-term vacant dwellings in England. Councils now charge <strong>100-300% council tax premiums</strong> on properties empty 1-10+ years. Owners are desperate to sell.</p>
+            <ul>
+                <li><strong>Council empty property registers</strong> — some councils publish lists online</li>
+                <li><strong>FOI requests</strong> — Request list of long-term empty properties per council</li>
+                <li><strong>Council tax premium data</strong> — Properties paying 200-300% premium = motivated</li>
+                <li><strong>WM councils:</strong> Dudley, Birmingham, Sandwell, Wolverhampton, Walsall all charge premiums</li>
+            </ul>
+        </div>
+        <div class="ch-card" style="border-left-color:var(--pink)">
+            <h3>📋 Implementation</h3>
+            <p><strong>Step 1:</strong> Submit FOI to Dudley/Birmingham/Wolves/Walsall/Sandwell — request empty property register</p>
+            <p><strong>Step 2:</strong> Scrape council websites for empty homes pages</p>
+            <p><strong>Step 3:</strong> Cross-reference with Rightmove/Zoopla — see if they're also listed stale</p>
+            <p><strong>Step 4:</strong> Use Land Registry to find owner contact info via title register</p>
+            <p style="margin-top:6px"><span class="badge b-amber">⏳ Needs FOI + council scraping</span></p>
+        </div>
+        <div class="ch-card" style="border-left-color:var(--pink)">
+            <h3>📞 Outreach Script</h3>
+            <p><em>"Hi, I noticed your property at [Address] has been empty for a while. With council tax premiums now at 200-300%, it must be costing you. I specialise in buying empty properties quickly — cash buyer, no fees, complete in 28 days. Would you be open to a conversation?"</em></p>
+            <p style="margin-top:6px;color:var(--td)">💰 <strong>Angle:</strong> The council tax premium is the pain point. £90k property at 200% premium = ~£4,500/yr wasted.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHANNEL 5: PROBATE REGISTRY (NEW)                            -->
+<!-- ============================================================ -->
+<div class="sec">
+    <h2 class="st">⚰️ Channel 5: Probate Property Signals <span>— 🔲 Ready to Build</span></h2>
+    <div class="ch-grid">
+        <div class="ch-card" style="border-left-color:var(--accent)">
+            <h3>🎯 How It Works</h3>
+            <p>When a sole property owner dies, the executor must obtain probate and then either <strong>assent (AS1)</strong> or <strong>transfer (TR1)</strong> the property at Land Registry. Joint tenants file <strong>DJP</strong>. These filings signal unlisted properties about to hit the market.</p>
+            <ul>
+                <li><strong>Probate Registry:</strong> Grants of probate published weekly — search by name/area</li>
+                <li><strong>Land Registry:</strong> Forms AS1, TR1, DJP filed after death — available via official search</li>
+                <li><strong>The Gazette:</strong> Legal notices include probate grants — free to search</li>
+                <li><strong>Death notice scanning:</strong> Local obituaries matched to property addresses</li>
+            </ul>
+        </div>
+        <div class="ch-card" style="border-left-color:var(--accent)">
+            <h3>📋 Implementation</h3>
+            <p><strong>Step 1:</strong> Search The Gazette (thegazette.co.uk) for probate notices in WM postcodes</p>
+            <p><strong>Step 2:</strong> Cross-reference with Land Registry title register via HMLR search</p>
+            <p><strong>Step 3:</strong> Check if property is already listed — if not, executors likely still deciding</p>
+            <p><strong>Step 4:</strong> Approach executors early — probate can take 6-12 months, offer to wait</p>
+            <p style="margin-top:6px"><span class="badge b-amber">⏳ Needs Gazette scraper + HMLR lookups</span></p>
+        </div>
+        <div class="ch-card" style="border-left-color:var(--accent)">
+            <h3>📞 Outreach Script</h3>
+            <p><em>"Hello, I understand you're the executor of [Name]'s estate. I'm a local property investor and I buy properties directly, often before they reach the market. If you're considering selling the property at [Address], I can make a fair cash offer and work around your timeline — even if probate is still in progress."</em></p>
+            <p style="margin-top:6px;color:var(--td)">🎯 <strong>Angle:</strong> Executors often want a quick, hassle-free sale. No estate agent fees, no viewings, no chain.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CHANNEL 6: AGENT OUTREACH (EXISTING)                         -->
+<!-- ============================================================ -->
+<div class="sec">
+    <h2 class="st">📞 Channel 6: Agent Outreach <span>— Live · 1 agent with 50 stale listings</span></h2>
+    <p style="color:var(--td);font-size:13px;margin-bottom:8px">Identify agents with high stale inventory — they know the vendor is frustrated and can facilitate an off-market introduction.</p>
+    <div class="ts">
+        <table>
+            <thead><tr><th>Priority</th><th>Stale Count</th><th>Areas</th><th>Script</th></tr></thead>
             <tbody>
-        <tr>
-            <td><strong></strong></td>
-            <td style="color:#ef4444;font-weight:600">136</td>
-            <td>B, DY, WS, WV</td>
-            <td><span class="badge badge-high">HIGH</span></td>
-            <td style="font-size:12px;color:#8b949e">Call and ask: 'You have X properties that have been listed a while — is the vendor open to an off-market offer?'</td>
-        </tr></tbody>
+                <tr>
+                    <td><span class="badge b-red">HIGH</span></td>
+                    <td style="color:var(--red);font-weight:600">50</td>
+                    <td>B, DY, WS, WV</td>
+                    <td style="font-size:12px;color:var(--td)">"You have X properties that have been listed a while — is the vendor open to an off-market offer?"</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>
 
-<!-- ===== AUCTION UNSOLD ===== -->
-<div class="section">
-    <h2 class="section-title">🏛️ Auction Unsold Lots (0)</h2>
-    <p style="color:var(--text-dim);font-size:13px;margin-bottom:10px">Post-auction offers accepted. Budget £50/legal pack for top candidates. Check for buyer's fees (3-5%).</p>
-    <div class="table-scroll">
-        <table>
-            <thead><tr><th>Postcode</th><th>Area</th><th>Status</th><th>Source</th><th>Contact</th><th>Notes</th></tr></thead>
-            <tbody><tr><td colspan="6" style="color:#8b949e;text-align:center;padding:24px;font-size:13px">No auction unsold found today — check back after next auction day</td></tr></tbody>
-        </table>
+<!-- ============================================================ -->
+<!-- PIPELINE ROADMAP                                             -->
+<!-- ============================================================ -->
+<div class="sec">
+    <h2 class="st">🗺️ Full Sourcing Pipeline Roadmap</h2>
+    <div class="ag">
+        <div class="ac" style="border-left:3px solid var(--green)">
+            <div class="ic">📋</div>
+            <h3>Stale Listings</h3>
+            <p>🟢 Running daily · Rightmove 60d+ scan · 136 today</p>
+        </div>
+        <div class="ac" style="border-left:3px solid var(--amber)">
+            <div class="ic">🏛️</div>
+            <h3>Auction Unsold</h3>
+            <p>🟡 Running · Post-auction approach · Check Bond Wolfe monthly</p>
+        </div>
+        <div class="ac" style="border-left:3px solid var(--purple)">
+            <div class="ic">🏢</div>
+            <h3>Co House Liquidation</h3>
+            <p>🔲 Ready · Needs CH API key + daily scraping script</p>
+        </div>
+        <div class="ac" style="border-left:3px solid var(--pink)">
+            <div class="ic">🏚️</div>
+            <h3>Empty Homes CTax</h3>
+            <p>🔲 Ready · Needs FOI to WM councils + empty property list</p>
+        </div>
+        <div class="ac" style="border-left:3px solid var(--accent)">
+            <div class="ic">⚰️</div>
+            <h3>Probate Signals</h3>
+            <p>🔲 Ready · Needs Gazette scraper + Land Registry matching</p>
+        </div>
+        <div class="ac" style="border-left:3px solid var(--red)">
+            <div class="ic">📞</div>
+            <h3>Agent Outreach</h3>
+            <p>🟢 Running · Call scripts generated · 1 agent priority today</p>
+        </div>
     </div>
 </div>
 
-<!-- ===== STALE LISTINGS ===== -->
-<div class="section">
-    <h2 class="section-title">📋 Stale On-Market Listings (60d+) (136)</h2>
-    <p style="color:var(--text-dim);font-size:13px;margin-bottom:10px">Properties on market 60+ days = motivated sellers. Starred = 180+ days.</p>
-    <div class="table-scroll">
-        <table>
-            <thead><tr><th>Address</th><th>Postcode</th><th>Price</th><th>Agent</th><th>Days</th><th>Stale Meter</th><th>Link</th></tr></thead>
-            <tbody>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Highley Park Homes, Netherton, Highley, Bridgnorth</td>
-            <td>WV16</td>
-            <td>£115,000</td>
-            <td></td>
-            <td>665d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/150995207#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Woodhill Road, Highley, Bridgnorth</td>
-            <td>WV16</td>
-            <td>£130,000</td>
-            <td></td>
-            <td>646d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/151712681#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Aston Lane, Wolverhampton</td>
-            <td>WV5</td>
-            <td>£90,000</td>
-            <td></td>
-            <td>510d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/156558782#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Bellefield Road, Birmingham, B18</td>
-            <td>B18</td>
-            <td>£150,000</td>
-            <td></td>
-            <td>508d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/156681515#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Lord Uxbridge Mews, Anglesey Street, Hednesford, C</td>
-            <td>WS12</td>
-            <td>£130,000</td>
-            <td></td>
-            <td>468d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/158409305#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Padstone Drive, Sutton Coldfield, B72 1NJ</td>
-            <td>B72</td>
-            <td>£119,000</td>
-            <td></td>
-            <td>458d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/158815409#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Harden Keep, Smethwick</td>
-            <td>B66</td>
-            <td>£115,000</td>
-            <td></td>
-            <td>433d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/159796682#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Walsall Road, Willenhall</td>
-            <td>WV13</td>
-            <td>£150,000</td>
-            <td></td>
-            <td>368d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/162593924#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Riverside Park, Bridgnorth</td>
-            <td>WV15</td>
-            <td>£140,000</td>
-            <td></td>
-            <td>340d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/163854842#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Insley Avenue, Lichfield - 45% Shared Ownership & </td>
-            <td>WS14</td>
-            <td>£123,750</td>
-            <td></td>
-            <td>339d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/163873898#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Eva Road, Birmingham</td>
-            <td>B18</td>
-            <td>£130,000</td>
-            <td></td>
-            <td>327d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/164344913#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Calder Drive, Walmley, Sutton Coldfield</td>
-            <td>B76</td>
-            <td>£145,000</td>
-            <td></td>
-            <td>313d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/164859212#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Mount Street, Hednesford, Cannock, WS12 4BY</td>
-            <td>WS12</td>
-            <td>£135,000</td>
-            <td></td>
-            <td>308d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/165014429#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Lamb Crescent, Wombourne, Wolverhampton, Staffords</td>
-            <td>WV5</td>
-            <td>£150,000</td>
-            <td></td>
-            <td>301d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/165337466#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Cloudsley Grove, Olton, Solihull</td>
-            <td>B92</td>
-            <td>£119,000</td>
-            <td></td>
-            <td>300d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/165369560#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Junction Street, Dudley</td>
-            <td>DY2</td>
-            <td>£150,000</td>
-            <td></td>
-            <td>300d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/165395993#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">High Street, Quarry Bank, Brierley Hill</td>
-            <td>DY5</td>
-            <td>£150,000</td>
-            <td></td>
-            <td>299d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/165420896#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">High Street, Brockmoor, Brierley Hill</td>
-            <td>DY5</td>
-            <td>£150,000</td>
-            <td></td>
-            <td>299d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/165442067#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Simmons Leasow, Bartley Green, Birmingham, B32</td>
-            <td>B32</td>
-            <td>£150,000</td>
-            <td></td>
-            <td>296d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/165568349#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Parkfield Road, Wolverhampton</td>
-            <td>WV4</td>
-            <td>£110,000</td>
-            <td></td>
-            <td>289d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/165828563#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Birmingham Road, Bromsgrove, Worcestershire, B61</td>
-            <td>B61</td>
-            <td>£135,000</td>
-            <td></td>
-            <td>286d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/165935600#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Blithfield Road, Walsall, West Midlands, WS8</td>
-            <td>WS8</td>
-            <td>£135,000</td>
-            <td></td>
-            <td>283d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/166130666#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Eva Road, Winson Green, Birmingham</td>
-            <td>B18</td>
-            <td>£140,000</td>
-            <td></td>
-            <td>277d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/166327871#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">INVESTMENT OPPORTUNITY!! FOUR BEDROOM HMO</td>
-            <td>WV1</td>
-            <td>£150,000</td>
-            <td></td>
-            <td>271d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/166523909#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Ivanhoe Street, Dudley, DY2 0YB</td>
-            <td>DY2</td>
-            <td>£150,000</td>
-            <td></td>
-            <td>270d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/166573325#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Warwick Road, Acocks Green, Birmingham</td>
-            <td>B27</td>
-            <td>£99,950</td>
-            <td></td>
-            <td>256d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/167149775#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Billars Close, Bilbrook Codsall, Wolverhampton</td>
-            <td>WV8</td>
-            <td>£135,000</td>
-            <td></td>
-            <td>255d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/167179898#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Wattis Road, Smethwick</td>
-            <td>B67</td>
-            <td>£140,000</td>
-            <td></td>
-            <td>252d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/167271671#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Fir Tree Farm Drive, Birmingham, B33</td>
-            <td>B33</td>
-            <td>£98,000</td>
-            <td></td>
-            <td>251d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/167318513#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Enford Close, Birmingham, West Midlands, B34</td>
-            <td>B34</td>
-            <td>£130,000</td>
-            <td></td>
-            <td>245d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/167558594#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Stourbridge Road, Bromsgrove, Worcestershire, B61</td>
-            <td>B61</td>
-            <td>£90,000</td>
-            <td></td>
-            <td>242d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/167717711#/?channel=COM_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Millicent Place, Ombersley Road, Birmingham</td>
-            <td>B12</td>
-            <td>£150,000</td>
-            <td></td>
-            <td>241d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/167752496#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Evenlode Close, Redditch, B98</td>
-            <td>B98</td>
-            <td>£150,000</td>
-            <td></td>
-            <td>236d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/167980997#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Severn Road, Walsall, West Midlands, WS3</td>
-            <td>WS3</td>
-            <td>£135,000</td>
-            <td></td>
-            <td>231d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/167959046#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Highley Park Homes, Netherton, Highley, Bridgnorth</td>
-            <td>WV16</td>
-            <td>£129,950</td>
-            <td></td>
-            <td>228d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/168254777#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Hart Road, Wolverhampton, West Midlands, WV11</td>
-            <td>WV11</td>
-            <td>£140,000</td>
-            <td></td>
-            <td>220d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/168579962#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">a High Street, Brierley Hill</td>
-            <td>DY5</td>
-            <td>£125,000</td>
-            <td></td>
-            <td>217d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/168679130#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Wellesley Road, Oldbury, West Midlands, B68</td>
-            <td>B68</td>
-            <td>£130,000</td>
-            <td></td>
-            <td>216d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/168725504#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Orford Grove, Handsworth</td>
-            <td>B21</td>
-            <td>£135,000</td>
-            <td></td>
-            <td>215d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/87350517#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Oldfield Road, Bromsgrove, Worcestershire, B61</td>
-            <td>B61</td>
-            <td>£140,000</td>
-            <td></td>
-            <td>214d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/168805313#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Oldfield Road, Bromsgrove</td>
-            <td>B61</td>
-            <td>£150,000</td>
-            <td></td>
-            <td>214d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/168784838#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Colliery Road, Wolverhampton, West Midlands, WV1</td>
-            <td>WV1</td>
-            <td>£145,000</td>
-            <td></td>
-            <td>207d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/169054505#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Moundsley Grove, Warstock, Birmingham, West Midlan</td>
-            <td>B14</td>
-            <td>£110,000</td>
-            <td></td>
-            <td>203d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/169188152#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Lower Queen Street, Sutton Coldfield, B72 1RT</td>
-            <td>B72</td>
-            <td>£125,000</td>
-            <td></td>
-            <td>201d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/169277996#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Harvington Road, Birmingham, West Midlands, B29</td>
-            <td>B29</td>
-            <td>£130,000</td>
-            <td></td>
-            <td>195d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/169450583#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Oxhill Road, Handsworth</td>
-            <td>B21</td>
-            <td>£140,000</td>
-            <td></td>
-            <td>194d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/169504331#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Belmont Road East, Birmingham, B21</td>
-            <td>B21</td>
-            <td>£125,000</td>
-            <td></td>
-            <td>192d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/169398227#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Ennersdale Bungalows, Coleshill, Birmingham, Warwi</td>
-            <td>B46</td>
-            <td>£100,000</td>
-            <td></td>
-            <td>188d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/169677203#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">Old College Road, BIRMINGHAM</td>
-            <td>B33</td>
-            <td>£135,000</td>
-            <td></td>
-            <td>186d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/169782404#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr>
-        <tr>
-            <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis">19 Coronation Street, Highley, Bridgnorth</td>
-            <td>WV16</td>
-            <td>£135,000</td>
-            <td></td>
-            <td>185d</td>
-            <td><span style="color:#ef4444">████</span> 🔥 Very stale</td>
-            <td><a href="https://www.rightmove.co.uk/properties/169815866#/?channel=RES_BUY" target="_blank" class="tiny-link">📋 Listing</a></td>
-        </tr></tbody>
-        </table>
-    </div>
-</div>
-
-<!-- ===== TODAY'S ACTIONS ===== -->
-<div class="section">
-    <h2 class="section-title">⚡ Today's Action Plan</h2>
-    <div class="actions-grid">
-        <a href="brrr-sourcer.html" class="action-card">
-            <div class="icon">🔥</div>
+<!-- ============================================================ -->
+<!-- TODAY'S ACTIONS                                              -->
+<!-- ============================================================ -->
+<div class="sec">
+    <h2 class="st">⚡ Today's Action Plan</h2>
+    <div class="ag">
+        <a href="brrr-sourcer.html" class="ac">
+            <div class="ic">🔥</div>
             <h3>BRRR Daily Deals</h3>
             <p>Full BRRR sourcer — scored deals with analysis links</p>
         </a>
-        <a href="power-team.html" class="action-card">
-            <div class="icon">🛠️</div>
+        <a href="power-team.html" class="ac">
+            <div class="ic">🛠️</div>
             <h3>Power Team</h3>
             <p>Vetted tradespeople for refurb quotes</p>
         </a>
-        <a href="strategy-brrr-hmo-playbook.html" class="action-card">
-            <div class="icon">📋</div>
-            <h3>Strategy Playbook</h3>
-            <p>Full BRRR & HMO strategy for WM</p>
-        </a>
-        <a href="index.html" class="action-card">
-            <div class="icon">🏠</div>
+        <a href="index.html" class="ac">
+            <div class="ic">🏠</div>
             <h3>Dashboard Home</h3>
             <p>All reports and tools</p>
         </a>
     </div>
 </div>
 
-<div class="footer">
-    🔵 Generated by Nikka Khan · 3 June 2026 05:10<br>
-    <span style="font-size:11px;color:#475569">Sources: SDL Auctions, Auction House UK, BRRR Sourcer · Cross-ref daily at 6AM</span><br>
-    <span style="font-size:11px;color:#475569">🏠 <a href="index.html" style="color:#58a6ff">Home</a> · 🔥 <a href="brrr-sourcer.html" style="color:#58a6ff">BRRR</a> · 🛠️ <a href="power-team.html" style="color:#58a6ff">Power Team</a> · 📋 <a href="strategy-brrr-hmo-playbook.html" style="color:#58a6ff">Strategy</a></span>
+<div class="ft">
+    🔵 Generated by Nikka Khan · 03 June 2026 06:30<br>
+    <span style="font-size:11px;color:#475569">Channels: Stale Listings (RM) · Auction Unsold · Co House Liquidation · Empty Homes · Probate · Agent Outreach</span>
 </div>
 
 </div>
