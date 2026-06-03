@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Dashboard Audit — Missing Boards</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  :root { --bg:#0f172a; --card:#1e293b; --border:#334155; --accent:#3b82f6; --green:#22c55e; --amber:#f59e0b; --red:#ef4444; --text:#e2e8f0; --muted:#94a3b8; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); padding:2rem; max-width:1200px; margin:0 auto; }
+  h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+  .subtitle { color:var(--muted); font-size:0.9rem; margin-bottom:2rem; }
+  .hero { background:linear-gradient(135deg,#1e293b,#0f172a); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:24px; }
+  .hero h1 { font-size:1.5rem; }
+  .hero p { color:var(--muted); font-size:0.85rem; margin-top:4px; }
+  .hero-stats { display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; }
+  .hero-stat { background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:10px 16px; text-align:center; min-width:80px; flex:1; }
+  .hero-stat .num { font-size:20px; font-weight:800; }
+  .hero-stat .label { font-size:11px; color:var(--muted); text-transform:uppercase; }
+  .hero-stat.green .num { color:var(--green); }
+  .hero-stat.amber .num { color:var(--amber); }
+  .hero-stat.red .num { color:var(--red); }
+  .section { margin-bottom:28px; }
+  .section-title { font-size:1.1rem; font-weight:600; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px; }
+  .card h3 { font-size:0.95rem; font-weight:600; margin-bottom:4px; }
+  .card .desc { font-size:0.82rem; color:var(--muted); margin-bottom:8px; }
+  .card .meta { font-size:0.75rem; color:var(--muted); }
+  .status-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+  .status-dot.green { background:var(--green); }
+  .status-dot.amber { background:var(--amber); }
+  .status-dot.red { background:var(--red); }
+  .badge { display:inline-block; font-size:0.7rem; padding:2px 8px; border-radius:4px; font-weight:600; }
+  .badge.yes { background:rgba(34,197,94,0.15); color:var(--green); }
+  .badge.no { background:rgba(239,68,68,0.15); color:var(--red); }
+  .badge.partial { background:rgba(245,158,11,0.15); color:var(--amber); }
+  table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+  th { text-align:left; color:var(--muted); font-weight:600; padding:8px 12px; border-bottom:1px solid var(--border); font-size:0.75rem; text-transform:uppercase; }
+  td { padding:10px 12px; border-bottom:1px solid var(--border); }
+  tr:hover td { background:rgba(59,130,246,0.05); }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>📊 Dashboard Portfolio Audit</h1>
+  <p>Complete inventory of all data streams, cron outputs, and their dashboard status</p>
+  <div class="hero-stats">
+    <div class="hero-stat green"><div class="num" id="count-live">--</div><div class="label">Dashboards Live</div></div>
+    <div class="hero-stat amber"><div class="num" id="count-new">--</div><div class="label">Newly Created</div></div>
+    <div class="hero-stat red"><div class="num" id="count-missing">--</div><div class="label">Still Missing</div></div>
+    <div class="hero-stat"><div class="num" id="count-total">--</div><div class="label">Total Streams</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-title">✅ Live Dashboards (49)</h2>
+  <div class="grid" id="live-dashboards"></div>
+</div>
+
+<div class="section">
+  <h2 class="section-title">🆕 Newly Created Dashboards</h2>
+  <div class="grid" id="new-dashboards"></div>
+</div>
+
+<div class="section">
+  <h2 class="section-title">❌ Data Streams Still Missing Dashboards</h2>
+  <div class="grid" id="missing-streams"></div>
+</div>
+
+<script>
+const LIVE = [
+  "affiliate-marketplace","affiliate-niche-sites","affiliate-status","amazon-to-ebay",
+  "backlink-health","bing-health","browser-extension","clickbank-products",
+  "course-ideas","crypto-scan","crypto-trade-monitor","digital-products",
+  "display-ads","ebay-avasam","ebay-daily","ebay-dropship","ebay-weekly",
+  "email-newsletter","expired-domains","file-share","gsc-opportunities",
+  "ideas-agent-managed","ideas-and-plans","ideas-opportunities",
+  "micro-saas-password-tools","money-research","n8n-status","nikka-intel",
+  "online-courses","ops-status","options-scan","pod-security-merch",
+  "portfolio-dashboard","portfolio-performance","property-dashboard",
+  "property-knowledge-transfer","seo","site-flipping","stock-scan",
+  "stocks-learning","tanoli-intel","trading-assessment","trading-course",
+  "trading-kb","trendvault","youtube-automation","missing-dashboards"
+];
+
+const NEW = {
+  "agent-sync-health": {
+    title: "Agent Sync Health",
+    desc: "Inter-agent communication status, last sync times, message relays between Hermes instances.",
+    status: "🟢 Live"
+  },
+  "coachify-curriculum": {
+    title: "Coachify Curriculum",
+    desc: "IXL skills catalog (1.9MB), Khan Academy, BBC Bitesize & Brilliant courses for coachifyonline.com.",
+    status: "🟢 Live"
+  },
+  "indexnow-pings": {
+    title: "IndexNow Pinger",
+    desc: "Bing/Yandex/Seznam/Naver ping history — tracks URLs submitted from blog publishing crons.",
+    status: "🟢 Live"
+  },
+  "crosslink-journal": {
+    title: "Cross-Link Journal",
+    desc: "Daily interlink injection log — which posts got which cross-links, mesh coverage %.",
+    status: "🟢 Live"
+  }
+};
+
+const MISSING = [
+  { title: "Battery Monitor", desc: "battery_alert_monitor.py & battery_monitor.py run but have no dashboard. Low priority — system-level health.", priority: "Low" },
+  { title: "POD Store Performance", desc: "KOKAL POD store (OpenClaw) sales data — no dashboard for daily revenue/orders.", priority: "Medium" },
+  { title: "GitHub Repo Activity", desc: "66 repos migrated to kokallimited. No dashboard showing commit activity, deployment status, stale repos.", priority: "Low" },
+  { title: "Supabase Auth", desc: "~/.hermes/output/supabase-auth/ has login/dashboard HTML templates but no live dashboard tracking auth users or signups.", priority: "Low" },
+  { title: "Avasam Profit Tracker", desc: "ebay-avasam.html dashboard exists but no profit/sales tracking from Avasam fulfillment.", priority: "Medium" },
+  { title: "dfordeals Performance", desc: "Daily blog posts published to dfordeals.co.uk but no dashboard tracking views, leads, or property stats.", priority: "Medium" },
+  { title: "Coachify Site Stats", desc: "coachifyonline.com curriculum refreshed weekly but no traffic/performance dashboard for the site.", priority: "Low" },
+  { title: "Trading P&L", desc: "Stock/crypto/options scans exist in dashboards but no aggregated P&L tracker across all trading crons.", priority: "Medium" }
+];
+
+function renderCards(containerId, items, type) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  if (type === 'live') {
+    el.innerHTML = items.map(name => 
+      `<div class="card">
+        <span class="badge yes">LIVE</span>
+        <h3><a href="${name}.html">${name.replace(/-/g,' ')}</a></h3>
+        <div class="meta"><span class="status-dot green"></span>thetanoli.com/dashboards/${name}.html</div>
+      </div>`
+    ).join('');
+  } else if (type === 'new') {
+    el.innerHTML = Object.entries(items).map(([key, v]) =>
+      `<div class="card">
+        <span class="badge yes">${v.status}</span>
+        <h3><a href="${key}.html">${v.title}</a></h3>
+        <div class="desc">${v.desc}</div>
+        <div class="meta"><span class="status-dot green"></span>thetanoli.com/dashboards/${key}.html</div>
+      </div>`
+    ).join('');
+  } else if (type === 'missing') {
+    el.innerHTML = items.map(v =>
+      `<div class="card">
+        <span class="badge no">${v.priority}</span>
+        <h3>${v.title}</h3>
+        <div class="desc">${v.desc}</div>
+      </div>`
+    ).join('');
+  }
+}
+
+renderCards('live-dashboards', LIVE, 'live');
+renderCards('new-dashboards', NEW, 'new');
+renderCards('missing-streams', MISSING, 'missing');
+
+document.getElementById('count-live').textContent = LIVE.length;
+document.getElementById('count-new').textContent = Object.keys(NEW).length;
+document.getElementById('count-missing').textContent = MISSING.length;
+document.getElementById('count-total').textContent = LIVE.length + Object.keys(NEW).length + MISSING.length;
+</script>
+</body>
+</html>
