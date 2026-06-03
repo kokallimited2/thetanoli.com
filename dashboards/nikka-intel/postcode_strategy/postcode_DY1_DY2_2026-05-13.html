@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Postcode Strategy Analysis — DY1 & DY2 — 2026-05-13</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 2rem; }
+  h1 { color: #58a6ff; font-size: 1.8rem; margin-bottom: 0.5rem; }
+  h2 { color: #79c0ff; font-size: 1.3rem; margin: 1.5rem 0 0.8rem 0; border-bottom: 1px solid #30363d; padding-bottom: 0.3rem; }
+  h3 { color: #d2a8ff; font-size: 1.1rem; margin: 1rem 0 0.5rem 0; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .postcode-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; }
+  .strategy-bar { display: flex; align-items: center; margin: 0.3rem 0; }
+  .strategy-label { width: 100px; color: #c9d1d9; font-weight: 500; }
+  .strategy-bar-fill { height: 20px; border-radius: 4px; min-width: 20px; transition: width 0.3s; }
+  .strategy-score { width: 50px; text-align: right; color: #8b949e; font-weight: 600; }
+  .excellent { background: #238636; }
+  .strong { background: #1f6feb; }
+  .average { background: #d29922; }
+  .poor { background: #da3633; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th, td { padding: 0.5rem; text-align: left; border-bottom: 1px solid #30363d; }
+  th { color: #58a6ff; font-weight: 600; }
+  td { color: #c9d1d9; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; font-weight: 600; }
+  .badge-invest { background: #238636; color: #fff; }
+  .badge-selective { background: #d29922; color: #000; }
+  .badge-avoid { background: #da3633; color: #fff; }
+  .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; margin: 1rem 0; }
+  .metric-card { background: #21262d; border-radius: 6px; padding: 0.8rem; text-align: center; }
+  .metric-label { font-size: 0.75rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; }
+  .metric-value { font-size: 1.3rem; font-weight: 700; margin-top: 0.3rem; }
+  .verdict-box { background: linear-gradient(135deg, #1f2937, #111827); border: 2px solid #374151; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .pros { background: #0a2e1a; border: 1px solid #238636; border-radius: 6px; padding: 0.8rem; }
+  .cons { background: #2d0a0a; border: 1px solid #da3633; border-radius: 6px; padding: 0.8rem; }
+  .pros h4 { color: #3fb950; }
+  .cons h4 { color: #f85149; }
+  ul { list-style: none; padding-left: 0; }
+  li { padding: 0.2rem 0; }
+  li::before { margin-right: 0.5rem; }
+  .pros li::before { content: "✅"; }
+  .cons li::before { content: "⚠️"; }
+  .deal-card { background: #21262d; border-radius: 6px; padding: 0.8rem; margin: 0.5rem 0; }
+  .price { color: #3fb950; }
+  .bmv-positive { color: #3fb950; }
+  .bmv-negative { color: #f85149; }
+  .yield-high { color: #3fb950; }
+  .footer { margin-top: 2rem; color: #8b949e; font-size: 0.8rem; text-align: center; }
+  @media (max-width: 768px) { .pros-cons { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<h1>🗺️ Postcode Strategy Analysis</h1>
+<p class="meta">13 May 2026 — Session 1 | Priority: DY1 (Dudley Town Centre) & DY2 (Netherton, Woodside, Quarry Bank)</p>
+
+<div class="postcode-card">
+<h2>📍 DY1 — Dudley Town Centre</h2>
+<p class="meta">DY1 covers Dudley town centre including Castle Hill, Priory, and surrounding residential streets north of the ring road. Population: ~10,500 in the immediate postcode area.</p>
+
+<div class="metric-grid">
+  <div class="metric-card">
+    <div class="metric-label">Avg Asking Price</div>
+    <div class="metric-value">£235,756</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Avg Sold Price</div>
+    <div class="metric-value">£204,500</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Avg Monthly Rent</div>
+    <div class="metric-value">£1,008</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Gross Yield</div>
+    <div class="metric-value" style="color:#d29922;">5.1%</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">5-Year Growth</div>
+    <div class="metric-value" style="color:#3fb950;">+35.6%</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Price/Sq Ft</div>
+    <div class="metric-value">£235</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Monthly Sales</div>
+    <div class="metric-value">18/mo</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Days on Market</div>
+    <div class="metric-value">81-100</div>
+  </div>
+</div>
+
+<h3>Market Summary</h3>
+<p>DY1 is Dudley's town centre postcode — the cheapest price-per-sq-ft in Dudley alongside DY2, but with the second-highest 5-year growth (+35.6%) and strong 1-year momentum (+7.9%). The market is currently slow-moving (81-100 days to sell) with significant price reduction activity (42 reductions in March 2026 alone). The gap between asking (£235,756) and sold (£204,500) suggests 10-15% negotiation room on most properties. Flats are deeply discounted at avg £120k. The £1bn regeneration programme — metro extension (2028), new university campus, bus interchange, Portersfield development — provides medium-term capital growth tailwinds.</p>
+
+<div class="verdict-box">
+  <h3>Best Strategies (Ranked)</h3>
+  <div class="strategy-bar"><span class="strategy-label">BRRR</span><div class="strategy-bar-fill strong" style="width:80%;"></div><span class="strategy-score">7.2/10</span></div>
+  <div class="strategy-bar"><span class="strategy-label">BTL</span><div class="strategy-bar-fill average" style="width:65%;"></div><span class="strategy-score">6.2/10</span></div>
+  <div class="strategy-bar"><span class="strategy-label">Flip</span><div class="strategy-bar-fill average" style="width:60%;"></div><span class="strategy-score">5.8/10</span></div>
+  <div class="strategy-bar"><span class="strategy-label">HMO</span><div class="strategy-bar-fill poor" style="width:35%;"></div><span class="strategy-score">3.5/10</span></div>
+  <div class="strategy-bar"><span class="strategy-label">SA</span><div class="strategy-bar-fill poor" style="width:30%;"></div><span class="strategy-score">3.0/10</span></div>
+</div>
+
+<h3>Strategy Deep-Dive</h3>
+
+<table>
+<tr><th>Strategy</th><th>Score</th><th>Why It Works</th><th>Target</th><th>Risk</th></tr>
+<tr>
+  <td><strong>BRRR</strong></td>
+  <td><span class="badge badge-selective">7.2</span></td>
+  <td>Wide price gap between asking/sold (10-15% headroom). 42+ price reductions monthly. High proportion requiring modernisation. Strong refi comps at £204-235k GDV.</td>
+  <td>2-3 bed terraces £150-200k; ex-council semis needing refurb</td>
+  <td>Medium — refurb costs tight in slow market</td>
+</tr>
+<tr>
+  <td><strong>BTL</strong></td>
+  <td><span class="badge badge-selective">6.2</span></td>
+  <td>£1,008/mo avg rent, 5.1% gross yield. Affordable entry (£120k flats). Strong tenant demand from employment hubs. £1bn regeneration supports medium-term growth.</td>
+  <td>2-bed terraces £150-170k; 2-bed flats £100-130k</td>
+  <td>Medium — yield below 6% threshold for WM. Slow market = longer voids</td>
+</tr>
+<tr>
+  <td><strong>Flip</strong></td>
+  <td><span class="badge badge-selective">5.8</span></td>
+  <td>15%+ gap between asking and sold. Price reductions frequent. Flat discount to house = strong value-add conversion potential. Metro extension boosts buyer sentiment.</td>
+  <td>2-3 bed terraces £150-180k purchase, £200-235k GDV</td>
+  <td>High — 81-100 day selling time. 42/mo reductions = downward pressure</td>
+</tr>
+<tr>
+  <td><strong>HMO</strong></td>
+  <td><span class="badge badge-avoid">3.5</span></td>
+  <td>N/A — severely restricted</td>
+  <td>N/A</td>
+  <td>Borough-wide Article 4 Direction since Sept 2023. All C3→C4 conversions need planning permission. Low yield for HMO model given town centre property prices.</td>
+</tr>
+<tr>
+  <td><strong>SA</strong></td>
+  <td><span class="badge badge-avoid">3.0</span></td>
+  <td>Limited tourism demand. Town centre has visitor economy but short-term lets restricted in many areas.</td>
+  <td>N/A</td>
+  <td>High — FHL tax regime abolished 2025. Low occupancy for serviced in small towns.</td>
+</tr>
+</table>
+
+<div class="pros-cons">
+<div class="pros">
+<h4>✅ Strengths</h4>
+<ul>
+<li>Second-best 5-year growth in Dudley (+35.6%)</li>
+<li>Strong 1-year price momentum (+7.9%)</li>
+<li>£1bn regeneration programme (metro, uni, Portersfield)</li>
+<li>10-15% negotiation headroom on most properties</li>
+<li>Good BTL properties under £150k (flats/terraces)</li>
+<li>Very cheap per sq ft at £235</li>
+<li>Employment rate 76.7% (above WM and national)</li>
+</ul>
+</div>
+<div class="cons">
+<h4>⚠️ Risks</h4>
+<ul>
+<li>Gross yield only 5.1% — below 6% WM threshold</li>
+<li>Very slow market (81-100 days to sell)</li>
+<li>Sales volume down 31% YoY</li>
+<li>42 price reductions in one month</li>
+<li>Crime rate above national average</li>
+<li>Borough-wide Article 4 blocks HMO strategy</li>
+<li>6.2% unemployment above national average</li>
+</ul>
+</div>
+</div>
+
+<h3>Property Types to Target</h3>
+<ul>
+<li>📌 2-bed terraced houses £150-170k — best BRRR candidates</li>
+<li>📌 2-bed flats £100-130k — high-yield BTL (7-9% est yield on purchase price)</li>
+<li>📌 3-bed ex-council semis £180-200k — family rental sweet spot</li>
+<li>📌 4-bed terraced houses £190k — potential title split or large family BTL</li>
+</ul>
+
+<h3>Best PropAI Candidates (DY1, sub-£250k yield >6.5%)</h3>
+<div class="deal-card">🏠 <strong>4-bed terraced</strong> — <span class="price">£190,000</span> — DY1 3PB — Est Yield: <span class="yield-high">7.3%</span> — 🔍 Best BRRR candidate (large house, terraced, cheap entry)</div>
+<div class="deal-card">🏠 <strong>3-bed house</strong> — <span class="price">£245,000</span> — DY1 4FH — Est Yield: <span class="yield-high">7.3%</span> — BMV: <span class="bmv-positive">-5.6%</span> — Undervalued house in good location</div>
+<div class="deal-card">🏠 <strong>2-bed flat</strong> — <span class="price">£145,000</span> — DY1 2RW — Est Yield: <span class="yield-high">7.9%</span> — BMV: <span class="bmv-positive">-4.6%</span> — Affordable entry with strong yield</div>
+<div class="deal-card">🏠 <strong>2-bed flat</strong> — <span class="price">£125,000</span> — DY1 3HL — Est Yield: <span class="yield-high">6.7%</span> — Lowest entry price, good first BTL</div>
+
+<h3>Overall Rating: <span style="color:#d29922;font-size:1.5rem;">6.0/10</span></h3>
+<h3>Verdict: <span class="badge badge-selective">SELECTIVE</span></h3>
+<p>DY1 works for BRRR and basic BTL in specific sub-segments (cheap terraces, flats), but its slow market, 5.1% gross yield, and price reduction activity make it a SELECTIVE play, not a core hunting ground. Best used as a source of BRRR candidates where you can negotiate 10-15% below asking and refurb for GDV uplift. Avoid for flips (too slow) and HMO (Article 4 blocked). The £1bn regeneration provides medium-term hold case for BTL.</p>
+</div>
+
+<div class="postcode-card">
+<h2>📍 DY2 — Netherton, Woodside, Quarry Bank</h2>
+<p class="meta">DY2 covers Netherton, Woodside, and Quarry Bank — the south-eastern quadrant of Dudley borough. Population: ~15,000 across the postcode area.</p>
+
+<div class="metric-grid">
+  <div class="metric-card">
+    <div class="metric-label">Avg Asking Price</div>
+    <div class="metric-value">£217,251</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Avg Sold Price</div>
+    <div class="metric-value">£202,642</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Avg Monthly Rent</div>
+    <div class="metric-value">£919</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Gross Yield</div>
+    <div class="metric-value" style="color:#d29922;">5.1%</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">5-Year Growth</div>
+    <div class="metric-value" style="color:#3fb950;">+28.6%</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Price/Sq Ft</div>
+    <div class="metric-value" style="color:#3fb950;">£227</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Monthly Sales</div>
+    <div class="metric-value">20/mo</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">Days on Market</div>
+    <div class="metric-value">81-100</div>
+  </div>
+</div>
+
+<h3>Market Summary</h3>
+<p>DY2 is the <strong>cheapest postcode in Dudley</strong> by both asking price (£217,251) and price per sq ft (£227). Despite being the most affordable, it has delivered solid 5-year growth (+28.6%) and stable 1-year growth (+2.7%). The rental market is active with average rents of £919/mo. Extremely cheap entry points exist (some streets average £48k-£74k), and 215+ properties are on the market. The slow market (81-100 days) mirrors DY1, and 38 price reductions in March 2026 signal negotiation opportunity. DY2 benefits from proximity to Dudley town centre, Merry Hill, and the new Metro extension (opening 2028).</p>
+
+<div class="verdict-box">
+  <h3>Best Strategies (Ranked)</h3>
+  <div class="strategy-bar"><span class="strategy-label">BRRR</span><div class="strategy-bar-fill excellent" style="width:88%;"></div><span class="strategy-score">8.0/10</span></div>
+  <div class="strategy-bar"><span class="strategy-label">BTL</span><div class="strategy-bar-fill strong" style="width:72%;"></div><span class="strategy-score">6.8/10</span></div>
+  <div class="strategy-bar"><span class="strategy-label">Flip</span><div class="strategy-bar-fill average" style="width:62%;"></div><span class="strategy-score">6.0/10</span></div>
+  <div class="strategy-bar"><span class="strategy-label">HMO</span><div class="strategy-bar-fill poor" style="width:38%;"></div><span class="strategy-score">3.8/10</span></div>
+  <div class="strategy-bar"><span class="strategy-label">SA</span><div class="strategy-bar-fill poor" style="width:25%;"></div><span class="strategy-score">2.5/10</span></div>
+</div>
+
+<h3>Strategy Deep-Dive</h3>
+
+<table>
+<tr><th>Strategy</th><th>Score</th><th>Why It Works</th><th>Target</th><th>Risk</th></tr>
+<tr>
+  <td><strong>BRRR</strong></td>
+  <td><span class="badge badge-invest">8.0</span></td>
+  <td><strong>Best BRRR postcode in Dudley.</strong> Cheapest entry (£217k avg, sub-£100k streets exist). Multiple BMV opportunities (some showing 25-35% below market value). Estimated rental yields of 8-10% on sub-£150k buys. Strong refi comps from similar refurbished properties.</td>
+  <td>2-3 bed terraces £80-130k purchase, refurb to £160-200k GDV</td>
+  <td>Low-Medium — cheap stock = high refurb risk. Need careful cost control</td>
+</tr>
+<tr>
+  <td><strong>BTL</strong></td>
+  <td><span class="badge badge-selective">6.8</span></td>
+  <td>Best avg asking price in Dudley. Flats from £100k with 7.2%+ yields. Houses £150-185k achieving 8-10% estimated yields. £919/mo avg rent, strong tenant demand from Russell Hall Hospital and industrial estates.</td>
+  <td>2-3 bed terraces £120-160k; 2-bed flats £90-120k</td>
+  <td>Medium — yield good but tenant quality varies in cheaper streets</td>
+</tr>
+<tr>
+  <td><strong>Flip</strong></td>
+  <td><span class="badge badge-selective">6.0</span></td>
+  <td>Wide price gap (asking vs sold). Some streets have 30%+ discounts. Price reductions frequent. Metro extension proximity boosts future buyer demand.</td>
+  <td>2-3 bed terraces £100-130k purchase, £150-175k GDV</td>
+  <td>Medium — 81-100 day selling time throttles flip velocity</td>
+</tr>
+<tr>
+  <td><strong>HMO</strong></td>
+  <td><span class="badge badge-avoid">3.8</span></td>
+  <td>Cheap entry points could theoretically support HMO (rooms at £350-400/mo), but restricted by borough-wide Article 4.</td>
+  <td>Large 4-5 bed houses £150-200k</td>
+  <td>Planning permission required for all HMO conversions — no permitted development route</td>
+</tr>
+<tr>
+  <td><strong>SA</strong></td>
+  <td><span class="badge badge-avoid">2.5</span></td>
+  <td>Limited short-term demand in Netherton/Woodside areas. No tourism draw, mainly residential.</td>
+  <td>N/A</td>
+  <td>High — FHL changes, low occupancy. Better suited to standard BTL.</td>
+</tr>
+</table>
+
+<div class="pros-cons">
+<div class="pros">
+<h4>✅ Strengths</h4>
+<ul>
+<li>Cheapest postcode in Dudley — lowest entry barrier</li>
+<li>Excellent PropAI yield data: 8-10% on sub-£150k, 15.9% on cheap stock</li>
+<li>Multiple BMV opportunities (25-35% below market value)</li>
+<li>5-year growth 28.6% — solid capital appreciation</li>
+<li>Cheapest price per sq ft in Dudley (£227)</li>
+<li>215+ active listings — plenty of choice</li>
+<li>Near Merry Hill, Metro extension proximity</li>
+<li>Russell Hall Hospital = steady rental demand</li>
+</ul>
+</div>
+<div class="cons">
+<h4>⚠️ Risks</h4>
+<ul>
+<li>Slow market (81-100 days to sell)</li>
+<li>Sales volume down 35% YoY</li>
+<li>Crime higher than national average (Netherton ward ~98/1000)</li>
+<li>Some streets very low value (£48-74k) = limited mortgage availability</li>
+<li>Borough-wide Article 4 blocks HMO</li>
+<li>Tenant quality varies significantly by street</li>
+<li>38 price reductions in one month signals weak demand</li>
+</ul>
+</div>
+</div>
+
+<h3>Property Types to Target</h3>
+<ul>
+<li>📌 <strong>2-3 bed terraced houses £80-130k</strong> — BEST BRRR bets. Buy cheap, refurb, refi at £160-200k</li>
+<li>📌 2-bed flats £90-120k — strong BTL at 7-9% yields</li>
+<li>📌 2-3 bed houses £140-175k — steady BTL at 8-10% yields</li>
+<li>📌 3-bed houses £185k (DY2 0DB) — 9.7% yield, BTL sweet spot</li>
+</ul>
+
+<h3>Best PropAI Candidates (DY2, sub-£250k, yield >6.5%)</h3>
+<div class="deal-card">🏠 <strong>2-bed house</strong> — <span class="price">£87,000</span> — DY2 9DD — Est Yield: <span class="yield-high">15.9%</span> — ⭐ Exceptional if real. Needs verification — check condition</div>
+<div class="deal-card">🏠 <strong>3-bed house</strong> — <span class="price">£150,000</span> — DY2 8LY — Est Yield: <span class="yield-high">10.0%</span> — BMV: <span class="bmv-negative">+7.8%</span> — Strong BRRR candidate</div>
+<div class="deal-card">🏠 <strong>3-bed house</strong> — <span class="price">£185,000</span> — DY2 0DB — Est Yield: <span class="yield-high">9.7%</span> — Solid BTL purchase</div>
+<div class="deal-card">🏠 <strong>3-bed house</strong> — <span class="price">£230,000</span> — DY2 0EJ — Est Yield: <span class="yield-high">8.7%</span> — BMV: <span class="bmv-positive">-11.2%</span> — ⭐ Undervalued + high yield = best combo</div>
+<div class="deal-card">🏠 <strong>2-bed house</strong> — <span class="price">£175,000</span> — DY2 9DH — Est Yield: <span class="yield-high">8.2%</span> — Good entry BTL</div>
+<div class="deal-card">🏠 <strong>3-bed house</strong> — <span class="price">£250,000</span> — DY2 0HZ — Est Yield: <span class="yield-high">8.2%</span> — BMV: <span class="bmv-positive">-23.8%</span> — Significantly undervalued</div>
+<div class="deal-card">🏠 <strong>2-bed flat</strong> — <span class="price">£135,000</span> — DY2 8RL — Est Yield: <span class="yield-high">8.0%</span> — BMV: <span class="bmv-positive">-27.9%</span> — ⭐ Strong BMV + good yield</div>
+<div class="deal-card">🏠 <strong>4-bed house</strong> — <span class="price">£250,000</span> — DY2 9LN — Est Yield: <span class="yield-high">7.7%</span> — BMV: <span class="bmv-positive">-35.1%</span> — ⭐ Heavily undervalued. Large family BTL/HMO potential</div>
+
+<h3>Overall Rating: <span style="color:#3fb950;font-size:1.5rem;">7.2/10</span></h3>
+<h3>Verdict: <span class="badge badge-invest">INVEST</span></h3>
+<p>DY2 is the <strong>strongest postcode in Dudley for BRRR and BTL</strong>. Lowest entry prices, excellent yield potential (8-10%), multiple BMV opportunities, solid 5-year growth. The primary constraint is the slow market (81-100 days to sell) and crime rates in specific wards, but for buy-and-hold strategies (BRRR → BTL), this is a core hunting ground. The Metro extension opening 2028 provides 2-year catalyst for capital appreciation. Focus on 2-3 bed terraces and ex-council semis under £150k for best BRRR economics. The sub-£100k streets (Moncrieffe Close, Castle Court) offer exceptional entry points but require careful due diligence on condition and mortgage availability.</p>
+</div>
+
+<div class="postcode-card" style="border-color: #58a6ff;">
+<h2>📊 Head-to-Head: DY1 vs DY2</h2>
+
+<table>
+<tr><th>Metric</th><th>DY1 (Town Centre)</th><th>DY2 (Netherton)</th><th>Winner</th></tr>
+<tr><td>Avg Asking Price</td><td>£235,756</td><td><strong>£217,251</strong></td><td>DY2 (cheaper entry)</td></tr>
+<tr><td>Price/Sq Ft</td><td>£235</td><td><strong>£227</strong></td><td>DY2 (better value)</td></tr>
+<tr><td>5-Year Growth</td><td><strong>35.6%</strong></td><td>28.6%</td><td>DY1 (stronger growth)</td></tr>
+<tr><td>1-Year Momentum</td><td><strong>7.9%</strong></td><td>2.7%</td><td>DY1 (hotter YoY)</td></tr>
+<tr><td>Gross Yield</td><td>5.1%</td><td><strong>5.1%</strong></td><td>Tie</td></tr>
+<tr><td>PropAI Est Yields (sub-£250k)</td><td>6.6-7.3% range</td><td><strong>7.4-15.9% range</strong></td><td>DY2 (higher potential)</td></tr>
+<tr><td>BMV Opportunities</td><td>5 found (avg -7.9%)</td><td><strong>6 found (avg -24.0%)</strong></td><td>DY2 (deeper discounts)</td></tr>
+<tr><td>Monthly Sales</td><td>18/mo</td><td><strong>20/mo</strong></td><td>DY2 (slightly more liquid)</td></tr>
+<tr><td>Price Reductions (Mar)</td><td>42</td><td>38</td><td>DY2 (slightly less pressure)</td></tr>
+<tr><td>Regeneration Catalyst</td><td><strong>Direct (town centre)</strong></td><td>Indirect (proximity)</td><td>DY1 (more direct benefit)</td></tr>
+<tr><td>BRRR Score</td><td>7.2/10</td><td><strong>8.0/10</strong></td><td>DY2</td></tr>
+<tr><td>BTL Score</td><td>6.2/10</td><td><strong>6.8/10</strong></td><td>DY2</td></tr>
+<tr><td>Overall</td><td>6.0/10 — SELECTIVE</td><td><strong>7.2/10 — INVEST</strong></td><td>DY2</td></tr>
+</table>
+</div>
+
+<div class="postcode-card">
+<h2>🎯 Action Plan</h2>
+<ol>
+<li><strong>Focus DY2 for BRRR sourcing</strong> — 2-3 bed terraces under £150k. Cheap stock + strong refi comps = best BRRR economics in Dudley</li>
+<li><strong>Target specific candidates from PropAI data</strong> — DY2 9DD (£87k, 15.9%), DY2 0EJ (£230k, 8.7%, -11.2% BMV), DY2 8RL (£135k, 8.0%, -27.9% BMV)</li>
+<li><strong>Monitor DY1 selectively</strong> — Only for bargain flats (£100-130k) or terraces with 10%+ negotiation room. Use slow market as leverage</li>
+<li><strong>Avoid HMO in both</strong> — Borough-wide Article 4 direction since 2023 blocks the strategy</li>
+<li><strong>Metro catalyst</strong> — Wednesbury→Brierley Hill Metro opening 2028. Property values within 1km of stops expected to see 10-15% uplift. Position long in DY1/DY2 with 2-year+ hold horizon</li>
+<li><strong>Check council HMO register</strong> — Existing HMOs may present management takeovers (tired landlord angle)</li>
+</ol>
+</div>
+
+<div class="footer">
+UK Property Postcode Strategy Intelligence — Kokal Properties Ltd — Generated 13 May 2026
+</div>
+</body>
+</html>

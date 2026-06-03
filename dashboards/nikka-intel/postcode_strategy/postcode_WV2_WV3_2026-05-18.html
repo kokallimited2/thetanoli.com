@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Postcode Strategy Analysis — WV2 & WV3 — 2026-05-18</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 2rem; max-width: 1000px; margin: 0 auto; }
+  h1 { color: #58a6ff; font-size: 1.8rem; margin-bottom: 0.3rem; }
+  h2 { color: #79c0ff; font-size: 1.4rem; margin: 1.5rem 0 0.8rem 0; border-bottom: 1px solid #30363d; padding-bottom: 0.3rem; }
+  h3 { color: #d2a8ff; font-size: 1.2rem; margin: 1.2rem 0 0.5rem 0; }
+  h4 { color: #8b949e; font-size: 1rem; margin: 0.8rem 0 0.3rem 0; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th, td { padding: 0.5rem 0.4rem; text-align: left; border-bottom: 1px solid #30363d; font-size: 0.9rem; }
+  th { color: #58a6ff; font-weight: 600; background: #161b22; }
+  td { color: #c9d1d9; }
+  .invest { display:inline-block; padding:2px 8px; border-radius:10px; font-size:0.8rem; font-weight:600; background:#238636; color:#fff; }
+  .selective { display:inline-block; padding:2px 8px; border-radius:10px; font-size:0.8rem; font-weight:600; background:#d29922; color:#000; }
+  .avoid { display:inline-block; padding:2px 8px; border-radius:10px; font-size:0.8rem; font-weight:600; background:#da3633; color:#fff; }
+  .score-high { color: #3fb950; font-weight:700; }
+  .score-med { color: #d29922; font-weight:700; }
+  .score-low { color: #f85149; font-weight:700; }
+  .card { background:#161b22; border:1px solid #30363d; border-radius:8px; padding:1.2rem; margin-bottom:1.5rem; }
+  .metric-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:0.5rem; margin:0.5rem 0; }
+  .metric { background:#1c2128; padding:0.5rem; border-radius:4px; }
+  .metric .label { color:#8b949e; font-size:0.8rem; }
+  .metric .value { color:#c9d1d9; font-size:1.1rem; font-weight:600; }
+  ul, ol { margin:0.5rem 0 0.5rem 1.5rem; }
+  li { margin:0.3rem 0; }
+  .tag { display:inline-block; background:#1f6feb22; color:#58a6ff; border:1px solid #1f6feb44; border-radius:4px; padding:0 6px; font-size:0.8rem; }
+  .footer { margin-top:2rem; color:#8b949e; font-size:0.8rem; text-align:center; }
+  .bimodal-note { border-left:3px solid #d29922; background:#1c2128; padding:0.8rem; margin:0.5rem 0; }
+</style>
+</head>
+<body>
+
+<h1>🗺️ Postcode Strategy Analysis — WV2 & WV3</h1>
+<p class="meta">2026-05-18 | Wolverhampton South & West | Postcodes 10 & 11 of queue</p>
+
+<div class="card" id="wv2">
+<h2>📍 WV2 — Blakenhall, Penn Fields, Ettingshall, All Saints, Parkfields</h2>
+<p class="meta">Wolverhampton — South & Central sub-urban</p>
+
+<h3>Market Snapshot</h3>
+<div class="metric-grid">
+  <div class="metric"><span class="label">Total Listings</span><div class="value">101</div></div>
+  <div class="metric"><span class="label">Houses 2+ Bed</span><div class="value">21</div></div>
+  <div class="metric"><span class="label">Cheapest House</span><div class="value">£185,000</div></div>
+  <div class="metric"><span class="label">Avg Terraced</span><div class="value">~£160k-£185k</div></div>
+  <div class="metric"><span class="label">Avg Semi-Detached</span><div class="value">~£200k-£250k</div></div>
+  <div class="metric"><span class="label">Avg Rent (2-3 bed)</span><div class="value">£895-£1,100/mo</div></div>
+  <div class="metric"><span class="label">Gross Yield (entry)</span><div class="value">5.5-6.5%</div></div>
+  <div class="metric"><span class="label">PropAI Yield Range</span><div class="value">5.5-10.9%</div></div>
+  <div class="metric"><span class="label">Demand</span><div class="value">Medium</div></div>
+  <div class="metric"><span class="label">Crime (city avg)</span><div class="value">87/1,000</div></div>
+</div>
+
+<h3>Price per Square Metre (by sector)</h3>
+<table>
+<tr><th>Sector</th><th>Area</th><th>Median £/sqm</th><th>1yr Nominal</th><th>5yr Total Nominal</th><th>Sales 2yr</th></tr>
+<tr><td>WV2 2</td><td>Penn Fields, Ettingshall</td><td>£2,490</td><td>-0.6%</td><td>+44.1%</td><td>98</td></tr>
+<tr><td>WV2 3</td><td>Blakenhall, All Saints</td><td>£1,850</td><td class="score-low">-7.0%</td><td>+18.3%</td><td>58</td></tr>
+<tr><td>WV2 4</td><td>Blakenhall South</td><td>£1,990</td><td>—</td><td>—</td><td>86</td></tr>
+<tr><td>WV2 1</td><td>City fringe</td><td>£1,920</td><td>—</td><td>—</td><td>58</td></tr>
+</table>
+
+<div class="bimodal-note">
+<strong>⚠️ Two-Tier Market:</strong> WV2 3 (Blakenhall/All Saints) is declining sharply (-7% nominal, -9.9% real over 1yr) with lower £/sqm (£1,850). WV2 2 (Penn Fields/Ettingshall) is stable (-0.6% nominal, +44% over 5yr) with higher £/sqm (£2,490). Blakenhall is the cheaper, declining tier.
+</div>
+
+<h3>Rightmove Live Scan (18 May 2026)</h3>
+<ul>
+  <li><strong>Total WV2:</strong> 101 listings | <strong>Houses 2+ bed:</strong> 21</li>
+  <li><strong>BRRR targets (£70-150k, freehold, 2+ bed, not STC/auction):</strong> <span class="score-low">ZERO</span></li>
+  <li><strong>BTL entry options:</strong> 1-2 properties at £185-£200k (mostly semi-detached)</li>
+  <li><strong>Recent reductions:</strong> Tangmere Road £205k (reduced 12/05), Rough Hills Close £200k-£245k (reduced 30/04-01/05)</li>
+  <li>Typical listing: 2-3 bed semi, £200k-£250k, freehold</li>
+  <li>Zero sub-£150k freehold houses</li>
+</ul>
+
+<h3>Rental Market</h3>
+<ul>
+  <li>Wolverhampton average rent: £928/mo (Feb 2026, up 11.9% YoY)</li>
+  <li>House average rent in Wolverhampton: ~£1,251/mo</li>
+  <li>2-bed terraces in WV2: ~£895-£995/mo</li>
+  <li>3-bed houses in WV2: ~£1,000-£1,200/mo</li>
+  <li>Tenant type: mix of families, young professionals, some students (Blakenhall closer to city/university)</li>
+  <li>Rental demand: Medium — close to city centre, employment, University of Wolverhampton</li>
+</ul>
+
+<h3>Demographics & Drivers</h3>
+<ul>
+  <li><strong>Employment:</strong> City of Wolverhampton Council, NHS/Royal Hospital, University of Wolverhampton (~23k students), retail/distribution</li>
+  <li><strong>Transport:</strong> Wolverhampton Station (25min Birmingham, 1.5hr London), Bus routes to city centre, M6 J10/11</li>
+  <li><strong>Regeneration:</strong> £120M Interchange (completed), £35M Mander Centre, University expansion</li>
+  <li><strong>Population:</strong> 263,727 (2021 census, +5.71%), diverse demographic</li>
+  <li><strong>Schools:</strong> 96% Good/Outstanding city-wide — but WV2 not in school-premium catchment</li>
+</ul>
+
+<h3>Best Strategies (Ranked)</h3>
+<ol>
+  <li><strong>BTL — <span class="score-med">6.5/10</span></strong></li>
+  <li><strong>BRRR — <span class="score-low">3.5/10</span></strong></li>
+  <li><strong>HMO — <span class="score-low">1.0/10</span></strong></li>
+  <li>Flip — 3.0/10 | SA — 2.5/10 | R2R — 2.0/10</li>
+</ol>
+
+<h4>BTL — 6.5/10</h4>
+<p><strong>Why it works:</strong> Entry prices at £185-200k for 2-3 bed freehold houses are the most affordable in the Wolverhampton conurbation. City authority/health/university employment base provides consistent tenant demand. 11.9% annual rent growth outstrips house price growth (2.5%).</p>
+<p><strong>Expected yield:</strong> 5.5-6.5% on entry properties (£185-200k). Higher yields possible on cheaper terraces (WV2 3/Blakenhall sector at £160-185k may hit 6-7%).</p>
+<p><strong>Risk:</strong> Medium — market is slow (81-100 day heat gauge), WV2 3 sector declining -7% nominal, Blakenhall crime elevated, tenant quality varies across sub-areas.</p>
+
+<h4>BRRR — 3.5/10 <span class="avoid">BELOW THRESHOLD</span></h4>
+<p><strong>Why it fails:</strong> Zero freehold houses under £150k in current Rightmove listings. The cheap stock (WV2 3/Blakenhall sector at £1,850/sqm) has been rebased. WV2 2 sector is £2,490/sqm — no entry at BRRR prices. The "BRRR dead" finding from WV1 extends to WV2 as well.</p>
+
+<h4>HMO — 1.0/10 <span class="avoid">BLOCKED</span></h4>
+<p>Borough-wide Article 4 Direction. Additional HMO licensing active. HMO strategy is not viable in Wolverhampton.</p>
+
+<h3>Property Types to Target</h3>
+<ul>
+  <li><strong>2-bed terraces/semis £185-200k</strong> (best BTL entry point in WV area)</li>
+  <li><strong>3-bed semis £200-240k</strong> (family BTL, higher rent but lower yield)</li>
+  <li>Avoid: WV2 3/Blakenhall (declining -7% nominal), flats (low capital growth)</li>
+</ul>
+
+<h3>Key Risks</h3>
+<ul>
+  <li><strong>Zero BRRR pipeline</strong> — no refurb opportunity at any price level</li>
+  <li><strong>Two-tier decline risk</strong> — cheap sector (WV2 3) declining -7% nominal = capital loss on any buy</li>
+  <li><strong>Crime</strong> — Wolverhampton is most dangerous city in WM (87/1,000). Blakenhall substantially higher.</li>
+  <li><strong>Slow market</strong> — 81-100 days to sell, limited exit liquidity</li>
+  <li><strong>HMO blocked</strong> — borough-wide Article 4 + additional licensing</li>
+  <li><strong>No school catchment premium</strong> — solid schools but not a premium that drives values</li>
+</ul>
+
+<h3>Overall Rating</h3>
+<div class="metric-grid">
+  <div class="metric"><span class="label">Strategy Fit</span><div class="value">BTL</div></div>
+  <div class="metric"><span class="label">Score</span><div class="value score-med">6.0/10</div></div>
+  <div class="metric"><span class="label">Yield</span><div class="value score-med">5.5-6.5%</div></div>
+  <div class="metric"><span class="label">Verdict</span><div class="value"><span class="selective">SELECTIVE</span></div></div>
+</div>
+<p><strong>Verdict:</strong> SELECTIVE — BTL only. WV2 offers the most affordable freehold house entry in Wolverhampton (£185-200k) with respectable 5.5-6.5% yields in a city with strong employment/university demand. But the market is slow, WV2 3 sector is declining, crime is elevated, and BRRR/HMO are dead. Treat as an income play only — do not buy for capital growth. Prefer Penn Fields (WV2 2) over Blakenhall (WV2 3) due to stable pricing. WV1 remains a better BTL option with lower entry (£120-150k) and higher yield (7-8.5%).</p>
+</div>
+
+<div class="card" id="wv3">
+<h2>📍 WV3 — Finchfield, Bradmore, Compton, Castlecroft, Penn Fields, Whitmore Reans, Merridale</h2>
+<p class="meta">Wolverhampton — West & Suburban (Bimodal Market)</p>
+
+<h3>Market Snapshot</h3>
+<div class="metric-grid">
+  <div class="metric"><span class="label">Avg House Price</span><div class="value">£225,214</div></div>
+  <div class="metric"><span class="label">5yr Change</span><div class="value">+12.37%</div></div>
+  <div class="metric"><span class="label">12mo Change</span><div class="value">+2.25%</div></div>
+  <div class="metric"><span class="label">Sales Volume (12mo)</span><div class="value">236 <span class="score-low">(-38% YoY)</span></div></div>
+  <div class="metric"><span class="label">Days to Sell</span><div class="value">104 <span class="score-low">(very slow)</span></div></div>
+  <div class="metric"><span class="label">Avg Discount</span><div class="value">-3%</div></div>
+  <div class="metric"><span class="label">Avg Rent</span><div class="value">£909/mo</div></div>
+  <div class="metric"><span class="label">Gross Yield (avg)</span><div class="value">~4.2-4.8%</div></div>
+  <div class="metric"><span class="label">BTL Entry Yield</span><div class="value">5.5-6.5%</div></div>
+  <div class="metric"><span class="label">Crime</span><div class="value">Moderate (varies by area)</div></div>
+</div>
+
+<div class="bimodal-note">
+<strong>⚠️ Bimodal Market:</strong> WV3 is NOT a single market. It splits cleanly into:<br>
+<strong>Premium Tier:</strong> Finchfield, Castlecroft, Compton, Bradmore — £300k-£600k, family homes, good schools, green spaces. No investment case — 2-4% yields.<br>
+<strong>Affordable Tier:</strong> Penn Fields, Whitmore Reans, Merridale — £170k-£250k, terraces/semis, closer to city. BTL entry possible at £210k+.
+</div>
+
+<h3>Rightmove Live Scan (18 May 2026)</h3>
+<ul>
+  <li><strong>Total WV3:</strong> 283 listings | <strong>Houses 2+ bed:</strong> 24</li>
+  <li><strong>BRRR targets:</strong> <span class="score-low">ZERO</span></li>
+  <li><strong>BTL entry options:</strong> <span class="score-low">1 (leasehold only)</span></li>
+  <li><strong>Cheapest freehold house:</strong> ~£210,000 (White Oak Drive, 3-bed terrace)</li>
+  <li><strong>Cheapest overall property:</strong> £170,000 Lennox Gardens (leasehold terrace — NOT suitable for BTL)</li>
+  <li>1 auction property at £180k (Westacre Crescent, 3-bed terrace)</li>
+  <li>Premium listings dominate: Castlecroft Road £350k-£525k, Trysull Road £600k, Copthorne Road £575k</li>
+</ul>
+
+<h3>Rental Market</h3>
+<ul>
+  <li>WV3 average rent: £909/mo (range £400-£4,500)</li>
+  <li>3-bed terraces in affordable sector: ~£950-£1,150/mo</li>
+  <li>3-bed semis in premium sector: ~£1,200-£1,600/mo</li>
+  <li>Tenant type: families (premium), professionals/students (affordable)</li>
+  <li>Rental demand: Medium overall — premium sector is family-owner-occupied, not rental</li>
+</ul>
+
+<h3>Demographics & Drivers</h3>
+<ul>
+  <li><strong>Premium sector:</strong> Families, professionals, commuters. Good schools (93% Good/Outstanding city-wide), green spaces (Bantock Park, West Park, Castlecroft). Low crime.</li>
+  <li><strong>Affordable sector:</strong> Mix of young professionals, families, students. Closer to city centre and university. Moderate crime.</li>
+  <li><strong>Transport:</strong> Bus routes to city centre. Wolverhampton Station accessible. M6 J10/11 by car.</li>
+  <li><strong>Schools:</strong> WV3 contains several of Wolverhampton's best schools including outstanding-rated primaries in Finchfield/Bradmore catchment.</li>
+  <li><strong>No major regeneration catalyst</strong> — WV3 is established residential, not a growth zone</li>
+</ul>
+
+<h3>Best Strategies (Ranked)</h3>
+<ol>
+  <li><strong>BTL (affordable tier only) — <span class="score-med">6.0/10</span></strong></li>
+  <li><strong>BRRR — <span class="score-low">2.0/10</span></strong></li>
+  <li><strong>HMO — <span class="score-low">1.0/10</span></strong></li>
+  <li>Flip — 2.0/10 | SA — 2.5/10 | R2R — 2.0/10</li>
+</ol>
+
+<h4>BTL — 6.0/10 (Affordable Tier Only)</h4>
+<p><strong>Why it works:</strong> The affordable tier (Penn Fields, Whitmore Reans, Merridale) offers freehold terraces/semis from £210k with yields of 5.5-6.5%. The premium tier creates stable demand in lower areas — people who work in premium WV3 live in affordable WV3.</p>
+<p><strong>Expected yield:</strong> 5.5-6.5% on entry properties (£210-240k). Below the 6.5% yield threshold for most properties — only best buys hit target.</p>
+<p><strong>Risk:</strong> Medium-High — premium pricing already factored, only 24 houses from 283 listings, sales volume crashed -38% YoY, 104 days to sell, limited entry stock.</p>
+
+<h4>BRRR — 2.0/10 <span class="avoid">DEAD</span></h4>
+<p>Zero freehold BRRR targets on Rightmove. Entry at £210k+ means no room for refurb profit. Premium sector £300k+ completely inaccessible for BRRR. This is a family-owner-occupier market, not a refurb play.</p>
+
+<h4>HMO — 1.0/10 <span class="avoid">BLOCKED</span></h4>
+<p>Borough-wide Article 4 Direction. Additional HMO licensing active. Not viable.</p>
+
+<h3>Property Types to Target</h3>
+<ul>
+  <li><strong>3-bed terraces in Penn Fields £210-225k</strong> (best BTL entry in affordable tier)</li>
+  <li><strong>3-bed semis in Whitmore Reans/Merridale £220-250k</strong> (family rental, lower yield but lower tenant churn)</li>
+  <li>Avoid: All premium tier (Finchfield, Castlecroft, Compton, Bradmore — no yield). Leasehold properties. Auction.</li>
+</ul>
+
+<h3>Key Risks</h3>
+<ul>
+  <li><strong>Premium pricing on entry</strong> — cheapest freehold house is ~£210k. Compare to WV1 (£120-150k) for perspective.</li>
+  <li><strong>Sales volume crash -38%</strong> — worst in Wolverhampton. Very limited liquidity.</li>
+  <li><strong>104 days to sell</strong> — extremely slow market, exit is hard</li>
+  <li><strong>Zero BRRR pipeline</strong> — no refurb opportunity</li>
+  <li><strong>HMO blocked</strong> — borough-wide Article 4 + additional licensing</li>
+  <li><strong>Very limited stock</strong> — only 24 houses in 283 listings (91% flats)</li>
+</ul>
+
+<h3>Overall Rating</h3>
+<div class="metric-grid">
+  <div class="metric"><span class="label">Strategy Fit</span><div class="value">BTL (affordable tier)</div></div>
+  <div class="metric"><span class="label">Score</span><div class="value score-med">5.5/10</div></div>
+  <div class="metric"><span class="label">Yield</span><div class="value score-low">5.5-6.5%</div></div>
+  <div class="metric"><span class="label">Verdict</span><div class="value"><span class="selective">SELECTIVE (low conviction)</span></div></div>
+</div>
+<p><strong>Verdict:</strong> SELECTIVE — BTL only in the affordable tier (Penn Fields, Whitmore Reans, Merridale) and even then only at best-buy entry prices. WV3 is predominantly a family-owner-occupier lifestyle market with very limited investment-grade stock. Compare unfavourably to WV1 (BTL 7.0/10, entry from £120k) and DY2 (BRRR 8.0/10). WV3's best use case is as a premium rental for families seeking good school catchments — but the yield doesn't justify the entry price. Skip unless a genuine bargain appears at £190k or below.</p>
+</div>
+
+<h2>🧭 Comparison: WV2 vs WV3 vs WV1</h2>
+<table>
+<tr><th>Metric</th><th>WV1 (centre)</th><th>WV2 (south)</th><th>WV3 (west)</th></tr>
+<tr><td>Best Strategy</td><td><span class="tag">BTL</span></td><td><span class="tag">BTL</span></td><td><span class="tag">BTL</span></td></tr>
+<tr><td>Score</td><td class="score-high">7.0/10</td><td class="score-med">6.0/10</td><td class="score-med">5.5/10</td></tr>
+<tr><td>Cheapest House</td><td>£120k ✨</td><td>£185k</td><td>£210k</td></tr>
+<tr><td>Typical BTL Yield</td><td>7-8.5%</td><td>5.5-6.5%</td><td>5.5-6.5%</td></tr>
+<tr><td>BRRR Viability</td><td>5.5/10 (limited)</td><td>3.5/10 (dead)</td><td>2.0/10 (dead)</td></tr>
+<tr><td>HMO Viability</td><td class="score-low">2.0/10</td><td class="score-low">1.0/10</td><td class="score-low">1.0/10</td></tr>
+<tr><td>Demand</td><td>Medium-High</td><td>Medium</td><td>Medium</td></tr>
+<tr><td>Market Speed</td><td>Medium (81-100d)</td><td>Slow (81-100d)</td><td>Very Slow (104d)</td></tr>
+<tr><td>Capital Growth</td><td>-2% 1yr (entry)</td><td>-0.6 to -7%</td><td>+2.25%</td></tr>
+<tr><td>Stock (houses)</td><td>~25</td><td>~21</td><td>~24</td></tr>
+<tr><td>Sales Volume YoY</td><td>High (2,394)</td><td>Moderate</td><td>-38% crash</td></tr>
+</table>
+
+<h2>🎯 Action Plan</h2>
+<ol>
+<li><strong>WV1 remains the best WV BTL play</strong> — lowest entry (£120-150k), highest yield (7-8.5%), strongest demand drivers. Continue prioritising WV1 for BTL sourcing.</li>
+<li><strong>WV2 is a backup BTL zone</strong> — only if WV1 stock exhausted. Target Penn Fields (WV2 2) over Blakenhall (WV2 3). Entry £185k+, yield 5.5-6.5%.</li>
+<li><strong>WV3 is a SKIP for serious investment</strong> — yields below threshold for the entry cost. Only for occasional opportunistic buys at £190k or less.</li>
+<li><strong>BRRR dead across all Wolverhampton postcodes</strong> — no freehold house sub-£150k in WV1/WV2/WV3. DY2 (Netherton) remains the only BRRR zone in the West Midlands pipeline so far.</li>
+<li><strong>HMO dead across Wolverhampton</strong> — borough-wide Article 4 + additional licensing.</li>
+<li><strong>Next postcodes:</strong> WV4 (Bilston, Bradley), WV5 (Wombourne, rural). Likely WV4 to have lower entry and WV5 to be premium/rural.</li>
+</ol>
+
+<h2>📊 Current Pipeline: 11 Postcodes Mapped</h2>
+<table>
+<tr><th>Rank</th><th>Postcode</th><th>Best Strategy</th><th>Score</th><th>Verdict</th></tr>
+<tr><td>🥇</td><td>DY2 Netherton</td><td>BRRR</td><td class="score-high">8.0/10</td><td><span class="invest">INVEST</span></td></tr>
+<tr><td>🥈</td><td>DY5 Brierley Hill</td><td>BTL</td><td class="score-high">7.5/10</td><td><span class="selective">SELECTIVE</span></td></tr>
+<tr><td>🥉</td><td>DY1 Dudley Town</td><td>BRRR</td><td class="score-med">7.2/10</td><td><span class="selective">SELECTIVE</span></td></tr>
+<tr><td>4</td><td>DY4 Tipton</td><td>BTL</td><td class="score-high">7.0/10</td><td><span class="selective">SELECTIVE</span></td></tr>
+<tr><td>5</td><td>WV1 Wolverhampton Centre</td><td>BTL</td><td class="score-high">7.0/10</td><td><span class="selective">SELECTIVE</span></td></tr>
+<tr><td>6</td><td>WV2 Blakenhall/Penn Fields</td><td>BTL</td><td class="score-med">6.0/10</td><td><span class="selective">SELECTIVE</span></td></tr>
+<tr><td>7</td><td>DY3 Sedgley/Gornal</td><td>BTL</td><td class="score-med">6.5/10</td><td><span class="selective">SELECTIVE</span></td></tr>
+<tr><td>8</td><td>DY9 Lye (only)</td><td>BTL</td><td class="score-med">6.5/10</td><td><span class="selective">SELECTIVE</span></td></tr>
+<tr><td>9</td><td>WV3 Penn Fields/Finchfield</td><td>BTL</td><td class="score-med">5.5/10</td><td><span class="selective">SELECTIVE (low)</span></td></tr>
+<tr><td>10</td><td>DY6 Kingswinford</td><td>BTL</td><td class="score-med">5.5/10</td><td><span class="avoid">AVOID</span></td></tr>
+<tr><td>11</td><td>DY8 Stourbridge</td><td>BTL</td><td class="score-med">5.5/10</td><td><span class="selective">SELECTIVE</span></td></tr>
+</table>
+
+<div class="footer">
+Postcode Strategy Intelligence — Kokal Properties Ltd — Generated 18 May 2026
+</div>
+</body>
+</html>

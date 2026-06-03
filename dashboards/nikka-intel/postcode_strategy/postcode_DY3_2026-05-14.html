@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Postcode Strategy Analysis — DY3 (Sedgley/Gornal)</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 2rem; max-width: 900px; margin: 0 auto; }
+  h1 { color: #58a6ff; font-size: 2rem; margin-bottom: 0.3rem; }
+  h2 { color: #79c0ff; font-size: 1.4rem; margin: 1.5rem 0 0.8rem 0; border-bottom: 1px solid #30363d; padding-bottom: 0.3rem; }
+  h3 { color: #d2a8ff; font-size: 1.1rem; margin: 1rem 0 0.5rem 0; }
+  .meta { color: #8b949e; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  th, td { padding: 0.5rem; text-align: left; border-bottom: 1px solid #30363d; }
+  th { color: #58a6ff; font-weight: 600; background: #161b22; }
+  td { color: #c9d1d9; }
+  tr:hover td { background: #1c2128; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; margin: 0.8rem 0; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; font-weight: 600; }
+  .invest { background: #238636; color: #fff; }
+  .selective { background: #d29922; color: #000; }
+  .avoid { background: #da3633; color: #fff; }
+  .score-high { color: #3fb950; font-weight: 700; }
+  .score-med { color: #d29922; font-weight: 700; }
+  .score-low { color: #f85149; font-weight: 700; }
+  .score-poor { color: #8b949e; }
+  .green { color: #3fb950; }
+  .amber { color: #d29922; }
+  .red { color: #f85149; }
+  .stat { display: inline-flex; align-items: center; gap: 4px; background: #21262d; padding: 3px 8px; border-radius: 6px; margin: 2px; font-size: 0.85rem; }
+  .verdict-box { background: #1c2128; border: 2px solid #d29922; border-radius: 8px; padding: 1.2rem; margin: 1rem 0; text-align: center; }
+  .verdict-box h2 { border: none; margin: 0; }
+  .strat-bar { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+  .strat-bar-fill { height: 20px; border-radius: 4px; min-width: 10px; }
+</style>
+</head>
+<body>
+
+<h1>📍 Postcode Strategy Analysis — DY3</h1>
+<p class="meta">Sedgley, Upper Gornal, Lower Gornal, Himley, Swindon (Dudley) | Generated 14 May 2026 | Daily Postcode Intelligence</p>
+
+<div class="card" style="background: #1c2128; border-color: #30363d;">
+<h2>🏠 Market Snapshot</h2>
+<table>
+<tr><td><strong>Avg Asking Price</strong></td><td>£218,750–£263,456 <span class="amber">(source-dependent)</span></td></tr>
+<tr><td><strong>Avg £/sqm</strong></td><td>£2,700 (DY3 1 Sedgley), £2,650 (DY3 2 Lower Gornal)</td></tr>
+<tr><td><strong>Avg Rent (3-bed house)</strong></td><td>£1,100/mo <span class="green">(OpenRent/RM data)</span></td></tr>
+<tr><td><strong>Gross Yield</strong></td><td>~6.0% <span class="amber">(on avg £220k purchase)</span></td></tr>
+<tr><td><strong>5-Year Growth</strong></td><td><span class="green">+21.83%</span></td></tr>
+<tr><td><strong>12-Month Change</strong></td><td><span class="green">+3.72%</span></td></tr>
+<tr><td><strong>Sales Volume (12mo)</strong></td><td>338 <span class="amber">(down 5.92% YoY)</span></td></tr>
+<tr><td><strong>Days to Sell</strong></td><td><span class="red">81–100 (very slow)</span></td></tr>
+<tr><td><strong>Price Reductions (Mar 2026)</strong></td><td><span class="amber">43</span> — 64% of agreed sales volume</td></tr>
+<tr><td><strong>Property Type Mix</strong></td><td>Semi-detached £245k, Detached £372k, Terraced £217k</td></tr>
+<tr><td><strong>Live Listings (houses 2+ bed)</strong></td><td>18 of 389 total <span class="amber">(4.6%)</span></td></tr>
+<tr><td><strong>Demand Signal</strong></td><td><span class="amber">Medium-Low</span> — more instructions (67) than sales (47), 43 reductions</td></tr>
+</table>
+</div>
+
+<h2>📍 Area Profile</h2>
+
+<div class="card">
+<h3>🏘️ Sedgley (DY3 1)</h3>
+<p>Median £/sqm: £2,700 | 214 sales (2yr) | 1yr change: <span class="amber">+2.1% nominal, -1.0% real</span></p>
+<p>Most expensive street: High Park Crescent (£3,034/sqm) | Highest volume: Bath Street (22 sales)</p>
+<p>Lower Gornal (DY3 2): Median £/sqm £2,650 | 272 sales (2yr) | 1yr change: <span class="red">-6.6% nominal, -9.5% real</span></p>
+<p>DY3 3 (Sedgley North): Median £/sqm £3,220 | 244 sales (2yr) — <span class="green">highest value part of DY3</span></p>
+</div>
+
+<div class="card">
+<h3>🛡️ Crime & Safety</h3>
+<p><span class="green">63 crimes/1,000</span> — 30% below WM average (89/1,000)</p>
+<p>Top 5 safest medium-sized town in West Midlands. Ranked 79th safest nationally.</p>
+<p>Key risks: Vehicle crime (index 1.69), burglary (index 1.53) — both above national average</p>
+<p>Trend: Crime down 1.8% in last year, 18% over 5 years. Improving.</p>
+</div>
+
+<div class="card">
+<h3>⚖️ Regulation</h3>
+<p><strong>Council:</strong> Dudley MBC</p>
+<p><strong>Article 4:</strong> Partial (level 1) — Mandatory HMO licensing only (5+ tenants). No additional licensing for 3-4 tenant HMOs.</p>
+<p><strong>HMO feasibility:</strong> Technically open for <5 bed HMOs, but Sedgley is predominantly family-oriented with limited HMO tenant demand.</p>
+</div>
+
+<h2>🏆 Best Strategies (Ranked)</h2>
+
+<ol style="margin: 1rem 0 1rem 2rem; line-height: 2;">
+<li><strong>BTL</strong> — <span class="score-high">6.5/10</span> — Stable, safe area. Decent yield ~6%.</li>
+<li><strong>BRRR</strong> — <span class="score-med">4.5/10</span> — Limited opportunity in £70-150k bracket.</li>
+<li><strong>HMO</strong> — <span class="score-med">4.5/10</span> — No additional licensing, but tenant demand uncertain.</li>
+<li><strong>Flip</strong> — <span class="score-low">4.0/10</span> — Very slow market makes exit risky.</li>
+<li><strong>SA / Commercial</strong> — <span class="score-poor">2.5/10</span> — No drivers.</li>
+</ol>
+
+<h2>📊 Strategy Breakdown</h2>
+
+<h3>🏡 BTL — 6.5/10</h3>
+<div class="card">
+<p><strong>Why it works:</strong> Sedgley is a stable, safe, family-oriented suburb of Dudley with good schools, low crime, and steady if unspectacular price growth. The 5-year return of +21.83% is solid. Properties in the £160-190k range offer ~6% gross yield, which is acceptable for a low-risk BTL hold.</p>
+<p><strong>Expected yield:</strong> 5.5-6.5%</p>
+<p><strong>Risk:</strong> <span class="amber">Medium-Low</span> — Very slow market (81-100 days) means longer voids if tenant leaves. But tenant demand is stable — 3-bed semis let at £1,100/mo within weeks.</p>
+<p><strong>Target:</strong> 2-3 bed terraces £160-190k, 3-bed semis £190-230k</p>
+<p><strong>Verdict:</strong> <span class="amber">SELECTIVE</span> — Good for long-term hold, family lets. Not a quick-yield play.</p>
+</div>
+
+<h3>🔄 BRRR — 4.5/10</h3>
+<div class="card">
+<p><strong>Why it's limited:</strong> Rightmove live scan today shows ZERO BRRR targets (£70-150k, freehold, 2+ bed, no STC/auction). The cheapest streets (Jockey Field £77k, Central Drive £106k) are very small samples and likely flats/maisonettes. DY3's higher base prices (~£220k avg) mean the sub-£150k market is almost non-existent.</p>
+<p><strong>Refurb opportunity:</strong> Some ex-council houses in Lower Gornal (DY3 2, £/sqm £2,210-£2,650) could offer refurb potential if bought via probate or chain-free. But these are rare.</p>
+<p><strong>Verdict:</strong> <span class="red">AVOID for BRRR-specific strategy.</span> Not enough deal flow.</p>
+</div>
+
+<h3>🏠 HMO — 4.5/10</h3>
+<div class="card">
+<p><strong>Viability:</strong> Technically feasible — Dudley has partial Article 4 (mandatory 5+ HMO only, no additional licensing for 3-4 tenants). This means a small HMO (<5 tenants) doesn't need additional licensing. However, Sedgley is predominantly family housing with limited HMO tenant demand (not near a university, limited NHS/professional tenant base).</p>
+<p><strong>Licensing:</strong> Dudley — Mandatory only (5+ tenants). No additional scheme for 3-4 tenants as of April 2026.</p>
+<p><strong>Target:</strong> Large family homes near Sedgley High Street could convert, but yield uplift vs BTL is marginal.</p>
+<p><strong>Verdict:</strong> <span class="amber">NOT RECOMMENDED</span> — Unclear demand, better HMO plays elsewhere.</p>
+</div>
+
+<h3>💥 Flip — 4.0/10</h3>
+<div class="card">
+<p><strong>Feasibility:</strong> Very slow market (81-100 days to STC), 43 price reductions in a single month (Mar 2026). 338 annual sales is low volume. Flipping in DY3 would require: (a) buying well below market (20%+ BMV), (b) quick clean refurb, (c) pricing at the 25th percentile to shift fast. Margins would be thin.</p>
+<p><strong>Verdict:</strong> <span class="red">AVOID</span> — Holding costs would erode margins.</p>
+</div>
+
+<h3>🏨 SA / Commercial — 2.5/10</h3>
+<div class="card">
+<p>No tourism, limited contractor demand, no hospitals/university nearby. Not viable.</p>
+</div>
+
+<h2>🎯 Property Types to Target</h2>
+<ul style="margin: 0.5rem 0 0.5rem 2rem;">
+<li>2-bed terraces £160-180k (entry-level BTL)</li>
+<li>3-bed semis £190-230k (strong family let, best long-term hold)</li>
+<li>Ex-council houses in Lower Gornal (DY3 2) at £/sqm below £2,400 — value play</li>
+</ul>
+
+<h2>⚠️ Key Risks</h2>
+<ul style="margin: 0.5rem 0 0.5rem 2rem;">
+<li><span class="red">Very slow market:</span> 81-100 days to sell — exit liquidity is poor</li>
+<li><span class="red">Low listing stock:</span> Only 18 houses 2+ bed out of 389 listings — thin pickings</li>
+<li><span class="red">Sales down:</span> 5.92% fewer sales YoY — market cooling</li>
+<li><span class="amber">Price reductions common:</span> 43 reductions vs 47 sales in March — most sellers discounting</li>
+<li><span class="amber">Vehicle crime:</span> Index 1.69 above national average — tenant concern</li>
+<li><span class="green">Lower Gornal (DY3 2) declining:</span> -6.6% nominal in last year — sub-area quality varies</li>
+</ul>
+
+<div class="verdict-box">
+<h2>Overall Rating: <span class="score-med">6.0/10</span></h2>
+<h2>Verdict: <span class="badge selective">SELECTIVE</span></h2>
+<p style="margin-top: 0.5rem; color: #c9d1d9;">DY3 is a <strong>safe, stable family area</strong> but not the best play for value-add strategies. BTL works for long-term holds at ~6% yield. BRRR is effectively unavailable. Focus on 2-3 bed family houses in the £160-200k range for steady, low-drama letting.</p>
+<p style="margin-top: 0.3rem; color: #8b949e;">Compare: DY2 (BTL 6.8, BRRR 8.0) is stronger for value — DY3 is the premium/safe option.</p>
+</div>
+
+<div class="footer" style="margin-top: 2rem; color: #8b949e; font-size: 0.8rem; text-align: center;">
+UK Postcode Strategy Intelligence — Kokal Properties Ltd — Generated 14 May 2026<br>
+Data: Land Registry, Rightmove, Police.uk, HouseMetric, Property Solvers, ONS
+</div>
+
+</body>
+</html>
