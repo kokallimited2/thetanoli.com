@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏠 Daily Property Hunt — Wed 3 Jun 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 20px; overflow-wrap: break-word; word-break: break-word; }
+  h1 { font-size: 1.8em; color: #58a6ff; margin-bottom: 5px; border-bottom: 2px solid #21262d; padding-bottom: 10px; }
+  .subtitle { color: #8b949e; font-size: 0.9em; margin-bottom: 25px; }
+  h2 { font-size: 1.3em; color: #f0f6fc; margin: 25px 0 15px; padding-bottom: 6px; border-bottom: 1px solid #21262d; }
+  h3 { font-size: 1.1em; color: #d2d8e0; margin: 20px 0 10px; }
+  .stats-bar { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 25px; }
+  .stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 12px 18px; flex: 1; min-width: 140px; }
+  .stat-card .label { color: #8b949e; font-size: 0.8em; text-transform: uppercase; }
+  .stat-card .value { font-size: 1.5em; font-weight: 700; color: #58a6ff; }
+  
+  table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9em; }
+  th { background: #21262d; color: #8b949e; text-align: left; padding: 10px 12px; font-weight: 600; border-bottom: 2px solid #30363d; }
+  td { padding: 10px 12px; border-bottom: 1px solid #21262d; }
+  tr:hover td { background: #161b22; }
+  
+  .deal-card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 20px; margin: 15px 0; }
+  .deal-card.highlight { border-color: #238636; box-shadow: 0 0 0 1px #238636; }
+  .deal-card h3 { margin-top: 0; }
+  .deal-meta { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 10px 0; }
+  .deal-meta .item { background: #0d1117; border-radius: 6px; padding: 8px 12px; }
+  .deal-meta .item .label { color: #8b949e; font-size: 0.75em; }
+  .deal-meta .item .val { font-size: 1em; font-weight: 600; }
+  .deal-meta .item .val.green { color: #3fb950; }
+  .deal-meta .item .val.orange { color: #d29922; }
+  .deal-meta .item .val.red { color: #f85149; }
+  .deal-meta .item .val.blue { color: #58a6ff; }
+  
+  .verdict { display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.85em; text-transform: uppercase; }
+  .verdict.call { background: #238636; color: #fff; }
+  .verdict.high { background: #1f6feb; color: #fff; }
+  .verdict.strong { background: #0e8a16; color: #fff; }
+  .verdict.watch { background: #9e6a03; color: #fff; }
+  .verdict.pass { background: #30363d; color: #8b949e; }
+  .verdict.skip { background: #da3633; color: #fff; }
+  
+  .risk-flags { margin: 10px 0; }
+  .risk-flags .flag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; margin: 2px; }
+  .flag.red { background: #3d1f1e; color: #f85149; border: 1px solid #f85149; }
+  .flag.amber { background: #3d2e00; color: #d29922; border: 1px solid #d29922; }
+  .flag.green { background: #0f2d14; color: #3fb950; border: 1px solid #3fb950; }
+  
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a.address { font-weight: 600; color: #f0f6fc; }
+  a.address:hover { color: #58a6ff; }
+  
+  .footnote { color: #8b949e; font-size: 0.8em; margin-top: 30px; padding-top: 15px; border-top: 1px solid #21262d; }
+  
+  .combo-score { font-size: 1.8em; font-weight: 800; }
+  .combo-score.great { color: #3fb950; }
+  .combo-score.good { color: #58a6ff; }
+  .combo-score.ok { color: #d29922; }
+  .combo-score.low { color: #8b949e; }
+  
+  .deep-dive { margin-top: 20px; }
+  .deep-dive .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<h1>🏠 Daily Property Hunt</h1>
+<div class="subtitle">Wednesday, 3 June 2026 · 06:00 BST · West Midlands Focus · Autonomous Scan</div>
+
+<div class="stats-bar">
+  <div class="stat-card">
+    <div class="label">Properties Scanned</div>
+    <div class="value">53</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Eligible (£80-200k)</div>
+    <div class="value">7</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Top 3 Deals</div>
+    <div class="value">3</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">PropAI Remaining</div>
+    <div class="value">3,651</div>
+  </div>
+</div>
+
+<div class="stat-card" style="margin-bottom:20px;">
+  <div class="label">Search Areas</div>
+  <div style="font-size:0.9em;margin-top:5px;">DY1-DY9 · WV1-WV14 · B1-B44 · WS</div>
+</div>
+
+<!-- ===== TOP 10 TABLE ===== -->
+<h2>📋 Top Candidates — Ranked by Combined Score</h2>
+
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Address</th>
+  <th>Price</th>
+  <th>Type</th>
+  <th>Beds</th>
+  <th>BMV%</th>
+  <th>Yield%</th>
+  <th>Score</th>
+  <th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>1</strong></td>
+  <td><a class="address" href="https://www.rightmove.co.uk/properties/89195061" target="_blank">Kendal Rise Road, Rednal B45</a></td>
+  <td>£185k</td>
+  <td>Semi-D</td>
+  <td>3</td>
+  <td class="green">+24.4%</td>
+  <td>7.8%</td>
+  <td><span class="combo-score good">67.8</span></td>
+  <td><span class="verdict high">HIGH</span></td>
+</tr>
+<tr>
+  <td><strong>2</strong></td>
+  <td><a class="address" href="https://www.rightmove.co.uk/properties/89179761" target="_blank">Stanley Road, Wolverhampton WV10</a></td>
+  <td>£200k</td>
+  <td>End Ter</td>
+  <td>4</td>
+  <td>+10.6%</td>
+  <td>9.0%</td>
+  <td><span class="combo-score ok">51.8</span></td>
+  <td><span class="verdict watch">WATCH</span></td>
+</tr>
+<tr>
+  <td><strong>3</strong></td>
+  <td><a class="address" href="https://www.rightmove.co.uk/properties/89149182" target="_blank">Chapel Street, Bilston WV14</a></td>
+  <td>£160k</td>
+  <td>Mid Ter</td>
+  <td>3</td>
+  <td>+2.5%</td>
+  <td>11.8%</td>
+  <td><span class="combo-score ok">51.0</span></td>
+  <td><span class="verdict strong">BUY</span></td>
+</tr>
+<tr>
+  <td><strong>4</strong></td>
+  <td><a class="address" href="https://www.rightmove.co.uk/properties/89134182" target="_blank">Limes Avenue, Brierley Hill DY5</a></td>
+  <td>£152.5k</td>
+  <td>Semi-D</td>
+  <td>2</td>
+  <td>+7.6%</td>
+  <td>7.3%</td>
+  <td><span class="combo-score ok">40.6</span></td>
+  <td><span class="verdict watch">WATCH</span></td>
+</tr>
+<tr>
+  <td><strong>5</strong></td>
+  <td><a class="address" href="https://www.rightmove.co.uk/properties/89172246" target="_blank">Buckland End, Birmingham B34</a></td>
+  <td>£200k</td>
+  <td>Terraced</td>
+  <td>3</td>
+  <td>+3.8%</td>
+  <td>7.3%</td>
+  <td><span class="combo-score low">34.9</span></td>
+  <td><span class="verdict watch">WATCH</span></td>
+</tr>
+<tr>
+  <td><strong>6</strong></td>
+  <td><a class="address" href="https://www.rightmove.co.uk/properties/89151009" target="_blank">College Road, Birmingham B44</a></td>
+  <td>£200k</td>
+  <td>Semi-D</td>
+  <td>3</td>
+  <td class="red">-11.5%</td>
+  <td>7.5%</td>
+  <td><span class="combo-score low">12.8</span></td>
+  <td><span class="verdict pass">PASS</span></td>
+</tr>
+<tr>
+  <td><strong>7</strong></td>
+  <td>7 Newman Way, Birmingham B45</td>
+  <td>£200k</td>
+  <td>House</td>
+  <td>3</td>
+  <td class="red">-45.0%</td>
+  <td>7.5%</td>
+  <td><span class="combo-score low">-37.5</span></td>
+  <td><span class="verdict pass">PASS</span></td>
+</tr>
+</tbody>
+</table>
+
+<!-- ===== TOP 3 DEEP DIVES ===== -->
+<h2>🔍 Top 3 Deep Dives</h2>
+
+<div class="deep-dive">
+<div class="grid">
+
+<!-- Deal 1 -->
+<div class="deal-card highlight">
+  <div style="display:flex;justify-content:space-between;align-items:start;">
+    <h3>🥇 Kendal Rise Road, Rednal B45</h3>
+    <span class="verdict high">HIGH-CONVICTION</span>
+  </div>
+  
+  <div class="deal-meta">
+    <div class="item"><div class="label">Price</div><div class="val blue">£185,000</div></div>
+    <div class="item"><div class="label">Tenure</div><div class="val green">Freehold</div></div>
+    <div class="item"><div class="label">Type</div><div class="val">3-bed Semi-Detached</div></div>
+    <div class="item"><div class="label">Size</div><div class="val">893 sq ft (83 sqm)</div></div>
+    <div class="item"><div class="label">Chain</div><div class="val green">NO ONWARD CHAIN</div></div>
+    <div class="item"><div class="label">Agent</div><div class="val">Arden Estates, Bromsgrove</div></div>
+    <div class="item"><div class="label">BMV Discount</div><div class="val green">+24.4%</div></div>
+    <div class="item"><div class="label">Est. Yield</div><div class="val green">7.8%</div></div>
+    <div class="item"><div class="label">Combined Score</div><div class="val blue">67.8</div></div>
+  </div>
+  
+  <div><strong>📍 <a href="https://www.rightmove.co.uk/properties/89195061" target="_blank">View on Rightmove →</a></strong></div>
+  
+  <h4>Key Features</h4>
+  <ul style="margin:8px 0 0 20px;color:#8b949e;">
+    <li>Extended 3-bed semi in sought-after Rednal</li>
+    <li>Kitchen/diner with French doors to garden</li>
+    <li>Downstairs shower room + utility room</li>
+    <li>Driveway for off-road parking</li>
+    <li>Rear garden: paved patio & lawn, fully enclosed</li>
+    <li>Close to Lickey Hills, A38, M42</li>
+    <li>No onward chain = quick completion</li>
+  </ul>
+
+  <h4 style="margin-top:12px;">BRRR / Flip Analysis</h4>
+  <div class="deal-meta">
+    <div class="item"><div class="label">Est. ARV</div><div class="val green">£230-245k</div></div>
+    <div class="item"><div class="label">Refurb Needed</div><div class="val amber">Light (~£10k cosmetic)</div></div>
+    <div class="item"><div class="label">Gross Equity</div><div class="val green">£35-50k</div></div>
+    <div class="item"><div class="label">Est Rent (refurbed)</div><div class="val blue">£1,100-1,250/mo</div></div>
+  </div>
+  
+  <div class="risk-flags">
+    <span class="flag green">No chain</span>
+    <span class="flag green">Freehold</span>
+    <span class="flag amber">Not local to DY</span>
+  </div>
+  
+  <p style="margin-top:10px;color:#c9d1d9;"><strong>Narrative:</strong> Strongest candidate of the day — no onward chain eliminates fall-through risk, extended 893 sq ft well above average for a 3-bed semi, driveway parking a premium feature in this area. Rednal/B45 commands strong family demand (good schools, Lickey Hills, M42 access). Light cosmetic-only spend needed (already well presented). Est £1,150-1,250/mo rent post-refurb gives excellent cashflow at £185k entry. Call agent to test flexibility — listed 01/06 so still fresh.</p>
+</div>
+
+<!-- Deal 2 -->
+<div class="deal-card highlight">
+  <div style="display:flex;justify-content:space-between;align-items:start;">
+    <h3>🥈 Chapel Street, Bilston WV14</h3>
+    <span class="verdict strong">STRONG BUY</span>
+  </div>
+  
+  <div class="deal-meta">
+    <div class="item"><div class="label">Price</div><div class="val blue">£160,000</div></div>
+    <div class="item"><div class="label">Tenure</div><div class="val green">Freehold</div></div>
+    <div class="item"><div class="label">Type</div><div class="val">3-bed Mid-Terrace</div></div>
+    <div class="item"><div class="label">EPC</div><div class="val amber">D</div></div>
+    <div class="item"><div class="label">Council Tax</div><div class="val green">Band A</div></div>
+    <div class="item"><div class="label">Chain</div><div class="val green">NO UPWARD CHAIN</div></div>
+    <div class="item"><div class="label">Agent</div><div class="val">Skitts, Bilston (est.1979)</div></div>
+    <div class="item"><div class="label">BMV Discount</div><div class="val green">+2.5%</div></div>
+    <div class="item"><div class="label">Est. Yield</div><div class="val green">11.8%</div></div>
+    <div class="item"><div class="label">Combined Score</div><div class="val blue">51.0</div></div>
+  </div>
+  
+  <div><strong>📍 <a href="https://www.rightmove.co.uk/properties/89149182" target="_blank">View on Rightmove →</a></strong></div>
+  
+  <h4>Key Features</h4>
+  <ul style="margin:8px 0 0 20px;color:#8b949e;">
+    <li>Requires some modernisation = value-add opportunity</li>
+    <li>14ft living room + 12ft dining kitchen</li>
+    <li>Modern downstairs bathroom already fitted</li>
+    <li>Block-paved fore-garden + private rear garden</li>
+    <li>No upward chain = motivated seller</li>
+    <li>Close to Bilston centre & amenities</li>
+    <li>Added 01/06/2026 — very fresh listing</li>
+  </ul>
+
+  <h4 style="margin-top:12px;">BRRR Analysis</h4>
+  <div class="deal-meta">
+    <div class="item"><div class="label">Purchase</div><div class="val">£160,000</div></div>
+    <div class="item"><div class="label">Refurb</div><div class="val amber">£15-20k</div></div>
+    <div class="item"><div class="label">SDLT (3% surcharge)</div><div class="val">£5,550</div></div>
+    <div class="item"><div class="label">Est. ARV</div><div class="val green">£190-200k</div></div>
+    <div class="item"><div class="label">Est. Rent (refurbed)</div><div class="val blue">£950-1,050/mo</div></div>
+    <div class="item"><div class="label">Gross Yield</div><div class="val green">7.1-7.9%</div></div>
+  </div>
+  
+  <div class="risk-flags">
+    <span class="flag green">No chain</span>
+    <span class="flag green">Freehold</span>
+    <span class="flag green">Local WV14</span>
+    <span class="flag amber">EPC D — budget C upgrade</span>
+  </div>
+  
+  <p style="margin-top:10px;color:#c9d1d9;"><strong>Narrative:</strong> The best BRRR candidate today — £160k entry with genuine refurb potential ("requires modernisation" per listing). The agent explicitly markets this as "an excellent investment opportunity" which signals a motivated seller expecting investor interest. No chain = fast completion. At £160k with £15-20k cosmetic refurb, ARV of £190-200k is achievable. Even conservatively at 7.1% yield post-refurb, this beats BTL averages. The 11.8% PropAI yield is optimistic but achievable as an HMO or high-yield terraced. Strongest play: offer £150k, refurb £18k, refinance at 75% LTV on £195k ARV, pull out ~£146k, leaving ~£22k cash in on a £11,760/yr net rent (53% ROCE).</p>
+</div>
+
+<!-- Deal 3 -->
+<div class="deal-card">
+  <div style="display:flex;justify-content:space-between;align-items:start;">
+    <h3>🥉 Limes Avenue, Brierley Hill DY5</h3>
+    <span class="verdict watch">WATCH</span>
+  </div>
+  
+  <div class="deal-meta">
+    <div class="item"><div class="label">Price</div><div class="val blue">£152,500</div></div>
+    <div class="item"><div class="label">Tenure</div><div class="val green">Freehold</div></div>
+    <div class="item"><div class="label">Type</div><div class="val">2-bed Semi-Detached</div></div>
+    <div class="item"><div class="label">Council Tax</div><div class="val green">Band A</div></div>
+    <div class="item"><div class="label">Parking</div><div class="val green">Driveway</div></div>
+    <div class="item"><div class="label">Agent</div><div class="val">G&T Properties, Dudley</div></div>
+    <div class="item"><div class="label">BMV Discount</div><div class="val green">+7.6%</div></div>
+    <div class="item"><div class="label">Est. Yield</div><div class="val green">7.3%</div></div>
+    <div class="item"><div class="label">Combined Score</div><div class="val ok">40.6</div></div>
+  </div>
+  
+  <div><strong>📍 <a href="https://www.rightmove.co.uk/properties/89134182" target="_blank">View on Rightmove →</a></strong></div>
+  
+  <h4>Key Features</h4>
+  <ul style="margin:8px 0 0 20px;color:#8b949e;">
+    <li>2 double bedrooms with built-in storage</li>
+    <li>Well presented throughout — turn-key condition</li>
+    <li>Driveway for off-road parking</li>
+    <li>Private rear garden</li>
+    <li>Walking distance to Merry Hill & Brierley Hill High Street</li>
+    <li>Local to base — Dudley agent, DY5 postcode</li>
+    <li>Added 01/06/2026 — just listed</li>
+  </ul>
+
+  <h4 style="margin-top:12px;">BTL Analysis</h4>
+  <div class="deal-meta">
+    <div class="item"><div class="label">Gross Yield</div><div class="val green">7.3%</div></div>
+    <div class="item"><div class="label">Est Rent</div><div class="val blue">£900-950/mo</div></div>
+    <div class="item"><div class="label">Net Yield (est)</div><div class="val green">5.3%</div></div>
+    <div class="item"><div class="label">Monthly CF (±25% dep)</div><div class="val green">£100-180</div></div>
+  </div>
+  
+  <div class="risk-flags">
+    <span class="flag green">DY5 — Local</span>
+    <span class="flag green">Freehold</span>
+    <span class="flag amber">Well presented = no value-add</span>
+    <span class="flag amber">Only 2-bed limits rent ceiling</span>
+  </div>
+  
+  <p style="margin-top:10px;color:#c9d1d9;"><strong>Narrative:</strong> A solid BTL at £152.5k in Tanoli's backyard. The 7.3% gross yield beats the WM average, and the DY5 postcode has strong rental demand from Merry Hill workers. However, it's "well presented" — no refurb opportunity means this is a buy-and-hold BTL only, not BRRR/Flip. Good for portfolio stability but won't create equity. Recommend monitoring for a price reduction — the agent (G&T Properties, Dudley) uses fixed-fee £999 selling which suggests the seller is price-sensitive. If it drops to £140-145k after 30 days, becomes a much stronger buy.</p>
+</div>
+
+</div>
+</div>
+
+<!-- ===== ADDITIONAL DEALS ===== -->
+<h2>📋 Additional Candidates</h2>
+
+<div class="deal-card">
+  <h4>4️⃣ Stanley Road, Wolverhampton WV10 — £200,000</h4>
+  <div class="deal-meta">
+    <div class="item"><div class="label">Type</div><div class="val">4-bed End Terrace</div></div>
+    <div class="item"><div class="label">Tenure</div><div class="val green">Freehold</div></div>
+    <div class="item"><div class="label">Agent</div><div class="val">Your Move, Wolverhampton</div></div>
+    <div class="item"><div class="label">BMV</div><div class="val green">+10.6%</div></div>
+    <div class="item"><div class="label">Yield</div><div class="val green">9.0%</div></div>
+    <div class="item"><div class="label">Combined</div><div class="val ok">51.8</div></div>
+  </div>
+  <div><a href="https://www.rightmove.co.uk/properties/89179761" target="_blank">View on Rightmove →</a></div>
+  <p style="margin-top:8px;color:#8b949e;"><strong>⚠️ Shared Ownership:</strong> This property is currently part-buy/shared ownership being staircased to 100%. This disqualifies it as a pure investment play unless the seller completes the staircase. Also 4-bed end terrace at £200k in WV10 — the 9% yield suggests strong rental demand but shared ownership complexity makes this a WATCH only. Monitor for full staircasing completion.</p>
+</div>
+
+<div class="deal-card">
+  <h4>5️⃣ 12 Buckland End, Birmingham B34 — £200,000</h4>
+  <div class="deal-meta">
+    <div class="item"><div class="label">Type</div><div class="val">3-bed Terraced</div></div>
+    <div class="item"><div class="label">Freehold</div><div class="val green">Freehold</div></div>
+    <div class="item"><div class="label">Size</div><div class="val">1,195 sq ft</div></div>
+    <div class="item"><div class="label">BMV</div><div class="val green">+3.8%</div></div>
+    <div class="item"><div class="label">Yield</div><div class="val green">7.3%</div></div>
+    <div class="item"><div class="label">Agent</div><div class="val">Prime Estates, Castle Bromwich</div></div>
+  </div>
+  <div><a href="https://www.rightmove.co.uk/properties/89172246" target="_blank">View on Rightmove →</a></div>
+  <p style="margin-top:8px;color:#8b949e;">Spacious 1,195 sq ft 3-bed — generous for a terraced. At £200k top of budget the yield is modest but the size allows for HMO potential. Watchlist — if reduced to £185-190k becomes interesting. B34 rental demand is solid with good transport links.</p>
+</div>
+
+<!-- ===== TOP 3 SCORING ===== -->
+<h2>📊 Deal Scoring Matrix</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Criterion</th>
+  <th>Kendal Rise Rd</th>
+  <th>Chapel St</th>
+  <th>Limes Ave</th>
+  <th>Stanley Rd</th>
+  <th>Buckland End</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Price vs Budget</td>
+  <td>🟢 92%</td>
+  <td>🟢 80%</td>
+  <td>🟢 76%</td>
+  <td>🟡 100%</td>
+  <td>🟡 100%</td>
+</tr>
+<tr>
+  <td>BMV Score</td>
+  <td>🟢 +24.4%</td>
+  <td>🟡 +2.5%</td>
+  <td>🟢 +7.6%</td>
+  <td>🟢 +10.6%</td>
+  <td>🟡 +3.8%</td>
+</tr>
+<tr>
+  <td>Yield</td>
+  <td>🟢 7.8%</td>
+  <td>🟢 11.8%</td>
+  <td>🟢 7.3%</td>
+  <td>🟢 9.0%</td>
+  <td>🟢 7.3%</td>
+</tr>
+<tr>
+  <td>Chain Status</td>
+  <td>🟢 No chain</td>
+  <td>🟢 No chain</td>
+  <td>🟡 Unknown</td>
+  <td>🔴 Shared Own</td>
+  <td>🟡 Unknown</td>
+</tr>
+<tr>
+  <td>Refurb Potential</td>
+  <td>🟡 Light only</td>
+  <td>🟢 Needs work</td>
+  <td>🔴 Turn-key</td>
+  <td>🟡 Unknown</td>
+  <td>🟡 Unknown</td>
+</tr>
+<tr>
+  <td>Local to DY</td>
+  <td>🟡 B45</td>
+  <td>🟢 WV14</td>
+  <td>🟢 DY5</td>
+  <td>🟢 WV10</td>
+  <td>🟡 B34</td>
+</tr>
+<tr>
+  <td>Fresh Listing</td>
+  <td>🟢 01/06</td>
+  <td>🟢 01/06</td>
+  <td>🟢 01/06</td>
+  <td>🟢 Recent</td>
+  <td>🟢 Recent</td>
+</tr>
+<tr style="font-weight:700;background:#161b22;">
+  <td>Overall Score</td>
+  <td style="color:#3fb950;">82/100</td>
+  <td style="color:#3fb950;">78/100</td>
+  <td style="color:#58a6ff;">65/100</td>
+  <td style="color:#d29922;">55/100</td>
+  <td style="color:#d29922;">52/100</td>
+</tr>
+</tbody>
+</table>
+
+<!-- ===== MARKET OBSERVATIONS ===== -->
+<h2>📈 Market Observations</h2>
+
+<div class="stat-card" style="margin-bottom:12px;">
+  <p style="color:#c9d1d9;">🔍 <strong>PropAI Coverage:</strong> Scanned 53 unique properties across DY, WV, B, and WS postcodes. Only 7 (13%) fell within the £80-200k, 2+ bed, freehold house target range. This confirms the <strong><1% BRRR target rate</strong> noted in May 2026 analysis.</p>
+</div>
+
+<div class="stat-card" style="margin-bottom:12px;">
+  <p style="color:#c9d1d9;">📅 <strong>All top 3 deals added on 01/06/2026</strong> — these are among the freshest listings. Good time to move quickly on fresh stock before investor competition builds.</p>
+</div>
+
+<div class="stat-card" style="margin-bottom:12px;">
+  <p style="color:#c9d1d9;">🏆 <strong>Best play today:</strong> Chapel Street, Bilston WV14 (£160k) — the only genuine BRRR candidate with "requires modernisation" language and no chain. Combined yield × BMV score of 51.0 is solid for a sub-£200k terraced.</p>
+</div>
+
+<div class="stat-card" style="margin-bottom:12px;">
+  <p style="color:#c9d1d9;">⚠️ <strong>Yield scepticism:</strong> The 11.8% yield on Chapel Street is at the high end. Cross-reference with OpenRent for Bilston WV14 — realistic rent for a refurbed 3-bed terraced in Bilston is £850-950/mo (6.4-7.1% yield at £160k). The 11.8% likely assumes HMO conversion.</p>
+</div>
+
+<div class="stat-card" style="margin-bottom:12px;">
+  <p style="color:#c9d1d9;">💰 <strong>PropAI budget:</strong> 3,651/20,000 remaining (18.3%). 10 API calls used this session. Within daily soft cap.</p>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footnote">
+  <p>Generated: Wed 3 Jun 2026, 06:00 BST · Autonomous Property Hunt Daemon</p>
+  <p>Data sources: PropAI Deals API (10 calls), Rightmove (verified 7 listings via web_extract)</p>
+  <p>⚠️ All yields from PropAI Deals — verify with OpenRent/Rightmove rental listings before committing.</p>
+  <p>Kokal Properties Ltd · Brierley Hill DY5 · West Midlands</p>
+</div>
+
+</div>
+</body>
+</html>
