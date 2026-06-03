@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motivated Sellers Scan — 03 June 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    padding: 24px;
+    line-height: 1.6;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #58a6ff;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .subtitle {
+    color: #8b949e;
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  
+  .verdict-bar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .verdict-stat {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 14px 20px;
+    flex: 1;
+    min-width: 150px;
+  }
+  .verdict-stat .label { color: #8b949e; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .verdict-stat .value { font-size: 24px; font-weight: 700; margin-top: 4px; }
+  .value.green { color: #3fb950; }
+  .value.orange { color: #d29922; }
+  .value.blue { color: #58a6ff; }
+  .value.red { color: #f85149; }
+  .value.purple { color: #bc8cff; }
+
+  .alert-card {
+    background: linear-gradient(135deg, #1a0a0a, #161b22);
+    border: 1px solid #f85149;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .alert-card h2 {
+    color: #f85149;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .alert-card .badge {
+    display: inline-block;
+    background: #f85149;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  section { margin-bottom: 28px; }
+  section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #f0f6fc;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .deal-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .deal-card.highlight {
+    border-color: #d29922;
+    background: linear-gradient(135deg, #1a1508, #161b22);
+  }
+  .deal-card.urgent {
+    border-color: #f85149;
+    background: linear-gradient(135deg, #1a0a0a, #161b22);
+  }
+  .deal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .deal-header h3 { font-size: 17px; color: #f0f6fc; }
+  .deal-price { font-size: 20px; font-weight: 700; color: #58a6ff; }
+  .deal-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .tag.chainfree { background: #1f6feb33; color: #58a6ff; border: 1px solid #1f6feb66; }
+  .tag.modern { background: #d2992233; color: #d29922; border: 1px solid #d2992266; }
+  .tag.probate { background: #bc8cff33; color: #bc8cff; border: 1px solid #bc8cff66; }
+  .tag.auction { background: #f8514933; color: #f85149; border: 1px solid #f8514966; }
+  .tag.brrr { background: #3fb95033; color: #3fb950; border: 1px solid #3fb95066; }
+  .tag.btl { background: #58a6ff33; color: #58a6ff; border: 1px solid #58a6ff66; }
+
+  .deal-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .deal-stat {
+    background: #0d1117;
+    border-radius: 6px;
+    padding: 8px 12px;
+  }
+  .deal-stat .lbl { color: #8b949e; font-size: 11px; }
+  .deal-stat .val { font-size: 14px; font-weight: 600; margin-top: 2px; }
+  
+  .score-bar {
+    height: 8px;
+    background: #21262d;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 8px 0;
+  }
+  .score-fill { height: 100%; border-radius: 4px; }
+  .score-fill.green { background: linear-gradient(90deg, #3fb950, #56d364); width: 0%; }
+  .score-fill.orange { background: linear-gradient(90deg, #d29922, #e3b341); width: 0%; }
+  .score-fill.red { background: linear-gradient(90deg, #f85149, #ff7b72); width: 0%; }
+  .score-fill.purple { background: linear-gradient(90deg, #bc8cff, #d2a8ff); width: 0%; }
+
+  .deal-action {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .deal-action.urgent { background: #f85149; color: #fff; }
+  .deal-action.view { background: #21262d; color: #58a6ff; border: 1px solid #30363d; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  th {
+    background: #161b22;
+    color: #8b949e;
+    font-weight: 600;
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid #30363d;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #21262d;
+  }
+  tr:hover td { background: #161b22; }
+
+  .footer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid #30363d;
+    color: #8b949e;
+    font-size: 12px;
+    text-align: center;
+  }
+  .propai-warning {
+    background: #1a0a0a;
+    border: 1px solid #f8514966;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+    color: #ffa198;
+  }
+  .verdict-green { color: #3fb950; font-weight: 700; }
+  .verdict-orange { color: #d29922; font-weight: 700; }
+  .verdict-red { color: #f85149; font-weight: 700; }
+  
+  @media (max-width: 600px) {
+    body { padding: 12px; }
+    .verdict-stat { min-width: 100%; }
+    .deal-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🔍 Motivated Sellers Scan</h1>
+<div class="subtitle">03 June 2026 · Generated 07:07 BST · 20mi radius Dudley DY1 · Houses £60k–£200k · 2+ beds</div>
+
+<div class="verdict-bar">
+  <div class="verdict-stat">
+    <div class="label">Properties Screened</div>
+    <div class="value blue">120+</div>
+  </div>
+  <div class="verdict-stat">
+    <div class="label">Distressed Signals Found</div>
+    <div class="value orange">9</div>
+  </div>
+  <div class="verdict-stat">
+    <div class="label">Verified Active Leads</div>
+    <div class="value green">2</div>
+  </div>
+  <div class="verdict-stat">
+    <div class="label">🚨 Probate Auction (7 Jun)</div>
+    <div class="value red">2</div>
+  </div>
+  <div class="verdict-stat">
+    <div class="label">PropAI Quota Remaining</div>
+    <div class="value" style="color:#d29922;">3,638 / 20,000</div>
+  </div>
+</div>
+
+<!-- URGENT PROBATE AUCTION -->
+<div class="alert-card">
+  <div class="badge">🚨 TIME-SENSITIVE — AUCTION 10 JUNE 2026</div>
+  <h2>Probate Auction: Blackbrook Road, Dudley DY2</h2>
+  <p style="color:#c9d1d9; margin-bottom: 12px;">
+    Two semi-detached houses in Holly Hall, Dudley, at probate auction <strong>Wednesday 10th June 2026</strong>. 
+    Both guide at <strong>£40,000+</strong> each — total combined cost as little as <strong>£80,000</strong> for two properties 
+    with redevelopment potential. Legal packs required before bidding.
+  </p>
+  <div class="deal-stats">
+    <div class="deal-stat"><div class="lbl">Auction Date</div><div class="val" style="color:#f85149;">Wed 10 Jun 2026</div></div>
+    <div class="deal-stat"><div class="lbl">Lot 11 Guide</div><div class="val" style="color:#3fb950;">£40,000+</div></div>
+    <div class="deal-stat"><div class="lbl">Lot 12 Guide</div><div class="val" style="color:#3fb950;">£40,000+</div></div>
+    <div class="deal-stat"><div class="lbl">Combined Potential</div><div class="val" style="color:#d29922;">REDEVELOPMENT</div></div>
+  </div>
+  <a href="https://probate.auction/auctions/wednesday-10th-june" class="deal-action urgent" target="_blank">🔗 View Auction Page</a>
+</div>
+
+<!-- SECTION: URGENT PROBATE AUCTION DETAILS -->
+<section>
+<h2>🚨 Top Priority — Probate Auction Properties</h2>
+
+<div class="deal-card urgent">
+  <div class="deal-header">
+    <h3>162 Blackbrook Road, Holly Hall, Dudley DY2 0QP</h3>
+    <div class="deal-price">£40,000+</div>
+  </div>
+  <div class="deal-meta">
+    <span class="tag probate">PROBATE</span>
+    <span class="tag auction">AUCTION</span>
+    <span class="tag modern">COMPLETE REFURB</span>
+    <span class="tag brrr">REDEVELOPMENT</span>
+  </div>
+  <p style="color:#c9d1d9;">
+    <strong>Lot 11</strong> — Three bedroom semi-detached house. Requires <strong>complete refurbishment</strong>. 
+    Large garden. May be suitable for redevelopment together with No. 163 Blackbrook Road (Lot 12).
+  </p>
+  <div class="deal-stats">
+    <div class="deal-stat"><div class="lbl">Type</div><div class="val">3-bed Semi-Detached</div></div>
+    <div class="deal-stat"><div class="lbl">Guide Price</div><div class="val" style="color:#3fb950;">£40,000+</div></div>
+    <div class="deal-stat"><div class="lbl">Condition</div><div class="val" style="color:#f85149;">Complete Refurb</div></div>
+    <div class="deal-stat"><div class="lbl">Garden</div><div class="val">Large</div></div>
+  </div>
+  <div class="score-bar"><div class="score-fill green" style="width:95%"></div></div>
+  <p style="color:#8b949e; font-size:13px;">
+    <strong>Estimated Game Plan:</strong> £40k purchase + £60-80k full refurb = £100-120k all-in. 
+    Comparable semi-detached in Holly Hall area: £150-190k. Potential £30-70k equity per property.
+    Combined redevelopment with Lot 12 could unlock greater value.
+  </p>
+</div>
+
+<div class="deal-card urgent">
+  <div class="deal-header">
+    <h3>163 Blackbrook Road, Holly Hall, Dudley DY2 0QP</h3>
+    <div class="deal-price">£40,000+</div>
+  </div>
+  <div class="deal-meta">
+    <span class="tag probate">PROBATE</span>
+    <span class="tag auction">AUCTION</span>
+    <span class="tag modern">DERELICT</span>
+    <span class="tag brrr">DEVELOPMENT</span>
+  </div>
+  <p style="color:#c9d1d9;">
+    <strong>Lot 12</strong> — Mainly <strong>derelict</strong> semi-detached house. Potential for development 
+    together with No. 162 Blackbrook Road (Lot 11). Located in popular Dudley area close to Birmingham.
+  </p>
+  <div class="deal-stats">
+    <div class="deal-stat"><div class="lbl">Type</div><div class="val">Semi-Detached (Derelict)</div></div>
+    <div class="deal-stat"><div class="lbl">Guide Price</div><div class="val" style="color:#3fb950;">£40,000+</div></div>
+    <div class="deal-stat"><div class="lbl">Condition</div><div class="val" style="color:#f85149;">Mainly Derelict</div></div>
+    <div class="deal-stat"><div class="lbl">Strategy</div><div class="val" style="color:#d29922;">Merge with Lot 11</div></div>
+  </div>
+  <div class="score-bar"><div class="score-fill green" style="width:92%"></div></div>
+  <p style="color:#8b949e; font-size:13px;">
+    <strong>Game Plan:</strong> Buying both lots (combined £80k+) could allow a single development — 
+    potentially a larger family home or even 3-4 flats given the combined land area. 
+    Legal packs need reviewing urgently — auction is <strong>7 days away</strong>.
+  </p>
+</div>
+</section>
+
+<!-- SECTION: VERIFIED ACTIVE DISTRESSED LEADS -->
+<section>
+<h2>✅ Verified Active Distressed Leads</h2>
+
+<div class="deal-card">
+  <div class="deal-header">
+    <h3>Bridgewater Crescent, Dudley DY2 7LT</h3>
+    <div class="deal-price">£185,000</div>
+  </div>
+  <div class="deal-meta">
+    <span class="tag chainfree">NO CHAIN</span>
+    <span class="tag btl">BTL</span>
+  </div>
+  <p style="color:#c9d1d9;">
+    Beautifully presented 3-bed mid-terrace. No upward chain. Freehold, EPC C, Council Tax A. 
+    Added <strong>30 April 2026</strong> (~34 days on market). Large rear garden. Gas CH, double glazing.
+  </p>
+  <div class="deal-stats">
+    <div class="deal-stat"><div class="lbl">Type</div><div class="val">3-bed Mid-Terrace</div></div>
+    <div class="deal-stat"><div class="lbl">Tenure</div><div class="val">Freehold</div></div>
+    <div class="deal-stat"><div class="lbl">EPC</div><div class="val">C</div></div>
+    <div class="deal-stat"><div class="lbl">Council Tax</div><div class="val">A</div></div>
+    <div class="deal-stat"><div class="lbl">Agent</div><div class="val">Taylors, BHill</div></div>
+  </div>
+  <div class="score-bar"><div class="score-fill orange" style="width:55%"></div></div>
+  <p style="color:#8b949e; font-size:13px;">
+    <strong>Analysis:</strong> Well-presented, no chain makes it a smooth purchase. EPC C meets 2030 deadline. 
+    Lower BTL yield potential (~5-6% est) as it's already in good condition — no value-add. 
+    Better suited as a buy-to-hold BTL or first-time buyer resale. At £185k with Band A, it's fairly priced.
+    <a href="https://www.rightmove.co.uk/properties/87888600" style="color:#58a6ff;" target="_blank">View on Rightmove →</a>
+  </p>
+</div>
+
+<div class="deal-card">
+  <div class="deal-header">
+    <h3>Chapel Street, Bilston WV14 0PH</h3>
+    <div class="deal-price">£160,000</div>
+  </div>
+  <div class="deal-meta">
+    <span class="tag chainfree">NO CHAIN</span>
+    <span class="tag modern">NEEDS MODERNISATION</span>
+    <span class="tag brrr">BRRR</span>
+  </div>
+  <p style="color:#c9d1d9;">
+    3-bed terraced house requiring <strong>modernisation</strong>. No upward chain. Freehold, EPC D, Council Tax A. 
+    Investment opportunity — great BRRR candidate.
+  </p>
+  <div class="deal-stats">
+    <div class="deal-stat"><div class="lbl">Type</div><div class="val">3-bed Terraced</div></div>
+    <div class="deal-stat"><div class="lbl">Tenure</div><div class="val">Freehold</div></div>
+    <div class="deal-stat"><div class="lbl">EPC</div><div class="val">D</div></div>
+    <div class="deal-stat"><div class="lbl">Condition</div><div class="val" style="color:#d29922;">Needs Work</div></div>
+    <div class="deal-stat"><div class="lbl">Agent</div><div class="val">Skitts, Bilston</div></div>
+  </div>
+  <div class="score-bar"><div class="score-fill orange" style="width:60%"></div></div>
+  <p style="color:#8b949e; font-size:13px;">
+    <strong>BRRR Analysis:</strong> £160k purchase + £20-25k refurb = £180-185k all-in. 
+    ARV potential: £190-210k (after modernisation, 3-bed terraces in Bilston sell for £180-220k done-up). 
+    Potential £15-25k equity. Gross yield ~7-8% on refurbished value. Needs inspection for true condition.
+    <a href="https://www.rightmove.co.uk/properties/89149182" style="color:#58a6ff;" target="_blank">View on Rightmove →</a>
+  </p>
+</div>
+
+<div class="deal-card">
+  <div class="deal-header">
+    <h3>Bean Road, Dudley DY2</h3>
+    <div class="deal-price">£180,000</div>
+  </div>
+  <div class="deal-meta">
+    <span class="tag chainfree">NO CHAIN</span>
+    <span class="tag btl">BTL</span>
+  </div>
+  <p style="color:#c9d1d9;">
+    2-bed end terrace. No upward chain. Freehold, EPC D (potential 89), Council Tax A. Off-street parking. 
+    Good condition, ready to move in.
+  </p>
+  <div class="deal-stats">
+    <div class="deal-stat"><div class="lbl">Type</div><div class="val">2-bed End Terrace</div></div>
+    <div class="deal-stat"><div class="lbl">Tenure</div><div class="val">Freehold</div></div>
+    <div class="deal-stat"><div class="lbl">EPC</div><div class="val">D (potential B)</div></div>
+    <div class="deal-stat"><div class="lbl">Council Tax</div><div class="val">A</div></div>
+    <div class="deal-stat"><div class="lbl">Agent</div><div class="val">Your Move, Dudley</div></div>
+  </div>
+  <div class="score-bar"><div class="score-fill orange" style="width:45%"></div></div>
+  <p style="color:#8b949e; font-size:13px;">
+    Good BTL prospect for lower-maintenance buy. £180k @ 75% LTV = £135k mortgage. 
+    Est rent £700-800/mo = 4.7-5.3% yield. Limited value-add opportunity. Better as long-term hold.
+    <a href="https://www.your-move.co.uk/property/end-terrace-house-for-sale-bean-road-dudley-dy2-id-dud260483" style="color:#58a6ff;" target="_blank">View on Your Move →</a>
+  </p>
+</div>
+</section>
+
+<!-- SECTION: SECONDARY LEADS (PropAI, unverified) -->
+<section>
+<h2>📋 Secondary Leads — PropAI Deals (Unverified IDs)</h2>
+<div class="propai-warning">
+  ⚠️ PropAI Deals external IDs have a 100% stale/redirect rate (confirmed 23 May 2026). 
+  These properties showed good BMV/discount signals in API data but the Rightmove links could not be verified. 
+  Manual address search on Rightmove recommended.
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th><th>Address</th><th>Postcode</th><th>Price</th><th>Beds</th><th>Type</th><th>BMV%</th><th>Flags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td><td>124 Ashenhurst Road</td><td>DY1 2HU</td>
+      <td>£200,000</td><td>2</td><td>House</td><td style="color:#3fb950;">-10.8%</td><td>chain_free</td>
+    </tr>
+    <tr>
+      <td>2</td><td>191 Green Park Road</td><td>DY2 7LZ</td>
+      <td>£175,000</td><td>2</td><td>House</td><td style="color:#3fb950;">-9.2%</td><td>—</td>
+    </tr>
+    <tr>
+      <td>3</td><td>21 Pearce Close</td><td>West Mids</td>
+      <td>£170,000</td><td>2</td><td>House</td><td style="color:#3fb950;">-2.9%</td><td>chain_free</td>
+    </tr>
+    <tr>
+      <td>4</td><td>93 Marigold Crescent</td><td>West Mids</td>
+      <td>£180,000</td><td>2</td><td>House</td><td>+2.1%</td><td>chain_free, vacant</td>
+    </tr>
+    <tr>
+      <td>5</td><td>12 Gibbons Hill Road</td><td>Dudley</td>
+      <td>£200,000</td><td>3</td><td>House</td><td>+7.0%</td><td>chain_free</td>
+    </tr>
+  </tbody>
+</table>
+</section>
+
+<!-- SECTION: COVENTRY PROBATE (Bonus) -->
+<section>
+<h2>📌 Bonus — Other Probate Auction (10 Jun)</h2>
+<div class="deal-card">
+  <div class="deal-header">
+    <h3>62 Terry Road, Coventry CV1 2BA</h3>
+    <div class="deal-price">£100,000+</div>
+  </div>
+  <div class="deal-meta">
+    <span class="tag probate">PROBATE</span>
+    <span class="tag auction">AUCTION</span>
+    <span class="tag modern">NEEDS UPDATING</span>
+  </div>
+  <p style="color:#c9d1d9;">
+    <strong>Lot 5</strong> — Three bedroom semi-detached house requiring updating. 
+    Well located for local amenities and access to Coventry city centre. 
+    Guide <strong>£100,000+</strong>. West Midlands — within 20mi of Dudley.
+  </p>
+  <div class="score-bar"><div class="score-fill purple" style="width:70%"></div></div>
+  <p style="color:#8b949e; font-size:13px;">
+    <strong>Analysis:</strong> Coventry has strong rental demand (Universities, Jaguar Land Rover). 
+    £100k guide for a 3-bed semi — room for significant refurb and equity. 
+    Also auctioning 10 June 2026.
+  </p>
+</div>
+</section>
+
+<!-- SECTION: MARKET SUMMARY -->
+<section>
+<h2>📊 Market Summary</h2>
+<table>
+  <thead>
+    <tr><th>Metric</th><th>Value</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Total WM properties screened (PropAI)</td><td>24 qualified of 120+ total listings</td></tr>
+    <tr><td>Properties with distress signals</td><td>9</td></tr>
+    <tr><td>Properties with BMV >10% undervalued</td><td>3 (all unverified PropAI IDs)</td></tr>
+    <tr><td>Verified active distressed leads</td><td>3 (Bridgewater Cres, Chapel St, Bean Rd)</td></tr>
+    <tr><td>Probate auction properties found</td><td>2 in Dudley (Blackbrook Rd) + 1 in Coventry</td></tr>
+    <tr><td>PropAI API calls this session</td><td>18</td></tr>
+    <tr><td>PropAI quota remaining</td><td>~3,638 / 20,000 (18% left — approaching limit)</td></tr>
+    <tr><td>Avg price of qualified properties</td><td>£168,708</td></tr>
+    <tr><td>Avg yield of qualified properties</td><td>8.8% (PropAI estimate)</td></tr>
+    <tr><td>Properties with 90+ days on market</td><td><strong>0</strong> — listings < £200k sell fast in WM</td></tr>
+  </tbody>
+</table>
+</section>
+
+<!-- SECTION: ACTIONS -->
+<section>
+<h2>🎯 Recommended Actions</h2>
+<div class="deal-card" style="border-color:#3fb950;">
+  <p style="color:#c9d1d9; margin-bottom: 8px;">
+    <strong style="color:#3fb950;">🔴 URGENT (Before Wed 10 Jun):</strong>
+  </p>
+  <ol style="color:#c9d1d9; padding-left: 20px; line-height: 1.8;">
+    <li><strong>Download legal packs</strong> for Lots 11 (162 Blackbrook Rd) and 12 (163 Blackbrook Rd) from Probate Auction — need solicitor review</li>
+    <li><strong>Inspect both properties</strong> externally at Blackbrook Road, Holly Hall, DY2 0QP — check structural condition, roof, boundaries</li>
+    <li><strong>Set max bids:</strong> £50-60k per property individually, or £100-120k for combined lot purchase</li>
+    <li><strong>Arrange bridging finance</strong> — auction completion in 20 working days</li>
+  </ol>
+</div>
+<div class="deal-card">
+  <p style="color:#c9d1d9; margin-bottom: 8px;">
+    <strong style="color:#d29922;">🟡 HIGH PRIORITY (This week):</strong>
+  </p>
+  <ol style="color:#c9d1d9; padding-left: 20px; line-height: 1.8;">
+    <li><strong>Chapel Street, Bilston</strong> (£160k, 3-bed, needs modernisation) — arrange viewing, get builder quote for full refurb</li>
+    <li><strong>Bridgewater Crescent, Dudley</strong> (£185k, chain-free) — contact Taylors BHill, test price flexibility (on market 34 days)</li>
+    <li><strong>Verify PropAI leads</strong> by address search on Rightmove (Ashenhurst Rd, Green Park Rd)</li>
+  </ol>
+</div>
+</section>
+
+<div class="footer">
+  <p>Generated by Hermes Agent — Kokal Properties Ltd · Motivated Sellers Daily Scan</p>
+  <p>Sources: PropAI Deals API · Rightmove · OnTheMarket · Your Move · Probate Auction · Zoopla</p>
+  <p>Data as of 03 June 2026 07:07 BST</p>
+</div>
+
+</div>
+</body>
+</html>

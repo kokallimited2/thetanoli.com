@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Property Deal Sourcer — 03 June 2026</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a1a2e; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 20px; }
+h1 { color: #e94560; text-align: center; margin-bottom: 5px; font-size: 1.8em; }
+.subtitle { text-align: center; color: #888; margin-bottom: 25px; font-size: 0.9em; }
+.summary { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 25px; }
+.summary-box { background: #16213e; border-radius: 10px; padding: 15px 20px; text-align: center; min-width: 100px; }
+.summary-box .num { font-size: 1.8em; font-weight: bold; color: #e94560; }
+.summary-box .label { font-size: 0.75em; color: #888; text-transform: uppercase; }
+.deal-card { background: #16213e; border-radius: 12px; padding: 20px; margin-bottom: 16px; border-left: 4px solid #444; transition: all 0.2s; }
+.deal-card:hover { border-left-color: #e94560; }
+.deal-card.hot { border-left-color: #ff4444; }
+.deal-card.warm { border-left-color: #ff8800; }
+.deal-card.good { border-left-color: #44bb44; }
+.deal-card.decent { border-left-color: #cccc00; }
+.deal-card.watch { border-left-color: #4488ff; }
+.deal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; flex-wrap: wrap; gap: 10px; }
+.deal-title { font-size: 1.1em; font-weight: 600; }
+.deal-title a { color: #e0e0e0; text-decoration: none; }
+.deal-title a:hover { color: #e94560; text-decoration: underline; }
+.deal-score { font-size: 2em; font-weight: bold; }
+.score-bar { height: 6px; background: #0f3460; border-radius: 3px; margin: 8px 0 12px; overflow: hidden; }
+.score-fill { height: 100%; border-radius: 3px; transition: width 0.5s; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 10px 0; }
+.metric { background: #0f3460; border-radius: 8px; padding: 10px; text-align: center; }
+.metric .value { font-size: 1.1em; font-weight: bold; }
+.metric .label { font-size: 0.7em; color: #888; text-transform: uppercase; }
+.strategy-badge { display: inline-block; background: #e94560; color: #fff; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; font-weight: 600; margin-right: 5px; }
+.verdict { font-size: 0.85em; font-weight: 600; }
+.sub-scores { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; font-size: 0.75em; color: #888; }
+.sub-score { background: #0a0a1a; padding: 2px 6px; border-radius: 4px; }
+.footer { text-align: center; margin-top: 30px; color: #555; font-size: 0.8em; }
+.empty { text-align: center; padding: 60px; color: #666; }
+</style>
+</head>
+<body>
+
+<h1>🏠 Property Deal Sourcer</h1>
+<div class="subtitle">03 June 2026 — West Midlands Daily Scan (PropAI Deals API)</div>
+
+<div class="summary">
+<div class="summary-box"><div class="num">12</div><div class="label">Deals Found</div></div>
+<div class="summary-box"><div class="num">2</div><div class="label">🔴 Hot</div></div>
+<div class="summary-box"><div class="num">1</div><div class="label">🟠 High-Conv</div></div>
+<div class="summary-box"><div class="num">3</div><div class="label">🟢 Strong Buy</div></div>
+<div class="summary-box"><div class="num">5</div><div class="label">🟡 Potential</div></div>
+<div class="summary-box"><div class="num">1</div><div class="label">🔵⚪ Watch/Pass</div></div>
+</div>
+
+<div class="deal-card hot">
+<div class="deal-header">
+<div class="deal-title">
+<span style="font-size:1.3em;">🔴</span>
+<a href="https://www.rightmove.co.uk/property-for-sale/property-89190135.html" target="_blank">🏠 3bd Semi-Detached — 77 Neville Road, Erdington, Birmingham, B23 7SA</a>
+<div style="color:#888;font-size:0.85em;">B23 7SA</div>
+</div>
+<div class="deal-score" style="color:#ff4444">89</div>
+</div>
+
+<div class="score-bar"><div class="score-fill" style="width:89.0%;background:#ff4444"></div></div>
+
+<div class="metrics">
+<div class="metric"><div class="value">£69,000</div><div class="label">Price</div></div>
+<div class="metric"><div class="value">£47,586</div><div class="label">Est MV</div></div>
+<div class="metric"><div class="value">+68.6% ⬇</div><div class="label">vs Area</div></div>
+<div class="metric"><div class="value">20.9%</div><div class="label">Gross Yield</div></div>
+<div class="metric"><div class="value">£1202/mo</div><div class="label">Est Rent</div></div>
+<div class="metric"><div class="value">£685/mo</div><div class="label">Cashflow</div></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+<div>
+<span class="strategy-badge">BTL</span>
+<span style="font-size:0.8em;color:#888;">⚠ Over (PropAI: +45.0%)</span>
+</div>
+<div class="verdict" style="color:#ff4444">🔴 IMMEDIATE ACTION</div>
+</div>
+
+<div class="sub-scores">
+<span class="sub-score">💰 Discount: 20/20</span>
+<span class="sub-score">📊 Yield: 15/15</span>
+<span class="sub-score">💵 Cashflow: 15/15</span>
+<span class="sub-score">🔨 Refurb: 15/15</span>
+<span class="sub-score">📍 Demand: 8/10</span>
+<span class="sub-score">🏦 Finance: 5/10</span>
+<span class="sub-score">⚠️ Risk: 7/10</span>
+<span class="sub-score">🚪 Exits: 4/5</span>
+</div>
+</div>
+<div class="deal-card hot">
+<div class="deal-header">
+<div class="deal-title">
+<span style="font-size:1.3em;">🔴</span>
+<a href="https://www.rightmove.co.uk/property-for-sale/property-89199603.html" target="_blank">🏠 2bd Terraced — Church Gardens, Leamington Spa</a>
+<div style="color:#888;font-size:0.85em;">CV32 7BF</div>
+</div>
+<div class="deal-score" style="color:#ff4444">86</div>
+</div>
+
+<div class="score-bar"><div class="score-fill" style="width:86.5%;background:#ff4444"></div></div>
+
+<div class="metrics">
+<div class="metric"><div class="value">£112,000</div><div class="label">Price</div></div>
+<div class="metric"><div class="value">£112,000</div><div class="label">Est MV</div></div>
+<div class="metric"><div class="value">+37.8% ⬇</div><div class="label">vs Area</div></div>
+<div class="metric"><div class="value">9.6%</div><div class="label">Gross Yield</div></div>
+<div class="metric"><div class="value">£900/mo</div><div class="label">Est Rent</div></div>
+<div class="metric"><div class="value">£318/mo</div><div class="label">Cashflow</div></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+<div>
+<span class="strategy-badge">BTL</span>
+<span style="font-size:0.8em;color:#888;">≈ FMV (PropAI: +0.0%)</span>
+</div>
+<div class="verdict" style="color:#ff4444">🔴 IMMEDIATE ACTION</div>
+</div>
+
+<div class="sub-scores">
+<span class="sub-score">💰 Discount: 20/20</span>
+<span class="sub-score">📊 Yield: 12/15</span>
+<span class="sub-score">💵 Cashflow: 15/15</span>
+<span class="sub-score">🔨 Refurb: 12/15</span>
+<span class="sub-score">📍 Demand: 6/10</span>
+<span class="sub-score">🏦 Finance: 8/10</span>
+<span class="sub-score">⚠️ Risk: 10/10</span>
+<span class="sub-score">🚪 Exits: 4/5</span>
+</div>
+</div>
+<div class="deal-card warm">
+<div class="deal-header">
+<div class="deal-title">
+<span style="font-size:1.3em;">🟠</span>
+<a href="https://www.rightmove.co.uk/property-for-sale/property-89134182.html" target="_blank">🏠 2bd Semi-Detached — Limes Avenue, Brierley Hill</a>
+<div style="color:#888;font-size:0.85em;">DY5 1PQ</div>
+</div>
+<div class="deal-score" style="color:#ff8800">72</div>
+</div>
+
+<div class="score-bar"><div class="score-fill" style="width:71.7%;background:#ff8800"></div></div>
+
+<div class="metrics">
+<div class="metric"><div class="value">£152,500</div><div class="label">Price</div></div>
+<div class="metric"><div class="value">£141,742</div><div class="label">Est MV</div></div>
+<div class="metric"><div class="value">+27.4% ⬇</div><div class="label">vs Area</div></div>
+<div class="metric"><div class="value">7.3%</div><div class="label">Gross Yield</div></div>
+<div class="metric"><div class="value">£928/mo</div><div class="label">Est Rent</div></div>
+<div class="metric"><div class="value">£213/mo</div><div class="label">Cashflow</div></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+<div>
+<span class="strategy-badge">BTL</span>
+<span style="font-size:0.8em;color:#888;">⚠ Over (PropAI: +7.6%)</span>
+</div>
+<div class="verdict" style="color:#ff8800">🟠 HIGH-CONVICTION</div>
+</div>
+
+<div class="sub-scores">
+<span class="sub-score">💰 Discount: 14/20</span>
+<span class="sub-score">📊 Yield: 10/15</span>
+<span class="sub-score">💵 Cashflow: 12/15</span>
+<span class="sub-score">🔨 Refurb: 8/15</span>
+<span class="sub-score">📍 Demand: 7/10</span>
+<span class="sub-score">🏦 Finance: 8/10</span>
+<span class="sub-score">⚠️ Risk: 10/10</span>
+<span class="sub-score">🚪 Exits: 3/5</span>
+</div>
+</div>
+<div class="deal-card good">
+<div class="deal-header">
+<div class="deal-title">
+<span style="font-size:1.3em;">🟢</span>
+<a href="https://www.rightmove.co.uk/property-for-sale/property-89185137.html" target="_blank">🏠 2bd Terraced — Gadsby Street, Attleborough, Nuneaton, CV11 4PD</a>
+<div style="color:#888;font-size:0.85em;">CV11 4PD</div>
+</div>
+<div class="deal-score" style="color:#44bb44">66</div>
+</div>
+
+<div class="score-bar"><div class="score-fill" style="width:65.9%;background:#44bb44"></div></div>
+
+<div class="metrics">
+<div class="metric"><div class="value">£155,000</div><div class="label">Price</div></div>
+<div class="metric"><div class="value">£155,000</div><div class="label">Est MV</div></div>
+<div class="metric"><div class="value">+13.9% ⬇</div><div class="label">vs Area</div></div>
+<div class="metric"><div class="value">8.0%</div><div class="label">Gross Yield</div></div>
+<div class="metric"><div class="value">£1033/mo</div><div class="label">Est Rent</div></div>
+<div class="metric"><div class="value">£286/mo</div><div class="label">Cashflow</div></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+<div>
+<span class="strategy-badge">BTL</span>
+<span style="font-size:0.8em;color:#888;">≈ FMV (PropAI: +0.0%)</span>
+</div>
+<div class="verdict" style="color:#44bb44">🟢 STRONG BUY</div>
+</div>
+
+<div class="sub-scores">
+<span class="sub-score">💰 Discount: 7/20</span>
+<span class="sub-score">📊 Yield: 12/15</span>
+<span class="sub-score">💵 Cashflow: 12/15</span>
+<span class="sub-score">🔨 Refurb: 8/15</span>
+<span class="sub-score">📍 Demand: 6/10</span>
+<span class="sub-score">🏦 Finance: 8/10</span>
+<span class="sub-score">⚠️ Risk: 10/10</span>
+<span class="sub-score">🚪 Exits: 3/5</span>
+</div>
+</div>
+<div class="deal-card good">
+<div class="deal-header">
+<div class="deal-title">
+<span style="font-size:1.3em;">🟢</span>
+<a href="https://www.rightmove.co.uk/property-for-sale/property-89195061.html" target="_blank">🏠 3bd Semi-Detached — Kendal Rise Road, Rednal, B45</a>
+<div style="color:#888;font-size:0.85em;">B45 9PS</div>
+</div>
+<div class="deal-score" style="color:#44bb44">66</div>
+</div>
+
+<div class="score-bar"><div class="score-fill" style="width:65.5%;background:#44bb44"></div></div>
+
+<div class="metrics">
+<div class="metric"><div class="value">£185,000</div><div class="label">Price</div></div>
+<div class="metric"><div class="value">£148,678</div><div class="label">Est MV</div></div>
+<div class="metric"><div class="value">+15.9% ⬇</div><div class="label">vs Area</div></div>
+<div class="metric"><div class="value">7.8%</div><div class="label">Gross Yield</div></div>
+<div class="metric"><div class="value">£1202/mo</div><div class="label">Est Rent</div></div>
+<div class="metric"><div class="value">£323/mo</div><div class="label">Cashflow</div></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+<div>
+<span class="strategy-badge">BTL</span>
+<span style="font-size:0.8em;color:#888;">⚠ Over (PropAI: +24.4%)</span>
+</div>
+<div class="verdict" style="color:#44bb44">🟢 STRONG BUY</div>
+</div>
+
+<div class="sub-scores">
+<span class="sub-score">💰 Discount: 8/20</span>
+<span class="sub-score">📊 Yield: 10/15</span>
+<span class="sub-score">💵 Cashflow: 15/15</span>
+<span class="sub-score">🔨 Refurb: 5/15</span>
+<span class="sub-score">📍 Demand: 7/10</span>
+<span class="sub-score">🏦 Finance: 8/10</span>
+<span class="sub-score">⚠️ Risk: 9/10</span>
+<span class="sub-score">🚪 Exits: 4/5</span>
+</div>
+</div>
+<div class="deal-card good">
+<div class="deal-header">
+<div class="deal-title">
+<span style="font-size:1.3em;">🟢</span>
+<a href="https://www.rightmove.co.uk/property-for-sale/property-89149182.html" target="_blank">🏠 3bd Terraced — Chapel Street, Bilston, WV14 0PH</a>
+<div style="color:#888;font-size:0.85em;">WV14 0PH</div>
+</div>
+<div class="deal-score" style="color:#44bb44">62</div>
+</div>
+
+<div class="score-bar"><div class="score-fill" style="width:62.5%;background:#44bb44"></div></div>
+
+<div class="metrics">
+<div class="metric"><div class="value">£160,000</div><div class="label">Price</div></div>
+<div class="metric"><div class="value">£156,037</div><div class="label">Est MV</div></div>
+<div class="metric"><div class="value">-14.3% ⬆</div><div class="label">vs Area</div></div>
+<div class="metric"><div class="value">11.8%</div><div class="label">Gross Yield</div></div>
+<div class="metric"><div class="value">£1573/mo</div><div class="label">Est Rent</div></div>
+<div class="metric"><div class="value">£686/mo</div><div class="label">Cashflow</div></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+<div>
+<span class="strategy-badge">BTL</span>
+<span style="font-size:0.8em;color:#888;">≈ FMV (PropAI: +2.5%)</span>
+</div>
+<div class="verdict" style="color:#44bb44">🟢 STRONG BUY</div>
+</div>
+
+<div class="sub-scores">
+<span class="sub-score">💰 Discount: 0/20</span>
+<span class="sub-score">📊 Yield: 15/15</span>
+<span class="sub-score">💵 Cashflow: 15/15</span>
+<span class="sub-score">🔨 Refurb: 5/15</span>
+<span class="sub-score">📍 Demand: 6/10</span>
+<span class="sub-score">🏦 Finance: 8/10</span>
+<span class="sub-score">⚠️ Risk: 10/10</span>
+<span class="sub-score">🚪 Exits: 4/5</span>
+</div>
+</div>
+<div class="deal-card decent">
+<div class="deal-header">
+<div class="deal-title">
+<span style="font-size:1.3em;">🟡</span>
+<a href="https://www.rightmove.co.uk/property-for-sale/property-89179761.html" target="_blank">🏠 4bd Terraced — Stanley Road, Wolverhampton, West Midlands, WV10</a>
+<div style="color:#888;font-size:0.85em;">WV10 9EN</div>
+</div>
+<div class="deal-score" style="color:#cccc00">58</div>
+</div>
+
+<div class="score-bar"><div class="score-fill" style="width:57.5%;background:#cccc00"></div></div>
+
+<div class="metrics">
+<div class="metric"><div class="value">£200,000</div><div class="label">Price</div></div>
+<div class="metric"><div class="value">£180,897</div><div class="label">Est MV</div></div>
+<div class="metric"><div class="value">-42.9% ⬆</div><div class="label">vs Area</div></div>
+<div class="metric"><div class="value">9.0%</div><div class="label">Gross Yield</div></div>
+<div class="metric"><div class="value">£1500/mo</div><div class="label">Est Rent</div></div>
+<div class="metric"><div class="value">£505/mo</div><div class="label">Cashflow</div></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+<div>
+<span class="strategy-badge">BTL</span>
+<span style="font-size:0.8em;color:#888;">⚠ Over (PropAI: +10.6%)</span>
+</div>
+<div class="verdict" style="color:#cccc00">🟡 HIGH POTENTIAL</div>
+</div>
+
+<div class="sub-scores">
+<span class="sub-score">💰 Discount: 0/20</span>
+<span class="sub-score">📊 Yield: 12/15</span>
+<span class="sub-score">💵 Cashflow: 15/15</span>
+<span class="sub-score">🔨 Refurb: 3/15</span>
+<span class="sub-score">📍 Demand: 6/10</span>
+<span class="sub-score">🏦 Finance: 8/10</span>
+<span class="sub-score">⚠️ Risk: 10/10</span>
+<span class="sub-score">🚪 Exits: 4/5</span>
+</div>
+</div>
+<div class="deal-card decent">
+<div class="deal-header">
+<div class="deal-title">
+<span style="font-size:1.3em;">🟡</span>
+<a href="https://www.rightmove.co.uk/property-for-sale/property-73340701.html" target="_blank">🏠 3bd House — 367, College Road, Birmingham</a>
+<div style="color:#888;font-size:0.85em;">B44 0HF</div>
+</div>
+<div class="deal-score" style="color:#cccc00">56</div>
+</div>
+
+<div class="score-bar"><div class="score-fill" style="width:56.5%;background:#cccc00"></div></div>
+
+<div class="metrics">
+<div class="metric"><div class="value">£200,000</div><div class="label">Price</div></div>
+<div class="metric"><div class="value">£225,989</div><div class="label">Est MV</div></div>
+<div class="metric"><div class="value">+0.0% ≈</div><div class="label">vs Area</div></div>
+<div class="metric"><div class="value">7.5%</div><div class="label">Gross Yield</div></div>
+<div class="metric"><div class="value">£1250/mo</div><div class="label">Est Rent</div></div>
+<div class="metric"><div class="value">£312/mo</div><div class="label">Cashflow</div></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+<div>
+<span class="strategy-badge">BTL</span>
+<span style="font-size:0.8em;color:#888;">✅ BMV (PropAI: -11.5%)</span>
+</div>
+<div class="verdict" style="color:#cccc00">🟡 HIGH POTENTIAL</div>
+</div>
+
+<div class="sub-scores">
+<span class="sub-score">💰 Discount: 0/20</span>
+<span class="sub-score">📊 Yield: 10/15</span>
+<span class="sub-score">💵 Cashflow: 15/15</span>
+<span class="sub-score">🔨 Refurb: 3/15</span>
+<span class="sub-score">📍 Demand: 7/10</span>
+<span class="sub-score">🏦 Finance: 8/10</span>
+<span class="sub-score">⚠️ Risk: 10/10</span>
+<span class="sub-score">🚪 Exits: 4/5</span>
+</div>
+</div>
+<div class="deal-card decent">
+<div class="deal-header">
+<div class="deal-title">
+<span style="font-size:1.3em;">🟡</span>
+<a href="https://www.rightmove.co.uk/property-for-sale/property-73342739.html" target="_blank">🏠 3bd House — 7, Newman Way, Birmingham</a>
+<div style="color:#888;font-size:0.85em;">B45 9LS</div>
+</div>
+<div class="deal-score" style="color:#cccc00">56</div>
+</div>
+
+<div class="score-bar"><div class="score-fill" style="width:55.5%;background:#cccc00"></div></div>
+
+<div class="metrics">
+<div class="metric"><div class="value">£200,000</div><div class="label">Price</div></div>
+<div class="metric"><div class="value">£363,636</div><div class="label">Est MV</div></div>
+<div class="metric"><div class="value">+0.0% ≈</div><div class="label">vs Area</div></div>
+<div class="metric"><div class="value">7.5%</div><div class="label">Gross Yield</div></div>
+<div class="metric"><div class="value">£1250/mo</div><div class="label">Est Rent</div></div>
+<div class="metric"><div class="value">£312/mo</div><div class="label">Cashflow</div></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+<div>
+<span class="strategy-badge">BTL</span>
+<span style="font-size:0.8em;color:#888;">✅ BMV (PropAI: -45.0%)</span>
+</div>
+<div class="verdict" style="color:#cccc00">🟡 HIGH POTENTIAL</div>
+</div>
+
+<div class="sub-scores">
+<span class="sub-score">💰 Discount: 0/20</span>
+<span class="sub-score">📊 Yield: 10/15</span>
+<span class="sub-score">💵 Cashflow: 15/15</span>
+<span class="sub-score">🔨 Refurb: 3/15</span>
+<span class="sub-score">📍 Demand: 7/10</span>
+<span class="sub-score">🏦 Finance: 8/10</span>
+<span class="sub-score">⚠️ Risk: 8/10</span>
+<span class="sub-score">🚪 Exits: 4/5</span>
+</div>
+</div>
+<div class="deal-card decent">
+<div class="deal-header">
+<div class="deal-title">
+<span style="font-size:1.3em;">🟡</span>
+<a href="https://www.rightmove.co.uk/property-for-sale/property-89177460.html" target="_blank">🏠 2bd Terraced — Park Street, Nuneaton, CV11</a>
+<div style="color:#888;font-size:0.85em;">CV11 4NS</div>
+</div>
+<div class="deal-score" style="color:#cccc00">55</div>
+</div>
+
+<div class="score-bar"><div class="score-fill" style="width:55.4%;background:#cccc00"></div></div>
+
+<div class="metrics">
+<div class="metric"><div class="value">£175,000</div><div class="label">Price</div></div>
+<div class="metric"><div class="value">£175,000</div><div class="label">Est MV</div></div>
+<div class="metric"><div class="value">+2.8% ≈</div><div class="label">vs Area</div></div>
+<div class="metric"><div class="value">7.1%</div><div class="label">Gross Yield</div></div>
+<div class="metric"><div class="value">£1035/mo</div><div class="label">Est Rent</div></div>
+<div class="metric"><div class="value">£225/mo</div><div class="label">Cashflow</div></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+<div>
+<span class="strategy-badge">BTL</span>
+<span style="font-size:0.8em;color:#888;">≈ FMV (PropAI: +0.0%)</span>
+</div>
+<div class="verdict" style="color:#cccc00">🟡 HIGH POTENTIAL</div>
+</div>
+
+<div class="sub-scores">
+<span class="sub-score">💰 Discount: 1/20</span>
+<span class="sub-score">📊 Yield: 10/15</span>
+<span class="sub-score">💵 Cashflow: 12/15</span>
+<span class="sub-score">🔨 Refurb: 5/15</span>
+<span class="sub-score">📍 Demand: 6/10</span>
+<span class="sub-score">🏦 Finance: 8/10</span>
+<span class="sub-score">⚠️ Risk: 10/10</span>
+<span class="sub-score">🚪 Exits: 3/5</span>
+</div>
+</div>
+<div class="deal-card decent">
+<div class="deal-header">
+<div class="deal-title">
+<span style="font-size:1.3em;">🟡</span>
+<a href="https://www.rightmove.co.uk/property-for-sale/property-89172246.html" target="_blank">🏠 3bd Terraced — 12, Buckland End, Birmingham</a>
+<div style="color:#888;font-size:0.85em;">B34 6NE</div>
+</div>
+<div class="deal-score" style="color:#cccc00">54</div>
+</div>
+
+<div class="score-bar"><div class="score-fill" style="width:53.5%;background:#cccc00"></div></div>
+
+<div class="metrics">
+<div class="metric"><div class="value">£200,000</div><div class="label">Price</div></div>
+<div class="metric"><div class="value">£192,660</div><div class="label">Est MV</div></div>
+<div class="metric"><div class="value">-11.1% ⬆</div><div class="label">vs Area</div></div>
+<div class="metric"><div class="value">7.3%</div><div class="label">Gross Yield</div></div>
+<div class="metric"><div class="value">£1217/mo</div><div class="label">Est Rent</div></div>
+<div class="metric"><div class="value">£287/mo</div><div class="label">Cashflow</div></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+<div>
+<span class="strategy-badge">BTL</span>
+<span style="font-size:0.8em;color:#888;">≈ FMV (PropAI: +3.8%)</span>
+</div>
+<div class="verdict" style="color:#cccc00">🟡 HIGH POTENTIAL</div>
+</div>
+
+<div class="sub-scores">
+<span class="sub-score">💰 Discount: 0/20</span>
+<span class="sub-score">📊 Yield: 10/15</span>
+<span class="sub-score">💵 Cashflow: 12/15</span>
+<span class="sub-score">🔨 Refurb: 3/15</span>
+<span class="sub-score">📍 Demand: 7/10</span>
+<span class="sub-score">🏦 Finance: 8/10</span>
+<span class="sub-score">⚠️ Risk: 10/10</span>
+<span class="sub-score">🚪 Exits: 4/5</span>
+</div>
+</div>
+<div class="deal-card watch">
+<div class="deal-header">
+<div class="deal-title">
+<span style="font-size:1.3em;">🔵</span>
+<a href="https://www.rightmove.co.uk/property-for-sale/property-73338385.html" target="_blank">🏠 2bd House — 4, London Road, Birmingham</a>
+<div style="color:#888;font-size:0.85em;">B20 3HU</div>
+</div>
+<div class="deal-score" style="color:#4488ff">48</div>
+</div>
+
+<div class="score-bar"><div class="score-fill" style="width:48.0%;background:#4488ff"></div></div>
+
+<div class="metrics">
+<div class="metric"><div class="value">£180,000</div><div class="label">Price</div></div>
+<div class="metric"><div class="value">£197,998</div><div class="label">Est MV</div></div>
+<div class="metric"><div class="value">+10.0% ⬇</div><div class="label">vs Area</div></div>
+<div class="metric"><div class="value">5.3%</div><div class="label">Gross Yield</div></div>
+<div class="metric"><div class="value">£795/mo</div><div class="label">Est Rent</div></div>
+<div class="metric"><div class="value">£25/mo</div><div class="label">Cashflow</div></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+<div>
+<span class="strategy-badge">BTL</span>
+<span style="font-size:0.8em;color:#888;">✅ BMV (PropAI: -9.1%)</span>
+</div>
+<div class="verdict" style="color:#4488ff">🔵 WATCH</div>
+</div>
+
+<div class="sub-scores">
+<span class="sub-score">💰 Discount: 5/20</span>
+<span class="sub-score">📊 Yield: 5/15</span>
+<span class="sub-score">💵 Cashflow: 4/15</span>
+<span class="sub-score">🔨 Refurb: 5/15</span>
+<span class="sub-score">📍 Demand: 8/10</span>
+<span class="sub-score">🏦 Finance: 8/10</span>
+<span class="sub-score">⚠️ Risk: 10/10</span>
+<span class="sub-score">🚪 Exits: 3/5</span>
+</div>
+</div>
+<div class="footer">
+<p>Generated autonomously by Hermes Property Deal Sourcer | 07:05 BST</p>
+<p>Data: PropAI Deals API | Scoring: 8-factor model (Discount/Yield/Cashflow/Refurb/Demand/Finance/Risk/Exits)</p>
+<p style="margin-top:8px;color:#666;">⚠ BMV data from PropAI may be unreliable — cross-check with Rightmove sold prices before acting. Yield estimates above 12% require rental comp verification.</p>
+</div>
+</body>
+</html>
