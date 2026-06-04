@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Market Research — Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e17;
+      --surface: #111827;
+      --border: #1f2937;
+      --accent: #6366f1;
+      --accent2: #22d3ee;
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --card-bg: #1a1f2e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 24px;
+      min-height: 100vh;
+    }
+    .container { max-width: 1280px; margin: 0 auto; }
+
+    /* Header */
+    .header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 32px; padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header h1 {
+      font-size: 28px; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .header .date {
+      color: var(--muted); font-size: 14px;
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 16px; margin-bottom: 28px;
+    }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px;
+    }
+    .stat-card .label { color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+    .stat-card .value { font-size: 28px; font-weight: 700; }
+    .stat-card .sub { color: var(--accent2); font-size: 12px; margin-top: 4px; }
+
+    /* Section */
+    .section {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px; margin-bottom: 24px;
+    }
+    .section-title {
+      font-size: 18px; font-weight: 700; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-title .badge {
+      font-size: 11px; background: var(--accent); color: #fff;
+      padding: 2px 10px; border-radius: 20px; font-weight: 600;
+    }
+
+    /* Flutter showcase */
+    .flutter-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 10px;
+    }
+    .flutter-item {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 16px;
+      font-size: 13px; line-height: 1.5;
+    }
+    .flutter-item .company {
+      color: var(--accent2); font-weight: 600;
+    }
+
+    /* News list */
+    .news-list { list-style: none; }
+    .news-item {
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+      font-size: 14px; line-height: 1.5;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-item .tag {
+      display: inline-block; font-size: 10px;
+      background: rgba(99,102,241,0.2); color: var(--accent2);
+      padding: 1px 8px; border-radius: 10px; margin-right: 8px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+
+    /* Monetisation */
+    .monet-list {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 8px;
+    }
+    .monet-item {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 14px;
+      font-size: 13px; display: flex; align-items: center; gap: 8px;
+    }
+    .monet-item .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+    /* Footer */
+    .footer {
+      text-align: center; color: var(--muted); font-size: 12px;
+      padding: 20px 0; border-top: 1px solid var(--border); margin-top: 32px;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <h1>📱 App Market Research</h1>
+      <div style="color:var(--muted);font-size:13px;margin-top:4px">Flutter trends · Monetisation · Market gaps · UK opportunities</div>
+    </div>
+    <div class="date">Track 3 · June 2026</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="label">Flutter Showcase Apps</div>
+      <div class="value">60</div>
+      <div class="sub">Notable production apps</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Monetisation Models</div>
+      <div class="value">16</div>
+      <div class="sub">Adjust analytics features</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">TechCrunch App News</div>
+      <div class="value">80</div>
+      <div class="sub">Recent industry headlines</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">UK Market Stats</div>
+      <div class="value">15+</div>
+      <div class="sub">Statista categories</div>
+    </div>
+  </div>
+
+  <!-- Flutter Showcase -->
+  <div class="section">
+    <div class="section-title">
+      🚀 Flutter in Production
+      <span class="badge">60 apps</span>
+    </div>
+    <div class="flutter-grid">
+      <div class="flutter-item">talabat — unified codebase, faster releases for millions</div>
+      <div class="flutter-item">NotebookLM — 4.8★ Flutter app in 7 months</div>
+      <div class="flutter-item">Atlas Associates — AI messenger with Firebase</div>
+      <div class="flutter-item">Expo City Dubai — visitor guide → smart-city super app</div>
+      <div class="flutter-item">Flutter 3.44 — everywhere, everyday, built by everyone</div>
+      <div class="flutter-item">Kakao Mobility — business expansion with Flutter</div>
+      <div class="flutter-item">Whirlpool — cuts dev costs 50% with Flutter</div>
+      <div class="flutter-item">SNCF Connect — preparing for French sports events</div>
+      <div class="flutter-item">Monta — powering platform growth</div>
+      <div class="flutter-item">Wolt — tapping new markets</div>
+      <div class="flutter-item">Xiaomi — fueling innovation with Flutter</div>
+      <div class="flutter-item">Virgin Money — unifying app development</div>
+      <div class="flutter-item">Universal Studios — next-gen experiences</div>
+      <div class="flutter-item">Supercell — reduced Supercell ID code by 45%</div>
+      <div class="flutter-item">MarketWatch — Virtual Stock Exchange in 3 months</div>
+      <div class="flutter-item">ROMWE — 30% dev efficiency improvement</div>
+      <div class="flutter-item">Grupo Soma — 12% in-app purchase increase</div>
+      <div class="flutter-item">Onrizon — doubled earnings, improved rating</div>
+      <div class="flutter-item">Luc Motors — rapid multiplatform launch</div>
+      <div class="flutter-item">Betterment — scaling development</div>
+      <div class="flutter-item">Kijiji — launching features faster</div>
+      <div class="flutter-item">Estetik — 331% ad revenue increase</div>
+      <div class="flutter-item">STAGE — cut release time in half</div>
+      <div class="flutter-item">Mental health support — reaching millions</div>
+      <div class="flutter-item">MGM — revolutionizing digital experience</div>
+    </div>
+  </div>
+
+  <!-- Monetisation Models -->
+  <div class="section">
+    <div class="section-title">
+      💰 App Monetisation & Analytics
+      <span class="badge">16 features</span>
+    </div>
+    <div class="monet-list">
+      <div class="monet-item"><span class="dot" style="background:var(--accent)"></span>Measurement Suite</div>
+      <div class="monet-item"><span class="dot" style="background:var(--green)"></span>Mobile Attribution</div>
+      <div class="monet-item"><span class="dot" style="background:var(--accent2)"></span>PC & Console Attribution</div>
+      <div class="monet-item"><span class="dot" style="background:var(--yellow)"></span>Cross-Platform Measurement</div>
+      <div class="monet-item"><span class="dot" style="background:var(--accent)"></span>Marketing Analytics</div>
+      <div class="monet-item"><span class="dot" style="background:var(--green)"></span>Creative Optimization</div>
+      <div class="monet-item"><span class="dot" style="background:var(--accent2)"></span>Audience Segmentation</div>
+      <div class="monet-item"><span class="dot" style="background:var(--yellow)"></span>Fraud Protection</div>
+      <div class="monet-item"><span class="dot" style="background:var(--accent)"></span>Product Analytics</div>
+      <div class="monet-item"><span class="dot" style="background:var(--green)"></span>Deep Linking Suite</div>
+      <div class="monet-item"><span class="dot" style="background:var(--accent2)"></span>Deferred Deep Linking</div>
+      <div class="monet-item"><span class="dot" style="background:var(--yellow)"></span>Data Collaboration Suite</div>
+      <div class="monet-item"><span class="dot" style="background:var(--accent)"></span>Audience Activation</div>
+      <div class="monet-item"><span class="dot" style="background:var(--green)"></span>Retail Media Measurement</div>
+      <div class="monet-item"><span class="dot" style="background:var(--accent2)"></span>Agentic AI Suite</div>
+      <div class="monet-item"><span class="dot" style="background:var(--yellow)"></span>Enterprise-Grade Security</div>
+    </div>
+  </div>
+
+  <!-- TechCrunch News -->
+  <div class="section">
+    <div class="section-title">
+      📰 App Industry News
+      <span class="badge">80 headlines</span>
+    </div>
+    <ul class="news-list">
+      <li class="news-item"><span class="tag">Social</span>Substack's new 'Reply Rules' feature lets creators control responses</li>
+      <li class="news-item"><span class="tag">AI</span>Amazon will show AI product images when you search</li>
+      <li class="news-item"><span class="tag">TikTok</span>TikTok launches Pro Events for cultural moments like FIFA World Cup</li>
+      <li class="news-item"><span class="tag">Discovery</span>Meet Wander — a StumbleUpon-inspired tool for the 'small web'</li>
+      <li class="news-item"><span class="tag">AI</span>Meta's AI agent for WhatsApp Business now available globally</li>
+      <li class="news-item"><span class="tag">Media</span>Plex adds new social features ahead of major price hike</li>
+      <li class="news-item"><span class="tag">Reading</span>Startup Everand bundles e-books, audiobooks, book clubs (Amazon challenger)</li>
+      <li class="news-item"><span class="tag">Safety</span>Google rolls out fake call detection for AI deepfake impersonation scams</li>
+      <li class="news-item"><span class="tag">Meta</span>Meta tests 'Series' for episodic Reels on Instagram and Facebook</li>
+      <li class="news-item"><span class="tag">X</span>X caters to creators with new 'React with Video' feature</li>
+      <li class="news-item"><span class="tag">Shopping</span>Amazon Prime Day 2026: June 23-26</li>
+      <li class="news-item"><span class="tag">Ecommerce</span>New app 'The Mall' building a universal feed for online shopping</li>
+      <li class="news-item"><span class="tag">Privacy</span>DuckDuckGo makes 'no-AI' search easier as traffic booms</li>
+      <li class="news-item"><span class="tag">Health</span>Strava declares war on scrapers ahead of IPO</li>
+      <li class="news-item"><span class="tag">AI</span>Google's 24/7 AI assistant Gemini Spark — actually pretty useful</li>
+      <li class="news-item"><span class="tag">Browser</span>Browser wars heat up — hottest alternatives to Chrome and Safari</li>
+      <li class="news-item"><span class="tag">Social</span>Bluesky embraces long-form content to counter X Articles</li>
+      <li class="news-item"><span class="tag">AI</span>Sesame (Oculus founders) launches conversational AI iOS app</li>
+      <li class="news-item"><span class="tag">Apple</span>Sneak peek at new Siri app reveals plans to take on ChatGPT</li>
+      <li class="news-item"><span class="tag">YouTube</span>YouTube adds podcast features, AI recommendation, 'Auto speed'</li>
+    </ul>
+  </div>
+
+  <!-- UK Market -->
+  <div class="section">
+    <div class="section-title">
+      🇬🇧 UK Market Intelligence
+      <span class="badge">Statista</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px">
+      <div class="flutter-item">📊 Technology & Telecommunications</div>
+      <div class="flutter-item">📊 Consumer Goods & FMCG</div>
+      <div class="flutter-item">📊 Transportation & Logistics</div>
+      <div class="flutter-item">📊 Travel, Tourism & Hospitality</div>
+      <div class="flutter-item">📊 Health, Pharma & Medtech</div>
+      <div class="flutter-item">📊 E-commerce — UK statistics & facts</div>
+      <div class="flutter-item">📊 Social media usage — US statistics & facts</div>
+      <div class="flutter-item">📊 Global AI market size 2020-2031</div>
+      <div class="flutter-item">📊 Data centers worldwide by country 2025</div>
+      <div class="flutter-item">📊 Cloud computing statistics & facts</div>
+      <div class="flutter-item">📊 UK inflation rate 2015-2026</div>
+      <div class="flutter-item">📊 Largest economies worldwide 2026</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <a href="/dashboards/">← Back to Dashboard Hub</a> · Track 3 · Scraped June 2026
+  </div>
+</div>
+</body>
+</html>
