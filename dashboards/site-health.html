@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Site Health Monitor — Weekly Audit</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  :root { --bg:#0f172a; --card:#1e293b; --border:#334155; --accent:#3b82f6; --green:#22c55e; --amber:#f59e0b; --red:#ef4444; --text:#e2e8f0; --muted:#94a3b8; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:var(--bg); color:var(--text); padding:2rem; max-width:1200px; margin:0 auto; }
+  h1 { font-size:1.8rem; margin-bottom:0.25rem; }
+  .subtitle { color:var(--muted); font-size:0.9rem; margin-bottom:2rem; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:14px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px; transition:border-color 0.2s; }
+  .card:hover { border-color:var(--accent); }
+  .card-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  .card-title { font-weight:700; font-size:1rem; flex:1; }
+  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; flex-shrink:0; }
+  .dot-ok { background:var(--green); }
+  .dot-warn { background:var(--amber); }
+  .dot-err { background:var(--red); }
+  .card-meta { font-size:11px; color:var(--muted); margin:6px 0; }
+  .card-detail { font-size:12px; color:var(--muted); line-height:1.5; max-height:60px; overflow:hidden; }
+  .section-title { color:var(--accent); font-size:1rem; font-weight:700; margin:28px 0 14px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+  .hero { background:linear-gradient(135deg,#1e293b,#0f172a); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:24px; }
+  .hero-stats { display:flex; gap:12px; margin-top:16px; flex-wrap:wrap; }
+  .hero-stat { background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:10px 16px; text-align:center; min-width:80px; flex:1; }
+  .hero-stat .num { font-size:20px; font-weight:800; }
+  .hero-stat .num.green { color:var(--green); }
+  .hero-stat .num.red { color:var(--red); }
+  .hero-stat .num.amber { color:var(--amber); }
+  .hero-stat .label { font-size:11px; color:var(--muted); text-transform:uppercase; }
+  .footer { text-align:center; color:var(--muted); font-size:12px; padding:20px 0; border-top:1px solid var(--border); margin-top:40px; }
+  @media (max-width:768px) { body { padding:1rem; } .grid { grid-template-columns:1fr; } }
+</style>
+.tt-back-home {
+  position: fixed; top: 6px; left: 6px; z-index: 99999;
+  background: rgba(15,23,42,0.85); backdrop-filter: blur(8px);
+  color: #64748b; text-decoration: none; font-size: 11px;
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: 4px 10px; border-radius: 6px;
+  border: 1px solid rgba(51,65,85,0.6);
+  transition: all 0.15s ease;
+  letter-spacing: 0.2px;
+}
+.tt-back-home:hover {
+  color: #e2e8f0; border-color: #3b82f6; background: rgba(30,41,59,0.9);
+}
+</head>
+<body>
+<a href="/" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;margin-bottom:16px;color:#94a3b8;padding:6px 12px;border:1px solid #30363d;border-radius:8px;background:#161b22;transition:all .2s;float:left;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='#161b22'">🏠 Dashboard Hub</a>
+<div style="clear:both"></div>
+<div class="container">
+  <div class="hero">
+    <h1>🩺 Site Health Monitor</h1>
+    <p style="color:var(--muted);font-size:0.85rem;margin-top:4px;">Weekly portfolio-wide audit — HTTP status, SSL, meta tags, blog infrastructure</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num green" id="totalOk">—</div><div class="label">Healthy</div></div>
+      <div class="hero-stat"><div class="num amber" id="totalWarn">—</div><div class="label">Warning</div></div>
+      <div class="hero-stat"><div class="num red" id="totalErr">—</div><div class="label">Issues</div></div>
+    </div>
+  </div>
+
+  <div class="section-title">📋 Sites</div>
+  <div class="grid" id="siteGrid"></div>
+
+  <div class="footer">
+    <p>Weekly Health Audit — Last scan: <span id="scanDate">Not yet</span></p>
+  </div>
+</div>
+
+<script>
+async function loadAudit() {
+  try {
+    const resp = await fetch('site-health-data.json');
+    if (!resp.ok) throw new Error('Not found');
+    const data = await resp.json();
+    render(data);
+  } catch(e) {
+    document.getElementById('siteGrid').innerHTML = `
+      <div class="card" style="grid-column:1/-1;text-align:center;padding:40px;">
+        <div style="font-size:40px;margin-bottom:12px;">📊</div>
+        <p style="color:var(--muted);">No audit data yet — first scan runs Sunday 10am.</p>
+      </div>`;
+  }
+}
+
+function render(data) {
+  const results = data.results || [];
+  let ok=0, warn=0, err=0;
+
+  results.forEach(r => {
+    const issues = r.issues || [];
+    if (issues.length === 0) ok++;
+    else if (issues.filter(i => i.severity === 'critical').length > 0) err++;
+    else warn++;
+  });
+
+  document.getElementById('totalOk').textContent = ok;
+  document.getElementById('totalWarn').textContent = warn;
+  document.getElementById('totalErr').textContent = err;
+  document.getElementById('scanDate').textContent = data.scanned_at || 'Just now';
+
+  const grid = document.getElementById('siteGrid');
+  grid.innerHTML = results.map(r => {
+    const issues = r.issues || [];
+    const dotClass = issues.length === 0 ? 'dot-ok' :
+      issues.filter(i => i.severity === 'critical').length > 0 ? 'dot-err' : 'dot-warn';
+    const statusText = issues.length === 0 ? '✅ Healthy' :
+      issues.filter(i => i.severity === 'critical').length > 0 ? '❌ Issues' : '⚠️ Warnings';
+    const detail = issues.slice(0, 3).map(i => `• ${i.message}`).join('<br>');
+    const more = issues.length > 3 ? `<br>... +${issues.length - 3} more` : '';
+
+    return `<div class="card">
+      <div class="card-header">
+        <span class="dot ${dotClass}"></span>
+        <span class="card-title">${r.domain || r.name || 'Unknown'}</span>
+        <span style="font-size:12px;">${statusText}</span>
+      </div>
+      <div class="card-meta">HTTP ${r.status || '—'} · ${r.ssl || '—'}</div>
+      <div class="card-detail">${detail}${more}</div>
+    </div>`;
+  }).join('');
+}
+
+loadAudit();
+</script>
+</body>
+</html>
