@@ -3,347 +3,591 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stocks Self-Learning Report — Mon Jun 8, 2026</title>
+<title>Stocks Self-Learning Report — Tue Jun 9, 2026</title>
 <style>
-  :root { --bg: #0d1117; --card: #161b22; --border: #30363d; --text: #e6edf3; --muted: #8b949e; --green: #3fb950; --red: #f85149; --yellow: #d29922; --blue: #58a6ff; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 20px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; padding: 20px; }
   .container { max-width: 1200px; margin: 0 auto; }
-  h1 { font-size: 28px; margin-bottom: 4px; }
-  .subtitle { color: var(--muted); margin-bottom: 24px; font-size: 14px; }
-  .market-banner { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
-  .market-banner h2 { font-size: 18px; margin-bottom: 12px; color: var(--blue); }
-  .index-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
-  .index-item { padding: 8px 12px; background: var(--bg); border-radius: 8px; }
-  .index-item .name { font-size: 12px; color: var(--muted); }
-  .index-item .value { font-size: 18px; font-weight: 600; }
-  .index-item .change { font-size: 13px; }
-  .up { color: var(--green); }
-  .down { color: var(--red); }
-  .section-title { font-size: 20px; margin: 24px 0 12px; color: var(--blue); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
-  .stock-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
-  .stock-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; position: relative; }
-  .stock-card .symbol { font-size: 22px; font-weight: 700; }
-  .stock-card .price { font-size: 24px; margin: 4px 0; }
-  .stock-card .type-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 8px; text-transform: uppercase; }
-  .badge-buy { background: #0b3d1e; color: var(--green); }
-  .badge-watch { background: #3d2e00; color: var(--yellow); }
-  .badge-avoid { background: #3d0e0e; color: var(--red); }
-  .score-badge { font-size: 28px; font-weight: 700; position: absolute; top: 16px; right: 16px; }
-  .score-high { color: var(--green); } .score-mid { color: var(--yellow); } .score-low { color: var(--red); }
-  .stock-detail { margin-top: 8px; font-size: 13px; color: var(--text); line-height: 1.5; }
-  .stock-detail .label { color: var(--muted); }
-  .note { margin-top: 10px; padding: 10px; background: var(--bg); border-radius: 8px; font-size: 13px; line-height: 1.5; border-left: 3px solid var(--blue); }
-  .macro-section { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px; }
-  .macro-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
-  .macro-card h3 { font-size: 16px; margin-bottom: 8px; }
-  .macro-card ul { list-style: none; }
-  .macro-card li { padding: 4px 0; font-size: 13px; border-bottom: 1px solid var(--border); }
-  .macro-card li:last-child { border-bottom: none; }
-  .lessons { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 24px 0; }
-  .lessons li { padding: 6px 0; font-size: 13px; border-bottom: 1px solid var(--border); } 
-  .lessons li:last-child { border-bottom: none; }
-  .catalyst-banner { background: linear-gradient(135deg, #0b3d1e 0%, #161b22 100%); border: 1px solid var(--green); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
-  .catalyst-banner h3 { color: var(--green); margin-bottom: 8px; }
-  .catalyst-banner p { font-size: 14px; line-height: 1.5; }
-  table.data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
-  table.data-table th { background: var(--card); padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--border); color: var(--muted); font-weight: 600; }
-  table.data-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
-  .portfolio-table { margin: 16px 0; }
-  .row-highlight { background: rgba(63,185,80,0.05); }
-  .row-avoid { background: rgba(248,81,73,0.05); }
+  h1 { font-size: 1.8rem; margin-bottom: 4px; color: #f8fafc; }
+  .subtitle { color: #94a3b8; font-size: 0.9rem; margin-bottom: 24px; }
+  h2 { font-size: 1.3rem; color: #38bdf8; margin: 28px 0 12px; border-bottom: 1px solid #1e293b; padding-bottom: 6px; }
+  h3 { font-size: 1.1rem; color: #a78bfa; margin: 20px 0 10px; }
+  .market-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; margin: 12px 0; }
+  .market-card { background: #1e293b; border-radius: 10px; padding: 14px; border: 1px solid #334155; }
+  .market-card .label { color: #94a3b8; font-size: 0.8rem; }
+  .market-card .value { font-size: 1.3rem; font-weight: 700; margin: 4px 0; }
+  .market-card .change { font-size: 0.85rem; }
+  .up { color: #22c55e; }
+  .down { color: #ef4444; }
+  .flat { color: #94a3b8; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+  .badge-buy { background: #14532d; color: #4ade80; }
+  .badge-watch { background: #422006; color: #fbbf24; }
+  .badge-avoid { background: #450a0a; color: #f87171; }
+  .stock-card { background: #1e293b; border-radius: 10px; padding: 16px; margin: 10px 0; border: 1px solid #334155; }
+  .stock-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .stock-symbol { font-size: 1.3rem; font-weight: 800; color: #f8fafc; }
+  .stock-price { font-size: 1.1rem; font-weight: 700; }
+  .stock-score { font-size: 1.5rem; font-weight: 800; padding: 4px 12px; border-radius: 8px; }
+  .score-high { background: #14532d; color: #4ade80; }
+  .score-mid { background: #422006; color: #fbbf24; }
+  .score-low { background: #450a0a; color: #f87171; }
+  .stock-meta { display: flex; gap: 16px; flex-wrap: wrap; margin: 8px 0; color: #94a3b8; font-size: 0.85rem; }
+  .stock-analysis { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin: 10px 0; }
+  .analysis-item { background: #0f172a; padding: 8px 12px; border-radius: 6px; }
+  .analysis-item .title { color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .analysis-item .value { font-size: 0.9rem; font-weight: 600; }
+  .note { color: #cbd5e1; font-size: 0.9rem; margin: 8px 0; line-height: 1.5; }
+  .section-card { background: #1e293b; border-radius: 10px; padding: 16px; margin: 10px 0; border: 1px solid #334155; }
+  .watchlist-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  .watchlist-table th { text-align: left; color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; padding: 8px 12px; border-bottom: 1px solid #334155; }
+  .watchlist-table td { padding: 8px 12px; border-bottom: 1px solid #1e293b; font-size: 0.9rem; }
+  .kpi-row { display: flex; gap: 16px; flex-wrap: wrap; margin: 12px 0; }
+  .kpi { background: #1e293b; border-radius: 8px; padding: 12px 18px; text-align: center; flex: 1; min-width: 120px; border: 1px solid #334155; }
+  .kpi .num { font-size: 1.5rem; font-weight: 800; }
+  .kpi .desc { color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; }
+  .catalyst-list { list-style: none; }
+  .catalyst-list li { padding: 6px 0; border-bottom: 1px solid #1e293b; }
+  .catalyst-list li:before { content: "▸ "; color: #38bdf8; }
+  .concern-list { list-style: none; }
+  .concern-list li { padding: 6px 0; border-bottom: 1px solid #1e293b; color: #fca5a5; }
+  .concern-list li:before { content: "⚠ "; }
+  .lesson-box { background: #1a1a2e; border-left: 4px solid #a78bfa; padding: 12px 16px; margin: 8px 0; border-radius: 0 8px 8px 0; }
+  .lesson-box .rule { color: #a78bfa; font-weight: 700; }
+  @media (max-width: 600px) { .market-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 <div class="container">
 
 <h1>📊 Stocks Self-Learning Report</h1>
-<div class="subtitle">Post-Market Analysis — Monday, June 8, 2026 | US Markets Close: 4:00 PM ET</div>
+<div class="subtitle">Tuesday, June 9, 2026 — Post-Market Analysis (US Close 4:20 PM EDT)</div>
 
-<!-- Market Banner -->
-<div class="market-banner">
-  <h2>📈 Market Overview — Tech Bounce + WWDC Day</h2>
-  <div class="index-grid">
-    <div class="index-item"><div class="name">S&P 500</div><div class="value">7,405.73</div><div class="change up">+0.30%</div></div>
-    <div class="index-item"><div class="name">NASDAQ</div><div class="value">25,929.66</div><div class="change up">+0.86%</div></div>
-    <div class="index-item"><div class="name">DJIA</div><div class="value">50,786.01</div><div class="change down">−0.16%</div></div>
-    <div class="index-item"><div class="name">VIX</div><div class="value">18.92</div><div class="change down">−12.04%</div></div>
-    <div class="index-item"><div class="name">10Y Yield</div><div class="value">4.55%</div><div class="change up">+0.35%</div></div>
-    <div class="index-item"><div class="name">Crude Oil</div><div class="value">$91.28</div><div class="change up">+0.82%</div></div>
-    <div class="index-item"><div class="name">Gold</div><div class="value">$4,353.80</div><div class="change up">+0.39%</div></div>
-    <div class="index-item"><div class="name">DXY</div><div class="value">99.98</div><div class="change down">−0.09%</div></div>
+<div class="kpi-row">
+  <div class="kpi"><div class="num down">-0.97%</div><div class="desc">NASDAQ</div></div>
+  <div class="kpi"><div class="num down">-0.26%</div><div class="desc">S&P 500</div></div>
+  <div class="kpi"><div class="num up">+0.17%</div><div class="desc">Dow</div></div>
+  <div class="kpi"><div class="num up">+5.02%</div><div class="desc">VIX 19.87</div></div>
+  <div class="kpi"><div class="num down">-3.15%</div><div class="desc">Oil $88.42</div></div>
+</div>
+
+<!-- MARKET OVERVIEW -->
+<h2>📈 Market Overview</h2>
+
+<div class="market-grid">
+  <div class="market-card">
+    <div class="label">S&P 500</div>
+    <div class="value">7,386.65</div>
+    <div class="change down">-19.08 (-0.26%)</div>
   </div>
-  <div style="margin-top:12px;padding:10px;background:var(--bg);border-radius:8px;font-size:13px;line-height:1.6;">
-    <strong>Key Narrative:</strong> Tech bounces from Friday's -4.18% massacre. NASDAQ +0.86%, semiconductors surge (SMH +5.00%). VIX crashes below 20 (−12.04% to 18.92) — fear premium evaporating. Apple WWDC dominates headlines: new 52W high ($317.40) before reversing -5% intraday to close $301.54. OpenAI confidentially files for IPO — massive AI sector catalyst. Healthcare (XLV -0.24%) takes first down day after 3-day +4.27% rotation. Oil at $91.28 (below $92 threshold — supports consumer).
+  <div class="market-card">
+    <div class="label">NASDAQ</div>
+    <div class="value">25,678.82</div>
+    <div class="change down">-250.84 (-0.97%)</div>
+  </div>
+  <div class="market-card">
+    <div class="label">DJIA</div>
+    <div class="value">50,872.11</div>
+    <div class="change up">+86.10 (+0.17%)</div>
+  </div>
+  <div class="market-card">
+    <div class="label">VIX</div>
+    <div class="value">19.87</div>
+    <div class="change up">+0.95 (+5.02%)</div>
+  </div>
+  <div class="market-card">
+    <div class="label">10Y Yield</div>
+    <div class="value">4.518%</div>
+    <div class="change down">-0.032 (-0.70%)</div>
+  </div>
+  <div class="market-card">
+    <div class="label">WTI Crude</div>
+    <div class="value">$88.42</div>
+    <div class="change down">-$2.88 (-3.15%)</div>
+  </div>
+  <div class="market-card">
+    <div class="label">Gold</div>
+    <div class="value">$390.78</div>
+    <div class="change down">-1.63%</div>
+  </div>
+  <div class="market-card">
+    <div class="label">Silver</div>
+    <div class="value">$59.01</div>
+    <div class="change down">-4.17%</div>
   </div>
 </div>
 
-<!-- Sector Performance -->
-<div class="macro-card" style="margin-bottom:24px;">
-  <h3>🏭 Sector ETF Performance</h3>
-  <table class="data-table">
-    <tr><th>Sector</th><th>Price</th><th>Today</th><th>5-Day</th></tr>
-    <tr><td>Semiconductors (SMH)</td><td>$598.16</td><td class="up">+5.00%</td><td class="down">−5.39%</td></tr>
-    <tr><td>Semis Index (SOXX)</td><td>$571.45</td><td class="up">+5.87%</td><td class="down">−5.55%</td></tr>
-    <tr><td>Tech (XLK)</td><td>$184.18</td><td class="up">+2.15%</td><td class="down">−7.08%</td></tr>
-    <tr><td>NASDAQ QQQ (QQQ)</td><td>$716.07</td><td class="up">+1.56%</td><td class="down">−4.03%</td></tr>
-    <tr><td>Energy (XLE)</td><td>$58.33</td><td class="up">+1.14%</td><td class="up">+0.64%</td></tr>
-    <tr><td>Russell 2000 (IWM)</td><td>$284.11</td><td class="up">+0.87%</td><td class="down">−2.59%</td></tr>
-    <tr><td>Consumer Disc. (XLY)</td><td>$115.39</td><td class="up">+0.46%</td><td class="down">−1.87%</td></tr>
-    <tr><td>S&P 500 (SPY)</td><td>$739.22</td><td class="up">+0.23%</td><td class="down">−2.68%</td></tr>
-    <tr><td>Financials (XLF)</td><td>$51.97</td><td class="down">−0.63%</td><td class="up">+0.99%</td></tr>
-    <tr><td>Consumer Staples (XLP)</td><td>$83.07</td><td class="down">−0.44%</td><td class="up">+1.52%</td></tr>
-    <tr><td>Healthcare (XLV)</td><td>$152.65</td><td class="down">−0.24%</td><td class="up">+4.27%</td></tr>
-    <tr><td>Materials (XLB)</td><td>$49.96</td><td class="down">−1.32%</td><td class="down">−3.03%</td></tr>
-    <tr><td>Utilities (XLU)</td><td>$43.52</td><td class="down">−1.87%</td><td class="down">−0.87%</td></tr>
-  </table>
+<h3>Global Markets</h3>
+<div class="market-grid">
+  <div class="market-card">
+    <div class="label">Nikkei</div>
+    <div class="value">65,416.63</div>
+    <div class="change up">+2.17%</div>
+  </div>
+  <div class="market-card">
+    <div class="label">Shanghai</div>
+    <div class="value">4,010.03</div>
+    <div class="change up">+1.28%</div>
+  </div>
+  <div class="market-card">
+    <div class="label">HSI</div>
+    <div class="value">24,565.90</div>
+    <div class="change down">-0.37%</div>
+  </div>
+  <div class="market-card">
+    <div class="label">DAX</div>
+    <div class="value">24,433.06</div>
+    <div class="change down">-0.74%</div>
+  </div>
+  <div class="market-card">
+    <div class="label">FTSE</div>
+    <div class="value">10,227.33</div>
+    <div class="change down">-1.41%</div>
+  </div>
 </div>
 
-<!-- Global Context -->
-<div class="macro-section" style="margin-bottom:24px;">
-  <div class="macro-card">
-    <h3>🌍 Global Markets</h3>
-    <div style="font-size:13px;line-height:1.8;">
-      <div>🇯🇵 Nikkei: <span class="down">64,024.60 (−3.85%)</span></div>
-      <div>🇭🇰 HSI: <span class="down">24,657.06 (−1.22%)</span></div>
-      <div>🇨🇳 Shanghai: <span class="down">3,959.34 (−1.70%)</span></div>
-      <div>🇩🇪 DAX: <span class="down">24,616.22 (−0.58%)</span></div>
-      <div>🇬🇧 FTSE: <span class="up">10,373.20 (+0.05%)</span></div>
+<!-- SECTOR WATCH -->
+<h2>🏭 Sector Performance</h2>
+<div class="market-grid">
+  <div class="market-card"><div class="label">Healthcare XLV</div><div class="value up">+1.26%</div><div class="change up">LEADER — 4th day outperforming</div></div>
+  <div class="market-card"><div class="label">Consumer Staples XLP</div><div class="value up">+1.24%</div><div class="change up">Defensive rotation</div></div>
+  <div class="market-card"><div class="label">Industrials XLI</div><div class="value up">+1.13%</div><div class="change up">Broad strength</div></div>
+  <div class="market-card"><div class="label">Utilities XLU</div><div class="value up">+1.06%</div><div class="change up">Defensive rotation</div></div>
+  <div class="market-card"><div class="label">Financials XLF</div><div class="value up">+0.94%</div><div class="change up">Oil crash = lower rates</div></div>
+  <div class="market-card"><div class="label">Consumer Disc XLY</div><div class="value up">+0.42%</div><div class="change up">Oil <$90 tailwind</div></div>
+  <div class="market-card"><div class="label">Semis SMH</div><div class="value down">-1.20%</div><div class="change down">Dead cat bounce — still bleeding</div></div>
+  <div class="market-card"><div class="label">Tech XLK</div><div class="value down">-1.85%</div><div class="change down">Broad tech sell-off</div></div>
+  <div class="market-card"><div class="label">Energy XLE</div><div class="value down">-1.61%</div><div class="change down">Oil crash hurts</div></div>
+</div>
+
+<!-- MARKET NARRATIVE -->
+<h2>📝 Market Narrative</h2>
+<div class="section-card">
+<p><strong>Tech bounce fails, healthcare extends leadership, oil crashes below $90.</strong></p>
+<p>The Monday tech bounce (+0.86% NASDAQ) was a dead cat bounce — NASDAQ -0.97% today erasing most of those gains. The Dow was the only positive major index (+0.17%), driven by value rotation into healthcare and financials.</p>
+<p><strong>Oil collapsed -3.15% to $88.42</strong> on news that US Energy Secretary said Hormuz ship traffic is increasing (Iran deal easing). This is below the $92 aggressive BUY threshold per the 3-zone oil model. In theory, this should be turbo-charged bullish for consumer stocks (oil below $90 = consumer has disposable income) and dovish for rates. But tech didn't rally on it — suggesting the tech selloff is structural (semi overhang, jobs report hangover), not oil-driven.</p>
+<p><strong>Healthcare rotation CONFIRMED structural:</strong> XLV +1.26% extends to 4+ consecutive days of outperformance vs XLK. UNH new 52W high at $413. JNJ +2.08%, ABBV +1.05%. The skill's rule says "3+ consecutive days = allocate at least 40% to healthcare." Today's performance confirms this.</p>
+<p><strong>VIX at 19.87</strong> — right at the 20 threshold. The Jun 5 rule says VIX >20 = rotate from momentum to defensive, and <20 = risk-on regime. At 19.87, it's borderline. The +5.02% uptick today signals fear creeping back, but still technically risk-on.</p>
+<p><strong>10Y Yield declining</strong> to 4.518% (-0.70%) provides some relief from last week's hot-jobs-report overhang. Lower yields support growth stock valuations — but the market isn't buying tech yet.</p>
+<p><strong>Semi bounce failed:</strong> SMH +5% Monday, -1.20% today. ARM -6.22%, QCOM -5.67%, DELL -4.74%, AMD -3.02%. The AVGO earnings overhang is still active (Day 4+) and the 3-5 session uninvestable window continues. Do not buy semi dips until Day 5 at earliest.</p>
+</div>
+
+<!-- 10-STOCK ANALYSIS -->
+<h2>🎯 10-Stock Deep Dive</h2>
+
+<!-- STOCK 1 -->
+<div class="stock-card">
+  <div class="stock-header">
+    <div>
+      <span class="stock-symbol">UNH</span>
+      <span class="badge badge-buy">BUY</span>
+      <span class="stock-price" style="margin-left:12px;">$413.00</span>
+      <span class="change up">+1.58%</span>
     </div>
+    <div><span class="stock-score score-high">8.5</span></div>
   </div>
-  <div class="macro-card">
-    <h3>⚡ Key Catalysts</h3>
-    <ul>
-      <li>🚀 <strong>OpenAI IPO Filing</strong> — Confidential filing for mega AI debut. Sector-wide catalyst for AI infrastructure.</li>
-      <li>🍎 <strong>Apple WWDC</strong> — Partnering with Google & Nvidia for "most advanced AI model." Big Siri news. Stock hit $317.40 (52W high) then reversed.</li>
-      <li>🛢 <strong>Oil $91.28</strong> — Below $92 threshold. Consumer thesis active. Trade-down structural.</li>
-      <li>📉 <strong>VIX 18.92</strong> — Below 20! Fear premium collapsing. Risk-on environment returning.</li>
-    </ul>
+  <div class="stock-meta">
+    <span>Large Cap</span>
+    <span>Healthcare</span>
+    <span>52W: $229.79 – $413.00</span>
+    <span>PE: 19.8x</span>
+    <span>Beta: 0.65</span>
+    <span>Vol: 7.6M</span>
+  </div>
+  <div class="stock-analysis">
+    <div class="analysis-item"><div class="title">Technical</div><div class="value up">NEW 52W HIGH $413</div></div>
+    <div class="analysis-item"><div class="title">Fundamental</div><div class="value">PE 19.8x reasonable</div></div>
+    <div class="analysis-item"><div class="title">Catalyst</div><div class="value up">Healthcare rotation leader</div></div>
+    <div class="analysis-item"><div class="title">Risk</div><div class="value flat">Extended after +7.58% 5d</div></div>
+  </div>
+  <div class="note">
+    <strong>TOP PICK.</strong> New 52W high at $413 (+1.58% today). Healthcare rotation leader confirmed with 4+ consecutive days of outperformance. UNH was $406.57 on Jun 8 — already +1.58% in one session. Forward PE 19.8x is reasonable for the sector leader. Volume 7.6M is elevated, confirming institutional interest. The healthcare rotation from AI overweights is structural, not tactical. Only risk: extended after +7.58% in 5 days. May consolidate before next leg up. <strong>BUY on any pullback to $405.</strong>
   </div>
 </div>
 
-<!-- STOCK ANALYSIS -->
-<h2 class="section-title">📋 Portfolio Analysis — 10 Stocks</h2>
-
-<!-- BUYS -->
-<h3 style="color:var(--green);margin:16px 0 8px;">🟢 BUY — Strong Buys & Core Holdings</h3>
-
-<div class="stock-grid">
-<!-- LLY -->
+<!-- STOCK 2 -->
 <div class="stock-card">
-  <div><span class="symbol">LLY</span><span class="type-badge badge-buy">LARGE CAP</span></div>
-  <div class="price">$1,149.15 <span class="up">+1.57%</span></div>
-  <div class="score-badge score-high">8.7</div>
-  <div class="stock-detail">
-    <div><span class="label">5-Day:</span> <span class="up">+7.99%</span> | <span class="label">52W:</span> $623.78 – $1,182.73</div>
-    <div><span class="label">Volume:</span> 3.69M / 3.38M avg | <span class="label">Fwd PE:</span> 25.8x | <span class="label">Sector:</span> Healthcare</div>
-    <div><span class="label">After Hours:</span> <span class="up">$1,154.50 (+0.47%)</span></div>
-    <div><span class="label">Today's Range:</span> $1,143.59 – <strong>$1,182.73 (52W HIGH!)</strong></div>
+  <div class="stock-header">
+    <div>
+      <span class="stock-symbol">JNJ</span>
+      <span class="badge badge-buy">BUY</span>
+      <span class="stock-price" style="margin-left:12px;">$237.00</span>
+      <span class="change up">+2.08%</span>
+    </div>
+    <div><span class="stock-score score-high">8.0</span></div>
   </div>
-  <div class="note"><strong>TOP PICK.</strong> New 52W high $1,182.73 intraday! Healthcare rotation leader. XLV still +4.27% over 5 days. AH +0.47% continuing strength. OpenAI IPO catalyst benefits AI healthcare applications. Forward PE 25.8x reasonable for 30%+ earnings growth. Slight pullback from ATH is normal profit-taking. <strong>Score: 8.7/10 — Strong BUY.</strong></div>
+  <div class="stock-meta">
+    <span>Large Cap</span>
+    <span>Healthcare</span>
+    <span>52W: $145.41 – $250.27</span>
+    <span>PE: 18.6x</span>
+    <span>Beta: 0.26</span>
+    <span>Vol: 8.2M</span>
+  </div>
+  <div class="stock-analysis">
+    <div class="analysis-item"><div class="title">Technical</div><div class="value up">+2.08%, near 52W high</div></div>
+    <div class="analysis-item"><div class="title">Fundamental</div><div class="value">PE 18.6x — very cheap</div></div>
+    <div class="analysis-item"><div class="title">Catalyst</div><div class="value up">Healthcare rotation flows</div></div>
+    <div class="analysis-item"><div class="title">Risk</div><div class="value flat">5% below 52W high</div></div>
+  </div>
+  <div class="note">
+    <strong>Healthcare value play.</strong> +2.08% today on 8.2M volume. PE 18.6x is the cheapest among the healthcare picks. Beta 0.26 makes it the ultimate defensive play in a rotation. Only 5% below 52W high ($250.27) — room to run. Healthcare rotation institutional flows are direct beneficiaries. Upgraded from 7.5 (Jun 8) to 8.0 today based on the velocity of today's move. Oil crash below $90 removes energy inflation input pressure. <strong>BUY.</strong>
+  </div>
 </div>
 
-<!-- UNH -->
+<!-- STOCK 3 -->
 <div class="stock-card">
-  <div><span class="symbol">UNH</span><span class="type-badge badge-buy">LARGE CAP</span></div>
-  <div class="price">$406.57 <span class="up">+1.78%</span></div>
-  <div class="score-badge score-high">8.2</div>
-  <div class="stock-detail">
-    <div><span class="label">5-Day:</span> <span class="up">+7.58%</span> | <span class="label">52W:</span> $234.60 – $408.71</div>
-    <div><span class="label">Volume:</span> 6.15M / 8.08M avg | <span class="label">Fwd PE:</span> 19.5x | <span class="label">Sector:</span> Healthcare</div>
-    <div><span class="label">Today's Range:</span> $394.99 – <strong>$408.71 (52W HIGH!)</strong></div>
+  <div class="stock-header">
+    <div>
+      <span class="stock-symbol">LLY</span>
+      <span class="badge badge-buy">BUY</span>
+      <span class="stock-price" style="margin-left:12px;">$1,144.68</span>
+      <span class="change down">-0.39%</span>
+    </div>
+    <div><span class="stock-score score-mid">7.8</span></div>
   </div>
-  <div class="note"><strong>NEW 52W HIGH at $408.71.</strong> Healthcare structural rotation fully confirmed (3-day +4.27% XLV streak last week). Forward PE 19.5x is reasonable for managed care leader with AI adoption catalysts. Slight pullback from intraday high is healthy. <strong>Score: 8.2/10 — BUY.</strong></div>
+  <div class="stock-meta">
+    <span>Large Cap</span>
+    <span>Healthcare</span>
+    <span>52W: $623.78 – $1,182.73</span>
+    <span>PE: 25.7x</span>
+    <span>Beta: 0.52</span>
+    <span>Vol: 3.5M</span>
+  </div>
+  <div class="stock-analysis">
+    <div class="analysis-item"><div class="title">Technical</div><div class="value down">-0.39% pullback from ATH</div></div>
+    <div class="analysis-item"><div class="title">Fundamental</div><div class="value">PE 25.7x reasonable for growth</div></div>
+    <div class="analysis-item"><div class="title">Catalyst</div><div class="value up">GLP-1 growth + healthcare rotation</div></div>
+    <div class="analysis-item"><div class="title">Risk</div><div class="value flat">-0.39% after +7.99% 5d</div></div>
+  </div>
+  <div class="note">
+    <strong>Slight profit-taking after new ATH.</strong> Pullback -0.39% on light volume (3.5M vs 5d avg ~4.5M). This is healthy consolidation, not distribution. $1,144 support is well above the prior $1,149.15 close. The GLP-1 growth story continues (Novo Nordisk CEO comments about Wegovy pill today). Healthcare rotation provides tailwind. PE 25.7x is reasonable for a growth pharma with 20%+ revenue growth. Downgraded from 8.7 (Jun 8) to 7.8 today due to slight profit-taking — maintaining BUY but at lower conviction until $1,150 recovers. <strong>BUY on pullback.</strong>
+  </div>
 </div>
 
-<!-- BRK-B -->
+<!-- STOCK 4 -->
 <div class="stock-card">
-  <div><span class="symbol">BRK-B</span><span class="type-badge badge-buy">LARGE CAP</span></div>
-  <div class="price">$487.00 <span class="down">−0.23%</span></div>
-  <div class="score-badge score-high">7.8</div>
-  <div class="stock-detail">
-    <div><span class="label">5-Day:</span> <span class="up">+3.29%</span> | <span class="label">52W:</span> $455.19 – $516.85</div>
-    <div><span class="label">Volume:</span> 5.17M / 6.04M avg | <span class="label">Fwd PE:</span> 22.7x | <span class="label">Sector:</span> Financial Services</div>
-    <div><span class="label">Today's Range:</span> $484.92 – $490.76</div>
+  <div class="stock-header">
+    <div>
+      <span class="stock-symbol">GOOGL</span>
+      <span class="badge badge-watch">WATCH</span>
+      <span class="stock-price" style="margin-left:12px;">$364.26</span>
+      <span class="change up">+0.26%</span>
+    </div>
+    <div><span class="stock-score score-mid">7.2</span></div>
   </div>
-  <div class="note"><strong>Defensive safe harbor.</strong> Slight pullback after Friday's +1.98% flight-to-safety. VIX below 20 reduces defensive premium, but Berkshire's cash pile and diversified earnings provide resilience. Consolidating after strong week. <strong>Score: 7.8/10 — BUY (HOLD).</strong></div>
+  <div class="stock-meta">
+    <span>Large Cap</span>
+    <span>Communication Services</span>
+    <span>52W: $161.54 – $408.37</span>
+    <span>PE: 25.2x</span>
+    <span>Beta: 1.24</span>
+    <span>Vol: 28.9M</span>
+  </div>
+  <div class="stock-analysis">
+    <div class="analysis-item"><div class="title">Technical</div><div class="value up">+0.26% on NASDAQ -0.97% day</div></div>
+    <div class="analysis-item"><div class="title">Fundamental</div><div class="value">PE 25.2x reasonable</div></div>
+    <div class="analysis-item"><div class="title">Catalyst</div><div class="value flat">Apple AI partner — no own catalyst</div></div>
+    <div class="analysis-item"><div class="title">Risk</div><div class="value flat">No specific catalyst, range-bound</div></div>
+  </div>
+  <div class="note">
+    <strong>Most resilient mega-cap tech.</strong> +0.26% on a day NASDAQ fell -0.97%. This confirms GOOGL as the most defensive mega-cap tech holding. $360 support held again. However, there's no specific catalyst to drive a breakout. The Apple AI partnership (Siri using Google Gemini) is a secondary beneficiary at best. PE 25.2x is reasonable. Beta 1.24 is manageable. Upgraded from 6.8 (Jun 8) to 7.2 today based on demonstrated resilience. <strong>WATCH — needs a catalyst to upgrade to BUY.</strong>
+  </div>
 </div>
 
-<!-- JNJ -->
+<!-- STOCK 5 -->
 <div class="stock-card">
-  <div><span class="symbol">JNJ</span><span class="type-badge badge-buy">LARGE CAP</span></div>
-  <div class="price">$232.16 <span class="down">−0.26%</span></div>
-  <div class="score-badge score-mid">7.5</div>
-  <div class="stock-detail">
-    <div><span class="label">5-Day:</span> <span class="up">+4.16%</span> | <span class="label">52W:</span> $149.04 – $251.71</div>
-    <div><span class="label">Volume:</span> 7.47M / 6.99M avg | <span class="label">Fwd PE:</span> 18.3x | <span class="label">Sector:</span> Healthcare</div>
-    <div><span class="label">Today's Range:</span> $230.56 – $234.92</div>
+  <div class="stock-header">
+    <div>
+      <span class="stock-symbol">BRK-B</span>
+      <span class="badge badge-buy">BUY</span>
+      <span class="stock-price" style="margin-left:12px;">$487.77</span>
+      <span class="change up">+0.16%</span>
+    </div>
+    <div><span class="stock-score score-mid">7.5</span></div>
   </div>
-  <div class="note"><strong>Healthcare value hold.</strong> Slight pullback after +4.16% 5-day run. Forward PE 18.3x is cheap for defensive quality. Still 8% below 52W high ($251.71) — has room to run. Healthcare rotation institutional flows continue. <strong>Score: 7.5/10 — BUY.</strong></div>
-</div>
+  <div class="stock-meta">
+    <span>Large Cap</span>
+    <span>Financial Services</span>
+    <span>52W: $455.19 – $516.85</span>
+    <span>PE: 22.7x</span>
+    <span>Beta: 0.62</span>
+    <span>Vol: 3.9M</span>
+  </div>
+  <div class="stock-analysis">
+    <div class="analysis-item"><div class="title">Technical</div><div class="value flat">+0.16%, consolidating</div></div>
+    <div class="analysis-item"><div class="title">Fundamental</div><div class="value">$1T+ cash pile</div></div>
+    <div class="analysis-item"><div class="title">Catalyst</div><div class="value flat">Defensive safe harbor</div></div>
+    <div class="analysis-item"><div class="title">Risk</div><div class="value flat">6% below 52W high</div></div>
+  </div>
+  <div class="note">
+    <strong>Stable defensive core.</strong> +0.16% on a mixed market day. Berkshire's cash pile provides stability. The oil crash benefits Berkshire's consumer-facing holdings. VIX at 19.87 reduces defensive urgency somewhat, but Berkshire remains a solid core holding. 6% below 52W high ($516.85) — room to run. Maintain 7.5 from Jun 8. <strong>BUY — stable core holding.</strong>
+  </div>
 </div>
 
-<!-- WATCHES -->
-<h3 style="color:var(--yellow);margin:24px 0 8px;">🟡 WATCH — Monitor for Catalysts</h3>
-
-<div class="stock-grid">
-<!-- AAPL -->
+<!-- STOCK 6 -->
 <div class="stock-card">
-  <div><span class="symbol">AAPL</span><span class="type-badge badge-watch">MOMENTUM</span></div>
-  <div class="price">$301.54 <span class="down">−1.89%</span></div>
-  <div class="score-badge score-mid">7.0</div>
-  <div class="stock-detail">
-    <div><span class="label">5-Day:</span> <span class="down">−4.33%</span> | <span class="label">52W:</span> $195.07 – $317.40</div>
-    <div><span class="label">Volume:</span> 73.86M / 55.87M avg | <span class="label">Fwd PE:</span> 31.4x | <span class="label">After Hours:</span> <span class="down">$299.95 (−0.53%)</span></div>
-    <div><span class="label">Intraday:</span> 💥 $317.40 (<strong>NEW 52W HIGH!</strong>) → $301.54 close</div>
+  <div class="stock-header">
+    <div>
+      <span class="stock-symbol">ABBV</span>
+      <span class="badge badge-buy">BUY</span>
+      <span class="stock-price" style="margin-left:12px;">$225.42</span>
+      <span class="change up">+1.05%</span>
+    </div>
+    <div><span class="stock-score score-mid">7.3</span></div>
   </div>
-  <div class="note"><strong>WWDC sell-the-news — BUY THE DIP?</strong> Classic pattern: hit new ATH at $317.40 on Siri/AI news, then reversed -5% intraday. AH continuing to $299.95. CNBC headline: "Apple shares reverse lower after big Siri news. Why we're not bothered." Key news: Apple partnering with Google & Nvidia for "most advanced AI model." This is a NEW catalyst (AI partnerships), not same-story extension. <strong>FW:</strong> $300 support critical. If $300 holds, this is a temporary sell-the-news (like MSFT Build). If $300 breaks, wait for better entry. <strong>Score: 7.0/10 — WATCH (dip buy opportunity).</strong></div>
+  <div class="stock-meta">
+    <span>Momentum</span>
+    <span>Healthcare</span>
+    <span>52W: $176.00 – $239.13</span>
+    <span>PE: 13.9x</span>
+    <span>Beta: 0.31</span>
+    <span>Vol: 4.1M</span>
+  </div>
+  <div class="stock-analysis">
+    <div class="analysis-item"><div class="title">Technical</div><div class="value up">+1.05%, recovering</div></div>
+    <div class="analysis-item"><div class="title">Fundamental</div><div class="value">PE 13.9x — dirt cheap</div></div>
+    <div class="analysis-item"><div class="title">Catalyst</div><div class="value up">Healthcare rotation, cheap valuation</div></div>
+    <div class="analysis-item"><div class="title">Risk</div><div class="value flat">6% below 52W high</div></div>
+  </div>
+  <div class="note">
+    <strong>Healthcare value with momentum.</strong> +1.05% today, recovering from -1.83% on Jun 8. PE 13.9x is the cheapest in the healthcare portfolio. Beta 0.31 = low volatility. 6% below 52W high ($239.13) — significant upside potential. Healthcare rotation provides institutional buying pressure. Upgraded from 6.8 (Jun 8) to 7.3 today. <strong>BUY — cheap healthcare with rotational tailwind.</strong>
+  </div>
 </div>
 
-<!-- GOOGL -->
+<!-- STOCK 7 -->
 <div class="stock-card">
-  <div><span class="symbol">GOOGL</span><span class="type-badge badge-watch">MOMENTUM</span></div>
-  <div class="price">$363.31 <span class="down">−1.42%</span></div>
-  <div class="score-badge score-mid">6.8</div>
-  <div class="stock-detail">
-    <div><span class="label">5-Day:</span> <span class="up">+0.40%</span> | <span class="label">52W:</span> $162.00 – $408.61</div>
-    <div><span class="label">Volume:</span> 27.85M / 43.03M avg | <span class="label">Fwd PE:</span> 25.1x</div>
-    <div><span class="label">Today's Range:</span> $360.53 – $366.20</div>
+  <div class="stock-header">
+    <div>
+      <span class="stock-symbol">ROST</span>
+      <span class="badge badge-watch">WATCH</span>
+      <span class="stock-price" style="margin-left:12px;">$229.45</span>
+      <span class="change up">+0.89%</span>
+    </div>
+    <div><span class="stock-score score-mid">7.0</span></div>
   </div>
-  <div class="note"><strong>Most resilient mega-cap — flat 5-day.</strong> $360 support held. Light volume (28M vs 43M avg) suggests low conviction selling. Apple AI partnership catalyst could lift GOOGL as Apple's AI partner. But 4-week losing streak pattern still active. No specific catalyst to break the range. <strong>Score: 6.8/10 — WATCH.</strong></div>
+  <div class="stock-meta">
+    <span>Wildcard</span>
+    <span>Consumer Cyclical</span>
+    <span>52W: $123.61 – $237.41</span>
+    <span>PE: 26.8x</span>
+    <span>Beta: 0.87</span>
+    <span>Vol: 2.8M</span>
+  </div>
+  <div class="stock-analysis">
+    <div class="analysis-item"><div class="title">Technical</div><div class="value up">+0.89%, recovering above $225</div></div>
+    <div class="analysis-item"><div class="title">Fundamental</div><div class="value">PE 26.8x not cheap</div></div>
+    <div class="analysis-item"><div class="title">Catalyst</div><div class="value up">Oil below $90 = trade-down thesis</div></div>
+    <div class="analysis-item"><div class="title">Risk</div><div class="value flat">3% below 52W high</div></div>
+  </div>
+  <div class="note">
+    <strong>Trade-down thesis re-activated by oil crash.</strong> Oil at $88.42 (below $90) = consumer has disposable income = trade-down retail benefits (ROST, TJX). This was inverted on Jun 3-4 when oil spiked to $96. Now reversed back in ROST's favor. +0.89% today recovering above $225 support after breaking it on Jun 3. PE 26.8x is not cheap but the structural trade-down thesis is intact. 3% below 52W high ($237.41). Upgraded from 6.5 (Jun 8) to 7.0 today. <strong>WATCH — catalyst improving, needs $235 break to upgrade.</strong>
+  </div>
 </div>
 
-<!-- NVDA -->
+<!-- STOCK 8 -->
 <div class="stock-card">
-  <div><span class="symbol">NVDA</span><span class="type-badge badge-watch">MOMENTUM</span></div>
-  <div class="price">$208.64 <span class="up">+1.73%</span></div>
-  <div class="score-badge score-mid">6.7</div>
-  <div class="stock-detail">
-    <div><span class="label">5-Day:</span> <span class="down">−6.25%</span> | <span class="label">52W:</span> $140.86 – $236.54</div>
-    <div><span class="label">Volume:</span> 119M / 175M avg | <span class="label">Fwd PE:</span> 16.5x</div>
-    <div><span class="label">After Hours:</span> <span class="down">$208.08 (−0.27%)</span></div>
+  <div class="stock-header">
+    <div>
+      <span class="stock-symbol">NVDA</span>
+      <span class="badge badge-watch">WATCH</span>
+      <span class="stock-price" style="margin-left:12px;">$208.19</span>
+      <span class="change flat">-0.22%</span>
+    </div>
+    <div><span class="stock-score score-mid">7.0</span></div>
   </div>
-  <div class="note"><strong>Semi bounce + Apple AI partnership catalyst.</strong> +1.73% on semi sector bounce (SMH +5.00%). Apple announced Nvidia partnership for "most advanced AI model" — this is a NEW product catalyst (AI model for Apple). Also OpenAI IPO filing is massive tailwind for NVDA as primary AI chip supplier. BUT: sector still recovering from AVGO overhang. The rule says "don't buy semi dip until Day 5" — today is Day 1 of bounce. Light volume bounce (119M vs 175M avg). <strong>Two catalysts vs sector headwind.</strong> $200 support critical. Above $210 = bullish. <strong>Score: 6.7/10 — WATCH (cautious).</strong></div>
+  <div class="stock-meta">
+    <span>Momentum</span>
+    <span>Technology / Semiconductors</span>
+    <span>52W: $140.66 – $236.26</span>
+    <span>PE: 16.4x</span>
+    <span>Beta: 2.2</span>
+    <span>Vol: 171M</span>
+  </div>
+  <div class="stock-analysis">
+    <div class="analysis-item"><div class="title">Technical</div><div class="value flat">-0.22%, resilient vs semis</div></div>
+    <div class="analysis-item"><div class="title">Fundamental</div><div class="value">PE 16.4x — cheap for NVDA</div></div>
+    <div class="analysis-item"><div class="title">Catalyst</div><div class="value up">OpenAI IPO + Apple AI partnership</div></div>
+    <div class="analysis-item"><div class="title">Risk</div><div class="value down">Semi sector carnage; beta 2.2</div></div>
+  </div>
+  <div class="note">
+    <strong>Resilient on dual catalysts, but semi sector overhang persists.</strong> Only -0.22% while ARM -6.22%, QCOM -5.67%, AMD -3.02%, DELL -4.74%. The dual catalyst density (OpenAI IPO + Apple AI partnership) is providing genuine decoupling. But the skill says "catalyst decoupling maxes at 2 sessions from sector gravity" — today is Day 3 of this decoupling cycle. However, the NEW rule from Jun 8 says "2+ independent catalysts extend resistance to 5 sessions." NVDA keeps both. PE 16.4x is cheap for NVDA historically. $200 support critical. Maintain 6.7 from Jun 8 → upgraded to 7.0 today given demonstrated resilience. <strong>WATCH — semi sector needs to stabilize before upgrade. $210 = re-entry signal.</strong>
+  </div>
 </div>
 
-<!-- ABBV -->
+<!-- STOCK 9 -->
 <div class="stock-card">
-  <div><span class="symbol">ABBV</span><span class="type-badge badge-watch">MOMENTUM</span></div>
-  <div class="price">$223.07 <span class="down">−1.83%</span></div>
-  <div class="score-badge score-mid">6.8</div>
-  <div class="stock-detail">
-    <div><span class="label">5-Day:</span> <span class="up">+3.56%</span> | <span class="label">52W:</span> $181.73 – $244.81</div>
-    <div><span class="label">Volume:</span> 3.55M / 5.62M avg | <span class="label">Fwd PE:</span> 13.7x</div>
-    <div><span class="label">Today's Range:</span> $221.16 – $228.58</div>
+  <div class="stock-header">
+    <div>
+      <span class="stock-symbol">CRM</span>
+      <span class="badge badge-watch">WATCH</span>
+      <span class="stock-price" style="margin-left:12px;">$175.35</span>
+      <span class="change down">-3.94%</span>
+    </div>
+    <div><span class="stock-score score-low">6.3</span></div>
   </div>
-  <div class="note"><strong>Healthcare pullback — value play.</strong> -1.83% after +3.56% 5-day run. Forward PE 13.7x is dirt cheap. Light volume pullback (3.55M vs 5.62M avg) — not institutional selling. 9% below 52W high. Still part of healthcare rotation but needs a catalyst to re-accelerate. <strong>Score: 6.8/10 — WATCH.</strong></div>
+  <div class="stock-meta">
+    <span>Wildcard</span>
+    <span>Technology / Software</span>
+    <span>52W: $163.52 – $275.19</span>
+    <span>PE: 11.3x</span>
+    <span>Beta: 1.15</span>
+    <span>Vol: 14.2M</span>
+  </div>
+  <div class="stock-analysis">
+    <div class="analysis-item"><div class="title">Technical</div><div class="value down">-3.94%, near 52W low</div></div>
+    <div class="analysis-item"><div class="title">Fundamental</div><div class="value">PE 11.3x — deep value</div></div>
+    <div class="analysis-item"><div class="title">Catalyst</div><div class="value flat">Software sector still broken</div></div>
+    <div class="analysis-item"><div class="title">Risk</div><div class="value down">36% below 52W high, no catalyst</div></div>
+  </div>
+  <div class="note">
+    <strong>Deep value but no catalyst.</strong> CRM -3.94% continuing software sector weakness. The "software best month since 2001" thesis has fully reversed. CRM now only 7% above 52W low ($163.52). PE 11.3x is deeply undervalued for enterprise software. But the skill's value trap rule applies: "Stocks >50% below ATH with no specific catalyst for 3+ sessions are value traps." CRM is 36% below ATH ($275.19) with no catalyst. <strong>Too early to buy. Wait for a catalyst (earnings, upgrade, product launch).</strong>
+  </div>
 </div>
 
-<!-- ROST -->
+<!-- STOCK 10 -->
 <div class="stock-card">
-  <div><span class="symbol">ROST</span><span class="type-badge badge-watch">WILDCARD</span></div>
-  <div class="price">$227.42 <span class="down">−1.28%</span></div>
-  <div class="score-badge score-mid">6.5</div>
-  <div class="stock-detail">
-    <div><span class="label">5-Day:</span> <span class="up">+1.61%</span> | <span class="label">52W:</span> $124.49 – $237.41</div>
-    <div><span class="label">Volume:</span> 3.02M / 3.13M avg | <span class="label">Fwd PE:</span> 26.6x</div>
-    <div><span class="label">Today's Range:</span> $226.79 – $231.89</div>
+  <div class="stock-header">
+    <div>
+      <span class="stock-symbol">CSCO</span>
+      <span class="badge badge-watch">WATCH</span>
+      <span class="stock-price" style="margin-left:12px;">$120.36</span>
+      <span class="change down">-3.05%</span>
+    </div>
+    <div><span class="stock-score score-low">6.0</span></div>
   </div>
-  <div class="note"><strong>Trade-down thesis intact but consolidating.</strong> Oil at $91.28 (below $92) supports consumer trade-down thesis. But consumer discretionary broadly weak (XLY -1.87% 5d). ROST pulled back from $230 support. 4% below 52W high. PE 26.6x is not cheap. Needs oil to stay below $92 to validate thesis. <strong>Score: 6.5/10 — WATCH.</strong></div>
-</div>
-</div>
-
-<!-- AVOID / REMOVE -->
-<h3 style="color:var(--red);margin:24px 0 8px;">🔴 AVOID — Remove from Portfolio</h3>
-
-<div class="stock-grid">
-<!-- META -->
-<div class="stock-card" style="border-color:var(--red);">
-  <div><span class="symbol">META</span><span class="type-badge badge-avoid">WILDCARD</span></div>
-  <div class="price">$585.39 <span class="down">−1.28%</span></div>
-  <div class="score-badge score-low">5.8</div>
-  <div class="stock-detail">
-    <div><span class="label">5-Day:</span> <span class="down">−2.05%</span> | <span class="label">52W:</span> $520.26 – $796.25</div>
-    <div><span class="label">Volume:</span> 17.94M / 22.14M avg | <span class="label">Fwd PE:</span> 16.2x</div>
-    <div><span class="label">Today's Range:</span> <strong>$579.22</strong> – $592.00</div>
+  <div class="stock-meta">
+    <span>Wildcard</span>
+    <span>Technology / Networking</span>
+    <span>52W: $62.43 – $130.37</span>
+    <span>PE: 25.2x</span>
+    <span>Beta: 1.0</span>
+    <span>Vol: 21.4M</span>
   </div>
-  <div class="note"><strong>BELOW $580 intraday!</strong> Opened at $590.23, hit $579.22 low. Capital raise overhang still active. Stephanie Link sold half. 'Tone-deaf' per Hightower. No catalyst to reverse. AI exposure is through Llama (open source) — not monetizable like NVDA/Google. OpenAI IPO is not a catalyst for META. VIX below 20 helps growth broadly but META-specific negatives outweigh. <strong>Score: 5.8/10 — AVOID (below 6.0 threshold → REMOVE from portfolio).</strong></div>
-</div>
-</div>
-
-<!-- NEW ENTRIES -->
-<h2 class="section-title">🎯 New Entries for Portfolio Consideration</h2>
-
-<div class="catalyst-banner">
-  <h3>🚀 OpenAI IPO Filing — The Day's Biggest Catalyst</h3>
-  <p>OpenAI confidentially filed for IPO today. This is a mega-cap AI debut that validates the entire AI infrastructure theme. Primary beneficiaries: NVDA (chip supplier), MSFT (strategic partner/investor), GOOGL (competitor catalyst → must accelerate AI). Secondary: SMH/SOXX (sector ETF plays), AAPL (Apple + Nvidia/Google AI partnership positions Apple as AI consumer gateway). Consider adding MSFT as a new position — it's the largest OpenAI investor and benefits directly.</p>
-</div>
-
-<div class="stock-grid">
-<!-- MSFT - NEW ENTRY -->
-<div class="stock-card" style="border-color:var(--blue);">
-  <div><span class="symbol">MSFT</span><span class="type-badge badge-buy">NEW ENTRY</span></div>
-  <div class="score-badge score-mid">7.6</div>
-  <div class="stock-detail">
-    <div><span class="label">Primary:</span> Large Cap | <span class="label">Sector:</span> Technology</div>
-    <div><span class="label">Catalyst:</span> OpenAI IPO — largest strategic investor</div>
-    <div><span class="label">Fwd PE:</span> ~28x | <span class="label">Build:</span> Sell-the-news pattern 2 weeks ago, now recovered</div>
+  <div class="stock-analysis">
+    <div class="analysis-item"><div class="title">Technical</div><div class="value down">-3.05%, near 8% below 52W high</div></div>
+    <div class="analysis-item"><div class="title">Fundamental</div><div class="value">PE 25.2x, AI networking play</div></div>
+    <div class="analysis-item"><div class="title">Catalyst</div><div class="value flat">AI networking demand — slow build</div></div>
+    <div class="analysis-item"><div class="title">Risk</div><div class="value down">Tech selloff, no near-term catalyst</div></div>
   </div>
-  <div class="note"><strong>NEW ENTRY RECOMMENDATION.</strong> MSFT is the single biggest beneficiary of the OpenAI IPO filing as the largest strategic investor. Build sell-the-news (-4.17%) from late May has fully reversed per prior self-learning rules. Dan Ives (Wedbush) called MSFT "mispriced" during that dip. Now with OpenAI IPO catalyst, MSFT becomes the purest way to play AI monetization without semi volatility. <strong>Score: 7.6/10 — BUY entry.</strong></div>
+  <div class="note">
+    <strong>AI networking play caught in tech selloff.</strong> CSCO -3.05% today, dragged down by broad tech weakness. The AI networking upgrade cycle is real (AI data centers need Cisco switches/routers) but it's a slow-burn thesis, not a near-term catalyst. PE 25.2x is not cheap. 8% below 52W high ($130.37). Beta 1.0 = neutral. At the AVOID threshold — score exactly 6.0. Any further weakness would trigger removal. <strong>WATCH (weak) — borderline. Needs sector stabilization.</strong>
+  </div>
 </div>
 
-<!-- MSFT placeholder for data -->
-</div>
+<!-- PORTFOLIO SUMMARY -->
+<h2>📋 Portfolio Summary</h2>
 
-<!-- DECISION SUMMARY -->
-<h2 class="section-title">📌 Decision Summary</h2>
-
-<table class="data-table portfolio-table">
-  <tr><th>Stock</th><th>Score</th><th>Decision</th><th>Action</th><th>Key Reason</th></tr>
-  <tr class="row-highlight"><td>LLY</td><td><span class="up">8.7</span></td><td>🟢 BUY</td><td>HOLD / ADD</td><td>New ATH $1,182.73 — healthcare rotation leader</td></tr>
-  <tr class="row-highlight"><td>UNH</td><td><span class="up">8.2</span></td><td>🟢 BUY</td><td>HOLD / ADD</td><td>New 52W high $408.71 — healthcare structural rotation</td></tr>
-  <tr class="row-highlight"><td>BRK-B</td><td><span class="up">7.8</span></td><td>🟢 BUY</td><td>HOLD</td><td>Defensive safe harbor, VIX below 20 reduces urgency</td></tr>
-  <tr class="row-highlight"><td>MSFT</td><td><span class="up">7.6</span></td><td>🟢 BUY</td><td><strong>NEW ENTRY</strong></td><td>OpenAI IPO catalyst — largest strategic investor</td></tr>
-  <tr class="row-highlight"><td>JNJ</td><td><span class="up">7.5</span></td><td>🟢 BUY</td><td>HOLD</td><td>Healthcare value, 8% below 52W high</td></tr>
-  <tr><td>AAPL</td><td><span class="yellow">7.0</span></td><td>🟡 WATCH</td><td>DIP BUY if $300 holds</td><td>WWDC sell-the-news — AI partnerships bullish long-term</td></tr>
-  <tr><td>GOOGL</td><td><span class="yellow">6.8</span></td><td>🟡 WATCH</td><td>HOLD</td><td>$360 support intact, no catalyst to break range</td></tr>
-  <tr><td>ABBV</td><td><span class="yellow">6.8</span></td><td>🟡 WATCH</td><td>HOLD</td><td>Healthcare pullback, PE 13.7x cheap</td></tr>
-  <tr><td>NVDA</td><td><span class="yellow">6.7</span></td><td>🟡 WATCH</td><td>WAIT Day 3+</td><td>Apple + OpenAI catalysts but semi sector still fragile</td></tr>
-  <tr><td>ROST</td><td><span class="yellow">6.5</span></td><td>🟡 WATCH</td><td>HOLD</td><td>Oil below $92 supports, but PE 26.6x not cheap</td></tr>
-  <tr class="row-avoid"><td>META</td><td><span class="down">5.8</span></td><td>🔴 AVOID</td><td><strong>REMOVE</strong></td><td>Below $580 intraday, capital raise overhang, no catalyst</td></tr>
+<table class="watchlist-table">
+  <tr><th>Type</th><th>Symbol</th><th>Price</th><th>Change</th><th>Score</th><th>Decision</th></tr>
+  <tr><td>Large Cap</td><td><strong>UNH</strong></td><td>$413.00</td><td class="up">+1.58%</td><td><strong>8.5</strong></td><td><span class="badge badge-buy">BUY</span></td></tr>
+  <tr><td>Large Cap</td><td><strong>JNJ</strong></td><td>$237.00</td><td class="up">+2.08%</td><td><strong>8.0</strong></td><td><span class="badge badge-buy">BUY</span></td></tr>
+  <tr><td>Large Cap</td><td><strong>LLY</strong></td><td>$1,144.68</td><td class="down">-0.39%</td><td><strong>7.8</strong></td><td><span class="badge badge-buy">BUY</span></td></tr>
+  <tr><td>Large Cap</td><td><strong>GOOGL</strong></td><td>$364.26</td><td class="up">+0.26%</td><td><strong>7.2</strong></td><td><span class="badge badge-watch">WATCH</span></td></tr>
+  <tr><td>Large Cap</td><td><strong>BRK-B</strong></td><td>$487.77</td><td class="up">+0.16%</td><td><strong>7.5</strong></td><td><span class="badge badge-buy">BUY</span></td></tr>
+  <tr><td>Momentum</td><td><strong>ABBV</strong></td><td>$225.42</td><td class="up">+1.05%</td><td><strong>7.3</strong></td><td><span class="badge badge-buy">BUY</span></td></tr>
+  <tr><td>Momentum</td><td><strong>ROST</strong></td><td>$229.45</td><td class="up">+0.89%</td><td><strong>7.0</strong></td><td><span class="badge badge-watch">WATCH</span></td></tr>
+  <tr><td>Momentum</td><td><strong>NVDA</strong></td><td>$208.19</td><td class="flat">-0.22%</td><td><strong>7.0</strong></td><td><span class="badge badge-watch">WATCH</span></td></tr>
+  <tr><td>Wildcard</td><td><strong>CRM</strong></td><td>$175.35</td><td class="down">-3.94%</td><td><strong>6.3</strong></td><td><span class="badge badge-watch">WATCH</span></td></tr>
+  <tr><td>Wildcard</td><td><strong>CSCO</strong></td><td>$120.36</td><td class="down">-3.05%</td><td><strong>6.0</strong></td><td><span class="badge badge-watch">WATCH</span></td></tr>
 </table>
 
-<!-- NEW RULES DISCOVERED -->
-<h2 class="section-title">📝 Self-Learning Rules — June 8 Discovery</h2>
-
-<div class="lessons">
-  <h3 style="margin-bottom:8px;">🧠 New Rules Discovered Today</h3>
-  <ul>
-    <li><strong>OpenAI IPO = AI sector re-rating catalyst (NEW):</strong> An OpenAI IPO is not just a single-company event — it validates the entire AI infrastructure thesis and creates a valuation floor for AI stocks. When the leading AI company goes public, every AI-exposed stock (NVDA, MSFT, GOOGL, AAPL) gets a "comparable valuation" boost. Buy AI sector leaders on the filing day, sell into the IPO hype.</li>
-    <li><strong>Apple WWDC sell-the-news — magnitude amplified by macro (NEW):</strong> AAPL hit $317.40 (new 52W high) on WWDC AI news, then reversed -5% intraday to close $301.54. This is more extreme than MSFT Build sell-the-news (-4.17%). The hot jobs report (yields 4.55%) amplifies the magnitude. Rule: Apple WWDC sell-the-news is typically 3-5% intraday reversal on the keynote day. Buy the dip Day 2 if $300 support holds.</li>
-    <li><strong>VIX below 20 = risk-on regime confirmed (UPDATED):</strong> VIX dropped from 21.51 (Friday) to 18.92 (−12.04%) in a single session. The VIX rule said "rotate from momentum to defensive at >20" — the reverse is now true. When VIX drops below 20 after spiking above, it's a signal to add back high-beta positions. The speed of VIX drop matters: -12% in one day is faster-than-normal fear unwinding, suggesting the Friday selloff was overdone.</li>
-    <li><strong>Apple + Nvidia AI partnership is a genuine NVDA new-catalyst (CONFIRMED):</strong> The Jun 4 rule said NVDA decoupling maxes at 2 sessions. But the Apple AI partnership is a DIFFERENT TAM from data center chips — it's consumer AI at scale. Combined with OpenAI IPO filing, NVDA now has 2 new catalysts vs the Jun 3 AVGO overhang. Rule: When a stock has 2+ independent new catalysts, the sector headwind resistance increases from 2 sessions to potentially 5 sessions.</li>
-  </ul>
+<div class="kpi-row">
+  <div class="kpi"><div class="num up">5</div><div class="desc">BUY</div></div>
+  <div class="kpi"><div class="num" style="color:#fbbf24;">5</div><div class="desc">WATCH</div></div>
+  <div class="kpi"><div class="num" style="color:#f87171;">0</div><div class="desc">AVOID</div></div>
+  <div class="kpi"><div class="num">7.26</div><div class="desc">Avg Score</div></div>
 </div>
 
-<!-- NEXT ACTIONS -->
-<h2 class="section-title">📅 Next Actions — Tue Jun 9</h2>
-
-<div class="lessons">
-  <ul>
-    <li>🇺🇸 <strong>Tuesday Open:</strong> AAPL $300 support — if holds, consider DIP BUY entry. WWDC sell-the-news typically reverses Day 2-3.</li>
-    <li>🚀 <strong>MSFT Entry:</strong> Add MSFT as portfolio position with OpenAI IPO catalyst. Buy at open Tue.</li>
-    <li>🏥 <strong>Healthcare rotation:</strong> XLV -0.24% today is first down day. If XLV bounces Tue, healthcare structural thesis strengthens. If XLV -1%+, re-evaluate concentration.</li>
-    <li>🔬 <strong>NVDA:</strong> Monitor Day 2 of semi bounce. $210 resistance. Above $210 = possible re-entry.</li>
-    <li>📊 <strong>OpenAI IPO details:</strong> Watch for valuation details, filing size, timeline. More details could lift AI sector further.</li>
-    <li>🛢 <strong>Oil watch:</strong> $91.28. If oil stays below $92, consumer thesis (ROST) holds. Above $95 = risk-off.</li>
-    <li>🚫 <strong>META removal:</strong> Below 6.0 score → remove from portfolio. Replace with MSFT.</li>
-  </ul>
+<!-- REMOVED STOCKS -->
+<h2>🗑️ Removed / Downgraded Stocks</h2>
+<div class="section-card">
+<table class="watchlist-table">
+  <tr><th>Symbol</th><th>Price</th><th>Change</th><th>Reason</th></tr>
+  <tr><td><strong>META</strong></td><td>$584.59</td><td class="down">-0.14%</td><td>Removed Jun 8. Score 5.8. Capital raise overhang, no catalyst.</td></tr>
+  <tr><td><strong>DELL</strong></td><td>$381.78</td><td class="down">-4.74%</td><td>Structural damage confirmed. $400 broken. -$46 from +46% run.</td></tr>
+  <tr><td><strong>ARM</strong></td><td>$324.86</td><td class="down">-6.22%</td><td>Semi sector carnage. Beta 3.79. Uninvestable during AVGO overhang.</td></tr>
+  <tr><td><strong>AMD</strong></td><td>$475.51</td><td class="down">-3.02%</td><td>Semi carnage. PE 36.4x expensive. No catalyst.</td></tr>
+  <tr><td><strong>QCOM</strong></td><td>$205.42</td><td class="down">-5.67%</td><td>AI device thesis fragile. -5.67% today confirms.</td></tr>
+  <tr><td><strong>MU</strong></td><td>$935.89</td><td class="down">-1.41%</td><td>Still above $900 (50% retrace held) but semi overhang drags.</td></tr>
+  <tr><td><strong>AAPL</strong></td><td>$290.55</td><td class="down">-3.64%</td><td>$300 support BROKE. WWDC sell-the-news Day 2 extended. New support at $285.</td></tr>
+  <tr><td><strong>MSFT</strong></td><td>$403.41</td><td class="down">-2.02%</td><td>OpenAI IPO catalyst didn't hold. Tech weakness drags.</td></tr>
+</table>
 </div>
 
-<div style="text-align:center;margin:32px 0;color:var(--muted);font-size:12px;">
-  Generated by Stocks Self-Learning Agent | Mon Jun 8, 2026 9:42 PM BST<br>
-  Data sources: CNBC, yfinance | Methodology: Multi-layer technical + fundamental + catalyst + risk
+<!-- BEST CATALYSTS -->
+<h2>🌟 Best Catalysts</h2>
+<div class="section-card">
+<ul class="catalyst-list">
+  <li><strong>Healthcare structural rotation</strong> — XLV +1.26% on Day 4 of outperformance. UNH new 52W high. Institutional, not tactical.</li>
+  <li><strong>Oil crash below $90</strong> — $88.42 (-3.15%). Hormuz easing. Below $92 = aggressive BUY tech/semi dip. Below $90 = consumer turbo-charged.</li>
+  <li><strong>10Y Yield declining</strong> — 4.518% (-0.032). Relief from hot jobs report overhang. Supports growth valuations.</li>
+  <li><strong>Nikkei +2.17% overnight</strong> — Asian markets strong, suggesting global risk appetite returning.</li>
+  <li><strong>NVDA dual catalyst density</strong> — OpenAI IPO + Apple AI partnership continuing to provide decoupling from semi carnage (-0.22% vs QCOM -5.67%).</li>
+  <li><strong>ROST trade-down thesis re-activated</strong> — Oil below $90 removes consumer headwind. +0.89% recovering above $225.</li>
+</ul>
+</div>
+
+<!-- AREAS OF CONCERN -->
+<h2>⚠️ Areas of Concern</h2>
+<div class="section-card">
+<ul class="concern-list">
+  <li><strong>AAPL $300 support BROKE</strong> — $290.55 close. WWDC sell-the-news extending to Day 2 with no bounce. Jun 8 dip-buy call was wrong.</li>
+  <li><strong>Semi bounce was dead cat</strong> — SMH +5% Monday, -1.20% today. ARM -6.22%, QCOM -5.67%. AVGO overhang still active Day 4+.</li>
+  <li><strong>VIX creeping up</strong> — 19.87 (+5.02%). Right at the 20 threshold. One bad session = VIX >20 = defensive rotation.</li>
+  <li><strong>Tech selloff structural</strong> — NASDAQ -0.97% even with lower oil and lower yields. Not macro-driven, sector-specific.</li>
+  <li><strong>Healthcare may be over-extended</strong> — XLV +4.27% in 4 days. UNH +7.58% in 5 days. Needs consolidation.</li>
+  <li><strong>DELL structural damage confirmed</strong> — $381.78 well below $400. +46% run fully unwound.</li>
+  <li><strong>Software sector broken</strong> — NOW -6.32%, CRM -3.94%. "Best month since 2001" thesis fully reversed.</li>
+  <li><strong>CRM near 52W low</strong> — PE 11.3x value trap without catalyst.</li>
+</ul>
+</div>
+
+<!-- SELF-LEARNING RULES -->
+<h2>🧠 Self-Learning Rules (Discovered Jun 9)</h2>
+
+<div class="lesson-box">
+  <div class="rule">1. VIX 19.87 = borderline regime, not risk-on (NEW threshold refinement)</div>
+  <p>The Jun 5 rule says "VIX below 20 = risk-on regime confirmed." But at 19.87 with a +5.02% uptick, the regime is genuinely borderline. Rule: VIX between 19-21 is a GRAY ZONE — treat as cautious risk-on. Only VIX below 18 = full risk-on. Only VIX above 21 = defensive.</p>
+</div>
+
+<div class="lesson-box">
+  <div class="rule">2. Oil below $90 doesn't automatically lift tech (NEW — consumer vs tech decoupling)</div>
+  <p>The Jun 4 rule said "Oil below $92 = BUY tech/semi dip (aggressive)." Today oil at $88.42 triggered the zone, but NASDAQ fell -0.97%. The tech selloff is STRUCTURAL (semi overhang, jobs report hangover), not oil-driven. Rule: Oil below $90 lifts CONSUMER (ROST, XLY) but does NOT automatically lift tech if tech has its own sector-specific headwinds. Consumer and tech decouple when tech has independent structural concerns.</p>
+</div>
+
+<div class="lesson-box">
+  <div class="rule">3. Healthcare rotation threshold CONFIRMED at 4+ days (UPDATED from 3-day rule)</div>
+  <p>The Jun 5 rule said "3+ consecutive days of sector outperformance = allocate 40%." Today is Day 4 of XLV outperformance vs XLK. The rule is now confirmed. Enhancement: at 4+ days, the rotation is so deeply institutional that it survives a single day of tech bounce (Jun 8: SMH +5% but XLV held). Rule: After 4+ consecutive days, allocate 50% to the winning sector.</p>
+</div>
+
+<div class="lesson-box">
+  <div class="rule">4. AAPL $300 support failure = WWDC sell-the-news extended by macro overhang — WAIT longer (NEW)</div>
+  <p>The Jun 8 rule said "Buy the dip Day 2 if $300 support holds." $300 did NOT hold. AAPL closed at $290.55 (-3.64%). The sell-the-news duration from the skill says "3-5 sessions" but with macro headwinds (yields still 4.52%, VIX elevated), it extends further. Rule: For mega-cap product-event sell-the-news (WWDC, Build), do NOT buy the dip until Day 3 close minimum, and only if the close is above -3% from the pre-event close. AAPL's pre-event close was ~$307. $290.55 is -5.4% — too deep.</p>
+</div>
+
+<div class="lesson-box">
+  <div class="rule">5. Oil crash from geopolitics IS reversible in hours — DON'T over-weight oil-driven thesis reversals (REVISED)</div>
+  <p>The Jun 1 rule said "Consumer divergence inverted by oil spike" and Jun 3 said "Oil below $95 = rotation reversal." Today oil crashed -3.15% to $88.42 from $91.30 on a single headline (Hormuz traffic increasing). If the Middle East situation changes again, oil could spike back to $95+ overnight. Rule: Oil moves from geopolitical headlines are REVERSIBLE within 24h. Don't over-allocate to oil-sensitive sectors (consumer, energy) based on a single session's oil move. Wait 2 sessions of confirmation.</p>
+</div>
+
+<!-- DECISIONS -->
+<h2>📌 Next Actions (Wed Jun 10)</h2>
+<div class="section-card">
+<ul>
+  <li><strong>Healthcare concentration:</strong> 4 of 10 picks are healthcare (UNH, JNJ, LLY, ABBV). That's 40% allocation — exactly at the recommended ceiling. If XLV has another +1%+ day, take partial profits on ABBV (lowest conviction).</li>
+  <li><strong>Monitor AAPL $285 support:</strong> If AAPL closes below $285, the WWDC sell-the-news becomes structural. Remove from watchlist entirely.</li>
+  <li><strong>Semi sector Day 5 check:</strong> Wednesday is ~Day 5 of the AVGO overhang. The rule says "do NOT buy dip until Day 5 at earliest." Watch for semi stabilization. If SMH holds above $585, consider re-entering NVDA (strongest catalyst density).</li>
+  <li><strong>Oil confirmation:</strong> Need 2 sessions of oil below $90 to confirm the trend. If oil bounces back above $92, reverse the consumer thesis.</li>
+  <li><strong>GOOGL catalyst needed:</strong> Without a specific catalyst, GOOGL stays WATCH. Any pullback below $360 = downgrade.</li>
+  <li><strong>CRM watch for catalyst:</strong> PE 11.3x is deep value but needs a catalyst (earnings, upgrade) to act on.</li>
+  <li><strong>UNH profit-taking alert:</strong> +7.58% in 5 days. Set a trailing stop at $405 (-1.9%).</li>
+</ul>
+</div>
+
+<div style="text-align:center; color:#475569; font-size:0.8rem; margin-top:40px; padding:20px;">
+  Generated by Stocks Self-Learning Agent — Tue Jun 9, 2026 21:30 UK<br>
+  Data from CNBC (real-time) + Yahoo Finance (supplementary)
 </div>
 
 </div>
