@@ -1,377 +1,387 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Stocks Self-Learning Report — June 11, 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stocks Self-Learning Agent — Post-Market Analysis — June 12, 2026</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0d1117;color:#c9d1d9;padding:20px}
-.container{max-width:1000px;margin:0 auto}
-h1{font-size:1.5em;margin-bottom:4px;color:#fff}
-h2{font-size:1.2em;margin:20px 0 12px;color:#58a6ff;border-bottom:1px solid #21262d;padding-bottom:6px}
-.header{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;margin-bottom:16px}
-.header-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:12px}
-.header-item{text-align:center;padding:8px;background:#0d1117;border-radius:6px}
-.header-item .value{font-size:1.3em;font-weight:700}
-.header-item .label{font-size:0.75em;color:#8b949e;margin-top:2px}
-.stock-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(450px,1fr));gap:12px}
-.stock-card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;transition:transform .15s}
-.stock-card:hover{transform:translateY(-2px)}
-.stock-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:6px}
-.stock-symbol{font-size:1.1em;font-weight:700;color:#fff}
-.stock-type{font-size:0.7em;background:#21262d;color:#8b949e;padding:2px 6px;border-radius:4px;margin-left:6px}
-.score-bar{height:6px;background:#21262d;border-radius:3px;position:relative;margin-bottom:6px}
-.score-fill{height:100%;border-radius:3px;transition:width .5s}
-.score-text{position:absolute;right:0;top:-18px;font-size:0.75em;color:#8b949e}
-.stock-detail{margin-top:4px}
-.section{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px;margin-bottom:12px}
-.market-note{background:#1a2332;border-left:3px solid #58a6ff;padding:10px 14px;border-radius:4px;margin:10px 0;font-size:0.9em;line-height:1.5}
-.footer{margin-top:24px;padding:12px;text-align:center;font-size:0.8em;color:#484f58;border-top:1px solid #21262d}
-.small-text{font-size:0.8em;color:#8b949e}
-.badge{display:inline-block;background:#21262d;color:#8b949e;padding:2px 8px;border-radius:10px;font-size:0.75em}
-.positive{color:#00c853}.negative{color:#ff5252}
-ul{margin:8px 0;padding-left:20px;font-size:0.9em;line-height:1.6}
-li{margin-bottom:4px}
-p{margin:4px 0;line-height:1.5}
-</style></head><body>
-<div class="container">
-<h1>📊 Stocks Self-Learning Report</h1>
-<div class="small-text">Thu, June 11, 2026 — Post-Market Analysis (4:20 PM EDT)</div>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; padding: 20px; }
+  h1 { font-size: 1.6rem; color: #f0f6fc; margin-bottom: 4px; }
+  .subtitle { color: #8b949e; font-size: 0.9rem; margin-bottom: 20px; }
+  .summary-box { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 18px; margin-bottom: 20px; }
+  .summary-box h2 { font-size: 1.1rem; color: #58a6ff; margin-bottom: 10px; }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+  .stat { background: #0d1117; border: 1px solid #21262d; border-radius: 8px; padding: 12px; text-align: center; }
+  .stat .label { font-size: 0.75rem; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat .value { font-size: 1.3rem; font-weight: 700; margin: 4px 0; }
+  .stat .change { font-size: 0.85rem; }
+  .up { color: #3fb950; } .down { color: #f85149; } .flat { color: #8b949e; }
+  .vix-box { background: #0d1117; border: 2px solid #3fb950; border-radius: 8px; padding: 12px; text-align: center; }
+  .vix-box .value { font-size: 1.5rem; font-weight: 700; color: #3fb950; }
+  .vix-box .label { font-size: 0.8rem; color: #3fb950; }
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { background: #161b22; color: #8b949e; font-weight: 600; text-align: left; padding: 10px 12px; border-bottom: 2px solid #30363d; white-space: nowrap; }
+  td { padding: 10px 12px; border-bottom: 1px solid #21262d; }
+  tr:hover td { background: #161b22; }
+  .score { display: inline-block; font-weight: 700; font-size: 1.1rem; }
+  .score-9 { color: #3fb950; } .score-8 { color: #56d364; } .score-7 { color: #d29922; }
+  .score-6 { color: #f0883e; } .score-5 { color: #f85149; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600; }
+  .badge-buy { background: rgba(63,185,80,0.15); color: #3fb950; border: 1px solid rgba(63,185,80,0.3); }
+  .badge-watch { background: rgba(210,153,34,0.15); color: #d29922; border: 1px solid rgba(210,153,34,0.3); }
+  .badge-avoid { background: rgba(248,81,73,0.15); color: #f85149; border: 1px solid rgba(248,81,73,0.3); }
+  .section { margin: 24px 0; }
+  .section h2 { font-size: 1.1rem; color: #58a6ff; margin-bottom: 12px; border-bottom: 1px solid #21262d; padding-bottom: 6px; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+  .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .card-header .symbol { font-size: 1.2rem; font-weight: 700; color: #f0f6fc; }
+  .card-header .price-info { text-align: right; }
+  .card-header .price { font-size: 1.2rem; font-weight: 700; }
+  .card-body { font-size: 0.88rem; line-height: 1.5; color: #c9d1d9; }
+  .card-body p { margin: 4px 0; }
+  .card-body .key { color: #8b949e; }
+  .decision-buy { border-left: 4px solid #3fb950; }
+  .decision-watch { border-left: 4px solid #d29922; }
+  .lessons-list { list-style: none; }
+  .lessons-list li { padding: 8px 12px; margin: 4px 0; background: #0d1117; border-radius: 6px; font-size: 0.85rem; }
+  .lessons-list li::before { content: "◆ "; color: #58a6ff; }
+  .header-grid { display: flex; justify-content: space-between; }
+  .market-status { font-size: 0.85rem; color: #8b949e; margin: 4px 0 16px; }
+</style>
+</head>
+<body>
 
-<div class="header">
-    <div style="font-size:1.1em;font-weight:600;margin-bottom:8px">IRAN DEAL DAY 🕊️ — TECH-LED REBOUND, VIX BACK TO GRAY ZONE</div>
-    <div class="market-note">
-        <strong>Major Macro Shift:</strong> Trump claims Iran war settled — will sign deal in 'next few days.' Oil crashes -4.29% to $86.17. VIX plummets -12.51% to 19.44 (below 20 threshold). 10Y yield tumbles to 4.46%. Dow surges +930pts. NASDAQ +2.54% tech-led. <strong>Complete market reversal from yesterday's CPI shock:</strong> VIX >21 defensive zone exited, tech/cyclicals lead, defensives rotate out (XLP -0.26%). Gold recovers +3.13% to $4,237. Jobless claims data at 1:30pm did not disrupt the rally.
-    </div>
-    <div class="header-grid">
-        <div class="header-item"><div class="value positive">+1.86%</div><div class="label">DJIA 50,849</div></div>
-        <div class="header-item"><div class="value positive">+1.75%</div><div class="label">S&P 7,394</div></div>
-        <div class="header-item"><div class="value positive">+2.54%</div><div class="label">NASDAQ 25,810</div></div>
-        <div class="header-item"><div class="value positive" style="color:#00c853">19.44</div><div class="label">VIX -12.51%</div></div>
-        <div class="header-item"><div class="value negative">4.46%</div><div class="label">10Y -1.74%</div></div>
-        <div class="header-item"><div class="value negative">$86.17</div><div class="label">Oil -4.29%</div></div>
-    </div>
+<h1>Stocks Self-Learning Agent</h1>
+<p class="subtitle">Post-Market Analysis • Friday June 12, 2026 • 9:30 PM UK</p>
+
+<!-- REGIME SUMMARY -->
+<div class="summary-box">
+  <h2>📊 Market Regime — Full Risk-On (VIX &lt; 18)</h2>
+  <p style="margin-bottom: 12px;">VIX <strong>17.68</strong> (-9.05%) — BELOW 18 threshold. Per the 3-zone model: full risk-on, add high-beta positions. This is the most bullish VIX regime since Jun 5 (VIX 21.51). The week's CPI shock and Iran deal whipsaw resolved bullishly.</p>
+  <div class="stat-grid">
+    <div class="stat"><div class="label">S&P 500</div><div class="value up">7,431.46</div><div class="change up">+37.16 (+0.50%)</div></div>
+    <div class="stat"><div class="label">NASDAQ</div><div class="value up">25,888.84</div><div class="change up">+79.18 (+0.31%)</div></div>
+    <div class="stat"><div class="label">DJIA</div><div class="value up">51,202.26</div><div class="change up">+353.51 (+0.70%)</div></div>
+    <div class="vix-box"><div class="label">VIX</div><div class="value">17.68</div><div class="label">-1.76 (-9.05%)</div></div>
+  </div>
+  <div class="stat-grid" style="margin-top: 10px;">
+    <div class="stat"><div class="label">10Y Yield</div><div class="value flat">4.481%</div><div class="change up">+0.016 bps</div></div>
+    <div class="stat"><div class="label">WTI Crude</div><div class="value down">$84.29</div><div class="change down">-$3.42 (-3.90%)</div></div>
+    <div class="stat"><div class="label">SMH (Semis)</div><div class="value up">$619.96</div><div class="change up">+1.72%</div></div>
+  </div>
+  <div class="stat-grid" style="margin-top: 10px;">
+    <div class="stat"><div class="label">XLK (Tech)</div><div class="value up">+0.87%</div></div>
+    <div class="stat"><div class="label">XLF (Financials)</div><div class="value up">+1.37%</div></div>
+    <div class="stat"><div class="label">XLV (Healthcare)</div><div class="value down">-0.18%</div></div>
+    <div class="stat"><div class="label">XLY (Cons Disc)</div><div class="value up">+0.26%</div></div>
+    <div class="stat"><div class="label">XLP (Cons Staple)</div><div class="value up">+0.65%</div></div>
+  </div>
+  <div class="market-status">
+    🔑 Key stories: SpaceX IPO (+19% debut, Musk trillionaire), Iran peace deal text finalized (oil -3.90%), Paramount-WBD merger approved by DOJ. Cramer calls <strong>AMD</strong> his No. 1 stock (63% upside).
+  </div>
 </div>
 
-<div style="display:flex;gap:12px;margin-bottom:12px">
-    <span class="badge">Buys: 7</span>
-    <span class="badge">Watches: 3</span>
-    <span class="badge">Removed: 4</span>
-</div>
-
-<h2>🏆 BUY Ratings (7)</h2>
-<div class="stock-grid">
-
-<div class="stock-card" style="border-left:4px solid #00c853;">
-    <div class="stock-header">
-        <div>
-            <span class="stock-symbol">LLY</span>
-            <span class="stock-type">Large Cap</span>
-        </div>
-        <div style="text-align:right">
-            <span style="font-size:1.3em;font-weight:600">$1,160.95</span>
-            <span style="color:#00c853;font-weight:600">+2.16%</span>
-            <div style="font-size:0.8em;color:#888">Near 52W High $1,182.73 (98.2%)</div>
-        </div>
-    </div>
-    <div class="score-bar">
-        <div class="score-fill" style="width:82.0%;background:#00c853"></div>
-        <span class="score-text">8.2/10</span>
-    </div>
-    <div class="stock-detail">
-        <span style="background:#00c853;color:#fff;padding:2px 8px;border-radius:4px;font-weight:600">BUY</span> <span class="badge">⬆️ Upgraded from 8.0</span>
-        <p style="margin:8px 0 0;color:#bbb;font-size:0.9em">TOP HEALTHCARE PICK. +2.16% today, near 52W high ($1,182.73). Healthcare rotation survived CPI shock and is now reaccelerating. GLP-1 secular growth intact. PE 26.1x justified by growth trajectory. XLV +0.81% still positive. <strong>Catalyst:</strong> Healthcare rotation structural, GLP-1 class expansion, obesity market TAM growing. Oil crash below $90 removes consumer headwind that was compressing healthcare.</p>
-    </div>
-</div>
-
-<div class="stock-card" style="border-left:4px solid #00c853;">
-    <div class="stock-header">
-        <div>
-            <span class="stock-symbol">DELL</span>
-            <span class="stock-type">Momentum</span>
-        </div>
-        <div style="text-align:right">
-            <span style="font-size:1.3em;font-weight:600">$391.45</span>
-            <span style="color:#00c853;font-weight:600">+5.85%</span>
-            <div style="font-size:0.8em;color:#888">AH $391.40 (-0.01%)</div>
-        </div>
-    </div>
-    <div class="score-bar">
-        <div class="score-fill" style="width:80.0%;background:#00c853"></div>
-        <span class="score-text">8.0/10</span>
-    </div>
-    <div class="stock-detail">
-        <span style="background:#00c853;color:#fff;padding:2px 8px;border-radius:4px;font-weight:600">BUY</span> <span class="badge">➕ NEW ADDITION</span>
-        <p style="margin:8px 0 0;color:#bbb;font-size:0.9em">AI INFRASTRUCTURE LEADER BOUNCE. +5.85% on tech rebound day. KKR launches Helix AI infrastructure co with $10B+. DELL's server business directly benefits from AI infra capex. Volume 7M vs 9M avg — recovering. PE 18.5x reasonable. After Hours flat ($391.40). <strong>Catalyst:</strong> KKR Helix validates AI infrastructure capex supercycle. DELL +46% run then pullback to $370 bottomed — institutional profit-taking complete. Oil crash removes rate-hike fear that was weighting on growth stocks.</p>
-    </div>
-</div>
-
-<div class="stock-card" style="border-left:4px solid #00c853;">
-    <div class="stock-header">
-        <div>
-            <span class="stock-symbol">NVDA</span>
-            <span class="stock-type">Momentum</span>
-        </div>
-        <div style="text-align:right">
-            <span style="font-size:1.3em;font-weight:600">$204.87</span>
-            <span style="color:#00c853;font-weight:600">+2.22%</span>
-            <div style="font-size:0.8em;color:#888">AH $205.28 (+0.20%)</div>
-        </div>
-    </div>
-    <div class="score-bar">
-        <div class="score-fill" style="width:78.0%;background:#00c853"></div>
-        <span class="score-text">7.8/10</span>
-    </div>
-    <div class="stock-detail">
-        <span style="background:#00c853;color:#fff;padding:2px 8px;border-radius:4px;font-weight:600">BUY</span> <span class="badge">➕ NEW ADDITION</span>
-        <p style="margin:8px 0 0;color:#bbb;font-size:0.9em">SEMI BOUNCE — VIX <20, OIL <90. $200 support HELD. +2.22% today. PE 16.1x cheap for AI king. BofA double upgrade lifted Intel (semis sector-wide). KKR Helix validates AI infra. Apple AI partnership + OpenAI IPO catalysts. AH $205.28 (+0.20%) confirming. <strong>Catalyst:</strong> VIX below 20 = add back high-beta (rule confirmed). Oil below $90 = buy tech/semi (rule confirmed). NVDA decoupling at Day 2 from semi sell-off was the right read — the PC chip catalyst + Apple AI + OpenAI IPO provide catalyst density.</p>
-    </div>
-</div>
-
-<div class="stock-card" style="border-left:4px solid #00c853;">
-    <div class="stock-header">
-        <div>
-            <span class="stock-symbol">BRK-B</span>
-            <span class="stock-type">Large Cap</span>
-        </div>
-        <div style="text-align:right">
-            <span style="font-size:1.3em;font-weight:600">$485.79</span>
-            <span style="color:#00c853;font-weight:600">+0.44%</span>
-            <div style="font-size:0.8em;color:#888">52W Range: $455.19 - $516.85</div>
-        </div>
-    </div>
-    <div class="score-bar">
-        <div class="score-fill" style="width:76.0%;background:#00c853"></div>
-        <span class="score-text">7.6/10</span>
-    </div>
-    <div class="stock-detail">
-        <span style="background:#00c853;color:#fff;padding:2px 8px;border-radius:4px;font-weight:600">BUY</span> <span class="badge">↔️ Held</span>
-        <p style="margin:8px 0 0;color:#bbb;font-size:0.9em">STEADY LARGE-CAP ANCHOR. +0.44% on +1.75% S&P day — underperformed but steady. Cash pile ($400B+) provides ballast. PE 22.6x reasonable. Insurance float benefits from elevated rate environment even as yields decline. <strong>Thesis:</strong> Core portfolio anchor. Not a growth story but protects capital in any regime. Holds value across VIX gray zone.</p>
-    </div>
-</div>
-
-<div class="stock-card" style="border-left:4px solid #00c853;">
-    <div class="stock-header">
-        <div>
-            <span class="stock-symbol">JPM</span>
-            <span class="stock-type">Large Cap</span>
-        </div>
-        <div style="text-align:right">
-            <span style="font-size:1.3em;font-weight:600">$313.49</span>
-            <span style="color:#00c853;font-weight:600">+1.41%</span>
-            <div style="font-size:0.8em;color:#888">PE 13.3x | Yields 4.46%</div>
-        </div>
-    </div>
-    <div class="score-bar">
-        <div class="score-fill" style="width:73.0%;background:#00c853"></div>
-        <span class="score-text">7.3/10</span>
-    </div>
-    <div class="stock-detail">
-        <span style="background:#00c853;color:#fff;padding:2px 8px;border-radius:4px;font-weight:600">BUY</span> <span class="badge">⬆️ Upgraded from 7.0</span>
-        <p style="margin:8px 0 0;color:#bbb;font-size:0.9em">FINANCIAL LEADER — RATES BENEFIT. +1.41% today. XLF +0.75%. Yields at 4.46% still benefit net interest margin. PE 13.3x cheap. Earnings catalyst in July. JPM is the banking sector bellwether. <strong>Catalyst:</strong> Iran deal removes geopolitical risk premium from financial sector. Rising yields (even at 4.46%) support NIM expansion. July earnings catalyst approaching. Market share gains in investment banking.</p>
-    </div>
-</div>
-
-<div class="stock-card" style="border-left:4px solid #00c853;">
-    <div class="stock-header">
-        <div>
-            <span class="stock-symbol">JNJ</span>
-            <span class="stock-type">Large Cap</span>
-        </div>
-        <div style="text-align:right">
-            <span style="font-size:1.3em;font-weight:600">$238.33</span>
-            <span style="color:#ff5252;font-weight:600">-0.07%</span>
-            <div style="font-size:0.8em;color:#888">PE 18.7x | Beta 0.26</div>
-        </div>
-    </div>
-    <div class="score-bar">
-        <div class="score-fill" style="width:74.0%;background:#00c853"></div>
-        <span class="score-text">7.4/10</span>
-    </div>
-    <div class="stock-detail">
-        <span style="background:#00c853;color:#fff;padding:2px 8px;border-radius:4px;font-weight:600">BUY</span> <span class="badge">⬇️ Downgraded from 8.3</span>
-        <p style="margin:8px 0 0;color:#bbb;font-size:0.9em">DEFENSIVE ANCHOR — DOWNGRADED FOR VIX GRAY ZONE. -0.07% flat. Defensives not needed today but JNJ's healthcare classification keeps it relevant. PE 18.7x cheap. Beta 0.26. XLV +0.81% healthcare tailwind. <strong>Thesis:</strong> Keep 1 defensive anchor for VIX gray zone. JNJ's healthcare sector (not consumer defensive) means it benefits from both healthcare rotation AND provides portfolio ballast. Volume 4.9M vs 7.7M avg — quiet session.</p>
-    </div>
-</div>
-
-<div class="stock-card" style="border-left:4px solid #00c853;">
-    <div class="stock-header">
-        <div>
-            <span class="stock-symbol">ROST</span>
-            <span class="stock-type">Momentum</span>
-        </div>
-        <div style="text-align:right">
-            <span style="font-size:1.3em;font-weight:600">$239.11</span>
-            <span style="color:#00c853;font-weight:600">+3.10%</span>
-            <div style="font-size:0.8em;color:#888">New 52W High $240.51</div>
-        </div>
-    </div>
-    <div class="score-bar">
-        <div class="score-fill" style="width:72.0%;background:#00c853"></div>
-        <span class="score-text">7.2/10</span>
-    </div>
-    <div class="stock-detail">
-        <span style="background:#00c853;color:#fff;padding:2px 8px;border-radius:4px;font-weight:600">BUY</span> <span class="badge">➕ RE-ADDED</span>
-        <p style="margin:8px 0 0;color:#bbb;font-size:0.9em">CONSUMER DISCRETIONARY ON OIL CRASH. +3.10% today, near 52W high $240.51. Oil crash to $86.17 = consumer turbo-charged (trade-down structural thesis). XLY +2.48% consumer discretionary sector tailwind. <strong>Thesis:</strong> Off-price retail structural beneficiary in trade-down economy. Oil below $90 = consumer has disposable income again. Removed yesterday on CPI shock — adding back after today's Iran deal reversal. PE 27.9x is premium but justified by growth + 52W high proximity.</p>
-    </div>
-</div>
-
-</div>
-
-<h2>👀 WATCH Ratings (3)</h2>
-<div class="stock-grid">
-
-<div class="stock-card" style="border-left:4px solid #ffa500;">
-    <div class="stock-header">
-        <div>
-            <span class="stock-symbol">AAPL</span>
-            <span class="stock-type">Wildcard</span>
-        </div>
-        <div style="text-align:right">
-            <span style="font-size:1.3em;font-weight:600">$295.63</span>
-            <span style="color:#00c853;font-weight:600">+1.39%</span>
-            <div style="font-size:0.8em;color:#888">AH $295.77 (+0.05%)</div>
-        </div>
-    </div>
-    <div class="score-bar">
-        <div class="score-fill" style="width:70.0%;background:#ffa500"></div>
-        <span class="score-text">7.0/10</span>
-    </div>
-    <div class="stock-detail">
-        <span style="background:#ffa500;color:#fff;padding:2px 8px;border-radius:4px;font-weight:600">WATCH</span> <span class="badge">⬆️ Upgraded from 6.8</span>
-        <p style="margin:8px 0 0;color:#bbb;font-size:0.9em">RECOVERY CONTINUES — $290 HELD SECOND DAY. +1.39% today. Second consecutive day of recovery. WWDC sell-the-news Day 4 bottom confirmed (per rule: Day 4 exhaustion validated). $290 support held through CPI shock day + recovery day. AH $295.77 flat. Volume 40M vs 47M avg — quiet recovery. <strong>Thesis:</strong> WWDC sell-the-news exhausting per rule. Day 4 bottom rule validated (went UP on macro-negative day). Recovery trajectory intact but $300 now resistance. Need to break $300 for upgrade to BUY. Apple AI (Siri, Google/Nvidia partnerships) + OpenAI IPO catalysts provide catalyst density.</p>
-    </div>
-</div>
-
-<div class="stock-card" style="border-left:4px solid #ffa500;">
-    <div class="stock-header">
-        <div>
-            <span class="stock-symbol">ABBV</span>
-            <span class="stock-type">Wildcard</span>
-        </div>
-        <div style="text-align:right">
-            <span style="font-size:1.3em;font-weight:600">$224.77</span>
-            <span style="color:#ff5252;font-weight:600">-0.08%</span>
-            <div style="font-size:0.8em;color:#888">PE 13.8x | XLV +0.81%</div>
-        </div>
-    </div>
-    <div class="score-bar">
-        <div class="score-fill" style="width:68.0%;background:#ffa500"></div>
-        <span class="score-text">6.8/10</span>
-    </div>
-    <div class="stock-detail">
-        <span style="background:#ffa500;color:#fff;padding:2px 8px;border-radius:4px;font-weight:600">WATCH</span> <span class="badge">⬇️ Downgraded from 7.4</span>
-        <p style="margin:8px 0 0;color:#bbb;font-size:0.9em">HEALTHCARE VALUE HOLDING PATTERN. -0.08% flat — did nothing on a +1.75% S&P day. PE 13.8x dirt cheap. XLV +0.81% healthcare tailwind still intact. Volume 4.5M vs 6.5M avg. <strong>Thesis:</strong> Deep value healthcare but needs catalyst. The 'no catalyst, no move' pattern is concerning. Cheap PE alone is not a buy signal. XLV 4-day streak ended yesterday but healthcare still performing. Waiting for volume pickup or catalyst (earnings, pipeline news, upgrade). Trailing PE 13.8x implies no growth priced in.</p>
-    </div>
-</div>
-
-<div class="stock-card" style="border-left:4px solid #ffa500;">
-    <div class="stock-header">
-        <div>
-            <span class="stock-symbol">UNH</span>
-            <span class="stock-type">Momentum</span>
-        </div>
-        <div style="text-align:right">
-            <span style="font-size:1.3em;font-weight:600">$405.55</span>
-            <span style="color:#ff5252;font-weight:600">-0.47%</span>
-            <div style="font-size:0.8em;color:#888">Intraday 52W High Tue: $415.98</div>
-        </div>
-    </div>
-    <div class="score-bar">
-        <div class="score-fill" style="width:66.0%;background:#ffa500"></div>
-        <span class="score-text">6.6/10</span>
-    </div>
-    <div class="stock-detail">
-        <span style="background:#ffa500;color:#fff;padding:2px 8px;border-radius:4px;font-weight:600">WATCH</span> <span class="badge">⬇️ Downgraded from 7.3</span>
-        <p style="margin:8px 0 0;color:#bbb;font-size:0.9em">DISTRIBUTION CONTINUES. -0.47% today — still below $405. The $415.98 intraday 52W high from Tuesday (Jun 9) distribution pattern fully played out. UNH is now -2.5% from that high over 2 sessions. AH not available but close was weak. XLV +0.81% but UNH couldn't participate. <strong>Thesis:</strong> Distribution at 52W high confirmed. Take partial profits rule validated. $400 trailing stop. If $400 breaks, remove from portfolio. Healthcare rotation still in effect but UNH's specific distribution pattern needs more time to resolve.</p>
-    </div>
-</div>
-
-</div>
-
-<h2>🔄 Removed from Portfolio (4)</h2>
+<!-- PORTFOLIO TABLE -->
 <div class="section">
-    <ul>
-        <li><strong>KO</strong> ($82.53, -1.27%) — Consumer staples defensive rotation OUT. Oil crash removes inflation fear. XLP -0.26%. KO was yesterday's top performer (+2.77% on CPI shock). Today the rotation cleanly reversed. Per the consumer/tech decoupling rule: when oil crashes below $90, consumer staples (defensive) get sold while consumer discretionary (cyclical) gets bought. ROST replaces KO.</li>
-        <li><strong>CVX</strong> ($185.82, -2.10%) — Oil crash destroys energy thesis. Oil -4.29% to $86.17 on Iran deal. XLE -1.94% sector leader. The Iran deal reversal is structural — this is not a one-session move. Per the oil geopolitical reversible rule: wait 2 sessions confirmation. First session of oil crash is here. CVX sold. Monitor for re-entry only if oil stabilizes above $90.</li>
-        <li><strong>COST</strong> ($975.69, -0.78%) — Consumer defensive giving back after CPI shock flight. Membership model resilient but no catalyst. COST is 11% below 52W high ($1,096.50). XLP -0.26%. Replaced with ROST (consumer discretionary on oil crash). Keep on watchlist for re-entry if consumer staples rotation returns.</li>
-        <li><strong>CRM</strong> ($166.45, -2.62%) — Value trap confirmed. Near 52W low ($163.31). PE 10.7x but deserved. No catalyst. Software sector revival thesis at risk. Sold from portfolio. Monitor only if catalyst emerges.</li>
-    </ul>
+<table>
+  <thead>
+    <tr><th>#</th><th>Symbol</th><th>Type</th><th>Close</th><th>Change</th><th>Volume</th><th>Score</th><th>Decision</th><th>Prior</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td><td><strong>NVDA</strong></td><td>Momentum</td>
+      <td>$205.19</td><td class="up">+0.16%</td><td>100.9M</td>
+      <td><span class="score score-8">8.0</span></td><td><span class="badge badge-buy">BUY</span></td>
+      <td class="up">▲ 7.8</td>
+    </tr>
+    <tr>
+      <td>2</td><td><strong>DELL</strong></td><td>Momentum</td>
+      <td>$395.57</td><td class="up">+1.05%</td><td>5.9M</td>
+      <td><span class="score score-8">7.8</span></td><td><span class="badge badge-buy">BUY</span></td>
+      <td class="flat">— 8.0</td>
+    </tr>
+    <tr>
+      <td>3</td><td><strong>LLY</strong></td><td>Large Cap</td>
+      <td>$1,133.00</td><td class="down">-2.41%</td><td>2.3M</td>
+      <td><span class="score score-7">7.7</span></td><td><span class="badge badge-buy">BUY</span></td>
+      <td class="down">▼ 8.2</td>
+    </tr>
+    <tr>
+      <td>4</td><td><strong>JPM</strong></td><td>Large Cap</td>
+      <td>$320.72</td><td class="up">+2.31%</td><td>6.5M</td>
+      <td><span class="score score-7">7.6</span></td><td><span class="badge badge-buy">BUY</span></td>
+      <td class="up">▲ 7.3</td>
+    </tr>
+    <tr>
+      <td>5</td><td><strong>BRK-B</strong></td><td>Large Cap</td>
+      <td>$489.25</td><td class="up">+0.71%</td><td>4.1M</td>
+      <td><span class="score score-7">7.6</span></td><td><span class="badge badge-buy">BUY</span></td>
+      <td class="flat">— 7.6</td>
+    </tr>
+    <tr>
+      <td>6</td><td><strong>AMD</strong></td><td>Momentum</td>
+      <td>$511.57</td><td class="up">+4.73%</td><td>29.7M</td>
+      <td><span class="score score-7">7.5</span></td><td><span class="badge badge-buy">BUY</span></td>
+      <td class="up">★ NEW</td>
+    </tr>
+    <tr>
+      <td>7</td><td><strong>ROST</strong></td><td>Momentum</td>
+      <td>$240.13</td><td class="up">+0.43%</td><td>2.8M</td>
+      <td><span class="score score-7">7.4</span></td><td><span class="badge badge-buy">BUY</span></td>
+      <td class="up">▲ 7.2</td>
+    </tr>
+    <tr>
+      <td>8</td><td><strong>JNJ</strong></td><td>Large Cap</td>
+      <td>$240.87</td><td class="up">+1.07%</td><td>6.3M</td>
+      <td><span class="score score-7">7.4</span></td><td><span class="badge badge-buy">BUY</span></td>
+      <td class="flat">— 7.4</td>
+    </tr>
+    <tr>
+      <td>9</td><td><strong>ORCL</strong></td><td>Wildcard</td>
+      <td>$184.13</td><td class="up">+0.02%</td><td>27.1M</td>
+      <td><span class="score score-7">7.0</span></td><td><span class="badge badge-watch">WATCH</span></td>
+      <td class="up">★ NEW</td>
+    </tr>
+    <tr>
+      <td>10</td><td><strong>AAPL</strong></td><td>Wildcard</td>
+      <td>$291.13</td><td class="down">-1.52%</td><td>36.1M</td>
+      <td><span class="score score-6">6.8</span></td><td><span class="badge badge-watch">WATCH</span></td>
+      <td class="down">▼ 7.0</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 
-<h2>📡 External Positions to Watch</h2>
+<!-- INDIVIDUAL ANALYSES -->
 <div class="section">
-    <ul>
-        <li><strong>ORCL</strong> ($184.10, -8.53%) — Earnings reaction: capital raise + cash concerns. AH -0.62%. CNBC says "silver lining for our AI stocks" — the AI cloud capex cycle is intact. ORCL's selloff may be overdone if capital raise funds AI infrastructure that grows revenue. $184 is 46.7% below 52W high ($345.72). Potential value entry if capital raise thesis proves wrong. Monitor Day 2 close.</li>
-        <li><strong>INTC</strong> (upgraded) — BofA double upgrade today. If semis sector recovery is confirmed, Intel could be a laggard-to-leader play. Monitor for inclusion.</li>
-        <li><strong>MSFT</strong> ($390.34, -1.77%) — Still declining. -1.77% on NASDAQ +2.54% day is terrible relative performance. Build sell-the-news extended by macro. OpenAI IPO catalyst should help but hasn't materialized. Avoid until $380 support test or OpenAI catalyst.</li>
-    </ul>
+<h2>🔍 Individual Stock Deep Dives</h2>
+
+<div class="card decision-buy">
+  <div class="card-header">
+    <div><span class="symbol">NVDA</span> <span class="badge badge-buy">BUY</span> <span class="score score-8">8.0</span></div>
+    <div class="price-info"><span class="price up">$205.19</span><br><span class="change up">+0.16%</span></div>
+  </div>
+  <div class="card-body">
+    <p><span class="key">UPGRADED from 7.8.</span> $200 support held for <strong>third consecutive day</strong> — the upgrade trigger. VIX below 18 activates the "add high-beta positions" risk-on rule. OpenAI IPO (+19% SpaceX debut validates IPO cycle) creates catalyst superposition. PE 16.1x remains cheap for AI king. Volume 100.9M elevated. After-hours +0.05% flat. Cramer's "chipmaker" pick likely applies sector-wide.</p>
+    <p><span class="key">Technical:</span> $200 triple-bottom support confirmed. Next resistance: $210 (Jun 11 high). 52W high $236.54 distant but achievable if semi recovery continues.</p>
+    <p><span class="key">Catalysts:</span> OpenAI IPO filing (sector validation), Apple AI partnership (WWDC confirmed), new Arm-based PC chip (new TAM). Semi recovery Day 7 of AVGO overhang.</p>
+    <p><span class="key">Risk:</span> NVDA structural sell-the-news pattern not fully resolved. DELL can't lift NVDA signal still lingers.</p>
+  </div>
 </div>
 
-<h2>📋 Sector Rotation Analysis</h2>
+<div class="card decision-buy">
+  <div class="card-header">
+    <div><span class="symbol">DELL</span> <span class="badge badge-buy">BUY</span> <span class="score score-8">7.8</span></div>
+    <div class="price-info"><span class="price up">$395.57</span><br><span class="change up">+1.05%</span></div>
+  </div>
+  <div class="card-body">
+    <p><span class="key">DOWNGRADED from 8.0.</span> +1.05% bounce but still can't break $400 resistance. Volume 5.9M below average. The institutional profit-taking from the +46% run ($469 high to $370 low) should be complete, but the recovery is slow. AH -0.09% flat.</p>
+    <p><span class="key">Technical:</span> Still trapped between $370 support and $400 resistance. Need a $400+ close to confirm full recovery. 52W high $469.47 distant.</p>
+    <p><span class="key">Catalyst:</span> KKR Helix $10B+ AI infrastructure fund validates capital supercycle. AI server trifecta thesis intact.</p>
+  </div>
+</div>
+
+<div class="card decision-buy">
+  <div class="card-header">
+    <div><span class="symbol">LLY</span> <span class="badge badge-buy">BUY</span> <span class="score score-7">7.7</span></div>
+    <div class="price-info"><span class="price down">$1,133.00</span><br><span class="change down">-2.41%</span></div>
+  </div>
+  <div class="card-body">
+    <p><span class="key">DOWNGRADED from 8.2.</span> -2.41% pullback from near 52W high ($1,182.73). XLV -0.18% (first negative day after 5 straight days of outperformance). Healthcare rotation taking a breather. Volume 2.3M light — not panic selling, just profit-taking.</p>
+    <p><span class="key">Technical:</span> Gave up $1,160 yesterday's close. Next support $1,110 (Jun 9 close). 52W high $1,182.73 still in play but needs XLV to re-accelerate. AH -0.09% flat.</p>
+    <p><span class="key">Thesis intact:</span> GLP-1 secular growth. Healthcare rotation survived CPI shock and oil crash — Day 6 of 6 consecutive days of outperformance now broken, but structural thesis unchanged.</p>
+  </div>
+</div>
+
+<div class="card decision-buy">
+  <div class="card-header">
+    <div><span class="symbol">JPM</span> <span class="badge badge-buy">BUY</span> <span class="score score-7">7.6</span></div>
+    <div class="price-info"><span class="price up">$320.72</span><br><span class="change up">+2.31%</span></div>
+  </div>
+  <div class="card-body">
+    <p><span class="key">UPGRADED from 7.3.</span> +2.31% strong day. XLF +1.37% sector tailwind. Rates at 4.481% benefit NIM (net interest margin). PE 13.3x cheap. Iran deal removes geopolitical risk premium — banks benefit most from geopolitical stability.</p>
+    <p><span class="key">Technical:</span> Approaching 52W high $337.25. Volume 6.5M solid. July earnings catalyst approaching.</p>
+    <p><span class="key">Catalysts:</span> July earnings, rates supporting NIM, JPMorgan traders "turned cautious" per CNBC today (contrarian bullish for positioning).</p>
+  </div>
+</div>
+
+<div class="card decision-buy">
+  <div class="card-header">
+    <div><span class="symbol">BRK-B</span> <span class="badge badge-buy">BUY</span> <span class="score score-7">7.6</span></div>
+    <div class="price-info"><span class="price up">$489.25</span><br><span class="change up">+0.71%</span></div>
+  </div>
+  <div class="card-body">
+    <p><span class="key">UNCHANGED from 7.6.</span> +0.71% moderate gain on +0.50% S&P day. Cash pile ($400B+) provides ballast. Holds value across all VIX regimes.</p>
+    <p><span class="key">Note:</span> "Abel goes his own way with new Berkshire investments, including billions for AI" — CNBC Jun 6. AI exposure through Berkshire's portfolio is underappreciated.</p>
+  </div>
+</div>
+
+<div class="card decision-buy">
+  <div class="card-header">
+    <div><span class="symbol">AMD</span> <span class="badge badge-buy">BUY</span> <span class="score score-7">7.5</span></div>
+    <div class="price-info"><span class="price up">$511.57</span><br><span class="change up">+4.73%</span></div>
+  </div>
+  <div class="card-body">
+    <p><span class="key">NEW ADDITION.</span> +4.73% massive day. Day 7 after AVGO earnings overhang — the "semi recovery begins Day 7" rule triggered. SMH +1.72% confirms sector-wide bounce. VIX below 18 = add high-beta positions per Jun 9 rule. Cramer called a chipmaker his No. 1 stock with 63% upside — likely AMD given +4.73% today.</p>
+    <p><span class="key">Technical:</span> Approaching 52W high $546.44. Volume 29.7M above average. After-hours +0.10%. Fresh semi recovery entrant (Wave 3 per May 29 model).</p>
+    <p><span class="key">Risk:</span> High-beta semi (beta 2.4) — mean-reversion risk if AVGO overhang resurfaces. But Day 7 with SMH +1.72% suggests the overhang is finally clearing.</p>
+  </div>
+</div>
+
+<div class="card decision-buy">
+  <div class="card-header">
+    <div><span class="symbol">ROST</span> <span class="badge badge-buy">BUY</span> <span class="score score-7">7.4</span></div>
+    <div class="price-info"><span class="price up">$240.13</span><br><span class="change up">+0.43%</span></div>
+  </div>
+  <div class="card-body">
+    <p><span class="key">UPGRADED from 7.2.</span> +0.43% modest gain but near 52W high $242.81. Oil crashed to $84.29 (-3.90%) on Iran peace deal — massive consumer discretionary tailwind. XLY +0.26%. Trade-down structural thesis intact and strengthened by oil collapse.</p>
+    <p><span class="key">Technical:</span> Six cents from 52W high ($242.81). Breakout imminent. Volume 2.8M — still building.</p>
+    <p><span class="key">Catalysts:</span> Oil below $86 (now $84) turbo-charges consumer discretionary. Iran deal removes inflation fear. ROST is the structural off-price beneficiary.</p>
+  </div>
+</div>
+
+<div class="card decision-buy">
+  <div class="card-header">
+    <div><span class="symbol">JNJ</span> <span class="badge badge-buy">BUY</span> <span class="score score-7">7.4</span></div>
+    <div class="price-info"><span class="price up">$240.87</span><br><span class="change up">+1.07%</span></div>
+  </div>
+  <div class="card-body">
+    <p><span class="key">UNCHANGED from 7.4.</span> +1.07% solid gain. Healthcare anchor holds value across VIX regimes. Beta 0.26. XLV -0.18% but JNJ outperformed its sector. Forward PE 18.9x reasonable.</p>
+    <p><span class="key">Thesis:</span> Healthcare rotation is structural, even if XLV took a breather today. Day 1 of healthcare underperformance after 5 straight days of outperformance is a pause, not a reversal.</p>
+  </div>
+</div>
+
+<div class="card decision-watch">
+  <div class="card-header">
+    <div><span class="symbol">ORCL</span> <span class="badge badge-watch">WATCH</span> <span class="score score-7">7.0</span></div>
+    <div class="price-info"><span class="price up">$184.13</span><br><span class="change up">+0.02%</span></div>
+  </div>
+  <div class="card-body">
+    <p><span class="key">NEW ADDITION.</span> +0.02% stabilized above $180 concern level (yesterday's next_actions trigger). The Jun 11 concern said "if ORCL stabilizes above $180, potential buy opportunity." $184.13 confirmed. Volume 27.1M still elevated but rationalizing.</p>
+    <p><span class="key">Technical:</span> 52W high $345.72 (far away). Current price 47% below that — trading at depressed levels after capital raise. PE 20x approx.</p>
+    <p><span class="key">Catalysts:</span> CNBC "Oracle tumbles on earnings. But there's a silver lining for our AI stocks" — suggesting the capital raise funds AI infrastructure. Jim Lebenthal adding to Oracle.</p>
+    <p><span class="key">Risk:</span> Value trap below 50% ATH without catalyst. But the capital raise is a specific catalyst (funding AI infra). Distinguish from CRM-type value trap.</p>
+  </div>
+</div>
+
+<div class="card decision-watch">
+  <div class="card-header">
+    <div><span class="symbol">AAPL</span> <span class="badge badge-watch">WATCH</span> <span class="score score-6">6.8</span></div>
+    <div class="price-info"><span class="price down">$291.13</span><br><span class="change down">-1.52%</span></div>
+  </div>
+  <div class="card-body">
+    <p><span class="key">DOWNGRADED from 7.0.</span> -1.52% on a +0.50% S&P day. $300 resistance held firm for another day. Now testing $290 support again. The Jun 11 rule said "break and hold $300 = upgrade to BUY" — instead AAPL dropped back toward $290. WWDC sell-the-news Day 5: pre-WWDC close ~$307, now -5.1% below. The macro overlay (yields 4.48%) is extending the sell-the-news duration.</p>
+    <p><span class="key">Technical:</span> $290 support critical. Intraday 52W high $317.40 still fresh (Jun 8). AH +0.16% small bounce. Volume 36.1M below average — not panic selling.</p>
+    <p><span class="key">Risk:</span> If $290 breaks, next stop $280 (Jun 5 CPI low). But VIX below 18 should provide a bid for mega-cap tech.</p>
+  </div>
+</div>
+</div>
+
+<!-- REMOVED STOCKS -->
 <div class="section">
-    <ul>
-        <li><strong>Tech (XLK +3.73%) — LEADER.</strong> VIX below 20 + oil below $90 = textbook tech rebound. BofA Intel upgrade + KKR Helix + Bezos Prometheus = AI infra narrative intact. ORCL capital raise is the only cloud on the horizon, but CNBC calls it a "silver lining" for AI stocks.</li>
-        <li><strong>Materials (XLB +3.27%) — Strong.</strong> Oil crash reduces input costs. Dollar index -0.29% supports commodities. Gold recovery to $4,237.</li>
-        <li><strong>Industrials (XLI +3.24%) — Strong.</strong> Iran deal removes geopolitical uncertainty in global supply chains.</li>
-        <li><strong>Consumer Disc (XLY +2.48%) — Strong.</strong> Oil crash = consumer tailwind. ROST +3.10%, new 52W high territory.</li>
-        <li><strong>Healthcare (XLV +0.81%) — Modest.</strong> 5th consecutive day of outperformance. The 4-day streak was broken yesterday (-1.11%) but today XLV still positive while defensives (XLP) sold off. Healthcare is NOT a defensive sector in this rotation — it's an independent structural theme. LLY +2.16% leads.</li>
-        <li><strong>Financials (XLF +0.75%) — Modest.</strong> Yields at 4.46% still supportive. Banks benefit from steepening yield curve as short-term rates drop faster.</li>
-        <li><strong>Energy (XLE -1.94%) — Laggard.</strong> Oil crash directly hits sector. CVX -2.10%. Iran deal is structurally bearish for oil. Avoid energy.</li>
-        <li><strong>Cons Staples (XLP -0.26%) — Laggard.</strong> Rotation out of defensives. KO -1.27%. COST -0.78%. The inflation-hedge trade unwound in one session.</li>
-    </ul>
+<h2>🗑️ Removed from Portfolio</h2>
+<div class="card" style="border-left: 4px solid #f85149;">
+  <div class="card-body">
+    <p><strong>ABBV</strong> ($227.73, +1.32%) — Despite +1.32% today, was flat for 2 prior sessions. PE 14x cheap but no specific catalyst. XLV -0.18% today — healthcare rotation paused, and ABBV doesn't have LLY's GLP-1 growth story. Replaced with AMD for semi recovery exposure.</p>
+    <p><strong>UNH</strong> ($408.52, +0.73%) — $400 support still holding but distribution pattern from $415.98 52W high not resolved. $400 proximity still a concern. The +0.73% today was inline with S&P — nothing special. Replaced with ORCL on stabilization thesis.</p>
+  </div>
+</div>
 </div>
 
-<h2>📇 Macro Dashboard</h2>
+<!-- PORTFOLIO SUMMARY -->
 <div class="section">
-    <ul>
-        <li><strong>VIX</strong> 19.44 (-12.51%) — Below 20 threshold. Gray zone (19-21). Per rule: cautiously risk-on.</li>
-        <li><strong>10Y Yield</strong> 4.46% (-1.74%) — Tumbled on Iran deal + oil crash. Rate hike fears subsiding.</li>
-        <li><strong>Oil</strong> $86.17 (-4.29%) — IRAN DEAL CRASH. Below $90 threshold. Per rule: oil below $92 = BUY tech/semi dip.</li>
-        <li><strong>Gold</strong> $4,236.60 (+3.13%) — Recovered from yesterday's -$160 crash. Gold acts as risk-on when oil drops.</li>
-        <li><strong>Dollar Index</strong> 99.66 (-0.29%) — Weakening dollar supports risk assets and commodities.</li>
-        <li><strong>FTSE</strong> +0.48%, <strong>DAX</strong> +0.06%, <strong>Nikkei</strong> +0.06%, <strong>HSI</strong> -0.65%, <strong>Shanghai</strong> -0.16% — Mixed global session.</li>
-    </ul>
+<h2>📋 Portfolio Summary</h2>
+<div class="card">
+  <div class="card-body">
+    <p><strong>BUYS (8):</strong> NVDA 8.0, DELL 7.8, LLY 7.7, JPM 7.6, BRK-B 7.6, AMD 7.5, ROST 7.4, JNJ 7.4</p>
+    <p><strong>WATCHES (2):</strong> ORCL 7.0, AAPL 6.8</p>
+    <p><strong>AVOIDS (0):</strong></p>
+    <p><strong>REMOVED (2):</strong> ABBV (no catalyst), UNH ($400 support risk)</p>
+    <p style="margin-top: 8px;"><strong>Sector Allocation:</strong> AI/Semis 3 (30%), Healthcare 2 (20%), Financials 2 (20%), Consumer Disc 1 (10%), Software 1 (10%), Tech HW 1 (10%)</p>
+    <p><strong>Semi concentration check:</strong> 3 (NVDA, AMD, DELL) = at max per Jun 4 rule. Monitor.</p>
+  </div>
+</div>
 </div>
 
-<h2>📝 Key Catalysts & Events</h2>
+<!-- BEST OPPORTUNITIES -->
 <div class="section">
-    <ul>
-        <li><strong>🇮🇷 Trump Iran Deal</strong> — "War settled subject to finalization," signing in "next few days." This is THE dominant catalyst. Removes geopolitical risk premium embedded in oil ($91->$86). Reverses the Iran threat narrative that drove the Jun 3 sell-off.</li>
-        <li><strong>🛢️ Oil -4.29% to $86.17</strong> — Below $90. Per prior rules: below $92 = BUY tech/semi aggressively. Below $86 = consumer discretionary turbo-charged.</li>
-        <li><strong>🏥 Healthcare Rotation Continues</strong> — XLV +0.81% on Day 5. Outperformance vs XLK narrows but healthcare independent thesis intact. LLY near ATH.</li>
-        <li><strong>🏗️ KKR Launches Helix AI Infrastructure</strong> — $10B+ committed capital. Validates AI infrastructure capex supercycle. Direct beneficiary: DELL, NVDA, HPE, MU.</li>
-        <li><strong>🤖 Bezos AI Startup Prometheus</strong> — $12B raise. AI narrative acceleration.</li>
-        <li><strong>💻 Intel Soars on BofA Double Upgrade</strong> — Semi sector recovery signal.</li>
-        <li><strong>📉 Oracle -8.53%</strong> — Capital raise + cash concerns. Cloud on semi sector enthusiasm. CNBC says "silver lining for AI stocks" — capital raise funds AI infra.</li>
-        <li><strong>🚀 OpenAI IPO / SpaceX IPO</strong> — Still in the news cycle. Both remain AI sector tailwinds.</li>
-    </ul>
+<h2>💡 Best Opportunities</h2>
+<div class="card" style="border-left: 4px solid #3fb950;">
+  <ul class="lessons-list">
+    <li><strong>NVDA 8.0 (BUY)</strong> — $200 support triple-verified. VIX&lt;18 risk-on. OpenAI IPO + Apple AI catalysts. PE 16.1x cheap for AI king.</li>
+    <li><strong>JPM 7.6 (BUY)</strong> — +2.31% leader. XLF +1.37%. Rates support NIM. Iran deal removes geopolitical risk. July earnings catalyst.</li>
+    <li><strong>AMD 7.5 (BUY)</strong> — +4.73% semi recovery on Day 7 AVGO overhang. Cramer's No. 1 pick. VIX&lt;18 = add high-beta. Semi Rotation Wave 3 entrant.</li>
+    <li><strong>ROST 7.4 (BUY)</strong> — Six cents from 52W high. Oil $84 consumer tailwind. Trade-down structural thesis intact and strengthening.</li>
+    <li><strong>LLY 7.7 (BUY)</strong> — Healthcare rotation just taking a breather. GLP-1 secular growth unstoppable. Pullback is a dip opportunity.</li>
+  </ul>
+</div>
 </div>
 
-<h2>💡 Self-Learning Rules Discovered Today</h2>
+<!-- AREAS OF CONCERN -->
 <div class="section">
-    <ul>
-        <li><strong>Iran deal is a structural market reversal, not tactical (NEW).</strong> The Jun 3 geopolitical sell-off triggered by Iran threats was completely reversed by Jun 11's "war settled" claim. A geopolitical risk-premium can be ADDED and REMOVED within the same week. Rule: When a peace deal follows military threats within 5 sessions, the ENTIRE oil-driven sector rotation of that period reverses proportionally. Don't treat geopolitical sell-offs as structural until 5+ sessions without resolution.</li>
-        <li><strong>CPI shock + Iran deal same week = VIX whipsaw (NEW).</strong> VIX was 17.01 (Jun 8), spiked to 22.22 (Jun 10 CPI), crashed to 19.44 (Jun 11 Iran deal). The VIX 3-zone model (below 18=risk-on, 19-21=gray, above 21=defensive) survived this week as the correct framework. VIX whipsaw of 5pts+ in 3 sessions is rare but manageable with the zone model.</li>
-        <li><strong>Oil crash from geopolitics reverses FASTER than from CPI/demand (UPDATED).</strong> Yesterday oil $91.09 on Iran threats. Today $86.17 on Iran deal. -$5 in 24h. The "wait 2 sessions for confirmation" rule for oil-driven thesis changes needs a geopolitics vs demand distinction. Rule: Geopolitical oil moves (both up and down) reverse within 24h. Demand-driven oil moves persist 3-5 sessions.</li>
-        <li><strong>Healthcare rotation — Day 5 test passed (UPDATED).</strong> XLV survived CPI shock and oil crash. After 5 consecutive days of outperformance, healthcare is confirmed structural. The 40% allocation rule upgraded to 50% at Day 4. Now on Day 5, healthcare is portfolio core. LLY the leader.</li>
-        <li><strong>Defensive stocks (XLP/KO/COST) rotate OUT the SAME DAY oil crashes below $90 (NEW).</strong> KO yesterday +2.77% on CPI shock → today -1.27% on oil crash. The rotation out of defensives happened instantaneously. Rule: When oil drops below $90 on a geopolitics resolution, consumer staples defensives get sold same-session. Don't hold XLP positions through oil resolution headlines.</li>
-    </ul>
-</div>
-
 <h2>⚠️ Areas of Concern</h2>
-<div class="section">
-    <ul>
-        <li><strong>VIX 19.44 still in gray zone</strong> — not below 18. Cannot go full risk-on. Maintain some defensive positioning.</li>
-        <li><strong>ORCL capital raise — semi overhang risk?</strong> -8.53% on Oracle's capital raise. If Oracle's capital raise signals widespread AI capex funding strain, it could pressure the entire AI infrastructure narrative.</li>
-        <li><strong>CRM near 52W low ($163.31)</strong> — PE 10.7x and still falling. Software sector revival at risk.</li>
-        <li><strong>MSFT -1.77% on NASDAQ +2.54% day</strong> — continued structural weakness. Build sell-the-news extended.</li>
-        <li><strong>UNH distribution pattern not resolved</strong> — $400 support is critical. If broken, remove from portfolio.</li>
-        <li><strong>ABBV no-catalyst pattern</strong> — flat on a +1.75% S&P day. Cheap PE alone not enough.</li>
-    </ul>
+<div class="card" style="border-left: 4px solid #d29922;">
+  <ul class="lessons-list">
+    <li><strong>AAPL $290 support</strong> — Third test of $290 after WWDC. If $290 breaks, next stop $280 (Jun 5 CPI low). VIX&lt;18 provides bid but AAPL's sell-the-news is persistent.</li>
+    <li><strong>DELL below $400</strong> — Still can't clear resistance despite AI infrastructure thesis. Slow recovery from +46% profit-taking.</li>
+    <li><strong>Healthcare rotation pause</strong> — XLV -0.18% after 5 days of outperformance. If this becomes 2+ days, LLY downgrade accelerates.</li>
+    <li><strong>AVGO semi overhang — Day 7</strong> — AMD +4.73% and SMH +1.72% suggest recovery, but AVGO itself -0.91% today. The overhang is fading but not gone.</li>
+    <li><strong>SpaceX IPO capital drain</strong> — Dan Niles: "would not want anything to do with SpaceX after index inclusion." Mega-IPO could drain liquidity from other stocks.</li>
+    <li><strong>JPMorgan traders cautious</strong> — Per CNBC today, JPMorgan traders turned cautious. Contrarian bullish but worth monitoring.</li>
+  </ul>
+</div>
 </div>
 
-<div class="footer">
-    Generated Thu, June 11, 2026 9:30 PM UK — Stocks Self-Learning Agent (Post-Market) | Data: CNBC + yfinance
+<!-- CATALYSTS WATCHLIST -->
+<div class="section">
+<h2>📅 Catalysts Watchlist</h2>
+<div class="card">
+  <ul class="lessons-list">
+    <li><strong>Iran deal signing</strong> — "Next few days." Oil continues falling on resolution. Consumer discretionary tailwind (ROST, XLY).</li>
+    <li><strong>SpaceX IPO market absorption</strong> — +19% debut, $160B+ market cap. How will capital rotation settle next week?</li>
+    <li><strong>JPM July earnings</strong> — Approaching. Financials sector (XLF +1.37%) leading.</li>
+    <li><strong>OpenAI IPO filing</strong> — Continuing to provide sector-wide AI validation (NVDA catalyst).</li>
+    <li><strong>KKR Helix AI infrastructure</strong> — $10B+ validates the capex supercycle (DELL, NVDA, AMD beneficiaries).</li>
+    <li><strong>VIX below 18</strong> — Full risk-on regime. Monitor Monday for confirmation.</li>
+  </ul>
 </div>
-</div></body></html>
+</div>
+
+<!-- LESSONS LEARNED -->
+<div class="section">
+<h2>📝 Self-Learning Rules — Discovered Jun 12</h2>
+<div class="card" style="border-left: 4px solid #58a6ff;">
+  <ul class="lessons-list">
+    <li><strong>VIX &lt; 18 = full risk-on action (CONFIRMED).</strong> The Jun 9 VIX 3-zone model (below 18=risk-on, 19-21=gray, above 21=defensive) was validated after the Jun 10-11 spike-crash. Action: add high-beta positions when VIX drops below 18. Remove when above 21.</li>
+    <li><strong>AVGO earnings overhang clears on Day 7 (NEW).</strong> AMD +4.73% and SMH +1.72% on Day 7 after AVGO's AH earnings miss (Jun 3). The Jun 10 rule "uninvestable for 5-7 sessions" → Day 7 = recovery begins. Buy semi dip on Day 7.</li>
+    <li><strong>Semi recovery sign: sector leader AMD leads, not AVGO (NEW).</strong> The sector recovery started with AMD +4.73% (Wave 3 fresh entrant) while AVGO itself is still -0.91%. Recovery begins with fresh entrants, not the fallen leader. Don't wait for AVGO to recover — buy AMD first.</li>
+    <li><strong>Oil below $86 = consumer discretionary megaphone (CONFIRMED).</strong> Oil at $84.29 on Iran peace deal. The "oil below $90 lifts consumer" rule was correct — but below $86 is even stronger. ROST near 52W high $242.81. XLY +0.26% despite tech strength — both sectors can rally simultaneously when oil collapses.</li>
+    <li><strong>ORCL capital raise stabilization at $180+ = buy signal (CONFIRMED).</strong> ORCL stabilized at $184.13 above the $180 concern level. The Jun 11 next_actions rule was correct — once ORCL held $180+ on Day 2, it became a buy/watch opportunity. Distinguish capital-raise-for-AI (ORCL) from value trap (CRM).</li>
+    <li><strong>Mega-cap product-event sell-the-news at Day 5 — still unresolved (CONFIRMED).</strong> AAPL Day 5 after WWDC at $291.13. The "Day 4 exhaustion" rule was triggered early — AAPL is still selling. WWDC sell-the-news may last 7+ sessions when macro (yields 4.48%) is headwinds. Extend the threshold to 7 sessions.</li>
+    <li><strong>Healthcare rotation pause on Day 6 — not a reversal (NEW — watch for confirmation).</strong> XLV -0.18% on Day 6. One day of underperformance after 5 days of outperformance is a pause. If XLV is negative again on Monday, downgrade thesis to "pause" from "breather."</li>
+  </ul>
+</div>
+</div>
+
+<!-- NEXT ACTIONS -->
+<div class="section">
+<h2>📌 Next Actions — Monday Jun 15</h2>
+<div class="card" style="border-left: 4px solid #f0883e;">
+  <ul class="lessons-list">
+    <li><strong>VIX monitor:</strong> If VIX stays below 18, maintain risk-on. If VIX opens above 19, re-evaluate.</li>
+    <li><strong>AMD Day 2:</strong> If AMD holds above $500 (+4.73% day), upgrade thesis. If gives back, treat as semi dead-cat bounce.</li>
+    <li><strong>AAPL $290 support:</strong> If AAPL breaks $290, downgrade to 6.5 and consider removal. If holds, maintain watch.</li>
+    <li><strong>DELL $400 resistance:</strong> If DELL breaks and holds $400, upgrade back to 8.0.</li>
+    <li><strong>LLY/XLV Day 2:</strong> If XLV continues -0.18% or worse, downgrade LLY further to 7.5. If XLV recovers, maintain 7.7.</li>
+    <li><strong>ORCL confirmation:</strong> If ORCL holds above $180 with normal volume, upgrade to BUY 7.2.</li>
+    <li><strong>ROST 52W high:</strong> If ROST breaks $242.81 with volume, upgrade to 7.6.</li>
+    <li><strong>Oil monitor:</strong> Watch for oil reversal from Iran headlines (reversible within 24h per geopolitics rule).</li>
+    <li><strong>SpaceX IPO absorption:</strong> Monitor how the $160B+ IPO affects sector liquidity on Monday.</li>
+  </ul>
+</div>
+</div>
+
+</body>
+</html>
