@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Weekly Money-Making Research — Week 20 (2026)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',-apple-system,sans-serif; background:#0a0a0f; color:#e4e4e7; line-height:1.7; }
+  .container { max-width:1100px; margin:0 auto; padding:24px 20px; }
+  header { border-bottom:1px solid #1a1a2e; padding-bottom:24px; margin-bottom:32px; }
+  h1 { font-size:32px; font-weight:800; color:#fff; letter-spacing:-0.02em; }
+  h1 span { background:linear-gradient(135deg,#6366f1,#22c55e); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .subtitle { color:#8b8b9e; font-size:14px; margin-top:6px; display:flex; gap:16px; flex-wrap:wrap; }
+  .badge { background:#1a1a2e; color:#8b8b9e; padding:2px 10px; border-radius:999px; font-size:12px; }
+  .badge.green { background:#0d2e1a; color:#22c55e; }
+  .badge.amber { background:#2a1a0e; color:#f59e0b; }
+  .badge.red { background:#2e0d0d; color:#ef4444; }
+  .badge.blue { background:#0d1b2e; color:#60a5fa; }
+  .badge.purple { background:#1a0d2e; color:#a78bfa; }
+  h2 { font-size:22px; font-weight:700; color:#fff; margin:40px 0 20px; letter-spacing:-0.01em; border-bottom:1px solid #1a1a2e; padding-bottom:8px; }
+  h3 { font-size:17px; font-weight:600; color:#d4d4d8; margin:24px 0 12px; }
+  h4 { font-size:15px; font-weight:600; color:#fff; margin:16px 0 8px; }
+  .card { background:#12121a; border:1px solid #1a1a2e; border-radius:12px; padding:20px; margin-bottom:16px; }
+  .card.highlight { border-left:4px solid #6366f1; }
+  .card.danger { border-left:4px solid #ef4444; }
+  .card.success { border-left:4px solid #22c55e; }
+  .card.amber { border-left:4px solid #f59e0b; }
+  .meta { font-size:12px; color:#6b6b80; margin-bottom:8px; }
+  .tag { display:inline-block; background:#1a1a2e; color:#8b8b9e; font-size:11px; padding:2px 8px; border-radius:6px; margin:2px 4px 2px 0; }
+  .tag.green { background:#0d2e1a; color:#22c55e; }
+  .tag.blue { background:#0d1b2e; color:#60a5fa; }
+  .tag.amber { background:#2a1a0e; color:#f59e0b; }
+  .tag.red { background:#2e0d0d; color:#ef4444; }
+  .tag.purple { background:#1a0d2e; color:#a78bfa; }
+  .rating-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin:10px 0; }
+  .rating-item { background:#0a0a0f; border-radius:8px; padding:8px 12px; text-align:center; }
+  .rating-item .label { font-size:10px; color:#6b6b80; text-transform:uppercase; letter-spacing:0.05em; }
+  .rating-item .value { font-size:16px; font-weight:700; color:#fff; margin-top:2px; }
+  .top-list { list-style:none; counter-reset:top; }
+  .top-list li { counter-increment:top; padding:16px 0 16px 36px; position:relative; border-bottom:1px solid #0f0f1a; }
+  .top-list li:last-child { border:none; }
+  .top-list li::before { content:counter(top); position:absolute; left:0; top:16px; width:26px; height:26px; background:#12121a; border:1px solid #1a1a2e; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:#6366f1; }
+  .top-list li:nth-child(-n+3)::before { background:#6366f1; color:#fff; border-color:#6366f1; }
+  .video-table { width:100%; border-collapse:collapse; font-size:13px; }
+  .video-table th { text-align:left; padding:8px 10px; color:#6b6b80; font-weight:500; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; border-bottom:1px solid #1a1a2e; }
+  .video-table td { padding:10px; border-bottom:1px solid #0f0f1a; vertical-align:top; }
+  .video-table tr:hover td { background:#0f0f1a; }
+  .video-table .url { color:#6366f1; text-decoration:none; font-size:12px; }
+  .video-table .url:hover { text-decoration:underline; }
+  .recent { color:#22c55e; font-weight:600; }
+  .red-flag { background:#2e0d0d; border:1px solid #3f1a1a; border-radius:8px; padding:14px 16px; margin:8px 0; font-size:13px; }
+  .action-plan { background:linear-gradient(135deg,#0d1b2e,#12121a); border:1px solid #1a2e4a; border-radius:12px; padding:20px; }
+  .action-plan li { padding:8px 0; border-bottom:1px solid #0f0f1a; font-size:14px; }
+  .action-plan li:last-child { border:none; }
+  .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:16px 0; }
+  .stat-card { background:linear-gradient(135deg,#12121a,#0d1b2e); border:1px solid #1a1a2e; border-radius:10px; padding:16px; text-align:center; }
+  .stat-card .num { font-size:28px; font-weight:800; color:#6366f1; }
+  .stat-card .label { font-size:11px; color:#6b6b80; text-transform:uppercase; letter-spacing:0.05em; margin-top:4px; }
+  .footer { margin-top:40px; padding-top:20px; border-top:1px solid #1a1a2e; font-size:12px; color:#6b6b80; }
+  @media (max-width:600px) { .container { padding:16px 12px; } h1 { font-size:24px; } .rating-grid { grid-template-columns:repeat(2,1fr); } .stat-grid { grid-template-columns:repeat(2,1fr); } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>📊 <span>Weekly</span> Money-Making Research</h1>
+  <div class="subtitle">
+    <span>📅 Week 20 — 12–17 May 2026</span>
+    <span>🎯 UK-Focused | AI & Automation</span>
+    <span class="badge green">5 Research Days</span>
+    <span class="badge blue">60+ Opportunities Analysed</span>
+  </div>
+</header>
+
+<!-- Section 1: Weekly Executive Summary -->
+<h2>📋 Weekly Executive Summary</h2>
+<div class="card highlight">
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num">5</div><div class="label">Research Days</div></div>
+    <div class="stat-card"><div class="num">12-17</div><div class="label">May Dates</div></div>
+    <div class="stat-card"><div class="num">50+</div><div class="label">Videos Analysed</div></div>
+    <div class="stat-card"><div class="num">4</div><div class="label">Reddit Forums</div></div>
+    <div class="stat-card"><div class="num">15+</div><div class="label">New Tools Found</div></div>
+    <div class="stat-card"><div class="num">50</div><div class="label">Total Opportunities</div></div>
+  </div>
+
+  <p><strong>Week 20 (12–17 May 2026)</strong> was dominated by <strong>AI-powered money-making methods</strong> — particularly Claude AI for digital product creation, faceless YouTube channels targeting USA audiences, and AI automation agencies for local UK businesses. The research covered 5 days (Tuesday 12 May through Sunday 17 May, with a gap on Friday 15 May).</p>
+
+  <p style="margin-top:12px;"><strong>Dominant Theme:</strong> 2026 is the year of the <strong>AI-powered solo entrepreneur</strong>. Every day this week reinforced the same message: AI tools (Claude, ChatGPT, Codex, Replit Agent) have collapsed the cost and skill barrier for starting online businesses. The most repeated opportunities — digital products on Etsy, faceless YouTube, vibe-coded micro-SaaS — all leverage AI at every stage.</p>
+
+  <p style="margin-top:12px;"><strong>Weekly MVP:</strong> <span style="color:#22c55e;font-weight:700;">AI-Generated Digital Products on Etsy</span> — appeared in all 5 daily reports as the #1 or close-to-#1 opportunity. Lowest barrier to entry (£0-50), fastest time to first sale (1-7 days), highest automation potential for Dr Ateeq's skill set.</p>
+
+  <p style="margin-top:12px;"><strong>Emerging Trend:</strong> <span style="color:#60a5fa;font-weight:700;">Vibe Coding / No-Code SaaS</span> gained significant momentum during the week. Multiple new tutorials showing AI-built apps generating $10k-$400k/month. Dr Ateeq's existing AI/coding skills make this an ideal long-term play.</p>
+
+  <p style="margin-top:12px;"><strong>UK-Specific Insight:</strong> Car boot sale reselling for eBay/Vinted remains the most reliable quick-cash model for UK residents. TikTok Shop UK is in early-adopter phase. AI automation services for UK SMEs are underserved.</p>
+</div>
+
+<!-- Section 2: Best Opportunity of the Week -->
+<h2>🥇 Best Opportunity of the Week</h2>
+<div class="card success">
+  <h3>AI-Generated Digital Products on Etsy / Gumroad</h3>
+  <div>
+    <span class="tag green">Startup: £0-50</span>
+    <span class="tag green">Difficulty: 3/10</span>
+    <span class="tag green">First Revenue: 1-7 Days</span>
+    <span class="tag blue">Scalability: High</span>
+    <span class="tag purple">Automation: 9/10</span>
+    <span class="tag green">UK Suitability: Excellent</span>
+    <span class="tag green">Risk: Low</span>
+  </div>
+  <p style="margin-top:12px;"><strong>Why it won the week:</strong> This opportunity appeared in <strong>every single daily report</strong> as the #1 or #2 recommendation. Multiple highly-viewed YouTube creators validated the model independently — Molly Keyser ($18k/month ebooks), Alek (3 products in 18 minutes with Claude), Richard Yu (5 highest-earning digital product categories), Handmade & Beyond, Luna Vega, Tatyana Savage, Shivangi Tiwari. The consistency of the signal across 5 days of research is unprecedented.</p>
+
+  <p style="margin-top:8px;"><strong>The model:</strong> Use Claude AI to create digital products (planners, templates, ebooks, printables, Notion dashboards, Canva templates, social media kits, AI prompt libraries) and sell them on Etsy or Gumroad. Zero inventory, instant delivery, no shipping, £0.16 listing fees. AI handles 90% of the production work.</p>
+
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Startup Cost</div><div class="value">£0-50</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">3/10</div></div>
+    <div class="rating-item"><div class="label">Time to Revenue</div><div class="value">1-7 days</div></div>
+    <div class="rating-item"><div class="label">Scalability</div><div class="value">⭐ 8/10</div></div>
+    <div class="rating-item"><div class="label">Competition</div><div class="value">Medium</div></div>
+    <div class="rating-item"><div class="label">UK Suitability</div><div class="value">⭐ 9/10</div></div>
+    <div class="rating-item"><div class="label">Automation</div><div class="value">⭐ 9/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Low</div></div>
+  </div>
+
+  <p><strong>Key validation videos this week:</strong></p>
+  <ul style="padding-left:20px;margin:8px 0;">
+    <li>Richard Yu — "These 5 Digital Products Are Making the Most Money in 2026" (40k views, 4 days ago)</li>
+    <li>Alek — "I made 3 digital products with claude in 18 minutes" (141k views, 11 days ago)</li>
+    <li>Molly Keyser — "How selling Ebooks with Claude changed my life" (140k views, 2 weeks ago)</li>
+    <li>Chris Koerner — "The Beginner-Friendly Claude AI Side Hustle Nobody Talks About" (64k views, 3 days ago)</li>
+    <li>Handmade & Beyond — Claude for Etsy best sellers (multiple videos, 27-30k views each)</li>
+  </ul>
+
+  <p><strong>First 3 actions:</strong> (1) Open Etsy seller account (£0.16 per listing). (2) Use Claude to generate 5 products in one afternoon — pick from planners, templates, ebooks. (3) List with SEO-optimised titles, create Pinterest pins for traffic.</p>
+</div>
+
+<!-- Section 3: Top 20 Opportunities Ranked -->
+<h2>🏆 Top 20 Opportunities (Ranked Across the Week)</h2>
+<ol class="top-list">
+
+<li>
+  <strong>AI-Generated Digital Products on Etsy/Gumroad</strong>
+  <span class="tag green">#1 Every Day</span><span class="tag green">Low Cost</span>
+  <div class="meta">Appeared in: All 5 daily reports (May 12, 13, 14, 16, 17) | Sources: Molly Keyser, Alek, Richard Yu, Handmade & Beyond, Luna Vega, Chris Koerner, Shivangi Tiwari, Tatyana Savage</div>
+  <p>Create digital planners, ebooks, templates, printables using Claude/Canva — sell on Etsy. Zero inventory, instant delivery, AI-automatable production. <strong>Best overall opportunity of the week.</strong></p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£0-50</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">3/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">1-7 days</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">9/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Low</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>Faceless YouTube Channels (USA High-RPM Niches)</strong>
+  <span class="tag blue">High RPM</span><span class="tag green">Low Cost</span>
+  <div class="meta">Appeared in: May 13, 14, 16, 17 | Sources: Tube Sensei (81k views, 2 days ago), Jack Craig (275k views), Sabrina Ramonov, MystGrow ($18k claim), Fabio Morena</div>
+  <p>Create AI-generated YouTube channels targeting USA audiences for 10-30x higher ad RPM (£5-15 vs £1-3 UK). Tube Sensei's 10 secret niches video (2 days old, 81k views) was the freshest high-value content of the week. Finance education, tech reviews, self-improvement, history docs.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£0-100</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">5/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">2-6 months</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">8/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Medium</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>No-Code SaaS / Vibe Coding Micro-SaaS</strong>
+  <span class="tag blue">Highest Scale</span><span class="tag purple">Technical</span>
+  <div class="meta">Appeared in: May 13, 14, 16, 17 | Sources: Richard Yu (32k views, 4 days), Jason Lee ($400K/mo app), Mikey No Code (17k views), Kushal Arora, Silicon Valley Girl ($10k/mo), Fomin Business ($33k/week), NeedMVP</div>
+  <p>Build micro-SaaS apps using AI coding tools (Claude Code, Codex, Replit Agent, Bolt) — no traditional coding skills needed. Emerging "vibe coding" mega-trend of 2026. Jason Lee built a $400K/mo app this way. Perfect for Dr Ateeq's skills.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£0-100/mo</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">6/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">2-12 weeks</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">10/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Medium</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>AI Automation Agency (AAA) for Local UK Businesses</strong>
+  <span class="tag blue">High Ticket</span><span class="tag purple">Skills Match</span>
+  <div class="meta">Appeared in: May 12, 13, 14, 16, 17 | Sources: Sabrina Ramonov ($1M AI biz), Him-eesh Madaan (226k views), Connor Cahill ($178K/mo), Liam Ottley ($20k/mo Claude Code), Nate Herk (188k views), OpenClaw ($11M case study)</div>
+  <p>Offer AI workflow automation services to UK SMEs — chatbots, lead qualification, customer service, content repurposing. Recurring retainer model (£500-5,000/month). 5.5M UK SMEs are underserved by AI automation. Directly matches Dr Ateeq's technical skills.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£0-200</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">7/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">2-6 weeks</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">9/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Medium</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>UK eBay/Vinted Car Boot Reselling</strong>
+  <span class="tag green">Quick Cash</span><span class="tag green">Low Risk</span>
+  <div class="meta">Appeared in: May 12, 13, 14, 16, 17 | Sources: Flipping Sloth (9.4k views, 1 day ago), Retro Reselling (15k views), Ricky Resells, Sam Coleman, Rachael Fantastic, Sellingwithsully, Warders Clobber (£2k+ sales), Reseller George, The Homeschooling Picker</div>
+  <p>Source items from UK car boot sales/charity shops — resell on eBay and Vinted. Proven UK model with same-day cash potential. Vinted has zero seller fees. Car boot season is at its peak (May-September).</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£20-200</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">3/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">1-7 days</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">10/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Very Low</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>TikTok Shop UK</strong>
+  <span class="tag green">Early Market</span>
+  <div class="meta">Appeared in: May 13, 14, 16, 17 | Sources: Learn & Earn with Shahzaib (7 views), Sabrina Ramonov, Nick ($10K/mo AI TikTok Shop), Jon Reiter (free course)</div>
+  <p>Sell products via TikTok Shop in the UK — early-adopter phase with low seller competition. Free to start. AI can generate product videos. Growing ecosystem with dedicated UK tutorials now available.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£0-500</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">5/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">1-4 weeks</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">10/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Low-Medium</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>Claude AI Consulting/Training for Businesses</strong>
+  <span class="tag green">Zero Cost</span>
+  <div class="meta">Appeared in: May 13, 14, 16, 17 | Sources: Chris Koerner (64k views, 3 days ago), Sabrina Ramonov (190k views), Patrick Dang (123k views), Mikey No Code</div>
+  <p>Train local UK businesses on using Claude AI — workshops, 1-on-1 coaching, corporate training. Charge £200-500 per session or £500-1,500/month for ongoing setup. Most SMEs know AI exists but don't know how to use it.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£0</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">4/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">1-3 weeks</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">9/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Very Low</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>AI-Powered Blogging with Affiliate Marketing</strong>
+  <span class="tag green">Low Cost</span>
+  <div class="meta">Appeared in: May 16, 17 | Sources: Satish K Videos (96k views, 3 days ago, £42/day claim), Sabrina Ramonov</div>
+  <p>Generate SEO-optimised blog content using AI at scale, monetised via affiliate commissions (Amazon UK, Awin). Satish K Videos claims ₹4500/day (~£42) from AI-generated posts. Low startup cost (£10-30), good automation potential.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£10-30</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">3/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">1-3 months</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">7/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Medium</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>AI Agents as a Service (Build & Deploy)</strong>
+  <span class="tag purple">Technical</span><span class="tag blue">High Potential</span>
+  <div class="meta">Appeared in: May 12, 13, 17 | Sources: Nate Herk (188k views, 2+ hour course), Him-eesh Madaan (226k views), Liam Ottley ($20k/mo), AI Learners India</div>
+  <p>Build custom AI agents (WhatsApp bots, customer service automation, lead qualification) using Claude Code + n8n + Twilio. Sell as a service to businesses. Directly matches Dr Ateeq's Hermes/tool-building expertise.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£20-50</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">7/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">2-6 weeks</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">9/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Medium</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>AI Dropshipping on Shopify</strong>
+  <span class="tag amber">Medium Cost</span>
+  <div class="meta">Appeared in: May 12, 13, 14, 16, 17 | Sources: Mark Tilbury (926k views, 12 days ago — featured 4 days), AutoDS, BuildYourStore.ai</div>
+  <p>AI-powered dropshipping using tools like BuildYourStore.ai and AutoDS to automate store creation, product research, and fulfilment. Mark Tilbury's 7-day challenge video was the most-viewed dropshipping content. Competition is high.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£100-300</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">6/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">2-8 weeks</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">7/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Medium-High</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>Pinterest + Print-on-Demand</strong>
+  <span class="tag green">Low Cost</span>
+  <div class="meta">Appeared in: May 13, 14 | Sources: 90s Mentor (76k views), Vaibhav Kadnar (206k views), Money With Mak, Printful/Printify</div>
+  <p>Use Pinterest's massive organic traffic to promote print-on-demand products (t-shirts, mugs, phone cases) via Printful/Printify. Zero inventory, AI-designed products, Pinterest drives 40%+ of Etsy traffic.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£0-50</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">4/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">2-6 weeks</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">8/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Low</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>Social Media Monetisation (Instagram Theme Pages)</strong>
+  <span class="tag green">Zero Cost</span>
+  <div class="meta">Appeared in: May 13, 14 | Sources: Satish K Videos (105k views), Reddit r/sidehustle (70k follower page → car rental commissions), r/Entrepreneur (AI influencer replacement discussion)</div>
+  <p>Build themed Instagram pages in specific niches, monetise via affiliate marketing, brand deals, and product sales. AI can automate content generation and scheduling.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£0-20</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">5/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">1-3 months</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">8/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Low</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>One-Person AI Business (Solo Entrepreneur Model)</strong>
+  <span class="tag blue">High Potential</span>
+  <div class="meta">Appeared in: May 12, 13 | Sources: Ritik Gupta (19k views), Sabrina Ramonov, Silicon Valley Girl, The Solo Entrepreneur</div>
+  <p>Build a self-sustaining online business entirely solo using AI tools as your "team" — combining AI agents, automation, and micro-SaaS. Aligns perfectly with Dr Ateeq's existing skills.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£0-100/mo</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">8/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">1-3 months</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">9/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Medium-High</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>AI Influencer / Avatar Services for Businesses</strong>
+  <span class="tag blue">Emerging</span>
+  <div class="meta">Appeared in: May 16 | Sources: Tech Umee (79k views), Reddit r/Entrepreneur (brands replacing influencers with AI), Aitana Lopez case study</div>
+  <p>Create and manage AI influencers or sell AI avatar video services to brands. Confirmed trend: brands are quietly replacing real influencers with AI-generated personas. Growing acceptance and demand.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£50-200</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">5/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">2-8 weeks</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">8/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Medium</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>Claude-Based Digital Product Factory (Batch Production)</strong>
+  <span class="tag green">Automation-First</span>
+  <div class="meta">Appeared in: May 17 | Sources: Alek (141k views, 3 products in 18 mins), Molly Keyser, Kate Hayes (60 designs in 8 mins), Handmade & Beyond</div>
+  <p>Industrial-scale AI digital product creation. Alek made 3 products with Claude in 18 minutes. Kate Hayes created 60 social media designs in 8 minutes using Claude + Canva. Batch production with n8n automation pipelines.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£20</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">2/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">1-2 weeks</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">9/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Low</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>Amazon FBA with AI Tools</strong>
+  <span class="tag amber">Higher Capital</span>
+  <div class="meta">Appeared in: May 14 | Sources: Travis Marziani (2.8k views, 2 days ago), Mark Tilbury, BuildYourStore.ai, Helium10</div>
+  <p>Use AI tools for Amazon FBA product research, listing optimisation, and inventory management. Higher startup cost (£500-2,000) but proven model. AI reduces the research and listing burden.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£500-2,000</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">7/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">4-12 weeks</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">8/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Medium-High</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>Faceless YouTube Automation with AI</strong>
+  <span class="tag blue">Scalable</span>
+  <div class="meta">Appeared in: May 13, 16 | Sources: Sabrina Ramonov (190k views), AI Flow (65k views), Jack Craig (275k views)</div>
+  <p>Full pipeline automation: Claude for scripts → ElevenLabs for voice → Kling/Runway for AI video → automated uploads. Multi-channel scaling potential. Sabrina mentions specific proven formats including AI avatar monk videos (2M+ followers).</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£20-100/mo</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">5/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">3-6 months</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">8/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Medium (YT policy)</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>Instagram Affiliate Marketing (Automated)</strong>
+  <span class="tag green">Low Cost</span>
+  <div class="meta">Appeared in: May 14, 16 | Sources: Satish K Videos (105k views), r/sidehustle discussions, Awin/Amazon UK affiliate programmes</div>
+  <p>Build Instagram pages around UK-relevant niches (budget fashion, home gym, meal prep) and monetise through affiliate marketing. AI generates and schedules content automatically.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£0-30</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">4/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">2-6 weeks</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">8/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Low</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>UK eBay/Vinted Clothing Reselling (Six-Figure Strategy)</strong>
+  <span class="tag green">Low Risk</span>
+  <div class="meta">Appeared in: May 16 | Sources: Sellingwithsully (streamed 3 days ago, 906 views — six-figure UK reseller), CrossList tool</div>
+  <p>Professional clothing reselling on eBay and Vinted with a six-figure revenue model. Specific brands/styles that sell fast. CrossList tool automates multi-platform listing. UK secondhand market is booming.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£100-500</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">3/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">1-7 days</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">10/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Very Low</div></div>
+  </div>
+</li>
+
+<li>
+  <strong>Local Business AI Automation Services (UK)</strong>
+  <span class="tag green">Underserved</span>
+  <div class="meta">Appeared in: May 12 | Sources: Multiple YouTube creators, local UK business automation demand</div>
+  <p>Offer AI workflow automation to local UK businesses — appointment booking, invoice processing, customer follow-ups. Recurring £500-2,000/month retainers. UK SMEs are largely unaware of AI automation possibilities.</p>
+  <div class="rating-grid">
+    <div class="rating-item"><div class="label">Cost</div><div class="value">£0-50</div></div>
+    <div class="rating-item"><div class="label">Difficulty</div><div class="value">6/10</div></div>
+    <div class="rating-item"><div class="label">Revenue</div><div class="value">2-4 weeks</div></div>
+    <div class="rating-item"><div class="label">UK</div><div class="value">10/10</div></div>
+    <div class="rating-item"><div class="label">Risk</div><div class="value">Low</div></div>
+  </div>
+</li>
+
+</ol>
+
+<!-- Section 4: Best Videos of the Week -->
+<h2>🎬 Best Videos of the Week</h2>
+<div class="card">
+  <table class="video-table">
+    <thead>
+      <tr><th>Title</th><th>Channel</th><th>Age</th><th>Views</th><th>Why Notable</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>10 Secret USA Based Faceless Channel Niches 2026</strong><br><a class="url" href="https://youtube.com/watch?v=hUTBA-VgVdA">Watch →</a></td>
+        <td>Tube Sensei</td>
+        <td class="recent">2 days ago</td>
+        <td>81k</td>
+        <td>Freshest high-value content. Specific niche list for USA RPM strategy.</td>
+      </tr>
+      <tr>
+        <td><strong>These 5 Digital Products Are Making the Most Money in 2026</strong><br><a class="url" href="https://youtube.com/watch?v=fSBzhYeLGJk">Watch →</a></td>
+        <td>Richard Yu</td>
+        <td>4 days ago</td>
+        <td>40k</td>
+        <td>Specific product categories with earnings data. Best digital product reference.</td>
+      </tr>
+      <tr>
+        <td><strong>POV. British Car Boot Sale's Are AMAZING In 2026</strong><br><a class="url" href="https://youtube.com/watch?v=JVXzulgCVyA">Watch →</a></td>
+        <td>Flipping Sloth</td>
+        <td class="recent">1 day ago</td>
+        <td>9.4k</td>
+        <td>Best UK car boot reselling content. Fresh, authentic, practical.</td>
+      </tr>
+      <tr>
+        <td><strong>I Built a Real SaaS With AI in 1 Hour (No Code)</strong><br><a class="url" href="https://youtube.com/watch?v=50ICXHwOHP4">Watch →</a></td>
+        <td>Richard Yu</td>
+        <td>4 days ago</td>
+        <td>32k</td>
+        <td>Best no-code SaaS demo. Shows actual build process.</td>
+      </tr>
+      <tr>
+        <td><strong>The Beginner-Friendly Claude AI Side Hustle Nobody Talks About</strong><br><a class="url" href="https://youtube.com/watch?v=quYKZushRPo">Watch →</a></td>
+        <td>Chris Koerner</td>
+        <td>3 days ago</td>
+        <td>64k</td>
+        <td>Claude training for businesses — validated the consulting model.</td>
+      </tr>
+      <tr>
+        <td><strong>₹4500/Day From Blogging Through AI in 2026!</strong><br><a class="url" href="https://youtube.com/watch?v=qTwXYYWb5i4">Watch →</a></td>
+        <td>Satish K Videos</td>
+        <td>3 days ago</td>
+        <td>96k</td>
+        <td>AI blogging with affiliate marketing — specific income claims.</td>
+      </tr>
+      <tr>
+        <td><strong>What Clothing Actually Sells on Ebay & Vinted - Uk Six Figure Reseller</strong><br><a class="url" href="https://youtube.com/watch?v=vnOaShGie_c">Watch →</a></td>
+        <td>Sellingwithsully</td>
+        <td>3 days ago</td>
+        <td>906</td>
+        <td>Specific UK brands/styles that sell. Low views but high quality.</td>
+      </tr>
+      <tr>
+        <td><strong>I Couldn't Believe These Prices..</strong><br><a class="url" href="https://www.youtube.com/watch?v=_J0s7F31h6s">Watch →</a></td>
+        <td>Retro Reselling</td>
+        <td>3 days ago</td>
+        <td>15k</td>
+        <td>UK car boot sourcing — found surprisingly cheap items.</td>
+      </tr>
+      <tr>
+        <td><strong>I made 3 digital products with claude in 18 minutes</strong><br><a class="url" href="https://youtube.com/watch?v=E57vDFkBu_Q">Watch →</a></td>
+        <td>Alek</td>
+        <td>11 days ago</td>
+        <td>141k</td>
+        <td>Speed benchmark for digital product creation. Referenced across multiple days.</td>
+      </tr>
+      <tr>
+        <td><strong>How selling Ebooks with Claude changed my life</strong><br><a class="url" href="https://youtube.com/watch?v=nmRWmF2Umes">Watch →</a></td>
+        <td>Molly Keyser</td>
+        <td>2 weeks ago</td>
+        <td>140k</td>
+        <td>$18k/month claim. Most-watched digital product video. Course seller warning.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Section 5: Best Forum/Community Insights -->
+<h2>💬 Best Forum & Community Insights</h2>
+<div class="card">
+  <h4>Reddit r/sidehustle</h4>
+  <ul style="padding-left:20px;">
+    <li><strong>"I make $2k-4k/month building websites for local businesses"</strong> (33 pts, May 16) — Directly applicable: Build simple AI-enhanced websites for UK local businesses using Claude Code. Charge £500-2,000/site.</li>
+    <li><strong>"Done-for-you ecommerce / automation — reviews?"</strong> (16 pts, May 14) — Growing interest in DFY ecommerce setups. Users seeking completely managed automation solutions.</li>
+    <li><strong>"Has anyone else noticed brands quietly replacing real influencers with AI generated personas?"</strong> (15 pts, r/Entrepreneur) — Confirms AI influencer trend is accelerating. Opportunity to offer AI influencer creation services.</li>
+    <li><strong>"Is Micro SaaS a good side hustle?"</strong> — Community consensus: Yes, if you solve one specific problem. Best for technical founders.</li>
+    <li><strong>"€5k/month Instagram monetization idea — 70k followers → car rental commissions"</strong> (3 pts, May 14) — Niche-specific Instagram monetisation works. AI can generate niche content at scale.</li>
+    <li><strong>"Recurring commission — AI customer reply system"</strong> (May 14) — Referral model for selling AI chat to small businesses, validating AI agency demand.</li>
+    <li><strong>"Vending Machines in 2026?"</strong> (28 pts, May 14) — Detailed guide. Physical passive income. Moderate scalability, higher upfront cost.</li>
+    <li><strong>"Excel-related side hustles"</strong> (11 pts, May 14) — Demand for data cleanup/analysis freelancing. Good for technically skilled users.</li>
+  </ul>
+
+  <h4 style="margin-top:16px;">Reddit r/beermoneyuk</h4>
+  <ul style="padding-left:20px;">
+    <li><strong>OakNorth bank offer</strong> — £30 when depositing £1,000 for 30 days (+£10 for second account). Quick £40 for minimal effort.</li>
+    <li><strong>Klarna £10 offer</strong> — Bank switching offers and referral rewards dominate this subreddit. Small one-off gains only.</li>
+    <li><strong>Macadam paid-to-walk app</strong> — Discussion of fitness reward apps. Low earnings potential.</li>
+  </ul>
+
+  <h4 style="margin-top:16px;">Other Forums</h4>
+  <ul style="padding-left:20px;">
+    <li>Reddit r/Entrepreneur — Confirmed AI influencer replacement trend. Brands shifting to AI personas.</li>
+    <li>Multiple car boot sale communities active — peak season (May-September) driving content.</li>
+  </ul>
+</div>
+
+<!-- Section 6: Repeated Trends -->
+<h2>🔄 Repeated Trends (Mentioned 3+ Days)</h2>
+<div class="card">
+  <table class="video-table">
+    <thead>
+      <tr><th>Trend</th><th>Days Appeared</th><th>Momentum</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>AI Digital Products on Etsy</strong></td>
+        <td>5/5 days</td>
+        <td><span style="color:#22c55e;">🔥🔥🔥🔥🔥</span></td>
+        <td>Strongest signal of the week. Every day had new validation. Molly Keyser, Alek, Richard Yu, Chris Koerner all confirming.</td>
+      </tr>
+      <tr>
+        <td><strong>UK Car Boot/Vinted Reselling</strong></td>
+        <td>5/5 days</td>
+        <td><span style="color:#22c55e;">🔥🔥🔥🔥</span></td>
+        <td>Consistent UK-specific content. Multiple creators publishing daily. Peak season effect.</td>
+      </tr>
+      <tr>
+        <td><strong>AI Automation Agency / AI Agents</strong></td>
+        <td>5/5 days</td>
+        <td><span style="color:#22c55e;">🔥🔥🔥🔥</span></td>
+        <td>Sabrina Ramonov, Him-eesh Madaan, Liam Ottley all featured across the week. Growing AI agency ecosystem.</td>
+      </tr>
+      <tr>
+        <td><strong>Faceless YouTube Channels</strong></td>
+        <td>4/5 days</td>
+        <td><span style="color:#f59e0b;">🔥🔥🔥🔥</span></td>
+        <td>Tube Sensei's niche video was the freshest. USA RPM strategy gaining traction. YouTube policy risks noted.</td>
+      </tr>
+      <tr>
+        <td><strong>No-Code SaaS / Vibe Coding</strong></td>
+        <td>4/5 days</td>
+        <td><span style="color:#22c55e;">🔥🔥🔥🔥🔥</span></td>
+        <td>INCREASING momentum across the week. Richard Yu, Jason Lee ($400K/mo), Mikey No Code all new this week.</td>
+      </tr>
+      <tr>
+        <td><strong>AI Dropshipping</strong></td>
+        <td>5/5 days</td>
+        <td><span style="color:#f59e0b;">🔥🔥🔥</span></td>
+        <td>Mark Tilbury's video dominated. Sponsored content — take with caution. High competition in saturated niches.</td>
+      </tr>
+      <tr>
+        <td><strong>TikTok Shop UK</strong></td>
+        <td>4/5 days</td>
+        <td><span style="color:#60a5fa;">🔥🔥🔥</span></td>
+        <td>Early-adopter phase in UK. Low competition but low resources. Worth registering early even without launching.</td>
+      </tr>
+      <tr>
+        <td><strong>Claude AI Consulting/Training</strong></td>
+        <td>4/5 days</td>
+        <td><span style="color:#22c55e;">🔥🔥🔥🔥</span></td>
+        <td>Growing trend. Chris Koerner's video (64k views, 3 days) added fresh validation. Zero-cost way to test the market.</td>
+      </tr>
+      <tr>
+        <td><strong>AI Blogging with Affiliate</strong></td>
+        <td>2/5 days</td>
+        <td><span style="color:#60a5fa;">🔥🔥</span></td>
+        <td>Satish K Videos' claim of £42/day from AI blog posts. Good automation potential for Dr Ateeq.</td>
+      </tr>
+      <tr>
+        <td><strong>Claude Design (New Tool)</strong></td>
+        <td>3/5 days</td>
+        <td><span style="color:#22c55e;">🔥🔥🔥🔥</span></td>
+        <td>New Claude feature — making digital product creation even faster. Major opportunity for early adopters.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Section 7: New Platforms/Tools Discovered -->
+<h2>🛠️ New Platforms & Tools Discovered This Week</h2>
+<div class="card">
+  <table class="video-table">
+    <thead>
+      <tr><th>Tool/Platform</th><th>Category</th><th>Source</th><th>Opportunity</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Claude Design</strong></td><td>AI Design</td><td>Multiple videos</td><td>Create digital products, pitch decks, designs without Canva. Game-changer for Etsy sellers.</td></tr>
+      <tr><td><strong>BuildYourStore.ai</strong></td><td>AI Ecommerce</td><td>Mark Tilbury (926k views)</td><td>Free AI-built Shopify store. Quick store setup, but sponsored.</td></tr>
+      <tr><td><strong>AutoDS</strong></td><td>Dropshipping Automation</td><td>Mark Tilbury</td><td>Product sourcing + fulfilment automation. £1 trial.</td></tr>
+      <tr><td><strong>Genspark</strong></td><td>AI Agent Platform</td><td>Make Money with Stacy La (131k views)</td><td>Builds affiliate marketing businesses autonomously.</td></tr>
+      <tr><td><strong>Base44</strong></td><td>No-Code App Builder</td><td>Richard Yu (39k views)</td><td>Quick no-code app development.</td></tr>
+      <tr><td><strong>GoHighLevel</strong></td><td>CRM + Automation</td><td>Sabrina Ramonov</td><td>White-label CRM for agency services. £97/mo.</td></tr>
+      <tr><td><strong>ManyChat AI</strong></td><td>Chatbot Builder</td><td>YouTube tutorials</td><td>Instagram/Facebook AI chatbots for businesses.</td></tr>
+      <tr><td><strong>Hostinger OpenClaw AI</strong></td><td>AI Website Builder</td><td>Him-eesh Madaan (226k views)</td><td>AI website + agent builder platform.</td></tr>
+      <tr><td><strong>Replit Agent</strong></td><td>AI Coding</td><td>Multiple tutorials</td><td>Rapid prototyping with AI assistance.</td></tr>
+      <tr><td><strong>CrossList</strong></td><td>Listing Automation</td><td>Retro Reselling</td><td>Cross-post eBay/Vinted/Depop listings. 30% off promo.</td></tr>
+      <tr><td><strong>Blotato</strong></td><td>AI Content Repurposing</td><td>Sabrina Ramonov</td><td>33M+ views via Blotato. Repurpose any content format.</td></tr>
+      <tr><td><strong>Higgsfield</strong></td><td>AI Video</td><td>Nate Herk (62k views)</td><td>Turn Claude into a creative agency. AI video generation.</td></tr>
+      <tr><td><strong>Bolt / Bolt.new</strong></td><td>AI Coding</td><td>Multiple tutorials</td><td>No-code web app builder with AI.</td></tr>
+      <tr><td><strong>Kling</strong></td><td>AI Video Generation</td><td>Sabrina Ramonov, AI Flow</td><td>Faceless YouTube video creation.</td></tr>
+      <tr><td><strong>Tailwind</strong></td><td>Pinterest Scheduling</td><td>Etsy guides</td><td>Schedule Pinterest pins for Etsy traffic.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Section 8: Opportunities Suitable for Immediate Testing -->
+<h2>⚡ Opportunities Suitable for Immediate Testing</h2>
+<div class="card success">
+  <p><strong>Top picks you can test this week with minimal time and money:</strong></p>
+  <ol style="padding-left:20px;margin-top:10px;">
+    <li><strong>AI Digital Products (1 afternoon, £0-2):</strong> Use Claude to create 3 digital products, list on Etsy/Gumroad. Total cost: £0.48 in listing fees. See if any sell organically within 7 days.</li>
+    <li><strong>Car Boot Reselling (1 Saturday morning, £20-50):</strong> Visit a local car boot sale with £20-50 cash. Buy branded items. List on Vinted (free) immediately. Profit potential: £50-200 per weekend.</li>
+    <li><strong>Claude Training Offer (1 hour, £0):</strong> Create a simple landing page or LinkedIn post offering "Free 30-min Claude AI consultation for UK businesses." Gauge demand before investing time.</li>
+    <li><strong>Micro-SaaS MVP (1 weekend, £0-20):</strong> Pick one small problem. Use Claude Code to build an MVP. Launch on Product Hunt. Test if people will pay.</li>
+    <li><strong>AI Blog Post (2 hours, £10):</strong> Register a domain, write 3 AI-generated SEO posts targeting UK long-tail keywords. Set up Amazon UK affiliate links. Track rankings for 2 weeks.</li>
+  </ol>
+</div>
+
+<!-- Section 9: Opportunities to Avoid -->
+<h2>❌ Opportunities to Avoid</h2>
+<div class="card danger">
+  <ul style="padding-left:20px;">
+    <li><strong>CFD/Forex Trading</strong> — 76% of retail CFD accounts lose money. Plus500 ads pervasive on YouTube. Gambling disguised as investing.</li>
+    <li><strong>Cryptocurrency Signals / Trading</strong> — Skipped all crypto content. Volatile, unregulated, and most signal groups are scams.</li>
+    <li><strong>"Typing Jobs" / "Data Entry"</strong> — Mimi Luarca (238k views) promoting typing jobs. These are microtask platforms paying £0.01-0.10 per task. Not worth a skilled professional's time.</li>
+    <li><strong>"Ad Watching Jobs"</strong> — 334k views video promoting ad-watching income. Known scam pattern — pay to start, never pay out.</li>
+    <li><strong>Gamified "Earn by Clicking" Apps</strong> — Vaibhav Kadnar's "crazy app" (223k views). Typically require upfront payment, harvest data, and pay pennies.</li>
+    <li><strong>Pyramid/MLM Schemes</strong> — None identified this week (good), but always watch for "recruit-first" models disguised as "affiliate marketing."</li>
+    <li><strong>eBay Clothing Reselling in Saturated Categories</strong> — David Pelayo (25k views): "Selling Clothing On Ebay Is Dead!!" Niche items (vintage, retro gaming) still work but mass-market clothing is oversaturated.</li>
+  </ul>
+</div>
+
+<!-- Section 10: Scam Patterns Noticed -->
+<h2>🔴 Scam/Hype Pattern Report (Week 20)</h2>
+<div class="card amber">
+  <p><strong>Recurring patterns identified across the week:</strong></p>
+  <ul style="padding-left:20px;margin-top:10px;">
+    <li><strong>"Make $X in 24 hours" headlines</strong> — Money Talk With Leon's "I Used Claude AI To Make $5,000 In 24 Hours" (245k views). Classic guru clickbait. Realistic earnings for beginners are 10-50x lower.</li>
+    <li><strong>"Secret app" / "Crazy app" funnel</strong> — Videos promising hidden apps are always gamified ad-revenue platforms. Legitimate opportunities don't hide in "secret" apps.</li>
+    <li><strong>Course-first creators</strong> — Talha Reviews (60k views, 1 day ago video → TalhaReviews.com course), Silicon Valley Girl ($10k/mo course), Molly Keyser (ebook course). Take their methods, not their payment details.</li>
+    <li><strong>Sponsored content disguised as organic</strong> — Mark Tilbury's AutoDS/BuildYourStore.ai sponsorship. Useful content but sponsored. Treat income claims with caution.</li>
+    <li><strong>YouTube AI demonetisation risk</strong> — Lucky Breakdown (68k views) warning: "YouTube Is DEMONETIZING AI Channel." Use AI as assistant, not replacement. Add human editing and original commentary.</li>
+  </ul>
+</div>
+
+<!-- Section 11: UK-Specific Opportunities -->
+<h2>🇬🇧 UK-Specific Opportunities</h2>
+<div class="card">
+  <table class="video-table">
+    <thead>
+      <tr><th>Opportunity</th><th>UK Score</th><th>Why It Works in the UK</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Car Boot Sale → Vinted/eBay Reselling</td><td><span style="color:#22c55e;font-weight:700;">10/10</span></td><td>UK has unparalleled car boot culture. Vinted has zero seller fees in the UK. Peak season now (May-Sept).</td></tr>
+      <tr><td>TikTok Shop UK</td><td><span style="color:#22c55e;font-weight:700;">10/10</span></td><td>Active UK rollout. Low seller competition. Free to register. Dedicated UK tutorials now available.</td></tr>
+      <tr><td>No-Code SaaS (Global from UK)</td><td><span style="color:#22c55e;font-weight:700;">10/10</span></td><td>Global SaaS market accessible from UK. Stripe UK for payments. UK-registered company benefits.</td></tr>
+      <tr><td>AI Automation for UK SMEs</td><td><span style="color:#22c55e;font-weight:700;">9/10</span></td><td>5.5M UK SMEs underserved. Accountants, estate agents, dentists, tradespeople all need automation.</td></tr>
+      <tr><td>Etsy Digital Products (UK Shop)</td><td><span style="color:#22c55e;font-weight:700;">9/10</span></td><td>Etsy UK marketplace. Digital goods = no VAT or customs. £1,000 trading allowance before tax reporting.</td></tr>
+      <tr><td>Claude AI Training for UK Businesses</td><td><span style="color:#22c55e;font-weight:700;">9/10</span></td><td>UK businesses lag in AI adoption. Huge demand for practical training. Charge in GBP.</td></tr>
+      <tr><td>Faceless YouTube (USA Audience from UK)</td><td><span style="color:#22c55e;font-weight:700;">8/10</span></td><td>Create content in English from UK. Target USA for higher RPM. Need US-accent voiceover.</td></tr>
+      <tr><td>Amazon FBA UK</td><td><span style="color:#f59e0b;font-weight:700;">8/10</span></td><td>Amazon UK is well-established. Higher capital requirement (£500-2,000). Proven model.</td></tr>
+      <tr><td>AI Blogging (UK Affiliates)</td><td><span style="color:#f59e0b;font-weight:700;">7/10</span></td><td>Amazon UK Associates, Awin, ShareASale all open. UK-specific niches (energy, broadband, personal finance).</td></tr>
+      <tr><td>AI Dropshipping</td><td><span style="color:#f59e0b;font-weight:700;">7/10</span></td><td>Import duties from China. UK customer expectations for fast delivery. Consider UK/EU suppliers.</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:12px;"><strong>UK Tax Note:</strong> Trading allowance of £1,000/year before needing to register as self-employed. Digital products under £85k/year typically don't charge VAT. Register with HMRC as sole trader for earnings above £1,000.</p>
+</div>
+
+<!-- Section 12: Automation Opportunities -->
+<h2>🤖 Automation Opportunities (Leveraging Dr Ateeq's Skills)</h2>
+<div class="card">
+  <table class="video-table">
+    <thead>
+      <tr><th>Opportunity</th><th>Automation Score</th><th>What Can Be Fully Automated</th><th>Best Tools</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Digital Product Creation</td><td><span style="color:#22c55e;font-weight:700;">9/10</span></td><td>Claude API generates products in batch. Auto-list to Etsy via API. AI-generated descriptions, tags, SEO, mockups.</td><td>Claude API + Canva API + Etsy API + n8n</td></tr>
+      <tr><td>AI Blogging</td><td><span style="color:#22c55e;font-weight:700;">9/10</span></td><td>Content generation (Claude), scheduling, keyword research, SEO optimisation, affiliate link insertion.</td><td>Claude API + WordPress API + n8n/Make</td></tr>
+      <tr><td>Micro-SaaS Development</td><td><span style="color:#22c55e;font-weight:700;">9/10</span></td><td>AI handles 80%+ of coding via Claude Code. Supabase for backend. Stripe for billing. Vercel/Netlify for hosting.</td><td>Claude Code + Supabase + Stripe + Vercel</td></tr>
+      <tr><td>Faceless YouTube</td><td><span style="color:#60a5fa;font-weight:700;">7/10</span></td><td>Script → Voiceover → Video → Upload pipeline. n8n/Make workflows. Manual quality check needed.</td><td>Claude + ElevenLabs API + Kling/Runway + n8n</td></tr>
+      <tr><td>AI Agency Delivery</td><td><span style="color:#60a5fa;font-weight:700;">7/10</span></td><td>Client onboarding, chatbot responses, reporting can be automated. Sales and custom setup are manual.</td><td>n8n + Claude API + Twilio + GoHighLevel</td></tr>
+      <tr><td>eBay/Vinted Listing</td><td><span style="color:#f59e0b;font-weight:700;">4/10</span></td><td>CrossList for multi-platform listing. AI descriptions. Manual sourcing and photography required.</td><td>CrossList + Claude API</td></tr>
+      <tr><td>Claude Training</td><td><span style="color:#f59e0b;font-weight:700;">3/10</span></td><td>Service-based model. Reusable training materials can be automated. Follow-up sequences automatable.</td><td>MailerLite/ConvertKit + Calendly</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:12px;"><strong>Key insight:</strong> Dr Ateeq's existing skills with Claude Code, Hermes agents, n8n, and API integration give a <strong>huge advantage</strong> in building automated pipelines for these opportunities. The most automation-friendly path is <strong>Digital Product Factory</strong> — a fully automated pipeline from Claude API product generation → Etsy/Gumroad listing → Pinterest promotion — can run 24/7.</p>
+</div>
+
+<!-- Section 13: Recommended 7-Day Action Plan -->
+<h2>🎯 Recommended 7-Day Action Plan (18–24 May)</h2>
+<div class="action-plan">
+  <h4 style="color:#fff;margin-bottom:12px;">Priority 1: AI Digital Products (Days 1-3, £1-2 cost)</h4>
+  <ol style="padding-left:20px;">
+    <li><strong>Day 1:</strong> Research best-selling Etsy UK digital products. Use eRank or Etsy search. Pick 3 niches (planners, templates, ebooks).</li>
+    <li><strong>Day 2:</strong> Use Claude Design to create 5 products. Design mockups in Canva. Write SEO-optimised titles and descriptions.</li>
+    <li><strong>Day 3:</strong> List all 5 products on Etsy (£0.16 each = £0.80 total). Create 5 Pinterest pins per product. Start daily pinning.</li>
+  </ol>
+
+  <h4 style="color:#fff;margin:16px 0 12px;">Priority 2: Claude Training Offer (Days 1-4, £0 cost)</h4>
+  <ol style="padding-left:20px;">
+    <li><strong>Day 1:</strong> Create a landing page: "Free 30-min Claude AI consultation for UK businesses — learn how AI can save you 10+ hours/week."</li>
+    <li><strong>Day 2:</strong> DM 10 local business owners on LinkedIn. Target: accountants, estate agents, dentists, tradespeople.</li>
+    <li><strong>Day 3-4:</strong> Build 3 demo automations (customer service bot, content generator, data analyst). Showcase during consultations.</li>
+  </ol>
+
+  <h4 style="color:#fff;margin:16px 0 12px;">Priority 3: Car Boot Reselling Test (Day 6, £20-50 cost)</h4>
+  <ol style="padding-left:20px;">
+    <li><strong>Saturday morning:</strong> Visit local car boot sale via carbootfinder.co.uk. Bring £20-50 cash.</li>
+    <li>Focus on: branded clothing (Next, Zara, M&S, Levi's), electronics, collectibles, retro games.</li>
+    <li>List immediately on Vinted (free, no fees). Cross-list to eBay for items worth £20+.</li>
+  </ol>
+
+  <h4 style="color:#fff;margin:16px 0 12px;">Priority 4: Setup Week (Passive)</h4>
+  <ol style="padding-left:20px;">
+    <li>Register for TikTok Shop UK (free — secure early-mover spot even if not used yet).</li>
+    <li>Set up a UK affiliate blog on cheap hosting (£10-20). Write 3 AI-generated SEO articles targeting UK long-tail keywords.</li>
+    <li>Install Claude Pro (£16/mo) + Canva Pro (£12/mo) if serious about digital products.</li>
+  </ol>
+
+  <h4 style="color:#fff;margin:16px 0 12px;">Long-Term Build (Weeks 2-4)</h4>
+  <ol style="padding-left:20px;">
+    <li>Based on which test shows fastest traction, double down: digital products (scale to 50+ products), Claude training (book 10+ clients), or micro-SaaS (launch on Product Hunt).</li>
+    <li>Build automation pipeline: n8n workflows to batch-produce products/blog posts/video scripts using Claude API.</li>
+    <li>Document the process — the knowledge itself is a future digital product or course.</li>
+  </ol>
+</div>
+
+<!-- Section 14: Full Source List -->
+<h2>📚 Full Source List (Grouped by Topic)</h2>
+<div class="card" style="font-size:12px;">
+
+<h4>🎥 YouTube — Digital Products (Etsy/Gumroad)</h4>
+<ul style="padding-left:20px;">
+  <li><a href="https://youtube.com/watch?v=fSBzhYeLGJk" style="color:#6366f1;">Richard Yu — "These 5 Digital Products Are Making the Most Money in 2026"</a> (40k views, 4 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=E57vDFkBu_Q" style="color:#6366f1;">Alek — "I made 3 digital products with claude in 18 minutes"</a> (141k views, 11 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=nmRWmF2Umes" style="color:#6366f1;">Molly Keyser — "How selling Ebooks with Claude changed my life"</a> (140k views, 2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=6VvXdQr-vzY" style="color:#6366f1;">Alek — "The NEW Claude Design Side-Hustle Nobody's Talking About"</a> (2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=ufyXy1mg6pY" style="color:#6366f1;">Handmade & Beyond — "Making Best Selling Etsy Digital Downloads Using Claude"</a> (30k views, 2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=GwjZ_i0k-kU" style="color:#6366f1;">Handmade & Beyond — "One Claude Prompt Creates Etsy Digital Best Sellers"</a> (27k views, 12 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=7yZ0LG5301Q" style="color:#6366f1;">Luna Vega — "New Claude AI just UNLOCKED a High Demand Digital Product!"</a> (21k views, 2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=RmXEmUmwDfM" style="color:#6366f1;">Shivangi Tiwari — "How to Create & Sell Digital Products (Step-by-Step Guide 2026)"</a> (87k views, 2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=l3_g079FVOA" style="color:#6366f1;">Money Talk With Leon — "I Tried Using Claude AI To Make Money Online in 30 Days"</a> (2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=quYKZushRPo" style="color:#6366f1;">Chris Koerner — "The Beginner-Friendly Claude AI Side Hustle Nobody Talks About"</a> (64k views, 3 days ago)</li>
+</ul>
+
+<h4>🎥 YouTube — Faceless YouTube / YouTube Automation</h4>
+<ul style="padding-left:20px;">
+  <li><a href="https://youtube.com/watch?v=hUTBA-VgVdA" style="color:#6366f1;">Tube Sensei — "10 Secret USA Based Faceless Channel Niches 2026"</a> (81k views, 2 days ago) ⏰ FRESHEST</li>
+  <li><a href="https://youtube.com/watch?v=za2VyvLl5T0" style="color:#6366f1;">Jack Craig — "I BLEW UP a YouTube Channel in 24 Hours with AI"</a> (275k views, 2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=n7KG9AvdB-s" style="color:#6366f1;">Make Money Matt — "The YouTube Niches I Actually Recommend Starting in 2026"</a> (2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=MJmoSxSPeRY" style="color:#6366f1;">Jacksons AI — "Clone Any YouTube channel with CLAUDE CODE"</a> (2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=KzLxmb8XAqk" style="color:#6366f1;">MystGrow — "How I Made $18,000 with USA YouTube Automation"</a> (2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=X_lxuGsFu4M" style="color:#6366f1;">Mikey No Code — "How to Start an AI Business as a Teenager in 2026"</a> (17k views, 2 days ago)</li>
+</ul>
+
+<h4>🎥 YouTube — AI Automation & AI Agents</h4>
+<ul style="padding-left:20px;">
+  <li><a href="https://youtube.com/watch?v=DipkxWlmneU" style="color:#6366f1;">Him-eesh Madaan — "Build an AI Agent and Earn Money Online"</a> (226k views, 3 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=C0ZKtSx8gyA" style="color:#6366f1;">Sabrina Ramonov — "These 9 AI Businesses Will Make You $1M (Zero Employees)"</a> (2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=m-rZ45KCL_I" style="color:#6366f1;">AI Founders — "The AI Agency Nobody's Building"</a> (2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=bCljOfCH8Ms" style="color:#6366f1;">Nate Herk — "Build & Sell Claude Code Operating Systems"</a> (188k views, 2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=NlGIl5-gpHM" style="color:#6366f1;">Liam Ottley — "How to Make $20,000/Month with Claude Code"</a> (45k views, 3 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=cKlVVLTg3D4" style="color:#6366f1;">AI Learners India — "Claude Code + N8n se Banao WhatsApp AI Agent"</a> (37k views, 9 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=quYKZushRPo" style="color:#6366f1;">Chris Koerner — "The Beginner-Friendly Claude AI Side Hustle Nobody Talks About"</a> (64k views, 3 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=Xl57Pki6ChE" style="color:#6366f1;">Sabrina Ramonov 🍄 — "5 Ways to Make Money in 2026 (with AI)"</a> (190k views, 13 days ago)</li>
+</ul>
+
+<h4>🎥 YouTube — No-Code / Vibe Coding / SaaS</h4>
+<ul style="padding-left:20px;">
+  <li><a href="https://youtube.com/watch?v=50ICXHwOHP4" style="color:#6366f1;">Richard Yu — "I Built a Real SaaS With AI in 1 Hour (No Code)"</a> (32k views, 4 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=50LIlyaJ0hI" style="color:#6366f1;">Kushal Arora — "Build Your Own AI SaaS in Minutes (No Coding Required)"</a> (5.4k views, 3 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=hDOUzlJwM1E" style="color:#6366f1;">Jason Lee — "How I Vibe Coded a $400K/mo App with Claude Code"</a> (3 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=ZK-TCkETAFw" style="color:#6366f1;">Silicon Valley Girl — "Start a $10K/Month AI Business in 90 Days"</a> (116k views, 3 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=44lPMm3CXQg" style="color:#6366f1;">The Solo Entrepreneur — "Building a SaaS Startup Live With Claude Code"</a> (15k views, 7 days ago)</li>
+</ul>
+
+<h4>🎥 YouTube — UK Reselling (eBay/Vinted/Car Boot)</h4>
+<ul style="padding-left:20px;">
+  <li><a href="https://youtube.com/watch?v=JVXzulgCVyA" style="color:#6366f1;">Flipping Sloth — "POV. British Car Boot Sale's Are AMAZING In 2026"</a> (9.4k views, 1 day ago) ⏰</li>
+  <li><a href="https://youtube.com/watch?v=_J0s7F31h6s" style="color:#6366f1;">Retro Reselling — "I Couldn't Believe These Prices.."</a> (15k views, 3 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=vnOaShGie_c" style="color:#6366f1;">Sellingwithsully — "What Clothing Actually Sells on Ebay & Vinted"</a> (906 views, 3 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=46NeImmlcuk" style="color:#6366f1;">Warders Clobber — "£2000+ SALES! What Sells FAST?"</a> (1.4k views, 2 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=lNKwUTj8gYQ" style="color:#6366f1;">Rachael Fantastic — "Fantastic day selling at the car boot sale!"</a> (5k views, 5 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=3CMoqvmy92c" style="color:#6366f1;">Reseller George — "Its been so bad reselling i nearly quit"</a> (973 views, 7 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=CNZ9mScp6Ks" style="color:#6366f1;">Ricky Resells — "Seller Wouldn't Let Me Buy This At The Boot Sale!"</a> (11k views, 8 days ago)</li>
+</ul>
+
+<h4>🎥 YouTube — TikTok Shop / Dropshipping / Amazon FBA</h4>
+<ul style="padding-left:20px;">
+  <li><a href="https://youtube.com/watch?v=QqISs0JMdfk" style="color:#6366f1;">Learn & Earn with Shahzaib — "TikTok Shop UK Full Guide 2026"</a> (7 views, 6 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=rhuYy9LP72M" style="color:#6366f1;">Mark Tilbury — "I Tried AI Dropshipping For 7 Days"</a> (926k views, 12 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=rYQUrvKMSxc" style="color:#6366f1;">Travis Marziani — "Beginners Guide to Amazon FBA in 2026 (3+ Hours)"</a> (2.8k views, 2 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=OuJGN5ZfxCQ" style="color:#6366f1;">Talha Reviews — "5 Best Ways for Students to Make Money Online in 2026"</a> (93k views, 4 days ago) ⚠️ Course sell</li>
+</ul>
+
+<h4>🎥 YouTube — Social Media / Instagram / Blogging</h4>
+<ul style="padding-left:20px;">
+  <li><a href="https://youtube.com/watch?v=K5CoVFNvn78" style="color:#6366f1;">Satish K Videos — "Easiest Way to Monetise Instagram Page in 2026!"</a> (108k views, 10 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=qTwXYYWb5i4" style="color:#6366f1;">Satish K Videos — "₹4500/Day From Blogging Through AI in 2026!"</a> (96k views, 3 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=aEfoMiNOzzo" style="color:#6366f1;">Jessica Omo — "Earn $9 for Every TikTok Video you Post"</a> (40 views, 6 days ago) ⚠️ HYPE</li>
+</ul>
+
+<h4>🎥 YouTube — General / Comprehensive</h4>
+<ul style="padding-left:20px;">
+  <li><a href="https://youtube.com/watch?v=K8Ros5RhJW4" style="color:#6366f1;">Dan Martell — "The Only 14 Ways to Make Money with AI in 2026"</a> (518k views, 2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=7rcxAVuSAUI" style="color:#6366f1;">Ritik Gupta — "How To Build a One Person Solo Business Using AI!"</a> (19k views, 3 days ago)</li>
+  <li><a href="https://youtube.com/watch?v=4ZpoDzR4I6Q" style="color:#6366f1;">Dhaval Kataria — "I Tried 12 Passive Income Ideas to Make ₹1,00,000 in 2026"</a> (702k views, 3 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=7fsb6ZESyzE" style="color:#6366f1;">Vaibhav — "Earn Crores with AI: Business Ideas, Claude, Free Tools & Prompts"</a> (1.6m views, 3 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=xR_D-LdLqK8" style="color:#6366f1;">Tim Richard — "9 Machines Making People Rich in 2026"</a> (765k views, 2 weeks ago)</li>
+  <li><a href="https://youtube.com/watch?v=K8Ros5RhJW4" style="color:#6366f1;">Dan Martell — "The Only 14 Ways to Make Money with AI in 2026"</a> (498k views, 2 weeks ago)</li>
+</ul>
+
+<h4>💬 Reddit Discussions</h4>
+<ul style="padding-left:20px;">
+  <li><a href="https://reddit.com/r/sidehustle/comments/1ta3s4g/" style="color:#6366f1;">r/sidehustle — "Done-for-you ecommerce / automation — reviews?"</a> (16 pts, May 14)</li>
+  <li><a href="https://reddit.com/r/sidehustle/comments/1tb0ohl/" style="color:#6366f1;">r/sidehustle — "Vending Machines in 2026?"</a> (28 pts, May 14)</li>
+  <li><a href="https://reddit.com/r/sidehustle/comments/1tbcnum/" style="color:#6366f1;">r/sidehustle — "Excel-related side hustles"</a> (11 pts, May 14)</li>
+  <li><a href="https://reddit.com/r/sidehustle/comments/1tb1pdk/" style="color:#6366f1;">r/sidehustle — "€5k/month Instagram monetization idea"</a> (3 pts, May 14)</li>
+  <li><a href="https://reddit.com/r/sidehustle/comments/1tb16xz/" style="color:#6366f1;">r/sidehustle — "Recurring commission — AI customer reply system"</a> (May 14)</li>
+  <li>r/sidehustle — "I make $2k-4k/month building websites for local businesses" (33 pts, May 16)</li>
+  <li>r/Entrepreneur — "Brands replacing real influencers with AI generated personas" (15 pts, May 16)</li>
+  <li>r/sidehustle — "I'm VERY good at talking to people and getting them to sign up" (12 pts, May 17)</li>
+  <li>r/sidehustle — "Any ideas for a time efficient side hustle?" (4 pts, May 17)</li>
+  <li>r/beermoneyuk — Multiple bank switch offers (OakNorth £30, Klarna £10)</li>
+</ul>
+
+</div>
+
+<div class="footer">
+  <p>Generated: 17 May 2026 09:00 | Research Agent: Hermes | Week 20 (2026-W20)</p>
+  <p>📍 Report saved: ~/.hermes/output/money-research/weekly/2026-W20/make_money_research_week_2026-W20.html</p>
+  <p>📁 Daily reports archived: make_money_research_2026-05-12 through 2026-05-17</p>
+  <p>⚠️ Online money-making carries risk. No content is financial advice. Always verify opportunities and never invest more than you can afford to lose.</p>
+</div>
+
+</div>
+</body>
+</html>

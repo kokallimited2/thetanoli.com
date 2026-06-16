@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | My App</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f0f1a;
+      min-height: 100vh;
+      color: #e0e0e0;
+    }
+    .navbar {
+      background: #1a1a2e;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-weight: 700; font-size: 20px; color: #fff; }
+    .logo span { color: #6c5ce7; }
+    .user-info { display: flex; align-items: center; gap: 16px; }
+    .user-email { font-size: 14px; color: #888; }
+    .btn-logout {
+      padding: 8px 20px;
+      background: transparent;
+      border: 1px solid #2a2a3e;
+      border-radius: 10px;
+      color: #ff4757;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-logout:hover { background: rgba(255,71,87,0.1); border-color: #ff4757; }
+    .container { max-width: 900px; margin: 0 auto; padding: 48px 32px; }
+    .welcome h2 { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .welcome p { color: #888; font-size: 15px; line-height: 1.6; }
+    .card {
+      background: #1a1a2e;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 32px;
+    }
+    .card h3 { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 12px; }
+    .card p { color: #888; font-size: 14px; line-height: 1.6; }
+    .profile-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .profile-row:last-child { border-bottom: none; }
+    .profile-label { font-size: 13px; color: #888; min-width: 100px; }
+    .profile-value { font-size: 14px; color: #e0e0e0; }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(108,92,231,0.15);
+      border: 1px solid rgba(108,92,231,0.3);
+      border-radius: 20px;
+      color: #6c5ce7;
+      font-size: 12px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"><span>✦</span> MyApp</div>
+    <div class="user-info">
+      <span class="user-email" id="userEmail">Loading...</span>
+      <button class="btn-logout" onclick="handleLogout()">Sign Out</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="welcome">
+      <h2>Welcome back, <span id="userDisplay">there</span> 👋</h2>
+      <p>You're logged in. This is a protected dashboard — only authenticated users can see this.</p>
+    </div>
+
+    <div class="card">
+      <h3>Your Profile</h3>
+      <div class="profile-row">
+        <span class="profile-label">Email</span>
+        <span class="profile-value" id="profileEmail">-</span>
+      </div>
+      <div class="profile-row">
+        <span class="profile-label">User ID</span>
+        <span class="profile-value" id="profileId">-</span>
+      </div>
+      <div class="profile-row">
+        <span class="profile-label">Status</span>
+        <span class="badge">Authenticated ✅</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Next Steps</h3>
+      <p>You can start building your app on top of this auth system:</p>
+      <ul style="margin-top:12px; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+        <li>📊 → Add data tables with Supabase Database</li>
+        <li>📸 → Add file uploads with Supabase Storage</li>
+        <li>🔐 → Add role-based permissions with Row Level Security</li>
+        <li>📱 → Add Google/GitHub login (one-click setup)</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://qknuholrnhfeduvjhssf.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_V1euUYcZKfbITjF3H34l1g_UCGzL1OL';
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function requireAuth() {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        window.location.href = 'login.html';
+        return null;
+      }
+      return session;
+    }
+
+    async function handleLogout() {
+      await supabase.auth.signOut();
+      window.location.href = 'login.html';
+    }
+
+    (async () => {
+      const session = await requireAuth();
+      if (!session) return;
+      const user = session.user;
+
+      document.getElementById('userEmail').textContent = user.email;
+      document.getElementById('userDisplay').textContent = user.email?.split('@')[0] || 'there';
+      document.getElementById('profileEmail').textContent = user.email || '-';
+      document.getElementById('profileId').textContent = user.id.substring(0, 20) + '...';
+    })();
+  </script>
+</body>
+</html>
