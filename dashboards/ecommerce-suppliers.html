@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Ecommerce Supplier Intelligence — Dropship, Wholesale & White Label</title>
+    <style>
+        :root {
+            --bg: #0f1117;
+            --card: #1a1d28;
+            --border: #2a2d3a;
+            --text: #e4e4e7;
+            --muted: #a0a0b0;
+            --accent: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --blue: #3b82f6;
+            --purple: #a855f7;
+            --cyan: #06b6d4;
+            --ebay: #e53238;
+            --amazon: #ff9900;
+            --shopify: #5e8e3e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 12px;
+            padding: 20px 0; border-bottom: 1px solid var(--border); margin-bottom: 24px;
+        }
+        .header h1 { font-size: 24px; display: flex; align-items: center; gap: 10px; }
+        .header .date { color: var(--muted); font-size: 13px; }
+        .header .last-updated { color: var(--muted); font-size: 12px; }
+
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px; margin-bottom: 24px;
+        }
+        .stat-card {
+            background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+            padding: 18px; text-align: center;
+        }
+        .stat-card .value { font-size: 24px; font-weight: bold; }
+        .stat-card .label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+        .stat-card.ebay .value { color: var(--ebay); }
+        .stat-card.amazon .value { color: var(--amazon); }
+        .stat-card.shopify .value { color: var(--shopify); }
+        .stat-card.opps .value { color: var(--purple); }
+
+        .nav-tabs {
+            display: flex; gap: 4px; margin-bottom: 24px;
+            background: var(--card); border-radius: 12px; padding: 4px;
+            border: 1px solid var(--border); flex-wrap: wrap;
+        }
+        .nav-tab {
+            flex: 1; padding: 12px 16px; text-align: center; cursor: pointer;
+            border-radius: 8px; font-size: 13px; font-weight: 500;
+            border: none; background: transparent; color: var(--muted);
+            transition: all 0.2s; min-width: 100px;
+        }
+        .nav-tab:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+        .nav-tab.active { background: rgba(59,130,246,0.15); color: var(--blue); }
+        .nav-tab.ebay-tab.active { background: rgba(229,50,56,0.15); color: var(--ebay); }
+        .nav-tab.amazon-tab.active { background: rgba(255,153,0,0.15); color: var(--amazon); }
+        .nav-tab.shopify-tab.active { background: rgba(94,142,62,0.15); color: var(--shopify); }
+        .nav-tab.opps-tab.active { background: rgba(168,85,247,0.15); color: var(--purple); }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        .section-title {
+            font-size: 16px; font-weight: 600; margin-bottom: 16px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .section-title .count {
+            font-size: 12px; color: var(--muted); font-weight: 400;
+            background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 10px;
+        }
+
+        .platform-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 16px; margin-bottom: 24px;
+        }
+        .platform-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 20px;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+        .platform-card:hover { border-color: var(--blue); }
+        .platform-card .badge {
+            position: absolute; top: -8px; right: -8px;
+            padding: 3px 10px; border-radius: 8px;
+            font-size: 10px; font-weight: 600; text-transform: uppercase;
+        }
+        .badge-best { background: var(--accent); color: #000; }
+        .badge-good { background: var(--blue); color: #fff; }
+        .badge-caution { background: var(--warning); color: #000; }
+        .badge-skip { background: var(--danger); color: #fff; }
+        .platform-card h3 { font-size: 16px; margin-bottom: 4px; }
+        .platform-card .hq { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+        .platform-card .desc { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
+        .detail-row {
+            display: flex; justify-content: space-between; padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 13px;
+        }
+        .detail-row:last-child { border-bottom: none; }
+        .detail-row .label { color: var(--muted); }
+        .detail-row .value { font-weight: 500; }
+        .detail-row .value.green { color: var(--accent); }
+        .detail-row .value.red { color: var(--danger); }
+        .detail-row .value.yellow { color: var(--warning); }
+
+        .guide-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 20px; margin-bottom: 24px;
+        }
+        .guide-card h2 { font-size: 16px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .guide-card h2 .icon { font-size: 20px; }
+        .guide-card ol, .guide-card ul {
+            padding-left: 20px; font-size: 13px; color: var(--muted); line-height: 1.8;
+        }
+        .guide-card li { margin-bottom: 4px; }
+        .guide-card .tip {
+            background: rgba(34,197,94,0.08); border-left: 3px solid var(--accent);
+            padding: 10px 14px; border-radius: 6px; margin-top: 12px; font-size: 13px;
+        }
+        .guide-card .warn {
+            background: rgba(245,158,11,0.08); border-left: 3px solid var(--warning);
+            padding: 10px 14px; border-radius: 6px; margin-top: 12px; font-size: 13px;
+        }
+
+        .opp-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 20px; margin-bottom: 16px;
+        }
+        .opp-card h3 { font-size: 15px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .opp-card .meta {
+            display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 10px;
+        }
+        .opp-card .meta span {
+            font-size: 12px; padding: 3px 8px; border-radius: 6px;
+            background: rgba(255,255,255,0.05);
+        }
+        .opp-card .meta .high { color: var(--accent); }
+        .opp-card .meta .medium { color: var(--warning); }
+        .opp-card .meta .low { color: var(--muted); }
+        .opp-card .desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+        .opp-card .verdict {
+            margin-top: 10px; font-size: 13px; font-weight: 600;
+            padding: 6px 12px; border-radius: 6px; display: inline-block;
+        }
+        .verdict-go { background: rgba(34,197,94,0.12); color: var(--accent); }
+        .verdict-consider { background: rgba(245,158,11,0.12); color: var(--warning); }
+        .verdict-wait { background: rgba(239,68,68,0.12); color: var(--danger); }
+
+        .progress-bar {
+            height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden;
+            margin: 8px 0;
+        }
+        .progress-fill { height: 100%; border-radius: 3px; }
+        .fill-green { background: var(--accent); }
+        .fill-yellow { background: var(--warning); }
+        .fill-blue { background: var(--blue); }
+
+        .price-table {
+            width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px;
+        }
+        .price-table th, .price-table td {
+            padding: 8px 12px; text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .price-table th { color: var(--muted); font-weight: 500; font-size: 12px; }
+        .price-table td { color: var(--text); }
+        .price-table tr:last-child td { border-bottom: none; }
+
+        .tag {
+            display: inline-block; padding: 2px 8px; border-radius: 4px;
+            font-size: 11px; font-weight: 500; margin: 2px;
+        }
+        .tag-ebay { background: rgba(229,50,56,0.15); color: #e53238; }
+        .tag-amazon { background: rgba(255,153,0,0.15); color: #ff9900; }
+        .tag-shopify { background: rgba(94,142,62,0.15); color: #5e8e3e; }
+        .tag-ht { background: rgba(168,85,247,0.15); color: #a855f7; }
+        .tag-uk { background: rgba(6,182,212,0.15); color: #06b6d4; }
+
+        .footer {
+            margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+            font-size: 12px; color: var(--muted); text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .platform-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .header h1 { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>🛒 UK Ecommerce Supplier Intelligence</h1>
+        <div>
+            <span class="date">Last updated: <span id="lastUpdated">Loading...</span></span>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card ebay">
+            <div class="value" id="statEbay">10</div>
+            <div class="label">eBay UK Suppliers</div>
+        </div>
+        <div class="stat-card amazon">
+            <div class="value" id="statAmazon">8</div>
+            <div class="label">Amazon UK Suppliers</div>
+        </div>
+        <div class="stat-card shopify">
+            <div class="value" id="statShopify">12</div>
+            <div class="label">Shopify / High-Ticket</div>
+        </div>
+        <div class="stat-card opps">
+            <div class="value" id="statOpps">8</div>
+            <div class="label">Investment Opportunities</div>
+        </div>
+    </div>
+
+    <div class="nav-tabs">
+        <button class="nav-tab ebay-tab active" onclick="switchTab('ebay')" data-tab="ebay">🟡 eBay UK</button>
+        <button class="nav-tab amazon-tab" onclick="switchTab('amazon')" data-tab="amazon">🟠 Amazon UK</button>
+        <button class="nav-tab shopify-tab" onclick="switchTab('shopify')" data-tab="shopify">🟢 Shopify / High-Ticket</button>
+        <button class="nav-tab opps-tab" onclick="switchTab('opps')" data-tab="opps">🟣 Investment Opportunities</button>
+    </div>
+
+    <!-- ═══════════════ eBay UK ═══════════════ -->
+    <div class="tab-content active" id="tab-ebay">
+
+        <div class="guide-card">
+            <h2><span class="icon">🎯</span> How to Find eBay UK Dropship Suppliers</h2>
+            <ol>
+                <li><strong>Platform route:</strong> Sign up for Avasam (£0 Free plan), AppScenic (free browse), or Hustle Got Real (£13/mo) — they have pre-vetted UK supplier catalogues</li>
+                <li><strong>Direct wholesale route:</strong> Search Google for "[niche] wholesale UK dropship" + contact suppliers directly with trade account application</li>
+                <li><strong>Trade shows:</strong> Top Drawer (London), Spring Fair (Birmingham), Bett (tech/education) — collect trade cards</li>
+                <li><strong>Company House check:</strong> Verify supplier's UK registration at find-and-update.company-information.service.gov.uk</li>
+                <li><strong>Test order:</strong> Always place 1 test order to verify shipping time, packaging, and returns process</li>
+            </ol>
+            <div class="tip">💡 <strong>eBay compliance note:</strong> eBay UK allows dropshipping from <em>wholesale suppliers</em>. Buying from another retailer (Amazon→eBay) is banned and gets accounts suspended. Avasam, AppScenic, and AutoDS are all compliant wholesale platforms.</div>
+            <div class="warn">⚠️ <strong>Cash flow warning:</strong> eBay holds new seller payouts for ~21 days. Most suppliers charge immediately at order. Keep 3-4 weeks working capital buffer.</div>
+        </div>
+
+        <div class="section-title">eBay UK Dropship Platforms <span class="count">5 reviewed</span></div>
+        <div class="platform-grid">
+
+            <div class="platform-card">
+                <span class="badge badge-best">BEST PICK</span>
+                <h3>Avasam</h3>
+                <div class="hq">🇬🇧 London, UK</div>
+                <div class="desc">UK-first verified supplier marketplace. Best overall fit for eBay UK — GBP pricing, UK stock, 0% transaction fees, 24-hour dispatch.</div>
+                <div class="detail-row"><span class="label">Pricing</span><span class="value">Free – £199/mo (0% fees)</span></div>
+                <div class="detail-row"><span class="label">eBay Integration</span><span class="value green">Order sync ✓ Stock sync ✓</span></div>
+                <div class="detail-row"><span class="label">Auto Listing</span><span class="value red">❌ CSV export only</span></div>
+                <div class="detail-row"><span class="label">UK Stock</span><span class="value green">✅ 200K+ products</span></div>
+                <div class="detail-row"><span class="label">Delivery</span><span class="value green">1-5 days tracked</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">UK eBay sellers, beginners</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-green" style="width:92%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-good">GOOD</span>
+                <h3>Hustle Got Real</h3>
+                <div class="hq">🇺🇸 US-based (UK compatible)</div>
+                <div class="desc">Multi-channel automation with AI Store Agent. Strong eBay + Amazon + FB Marketplace + TikTok integration. Best for heavy eBay sellers who need browser extensions + VeRO checker.</div>
+                <div class="detail-row"><span class="label">Pricing</span><span class="value">£13–£29/mo</span></div>
+                <div class="detail-row"><span class="label">Auto-Ordering</span><span class="value green">✅ Yes</span></div>
+                <div class="detail-row"><span class="label">Built-in Catalogue</span><span class="value red">❌ Bring your own</span></div>
+                <div class="detail-row"><span class="label">AI Tools</span><span class="value green">✅ Title gen, images, VeRO</span></div>
+                <div class="detail-row"><span class="label">Channels</span><span class="value">eBay, Amazon, FB, TikTok, Shopify</span></div>
+                <div class="detail-row"><span class="label">Trustpilot</span><span class="value green">4.7/5</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-green" style="width:82%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-good">GOOD</span>
+                <h3>AppScenic</h3>
+                <div class="hq">🇬🇧 UK/EU</div>
+                <div class="desc">Publicly browsable catalogue (1M+ products). Free to browse, no login needed at appscenic.com/catalogue. Good UK/EU supplier mix. Works with HGR for automation.</div>
+                <div class="detail-row"><span class="label">Pricing</span><span class="value">Free – $79/mo + transaction fees</span></div>
+                <div class="detail-row"><span class="label">Catalogue</span><span class="value green">✅ 1M+ products</span></div>
+                <div class="detail-row"><span class="label">UK Stock</span><span class="value green">✅ Good mix</span></div>
+                <div class="detail-row"><span class="label">Auto-Order</span><span class="value green">✅ Yes</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">Browsing before committing</span></div>
+                <div class="detail-row"><span class="label">Integration</span><span class="value green">✅ HGR, Shopify, WooCommerce</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-blue" style="width:72%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-caution">CAUTION</span>
+                <h3>AutoDS</h3>
+                <div class="hq">🇮🇱 Tel Aviv (Fiverr-owned)</div>
+                <div class="desc">Strong eBay automation but USD pricing and primarily non-UK suppliers. Good for US sellers. UK stock option exists but limited vs Avasam. Fiverr ownership is stable but support is US-focused.</div>
+                <div class="detail-row"><span class="label">Pricing</span><span class="value">$11.90 – $29.90/mo</span></div>
+                <div class="detail-row"><span class="label">Auto Listing</span><span class="value green">✅ Yes</span></div>
+                <div class="detail-row"><span class="label">UK Suppliers</span><span class="value yellow">⚠️ Limited</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">US/global sellers</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-yellow" style="width:55%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-skip">SKIP</span>
+                <h3>CJdropshipping</h3>
+                <div class="hq">🇨🇳 China</div>
+                <div class="desc">China-based with China-direct shipping. 14-28 day delivery kills eBay seller metrics (defect rate, late shipping). High eBay suspension risk. Only viable for long-tail non-urgent products.</div>
+                <div class="detail-row"><span class="label">Pricing</span><span class="value green">Free platform</span></div>
+                <div class="detail-row"><span class="label">UK Stock</span><span class="value red">❌ China-direct</span></div>
+                <div class="detail-row"><span class="label">Delivery</span><span class="value red">14-28 days</span></div>
+                <div class="detail-row"><span class="label">eBay Risk</span><span class="value red">High suspension</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-yellow" style="width:30%"></div></div>
+            </div>
+
+        </div>
+
+        <div class="section-title">eBay UK — Pricing at a Glance</div>
+        <div class="guide-card">
+            <table class="price-table">
+                <thead>
+                    <tr><th>Platform</th><th>Entry Price</th><th>Transaction Fees</th><th>Auto-Order</th><th>Auto-List</th><th>UK Stock</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Avasam</td><td>£0 (Free) / £24.99</td><td>0%</td><td>✅</td><td>❌ CSV</td><td>✅ 200K+</td></tr>
+                    <tr><td>Hustle Got Real</td><td>£13/mo</td><td>0% (own supplier)</td><td>✅</td><td>✅</td><td>Depends on supplier</td></tr>
+                    <tr><td>AppScenic</td><td>Free browse / $39+</td><td>~5-8%</td><td>✅</td><td>✅</td><td>✅ Good mix</td></tr>
+                    <tr><td>AutoDS</td><td>$11.90/mo</td><td>Plan-based</td><td>✅</td><td>✅</td><td>⚠️ Limited</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- ═══════════════ Amazon UK ═══════════════ -->
+    <div class="tab-content" id="tab-amazon">
+
+        <div class="guide-card">
+            <h2><span class="icon">🎯</span> How to Find Amazon UK Suppliers & Wholesalers</h2>
+            <ol>
+                <li><strong>FBA wholesale route:</strong> Find branded products selling well on Amazon UK → contact the brand directly for wholesale/distributor accounts</li>
+                <li><strong>Online wholesale directories:</strong> TheWholesaler.co.uk, UKWholesalers.co.uk, ThomasNet (UK), Kompass UK — search by category</li>
+                <li><strong>White label / Private label:</strong> Alibaba.com → contact manufacturers → request samples → brand your own product (best margins, highest control)</li>
+                <li><strong>Amazon prep services:</strong> Companies like FBA Freight, James & James, ShipBob UK handle receiving, quality check, labeling, and sending to Amazon FBA</li>
+                <li><strong>SourceMango / SaleHoo:</strong> £50-70/yr directories of verified UK/global wholesalers</li>
+                <li><strong>Trade fairs:</strong> Autumn Fair (Birmingham), Pure London (fashion), ABC Awards (gifts/homeware)</li>
+            </ol>
+            <div class="tip">💡 <strong>Amazon UK differs from eBay:</strong> Amazon has stricter brand gating, category approval, and VAT requirements. You need UK VAT registration for FBA (even if below £85K threshold for Chinese imports). Amazon also requires GTINs (EAN/UPC) — white label products need GS1 UK barcodes.</div>
+            <div class="warn">⚠️ <strong>IP Compliance:</strong> Amazon UK aggressively enforces trademarks and design rights. Always verify you have distribution rights in writing. Counterfeit claims = immediate account suspension + stock confiscation.</div>
+        </div>
+
+        <div class="section-title">Amazon UK Supplier Routes <span class="count">7 strategies</span></div>
+        <div class="platform-grid">
+
+            <div class="platform-card">
+                <span class="badge badge-best">TOP ROUTE</span>
+                <h3>White Label (Alibaba → FBA)</h3>
+                <div class="hq">🇨🇳 China factory → Amazon UK FBA</div>
+                <div class="desc">Highest margins (50-70%). Find a product on Amazon UK selling well, reverse-engineer via Alibaba supplier, brand it yourself. Full control over pricing, listing, and brand registry.</div>
+                <div class="detail-row"><span class="label">Startup Cost</span><span class="value">£2,000-5,000</span></div>
+                <div class="detail-row"><span class="label">Margins</span><span class="value green">50-70% gross</span></div>
+                <div class="detail-row"><span class="label">Risk</span><span class="value yellow">Medium — IP, quality</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">Unique products, brand building</span></div>
+                <div class="detail-row"><span class="label">Time to Launch</span><span class="value">6-10 weeks</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-green" style="width:85%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-good">GOOD</span>
+                <h3>UK Wholesale Directories</h3>
+                <div class="hq">🇬🇧 UK-based</div>
+                <div class="desc">TheWholesaler.co.uk, UKWholesalers.co.uk, WhoSellsWho.co.uk. Pre-vetted UK wholesalers across categories. Good for established brands. Requires trade account application per supplier.</div>
+                <div class="detail-row"><span class="label">Cost</span><span class="value">£30-70/yr (directory)</span></div>
+                <div class="detail-row"><span class="label">Margins</span><span class="value yellow">20-40% gross</span></div>
+                <div class="detail-row"><span class="label">MOQ</span><span class="value yellow">Varies (£500-3K)</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">Established brands, quick start</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-blue" style="width:65%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-good">GOOD</span>
+                <h3>SaleHoo Directory</h3>
+                <div class="hq">🇳🇿 NZ (global directory)</div>
+                <div class="desc">8,000+ pre-vetted suppliers globally, UK filters available. Forum community, market research lab, product analysis tools. Good entry-level wholesale directory for Amazon FBA beginners.</div>
+                <div class="detail-row"><span class="label">Cost</span><span class="value">£50/yr (frequently discounted)</span></div>
+                <div class="detail-row"><span class="label">UK Suppliers</span><span class="value yellow">⚠️ Moderate</span></div>
+                <div class="detail-row"><span class="label">Research Tools</span><span class="value green">✅ Included</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">Amazon FBA beginners</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-blue" style="width:60%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-good">GOOD</span>
+                <h3>FBA Prep & Consolidation</h3>
+                <div class="hq">🇬🇧 UK service providers</div>
+                <div class="desc">James & James, ShipBob UK, FBA Freight, eFulfillmentService. Receive bulk stock, quality-check, re-package, label, and send to Amazon FBA. Enables sourcing from non-FBA-ready suppliers.</div>
+                <div class="detail-row"><span class="label">Cost</span><span class="value">£1-3/unit + storage</span></div>
+                <div class="detail-row"><span class="label">Benefit</span><span class="value green">Quality control layer</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">Overseas sourcing</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-blue" style="width:70%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-caution">CAUTION</span>
+                <h3>Retail Arbitrage (Amazon UK)</h3>
+                <div class="hq">🇬🇧 Buy low on clearance → FBA</div>
+                <div class="desc">Buy clearance stock from Tesco, Sainsbury's, Home Bargains, B&M → send to Amazon FBA. Margins are good but limited scalability. Requires constant sourcing trips. Amazon may require invoices.</div>
+                <div class="detail-row"><span class="label">Startup Cost</span><span class="value green">£200-500</span></div>
+                <div class="detail-row"><span class="label">Margins</span><span class="value green">40-80%</span></div>
+                <div class="detail-row"><span class="label">Scalability</span><span class="value red">❌ Low — manual sourcing</span></div>
+                <div class="detail-row"><span class="label">Invoice Risk</span><span class="value yellow">⚠️ Amazon may ASK</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-yellow" style="width:50%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-caution">CAUTION</span>
+                <h3>Online Retail Arbitrage</h3>
+                <div class="hq">🌍 Buy online → resell Amazon</div>
+                <div class="desc">Find discounts on UK retail sites (Argos, Very, AO.com, John Lewis) → resell on Amazon. eBay→Amazon arbitrage is possible but Amazon detects and can suspend. Requires careful account management.</div>
+                <div class="detail-row"><span class="label">Startup Cost</span><span class="value green">£100-500</span></div>
+                <div class="detail-row"><span class="label">Amazon Risk</span><span class="value red">Medium-high suspension</span></div>
+                <div class="detail-row"><span class="label">Effort</span><span class="value yellow">High — deal hunting</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-yellow" style="width:40%"></div></div>
+            </div>
+
+        </div>
+
+        <div class="section-title">Amazon UK — Recommended Tool Stack</div>
+        <div class="guide-card">
+            <table class="price-table">
+                <thead>
+                    <tr><th>Tool</th><th>Purpose</th><th>Cost</th><th>UK Data</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Helium 10</td><td>Product research, keyword tracking, profitability calculator</td><td>Free – $79/mo</td><td>✅ Full UK data</td></tr>
+                    <tr><td>Jungle Scout</td><td>Product discovery, sales estimates, supplier database</td><td>$49/mo</td><td>✅ UK marketplace</td></tr>
+                    <tr><td>Keepa</td><td>Price history, sales rank tracking, restock alerts</td><td>€19/mo</td><td>✅ Amazon UK tracked</td></tr>
+                    <tr><td>ViralLaunch</td><td>Keyword rank tracking, review management</td><td>$30/mo</td><td>✅ UK supported</td></tr>
+                    <tr><td>GS1 UK</td><td>GTIN barcodes for white label products</td><td>£95/yr (single)</td><td>✅ UK registry</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- ═══════════════ Shopify / High-Ticket ═══════════════ -->
+    <div class="tab-content" id="tab-shopify">
+
+        <div class="guide-card">
+            <h2><span class="icon">🎯</span> How to Find Suppliers — Single Product & High-Ticket Shopify Stores</h2>
+            <ol>
+                <li><strong>High-ticket UK suppliers:</strong> Garden Buildings Direct, Vida XL, Homcom Trade, Gymstore TradePro — these offer dropship at £0 MOQ with 34%+ margins on £800+ products</li>
+                <li><strong>Phone call is essential:</strong> Don't just apply online. Call the supplier, ask for the trade/dropship manager, discuss terms. Suppliers respect direct contact</li>
+                <li><strong>Niche selection criteria:</strong> Google Trends > check competitor ads > £0.80+ CPC = profitable > supplier availability > validate margin math (net margin ≥25%)</li>
+                <li><strong>Product bundling:</strong> White label commodity items (e.g., "home gym bundle" = yoga mat + resistance bands + foam roller). Buy separately, bundle in branded packaging</li>
+                <li><strong>Global sources for white label:</strong> Alibaba Verified, Global Sources, Made-in-China — focused on private labelling with custom branding and packaging</li>
+            </ol>
+            <div class="tip">💡 <strong>High-ticket thesis:</strong> £800+ AOV at 34% gross margin. 3-4 sales/month breaks even on £500 ad spend. One £1,895 sale covers weeks of ad costs. UK suppliers only — China shipping destroys conversion on premium products.</div>
+        </div>
+
+        <div class="section-title">High-Ticket Shopify — Supplier Shortlist <span class="count">7 vetted</span></div>
+        <div class="platform-grid">
+
+            <div class="platform-card">
+                <span class="badge badge-best">BEST</span>
+                <h3>Garden Buildings Direct</h3>
+                <div class="hq">🇬🇧 UK</div>
+                <div class="desc">Garden rooms, summerhouses, sheds. £0 MOQ dropship, 1-3 day UK delivery. Wholesale price ~£1,250 on hero product selling at £1,895. 10-year warranty on products.</div>
+                <div class="detail-row"><span class="label">MOQ</span><span class="value green">£0 (true dropship)</span></div>
+                <div class="detail-row"><span class="label">Delivery</span><span class="value green">1-3 days UK</span></div>
+                <div class="detail-row"><span class="label">Margin</span><span class="value green">~34% gross</span></div>
+                <div class="detail-row"><span class="label">Returns</span><span class="value green">They handle</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">Garden/outdoor niche store</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-green" style="width:95%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-best">BEST</span>
+                <h3>Vida XL Trade</h3>
+                <div class="hq">🇬🇧 UK</div>
+                <div class="desc">Premium home furniture, home office, and lifestyle products. Trade/wholesale programme with UK stock. Good for home office niche — sit-stand desks, ergonomic chairs, premium shelving.</div>
+                <div class="detail-row"><span class="label">MOQ</span><span class="value green">£0 (trade account)</span></div>
+                <div class="detail-row"><span class="label">Delivery</span><span class="value green">2-4 days UK</span></div>
+                <div class="detail-row"><span class="label">AOV</span><span class="value green">£600-1,500</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">Home office / furniture niche</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-green" style="width:90%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-best">BEST</span>
+                <h3>Homcom Trade / B2B</h3>
+                <div class="hq">🇬🇧 UK (homcom.co.uk/b2b)</div>
+                <div class="desc">Garden furniture, homeware, storage, pet products. Strong UK stock with trade pricing. Broad catalogue allows multi-product niche stores. Good for garden/furniture stores on Shopify.</div>
+                <div class="detail-row"><span class="label">MOQ</span><span class="value green">Varies by product</span></div>
+                <div class="detail-row"><span class="label">Delivery</span><span class="value green">2-5 days UK</span></div>
+                <div class="detail-row"><span class="label">Catalogue</span><span class="value green">10K+ products</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">Garden/homeware niche</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-green" style="width:85%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-good">GOOD</span>
+                <h3>Gymstore / TradePro UK</h3>
+                <div class="hq">🇬🇧 UK</div>
+                <div class="desc">Premium fitness equipment — home gyms, squat racks, cardio. Trade programme available at trade.prouk.co.uk. High AOV (£800-3,000). Growing home gym trend in UK post-pandemic.</div>
+                <div class="detail-row"><span class="label">MOQ</span><span class="value green">Low (trade account)</span></div>
+                <div class="detail-row"><span class="label">Delivery</span><span class="value green">2-5 days UK</span></div>
+                <div class="detail-row"><span class="label">AOV</span><span class="value green">£800-3,000</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">Fitness/home gym niche</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-blue" style="width:78%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-good">GOOD</span>
+                <h3>Mgo Sauna / UK Sauna Centre</h3>
+                <div class="hq">🇬🇧 UK</div>
+                <div class="desc">Saunas, steam rooms, wellness equipment. Premium niche with high AOV (£1,200-4,000). Wellness industry growing 10%+ annually in UK. Good for single-product authority site.</div>
+                <div class="detail-row"><span class="label">MOQ</span><span class="value green">£0 (trade account)</span></div>
+                <div class="detail-row"><span class="label">Delivery</span><span class="value green">3-7 days UK</span></div>
+                <div class="detail-row"><span class="label">AOV</span><span class="value green">£1,200-4,000</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">Wellness/sauna niche</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-blue" style="width:75%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-good">GOOD</span>
+                <h3>Massage Chair World</h3>
+                <div class="hq">🇬🇧 UK</div>
+                <div class="desc">Premium massage chairs (£1,500-6,000). High-ticket wellness niche. Seasonal Q4 spike. UK stock with dropship option. Good add-on to wellness store or standalone niche site.</div>
+                <div class="detail-row"><span class="label">MOQ</span><span class="value yellow">Verify dropship</span></div>
+                <div class="detail-row"><span class="label">Delivery</span><span class="value green">2-5 days UK</span></div>
+                <div class="detail-row"><span class="label">Seasonal</span><span class="value yellow">Q4 peak (Nov-Jan)</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">Wellness/massage niche</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-blue" style="width:68%"></div></div>
+            </div>
+
+            <div class="platform-card">
+                <span class="badge badge-caution">CAUTION</span>
+                <h3>White Label Commodity Bundles</h3>
+                <div class="hq">🌍 Alibaba/Global Sources → UK 3PL</div>
+                <div class="desc">Strategy: buy yoga mats, resistance bands, foam rollers from Alibaba, brand them, bundle as "Home Gym Starter Kit", sell on Shopify. Higher margins (60-70%) but requires inventory investment.</div>
+                <div class="detail-row"><span class="label">Startup</span><span class="value yellow">£1,000-3,000 inventory</span></div>
+                <div class="detail-row"><span class="label">Margins</span><span class="value green">60-70% gross</span></div>
+                <div class="detail-row"><span class="label">Risk</span><span class="value yellow">Inventory + quality</span></div>
+                <div class="detail-row"><span class="label">Best For</span><span class="value">Brand builders with capital</span></div>
+                <div class="progress-bar"><div class="progress-fill fill-yellow" style="width:55%"></div></div>
+            </div>
+
+        </div>
+
+        <div class="section-title">High-Ticket Blueprint — Financial Projection</div>
+        <div class="guide-card">
+            <table class="price-table">
+                <thead>
+                    <tr><th>Month</th><th>Sales</th><th>Revenue</th><th>Costs</th><th>Net Profit</th><th>Cumulative</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>0</td><td>£0</td><td>£350 (build + ops)</td><td>-£350</td><td>-£350</td></tr>
+                    <tr><td>2</td><td>1</td><td>£1,895</td><td>£675 (ad spend + COGS)</td><td>£1,220</td><td>£870</td></tr>
+                    <tr><td>3</td><td>2</td><td>£3,790</td><td>£1,350</td><td>£2,440</td><td>£3,310</td></tr>
+                    <tr><td>4</td><td>3</td><td>£5,685</td><td>£2,025</td><td>£3,660</td><td>£6,970</td></tr>
+                    <tr><td>5</td><td>4</td><td>£7,580</td><td>£2,700</td><td>£4,880</td><td>£11,850</td></tr>
+                    <tr><td>6</td><td>5</td><td>£9,475</td><td>£3,065</td><td>£6,410</td><td>£18,260</td></tr>
+                </tbody>
+            </table>
+            <div style="margin-top: 8px; font-size: 12px; color: var(--muted);">
+                * Based on garden building @ £1,895 retail, £1,250 COGS, £200/mo Shopify + email, £50/day Google Ads from month 2. Net margin ~34%.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ═══════════════ Investment Opportunities ═══════════════ -->
+    <div class="tab-content" id="tab-opps">
+
+        <div class="guide-card">
+            <h2><span class="icon">🎯</span> Ecommerce Investment Opportunity Framework</h2>
+            <p style="font-size: 13px; color: var(--muted); line-height: 1.6;">
+                These opportunities are ranked by: <strong>capital required</strong> ↓, <strong>time to profit</strong> ↓, <strong>scalability</strong> ↑, <strong>risk</strong> ↓, and <strong>alignment with existing assets</strong>. Lower startup cost + faster profit + higher margin = higher priority.
+            </p>
+        </div>
+
+        <div class="section-title">Ranked Opportunities <span class="count">8 analysed</span></div>
+
+        <!-- Opp 1 -->
+        <div class="opp-card">
+            <h3>🥇 #1 — Avasam → eBay UK Dropship (Low Capital Start)</h3>
+            <div class="meta">
+                <span class="high">Capital: £200-500</span>
+                <span class="high">Time to 1st sale: 1-3 weeks</span>
+                <span class="high">Risk: Low</span>
+                <span class="high">Scalability: High</span>
+            </div>
+            <div class="desc">
+                Start with Avasam Free plan (browse + 25 products). Pick 10 products from home_kitchen or gadgets niche (£10-50 range). List manually on eBay UK via CSV export. Use eBay's free 1,000 listings/month. No inventory, no ads needed — organic eBay search is the traffic driver. As sales come in, upgrade to Advanced (£49.99/mo) for 250 product sourcing.
+            </div>
+            <div class="tags" style="margin-top: 8px;">
+                <span class="tag tag-ebay">eBay</span>
+                <span class="tag tag-uk">UK Stock</span>
+            </div>
+            <div class="verdict verdict-go">✅ GO — lowest barrier to entry, existing Avasam account, no inventory risk</div>
+        </div>
+
+        <!-- Opp 2 -->
+        <div class="opp-card">
+            <h3>🥈 #2 — Hustle Got Real + AppScenic (Scaled eBay Automation)</h3>
+            <div class="meta">
+                <span class="high">Capital: £500-1,000</span>
+                <span class="medium">Time to 1st sale: 2-4 weeks</span>
+                <span class="high">Risk: Low-Medium</span>
+                <span class="high">Scalability: Very High</span>
+            </div>
+            <div class="desc">
+                After validating products manually (Opp #1), upgrade to Hustle Got Real (£13-29/mo) for auto-ordering + AppScenic for product catalogue. AutoDS-level automation at lower cost. Scales to 500+ listings. Use HGR's AI Store Agent for listing optimization and VeRO checker to avoid IP issues.
+            </div>
+            <div class="tags" style="margin-top: 8px;">
+                <span class="tag tag-ebay">eBay</span>
+                <span class="tag tag-amazon">Amazon</span>
+                <span class="tag tag-uk">UK Stock</span>
+            </div>
+            <div class="verdict verdict-go">✅ GO — natural upgrade path from Opp #1</div>
+        </div>
+
+        <!-- Opp 3 -->
+        <div class="opp-card">
+            <h3>🥉 #3 — High-Ticket Garden Building Shopify Store</h3>
+            <div class="meta">
+                <span class="medium">Capital: £1,000-1,500</span>
+                <span class="medium">Time to 1st sale: 4-6 weeks</span>
+                <span class="medium">Risk: Medium</span>
+                <span class="high">Scalability: High</span>
+            </div>
+            <div class="desc">
+                Single-product niche store selling premium garden buildings (e.g., garden offices, summerhouses, she-sheds). Supplier: Garden Buildings Direct (dropship, UK stock, 10yr warranty). Shopify store + Google Ads + content SEO. £1,895 AOV means 3-4 sales/month = £5,700-7,600 revenue at 34% margin. Good fit with existing property knowledge (UK property market).
+            </div>
+            <div class="tags" style="margin-top: 8px;">
+                <span class="tag tag-shopify">Shopify</span>
+                <span class="tag tag-ht">High-Ticket</span>
+                <span class="tag tag-uk">UK Stock</span>
+            </div>
+            <div class="verdict verdict-go">✅ GO — high margin per sale, strong supplier, existing UK market knowledge</div>
+        </div>
+
+        <!-- Opp 4 -->
+        <div class="opp-card">
+            <h3>#4 — Amazon UK White Label (Single Product Entry)</h3>
+            <div class="meta">
+                <span class="medium">Capital: £2,000-3,000</span>
+                <span class="medium">Time to 1st sale: 8-12 weeks</span>
+                <span class="medium">Risk: Medium</span>
+                <span class="high">Scalability: Very High</span>
+            </div>
+            <div class="desc">
+                Find a simple, lightweight, non-seasonal product on Amazon UK that has good reviews but poor branding (e.g., phone stands, kitchen gadgets, home organisation). Reverse-engineer on Alibaba. Order 500-1,000 units with custom branding + packaging. Send to FBA. Launch with Vine reviews + PPC. 60%+ margins at scale. Requires more capital but best long-term asset (brand + IP).
+            </div>
+            <div class="tags" style="margin-top: 8px;">
+                <span class="tag tag-amazon">Amazon</span>
+                <span class="tag tag-shopify">Also Shopify</span>
+            </div>
+            <div class="verdict verdict-consider">⚠️ CONSIDER — best long-term play, but higher capital + time</div>
+        </div>
+
+        <!-- Opp 5 -->
+        <div class="opp-card">
+            <h3>#5 — Home Office / Ergonomic Furniture Shopify Store</h3>
+            <div class="meta">
+                <span class="medium">Capital: £1,000-1,500</span>
+                <span class="medium">Time to 1st sale: 4-8 weeks</span>
+                <span class="medium">Risk: Medium</span>
+                <span class="high">Scalability: High</span>
+            </div>
+            <div class="desc">
+                Supplier: Vida XL Trade. Sit-stand desks, ergonomic chairs, monitor arms. Growing UK WFH trend. AOV £600-1,500. Google Ads + blog content (ergonomic health, productivity). Can cross-sell accessories for higher AOV. Good content-marketing SEO play.
+            </div>
+            <div class="tags" style="margin-top: 8px;">
+                <span class="tag tag-shopify">Shopify</span>
+                <span class="tag tag-ht">High-Ticket</span>
+                <span class="tag tag-uk">UK Stock</span>
+            </div>
+            <div class="verdict verdict-consider">⚠️ CONSIDER — strong niche, competitive landscape to research</div>
+        </div>
+
+        <!-- Opp 6 -->
+        <div class="opp-card">
+            <h3>#6 — Fitness Equipment Niche Store</h3>
+            <div class="meta">
+                <span class="medium">Capital: £1,500-2,000</span>
+                <span class="medium">Time to 1st sale: 4-8 weeks</span>
+                <span class="medium">Risk: Medium</span>
+                <span class="medium">Scalability: Medium</span>
+            </div>
+            <div class="desc">
+                Supplier: Gymstore TradePro UK. Home gym equipment (squat racks, bench press, dumbbell sets). UK fitness boom continues post-pandemic. High AOV (£800-3,000). Competitive niche (large players exist) but room for specialised store (e.g., "home gym for small spaces").
+            </div>
+            <div class="tags" style="margin-top: 8px;">
+                <span class="tag tag-shopify">Shopify</span>
+                <span class="tag tag-ht">High-Ticket</span>
+            </div>
+            <div class="verdict verdict-consider">⚠️ CONSIDER — competitive but high margin, good content SEO angle</div>
+        </div>
+
+        <!-- Opp 7 -->
+        <div class="opp-card">
+            <h3>#7 — Wellness / Home Sauna Niche</h3>
+            <div class="meta">
+                <span class="low">Capital: £2,500-3,500</span>
+                <span class="medium">Time to 1st sale: 6-10 weeks</span>
+                <span class="medium">Risk: Medium-High</span>
+                <span class="medium">Scalability: Medium</span>
+            </div>
+            <div class="desc">
+                Supplier: Mgo Sauna or UK Sauna Centre. Premium saunas, steam rooms. AOV £1,200-4,000. Growing UK wellness trend. Higher capital because premium brand positioning needs better photography, content, and maybe display models. Slower sales cycle (consideration period).
+            </div>
+            <div class="tags" style="margin-top: 8px;">
+                <span class="tag tag-shopify">Shopify</span>
+                <span class="tag tag-ht">High-Ticket</span>
+            </div>
+            <div class="verdict verdict-wait">⏳ WAIT — higher capital, slower conversion, better as add-on to an established store</div>
+        </div>
+
+        <!-- Opp 8 -->
+        <div class="opp-card">
+            <h3>#8 — Massage Chair Seasonal Store (Q4 Play)</h3>
+            <div class="meta">
+                <span class="low">Capital: £2,000-3,000</span>
+                <span class="low">Time to 1st sale: 10-14 weeks (Q4)</span>
+                <span class="low">Risk: Medium-High</span>
+                <span class="low">Scalability: Low</span>
+            </div>
+            <div class="desc">
+                Seasonal play — launch Sep for Christmas gifting season. High AOV (£1,500-6,000) but seasonal conversion. Works as a Q4 campaign on an existing site, not a standalone business. Best approach: add massage chair category to wellness/garden store as a seasonal revenue boost.
+            </div>
+            <div class="tags" style="margin-top: 8px;">
+                <span class="tag tag-shopify">Shopify</span>
+                <span class="tag tag-ht">High-Ticket</span>
+            </div>
+            <div class="verdict verdict-wait">⏳ WAIT — seasonal play, better as add-on not standalone</div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        UK Ecommerce Supplier Intelligence Dashboard · Updated <span id="footerDate">weekly</span> · Hermes Agent
+    </div>
+
+</div>
+
+<script>
+    // Set current date
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    document.getElementById('lastUpdated').textContent = dateStr;
+    document.getElementById('footerDate').textContent = dateStr;
+
+    // Tab switching
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('tab-' + tabId).classList.add('active');
+        document.querySelector('[data-tab="' + tabId + '"]').classList.add('active');
+    }
+</script>
+</body>
+</html>
