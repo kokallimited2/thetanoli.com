@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kokal Ltd — Product Opportunity Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0f172a; color: #e2e8f0; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; padding: 2rem; }
+  h1 { font-size: 1.75rem; color: #f8fafc; margin-bottom: .25rem; }
+  .subtitle { color: #64748b; font-size: .9rem; margin-bottom: 2rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; }
+  .card h2 { font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; color: #94a3b8; margin-bottom: 1rem; }
+  .stat { display: flex; justify-content: space-between; padding: .4rem 0; border-bottom: 1px solid #1e293b; }
+  .stat:last-child { border-bottom: none; }
+  .label { color: #94a3b8; font-size: .9rem; }
+  .value { font-weight: 700; font-size: 1.1rem; }
+  .green { color: #4ade80; }
+  .yellow { color: #facc15; }
+  .red { color: #f87171; }
+  .blue { color: #60a5fa; }
+  .purple { color: #a78bfa; }
+  .rank-bar { display: flex; align-items: center; gap: .5rem; margin: .5rem 0; }
+  .rank-bar-fill { height: 8px; border-radius: 999px; background: linear-gradient(90deg, #4ade80, #22d3ee); }
+  .rank-bar-bg { height: 8px; border-radius: 999px; background: #334155; flex: 1; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+  th { text-align: left; color: #64748b; text-transform: uppercase; font-size: .7rem; letter-spacing: .05em; padding: .5rem .75rem; border-bottom: 2px solid #334155; }
+  td { padding: .5rem .75rem; border-bottom: 1px solid #1e293b; vertical-align: top; }
+  tr:hover td { background: #0f172a; }
+  .badge { display: inline-block; padding: .15rem .5rem; border-radius: 999px; font-size: .7rem; font-weight: 600; white-space: nowrap; }
+  .badge-gold { background: #713f12; color: #fde047; }
+  .badge-silver { background: #334155; color: #e2e8f0; }
+  .badge-bronze { background: #7c2d12; color: #fdba74; }
+  .badge-blue { background: #1e3a5f; color: #93c5fd; }
+  .badge-green { background: #166534; color: #86efac; }
+  .badge-star { background: #5b21b6; color: #c4b5fd; }
+  .footer { margin-top: 2rem; color: #475569; font-size: .75rem; text-align: center; border-top: 1px solid #1e293b; padding-top: 1rem; }
+  .tag { display: inline-block; padding: .1rem .4rem; border-radius: 4px; font-size: .7rem; background: #1e293b; color: #94a3b8; margin-right: .25rem; }
+  .stars { display: flex; gap: 1px; }
+  .star-filled { color: #facc15; }
+  .star-empty { color: #334155; }
+  @media (max-width: 640px) { body { padding: 1rem; } .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<h1>🏪 Kokal Ltd — Product Opportunity Analysis</h1>
+<p class="subtitle">Catalogue analysis · UK dropshipping · Margins ex-ad costs · Generated Jun 19 2026</p>
+
+<div class="grid">
+  <div class="card">
+    <h2>📦 Catalogue Size</h2>
+    <div class="stat"><span class="label">Total Products</span><span class="value blue">567</span></div>
+    <div class="stat"><span class="label">UK→UK Products</span><span class="value green">559</span></div>
+    <div class="stat"><span class="label">Non-UK</span><span class="value red">8</span></div>
+    <div class="stat"><span class="label">Out of Stock</span><span class="value yellow">91</span></div>
+    <div class="stat"><span class="label">Stock ≥ 100</span><span class="value green">280</span></div>
+    <div class="stat"><span class="label">High Ticket (≥£15, Stock>0)</span><span class="value blue">230</span></div>
+  </div>
+  <div class="card">
+    <h2>📊 Category Mix</h2>
+    <div class="stat"><span class="label">🏠 Home &amp; Garden</span><span class="value">297</span></div>
+    <div class="stat"><span class="label">👶 Baby &amp; Kids</span><span class="value">87</span></div>
+    <div class="stat"><span class="label">🪑 Furniture</span><span class="value">76</span></div>
+    <div class="stat"><span class="label">🎒 Travel / Bags</span><span class="value">24</span></div>
+    <div class="stat"><span class="label">⚽ Sports &amp; Outdoor</span><span class="value">23</span></div>
+    <div class="stat"><span class="label">💡 Lighting</span><span class="value">20</span></div>
+  </div>
+  <div class="card">
+    <h2>🏆 Top 5 Niches (Ranked)</h2>
+    <div class="stat"><span class="label">🥇 Pet Comfort &amp; Habitat</span><span class="value green">Viability: 98%</span></div>
+    <div class="rank-bar"><span class="rank-bar-bg"><div class="rank-bar-fill" style="width:98%"></div></span></div>
+    <div class="stat"><span class="label">🥈 Kids Ride-On Vehicles</span><span class="value blue">Viability: 88%</span></div>
+    <div class="rank-bar"><span class="rank-bar-bg"><div class="rank-bar-fill" style="width:88%"></div></span></div>
+    <div class="stat"><span class="label">🥉 Artificial Plants</span><span class="value purple">Viability: 85%</span></div>
+    <div class="rank-bar"><span class="rank-bar-bg"><div class="rank-bar-fill" style="width:85%"></div></span></div>
+    <div class="stat"><span class="label">4. Kitchen Islands &amp; Carts</span><span class="value yellow">Viability: 78%</span></div>
+    <div class="rank-bar"><span class="rank-bar-bg"><div class="rank-bar-fill" style="width:78%"></div></span></div>
+    <div class="stat"><span class="label">5. Garden / Outdoor Living</span><span class="value">Viability: 72%</span></div>
+    <div class="rank-bar"><span class="rank-bar-bg"><div class="rank-bar-fill" style="width:72%"></div></span></div>
+  </div>
+</div>
+
+<h2 style="font-size:1.1rem;margin-bottom:1rem;color:#f8fafc">🥇 Niche #1: Pet Comfort &amp; Habitat <span class="badge badge-gold">BEST PICK</span></h2>
+<p style="color:#94a3b8;margin-bottom:1rem;font-size:.9rem">Best one-product store opportunity. Pet owners are passion buyers with high LTV. 100%+ margin × deep stock × year-round demand.</p>
+<table>
+<thead><tr><th>Product</th><th>Cost</th><th>RRP</th><th>Margin</th><th>Stock</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td><strong>Pet Ramp Stairs 4-Step</strong></td><td>£22.49</td><td>£61.00</td><td class="green">171%</td><td>250</td><td><span class="badge badge-gold">⭐ HERO — One-product store</span></td></tr>
+<tr><td>Cat Scratching Barrel</td><td>£40.83</td><td>£105.60</td><td class="green">159%</td><td>250</td><td><span class="badge badge-green">Strong</span></td></tr>
+<tr><td>Large Bird Cage</td><td>£63.33</td><td>£156.60</td><td class="green">147%</td><td>145</td><td><span class="badge badge-green">Anchor product</span></td></tr>
+<tr><td>Bird Cage Aviary</td><td>£64.99</td><td>£135.80</td><td class="green">109%</td><td>171</td><td><span class="badge badge-blue">Pairs with above</span></td></tr>
+</tbody></table>
+
+<h2 style="font-size:1.1rem;margin:2rem 0 1rem;color:#f8fafc">🥈 Niche #2: Kids Ride-On Vehicles</h2>
+<p style="color:#94a3b8;margin-bottom:1rem;font-size:.9rem">Highest AOV in catalogue — £396 RRP on the hero truck. Gift-driven, Q4 explosive, video-friendly for paid social.</p>
+<table>
+<thead><tr><th>Product</th><th>Cost</th><th>RRP</th><th>Margin</th><th>Stock</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td><strong>Two-Seater Kids Ride-on Truck</strong></td><td>£148.33</td><td>£396.00</td><td class="green">167%</td><td>133</td><td><span class="badge badge-gold">⭐ Premium Hero</span></td></tr>
+<tr><td>Kids Foldable Scooter</td><td>£59.99</td><td>£119.99</td><td class="green">100%</td><td>244</td><td><span class="badge badge-blue">Volume entry</span></td></tr>
+<tr><td>HOMCOM 12V Quad Bike</td><td>£94.99</td><td>£153.99</td><td>62%</td><td>250</td><td><span class="badge badge-green">Mid-tier, deep stock</span></td></tr>
+<tr><td>AIYAPLAY 2-Seater Truck *</td><td>£193.33</td><td><strong>est £449</strong></td><td>~132%</td><td>60</td><td><span class="badge badge-silver">Premium - 60 stock</span></td></tr>
+<tr><td>HOMCOM 24V Go Kart *</td><td>£154.20</td><td><strong>est £339</strong></td><td>~120%</td><td>30</td><td><span class="badge badge-bronze">Limited stock</span></td></tr>
+</tbody></table>
+<p style="color:#64748b;font-size:.8rem;margin-top:.5rem">* No RRP — suggested retail prices. ⚠️ Bulky items — verify shipping costs with Kokal first.</p>
+
+<h2 style="font-size:1.1rem;margin:2rem 0 1rem;color:#f8fafc">🥉 Niche #3: Artificial Plants / Faux Greenery</h2>
+<p style="color:#94a3b8;margin-bottom:1rem;font-size:.9rem">No RRP = you control margin. Perceived value is high (interior design). Stock is deepest in catalogue (984 on palm tree). Instagram/Pinterest organic gold.</p>
+<table>
+<thead><tr><th>Product</th><th>Cost</th><th>Suggested Retail</th><th>Implied Margin</th><th>Stock</th></tr></thead>
+<tbody>
+<tr><td>Large Artificial Palm Tree</td><td>£36.72</td><td><strong>£89.99</strong></td><td class="green">145%</td><td>984</td></tr>
+<tr><td>150cm Artificial Ficus Tree</td><td>£61.19</td><td><strong>£139.99</strong></td><td class="green">129%</td><td>443</td></tr>
+<tr><td>180cm Artificial Banana Plant</td><td>£40.79</td><td><strong>£99.99</strong></td><td class="green">145%</td><td>157</td></tr>
+<tr><td>130cm Artificial Areca Palm</td><td>£37.39</td><td><strong>£89.99</strong></td><td class="green">141%</td><td>159</td></tr>
+<tr><td>Quest Compact Grinder</td><td>£19.63</td><td><strong>£44.99</strong></td><td class="green">129%</td><td>940</td></tr>
+</tbody></table>
+
+<h2 style="font-size:1.1rem;margin:2rem 0 1rem;color:#f8fafc">4. Kitchen Islands &amp; Carts</h2>
+<table>
+<thead><tr><th>Product</th><th>Cost</th><th>RRP</th><th>Margin</th><th>Stock</th></tr></thead>
+<tbody>
+<tr><td>MDF Extendable Kitchen Island</td><td>£35.24</td><td>£92.40</td><td class="green">162%</td><td>185</td></tr>
+<tr><td>Drop-Leaf Kitchen Island Cart</td><td>£140.83</td><td>£310.40</td><td class="green">120%</td><td>250</td></tr>
+<tr><td>Kitchen Trolley (Bamboo)</td><td>£29.99</td><td>£62.20</td><td class="green">107%</td><td>31</td></tr>
+<tr><td>PU Leather Office Chair *</td><td>£90.83</td><td><strong>est £199.99</strong></td><td>~120%</td><td>215</td></tr>
+</tbody></table>
+
+<h2 style="font-size:1.1rem;margin:2rem 0 1rem;color:#f8fafc">5. Garden / Outdoor Living</h2>
+<table>
+<thead><tr><th>Product</th><th>Cost</th><th>RRP</th><th>Margin</th><th>Stock</th></tr></thead>
+<tbody>
+<tr><td>Zero Gravity Rocking Chair</td><td>£44.14</td><td>£119.40</td><td class="green">171%</td><td>30</td></tr>
+<tr><td>Front Door Canopy Awning</td><td>£53.33</td><td>£130.60</td><td class="green">145%</td><td>250</td></tr>
+<tr><td>7-Piece Garden Dining Set</td><td>£177.49</td><td>£355.99</td><td class="green">101%</td><td>65</td></tr>
+<tr><td>4Pc Expanding Trellis Fence</td><td>£65.56</td><td>£120.99</td><td>85%</td><td>127</td></tr>
+<tr><td>Vertical Charcoal Smoker *</td><td>£30.68</td><td><strong>est £74.99</strong></td><td>~144%</td><td>232</td></tr>
+</tbody></table>
+
+<h2 style="font-size:1.1rem;margin:2rem 0 1rem;color:#f8fafc">📈 All High-Margin Products (≥100%)</h2>
+<table>
+<thead><tr><th>Product</th><th>Category</th><th>Cost</th><th>RRP</th><th>Margin</th><th>Stock</th><th>Store Type</th></tr></thead>
+<tbody>
+<tr><td>Pet Ramp Stairs 4-Step</td><td><span class="tag">Pet</span></td><td>£22.49</td><td>£61.00</td><td class="green">171%</td><td>250</td><td><span class="badge badge-gold">1-product</span></td></tr>
+<tr><td>Orbital Zero Gravity Chair</td><td><span class="tag">Garden</span></td><td>£44.14</td><td>£119.40</td><td class="green">171%</td><td>30</td><td><span class="badge badge-bronze">Low stock</span></td></tr>
+<tr><td>Two-Seater Kids Ride-on Truck</td><td><span class="tag">Kids</span></td><td>£148.33</td><td>£396.00</td><td class="green">167%</td><td>133</td><td><span class="badge badge-gold">1-product</span></td></tr>
+<tr><td>MDF Extendable Kitchen Island</td><td><span class="tag">Kitchen</span></td><td>£35.24</td><td>£92.40</td><td class="green">162%</td><td>185</td><td><span class="badge badge-green">Niche</span></td></tr>
+<tr><td>Cat Scratching Barrel</td><td><span class="tag">Pet</span></td><td>£40.83</td><td>£105.60</td><td class="green">159%</td><td>250</td><td><span class="badge badge-green">Niche</span></td></tr>
+<tr><td>Reversible Ceiling Fan w/ Light</td><td><span class="tag">Lighting</span></td><td>£72.49</td><td>£182.40</td><td class="green">152%</td><td>156</td><td><span class="badge badge-blue">Niche</span></td></tr>
+<tr><td>Large Bird Cage</td><td><span class="tag">Pet</span></td><td>£63.33</td><td>£156.60</td><td class="green">147%</td><td>145</td><td><span class="badge badge-green">Niche</span></td></tr>
+<tr><td>Front Door Canopy Awning</td><td><span class="tag">Garden</span></td><td>£53.33</td><td>£130.60</td><td class="green">145%</td><td>250</td><td><span class="badge badge-green">Niche</span></td></tr>
+<tr><td>Padded Reclining Armchair</td><td><span class="tag">Furniture</span></td><td>£153.33</td><td>£349.26</td><td class="green">128%</td><td>141</td><td><span class="badge badge-blue">Niche</span></td></tr>
+<tr><td>50L Sensor Trash Can</td><td><span class="tag">Home</span></td><td>£44.99</td><td>£99.80</td><td class="green">122%</td><td>250</td><td><span class="badge badge-blue">Niche</span></td></tr>
+<tr><td>Computer Desk L-Shaped</td><td><span class="tag">Office</span></td><td>£55.49</td><td>£123.00</td><td class="green">122%</td><td>107</td><td><span class="badge badge-blue">Niche</span></td></tr>
+<tr><td>Drop-Leaf Kitchen Island Cart</td><td><span class="tag">Kitchen</span></td><td>£140.83</td><td>£310.40</td><td class="green">120%</td><td>250</td><td><span class="badge badge-green">Niche</span></td></tr>
+<tr><td>Bird Cage Aviary</td><td><span class="tag">Pet</span></td><td>£64.99</td><td>£135.80</td><td class="green">109%</td><td>171</td><td><span class="badge badge-green">Niche</span></td></tr>
+<tr><td>Kitchen Trolley Bamboo</td><td><span class="tag">Kitchen</span></td><td>£29.99</td><td>£62.20</td><td class="green">107%</td><td>31</td><td><span class="badge badge-bronze">Low stock</span></td></tr>
+<tr><td>7-Piece Garden Dining Set</td><td><span class="tag">Garden</span></td><td>£177.49</td><td>£355.99</td><td class="green">101%</td><td>65</td><td><span class="badge badge-green">Niche</span></td></tr>
+<tr><td>Kids Foldable Scooter</td><td><span class="tag">Kids</span></td><td>£59.99</td><td>£119.99</td><td class="green">100%</td><td>244</td><td><span class="badge badge-green">Niche</span></td></tr>
+</tbody></table>
+
+<h2 style="font-size:1.1rem;margin:2rem 0 1rem;color:#f8fafc">🏆 Top Pick: Pet Ramp Stairs — One-Product Store</h2>
+<div class="grid">
+  <div class="card">
+    <h2>📊 Business Case</h2>
+    <div class="stat"><span class="label">Cost Price</span><span class="value">£22.49</span></div>
+    <div class="stat"><span class="label">Retail Price</span><span class="value green">£61.00</span></div>
+    <div class="stat"><span class="label">Gross Margin (ex-ad cost)</span><span class="value green">£38.51 (171%)</span></div>
+    <div class="stat"><span class="label">Stock Available</span><span class="value blue">250 units</span></div>
+    <div class="stat"><span class="label">Demand</span><span class="value green">Year-round (ageing dogs, cars)</span></div>
+    <div class="stat"><span class="label">Best For</span><span class="value">Facebook/TikTok video ads</span></div>
+  </div>
+  <div class="card">
+    <h2>⚠️ Risks to Verify</h2>
+    <div class="stat" style="border-bottom:none;flex-direction:column;gap:.3rem">
+      <div>• <strong>Shipping costs</strong> for bulky/furniture items — confirm with Kokal</div>
+      <div>• <strong>Restock cadence</strong> for low-stock items (Zero Chair = 30, Go Kart = 30)</div>
+      <div>• <strong>Return rates</strong> on ride-on vehicles (damage, size issues)</div>
+      <div>• <strong>Faux plant pricing</strong> — validate against Blooming Artificial / Amazon UK</div>
+      <div>• <strong>Seasonality</strong> — Garden (Mar-Jul peak), Kids Ride-Ons (Q4 peak)</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Analysis by Hermes Agent · Kokal Ltd catalogue · Jun 19 2026 · Margins exclude advertising &amp; shipping costs</p>
+  <p style="margin-top:.25rem;color:#334155">https://thetanoli.com/dashboards/kokal-product-analysis.html</p>
+</div>
+
+</body>
+</html>
