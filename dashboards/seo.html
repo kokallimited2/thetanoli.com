@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SEO Portfolio Dashboard — thetanoli.com</title>
+<title>SEO Portfolio Dashboard — Week 25 · 2026-06-21</title>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
@@ -24,7 +24,7 @@ h2 { font-size: 1.3rem; margin: 1.5rem 0 0.75rem; color: #f0f6fc; border-bottom:
 .site-url { font-size: 0.8rem; color: #8b949e; font-family: monospace; }
 .trend-up { color: #3fb950; font-size: 0.8rem; }
 .trend-down { color: #f85149; font-size: 0.8rem; }
-.site-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin: 0.5rem 0; }
+.site-metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin: 0.5rem 0; }
 .metric { text-align: center; padding: 0.4rem; background: #0d1117; border-radius: 6px; }
 .metric .val { font-size: 1.1rem; font-weight: 700; }
 .metric .lbl { font-size: 0.7rem; color: #8b949e; }
@@ -38,22 +38,17 @@ h2 { font-size: 1.3rem; margin: 1.5rem 0 0.75rem; color: #f0f6fc; border-bottom:
 .pri-high { background: #d29922; color: #000; }
 .pri-medium { background: #58a6ff; color: #000; }
 .pri-low { background: #30363d; color: #8b949e; }
-.detail-row { display: none; margin-top: 0.5rem; }
-.detail-toggle { cursor: pointer; color: #58a6ff; font-size: 0.8rem; }
-.detail-toggle:hover { text-decoration: underline; }
-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
-th { text-align: left; padding: 0.3rem 0.5rem; color: #8b949e; border-bottom: 1px solid #30363d; font-size: 0.7rem; text-transform: uppercase; }
-td { padding: 0.3rem 0.5rem; border-bottom: 1px solid #21262d; }
-tr:hover td { background: #0d1117; }
-.pos-badge { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
-.pos-good { background: #0d3d0d; color: #3fb950; }
-.pos-ok { background: #3d3d0d; color: #d29922; }
-.pos-bad { background: #3d0d0d; color: #f85149; }
 .score-bar { height: 6px; border-radius: 3px; background: #21262d; margin-top: 0.3rem; }
 .score-fill { height: 100%; border-radius: 3px; }
 .quick-wins { background: #0d1f0d; border: 1px solid #3fb950; border-radius: 10px; padding: 1rem; margin-bottom: 1rem; }
 .quick-wins h2 { border-bottom-color: #3fb950; color: #3fb950; }
-.trends-bar { background: #0d1f0d; border: 1px solid #21262d; border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1rem; display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.85rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1rem 0; }
+th { text-align: left; padding: 0.5rem; color: #8b949e; border-bottom: 2px solid #30363d; font-size: 0.75rem; text-transform: uppercase; }
+td { padding: 0.5rem; border-bottom: 1px solid #21262d; }
+tr:hover td { background: #0d1117; }
+.cite-good { color: #3fb950; }
+.cite-ok { color: #d29922; }
+.cite-low { color: #f85149; }
 </style>
 .tt-back-home {
   position: fixed; top: 6px; left: 6px; z-index: 99999;
@@ -68,441 +63,130 @@ tr:hover td { background: #0d1117; }
 .tt-back-home:hover {
   color: #e2e8f0; border-color: #3b82f6; background: rgba(30,41,59,0.9);
 }
-
 </head>
 <body>
 <a href="/" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;margin-bottom:16px;color:#94a3b8;padding:6px 12px;border:1px solid #30363d;border-radius:8px;background:#161b22;transition:all .2s;float:left;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='#161b22'">🏠 Dashboard Hub</a>
 <div style="clear:both"></div>
-<h1>🔍 SEO Portfolio Dashboard</h1>
-<p class="subtitle">2026-04-28 → 2026-05-26 · Generated 2026-05-26 01:27 · 11 sites · 3 opps · 0 critical</p>
+<h1>🔍 SEO Portfolio Dashboard — CITE Domain Authority</h1>
+<p class="subtitle">2026-06-21 · Week 25 · 14 password domains · Automated CITE Audit v2</p>
 
 <div class="stats-bar">
-  <div class="stat-card"><div class="num" style="color:#58a6ff">1,260</div><div class="lbl">Total Impressions</div></div>
-  <div class="stat-card"><div class="num" style="color:#3fb950">9</div><div class="lbl">Total Clicks</div></div>
-  <div class="stat-card"><div class="num" style="color:#d29922">0.7%</div><div class="lbl">Avg CTR</div></div>
-  <div class="stat-card"><div class="num" style="color:#f85149">0</div><div class="lbl">Critical Issues</div></div>
-  <div class="stat-card"><div class="num" style="color:#f0f6fc">10</div><div class="lbl">Sites w/ Traffic</div></div>
-</div>
-<div class="trends-bar">📊 <strong>Week-over-Week:</strong> <span>✅ <strong>kokal.co.uk</strong> 📈 +7 imp (+22.6%)</span><span>✅ <strong>instantpasswordgenerator.org</strong> 📈 +2 imp (+50.0%)</span><span>✅ <strong>ironvaultkeys.com</strong> 📈 +19 imp (+135.7%)</span></div><div class="quick-wins"><h2>⚡ Quick Wins — Fix These First</h2><div style="margin:0.5rem 0;"><strong>bestpasswordgenerator.org</strong><div style="margin-left:1rem;font-size:0.85rem;"><span class="priority-badge pri-high">high</span> CTR 0.3% on 989 impressions — meta titles/descriptions need improvement</div></div></div>
-<div class="site-card">
-  <div class="site-header">
-    <div>
-      <div class="site-name">bestpasswordgenerator.org</div>
-      <div class="site-url">sc-domain:bestpasswordgenerator.org</div>
-    </div>
-    <div style="text-align:right;font-size:0.85rem;">
-      
-      <span style="color:#3fb950">989 imp</span>
-      <span style="color:#8b949e"> · </span>
-      <span style="color:#3fb950">3 cl</span>
-    </div>
-  </div>
-  <div class="site-metrics">
-    <div class="metric"><div class="val">989</div><div class="lbl">Impressions</div></div>
-    <div class="metric"><div class="val">3</div><div class="lbl">Clicks</div></div>
-    <div class="metric"><div class="val">0.3%</div><div class="lbl">CTR</div></div>
-    <div class="metric"><div class="val">15.2</div><div class="lbl">Avg Position</div></div>
-  </div>
-  <div class="score-bar"><div class="score-fill" style="width:100%;background:#3fb950"></div></div>  <div style="margin-top:0.5rem;">    <div class="opp opp-high"><span class="priority-badge pri-high">high</span> CTR 0.3% on 989 impressions — meta titles/descriptions need improvement</div>
-    <div class="opp opp-medium"><span class="priority-badge pri-medium">medium</span> Snippet opportunity: "google authenticator vs microsoft authenticator vs" @ pos 4.9 — add structured answer to win Featured Snippet</div>
-  </div>
-  <div class="detail-toggle" onclick="toggleDetail('sc-domain_bestpasswordgenerator_org')">📊 Show top queries & pages ▼</div>
-  <div class="detail-row" id="sc-domain_bestpasswordgenerator_org">
-    <h3>Top Queries</h3>
-    <table>
-      <tr><th>Query</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th><th>Expected CTR</th></tr>
-      <tr><td>google authenticator vs microsoft authenticator vs authy</td><td>18</td><td>1</td><td>5.6%</td><td><span class="pos-badge pos-good">4.9</span></td><td>6.0%</td></tr>
-      <tr><td>2fas vs google authenticator</td><td>2</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">29</span></td><td>0.4%</td></tr>
-      <tr><td>are browser password managers safe</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">51</span></td><td>0.1%</td></tr>
-      <tr><td>authenticator app google vs microsoft</td><td>2</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">25.5</span></td><td>0.4%</td></tr>
-      <tr><td>authy microsoft authenticator</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">27</span></td><td>0.4%</td></tr>
-    </table>
-    <h3>Top Pages</h3>
-    <table>
-      <tr><th>Page</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th></tr>
-      <tr><td style="font-size:0.75rem">https://bestpasswordgenerator.org/</td><td>3</td><td>1</td><td>33.3%</td><td><span class="pos-badge pos-bad">54.7</span></td></tr>
-      <tr><td style="font-size:0.75rem">https://bestpasswordgenerator.org/blog/posts/2fa-app-compari</td><td>719</td><td>1</td><td>0.1%</td><td><span class="pos-badge pos-ok">10.1</span></td></tr>
-      <tr><td style="font-size:0.75rem">https://bestpasswordgenerator.org/blog/posts/how-long-would-</td><td>9</td><td>1</td><td>11.1%</td><td><span class="pos-badge pos-ok">12.7</span></td></tr>
-      <tr><td style="font-size:0.75rem">http://bestpasswordgenerator.org/</td><td>2</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">27</span></td></tr>
-      <tr><td style="font-size:0.75rem">https://bestpasswordgenerator.org/blog.html</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-good">5</span></td></tr>
-    </table>
-  </div>
+  <div class="stat-card"><div class="num" style="color:#58a6ff">53.9</div><div class="lbl">Avg CITE Score</div></div>
+  <div class="stat-card"><div class="num" style="color:#3fb950">+7.4</div><div class="lbl">Δ from Jun 1</div></div>
+  <div class="stat-card"><div class="num" style="color:#d29922">317</div><div class="lbl">GSC Impressions (W25)</div></div>
+  <div class="stat-card"><div class="num" style="color:#f85149">10</div><div class="lbl">Sites Missing Legal Pages</div></div>
+  <div class="stat-card"><div class="num" style="color:#f0f6fc">14</div><div class="lbl">Domains Audited</div></div>
 </div>
 
-<div class="site-card">
-  <div class="site-header">
-    <div>
-      <div class="site-name">titanpasswords.com</div>
-      <div class="site-url">sc-domain:titanpasswords.com</div>
-    </div>
-    <div style="text-align:right;font-size:0.85rem;">
-      
-      <span style="color:#d29922">92 imp</span>
-      <span style="color:#8b949e"> · </span>
-      <span style="color:#3fb950">3 cl</span>
-    </div>
-  </div>
-  <div class="site-metrics">
-    <div class="metric"><div class="val">92</div><div class="lbl">Impressions</div></div>
-    <div class="metric"><div class="val">3</div><div class="lbl">Clicks</div></div>
-    <div class="metric"><div class="val">3.3%</div><div class="lbl">CTR</div></div>
-    <div class="metric"><div class="val">15.7</div><div class="lbl">Avg Position</div></div>
-  </div>
-  <div class="score-bar"><div class="score-fill" style="width:9.30232558139535%;background:#d29922"></div></div>
-  <div class="detail-toggle" onclick="toggleDetail('sc-domain_titanpasswords_com')">📊 Show top queries & pages ▼</div>
-  <div class="detail-row" id="sc-domain_titanpasswords_com">
-    <h3>Top Queries</h3>
-    <table>
-      <tr><th>Query</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th><th>Expected CTR</th></tr>
-      <tr><td>biometric authentication vs password security laptops pros c</td><td>5</td><td>0</td><td>0%</td><td><span class="pos-badge pos-good">1</span></td><td>28.0%</td></tr>
-      <tr><td>biometric vs password security laptops pros cons</td><td>6</td><td>0</td><td>0%</td><td><span class="pos-badge pos-good">1.2</span></td><td>28.0%</td></tr>
-      <tr><td>browser based password manager</td><td>15</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">44.4</span></td><td>0.2%</td></tr>
-      <tr><td>browser password manager</td><td>2</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">38.5</span></td><td>0.2%</td></tr>
-      <tr><td>browser password manager security</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">35</span></td><td>0.2%</td></tr>
-    </table>
-    <h3>Top Pages</h3>
-    <table>
-      <tr><th>Page</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th></tr>
-      <tr><td style="font-size:0.75rem">https://titanpasswords.com/</td><td>9</td><td>3</td><td>33.3%</td><td><span class="pos-badge pos-ok">12</span></td></tr>
-      <tr><td style="font-size:0.75rem">https://titanpasswords.com/blog/</td><td>4</td><td>0</td><td>0%</td><td><span class="pos-badge pos-good">2.2</span></td></tr>
-      <tr><td style="font-size:0.75rem">https://titanpasswords.com/blog/posts/biometric-authenticati</td><td>17</td><td>0</td><td>0%</td><td><span class="pos-badge pos-good">2.2</span></td></tr>
-      <tr><td style="font-size:0.75rem">https://titanpasswords.com/blog/posts/biometric-authenticati</td><td>3</td><td>0</td><td>0%</td><td><span class="pos-badge pos-good">3.3</span></td></tr>
-      <tr><td style="font-size:0.75rem">https://titanpasswords.com/blog/posts/have-i-been-pwned-how-</td><td>3</td><td>0</td><td>0%</td><td><span class="pos-badge pos-ok">13</span></td></tr>
-    </table>
-  </div>
+<div class="quick-wins">
+<h2>⚡ Quick Wins for This Week</h2>
+<div style="margin:0.5rem 0;">
+  <div><span class="priority-badge pri-critical">critical</span> <strong>4 domains missing legal pages:</strong> securekeygenerator.org (about, contact), trustypassword.org (about, privacy, contact), bestpasswordgenerator.net (privacy, disclosure), bestpassword.org (privacy, disclosure)</div>
+  <div><span class="priority-badge pri-high">high</span> <strong>GSC impressions declining:</strong> 830 → 317/day (-62% from W23 peak). Investigate May 2026 Core Update impact.</div>
+  <div><span class="priority-badge pri-high">high</span> <strong>Cloudflare ai-train=no on ALL 14 domains</strong> — may limit AI citation. Review Scrape Shield settings.</div>
+  <div><span class="priority-badge pri-medium">medium</span> <strong>External backlinks needed:</strong> 0 referring domains across portfolio. Start HARO for BPG.</div>
+</div>
 </div>
 
-<div class="site-card">
-  <div class="site-header">
-    <div>
-      <div class="site-name">securekeygenerator.com</div>
-      <div class="site-url">sc-domain:securekeygenerator.com</div>
-    </div>
-    <div style="text-align:right;font-size:0.85rem;">
-      
-      <span style="color:#d29922">91 imp</span>
-      <span style="color:#8b949e"> · </span>
-      <span style="color:#3fb950">2 cl</span>
-    </div>
-  </div>
-  <div class="site-metrics">
-    <div class="metric"><div class="val">91</div><div class="lbl">Impressions</div></div>
-    <div class="metric"><div class="val">2</div><div class="lbl">Clicks</div></div>
-    <div class="metric"><div class="val">2.2%</div><div class="lbl">CTR</div></div>
-    <div class="metric"><div class="val">25.4</div><div class="lbl">Avg Position</div></div>
-  </div>
-  <div class="score-bar"><div class="score-fill" style="width:9.201213346814964%;background:#d29922"></div></div>
-  <div class="detail-toggle" onclick="toggleDetail('sc-domain_securekeygenerator_com')">📊 Show top queries & pages ▼</div>
-  <div class="detail-row" id="sc-domain_securekeygenerator_com">
-    <h3>Top Queries</h3>
-    <table>
-      <tr><th>Query</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th><th>Expected CTR</th></tr>
-      <tr><td>secure key generator</td><td>14</td><td>1</td><td>7.1%</td><td><span class="pos-badge pos-good">5.9</span></td><td>4.5%</td></tr>
-      <tr><td>authentication key generator</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">33</span></td><td>0.2%</td></tr>
-      <tr><td>client secret generator</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">71</span></td><td>0.1%</td></tr>
-      <tr><td>encryption key gen</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">71</span></td><td>0.1%</td></tr>
-      <tr><td>encryption key generator</td><td>4</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">77.5</span></td><td>0.1%</td></tr>
-    </table>
-    <h3>Top Pages</h3>
-    <table>
-      <tr><th>Page</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th></tr>
-      <tr><td style="font-size:0.75rem">https://securekeygenerator.com/</td><td>85</td><td>2</td><td>2.4%</td><td><span class="pos-badge pos-bad">24.2</span></td></tr>
-      <tr><td style="font-size:0.75rem">http://securekeygenerator.com/</td><td>6</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">41.7</span></td></tr>
-    </table>
-  </div>
-</div>
+<h2>📊 CITE Scores Overview</h2>
+<table>
+  <tr><th>#</th><th>Domain</th><th>CITE</th><th>Δ Jun 1</th><th>C</th><th>I</th><th>T</th><th>E</th><th>Blog</th><th>Legal</th><th>Verdict</th></tr>
+  <tr><td>1</td><td><strong>bestpasswordgenerator.org</strong></td><td class="cite-ok">64</td><td class="cite-good">+4</td><td>70</td><td>60</td><td>72</td><td>55</td><td>60</td><td>✅</td><td>CAUTIOUS</td></tr>
+  <tr><td>2</td><td><strong>titanpasswords.com</strong></td><td class="cite-ok">57</td><td class="cite-good">+6</td><td>60</td><td>50</td><td>68</td><td>50</td><td>36</td><td>✅</td><td>CAUTIOUS</td></tr>
+  <tr><td>3</td><td><strong>securekeygenerator.com</strong></td><td class="cite-ok">57</td><td class="cite-good">+5</td><td>60</td><td>52</td><td>68</td><td>50</td><td>30</td><td>✅</td><td>CAUTIOUS</td></tr>
+  <tr><td>4</td><td><strong>randompasswordtool.com</strong></td><td class="cite-ok">53</td><td class="cite-good">+6</td><td>55</td><td>48</td><td>62</td><td>48</td><td>21</td><td>✅</td><td>CAUTIOUS</td></tr>
+  <tr><td>5</td><td><strong>freestrongpassword.com</strong></td><td class="cite-ok">52</td><td class="cite-good">+9</td><td>55</td><td>45</td><td>65</td><td>45</td><td>28</td><td>✅</td><td>CAUTIOUS</td></tr>
+  <tr><td>6</td><td><strong>trustypassword.com</strong></td><td class="cite-ok">51</td><td class="cite-good">+7</td><td>55</td><td>45</td><td>62</td><td>45</td><td>blog.html</td><td>✅</td><td>CAUTIOUS</td></tr>
+  <tr><td>7</td><td><strong>instantpasswordgenerator.org</strong></td><td class="cite-ok">50</td><td class="cite-good">+13</td><td>50</td><td>45</td><td>65</td><td>40</td><td>14</td><td>✅</td><td>CAUTIOUS</td></tr>
+  <tr><td>8</td><td><strong>ironvaultkeys.com</strong></td><td class="cite-ok">47</td><td class="cite-good">+9</td><td>45</td><td>40</td><td>62</td><td>42</td><td>blog.html</td><td>✅</td><td>CAUTIOUS</td></tr>
+  <tr><td>9</td><td><strong>securekeygenerator.org</strong></td><td>46</td><td>NEW</td><td>45</td><td>42</td><td>58</td><td>40</td><td>20</td><td>⚠️</td><td>CAUTIOUS</td></tr>
+  <tr><td>10</td><td><strong>strongpassfactory.com</strong></td><td>45</td><td>NEW</td><td>45</td><td>40</td><td>58</td><td>40</td><td>19</td><td>✅</td><td>CAUTIOUS</td></tr>
+  <tr><td>11</td><td><strong>safepassbuilder.com</strong></td><td>44</td><td>NEW</td><td>40</td><td>40</td><td>60</td><td>35</td><td>15</td><td>✅</td><td>CAUTIOUS</td></tr>
+  <tr><td>12</td><td><strong>trustypassword.org</strong></td><td>42</td><td>NEW</td><td>40</td><td>38</td><td>55</td><td>35</td><td>14</td><td>⚠️</td><td>CAUTIOUS</td></tr>
+  <tr><td>13</td><td><strong>bestpasswordgenerator.net</strong></td><td>41</td><td>NEW</td><td>40</td><td>35</td><td>55</td><td>35</td><td>?</td><td>⚠️</td><td>CAUTIOUS</td></tr>
+  <tr><td>14</td><td><strong>bestpassword.org</strong></td><td>41</td><td>NEW</td><td>40</td><td>35</td><td>55</td><td>35</td><td>?</td><td>⚠️</td><td>CAUTIOUS</td></tr>
+</table>
 
-<div class="site-card">
-  <div class="site-header">
-    <div>
-      <div class="site-name">kokal.co.uk</div>
-      <div class="site-url">sc-domain:kokal.co.uk</div>
-    </div>
-    <div style="text-align:right;font-size:0.85rem;">
-      <span class="trend-up">📈 +22.6%</span>
-      <span style="color:#d29922">38 imp</span>
-      <span style="color:#8b949e"> · </span>
-      <span style="color:#3fb950">1 cl</span>
-    </div>
-  </div>
-  <div class="site-metrics">
-    <div class="metric"><div class="val">38</div><div class="lbl">Impressions</div></div>
-    <div class="metric"><div class="val">1</div><div class="lbl">Clicks</div></div>
-    <div class="metric"><div class="val">2.6%</div><div class="lbl">CTR</div></div>
-    <div class="metric"><div class="val">6.9</div><div class="lbl">Avg Position</div></div>
-  </div>
-  <div class="score-bar"><div class="score-fill" style="width:3.842264914054601%;background:#d29922"></div></div>
-  <div class="detail-toggle" onclick="toggleDetail('sc-domain_kokal_co_uk')">📊 Show top queries & pages ▼</div>
-  <div class="detail-row" id="sc-domain_kokal_co_uk">
-    <h3>Top Queries</h3>
-    <table>
-      <tr><th>Query</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th><th>Expected CTR</th></tr>
-      <tr><td>kostal uk</td><td>3</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">41.3</span></td><td>0.2%</td></tr>
-    </table>
-    <h3>Top Pages</h3>
-    <table>
-      <tr><th>Page</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th></tr>
-      <tr><td style="font-size:0.75rem">https://kokal.co.uk/</td><td>38</td><td>1</td><td>2.6%</td><td><span class="pos-badge pos-good">6.9</span></td></tr>
-    </table>
-  </div>
-</div>
+<h2>📈 GSC Impression Trend (7 tracked domains)</h2>
+<table>
+  <tr><th>Week</th><th>Date</th><th>Impressions</th><th>Gaps</th><th>Fixed</th><th>Notes</th></tr>
+  <tr><td>W22</td><td>May 26</td><td>452</td><td>7</td><td>1</td><td>First scan baseline</td></tr>
+  <tr><td>W23</td><td>Jun 1-7</td><td>830 → 513</td><td>3-9</td><td>8</td><td>Peak. BPG 45 posts re-deployed</td></tr>
+  <tr><td>W24</td><td>Jun 9-13</td><td>506 → 420</td><td>5-8</td><td>1</td><td>Old HIBP redirect fixed</td></tr>
+  <tr><td>W25</td><td>Jun 15-21</td><td>384 → <strong>317</strong></td><td>0-7</td><td>0</td><td>-62% from peak. No new gaps</td></tr>
+</table>
+<p style="color:#f85149;font-size:0.85rem;">⚠️ Impressions declining 62% from W23 peak. No new actionable content gaps. All remaining gaps are consolidating authority on old pages.</p>
 
-<div class="site-card">
-  <div class="site-header">
-    <div>
-      <div class="site-name">ironvaultkeys.com</div>
-      <div class="site-url">sc-domain:ironvaultkeys.com</div>
-    </div>
-    <div style="text-align:right;font-size:0.85rem;">
-      <span class="trend-up">📈 +135.7%</span>
-      <span style="color:#d29922">33 imp</span>
-      <span style="color:#8b949e"> · </span>
-      <span style="color:#3fb950">0 cl</span>
-    </div>
-  </div>
-  <div class="site-metrics">
-    <div class="metric"><div class="val">33</div><div class="lbl">Impressions</div></div>
-    <div class="metric"><div class="val">0</div><div class="lbl">Clicks</div></div>
-    <div class="metric"><div class="val">0%</div><div class="lbl">CTR</div></div>
-    <div class="metric"><div class="val">53.2</div><div class="lbl">Avg Position</div></div>
-  </div>
-  <div class="score-bar"><div class="score-fill" style="width:3.336703741152679%;background:#d29922"></div></div>
-  <div class="detail-toggle" onclick="toggleDetail('sc-domain_ironvaultkeys_com')">📊 Show top queries & pages ▼</div>
-  <div class="detail-row" id="sc-domain_ironvaultkeys_com">
-    <h3>Top Queries</h3>
-    <table>
-      <tr><th>Query</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th><th>Expected CTR</th></tr>
-      <tr><td>access control policy iso 27001</td><td>5</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">82.4</span></td><td>0.1%</td></tr>
-      <tr><td>iso 27001 access control</td><td>2</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">76</span></td><td>0.1%</td></tr>
-      <tr><td>iso 27001 access control policy</td><td>6</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">72.5</span></td><td>0.1%</td></tr>
-      <tr><td>iso 27001 authentication requirements</td><td>2</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">27.5</span></td><td>0.4%</td></tr>
-      <tr><td>iso 27001 password policy</td><td>6</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">68.2</span></td><td>0.1%</td></tr>
-    </table>
-    <h3>Top Pages</h3>
-    <table>
-      <tr><th>Page</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th></tr>
-      <tr><td style="font-size:0.75rem">https://ironvaultkeys.com/</td><td>2</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">22.5</span></td></tr>
-      <tr><td style="font-size:0.75rem">https://ironvaultkeys.com/blog/iso-27001-2022-access-control</td><td>31</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">55.2</span></td></tr>
-    </table>
-  </div>
-</div>
+<h2>📋 Current GSC Snapshot (Jun 21)</h2>
+<table>
+  <tr><th>Domain</th><th>Impressions</th><th>Change from Baseline</th></tr>
+  <tr><td>securekeygenerator.com</td><td><strong>139</strong></td><td class="cite-good">+53% (from 91)</td></tr>
+  <tr><td>bestpasswordgenerator.org</td><td><strong>62</strong></td><td>-94% (from 989/28d)</td></tr>
+  <tr><td>ironvaultkeys.com</td><td><strong>49</strong></td><td class="cite-good">+48% (from 33)</td></tr>
+  <tr><td>titanpasswords.com</td><td><strong>40</strong></td><td>-57% (from 92/28d)</td></tr>
+  <tr><td>freestrongpassword.com</td><td><strong>13</strong></td><td class="cite-good">+62.5% (from 8)</td></tr>
+  <tr><td>instantpasswordgenerator.org</td><td><strong>13</strong></td><td class="cite-good">+116% (from 6)</td></tr>
+  <tr><td>randompasswordtool.com</td><td><strong>1</strong></td><td>Flat (was 1)</td></tr>
+</table>
 
-<div class="site-card">
-  <div class="site-header">
-    <div>
-      <div class="site-name">freestrongpassword.com</div>
-      <div class="site-url">sc-domain:freestrongpassword.com</div>
-    </div>
-    <div style="text-align:right;font-size:0.85rem;">
-      
-      <span style="color:#d29922">8 imp</span>
-      <span style="color:#8b949e"> · </span>
-      <span style="color:#3fb950">0 cl</span>
-    </div>
-  </div>
-  <div class="site-metrics">
-    <div class="metric"><div class="val">8</div><div class="lbl">Impressions</div></div>
-    <div class="metric"><div class="val">0</div><div class="lbl">Clicks</div></div>
-    <div class="metric"><div class="val">0%</div><div class="lbl">CTR</div></div>
-    <div class="metric"><div class="val">40.4</div><div class="lbl">Avg Position</div></div>
-  </div>
-  <div class="score-bar"><div class="score-fill" style="width:0.8088978766430739%;background:#d29922"></div></div>
-  <div class="detail-toggle" onclick="toggleDetail('sc-domain_freestrongpassword_com')">📊 Show top queries & pages ▼</div>
-  <div class="detail-row" id="sc-domain_freestrongpassword_com">
-    <h3>Top Queries</h3>
-    <table>
-      <tr><th>Query</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th><th>Expected CTR</th></tr>
-      <tr><td>free strong</td><td>3</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">62</span></td><td>0.1%</td></tr>
-      <tr><td>freestrong</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-good">4</span></td><td>8.0%</td></tr>
-      <tr><td>strong password generator free</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-good">9</span></td><td>2.0%</td></tr>
-    </table>
-    <h3>Top Pages</h3>
-    <table>
-      <tr><th>Page</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th></tr>
-      <tr><td style="font-size:0.75rem">https://freestrongpassword.com/</td><td>8</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">40.4</span></td></tr>
-    </table>
-  </div>
-</div>
+<h2>📝 Blog Post Growth (Jun 1 → Jun 21)</h2>
+<table>
+  <tr><th>Domain</th><th>Jun 1</th><th>Jun 21</th><th>Growth</th></tr>
+  <tr><td>bestpasswordgenerator.org</td><td>45</td><td>60</td><td class="cite-good">+33%</td></tr>
+  <tr><td>titanpasswords.com</td><td>16</td><td>36</td><td class="cite-good">+125%</td></tr>
+  <tr><td>securekeygenerator.com</td><td>17</td><td>30</td><td class="cite-good">+76%</td></tr>
+  <tr><td>freestrongpassword.com</td><td>8</td><td>28</td><td class="cite-good">+250%</td></tr>
+  <tr><td>randompasswordtool.com</td><td>12</td><td>21</td><td class="cite-good">+75%</td></tr>
+  <tr><td>trustypassword.com</td><td>9</td><td>blog.html</td><td>Restructured</td></tr>
+  <tr><td>instantpasswordgenerator.org</td><td>10</td><td>14</td><td class="cite-good">+40%</td></tr>
+  <tr><td>ironvaultkeys.com</td><td>9</td><td>blog.html</td><td>Restructured</td></tr>
+  <tr><td>securekeygenerator.org</td><td>—</td><td>20</td><td class="cite-good">NEW</td></tr>
+  <tr><td>strongpassfactory.com</td><td>—</td><td>19</td><td class="cite-good">NEW</td></tr>
+  <tr><td>safepassbuilder.com</td><td>—</td><td>15</td><td class="cite-good">NEW</td></tr>
+  <tr><td>trustypassword.org</td><td>—</td><td>14</td><td class="cite-good">NEW</td></tr>
+</table>
 
-<div class="site-card">
-  <div class="site-header">
-    <div>
-      <div class="site-name">instantpasswordgenerator.org</div>
-      <div class="site-url">sc-domain:instantpasswordgenerator.org</div>
-    </div>
-    <div style="text-align:right;font-size:0.85rem;">
-      <span class="trend-up">📈 +50.0%</span>
-      <span style="color:#d29922">6 imp</span>
-      <span style="color:#8b949e"> · </span>
-      <span style="color:#3fb950">0 cl</span>
-    </div>
-  </div>
-  <div class="site-metrics">
-    <div class="metric"><div class="val">6</div><div class="lbl">Impressions</div></div>
-    <div class="metric"><div class="val">0</div><div class="lbl">Clicks</div></div>
-    <div class="metric"><div class="val">0%</div><div class="lbl">CTR</div></div>
-    <div class="metric"><div class="val">12.5</div><div class="lbl">Avg Position</div></div>
-  </div>
-  <div class="score-bar"><div class="score-fill" style="width:0.6066734074823054%;background:#d29922"></div></div>
-  <div class="detail-toggle" onclick="toggleDetail('sc-domain_instantpasswordgenerator_org')">📊 Show top queries & pages ▼</div>
-  <div class="detail-row" id="sc-domain_instantpasswordgenerator_org">
-    <h3>Top Queries</h3>
-    <table>
-      <tr><th>Query</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th><th>Expected CTR</th></tr>
-      <tr><td>instant password</td><td>2</td><td>0</td><td>0%</td><td><span class="pos-badge pos-ok">15</span></td><td>0.6%</td></tr>
-      <tr><td>mh2dw</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">25</span></td><td>0.4%</td></tr>
-    </table>
-    <h3>Top Pages</h3>
-    <table>
-      <tr><th>Page</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th></tr>
-      <tr><td style="font-size:0.75rem">http://www.instantpasswordgenerator.org/</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-good">4</span></td></tr>
-      <tr><td style="font-size:0.75rem">https://instantpasswordgenerator.org/</td><td>5</td><td>0</td><td>0%</td><td><span class="pos-badge pos-ok">14.2</span></td></tr>
-    </table>
-  </div>
-</div>
+<h2>✅ Jun 1 Audit Recommendations — Progress</h2>
+<table>
+  <tr><th>Recommendation</th><th>Status</th></tr>
+  <tr><td>Add legal pages to IPG and IVK</td><td class="cite-good">✅ DONE — All 4 pages live on both</td></tr>
+  <tr><td>Add HowTo schema to all homepages</td><td class="cite-good">✅ DONE — 22-36 types per domain</td></tr>
+  <tr><td>Fix BPG repo mismatch (45 posts)</td><td class="cite-good">✅ DONE — Redeployed W23</td></tr>
+  <tr><td>Grow freestrongpassword.com (8→25+)</td><td class="cite-good">✅ DONE — Now 28 posts</td></tr>
+  <tr><td>Build external backlinks to BPG</td><td>❌ NOT STARTED</td></tr>
+  <tr><td>Win featured snippet (authy vs ms auth)</td><td>❌ NOT CONFIRMED</td></tr>
+  <tr><td>Submit all domains to GSC + Bing</td><td>⚠️ PARTIAL — 7 of 14 in GSC</td></tr>
+  <tr><td>Fix Cloudflare ai-train=no</td><td>❌ NOT STARTED — All 14 domains</td></tr>
+  <tr><td>Cross-link between portfolio domains</td><td>❌ NOT STARTED</td></tr>
+  <tr><td>Build social media presence</td><td>❌ NOT STARTED</td></tr>
+  <tr><td>Cloudflare Pages migration</td><td>❌ NOT STARTED</td></tr>
+</table>
+<p><strong>4/11 complete (36%).</strong> Legal pages + schema + blog growth all trending well. Backlinks, Cloudflare config, GSC submission still outstanding.</p>
 
-<div class="site-card">
-  <div class="site-header">
-    <div>
-      <div class="site-name">randompasswordtool.com</div>
-      <div class="site-url">sc-domain:randompasswordtool.com</div>
-    </div>
-    <div style="text-align:right;font-size:0.85rem;">
-      
-      <span style="color:#d29922">1 imp</span>
-      <span style="color:#8b949e"> · </span>
-      <span style="color:#3fb950">0 cl</span>
-    </div>
-  </div>
-  <div class="site-metrics">
-    <div class="metric"><div class="val">1</div><div class="lbl">Impressions</div></div>
-    <div class="metric"><div class="val">0</div><div class="lbl">Clicks</div></div>
-    <div class="metric"><div class="val">0%</div><div class="lbl">CTR</div></div>
-    <div class="metric"><div class="val">76</div><div class="lbl">Avg Position</div></div>
-  </div>
-  <div class="score-bar"><div class="score-fill" style="width:0.10111223458038424%;background:#d29922"></div></div>
-  <div class="detail-toggle" onclick="toggleDetail('sc-domain_randompasswordtool_com')">📊 Show top queries & pages ▼</div>
-  <div class="detail-row" id="sc-domain_randompasswordtool_com">
-    <h3>Top Queries</h3>
-    <table>
-      <tr><th>Query</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th><th>Expected CTR</th></tr>
-      <tr><td>random_password</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">76</span></td><td>0.1%</td></tr>
-    </table>
-    <h3>Top Pages</h3>
-    <table>
-      <tr><th>Page</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th></tr>
-      <tr><td style="font-size:0.75rem">https://randompasswordtool.com/</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-bad">76</span></td></tr>
-    </table>
-  </div>
-</div>
+<h2>🔧 Schema Coverage</h2>
+<table>
+  <tr><th>Domain</th><th>@type Instances</th><th>Types Present</th></tr>
+  <tr><td>trustypassword.com</td><td><strong>36</strong></td><td>Answer, ContactPoint, EntryPoint, FAQPage, HowTo, HowToStep, Offer, Organization, Question, SearchAction, SoftwareApplication, WebSite</td></tr>
+  <tr><td>securekeygenerator.com</td><td><strong>33</strong></td><td>Same set</td></tr>
+  <tr><td>randompasswordtool.com</td><td><strong>32</strong></td><td>Same set</td></tr>
+  <tr><td>instantpasswordgenerator.org</td><td><strong>32</strong></td><td>Same set (no EntryPoint)</td></tr>
+  <tr><td>titanpasswords.com</td><td><strong>32</strong></td><td>Same set</td></tr>
+  <tr><td>ironvaultkeys.com</td><td><strong>32</strong></td><td>Same set</td></tr>
+  <tr><td>freestrongpassword.com</td><td><strong>22</strong></td><td>Same (no EntryPoint)</td></tr>
+  <tr><td>bestpasswordgenerator.org</td><td><strong>22</strong></td><td>Answer, ContactPoint, FAQPage, HowTo, HowToStep, Offer, Organization, Question, SearchAction, SoftwareApplication, WebSite</td></tr>
+</table>
 
-<div class="site-card">
-  <div class="site-header">
-    <div>
-      <div class="site-name">11pluspreparation.com</div>
-      <div class="site-url">sc-domain:11pluspreparation.com</div>
-    </div>
-    <div style="text-align:right;font-size:0.85rem;">
-      
-      <span style="color:#d29922">1 imp</span>
-      <span style="color:#8b949e"> · </span>
-      <span style="color:#3fb950">0 cl</span>
-    </div>
-  </div>
-  <div class="site-metrics">
-    <div class="metric"><div class="val">1</div><div class="lbl">Impressions</div></div>
-    <div class="metric"><div class="val">0</div><div class="lbl">Clicks</div></div>
-    <div class="metric"><div class="val">0%</div><div class="lbl">CTR</div></div>
-    <div class="metric"><div class="val">1</div><div class="lbl">Avg Position</div></div>
-  </div>
-  <div class="score-bar"><div class="score-fill" style="width:0.10111223458038424%;background:#d29922"></div></div>
-  <div class="detail-toggle" onclick="toggleDetail('sc-domain_11pluspreparation_com')">📊 Show top queries & pages ▼</div>
-  <div class="detail-row" id="sc-domain_11pluspreparation_com">
-    <h3>Top Queries</h3>
-    <table>
-      <tr><th>Query</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th><th>Expected CTR</th></tr>
-    </table>
-    <h3>Top Pages</h3>
-    <table>
-      <tr><th>Page</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th></tr>
-      <tr><td style="font-size:0.75rem">http://11pluspreparation.com/</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-good">1</span></td></tr>
-    </table>
-  </div>
-</div>
+<h2>⚠️ Open Issues</h2>
+<div class="opp opp-critical"><span class="priority-badge pri-critical">critical</span> <strong>Missing legal pages (4 domains):</strong> securekeygenerator.org (about, contact), trustypassword.org (about, privacy, contact), bestpasswordgenerator.net (privacy, disclosure), bestpassword.org (privacy, disclosure)</div>
+<div class="opp opp-critical"><span class="priority-badge pri-critical">critical</span> <strong>Cloudflare Content-Signal ai-train=no</strong> on ALL 14 domains — may prevent AI training/grounding despite re-allows</div>
+<div class="opp opp-high"><span class="priority-badge pri-high">high</span> <strong>GSC impressions -62% from W23 peak</strong> — 830→317/day. May 2026 Core Update impact?</div>
+<div class="opp opp-high"><span class="priority-badge pri-high">high</span> <strong>Zero external backlinks</strong> across entire portfolio — no referring domains</div>
+<div class="opp opp-high"><span class="priority-badge pri-high">high</span> <strong>Knowledge Graph presence:</strong> 0 of 14 domains verified</div>
+<div class="opp opp-medium"><span class="priority-badge pri-medium">medium</span> <strong>7 domains not in GSC scan</strong> — safepassbuilder, securekeygenerator.org, strongpassfactory, trustypassword.org, bestpasswordgenerator.net, bestpassword.org, trustypassword.com</div>
+<div class="opp opp-low"><span class="priority-badge pri-low">low</span> <strong>No social media presence</strong> for any portfolio domain</div>
 
-<div class="site-card">
-  <div class="site-header">
-    <div>
-      <div class="site-name">tmktees.com</div>
-      <div class="site-url">sc-domain:tmktees.com</div>
-    </div>
-    <div style="text-align:right;font-size:0.85rem;">
-      
-      <span style="color:#d29922">1 imp</span>
-      <span style="color:#8b949e"> · </span>
-      <span style="color:#3fb950">0 cl</span>
-    </div>
-  </div>
-  <div class="site-metrics">
-    <div class="metric"><div class="val">1</div><div class="lbl">Impressions</div></div>
-    <div class="metric"><div class="val">0</div><div class="lbl">Clicks</div></div>
-    <div class="metric"><div class="val">0%</div><div class="lbl">CTR</div></div>
-    <div class="metric"><div class="val">1</div><div class="lbl">Avg Position</div></div>
-  </div>
-  <div class="score-bar"><div class="score-fill" style="width:0.10111223458038424%;background:#d29922"></div></div>
-  <div class="detail-toggle" onclick="toggleDetail('sc-domain_tmktees_com')">📊 Show top queries & pages ▼</div>
-  <div class="detail-row" id="sc-domain_tmktees_com">
-    <h3>Top Queries</h3>
-    <table>
-      <tr><th>Query</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th><th>Expected CTR</th></tr>
-    </table>
-    <h3>Top Pages</h3>
-    <table>
-      <tr><th>Page</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th></tr>
-      <tr><td style="font-size:0.75rem">https://www.tmktees.com/</td><td>1</td><td>0</td><td>0%</td><td><span class="pos-badge pos-good">1</span></td></tr>
-    </table>
-  </div>
-</div>
-
-<div class="site-card">
-  <div class="site-header">
-    <div>
-      <div class="site-name">tmcshirts.com</div>
-      <div class="site-url">sc-domain:tmcshirts.com</div>
-    </div>
-    <div style="text-align:right;font-size:0.85rem;">
-      
-      <span style="color:#8b949e">0 imp</span>
-      <span style="color:#8b949e"> · </span>
-      <span style="color:#3fb950">0 cl</span>
-    </div>
-  </div>
-  <div class="site-metrics">
-    <div class="metric"><div class="val">0</div><div class="lbl">Impressions</div></div>
-    <div class="metric"><div class="val">0</div><div class="lbl">Clicks</div></div>
-    <div class="metric"><div class="val">0%</div><div class="lbl">CTR</div></div>
-    <div class="metric"><div class="val">0</div><div class="lbl">Avg Position</div></div>
-  </div>
-  <div class="score-bar"><div class="score-fill" style="width:0.0%;background:#30363d"></div></div>  <div style="margin-top:0.5rem;">    <div class="opp opp-low"><span class="priority-badge pri-low">low</span> No impressions — not indexed or brand new. Needs content push.</div>
-  </div>
-  <div class="detail-toggle" onclick="toggleDetail('sc-domain_tmcshirts_com')">📊 Show top queries & pages ▼</div>
-  <div class="detail-row" id="sc-domain_tmcshirts_com">
-    <h3>Top Queries</h3>
-    <table>
-      <tr><th>Query</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th><th>Expected CTR</th></tr>
-    </table>
-    <h3>Top Pages</h3>
-    <table>
-      <tr><th>Page</th><th>Imp</th><th>Cl</th><th>CTR</th><th>Pos</th></tr>
-    </table>
-  </div>
-</div>
-
-<script>
-function toggleDetail(id) {
-  var el = document.getElementById(id);
-  el.style.display = el.style.display === 'none' || el.style.display === '' ? 'block' : 'none';
-}
-</script>
+<p style="margin-top:2rem;color:#8b949e;font-size:0.85rem;text-align:center;">
+Full report: <a href="https://thetanoli.com/dashboards/seo-report-w25-20260621.html" style="color:#58a6ff;">CITE Audit Report (14 domains)</a> · Generated 2026-06-21 by Hermes Agent Weekly SEO Portfolio Analysis
+</p>
 </body>
 </html>
