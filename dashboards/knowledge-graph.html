@@ -16,8 +16,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .card h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-bottom: 0.5rem; }
 .card .value { font-size: 2.2rem; font-weight: 700; color: #38bdf8; }
 .card .sub { font-size: 0.85rem; color: #94a3b8; margin-top: 0.25rem; }
-.chart-container { position: relative; height: 300px; width: 100%; }
+.chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 0 1.5rem 1.5rem; }
+@media (max-width: 768px) { .chart-row { grid-template-columns: 1fr; } }
+.chart-card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; }
+.chart-card h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-bottom: 1rem; }
+.chart-container { position: relative; height: 280px; width: 100%; }
 .repo-list { padding: 1.5rem; }
+.repo-list h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-bottom: 1rem; padding-left: 0.25rem; }
 table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
 th { text-align: left; padding: 0.5rem 0.75rem; color: #64748b; border-bottom: 2px solid #334155; }
 td { padding: 0.4rem 0.75rem; border-bottom: 1px solid #1e293b; }
@@ -27,102 +32,139 @@ tr:hover td { background: #1e293b; }
 .badge-travel { background: #1e3a2f; color: #4ade80; }
 .badge-property { background: #3a1e1e; color: #fb7185; }
 .badge-tech { background: #2e1e3a; color: #c084fc; }
-.tag-cloud { padding: 1rem 1.5rem; }
-.tag { display: inline-block; padding: 0.3rem 0.8rem; margin: 0.25rem; border-radius: 999px; background: #1e293b; border: 1px solid #334155; color: #94a3b8; font-size: 0.85rem; }
-.tag.high { border-color: #38bdf8; color: #38bdf8; }
-.tag.med { border-color: #4ade80; color: #4ade80; }
-.tag.low { border-color: #fbbf24; color: #fbbf24; }
-.footer { text-align: center; padding: 2rem; color: #475569; font-size: 0.8rem; }
+.badge-other { background: #333; color: #aaa; }
+.tag-cloud { padding: 0 1.5rem 1.5rem; }
+.tag-cloud h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-bottom: 1rem; }
+.tag { display: inline-block; padding: 0.25rem 0.75rem; margin: 0.25rem; border-radius: 999px; font-size: 0.8rem; background: #1e293b; border: 1px solid #334155; color: #e2e8f0; transition: all 0.2s; }
+.tag:hover { background: #334155; transform: translateY(-1px); }
+.tag-sm { font-size: 0.7rem; }
+.tag-md { font-size: 0.85rem; }
+.tag-lg { font-size: 1rem; }
+.tag-xl { font-size: 1.15rem; font-weight: 600; }
+.tag-3 { background: #1e3a5f; border-color: #2563eb; }
+.tag-4 { background: #1e3a2f; border-color: #16a34a; }
+.tag-5 { background: #3a1e1e; border-color: #e11d48; }
+.footer { text-align: center; padding: 2rem; color: #475569; font-size: 0.8rem; border-top: 1px solid #1e293b; }
 </style>
 </head>
 <body>
 <div class="header">
-<h1>🧠 Portfolio Knowledge Graph</h1>
-<div class="meta">
-<span>Generated: 2026-06-18</span> &middot;
-<span>21 repos merged</span> &middot;
-<span>Update: graphify update (AST re-extraction)</span>
+  <h1>Portfolio Knowledge Graph</h1>
+  <div class="meta">Last updated: June 21, 2026 | AST-only update | 23 repos</div>
 </div>
-</div>
-
 <div class="grid">
-<div class="card"><h3>Total Nodes</h3><div class="value">795</div><div class="sub">Across all portfolio repos</div></div>
-<div class="card"><h3>Total Edges</h3><div class="value">1600</div><div class="sub">Relationships in the graph</div></div>
-<div class="card"><h3>Shared Concepts</h3><div class="value">124</div><div class="sub">Topics spanning 2+ sites</div></div>
-<div class="card"><h3>Repos Tracked</h3><div class="value">21</div><div class="sub">Active portfolio projects</div></div>
+  <div class="card"><h3>Total Nodes</h3><div class="value">795</div><div class="sub">Code structure entities</div></div>
+  <div class="card"><h3>Total Edges</h3><div class="value">1,600</div><div class="sub">Relationships between entities</div></div>
+  <div class="card"><h3>Shared Concepts</h3><div class="value">124</div><div class="sub">Concepts in 2+ repos</div></div>
+  <div class="card"><h3>Repos Tracked</h3><div class="value">23</div><div class="sub">Active portfolio repositories</div></div>
 </div>
-
-<div class="grid">
-<div class="card">
-<h3>Node Origin Breakdown</h3>
-<div class="chart-container"><canvas id="originChart"></canvas></div>
+<div class="chart-row">
+  <div class="chart-card"><h3>Cross-Repo Overlap Distribution</h3><div class="chart-container"><canvas id="overlapChart"></canvas></div></div>
+  <div class="chart-card"><h3>Top Repos by Node Count</h3><div class="chart-container"><canvas id="repoChart"></canvas></div></div>
 </div>
-<div class="card">
-<h3>Cross-Repo Overlap</h3>
-<div class="chart-container"><canvas id="overlapChart"></canvas></div>
-</div>
-</div>
-
-<div class="grid">
-<div class="card" style="grid-column: 1 / -1;">
-<h3>Cross-Portfolio Concept Cloud</h3>
-<p style="font-size:0.85rem;color:#64748b;margin-bottom:0.75rem;">Concepts shared across 2+ sites — larger = more repos share it</p>
-<div class="tag-cloud">
-<span class="tag high" style="font-size:24px">post.json (14)</span>
-<span class="tag high" style="font-size:24px">posts (14)</span>
-<span class="tag high" style="font-size:24px">site (11)</span>
-<span class="tag high" style="font-size:24px">name (11)</span>
-<span class="tag high" style="font-size:24px">domain (11)</span>
-<span class="tag high" style="font-size:24px">readme.md (10)</span>
-<span class="tag high" style="font-size:24px">app.js (8)</span>
-<span class="tag high" style="font-size:24px">render() (8)</span>
-<span class="tag high" style="font-size:24px">nist sp 800-63b (8)</span>
-<span class="tag high" style="font-size:24px">consent.js (7)</span>
-<span class="tag high" style="font-size:24px">decide() (7)</span>
-<span class="tag high" style="font-size:24px">kokal operations ltd (6)</span>
-<span class="tag high" style="font-size:24px">crypto.getrandomvalues() (6)</span>
-<span class="tag high" style="font-size:24px">applypreset() (5)</span>
-<span class="tag high" style="font-size:24px">deployment (5)</span>
-<span class="tag high" style="font-size:24px">sitemap.xml (5)</span>
-<span class="tag high" style="font-size:24px">bitwarden (5)</span>
-<span class="tag high" style="font-size:24px">1password (5)</span>
-<span class="tag high" style="font-size:24px">have i been pwned (5)</span>
-<span class="tag high" style="font-size:24px">ncsc (5)</span>
-</div></div></div>
-
-<div class="repo-list">
-<h3 style="padding: 0 0 1rem 0; color: #94a3b8;">Per-Repo Node Counts</h3>
-<table>
-<tr><th>Repository</th><th>Nodes</th><th>Category</th><th>% of Total</th></tr>
-<tr><td>unknown</td><td>795</td><td><span class="badge badge-tech">tech</span></td><td>100.0%</td></tr>
+<div class="tag-cloud"><h3>Cross-Portfolio Concepts (3+ repos)</h3><div>
+    <span class="tag tag-xl" title="passwords-4-free.com, travelocities.net, travelligence.net, bookero.co.uk, traveliase.co.uk, koktra.com, vpnreviews.net, softwarecomparison.net">render()</span>
+    <span class="tag tag-xl" title="titanpasswords-com, strongpassfactory-com, safepassbuilder-com, instantpasswordgenerator-org, workpassword.net, randompasswordtool-com, securekeygenerator-com, freestrongpassword-com">nist sp 800-63b</span>
+    <span class="tag tag-lg" title="travelocities.net, travelligence.net, bookero.co.uk, traveliase.co.uk, koktra.com, vpnreviews.net, softwarecomparison.net">consent.js</span>
+    <span class="tag tag-lg" title="travelocities.net, travelligence.net, bookero.co.uk, traveliase.co.uk, koktra.com, vpnreviews.net, softwarecomparison.net">decide()</span>
+    <span class="tag tag-lg" title="titanpasswords-com, safepassbuilder-com, gamingpassword.net, workpassword.net, passphrasemaker.net, freestrongpassword-com">kokal operations ltd</span>
+    <span class="tag tag-lg" title="safepassbuilder-com, gamingpassword.net, workpassword.net, passphrasemaker.net, securekeygenerator-com, titanpasswords-com">crypto.getrandomvalues()</span>
+    <span class="tag tag-md" title="passwords-4-free.com, pforprofits-com, dfordeals-co-uk, vpnreviews.net, softwarecomparison.net">applypreset()</span>
+    <span class="tag tag-md" title="freestrongpassword-com, randompasswordtool-com, securekeygenerator-com, titanpasswords-com, ironvaultkeys.com">deployment</span>
+    <span class="tag tag-md" title="gamingpassword.net, freestrongpassword-com, passphrasemaker.net, securekeygenerator-com, titanpasswords-com">bitwarden</span>
+    <span class="tag tag-md" title="gamingpassword.net, freestrongpassword-com, passphrasemaker.net, securekeygenerator-com, titanpasswords-com">1password</span>
+    <span class="tag tag-md" title="strongpassfactory-com, safepassbuilder-com, gamingpassword.net, instantpasswordgenerator-org, titanpasswords-com">have i been pwned</span>
+    <span class="tag tag-md" title="strongpassfactory-com, safepassbuilder-com, gamingpassword.net, passphrasemaker.net, securekeygenerator-com">ncsc</span>
+    <span class="tag tag-md" title="freestrongpassword-com, ironvaultkeys.com, randompasswordtool-com, securekeygenerator-com">file inventory</span>
+    <span class="tag tag-md" title="freestrongpassword-com, ironvaultkeys.com, randompasswordtool-com, securekeygenerator-com">brand identity</span>
+    <span class="tag tag-md" title="strongpassfactory-com, freestrongpassword-com, passphrasemaker.net, titanpasswords-com">d131fbf10dd696ea699cfc926f19e7c5.tx</span>
+    <span class="tag tag-md" title="strongpassfactory-com, freestrongpassword-com, passphrasemaker.net, titanpasswords-com">robots.txt</span>
+    <span class="tag tag-md" title="titanpasswords-com, travelligence.net, freestrongpassword-com, safepassbuilder-com">terms of use</span>
+    <span class="tag tag-md" title="titanpasswords-com, strongpassfactory-com, safepassbuilder-com, gamingpassword.net">cisa</span>
+    <span class="tag tag-md" title="safepassbuilder-com, trustypassword.com, titanpasswords-com, passphrasemaker.net">brand</span>
+    <span class="tag tag-md" title="safepassbuilder-com, titanpasswords-com, passphrasemaker.net, workpassword.net">post.json blog data</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, randompasswordtool-com, instantpasswordgenerator-org">script.js</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, randompasswordtool-com, instantpasswordgenerator-org">passwordgenerator</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, randompasswordtool-com, instantpasswordgenerator-org">.constructor()</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, randompasswordtool-com, instantpasswordgenerator-org">.generate()</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, randompasswordtool-com, instantpasswordgenerator-org">._fallbackgenerate()</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, randompasswordtool-com, instantpasswordgenerator-org">passwordstrengthchecker</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, randompasswordtool-com, instantpasswordgenerator-org">.check()</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, randompasswordtool-com, instantpasswordgenerator-org">._hasrepeating()</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, randompasswordtool-com, instantpasswordgenerator-org">._hassequence()</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, randompasswordtool-com, instantpasswordgenerator-org">._iscommonpassword()</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, randompasswordtool-com, instantpasswordgenerator-org">._formattime()</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, ironvaultkeys.com, randompasswordtool-com">⚠️ seo architecture — individual bl</span>
+    <span class="tag tag-sm" title="strongpassfactory-com, freestrongpassword-com, passphrasemaker.net">404.html</span>
+    <span class="tag tag-sm" title="strongpassfactory-com, freestrongpassword-com, passphrasemaker.net">affiliate-disclosure.html</span>
+    <span class="tag tag-sm" title="strongpassfactory-com, freestrongpassword-com, passphrasemaker.net">blog.html</span>
+    <span class="tag tag-sm" title="strongpassfactory-com, freestrongpassword-com, passphrasemaker.net">privacy-policy.html</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, gamingpassword.net, workpassword.net">ncsc password guidance</span>
+    <span class="tag tag-sm" title="titanpasswords-com, freestrongpassword-com, travelligence.net">privacy policy</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, passphrasemaker.net, workpassword.net">update sitemap workflow</span>
+    <span class="tag tag-sm" title="freestrongpassword-com, passphrasemaker.net, workpassword.net">validate site workflow</span>
+    <span class="tag tag-sm" title="strongpassfactory-com, safepassbuilder-com, gamingpassword.net">verizon 2026 data breach investigat</span>
+    <span class="tag tag-sm" title="titanpasswords-com, strongpassfactory-com, gamingpassword.net">google authenticator</span>
+    <span class="tag tag-sm" title="titanpasswords-com, gamingpassword.net, workpassword.net">purevpn</span>
+    <span class="tag tag-sm" title="titanpasswords-com, securekeygenerator-com, instantpasswordgenerator-org">cryptographically secure pseudorand</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">randomint()</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">buildpool()</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">setstrength()</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">clearstrength()</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">generate()</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">copypassword()</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">synclength()</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">poolsize()</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">hassequence()</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">isrepeated()</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">fmttime()</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">setbar()</span>
+    <span class="tag tag-sm" title="softwarecomparison.net, vpnreviews.net, passwords-4-free.com">analyse()</span>
+    <span class="tag tag-sm" title="travelligence.net, titanpasswords-com, safepassbuilder-com">contact page</span>
+</div></div>
+<div class="repo-list"><h3>Per-Repository Breakdown</h3><table><tr><th>Repository</th><th>Nodes</th><th>Category</th></tr>
+    <tr><td>securekeygenerator-com</td><td>149</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>titanpasswords-com</td><td>134</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>instantpasswordgenerator-org</td><td>81</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>randompasswordtool-com</td><td>81</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>travelligence.net</td><td>80</td><td><span class="badge badge-travel">travel</span></td></tr>
+    <tr><td>freestrongpassword-com</td><td>75</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>safepassbuilder-com</td><td>67</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>passphrasemaker.net</td><td>64</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>strongpassfactory-com</td><td>63</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>gamingpassword.net</td><td>62</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>workpassword.net</td><td>46</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>pforprofits-com</td><td>36</td><td><span class="badge badge-property">property</span></td></tr>
+    <tr><td>softwarecomparison.net</td><td>18</td><td><span class="badge badge-tech">tech</span></td></tr>
+    <tr><td>vpnreviews.net</td><td>18</td><td><span class="badge badge-tech">tech</span></td></tr>
+    <tr><td>passwords-4-free.com</td><td>16</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>dfordeals-co-uk</td><td>16</td><td><span class="badge badge-property">property</span></td></tr>
+    <tr><td>ironvaultkeys.com</td><td>12</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>travelocities.net</td><td>10</td><td><span class="badge badge-travel">travel</span></td></tr>
+    <tr><td>bookero.co.uk</td><td>8</td><td><span class="badge badge-travel">travel</span></td></tr>
+    <tr><td>trustypassword.com</td><td>8</td><td><span class="badge badge-password">password</span></td></tr>
+    <tr><td>koktra.com</td><td>5</td><td><span class="badge badge-travel">travel</span></td></tr>
+    <tr><td>traveliase.co.uk</td><td>5</td><td><span class="badge badge-travel">travel</span></td></tr>
+    <tr><td>trustypassword-org</td><td>2</td><td><span class="badge badge-password">password</span></td></tr>
 </table></div>
-
+<div class="footer">Generated by Hermes Agent weekly cron · Portfolio Knowledge Graph</div>
 <script>
-new Chart(document.getElementById('originChart'), {
-type: 'doughnut',
-data: {
-labels: ['AST (Code Structure)', 'Semantic (Content)', 'Both'],
-datasets: [{data: [795,0,0],
-backgroundColor: ['#38bdf8', '#4ade80', '#fbbf24'],
-borderColor: ['#0f172a', '#0f172a', '#0f172a'],
-borderWidth: 2}]
-},
-options: {plugins: {legend: {labels: {color: '#94a3b8'}}}, responsive: true, maintainAspectRatio: false}
+new Chart(document.getElementById("overlapChart"), {
+  type: "bar",
+  data: { labels: ["2 repos", "3 repos", "4 repos", "5 repos", "6 repos", "7 repos", "8 repos", "10 repos", "11 repos", "14 repos"], datasets: [{ label: "Concepts", data: [58, 38, 8, 7, 2, 2, 3, 1, 3, 2], backgroundColor: [["#38bdf8","#4ade80","#fb7185","#c084fc","#fbbf24"][0], ["#38bdf8","#4ade80","#fb7185","#c084fc","#fbbf24"][1], ["#38bdf8","#4ade80","#fb7185","#c084fc","#fbbf24"][2], ["#38bdf8","#4ade80","#fb7185","#c084fc","#fbbf24"][3], ["#38bdf8","#4ade80","#fb7185","#c084fc","#fbbf24"][4], ["#38bdf8","#4ade80","#fb7185","#c084fc","#fbbf24"][4], ["#38bdf8","#4ade80","#fb7185","#c084fc","#fbbf24"][4], ["#38bdf8","#4ade80","#fb7185","#c084fc","#fbbf24"][4], ["#38bdf8","#4ade80","#fb7185","#c084fc","#fbbf24"][4], ["#38bdf8","#4ade80","#fb7185","#c084fc","#fbbf24"][4]], borderRadius: 4 }] },
+  options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: true, ticks: { stepSize: 1, color: "#94a3b8" }, grid: { color: "#1e293b" } },
+              x: { ticks: { color: "#94a3b8" }, grid: { display: false } } }
 });
-
-new Chart(document.getElementById('overlapChart'), {
-type: 'bar',
-data: {
-labels: ['Shared by 2 repos', 'Shared by 3 repos', 'Shared by 4+ repos'],
-datasets: [{label: 'Concepts', data: [58,38,28],
-backgroundColor: ['#38bdf8', '#4ade80', '#fbbf24'],
-borderRadius: 4}]
-},
-options: {plugins: {legend: {display: false}}, scales: {y: {beginAtZero: true, grid: {color: '#1e293b'}, ticks: {color: '#64748b'}}, x: {grid: {display: false}, ticks: {color: '#94a3b8'}}}, responsive: true, maintainAspectRatio: false}
+new Chart(document.getElementById("repoChart"), {
+  type: "bar",
+  data: { labels: ["securekeygenerator-c", "titanpasswords-com", "instantpasswordgener", "randompasswordtool-c", "travelligence.net", "freestrongpassword-c", "safepassbuilder-com", "passphrasemaker.net", "strongpassfactory-co", "gamingpassword.net", "workpassword.net", "pforprofits-com", "softwarecomparison.n", "vpnreviews.net", "passwords-4-free.com"], datasets: [{ label: "Nodes", data: [149, 134, 81, 81, 80, 75, 67, 64, 63, 62, 46, 36, 18, 18, 16], backgroundColor: ["#60a5fa", "#60a5fa", "#60a5fa", "#60a5fa", "#4ade80", "#60a5fa", "#60a5fa", "#60a5fa", "#60a5fa", "#60a5fa", "#60a5fa", "#fb7185", "#c084fc", "#c084fc", "#60a5fa"], borderRadius: 4 }] },
+  options: { indexAxis: "y", responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { x: { beginAtZero: true, ticks: { stepSize: 10, color: "#94a3b8" }, grid: { color: "#1e293b" } },
+              y: { ticks: { color: "#94a3b8", font: { size: 10 } }, grid: { display: false } } }
 });
 </script>
-<div class="footer">
-Portfolio Knowledge Graph &middot; Updated weekly &middot; thetanoli.com
-</div>
 </body>
 </html>
