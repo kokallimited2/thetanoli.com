@@ -3,361 +3,553 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mobile App Opportunity Research — June 22, 2026</title>
+<title>Daily Money-Making Research — 2026-06-22</title>
 <style>
   :root {
-    --bg-primary: #0d1117;
-    --bg-secondary: #161b22;
-    --bg-card: #1c2128;
-    --border: #30363d;
-    --text-primary: #e6edf3;
-    --text-secondary: #8b949e;
-    --accent-green: #3fb950;
-    --accent-blue: #58a6ff;
-    --accent-orange: #d29922;
-    --accent-red: #f85149;
-    --accent-purple: #bc8cff;
+    --bg: #0f0f1a;
+    --card: #1a1a2e;
+    --accent: #00d4aa;
+    --accent2: #7c5cfc;
+    --text: #e0e0f0;
+    --muted: #8888aa;
+    --border: #2a2a4a;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  h1 { font-size: 2rem; margin-bottom: 0.25rem; color: var(--text-primary); }
-  .subtitle { color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem; }
-  .meta-bar {
-    display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;
-    padding: 0.75rem 1rem; background: var(--bg-secondary); border-radius: 8px;
-    border: 1px solid var(--border); font-size: 0.85rem; color: var(--text-secondary);
-  }
-  .meta-bar strong { color: var(--text-primary); }
-  .section-title {
-    font-size: 1.35rem; font-weight: 600; margin: 2rem 0 1rem;
-    padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
-    color: var(--text-primary);
-  }
-  .card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 1.25rem; margin-bottom: 1rem;
-  }
-  .card h3 {
-    font-size: 1.1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;
-  }
-  .card h3 .rank {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 28px; height: 28px; border-radius: 50%;
-    font-size: 0.8rem; font-weight: 700; color: #fff; flex-shrink: 0;
-  }
-  .rank-1 { background: linear-gradient(135deg, #d29922, #b8860b); }
-  .rank-2 { background: linear-gradient(135deg, #8b949e, #6e7681); }
-  .rank-3 { background: linear-gradient(135deg, #a371f7, #6f42c1); }
-  .tag {
-    display: inline-block; padding: 0.15rem 0.5rem; border-radius: 12px;
-    font-size: 0.75rem; font-weight: 600; margin: 0.15rem;
-  }
-  .tag-green { background: rgba(63,185,80,0.15); color: #3fb950; }
-  .tag-blue { background: rgba(88,166,255,0.15); color: #58a6ff; }
-  .tag-orange { background: rgba(210,153,34,0.15); color: #d29922; }
-  .tag-purple { background: rgba(188,140,255,0.15); color: #bc8cff; }
-  .tag-red { background: rgba(248,81,73,0.15); color: #f85149; }
-  .metric-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 0.75rem; margin: 0.75rem 0;
-  }
-  .metric {
-    background: var(--bg-secondary); padding: 0.6rem; border-radius: 6px;
-    border: 1px solid var(--border);
-  }
-  .metric .label { font-size: 0.75rem; color: var(--text-secondary); }
-  .metric .value { font-size: 1.1rem; font-weight: 700; color: var(--accent-green); }
-  .metric .value.warn { color: var(--accent-orange); }
-  table {
-    width: 100%; border-collapse: collapse; margin: 0.75rem 0;
-    font-size: 0.9rem;
-  }
-  th, td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
-  th { background: var(--bg-secondary); color: var(--text-secondary); font-weight: 600; }
-  tr:last-child td { border-bottom: none; }
-  .pill-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.5rem 0; }
-  .pill {
-    padding: 0.2rem 0.6rem; background: var(--bg-secondary); border: 1px solid var(--border);
-    border-radius: 16px; font-size: 0.8rem; color: var(--text-secondary);
-  }
-  .dos-donts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0.75rem 0; }
-  .dos { border-left: 3px solid var(--accent-green); padding-left: 0.75rem; }
-  .donts { border-left: 3px solid var(--accent-red); padding-left: 0.75rem; }
-  .dos li, .donts li { margin-bottom: 0.35rem; font-size: 0.9rem; }
-  .step { margin: 0.5rem 0; padding: 0.5rem 0.75rem; background: var(--bg-secondary);
-    border-left: 2px solid var(--accent-blue); border-radius: 0 6px 6px 0; font-size: 0.9rem; }
-  .step strong { color: var(--accent-blue); }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 20px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  header { text-align: center; padding: 40px 0; border-bottom: 1px solid var(--border); margin-bottom: 30px; }
+  header h1 { font-size: 2em; color: var(--accent); }
+  header .date { color: var(--muted); font-size: 1.1em; margin-top: 5px; }
+  header .badge { display: inline-block; background: var(--accent2); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.8em; margin-top: 10px; }
+  h2 { color: var(--accent); margin: 30px 0 15px; font-size: 1.4em; border-left: 3px solid var(--accent2); padding-left: 12px; }
+  h3 { color: #fff; margin: 20px 0 10px; font-size: 1.1em; }
+  .exec-summary { background: linear-gradient(135deg, var(--card), #1a1a3e); padding: 20px; border-radius: 12px; margin-bottom: 25px; }
+  .exec-summary p { margin-bottom: 10px; }
+  .exec-summary .highlight { color: var(--accent); font-weight: bold; }
+  .opportunity { background: var(--card); border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); }
+  .opportunity h3 { color: var(--accent); }
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin: 12px 0; }
+  .meta-item { background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 8px; font-size: 0.9em; }
+  .meta-item .label { color: var(--muted); font-size: 0.8em; display: block; }
+  .meta-item .value { color: #fff; font-weight: 600; }
+  .tag { display: inline-block; background: rgba(124,92,252,0.2); color: #b8a0ff; padding: 2px 10px; border-radius: 12px; font-size: 0.8em; margin-right: 5px; margin-bottom: 5px; }
+  .tag-new { background: rgba(0,212,170,0.2); color: var(--accent); }
+  .source { background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px; margin: 8px 0; font-size: 0.9em; }
+  .source a { color: var(--accent2); text-decoration: none; }
+  .source a:hover { text-decoration: underline; }
+  .actions { background: rgba(0,212,170,0.05); border-left: 3px solid var(--accent); padding: 12px; border-radius: 0 8px 8px 0; margin-top: 10px; }
+  .actions ol { margin-left: 20px; }
+  .actions ol li { margin-bottom: 5px; }
+  .hn-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+  .hn-table th, .hn-table td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+  .hn-table th { background: var(--card); color: var(--accent); font-weight: 600; }
+  .hn-table tr:hover { background: rgba(255,255,255,0.03); }
+  .video-list { list-style: none; }
+  .video-list li { padding: 10px; background: var(--card); margin-bottom: 8px; border-radius: 8px; border-left: 3px solid var(--accent2); }
+  .video-list li.new-video { border-left-color: var(--accent); }
+  .video-list li .views { color: var(--muted); font-size: 0.85em; }
+  .section { margin-bottom: 30px; }
+  footer { text-align: center; color: var(--muted); font-size: 0.85em; padding: 30px 0; border-top: 1px solid var(--border); margin-top: 40px; }
+  .risk-high { color: #ff6b6b; }
+  .risk-med { color: #ffd93d; }
+  .risk-low { color: var(--accent); }
   @media (max-width: 600px) {
-    body { padding: 1rem; }
-    .dos-donts { grid-template-columns: 1fr; }
-    .metric-grid { grid-template-columns: repeat(2, 1fr); }
+    body { padding: 10px; }
+    .meta-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
 <body>
+<div class="container">
 
-<h1>📱 Mobile App Opportunity Research</h1>
-<div class="subtitle">Ranked opportunities, market data & action plan for Dr Ateeq (Flutter developer)</div>
+<header>
+  <h1>💰 Daily Money-Making Research</h1>
+  <div class="date">Monday, 2026-06-22 • 08:00 BST</div>
+  <div class="badge">🏆 Monday Research — Low Fresh Content Day</div>
+</header>
 
-<div class="meta-bar">
-  <span><strong>Date:</strong> Monday, June 22, 2026</span>
-  <span><strong>Cadence:</strong> Every 3rd Day</span>
-  <span><strong>Sources:</strong> RevenueCat, Adapty, Business of Apps, Manchester Digital, Foresight Mobile, Technobrains, QuantumByte</span>
+<div class="exec-summary">
+  <h2>📊 Executive Summary</h2>
+  <p><span class="highlight">Monday 22 June 2026:</span> As expected for a Monday morning, sub-24h YouTube content is minimal (Monday is the lowest-yield day). We found <span class="highlight">1 sub-24h video</span> and several strong recent videos (2-7 days old). GitHub Trending shows <span class="highlight">headroom</span> (2,624 stars/day) leading the pack — LLM token compression is the #1 emerging opportunity. HN is buzzing about <span class="highlight">Claude identity verification</span> (691 pts, 582 comments), signalling a massive privacy-concern opportunity. The strongest actionable opportunity this week is building an <span class="highlight">LLM token compression proxy service</span> wrapped around headroom, followed by <span class="highlight">AI agent agency services</span> using open-source frameworks.</p>
+  <p><span class="highlight">Total sources scanned:</span> 12 YouTube queries, HN live + archive, GitHub Trending • <span class="highlight">Top opportunities identified:</span> 10 ranked</p>
 </div>
 
-<!-- ===================== EXECUTIVE SUMMARY ===================== -->
-<h2 class="section-title">📊 Executive Summary</h2>
-<div class="card">
-  <p>The mobile app market is at an inflection point. Consumer spend hit <strong>$150B in 2025</strong> (13% YoY), but the gold rush for generic apps is <strong>over</strong>. The middle tier (£6.99/month utility apps) is a dead zone. What works now: <strong>specialised B2B vertical SaaS at £30–99/month</strong> or <strong>free+ads/micro-transactions at scale</strong>.</p>
-  <br>
-  <p>Three clear opportunities emerge for a solo Flutter developer with AI skills. All three play to the barbell strategy — pick a lane and own it.</p>
-  
-  <div class="metric-grid">
-    <div class="metric">
-      <div class="label">Global App Spend (2025)</div>
-      <div class="value">$150B</div>
-    </div>
-    <div class="metric">
-      <div class="label">New Sub Apps/Month (2026)</div>
-      <div class="value warn">14,700+</div>
-    </div>
-    <div class="metric">
-      <div class="label">Top 25% YoY Growth</div>
-      <div class="value">+80%</div>
-    </div>
-    <div class="metric">
-      <div class="label">Bottom 25% YoY Change</div>
-      <div class="value warn">-33%</div>
-    </div>
-    <div class="metric">
-      <div class="label">AI Apps Revenue/Payer Premium</div>
-      <div class="value">+41%</div>
-    </div>
-    <div class="metric">
-      <div class="label">Foldable Phone Growth (2026)</div>
-      <div class="value">+30%</div>
-    </div>
+<!-- TOP 10 OPPORTUNITIES -->
+<h2>🏆 Top 10 Money-Making Opportunities</h2>
+
+<div class="opportunity">
+  <h3>🥇 1. LLM Token Compression Proxy Service (headroom)</h3>
+  <span class="tag tag-new">🔥 HOT</span>
+  <span class="tag">AI/ML</span>
+  <span class="tag">SaaS</span>
+  <span class="tag">API</span>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="label">Startup Cost</span><span class="value">£50-200/mo</span></div>
+    <div class="meta-item"><span class="label">Difficulty</span><span class="value">5/10</span></div>
+    <div class="meta-item"><span class="label">Time to First £</span><span class="value">1-2 weeks</span></div>
+    <div class="meta-item"><span class="label">Scalability</span><span class="value">★★★★★</span></div>
+    <div class="meta-item"><span class="label">Automation</span><span class="value">★★★★★</span></div>
+    <div class="meta-item"><span class="label">UK Suitability</span><span class="value">★★★★★</span></div>
+  </div>
+  <div class="source">
+    <strong>Source:</strong> GitHub Trending • <a href="https://github.com/chopratejas/headroom">chopratejas/headroom</a><br>
+    <strong>Stars Today:</strong> 2,624 • <strong>Total Stars:</strong> 45,326 • <strong>Language:</strong> Python
+  </div>
+  <p><strong>What it is:</strong> headroom is an open-source tool that compresses tool outputs, logs, files, and RAG chunks by 60-95% before they reach an LLM, while preserving answer quality. It can be used as a library, proxy, or MCP server.</p>
+  <p><strong>Why it will work:</strong> UK SMEs and startups are spending heavily on LLM API tokens. A managed proxy service that automatically compresses inputs could cut their costs by 60-95%. The GitHub traction (2,624 stars/day) proves massive demand. You can offer it as a drop-in middleware proxy or as a managed MCP server.</p>
+  <p><strong>Pricing model:</strong> £200-800/mo per client — flat fee underpriced by their token savings. Target: AI startups, SaaS companies, agencies using LLM APIs heavily.</p>
+  <p><strong>Risks:</strong> <span class="risk-med">Medium</span> — open-source alternatives may emerge. Competing on price is a race to the bottom. Position as managed service with SLAs.</p>
+  <div class="actions">
+    <strong>First 3 Actions:</strong>
+    <ol>
+      <li>Deploy headroom as a Docker proxy service on a VPS (DigitalOcean £6/mo)</li>
+      <li>Build a landing page showing cost calculator: "Save 70% on LLM API costs"</li>
+      <li>Offer free 14-day trial to 3 UK AI startups via LinkedIn outreach</li>
+    </ol>
   </div>
 </div>
 
-<!-- ===================== TOP 3 OPPORTUNITIES ===================== -->
-<h2 class="section-title">🏆 Top 3 App Opportunities</h2>
-
-<!-- #1 Health & Fitness -->
-<div class="card">
-  <h3><span class="rank rank-1">1</span> Health & Fitness — AI-Powered Personal Training</h3>
-  <div class="pill-list">
-    <span class="pill">Annual Subscription</span>
-    <span class="pill">£30-79.99/yr</span>
-    <span class="pill">Flutter + AI</span>
-    <span class="pill">Low Competition</span>
-    <span class="pill">High LTV</span>
+<div class="opportunity">
+  <h3>🥈 2. AI Agent Agency (deer-flow / open-source harness)</h3>
+  <span class="tag tag-new">🔥 HOT</span>
+  <span class="tag">AI Agents</span>
+  <span class="tag">Agency</span>
+  <span class="tag">B2B</span>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="label">Startup Cost</span><span class="value">£100-300</span></div>
+    <div class="meta-item"><span class="label">Difficulty</span><span class="value">6/10</span></div>
+    <div class="meta-item"><span class="label">Time to First £</span><span class="value">2-4 weeks</span></div>
+    <div class="meta-item"><span class="label">Scalability</span><span class="value">★★★★★</span></div>
+    <div class="meta-item"><span class="label">Automation</span><span class="value">★★★★☆</span></div>
+    <div class="meta-item"><span class="label">UK Suitability</span><span class="value">★★★★★</span></div>
   </div>
-  <table>
-    <tr><th>Metric</th><th>Value</th></tr>
-    <tr><td>Market Size (2026)</td><td>$6.86B → $10.04B by 2028 (9.99% CAGR)</td></tr>
-    <tr><td>Install LTV (Global)</td><td><strong>$1.21</strong> — highest of any category</td></tr>
-    <tr><td>Y1 RLTV per payer</td><td><strong>$35.64</strong></td></tr>
-    <tr><td>Annual plan revenue share</td><td>61% and growing (only category gaining annual share)</td></tr>
-    <tr><td>Trial → Paid conversion</td><td>42.2% (with trial)</td></tr>
-    <tr><td>First renewal rate</td><td>67.7%</td></tr>
-    <tr><td>ARPU (industry)</td><td>$17.84</td></tr>
-    <tr><td>Revenue concentration</td><td>Top 10% capture 92.6% — lowest concentration = room to compete</td></tr>
-    <tr><td>High-priced annual LTV</td><td>$70 (top 25%) vs $17 (bottom 25%) — 4x gap</td></tr>
-  </table>
-  <br>
-  <strong>Why Flutter?</strong> Excellent health kit integrations (Apple HealthKit, Google Fit), smooth animations for workout tracking, cross-platform from day one. Add AI layer — Gemini API for form correction, personalised plan generation, adaptive progression.
-  <br><br>
-  <strong>Niche suggestions:</strong>
-  <ul style="padding-left: 1.5rem; margin-top: 0.4rem;">
-    <li>AI running coach — personalised pace/distance plans adapting to user data</li>
-    <li>Post-rehab physio tracking — underserved, high willingness to pay</li>
-    <li>Hybrid fitness + nutrition with AI meal planning</li>
-  </ul>
-</div>
-
-<!-- #2 B2B Vertical SaaS -->
-<div class="card">
-  <h3><span class="rank rank-2">2</span> B2B Vertical SaaS — Niche Professional Tool</h3>
-  <div class="pill-list">
-    <span class="pill">£30-99/month</span>
-    <span class="pill">B2B</span>
-    <span class="pill">Subscription</span>
-    <span class="pill">Hard Paywall</span>
-    <span class="pill">Web-to-App</span>
+  <div class="source">
+    <strong>Source:</strong> GitHub Trending • <a href="https://github.com/bytedance/deer-flow">bytedance/deer-flow</a><br>
+    <strong>Stars Today:</strong> 442 • <strong>Total Stars:</strong> 72,815 • <strong>Language:</strong> Python<br>
+    <strong>Also:</strong> YouTube • "7 AI Agents That Print Money in 2026" — Sharbel A. (7.7k views, 2 months ago)
   </div>
-  <table>
-    <tr><th>Metric</th><th>Value</th></tr>
-    <tr><td>Y1 RLTV per payer (Business)</td><td><strong>$35.48</strong></td></tr>
-    <tr><td>Hard paywall conversion vs freemium</td><td><strong>10.7% vs 2.1%</strong> (5x better)</td></tr>
-    <tr><td>D14 RPI (Business)</td><td>$0.48 (highest non-gaming category)</td></tr>
-    <tr><td>High-priced Y1 RLTV</td><td><strong>$62.19</strong> vs low-priced $10.69 (6x gap)</td></tr>
-    <tr><td>Download → Trial (Business)</td><td>9.1% — highest trial start rate</td></tr>
-    <tr><td>Web-to-app billing advantage</td><td>25%+ margin (Stripe 3% vs App Store 15-30%)</td></tr>
-  </table>
-  <br>
-  <strong>Why Flutter?</strong> Flutter now supports web + mobile from single codebase. Perfect for B2B tools that need mobile for field use + web for dashboard. The "£30-99/month dead zone" warning applies to consumer utility apps, NOT B2B tools — professionals paying for time-saving software is a proven model.
-  <br><br>
-  <strong>Niche suggestions:</strong>
-  <ul style="padding-left: 1.5rem; margin-top: 0.4rem;">
-    <li>Client portal for service businesses — secure uploads, approvals, progress tracking, invoices</li>
-    <li>Booking + intake + follow-up automation (clinics, coaches, home services, consultants)</li>
-    <li>Proposal & scope builder — turn calls into consistent SOWs and timelines</li>
-    <li>Inventory management for small UK retailers/wholesalers</li>
-    <li>HR/compliance checklist for micro-businesses (<10 employees)</li>
-  </ul>
-</div>
-
-<!-- #3 AI-Native App -->
-<div class="card">
-  <h3><span class="rank rank-3">3</span> AI-Native Niche App (Proprietary Data Moat)</h3>
-  <div class="pill-list">
-    <span class="pill">£9.99-29.99/mo</span>
-    <span class="pill">AI Consumer</span>
-    <span class="pill">Proprietary Data</span>
-    <span class="pill">High Churn Risk</span>
-    <span class="pill">Duolingo Model</span>
-  </div>
-  <table>
-    <tr><th>Metric</th><th>Value</th></tr>
-    <tr><td>AI apps revenue premium</td><td><strong>+41% more</strong> revenue per payer than non-AI</td></tr>
-    <tr><td>AI app churn penalty</td><td><strong>-30% faster</strong> churn — data moat is critical</td></tr>
-    <tr><td>ChatGPT revenue (2025)</td><td>$2.36B — #3 overall app</td></tr>
-    <tr><td>ChatGPT annualised</td><td>~$70/year from 40M+ subscribers</td></tr>
-    <tr><td>Consumer price reset</td><td>ChatGPT normalised $20/month consumer subscriptions</td></tr>
-    <tr><td>Duolingo blueprint</td><td>£29.99 tier makes standard sub look affordable, AI features justify premium</td></tr>
-  </table>
-  <br>
-  <strong>Critical distinction:</strong> AI <em>wrapper</em> (calls API, displays result) = zero defensibility. AI <em>native</em> (user interactions refine specialised models → better results → more usage → more data → flywheel) = defensible. Do NOT build a ChatGPT wrapper.
-  <br><br>
-  <strong>Niche suggestions:</strong>
-  <ul style="padding-left: 1.5rem; margin-top: 0.4rem;">
-    <li>AI niche tutor — language, music theory, exam prep (with proprietary teaching methodology)</li>
-    <li>AI content repurposer — long-form → social clips, blog posts, threads (with user's brand voice model)</li>
-    <li>AI business document analyser — extracts insights, flags risks, suggests actions from uploaded docs</li>
-  </ul>
-</div>
-
-<!-- ===================== MARKET TRENDS ===================== -->
-<h2 class="section-title">📈 Key Market Trends</h2>
-
-<div class="card">
-  <h3>🎯 The Subscription Barbell Effect</h3>
-  <p>The £6.99/month utility app is a <strong>dead zone</strong>. Users aggressively cut recurring expenses. The barbell strategy:</p>
-  <div class="metric-grid" style="grid-template-columns: 1fr 1fr;">
-    <div class="metric">
-      <div class="label">Left Side</div>
-      <div style="font-size: 0.85rem; margin-top: 0.3rem;">Free + ads/micro-transactions at volume</div>
-    </div>
-    <div class="metric">
-      <div class="label">Right Side</div>
-      <div style="font-size: 0.85rem; margin-top: 0.3rem;">Premium £30-99/month (B2B or specialist B2C)</div>
-    </div>
+  <p><strong>What it is:</strong> An agency model building custom AI agents for UK SMEs using open-source agent frameworks (deer-flow, hermes-agent, LangChain). Agents handle customer support, lead gen, data processing, and sales outreach.</p>
+  <p><strong>Why it will work:</strong> ByteDance's deer-flow (72,815 stars) and YouTube chapter lists ("Agent #5: Client Deliverables", "Agent #3: Lead Generation") show this is the dominant trend. UK SMEs are desperate to automate but don't know how. You have existing technical skills in AI and automation.</p>
+  <p><strong>Pricing model:</strong> £500-1,500/mo per client retainer. Target: estate agents, solicitors, local service businesses.</p>
+  <p><strong>Risks:</strong> <span class="risk-med">Medium</span> — competition increasing. Need to differentiate with UK-specific compliance knowledge.</p>
+  <div class="actions">
+    <strong>First 3 Actions:</strong>
+    <ol>
+      <li>Set up deer-flow locally and build 3 demo agents (customer support, lead gen, booking)</li>
+      <li>Create case studies for UK estate agents and solicitors</li>
+      <li>Cold outreach to 10 Midlands businesses offering free automation audit</li>
+    </ol>
   </div>
 </div>
 
-<div class="card">
-  <h3>🤖 AI: Revenue Premium + Churn Penalty</h3>
-  <p>Apps with AI features generate <strong>41% more revenue per payer</strong> but churn <strong>30% faster</strong>. Users pay more upfront but leave quicker if value isn't sustained. The solution: proprietary data that improves with use (switching cost).</p>
-  <p style="margin-top: 0.5rem;"><strong>Cost warning:</strong> LLM-powered features are expensive. "The cost to serve a marginal subscriber is far from zero for AI products" (Phil Carter, Elemental Growth). Price accordingly.</p>
-</div>
-
-<div class="card">
-  <h3>📱 Foldable Opportunity</h3>
-  <p>Foldable smartphones projected <strong>30% YoY growth</strong> in 2026, accelerated by Apple's expected foldable iPhone. Foldable users spend <strong>£1,500+</strong> on a device — £30/month subscription is trivial. Few apps optimise for foldables → first-mover advantage for high-value users.</p>
-</div>
-
-<div class="card">
-  <h3>🌍 Geography Matters</h3>
-  <p>No "global app" exists. Regional dynamics dominate — plan for specifics, not blanket launches. North America install LTV is <strong>2x global average</strong>. UK is a top willingness-to-pay market. Price differently by region (Germany charges 4.4x more than Turkey in Health & Fitness).</p>
-</div>
-
-<!-- ===================== MONETISATION ===================== -->
-<h2 class="section-title">💰 Monetisation Strategy</h2>
-<div class="card">
-  <div class="dos-donts">
-    <div class="dos">
-      <strong style="color: var(--accent-green);">✅ DO</strong>
-      <ul style="padding-left: 1.2rem; margin-top: 0.4rem;">
-        <li>Annual subscriptions for Health & Fitness</li>
-        <li>Monthly subscriptions for B2B productivity</li>
-        <li>Hard paywall (not freemium) — 5x better conversion</li>
-        <li>Web-to-app billing from day one (save 25%+)</li>
-        <li>Longer trials (17+ days convert 70% better)</li>
-        <li>Regional pricing (high-willingness: UK, DE, JP; lower: IN, TR)</li>
-      </ul>
-    </div>
-    <div class="donts">
-      <strong style="color: var(--accent-red);">❌ DON'T</strong>
-      <ul style="padding-left: 1.2rem; margin-top: 0.4rem;">
-        <li>Build a generic £6.99/month utility app</li>
-        <li>Build an AI wrapper (call API, show result)</li>
-        <li>Use freemium if you can do hard paywall instead</li>
-        <li>Default to weekly subscriptions for non-gaming</li>
-        <li>Ignore billing failures (31% of Play cancellations are involuntary)</li>
-      </ul>
-    </div>
+<div class="opportunity">
+  <h3>🥉 3. Etsy Digital Products (AI-generated Templates)</h3>
+  <span class="tag">Etsy</span>
+  <span class="tag">Digital Products</span>
+  <span class="tag">Low Cost</span>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="label">Startup Cost</span><span class="value">£20-50</span></div>
+    <div class="meta-item"><span class="label">Difficulty</span><span class="value">3/10</span></div>
+    <div class="meta-item"><span class="label">Time to First £</span><span class="value">1-7 days</span></div>
+    <div class="meta-item"><span class="label">Scalability</span><span class="value">★★★☆☆</span></div>
+    <div class="meta-item"><span class="label">Automation</span><span class="value">★★★☆☆</span></div>
+    <div class="meta-item"><span class="label">UK Suitability</span><span class="value">★★★★☆</span></div>
+  </div>
+  <div class="source">
+    <strong>Source:</strong> YouTube • Melanie Renee — "7 Easy Digital Products to Sell on Etsy in 2026" (1.4k views, 2 days ago, NEW badge)<br>
+    <strong>Also:</strong> YouTube • Alux.com — "The 10 Most Profitable Side Hustles in 2026" (41k views, 4 days ago)
+  </div>
+  <p><strong>What it is:</strong> Creating and selling digital templates on Etsy — planners, Notion templates, Canva templates, resume templates, budgeting spreadsheets. AI tools (Kittl, Canva AI, ChatGPT) make creation near-instant.</p>
+  <p><strong>Why it will work:</strong> Low barrier to entry, tested business model (Melanie Renee's video shows products consistently selling). Alux.com lists "Niche Digital Products" as #1 side hustle for 2026. AI tools reduce creation time to minutes per product.</p>
+  <p><strong>Pricing model:</strong> £5-30 per download. Volume model — list 50+ products.</p>
+  <p><strong>Risks:</strong> <span class="risk-low">Low</span> — Etsy fees cut into margins. Competition in saturated niches. Focus on underserved UK-specific niches.</p>
+  <div class="actions">
+    <strong>First 3 Actions:</strong>
+    <ol>
+      <li>Research trending Etsy digital product categories on Etsy.com</li>
+      <li>Use Kittl/Canva AI to create 10 UK-themed digital products (Budget planners, Business templates)</li>
+      <li>List on Etsy with SEO-optimized titles and mockups</li>
+    </ol>
   </div>
 </div>
 
-<!-- ===================== TOP GROSSING APPS ===================== -->
-<h2 class="section-title">🏅 Top Grossing Apps (2025) — Reference</h2>
-<div class="card">
-  <table>
-    <tr><th>Rank</th><th>App</th><th>Revenue</th><th>Category</th></tr>
-    <tr><td>1</td><td>TikTok</td><td>$3.35B</td><td>Entertainment</td></tr>
-    <tr><td>2</td><td>Google One</td><td>$2.64B</td><td>Utility/Storage</td></tr>
-    <tr><td>3</td><td>ChatGPT</td><td>$2.36B</td><td>AI Productivity</td></tr>
-    <tr><td>4</td><td>YouTube</td><td>$2.10B</td><td>Entertainment</td></tr>
-    <tr><td>5</td><td>Honor of Kings</td><td>$1.68B</td><td>Game</td></tr>
-    <tr><td>6</td><td>Last War: Survival</td><td>$1.57B</td><td>Game</td></tr>
-    <tr><td>7</td><td>Roblox</td><td>$1.45B</td><td>Game</td></tr>
-    <tr><td>8</td><td>Whiteout Survival</td><td>$1.40B</td><td>Game</td></tr>
-    <tr><td>9</td><td>Royal Match</td><td>$1.37B</td><td>Game</td></tr>
-    <tr><td>10</td><td>Monopoly Go</td><td>$1.36B</td><td>Game</td></tr>
-    <tr><td>11</td><td>Tinder</td><td>$1.22B</td><td>Dating</td></tr>
-    <tr><td>12</td><td>Disney+</td><td>$1.18B</td><td>Entertainment</td></tr>
-    <tr><td>13</td><td>Duolingo</td><td>$0.56B</td><td>Education</td></tr>
-    <tr><td>14</td><td>LinkedIn</td><td>$0.70B</td><td>Professional</td></tr>
-  </table>
-  <p style="margin-top: 0.5rem; color: var(--text-secondary); font-size: 0.85rem;">Source: Business of Apps (Jan 2026), Sensor Tower data. Apps like Google One ($2.6B) and ChatGPT ($2.36B) show utility + AI monetisation at scale.</p>
+<div class="opportunity">
+  <h3>4. Open-Model Migration Consulting for UK SMEs</h3>
+  <span class="tag">Consulting</span>
+  <span class="tag">AI/ML</span>
+  <span class="tag">B2B</span>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="label">Startup Cost</span><span class="value">£0-100</span></div>
+    <div class="meta-item"><span class="label">Difficulty</span><span class="value">7/10</span></div>
+    <div class="meta-item"><span class="label">Time to First £</span><span class="value">2-4 weeks</span></div>
+    <div class="meta-item"><span class="label">Scalability</span><span class="value">★★★★☆</span></div>
+    <div class="meta-item"><span class="label">Automation</span><span class="value">★★☆☆☆</span></div>
+    <div class="meta-item"><span class="label">UK Suitability</span><span class="value">★★★★★</span></div>
+  </div>
+  <div class="source">
+    <strong>Source:</strong> Hacker News • "There is minimal downside to switching to open models" (168 pts, 118 comments)<br>
+    <strong>Also:</strong> HN • "Apertus – Open Foundation Model for Sovereign AI" (331 pts, 112 comments)<br>
+    <strong>Also:</strong> HN • "Good results fine tuning a local LLM like Qwen 3:0.6B" (102 pts, 21 comments)
+  </div>
+  <p><strong>What it is:</strong> Consulting service helping UK SMEs migrate from expensive closed LLM APIs (OpenAI, Claude) to self-hosted open models (Qwen, Llama, Mistral). Includes cost analysis, deployment, fine-tuning.</p>
+  <p><strong>Why it will work:</strong> The HN community strongly validates this trend — 168 points and 118 comments on the "minimal downside" article. With Claude now requiring identity verification (691 pts, 582 comments), privacy-conscious UK businesses will accelerate migration to open models.</p>
+  <p><strong>Pricing model:</strong> £2,000-5,000 per project + £200-500/mo retainer for ongoing maintenance.</p>
+  <p><strong>Risks:</strong> <span class="risk-med">Medium</span> — needs strong technical skills in model deployment. Open models still lag closed models on some tasks.</p>
+  <div class="actions">
+    <strong>First 3 Actions:</strong>
+    <ol>
+      <li>Set up Qwen 3 and Llama 4 locally for benchmarking</li>
+      <li>Build a cost comparison calculator (£ saved vs OpenAI/Claude)</li>
+      <li>Write a LinkedIn article: "Why UK SMEs should migrate to open-source LLMs"</li>
+    </ol>
+  </div>
 </div>
 
-<!-- ===================== VALIDATION PLAN ===================== -->
-<h2 class="section-title">🎯 First Steps to Validate</h2>
-<div class="card">
-  <div class="step"><strong>Step 1:</strong> Pick ONE niche from the three opportunities above. Don't spread thin — a solo Flutter dev should focus on one app for 90 days.</div>
-  <div class="step"><strong>Step 2:</strong> Conduct 10-15 customer discovery calls. Talk to actual potential users (not friends/family). Ask: "What do you use now? What's the pain? What have you tried? What do you pay?"</div>
-  <div class="step"><strong>Step 3:</strong> Build a landing page with a "Buy Now" / "Join Waitlist" button. Drive 500 visitors (Reddit, LinkedIn, niche communities). If <1% conversion, rethink the idea.</div>
-  <div class="step"><strong>Step 4:</strong> Build a Figma prototype / Flutter MVP (2-4 weeks). Show it to the 15 discovery call participants. Get pre-commitments.</div>
-  <div class="step"><strong>Step 5:</strong> Set up RevenueCat + Stripe billing from day one. Implement hard paywall (not freemium). Launch on iOS + Android + web (Flutter web).</div>
-  <div class="step"><strong>Step 6:</strong> Post-launch focus: first 100 paying users. Use trial-to-paid optimisation (42.2% target for Health & Fitness). Build your AI data moat.</div>
+<div class="opportunity">
+  <h3>5. Content Repurposing Service (AI-Powered)</h3>
+  <span class="tag">Content</span>
+  <span class="tag">AI Automation</span>
+  <span class="tag">Service</span>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="label">Startup Cost</span><span class="value">£50-150</span></div>
+    <div class="meta-item"><span class="label">Difficulty</span><span class="value">4/10</span></div>
+    <div class="meta-item"><span class="label">Time to First £</span><span class="value">1-2 weeks</span></div>
+    <div class="meta-item"><span class="label">Scalability</span><span class="value">★★★★☆</span></div>
+    <div class="meta-item"><span class="label">Automation</span><span class="value">★★★★★</span></div>
+    <div class="meta-item"><span class="label">UK Suitability</span><span class="value">★★★★★</span></div>
+  </div>
+  <div class="source">
+    <strong>Source:</strong> YouTube • Alux.com — "The 10 Most Profitable Side Hustles in 2026" — Chapter: "Content repurposing"<br>
+    <strong>Also:</strong> YouTube • Nishkarsh Sharma — "How I'd Make Money Online With No Money, No Skills, No Audience" (33k views, 1 day ago, NEW)
+  </div>
+  <p><strong>What it is:</strong> AI-powered service that repurposes one piece of content into multiple formats: blog post → social media posts, video scripts, newsletter, infographics, podcast notes. Uses AI tools (Claude, ChatGPT, Opus Clip, Canva AI).</p>
+  <p><strong>Why it will work:</strong> Alux.com specifically calls this out as a top side hustle. Low barrier to entry — you already have the AI skills. UK content creators and businesses are desperate for multi-platform presence without the manual work.</p>
+  <p><strong>Pricing model:</strong> £100-500/mo per client retainer. Target: UK bloggers, coaches, local businesses.</p>
+  <p><strong>Risks:</strong> <span class="risk-low">Low</span> — Clients may bring this in-house. Build a process so efficient they won't want to.</p>
+  <div class="actions">
+    <strong>First 3 Actions:</strong>
+    <ol>
+      <li>Build a content repurposing pipeline with Claude API (blog → 5 social posts, 1 thread, 1 newsletter)</li>
+      <li>Repurpose 3 of your own existing content pieces as portfolio examples</li>
+      <li>Offer "free month" to one UK business for testimonials</li>
+    </ol>
+  </div>
 </div>
 
-<!-- ===================== ESTIMATES ===================== -->
-<h2 class="section-title">⏱ Development Estimates</h2>
-<div class="card">
-  <table>
-    <tr><th>Opportunity</th><th>MVP Time</th><th>Full Launch</th><th>Tech Stack</th><th>Monthly Revenue Potential</th></tr>
-    <tr><td>1. Health & Fitness AI</td><td>3-4 weeks</td><td>3-4 months</td><td>Flutter + RevenueCat + Gemini API + HealthKit/Google Fit</td><td>£2K-15K (at 100-500 subs)</td></tr>
-    <tr><td>2. B2B Vertical SaaS</td><td>2-3 weeks</td><td>2-4 months</td><td>Flutter Web + Mobile + Stripe + Supabase</td><td>£3K-20K (at 50-200 business clients)</td></tr>
-    <tr><td>3. AI-Native Niche App</td><td>4-6 weeks</td><td>3-5 months</td><td>Flutter + Gemini/OpenAI + Pinecone + RevenueCat</td><td>£1K-10K (at 100-500 subs)</td></tr>
-  </table>
+<div class="opportunity">
+  <h3>6. Privacy & Compliance Setup Service for Small Businesses</h3>
+  <span class="tag">Privacy</span>
+  <span class="tag">GDPR</span>
+  <span class="tag">Consulting</span>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="label">Startup Cost</span><span class="value">£0-50</span></div>
+    <div class="meta-item"><span class="label">Difficulty</span><span class="value">5/10</span></div>
+    <div class="meta-item"><span class="label">Time to First £</span><span class="value">1-2 weeks</span></div>
+    <div class="meta-item"><span class="label">Scalability</span><span class="value">★★★☆☆</span></div>
+    <div class="meta-item"><span class="label">Automation</span><span class="value">★★★☆☆</span></div>
+    <div class="meta-item"><span class="label">UK Suitability</span><span class="value">★★★★★</span></div>
+  </div>
+  <div class="source">
+    <strong>Source:</strong> HN • "Identity verification on Claude" (691 pts, 582 comments) — massive discussion about privacy implications<br>
+    <strong>Also:</strong> YouTube • Alux.com chapter: "Privacy Setup for Small Businesses"
+  </div>
+  <p><strong>What it is:</strong> Helping UK small businesses implement privacy-first systems: cookie compliance, data protection policies, GDPR audits, privacy-focused tool alternatives. The Claude ID verification controversy proves this is a hot topic.</p>
+  <p><strong>Why it will work:</strong> The HN story (691 pts, 582 comments) shows this is a major public concern. UK businesses face GDPR fines for non-compliance. Alux.com listing "Privacy Setup" as a top side hustle validates market demand.</p>
+  <p><strong>Pricing model:</strong> £300-800 initial setup + £100-200/mo retainer for compliance monitoring.</p>
+  <p><strong>Risks:</strong> <span class="risk-low">Low</span> — Regulatory changes could increase or decrease demand. Liability concerns if advice is wrong.</p>
+  <div class="actions">
+    <strong>First 3 Actions:</strong>
+    <ol>
+      <li>Document the Claude ID verification issue and implications for UK businesses</li>
+      <li>Build a privacy audit checklist for small businesses</li>
+      <li>Offer free 30-min privacy consultation calls to local businesses</li>
+    </ol>
+  </div>
 </div>
 
-<!-- ===================== FOOTER ===================== -->
-<div style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.8rem;">
-  <p><strong>Sources:</strong> RevenueCat State of Subscription Apps 2026 (115K+ apps, $16B+ revenue), Adapty Health & Fitness Benchmarks 2026 ($3B revenue, 16K+ apps), Business of Apps Top Grossing Apps 2026, Manchester Digital/Foresight Mobile "Mobile App Economy 2026", Technobrains "30+ Mobile App Ideas 2026", QuantumByte "What Type of Apps Make the Most Money 2026".</p>
-  <p style="margin-top: 0.3rem;">Generated by Hermes Agent | Monday, June 22, 2026 | Cadence: Every 3rd Day Mobile App Research</p>
+<div class="opportunity">
+  <h3>7. Agentic Video Production Service (OpenMontage)</h3>
+  <span class="tag">Video</span>
+  <span class="tag">AI Automation</span>
+  <span class="tag">YouTube</span>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="label">Startup Cost</span><span class="value">£100-300</span></div>
+    <div class="meta-item"><span class="label">Difficulty</span><span class="value">6/10</span></div>
+    <div class="meta-item"><span class="label">Time to First £</span><span class="value">2-4 weeks</span></div>
+    <div class="meta-item"><span class="label">Scalability</span><span class="value">★★★★☆</span></div>
+    <div class="meta-item"><span class="label">Automation</span><span class="value">★★★★☆</span></div>
+    <div class="meta-item"><span class="label">UK Suitability</span><span class="value">★★★★★</span></div>
+  </div>
+  <div class="source">
+    <strong>Source:</strong> GitHub Trending • <a href="https://github.com/calesthio/OpenMontage">calesthio/OpenMontage</a> (987 stars today, 9,623 total)<br>
+    <strong>Also:</strong> YouTube • "How to Start YouTube Automation in 2026" by Make Money Matt (186k views, 5 months ago)
+  </div>
+  <p><strong>What it is:</strong> Using OpenMontage — "the world's first open-source, agentic video production system" — to offer faceless video creation as a service. 12 pipelines, 52 tools, 500+ agent skills. Produce videos for UK businesses that need YouTube/TikTok content without appearing on camera.</p>
+  <p><strong>Why it will work:</strong> OpenMontage is gaining serious traction (987 stars/day). Faceless YouTube automation is a proven model (186k views on Make Money Matt's video). UK businesses are increasingly aware they need video content but don't want to be on camera.</p>
+  <p><strong>Pricing model:</strong> £200-500 per video or £500-1,500/mo retainer for weekly content.</p>
+  <p><strong>Risks:</strong> <span class="risk-med">Medium</span> — Quality can vary. Need to manage client expectations on AI-generated content.</p>
+  <div class="actions">
+    <strong>First 3 Actions:</strong>
+    <ol>
+      <li>Install and test OpenMontage locally</li>
+      <li>Create 3 demo videos for sample niches (business tips, property, finance)</li>
+      <li>Build a portfolio and pitch to 5 UK SMEs</li>
+    </ol>
+  </div>
 </div>
 
+<div class="opportunity">
+  <h3>8. Email Newsletter Monetization (Niche UK Audiences)</h3>
+  <span class="tag">Email</span>
+  <span class="tag">Content</span>
+  <span class="tag">Passive Income</span>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="label">Startup Cost</span><span class="value">£0-30</span></div>
+    <div class="meta-item"><span class="label">Difficulty</span><span class="value">4/10</span></div>
+    <div class="meta-item"><span class="label">Time to First £</span><span class="value">1-3 months</span></div>
+    <div class="meta-item"><span class="label">Scalability</span><span class="value">★★★★☆</span></div>
+    <div class="meta-item"><span class="label">Automation</span><span class="value">★★★★☆</span></div>
+    <div class="meta-item"><span class="label">UK Suitability</span><span class="value">★★★★★</span></div>
+  </div>
+  <div class="source">
+    <strong>Source:</strong> YouTube • Alux.com chapter: "Email Marketing and Newsletter Monetization"<br>
+    <strong>Also:</strong> YouTube • "I Tried Selling on TikTok Shop for 3 Days" (33k views, 4 months ago) — newsletter plug
+  </div>
+  <p><strong>What it is:</strong> Building and monetizing niche email newsletters for UK audiences. Platforms like Substack, Beehiiv, or ConvertKit make this low-cost. Monetize through sponsorships, paid subscriptions, or affiliate links.</p>
+  <p><strong>Why it will work:</strong> Newsletter monetization is growing in 2026. Alux.com specifically features it. UK audiences are underserved for niche business/tech content. Existing portfolio sites provide content material.</p>
+  <p><strong>Pricing model:</strong> Free tier (advertising/sponsor) + £5-15/mo paid tier. Target: 2,000 subscribers in 6 months.</p>
+  <p><strong>Risks:</strong> <span class="risk-low">Low</span> — Takes time to build audience. Needs consistent content output.</p>
+  <div class="actions">
+    <strong>First 3 Actions:</strong>
+    <ol>
+      <li>Choose a niche (UK AI entrepreneurship, property investing, e-commerce)</li>
+      <li>Set up on Beehiiv or Substack with 5 pre-written issues</li>
+      <li>Cross-promote on existing portfolio sites and social media</li>
+    </ol>
+  </div>
+</div>
+
+<div class="opportunity">
+  <h3>9. Local Business Automation Systems</h3>
+  <span class="tag">Local</span>
+  <span class="tag">Automation</span>
+  <span class="tag">B2B</span>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="label">Startup Cost</span><span class="value">£100-500</span></div>
+    <div class="meta-item"><span class="label">Difficulty</span><span class="value">5/10</span></div>
+    <div class="meta-item"><span class="label">Time to First £</span><span class="value">1-3 weeks</span></div>
+    <div class="meta-item"><span class="label">Scalability</span><span class="value">★★★★☆</span></div>
+    <div class="meta-item"><span class="label">Automation</span><span class="value">★★★★★</span></div>
+    <div class="meta-item"><span class="label">UK Suitability</span><span class="value">★★★★★</span></div>
+  </div>
+  <div class="source">
+    <strong>Source:</strong> YouTube • Alux.com chapter: "Local Business Growth Systems" & "Growth Systems for Online Businesses"<br>
+    <strong>Also:</strong> YouTube • Alux.com chapter: "AI Automation"<br>
+    <strong>Also:</strong> YouTube • "6 Real Skills You Need to Start an AI Automation Agency" (66k views, 1 year ago) — 6 AI Skills chapter
+  </div>
+  <p><strong>What it is:</strong> Building automated systems for local UK businesses: automated booking, invoicing, customer follow-up, review management, and SMS/email marketing using no-code tools (Make.com, Zapier, n8n) + AI agents.</p>
+  <p><strong>Why it will work:</strong> Alux.com specifically calls this out. UK local businesses (plumbers, electricians, estate agents, dentists) are underserved by tech. They still rely on pen-and-paper or basic spreadsheets. Strong synergy with existing property/dudleypropertyexperts.com experience.</p>
+  <p><strong>Pricing model:</strong> £500-2,000 setup + £100-300/mo retainer. Target: 5-10 local businesses in first 3 months.</p>
+  <p><strong>Risks:</strong> <span class="risk-med">Medium</span> — Local business owners can be hard to sell to. Need patient, consultative sales approach.</p>
+  <div class="actions">
+    <strong>First 3 Actions:</strong>
+    <ol>
+      <li>Build a demo automated booking + follow-up system (n8n + Twilio)</li>
+      <li>Approach local estate agents using dudleypropertyexperts.com as credibility</li>
+      <li>Offer first month free for setup, then monthly retainer</li>
+    </ol>
+  </div>
+</div>
+
+<div class="opportunity">
+  <h3>10. Niche Consulting From Existing Career Skills</h3>
+  <span class="tag">Consulting</span>
+  <span class="tag">High Ticket</span>
+  <span class="tag">Low Cost</span>
+  <div class="meta-grid">
+    <div class="meta-item"><span class="label">Startup Cost</span><span class="value">£0</span></div>
+    <div class="meta-item"><span class="label">Difficulty</span><span class="value">4/10</span></div>
+    <div class="meta-item"><span class="label">Time to First £</span><span class="value">1-2 weeks</span></div>
+    <div class="meta-item"><span class="label">Scalability</span><span class="value">★★★☆☆</span></div>
+    <div class="meta-item"><span class="label">Automation</span><span class="value">★★☆☆☆</span></div>
+    <div class="meta-item"><span class="label">UK Suitability</span><span class="value">★★★★★</span></div>
+  </div>
+  <div class="source">
+    <strong>Source:</strong> YouTube • Alux.com chapter: "Niche consulting from your existing career skill"<br>
+    <strong>Also:</strong> YouTube • Alux.com — "The 10 Most Profitable Side Hustles in 2026" (41k views, 4 days ago)
+  </div>
+  <p><strong>What it is:</strong> Offering consulting services based on your existing expertise (AI, automation, web dev, e-commerce, affiliate marketing) to UK professionals and businesses who want to learn or implement these skills.</p>
+  <p><strong>Why it will work:</strong> Alux.com ranks this as a top 10 side hustle. You have genuine expertise across multiple domains (AI, automation, web dev, e-commerce, affiliate marketing, Linux, APIs). No startup cost. High hourly rate potential.</p>
+  <p><strong>Pricing model:</strong> £150-300/hour. Monthly retainers at £1,000-3,000.</p>
+  <p><strong>Risks:</strong> <span class="risk-low">Low</span> — Time-for-money trade-off. Cap earnings at ~20 billable hours/week. Automate deliverables where possible.</p>
+  <div class="actions">
+    <strong>First 3 Actions:</strong>
+    <ol>
+      <li>Define 3 specific consulting packages (AI automation, affiliate marketing, web development)</li>
+      <li>Build a simple landing page with case studies from existing portfolio</li>
+      <li>Post on LinkedIn and reach out to your existing network</li>
+    </ol>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<h2>📹 Videos Discovered</h2>
+<h3>🆕 Uploaded in Last 7 Days</h3>
+<ul class="video-list">
+  <li class="new-video">
+    <strong>🆕 How I'd Make Money Online With No Money, No Skills, No Audience</strong><br>
+    Nishkarsh Sharma • 33k views • 1 day ago<br>
+    <span class="views">Method: No-audience, no-capital digital services. Selling skills/services online.</span>
+  </li>
+  <li class="new-video">
+    <strong>🆕 7 Easy Digital Products to Sell on Etsy in 2026 (beginner-friendly)</strong><br>
+    Melanie Renee • 1.4k views • 2 days ago<br>
+    <span class="views">Digital products: planners, templates, printables. Uses Kittl for design.</span>
+  </li>
+  <li class="new-video">
+    <strong>🆕 The 10 Most Profitable Side Hustles in 2026</strong><br>
+    Alux.com • 41k views • 4 days ago<br>
+    <span class="views">Chapters: Niche Digital Products, Creator services, Data analytics, Privacy Setup, Email Marketing, Content repurposing, Niche consulting, Local Business Growth, AI Automation</span>
+  </li>
+  <li class="new-video">
+    <strong>🆕 7 Side Hustles That Are Making Students Rich in 2026</strong><br>
+    Edmond Remington • NEW badge • Dropshipping focus<br>
+    <span class="views">Shopify dropshipping, Atlas automation. <em>Note: likely course-selling content.</em></span>
+  </li>
+</ul>
+
+<h3>📺 Other Notable Videos (Up to 5 months old)</h3>
+<ul class="video-list">
+  <li>
+    <strong>The Only 14 Ways to Make Money with AI in 2026</strong> — Dan Martell • 918k views • 1 month ago
+  </li>
+  <li>
+    <strong>7 AI Agents That Print Money in 2026 (Real Examples)</strong> — Sharbel A. • 7.7k views • 2 months ago<br>
+    <span class="views">Chapters: Employee agent, Content Revenue, Lead Generation, Web Development, Client Deliverables, Lead scraping + AI sales call scoring, Polymarket trading bots</span>
+  </li>
+  <li>
+    <strong>5 Ways to Make Money in 2026 (with AI)</strong> — Sabrina Ramonov 🍄 • 260k views • 1 month ago
+  </li>
+  <li>
+    <strong>Best SaaS Ideas to Make $10k+/month In 2026</strong> — Mikey No Code • 83k views • 3 months ago<br>
+    <span class="views">15 chapters covering AI Content Creation SaaS, AI Companion App, Clinical Documentation SaaS, Property Management Automation, Restaurant Inventory SaaS</span>
+  </li>
+  <li>
+    <strong>How To Start An AI Automation Agency</strong> — Jason Wardrop • 29k views • 3 months ago
+  </li>
+  <li>
+    <strong>6 Real Skills You Need to Start an AI Automation Agency</strong> — AI Founders • 66k views • 1 year ago<br>
+    <span class="views">6 AI Skills: Generative AI, Prompt Engineering, Design Thinking, No-Code Automation, No-Code AI Agents, Knowledge Systems with RAG</span>
+  </li>
+</ul>
+
+<!-- HN TABLE -->
+<h2>📰 Hacker News Signals</h2>
+<h3>Today's Live Page (22 June 2026)</h3>
+<table class="hn-table">
+  <thead><tr><th>#</th><th>Story</th><th>Pts</th><th>Comments</th><th>Opportunity</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Identity verification on Claude</td><td>691</td><td>582</td><td>Privacy setup service; open-model migration consulting</td></tr>
+    <tr><td>2</td><td>There is minimal downside to switching to open models</td><td>168</td><td>118</td><td>Open model migration consulting for UK SMEs</td></tr>
+    <tr><td>3</td><td>Apertus – Open Foundation Model for Sovereign AI</td><td>331</td><td>112</td><td>Sovereign AI deployment for UK government/enterprise</td></tr>
+    <tr><td>4</td><td>Deno Desktop</td><td>115</td><td>29</td><td>Desktop app deployment services</td></tr>
+    <tr><td>5</td><td>Good results fine tuning a local LLM like Qwen 3:0.6B</td><td>102</td><td>21</td><td>Fine-tuning services for UK SMEs</td></tr>
+    <tr><td>6</td><td>Sakana Fugu</td><td>96</td><td>51</td><td>AI research — evolutionary model merging</td></tr>
+    <tr><td>7</td><td>Memory Safe Inline Assembly</td><td>83</td><td>15</td><td>Niche developer tools</td></tr>
+  </tbody>
+</table>
+
+<h3>Yesterday's Archive (21 June 2026)</h3>
+<table class="hn-table">
+  <thead><tr><th>#</th><th>Story</th><th>Pts</th><th>Comments</th><th>Opportunity</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Loupe – iOS app privacy awareness</td><td>523</td><td>224</td><td>Privacy app market; iOS security consulting</td></tr>
+    <tr><td>2</td><td>Beyond All Reason (Free RTS Game)</td><td>470</td><td>276</td><td>Gaming content creation opportunity</td></tr>
+    <tr><td>3</td><td>Prefer duplication over the wrong abstraction</td><td>461</td><td>310</td><td>Developer education/consulting</td></tr>
+    <tr><td>4</td><td>Slow breathing modulates brain function and risk behavior</td><td>389</td><td>111</td><td>Health/wellness content niche</td></tr>
+    <tr><td>5</td><td>Developers don't understand CORS</td><td>370</td><td>258</td><td>Developer education content</td></tr>
+    <tr><td>6</td><td>Renting a sewing machine from the library</td><td>337</td><td>205</td><td>Circular economy — library-of-things SaaS idea</td></tr>
+  </tbody>
+</table>
+
+<!-- GITHUB TRENDING -->
+<h2>🛠️ GitHub Trending</h2>
+<table class="hn-table">
+  <thead><tr><th>Repo</th><th>Stars Today</th><th>Total Stars</th><th>Description</th><th>Opportunity</th></tr></thead>
+  <tbody>
+    <tr><td><a href="https://github.com/chopratejas/headroom">headroom</a></td><td>2,624</td><td>45,326</td><td>LLM token compression: 60-95% fewer tokens, same answers</td><td>🔥 Managed proxy service for LLM cost reduction</td></tr>
+    <tr><td><a href="https://github.com/palmier-io/palmier-pro">palmier-pro</a></td><td>1,834</td><td>5,903</td><td>macOS video editor built for AI</td><td>AI video production service</td></tr>
+    <tr><td><a href="https://github.com/penpot/penpot">penpot</a></td><td>1,135</td><td>52,460</td><td>Open-source design tool</td><td>Design service using free tools</td></tr>
+    <tr><td><a href="https://github.com/calesthio/OpenMontage">OpenMontage</a></td><td>987</td><td>9,623</td><td>Open-source agentic video production system</td><td>🔥 Faceless video production agency</td></tr>
+    <tr><td><a href="https://github.com/ZhuLinsen/daily_stock_analysis">daily_stock_analysis</a></td><td>568</td><td>45,006</td><td>LLM-powered stock analysis system</td><td>Financial tools SaaS</td></tr>
+    <tr><td><a href="https://github.com/tursodatabase/turso">turso</a></td><td>548</td><td>20,963</td><td>In-process SQL database (SQLite-compatible)</td><td>Edge database consulting</td></tr>
+    <tr><td><a href="https://github.com/bytedance/deer-flow">deer-flow</a></td><td>442</td><td>72,815</td><td>ByteDance superagent harness (long-horizon tasks)</td><td>🔥 AI agent agency building block</td></tr>
+  </tbody>
+</table>
+
+<!-- UK SUITABILITY -->
+<h2>🇬🇧 UK Suitability Analysis</h2>
+<table class="hn-table">
+  <thead><tr><th>Opportunity</th><th>UK Score</th><th>Justification</th></tr></thead>
+  <tbody>
+    <tr><td>1. LLM Token Compression Proxy</td><td>★★★★★</td><td>UK AI startups/scaleups spend heavily on API tokens. Growing AI sector in London and across UK regions.</td></tr>
+    <tr><td>2. AI Agent Agency</td><td>★★★★★</td><td>UK SMEs desperate for automation. Existing property/lead gen experience provides credibility.</td></tr>
+    <tr><td>3. Etsy Digital Products</td><td>★★★★☆</td><td>Etsy has strong UK presence. GBP earnings possible. VAT threshold consideration above £90k.</td></tr>
+    <tr><td>4. Open-Model Migration</td><td>★★★★★</td><td>UK businesses increasingly privacy-conscious. GDPR makes data sovereignty a selling point.</td></tr>
+    <tr><td>5. Content Repurposing</td><td>★★★★★</td><td>UK content creators and businesses need multi-platform content. Low-cost, high-value.</td></tr>
+    <tr><td>6. Privacy Compliance</td><td>★★★★★</td><td>GDPR is UK law. Fines are real. UK businesses must comply. Claude ID story adds urgency.</td></tr>
+    <tr><td>7. Video Production</td><td>★★★★★</td><td>UK businesses avoid on-camera but need video content. Faceless content is a perfect bridge.</td></tr>
+    <tr><td>8. Newsletter Monetization</td><td>★★★★★</td><td>Growing UK newsletter ecosystem (Substack, Beehiiv). Niche UK audiences are underserved.</td></tr>
+    <tr><td>9. Local Business Automation</td><td>★★★★★</td><td>Midlands focus with existing local business connections (Dudley, Birmingham). Proven playbook.</td></tr>
+    <tr><td>10. Niche Consulting</td><td>★★★★★</td><td>UK market values expertise. Medical/AI credentials provide authority. High hourly rates achievable.</td></tr>
+  </tbody>
+</table>
+
+<!-- ACTION PLAN -->
+<h2>🎯 Recommended 7-Day Action Plan</h2>
+<div class="section">
+  <h3>This Week's Priority: Build the Headroom Proxy Service</h3>
+  <div class="actions">
+    <ol>
+      <li><strong>Day 1 (Today):</strong> Deploy headroom as a Docker container on a £6/mo VPS. Test with local LLM calls.</li>
+      <li><strong>Day 2:</strong> Build a landing page at a subdomain (e.g., headroom.thetanoli.com) with a cost calculator widget.</li>
+      <li><strong>Day 3:</strong> Write 3 LinkedIn posts about LLM cost optimization. Network with UK AI startup founders.</li>
+      <li><strong>Day 4:</strong> Offer free trials to 5 UK AI startups/agencies. Track token savings with case studies.</li>
+      <li><strong>Day 5:</strong> Set up deer-flow locally. Build 1 demo AI agent for a local business use case.</li>
+      <li><strong>Day 6:</strong> Create 10 digital products (UK business templates) for Etsy using Kittl/Canva AI.</li>
+      <li><strong>Day 7:</strong> Run a weekly review — assess which opportunity gained most traction. Pivot resources accordingly.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- FULL SOURCE LIST -->
+<h2>📚 Full Source List</h2>
+<div class="source">
+  <strong>YouTube:</strong><br>
+  • <a href="https://www.youtube.com/results?search_query=make+money+online+uploaded+today">make money online uploaded today</a><br>
+  • <a href="https://www.youtube.com/results?search_query=AI+side+hustle+2026">AI side hustle 2026</a><br>
+  • <a href="https://www.youtube.com/results?search_query=affiliate+marketing+2026">affiliate marketing 2026</a><br>
+  • <a href="https://www.youtube.com/results?search_query=AI+automation+agency">AI automation agency</a><br>
+  • <a href="https://www.youtube.com/results?search_query=digital+products+Etsy+2026">digital products Etsy 2026</a><br>
+  • <a href="https://www.youtube.com/results?search_query=no+code+SaaS+idea+2026">no code SaaS idea 2026</a><br>
+  • <a href="https://www.youtube.com/results?search_query=make+money+with+AI+agents+2026">make money with AI agents 2026</a><br>
+  • <a href="https://www.youtube.com/results?search_query=TikTok+Shop+UK+make+money+2026">TikTok Shop UK make money 2026</a><br>
+  • <a href="https://www.youtube.com/results?search_query=faceless+YouTube+automation+2026">faceless YouTube automation 2026</a><br>
+  • <a href="https://www.youtube.com/results?search_query=best+side+hustle+2026+new+upload">best side hustle 2026</a><br><br>
+  <strong>Hacker News:</strong><br>
+  • <a href="https://news.ycombinator.com/">Live front page</a><br>
+  • <a href="https://news.ycombinator.com/front">Archive (2026-06-21)</a><br><br>
+  <strong>GitHub Trending:</strong><br>
+  • <a href="https://github.com/trending?since=daily">Daily trending</a><br>
+  • <a href="https://github.com/chopratejas/headroom">headroom</a> • <a href="https://github.com/calesthio/OpenMontage">OpenMontage</a> • <a href="https://github.com/bytedance/deer-flow">deer-flow</a>
+</div>
+
+<footer>
+  <p>Daily Money-Making Research • Generated Monday 2026-06-22 08:00 BST</p>
+  <p>Powered by Hermes Agent • Sources: YouTube, Hacker News, GitHub Trending</p>
+  <p>For Dr Ateeq Yousif • UK-Focused Digital Opportunities</p>
+</footer>
+
+</div>
 </body>
 </html>
