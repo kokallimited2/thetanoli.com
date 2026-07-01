@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Affiliate Network Status — June 2026</title>
+<title>Affiliate Network Status — July 2026</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f1117; color: #e4e4e7; min-height: 100vh; padding: 20px; }
   .container { max-width: 1100px; margin: 0 auto; }
   h1 { font-size: 24px; color: #f59e0b; margin-bottom: 4px; }
   .subtitle { color: #a0a0b0; font-size: 14px; margin-bottom: 24px; }
+  .alert-banner { background: #7f1d1d; border: 1px solid #ef4444; border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; }
+  .alert-banner h3 { color: #fca5a5; font-size: 14px; margin-bottom: 4px; }
+  .alert-banner p { color: #fca5a5; font-size: 13px; opacity: 0.9; }
   .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
   .stat-card { background: #1a1d28; border: 1px solid #2a2d3a; border-radius: 10px; padding: 16px; text-align: center; }
   .stat-card .value { font-size: 24px; font-weight: 700; }
@@ -18,6 +21,7 @@
   .stat-card.yellow .value { color: #f59e0b; }
   .stat-card.blue .value { color: #3b82f6; }
   .stat-card.purple .value { color: #a855f7; }
+  .stat-card.red .value { color: #ef4444; }
   table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
   th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #2a2d3a; font-size: 13px; }
   th { background: #1a1d28; color: #fbbf24; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; position: sticky; top: 0; }
@@ -26,6 +30,8 @@
   .status-ok { background: #065f4620; color: #34d399; border: 1px solid #065f46; }
   .status-warn { background: #713f1220; color: #fbbf24; border: 1px solid #713f12; }
   .status-err { background: #7f1d1d20; color: #f87171; border: 1px solid #7f1d1d; }
+  .status-imp { background: #7f1d1d40; color: #fca5a5; border: 1px solid #ef4444; animation: pulse 2s infinite; }
+  .status-fixed { background: #065f4620; color: #86efac; border: 1px solid #22c55e; }
   .status-app { background: #1e3a5f20; color: #60a5fa; border: 1px solid #1e3a5f; }
   .card { background: #1a1d28; border: 1px solid #2a2d3a; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
   .card h2 { font-size: 16px; color: #f59e0b; margin-bottom: 12px; }
@@ -39,35 +45,29 @@
   .tag-saas { background: #4c1d9540; color: #a78bfa; border: 1px solid #4c1d95; }
   .tag-uk { background: #065f4640; color: #34d399; border: 1px solid #065f46; }
   .tag-net { background: #713f1240; color: #fbbf24; border: 1px solid #713f12; }
+  .tag-ftc { background: #7f1d1d40; color: #fca5a5; border: 1px solid #ef4444; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
   @media (max-width: 600px) { th, td { padding: 6px 8px; font-size: 11px; } }
 </style>
-.tt-back-home {
-  position: fixed; top: 6px; left: 6px; z-index: 99999;
-  background: rgba(15,23,42,0.85); backdrop-filter: blur(8px);
-  color: #64748b; text-decoration: none; font-size: 11px;
-  font-family: system-ui, -apple-system, sans-serif;
-  padding: 4px 10px; border-radius: 6px;
-  border: 1px solid rgba(51,65,85,0.6);
-  transition: all 0.15s ease;
-  letter-spacing: 0.2px;
-}
-.tt-back-home:hover {
-  color: #e2e8f0; border-color: #3b82f6; background: rgba(30,41,59,0.9);
-}
-
 </head>
 <body>
 <a href="/" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;margin-bottom:16px;color:#94a3b8;padding:6px 12px;border:1px solid #30363d;border-radius:8px;background:#161b22;transition:all .2s;float:left;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='#161b22'">🏠 Dashboard Hub</a>
 <div style="clear:both"></div>
 <div class="container">
-  <h1>📊 Affiliate Network Status — June 2026</h1>
-  <p class="subtitle">Last audited: 2026-06-01 | Cron: monthly-affiliate-audit</p>
+
+  <h1>📊 Affiliate Network Status — July 2026</h1>
+  <p class="subtitle">Last audited: 2026-07-01 | Cron: monthly-affiliate-audit</p>
+
+  <div class="alert-banner">
+    <h3>🚨 FTC's New Affiliate Disclosure Rules — Effective TODAY (July 1, 2026)</h3>
+    <p>Revised Endorsement Guides require: (1) AI-generated content disclosure, (2) above-the-fold mobile disclosures, (3) network liability for non-compliant promotions. <strong>Audit portfolio compliance immediately →</strong></p>
+  </div>
 
   <div class="stats-grid">
-    <div class="stat-card green"><div class="value">✅ 6</div><div class="label">Platforms Online</div></div>
-    <div class="stat-card yellow"><div class="value">⚠️ 3</div><div class="label">URL Changes Found</div></div>
-    <div class="stat-card purple"><div class="value">2</div><div class="label">New UK Programs</div></div>
-    <div class="stat-card blue"><div class="value">3</div><div class="label">Join This Month</div></div>
+    <div class="stat-card green"><div class="value">✅ 9</div><div class="label">Platforms Online</div></div>
+    <div class="stat-card green"><div class="value">✅ 2</div><div class="label">Signup URLs Fixed 🆕</div></div>
+    <div class="stat-card purple"><div class="value">4</div><div class="label">Join This Month</div></div>
+    <div class="stat-card red"><div class="value">1</div><div class="label">FTC Compliance Red</div></div>
   </div>
 
   <div class="card">
@@ -78,86 +78,83 @@
         <th>Platform</th><th>Status</th><th>Signup</th><th>Priority</th><th>Notes</th>
       </tr>
       <tr>
-        <td>Awin</td><td><span class="status status-ok">✅ OK</span></td><td>awin.com/gb → Affiliates</td><td>🟢 Next Quarter</td>
-        <td>30K+ brands, £15B+ revenue. Publisher article URL 404.</td>
-      </tr>
-      <tr>
-        <td>CJ Affiliate</td><td><span class="status status-warn">⚠️ URL Changed</span></td><td>/publisher/signup = 404</td><td>🟡 This Quarter</td>
-        <td>Signup URL broken. Need to find current path.</td>
-      </tr>
-      <tr>
-        <td>Digistore24</td><td><span class="status status-warn">⚠️ URL Changed</span></td><td>/en/affiliates/register = 404</td><td>🟢 Next Quarter</td>
-        <td>Registration URL broken. Login-gated marketplace.</td>
-      </tr>
-      <tr>
-        <td>Impact</td><td><span class="status status-ok">✅ OK</span></td><td>impact.com → Request demo</td><td>🟡 This Quarter</td>
-        <td>Sales call required for signup. Premium platform.</td>
-      </tr>
-      <tr>
         <td>PartnerStack</td><td><span class="status status-ok">✅ OK</span></td><td>partnerstack.com/partners</td><td><span class="priority-high">🔴 NOW</span></td>
-        <td>141K partners, $445M commissions paid. No barrier.</td>
+        <td>144K partners (+3K). MCP launched. $461M commissions paid. 600+ B2B brands.</td>
       </tr>
       <tr>
-        <td>Rakuten</td><td><span class="status status-ok">✅ OK</span></td><td>rakutenadvertising.com</td><td>🟡 This Quarter</td>
-        <td>Premium. 1.2B consumers, 200M+ transactions. Need traffic.</td>
+        <td>CJ Affiliate</td><td><span class="status status-fixed">✅ FIXED 🆕</span></td><td><strong>public.cj.com/signup/publisher</strong></td><td><span class="priority-high">🔴 NOW</span></td>
+        <td>Signup URL found! Working form. Brands include NordVPN. $16B+ annual.</td>
+      </tr>
+      <tr>
+        <td>Digistore24</td><td><span class="status status-fixed">✅ FIXED 🆕</span></td><td><strong>digistore24.com/en/signup</strong></td><td><span class="priority-high">🔴 NOW</span></td>
+        <td>Signup URL found! 8,500+ offers, 44 niches, up to 100% commission.</td>
       </tr>
       <tr>
         <td>FlexOffers</td><td><span class="status status-ok">✅ OK</span></td><td>flexoffers.com</td><td><span class="priority-high">🔴 NOW</span></td>
-        <td>12K+ advertisers, 75K publishers. Open to content sites.</td>
+        <td>12K+ advertisers, 75K publishers, $5B yearly sales.</td>
       </tr>
       <tr>
-        <td>eBay PN</td><td><span class="status status-ok">✅ OK</span></td><td>partnernetwork.ebay.com</td><td>🟡 This Quarter</td>
-        <td>EPN + Ambassador tracks. 2.5B listings.</td>
+        <td>Fasthosts (UK)</td><td><span class="status status-ok">✅ OK</span></td><td>fasthosts.co.uk/affiliates</td><td><span class="priority-high">🔴 NOW</span></td>
+        <td>Up to <strong>£620/sale</strong> via TUNE. UK hosting. 4.8★ from 19,433 reviews.</td>
       </tr>
       <tr>
-        <td>Webgains</td><td><span class="status status-ok">✅ OK</span></td><td>webgains.com/public/en/publishers</td><td>🟡 This Quarter</td>
-        <td>150+ countries. Publisher training included.</td>
+        <td>Webgains</td><td><span class="status status-ok">✅ OK</span></td><td>webgains.com/public/en/publishers</td><td><span class="priority-med">🟡 This Quarter</span></td>
+        <td>1,800+ brands, 250K+ publishers, 150+ countries.</td>
       </tr>
       <tr>
-        <td>TradeTracker</td><td><span class="status status-ok">✅ OK</span></td><td>tradetracker.com/uk/</td><td>🟢 Next Quarter</td>
-        <td>27 countries. Strong EU/UK presence.</td>
+        <td>eBay PN</td><td><span class="status status-ok">✅ OK</span></td><td>partnernetwork.ebay.com</td><td><span class="priority-med">🟡 This Quarter</span></td>
+        <td>Ambassador (UK/US creators) + EPN (technical/API).</td>
+      </tr>
+      <tr>
+        <td>Rakuten</td><td><span class="status status-ok">✅ OK</span></td><td>rakutenadvertising.com</td><td><span class="priority-med">🟡 This Quarter</span></td>
+        <td>Partnered with Impact.com. Premium — need 3-5K/mo traffic.</td>
+      </tr>
+      <tr>
+        <td>Impact</td><td><span class="status status-ok">✅ OK</span></td><td>impact.com/partners/ → demo</td><td><span class="priority-med">🟡 This Quarter</span></td>
+        <td>Sales call required. Rakuten partnership may change signup.</td>
+      </tr>
+      <tr>
+        <td>Awin</td><td><span class="status status-err">❌ Broken</span></td><td>All paths return 404</td><td><span class="priority-low">🟢 On Hold</span></td>
+        <td>Still broken — needs fresh signup path discovery.</td>
       </tr>
     </table>
     </div>
   </div>
 
   <div class="card">
-    <h2>🎯 Join This Month (June 2026)</h2>
+    <h2>🎯 Join This Month (July 2026)</h2>
     <div class="list-item"><span class="priority-high">1. PartnerStack</span> — partnerstack.com/partners → HubSpot, Lemlist, Blym, ActiveCampaign, monday.com</div>
-    <div class="list-item"><span class="priority-high">2. FlexOffers</span> — flexoffers.com → 12K+ advertisers under one roof</div>
-    <div class="list-item"><span class="priority-high">3. Fasthosts UK</span> — fasthosts.co.uk/affiliates → Up to <strong>£620/sale</strong> on UK hosting</div>
+    <div class="list-item"><span class="priority-high">2. CJ Affiliate</span> — <strong>public.cj.com/signup/publisher</strong> 🆕 — $16B+ network, NordVPN onboard</div>
+    <div class="list-item"><span class="priority-high">3. Digistore24</span> — <strong>digistore24.com/en/signup</strong> 🆕 — 8,500+ offers, 100% commissions</div>
+    <div class="list-item"><span class="priority-high">4. FlexOffers</span> — flexoffers.com → 12K+ advertisers</div>
+    <div class="list-item"><span class="priority-high">5. Fasthosts UK</span> — fasthosts.co.uk/affiliates → Up to <strong>£620/sale</strong> on UK hosting</div>
   </div>
 
   <div class="card">
-    <h2>🆕 New Programs Discovered</h2>
-    <div class="list-item"><span class="tag tag-host">Hosting</span> <strong>Fasthosts UK</strong> — Up to £620/sale via TUNE/IONOS. Best per-sale in our portfolio.</div>
-    <div class="list-item"><span class="tag tag-host">Hosting</span> <strong>Kualo UK</strong> — UK hosting. No minimum withdrawal. PayPal.</div>
-    <div class="list-item"><span class="tag tag-host">Hosting</span> <strong>HostPresto</strong> — Smaller UK host with affiliate program.</div>
-    <div class="list-item"><span class="tag tag-saas">SaaS</span> <strong>Blym</strong> — 30% recurring (lifetime). AI SEO content tool via Tolt.</div>
-    <div class="list-item"><span class="tag tag-saas">SaaS</span> <strong>Lemlist</strong> — 25% recurring (12 months). Cold outreach/sales via PartnerStack.</div>
-    <div class="list-item"><span class="tag tag-uk">UK</span> <strong>APMA Report</strong> — £1.8bn invested in UK affiliate marketing. Source for content.</div>
+    <h2>🆕 New Since June 2026</h2>
+    <div class="list-item"><span class="tag tag-ftc">FTC</span> <strong>Affiliate Disclosure Rules Effective July 1</strong> — AI content disclosure, above-the-fold mobile, network liability changes</div>
+    <div class="list-item"><span class="tag tag-net">Fixed</span> <strong>CJ Affiliate signup URL</strong> — Working at public.cj.com/signup/publisher</div>
+    <div class="list-item"><span class="tag tag-net">Fixed</span> <strong>Digistore24 signup URL</strong> — Working at digistore24.com/en/signup</div>
+    <div class="list-item"><span class="tag tag-saas">SaaS</span> <strong>PartnerStack MCP</strong> — AI agent integration for partner analytics</div>
+    <div class="list-item"><span class="tag tag-saas">SaaS</span> <strong>PartnerStack Skills Marketplace</strong> — Pre-built AI workflows for partners</div>
+    <div class="list-item"><span class="tag tag-host">Hosting</span> <strong>SiteGround UK</strong> — £30-65+/sale tiered, weekly payouts. Confirmed July.</div>
+    <div class="list-item"><span class="tag tag-host">Hosting</span> <strong>Hostinger</strong> — 40%+ commission, scales with volume. Instant signup.</div>
+    <div class="list-item"><span class="tag tag-uk">Partnership</span> <strong>Rakuten × Impact</strong> — Strategic partnership announced</div>
   </div>
 
   <div class="card">
-    <h2>⚠️ Broken Signup URLs</h2>
-    <p style="font-size:13px;color:#a0a0b0;margin-bottom:12px;">These URLs previously documented in affiliate-niche-sites skill are now 404. Needs fixing.</p>
-    <div class="list-item">❌ <strong>Awin:</strong> success.awin.com/s/article/How-can-I-get-started-with-my-publisher-account → 404</div>
-    <div class="list-item">❌ <strong>CJ Affiliate:</strong> cj.com/publisher/signup → 404</div>
-    <div class="list-item">❌ <strong>Digistore24:</strong> digistore24.com/en/affiliates/register → 404</div>
-  </div>
-
-  <div class="card">
-    <h2>📈 Portfolio Matching</h2>
+    <h2>📈 Portfolio Matching (Updated July 2026)</h2>
     <table>
-      <tr><th>Site</th><th>PartnerStack</th><th>FlexOffers</th><th>Fasthosts</th><th>Webgains</th><th>eBay PN</th></tr>
+      <tr><th>Site</th><th>PartnerStack</th><th>CJ</th><th>Digistore24</th><th>FlexOffers</th><th>Fasthosts</th></tr>
       <tr><td>bestpasswordgenerator.org</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
-      <tr><td>titanpasswords.com</td><td>✅</td><td>✅</td><td>✅</td><td>🟡</td><td>✅</td></tr>
-      <tr><td>securekeygenerator.com</td><td>✅</td><td>🟡</td><td>✅</td><td>🟡</td><td>🟡</td></tr>
-      <tr><td>freestrongpassword.com</td><td>✅</td><td>🟡</td><td>✅</td><td>🟡</td><td>🟡</td></tr>
-      <tr><td>Property/UK sites</td><td>🟡</td><td>🟡</td><td>✅</td><td>✅</td><td>🟡</td></tr>
+      <tr><td>titanpasswords.com</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td>securekeygenerator.com</td><td>✅</td><td>✅</td><td>🟡</td><td>🟡</td><td>✅</td></tr>
+      <tr><td>freestrongpassword.com</td><td>✅</td><td>✅</td><td>🟡</td><td>🟡</td><td>✅</td></tr>
+      <tr><td>Property/coachify</td><td>🟡</td><td>🟡</td><td>🟡</td><td>🟡</td><td>✅</td></tr>
     </table>
     <p style="font-size:12px;color:#a0a0b0;margin-top:8px;">✅ Ready now &nbsp; 🟡 Needs more content</p>
   </div>
+
 </div>
 </body>
 </html>
