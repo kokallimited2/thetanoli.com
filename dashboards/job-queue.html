@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Queue — Hermes Orchestrator</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+          background:#0f172a; color:#e2e8f0; padding:20px; }
+  h1 { color:#38bdf8; margin-bottom:5px; }
+  .timestamp { color:#64748b; font-size:0.85em; margin-bottom:20px; }
+  h2 { color:#94a3b8; margin:20px 0 10px; border-bottom:1px solid #1e293b; padding-bottom:5px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:12px; margin-bottom:20px; }
+  .card { background:#1e293b; border-radius:8px; padding:15px; text-align:center; }
+  .card .num { font-size:1.6em; font-weight:700; color:#38bdf8; }
+  .card .label { font-size:0.75em; color:#64748b; }
+  .card.green .num { color:#4ade80; }
+  .card.yellow .num { color:#fbbf24; }
+  .card.red .num { color:#f87171; }
+  table { width:100%; border-collapse:collapse; font-size:0.82em; }
+  th,td { padding:6px 8px; text-align:left; border-bottom:1px solid #1e293b; }
+  th { color:#64748b; font-weight:600; }
+  .priority { display:inline-block; padding:1px 6px; border-radius:3px; font-size:0.75em; font-weight:600; }
+  .p1 { background:#166534; color:#4ade80; }
+  .p2 { background:#1e3a5f; color:#93c5fd; }
+  .p3 { background:#713f12; color:#fbbf24; }
+  .p4 { background:#1e293b; color:#94a3b8; }
+  .p5 { background:#1e293b; color:#64748b; }
+</style>
+</head>
+<body>
+<h1>📋 Job Queue</h1>
+<div class="timestamp">2026-07-02 00:06:04 · Window: 2026-07-02 00:06 → 2026-07-02 06:06</div>
+
+<div class="grid">
+  <div class="card"><div class="num">43</div><div class="label">Jobs in Window</div></div>
+  <div class="card green"><div class="num">5</div><div class="label">Ready to Run</div></div>
+  <div class="card yellow"><div class="num">38</div><div class="label">Deferred (Budget)</div></div>
+  <div class="card"><div class="num">$0.20</div><div class="label">Budget Used</div></div>
+  <div class="card"><div class="num">$0.00</div><div class="label">Budget Remaining</div></div>
+</div>
+
+<table>
+<tr><th>Status</th><th>Job</th><th>Prio</th><th>Cost</th><th>Schedule</th><th>Last Run</th><th>Notes</th></tr>
+<tr>
+  <td>🟢</td>
+  <td>Crypto Signal Scanner</td>
+  <td><span class="priority p1">P1</span></td>
+  <td>$0.03</td>
+  <td>0 * * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">ready</td>
+</tr><tr>
+  <td>🟢</td>
+  <td>US Stock Scanner — Late-Session</td>
+  <td><span class="priority p1">P1</span></td>
+  <td>$0.04</td>
+  <td>30 20 * * 1-5</td>
+  <td>never</td>
+  <td style="font-size:0.85em">ready</td>
+</tr><tr>
+  <td>🟢</td>
+  <td>US Stock Scanner — Mid-Session</td>
+  <td><span class="priority p1">P1</span></td>
+  <td>$0.04</td>
+  <td>0 15 * * 1-5</td>
+  <td>never</td>
+  <td style="font-size:0.85em">ready</td>
+</tr><tr>
+  <td>🟢</td>
+  <td>gsc-position-8-30-weekly-scanner</td>
+  <td><span class="priority p1">P1</span></td>
+  <td>$0.04</td>
+  <td>0 10 * * 1</td>
+  <td>never</td>
+  <td style="font-size:0.85em">ready</td>
+</tr><tr>
+  <td>🟢</td>
+  <td>Weekly SEO Analysis + Dashboard + Fixes</td>
+  <td><span class="priority p1">P1</span></td>
+  <td>$0.05</td>
+  <td>0 15 * * 0</td>
+  <td>never</td>
+  <td style="font-size:0.85em">ready</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>daily-blog-limited</td>
+  <td><span class="priority p1">P1</span></td>
+  <td>$0.05</td>
+  <td>0 10 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Stocks Self-Learning Agent</td>
+  <td><span class="priority p1">P1</span></td>
+  <td>$0.06</td>
+  <td>30 21 * * 1-5</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>nightly-research-opportunity-scan</td>
+  <td><span class="priority p1">P1</span></td>
+  <td>$0.08</td>
+  <td>0 2 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Site Health Audit Daily</td>
+  <td><span class="priority p2">P2</span></td>
+  <td>$0.02</td>
+  <td>0 7 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>keyword-research-weekly-refresh</td>
+  <td><span class="priority p2">P2</span></td>
+  <td>$0.02</td>
+  <td>0 15 * * 1</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>weekly-site-health-audit</td>
+  <td><span class="priority p2">P2</span></td>
+  <td>$0.02</td>
+  <td>0 10 * * 0</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Amazon→eBay Scanner Daily</td>
+  <td><span class="priority p2">P2</span></td>
+  <td>$0.03</td>
+  <td>0 14 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Daily Money-Making Research</td>
+  <td><span class="priority p2">P2</span></td>
+  <td>$0.03</td>
+  <td>0 8 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Site vs Site Comparison Post</td>
+  <td><span class="priority p2">P2</span></td>
+  <td>$0.03</td>
+  <td>30 8 * * 1,4</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>daily-meta-title-optimizer-sweep</td>
+  <td><span class="priority p2">P2</span></td>
+  <td>$0.03</td>
+  <td>40 11 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>dfordeals-daily-blog-post</td>
+  <td><span class="priority p2">P2</span></td>
+  <td>$0.03</td>
+  <td>0 9 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>expired-domain-daily-scanner</td>
+  <td><span class="priority p2">P2</span></td>
+  <td>$0.03</td>
+  <td>0 8 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>eBay Dropship Hunter Daily</td>
+  <td><span class="priority p2">P2</span></td>
+  <td>$0.04</td>
+  <td>0 10 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>research-hour</td>
+  <td><span class="priority p2">P2</span></td>
+  <td>$0.05</td>
+  <td>0 4 */3 * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Bing Health Check</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.01</td>
+  <td>0 9 * * 1</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Bing URL Submitter — Nightly</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.01</td>
+  <td>0 1 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Dashboard Upload — Evening</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.01</td>
+  <td>0 20 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Dashboard Upload — Morning</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.01</td>
+  <td>0 9 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Dashboard Upload — Trading Afternoon</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.01</td>
+  <td>30 14 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Trading P&L Data Refresh</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.01</td>
+  <td>0 22 * * 5</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Weekly Money-Making Merge</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.01</td>
+  <td>0 9 * * 0</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>eBay Dropship Hunter Weekly Merge</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.01</td>
+  <td>0 10 * * 0</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>indexnow-blog-ping-afternoon</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.01</td>
+  <td>35 11 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>indexnow-blog-ping-morning</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.01</td>
+  <td>0 8 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Amazon→eBay Research</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.02</td>
+  <td>0 12 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Weekly Backlink Health Monitor</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.02</td>
+  <td>0 12 * * 0</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>affiliate-marketplace-weekly-scan</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.02</td>
+  <td>0 11 * * 6</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>dfordeals-news-scanner</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.02</td>
+  <td>0 14 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>memory-consolidation</td>
+  <td><span class="priority p3">P3</span></td>
+  <td>$0.02</td>
+  <td>0 3 */3 * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Avasam High-Ticket Daily Refresh</td>
+  <td><span class="priority p4">P4</span></td>
+  <td>$0.01</td>
+  <td>0 11 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Monthly Affiliate Network Audit</td>
+  <td><span class="priority p4">P4</span></td>
+  <td>$0.01</td>
+  <td>0 10 1 * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Ops Status Dashboard</td>
+  <td><span class="priority p4">P4</span></td>
+  <td>$0.01</td>
+  <td>30 7 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>seo-guidelines-monitor</td>
+  <td><span class="priority p4">P4</span></td>
+  <td>$0.01</td>
+  <td>0 14 * * 0</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>coachify IXL curriculum refresh</td>
+  <td><span class="priority p4">P4</span></td>
+  <td>$0.02</td>
+  <td>0 3 * * 0</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Mobile App Opportunity Research</td>
+  <td><span class="priority p4">P4</span></td>
+  <td>$0.03</td>
+  <td>0 6 */3 * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>ChatGPT-Ads-Platform-Monitor</td>
+  <td><span class="priority p5">P5</span></td>
+  <td>$0.01</td>
+  <td>0 11 * * 6</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>Daily Agent Sync</td>
+  <td><span class="priority p5">P5</span></td>
+  <td>$0.01</td>
+  <td>45 1 * * *</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr><tr>
+  <td>🔴</td>
+  <td>monthly-cross-link-injector</td>
+  <td><span class="priority p5">P5</span></td>
+  <td>$0.01</td>
+  <td>30 11 1-7 * 1</td>
+  <td>never</td>
+  <td style="font-size:0.85em">deferred — budget cap</td>
+</tr>
+</table>
+
+<p style="color:#64748b; margin-top:15px; font-size:0.85em">
+  Hourly budget: $0.23 · Reserve: $0.03 · Available: $0.20
+</p>
+</body>
+</html>
