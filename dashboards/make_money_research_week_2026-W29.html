@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Research — W29 (13–19 Jul 2026)</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2333;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text2: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d29922;
+    --red: #f85149;
+    --purple: #bc8cff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  h1 { font-size: 1.8rem; margin-bottom: .25rem; color: var(--accent); }
+  h2 { font-size: 1.3rem; margin: 2rem 0 .75rem; color: var(--purple); border-bottom: 1px solid var(--border); padding-bottom: .4rem; }
+  h3 { font-size: 1.05rem; margin: 1.2rem 0 .5rem; color: var(--green); }
+  .subtitle { color: var(--text2); font-size: .9rem; margin-bottom: 1.5rem; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .card h3 { margin-top: 0; }
+  .rank-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: .75rem;
+    padding: .15rem .55rem;
+    border-radius: 4px;
+    margin-right: .5rem;
+  }
+  .rank-badge.gold { background: #d29922; }
+  .rank-badge.silver { background: #8b949e; color: #0d1117; }
+  .rank-badge.bronze { background: #a3712c; }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: .75rem;
+    margin: 1rem 0;
+  }
+  .stat {
+    background: var(--surface2);
+    border-radius: 6px;
+    padding: .75rem;
+    text-align: center;
+  }
+  .stat .val { font-size: 1.3rem; font-weight: 700; color: var(--accent); display: block; }
+  .stat .lbl { font-size: .75rem; color: var(--text2); }
+  ul, ol { padding-left: 1.3rem; margin: .5rem 0; }
+  li { margin-bottom: .35rem; }
+  .tag {
+    display: inline-block;
+    font-size: .7rem;
+    padding: .15rem .5rem;
+    border-radius: 3px;
+    margin-right: .3rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+  }
+  .tag.green { color: var(--green); border-color: var(--green); }
+  .tag.red { color: var(--red); border-color: var(--red); }
+  .tag.orange { color: var(--orange); border-color: var(--orange); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: .75rem 0;
+  }
+  th, td {
+    padding: .5rem .75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: .85rem;
+  }
+  th { color: var(--text2); font-weight: 600; }
+  .pattern { margin-bottom: .5rem; }
+  .pattern .emoji { margin-right: .4rem; }
+  .action-tier {
+    padding: .75rem;
+    margin-bottom: .5rem;
+    border-left: 3px solid var(--accent);
+    background: var(--surface2);
+    border-radius: 0 6px 6px 0;
+  }
+  .action-tier.high { border-left-color: var(--green); }
+  .action-tier.med { border-left-color: var(--orange); }
+  .action-tier.low { border-left-color: var(--text2); }
+  .footer { color: var(--text2); font-size: .75rem; text-align: center; margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+  a { color: var(--accent); }
+  .pulse { color: var(--red); }
+</style>
+</head>
+<body>
+
+<h1>📊 Weekly Research Consolidation</h1>
+<p class="subtitle">Week of 13–19 July 2026 · ISO 2026-W29 · 4 daily reports + 1 Research-Hour report synthesised</p>
+
+<div class="stat-grid">
+  <div class="stat"><span class="val">4/7</span><span class="lbl">Daily Reports</span></div>
+  <div class="stat"><span class="val">1</span><span class="lbl">Research-Hour Report</span></div>
+  <div class="stat"><span class="val">3</span><span class="lbl">Top Opportunities</span></div>
+  <div class="stat"><span class="val">4</span><span class="lbl">HN Security Signals</span></div>
+  <div class="stat"><span class="lbl">Missing days: Tue, Sat, Sun</span></div>
+</div>
+
+<!-- Executive Summary -->
+<h2>Executive Summary</h2>
+<div class="card">
+<p>This week's research produced a genuine strategic sharpening: the generic "AI/GEO audit" framing converged on a specific, defensible <strong>AI-tool / AI-agent security audit</strong> service — driven by a dense cluster of Hacker News security stories (Cursor 0day 388pts, Claude secret-leak 641pts, AI voice fraud 176pts, MS 570 flaws) that hit exactly the <strong>doctor + security-domains + AI-engineering</strong> intersection.</p>
+<br>
+<p><span class="tag orange">Signal-driven</span>The shift was not editorial — real market signals picked the wedge. The barbell strategy (fast-cash service → security-product moat) held for the 3rd straight week. A new asset class surfaced (property lead-gen portfolio). Pipeline health is degrading: 3 missing days, expired Claude CLI OAuth, broken affiliate scraper (0/7 niches for 2 weeks).</p>
+</div>
+
+<!-- Top 3 Opportunities -->
+<h2>🏆 Top 3 Opportunities</h2>
+
+<div class="card">
+  <h3><span class="rank-badge gold">#1</span> AI Security-Audit Service for UK SMEs</h3>
+  <p><span class="tag green">Fastest cash</span><span class="tag">£1k in 2–4 weeks</span><span class="tag">£1.5k–10k+/mo</span></p>
+  <p><strong>Appeared in all 4 daily reports.</strong> The single most recurring opportunity, sharpened this week from generic "GEO audit" to a specific <strong>AI-tool / AI-agent security audit</strong> (Cursor, Copilot, Claude-agent config reviews). Package a branded PDF checklist, offer free 30-min assessments to UK law/fintech/SaaS teams using the live HN stories as the cold open. Convert to £300–800/mo retainers.</p>
+</div>
+
+<div class="card">
+  <h3><span class="rank-badge silver">#2</span> Security-Domain Product: Micro-SaaS or Browser Extension</h3>
+  <p><span class="tag">£1k in 4–10 weeks</span><span class="tag">£300–10k+/mo MRR</span><span class="tag">70%+ margins</span></p>
+  <p><strong>Appeared in all 4 daily reports.</strong> Three converging shapes: <strong>(a)</strong> Chrome extension — password strength/breach checker, freemium + affiliate links, lowest build cost; <strong>(b)</strong> Micro-SaaS — breach exposure checker, Cyber Essentials generator, SPF/DMARC scanner paid tier; <strong>(c)</strong> On-device "Private AI" app enabled by Bonsai 27B phone-model release (624 HN pts). The 15+ owned security domains give free pre-owned distribution.</p>
+</div>
+
+<div class="card">
+  <h3><span class="rank-badge bronze">#3</span> AI Content Asset Leverage: Affiliate + KDP + White-Label SaaS</h3>
+  <p><span class="tag">£500–5k/mo</span><span class="tag">Low effort/unit</span><span class="tag">3–12 weeks to first £</span></p>
+  <p><strong>Appeared 3 of 4 days + Research-Hour.</strong> Scale-out on sunk costs: AI-built affiliate comparison pages ("Best Password Managers UK 2026") on security domains with recurring commissions; focused KDP series in large-print/medical-niche; clone a white-label AI SaaS from the MIT-licensed awesome-generative-ai-apps repo (50+ pre-wired products with auth + Stripe).</p>
+</div>
+
+<!-- Patterns & Themes -->
+<h2>🔁 Patterns &amp; Themes</h2>
+<div class="card">
+  <ol>
+    <li class="pattern"><span class="emoji">📡</span><strong>Signal-driven convergence, not editorial repetition.</strong> W29's sharpening was driven by a real HN news cluster, not empty repetition.</li>
+    <li class="pattern"><span class="emoji">🏋️</span><strong>Barbell held every day</strong> — fast-cash AI service funds slower security-product moat. 3rd straight week.</li>
+    <li class="pattern"><span class="emoji">🧵</span><strong>"AI security" is now the unifying spine</strong> — collapsing GEO audits / automation agency / security SaaS into one coherent positioning.</li>
+    <li class="pattern"><span class="emoji">🔄</span><strong>Two parallel research pipelines</strong> — money-research vs Research-Hour producing divergent ideas; needs reconciliation.</li>
+    <li class="pattern"><span class="emoji">🏠</span><strong>Property portfolio surfaced as asset</strong> — Kokal/Dudley/Midlands entered research as a lead-gen base for the first time.</li>
+    <li class="pattern"><span class="emoji">⚠️</span><strong>Pipeline health degrading</strong> — 3 missing days, expired OAuth, broken affiliate scraper, blind trend tool.</li>
+  </ol>
+</div>
+
+<!-- Actions This Week -->
+<h2>✅ Actions This Week</h2>
+<table>
+  <tr><th>Date</th><th>Report</th><th>Pipeline</th><th>Notes</th></tr>
+  <tr><td>Mon 13 Jul</td><td>✅ 13 KB</td><td>Claude CLI</td><td>3 opps</td></tr>
+  <tr><td>Tue 14 Jul</td><td>❌</td><td>—</td><td>cron did not run</td></tr>
+  <tr><td>Wed 15 Jul</td><td>✅ 21 KB</td><td>Manual research</td><td>5 opps — richest report</td></tr>
+  <tr><td>Thu 16 Jul</td><td>⚠️ 32 KB</td><td>Direct — CLI OAuth expired</td><td>5 opps + Research-Hour</td></tr>
+  <tr><td>Fri 17 Jul</td><td>✅ 14 KB</td><td>Auto-research</td><td>3 opps</td></tr>
+  <tr><td>Sat 18 Jul</td><td>❌</td><td>—</td><td>cron did not run</td></tr>
+  <tr><td>Sun 19 Jul</td><td>❌</td><td>—</td><td>cron did not run</td></tr>
+</table>
+<p><span class="tag red">⚠️</span> <strong>Nothing built, launched, or earned revenue this week.</strong> Third consecutive week without execution. Affiliate scraper returned 0/7 niches (broken, not empty). Trend-intel tool running blind.</p>
+
+<!-- Next Week Recommendations -->
+<h2>🎯 Recommended Actions — W30 (20–26 Jul)</h2>
+
+<div class="action-tier high">
+  <h3>🔥 Must-Do: Book One Paid AI-Security Audit</h3>
+  <p>Build a one-page "AI-Tool Security Audit" checklist (Cursor/Copilot/Claude-agent config, prompt-injection, secret-leak surface). Offer free 30-min assessments to 5 UK SaaS/law/fintech contacts. Open every conversation with the Cursor 0day or Claude secret-leak story. Price: £500–1,500 paid audit; £300–800/mo monitoring retainer.</p>
+  <p><strong>Target:</strong> First free assessment delivered within 1 week, first paid audit booked within 2.</p>
+</div>
+
+<div class="action-tier high">
+  <h3>🚀 Must-Do: Ship Lowest-Friction Security-Domain Product</h3>
+  <p>Pick the <strong>Chrome extension</strong> (password strength/breach checker, freemium + affiliate links). Brand on best security domain. ~2–4 day MVP with AI. Also stand up 2–3 affiliate comparison pages (Bitwarden 30% recurring, Proton Pass) seeded from traffic-thief competitor sitemaps. FTC/ASA disclosure from day one.</p>
+</div>
+
+<div class="action-tier med">
+  <h3>🔧 Plumbing Fixes (Multi-Week Overdue)</h3>
+  <ul>
+    <li>Re-auth Claude CLI (OAuth expired Thu 16)</li>
+    <li>Repair affiliate-discovery scraper (0/7 niches for 2 weeks)</li>
+    <li>Reconcile money-research vs Research-Hour pipelines</li>
+    <li>Investigate 3 missing cron days (14, 18, 19)</li>
+  </ul>
+</div>
+
+<div class="action-tier low">
+  <h3>👀 Watch (Don't Build Yet)</h3>
+  <p><strong>Security MCP Server</strong> (Research-Hour's genuinely novel, portfolio-fitting idea — first-mover gap, but secondary to cash). <strong>Skip:</strong> faceless video, on-device app rebuild, standalone domain-flipping.</p>
+</div>
+
+<!-- UK-Specific -->
+<h2>🇬🇧 UK-Specific Findings</h2>
+<div class="card">
+  <ul>
+    <li><strong>Target market:</strong> UK law firms, fintech startups, and SaaS teams adopting AI agents faster than securing them</li>
+    <li><strong>Compliance pressure:</strong> Cyber Essentials + NIS2 create recurring reasons for micro-businesses to pay for security products</li>
+    <li><strong>Property lead-gen base:</strong> Kokal Properties, Dudley Property Experts, Midlands Property Experts now surfaced as monetisable assets</li>
+    <li><strong>Affiliate opportunities:</strong> Amazon UK Associates (recurring), NordPass, Proton Pass, Bitwarden — all have GBP-friendly programs</li>
+  </ul>
+</div>
+
+<div class="footer">
+  Generated Sun 19 Jul 2026 14:20 BST · Money Research Cron · <a href="https://thetanoli.com/dashboards/money-research.html">thetanoli.com/dashboards</a>
+</div>
+
+</body>
+</html>
