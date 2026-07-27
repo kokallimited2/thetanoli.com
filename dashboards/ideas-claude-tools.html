@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 Interactive Tools — Claude Edition</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0d1117; color: #c9d1d9; line-height: 1.6;
+  max-width: 1100px; margin: 0 auto; padding: 2rem 1rem;
+}
+h1 { font-size: 1.8rem; margin-bottom: 0.25rem; color: #f0f6fc; }
+.subtitle { color: #8b949e; margin-bottom: 2rem; font-size: 0.9rem; }
+.stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.75rem; margin: 1.5rem 0 2rem; }
+.stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; text-align: center; }
+.stat-card .num { font-size: 1.5rem; font-weight: 700; color: #58a6ff; }
+.stat-card .lbl { font-size: 0.7rem; color: #8b949e; margin-top: 0.25rem; }
+.category { margin-bottom: 2.5rem; }
+.category h2 {
+  font-size: 1.2rem; color: #f0f6fc;
+  border-bottom: 2px solid #30363d; padding-bottom: 0.5rem; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+}
+.cat-count { font-size: 0.75rem; color: #8b949e; font-weight: 400; }
+.tool-grid { display: grid; grid-template-columns: 1fr; gap: 0.6rem; }
+.tool-card {
+  background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 0.75rem 1rem;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem;
+}
+.tool-left { flex: 1; }
+.tool-title { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.tool-name { color: #f0f6fc; font-size: 0.9rem; font-weight: 600; }
+.tool-num { color: #475569; font-size: 0.72rem; font-weight: 700; min-width: 1.8rem; }
+.tool-desc { color: #8b949e; font-size: 0.78rem; margin-top: 0.2rem; }
+.tool-money { color: #7ee787; font-size: 0.72rem; margin-top: 0.15rem; }
+.tool-money::before { content: "💰 "; }
+.tool-app { color: #58a6ff; font-size: 0.72rem; margin-top: 0.1rem; }
+.tool-app::before { content: "📱 "; }
+.tool-warn { color: #d29922; font-size: 0.7rem; margin-top: 0.1rem; font-style: italic; }
+.tool-warn::before { content: "⚠️ "; }
+.tool-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-top: 0.3rem; }
+.tag { font-size: 0.6rem; padding: 0.1rem 0.4rem; border-radius: 3px; font-weight: 600; }
+.tag-easy { background: rgba(62,185,80,0.15); color: #7ee787; }
+.tag-medium { background: rgba(210,153,34,0.15); color: #d29922; }
+.tag-hard { background: rgba(248,81,73,0.15); color: #f85149; }
+.tag-demand-vhigh { background: rgba(88,166,255,0.15); color: #58a6ff; }
+.tag-demand-high { background: rgba(88,166,255,0.1); color: #58a6ff; }
+.tag-demand-med { background: rgba(139,148,158,0.1); color: #8b949e; }
+.tag-demand-low { background: rgba(139,148,158,0.05); color: #475569; }
+.legend { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; font-size: 0.78rem; color: #8b949e; }
+.footer-box {
+  background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 1.5rem; margin: 2rem 0;
+}
+.footer-box h3 { color: #f0f6fc; margin-bottom: 0.75rem; font-size: 1rem; }
+.footer-box p, .footer-box li { color: #8b949e; font-size: 0.82rem; margin-bottom: 0.4rem; }
+.footer-box ol { padding-left: 1.5rem; }
+@media (max-width: 768px) { .stats-bar { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+
+<a href="/" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;margin-bottom:16px;color:#94a3b8;padding:6px 12px;border:1px solid #30363d;border-radius:8px;background:#161b22;transition:all .2s;float:left;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='#161b22'">🏠 Dashboard Hub</a>
+<div style="clear:both"></div>
+
+<h1>🧠 100 Interactive Tools — Claude Edition</h1>
+<div class="subtitle">Expanded list with build complexity, demand ratings, specific monetisation & mobile app angles. Merged from Claude's research + original list.</div>
+
+<div class="stats-bar">
+  <div class="stat-card"><div class="num">100</div><div class="lbl">Total Ideas</div></div>
+  <div class="stat-card"><div class="num" style="color:#7ee787">22</div><div class="lbl">Finance & Property</div></div>
+  <div class="stat-card"><div class="num" style="color:#58a6ff">14</div><div class="lbl">Business & Marketing</div></div>
+  <div class="stat-card"><div class="num" style="color:#d2a8ff">12</div><div class="lbl">Developer Tools</div></div>
+  <div class="stat-card"><div class="num" style="color:#56d4dd">10</div><div class="lbl">Health & Fitness</div></div>
+  <div class="stat-card"><div class="num" style="color:#d29922">8</div><div class="lbl">Legal & Home DIY</div></div>
+</div>
+
+<div class="legend">
+  <span>🟢 Easy &nbsp;·&nbsp; 🟡 Medium &nbsp;·&nbsp; 🔴 Hard &nbsp;·&nbsp; 🔵 Demand: Very High/High/Med/Low</span>
+</div>
+
+<!-- ============================== -->
+<!-- FINANCE & MONEY (1-15)        -->
+<!-- ============================== -->
+<div class="category">
+<h2>💷 Finance & Money <span class="cat-count">(15 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">1</span><span class="tool-name">Mortgage & Affordability Calculator</span></div>
+<div class="tool-desc">Monthly payments, LTV, stamp duty, income multiples across lenders. Shareable result URL.</div>
+<div class="tool-money">Mortgage broker leads — highest value vertical online</div>
+<div class="tool-app">App re-checks affordability whenever rates or income change</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">2</span><span class="tool-name">Loan Repayment & Amortisation Scheduler</span></div>
+<div class="tool-desc">Personal, car, student loan amortisation with overpayment scenarios and interest saved.</div>
+<div class="tool-money">Balance transfer card affiliates</div>
+<div class="tool-app">App sends reminders to pay more than minimum before statement date</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">3</span><span class="tool-name">Compound Interest & Investment Projector</span></div>
+<div class="tool-desc">Growth with regular contributions, inflation-adjusted, ISA/SIPP scenarios.</div>
+<div class="tool-money">Broker and investing platform affiliates</div>
+<div class="tool-app">App shows goal tracking with milestone celebrations</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">4</span><span class="tool-name">Currency Converter & Rate Alert</span></div>
+<div class="tool-desc">Live forex, 160 currencies, historical charts, rate alerts.</div>
+<div class="tool-money">Money transfer affiliate (Wise, Revolut) — recurring commissions</div>
+<div class="tool-app">Home screen widget with offline rates</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">5</span><span class="tool-name">UK Salary & Tax Breakdown</span></div>
+<div class="tool-desc">Take-home after tax, NI, pension, student loan. Compare job offers.</div>
+<div class="tool-money">Accounting software affiliates</div>
+<div class="tool-app">Export payslip comparison, save offer scenarios</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">6</span><span class="tool-name">Crypto Profit & Portfolio Tracker</span></div>
+<div class="tool-desc">Buy/sell P&L, average cost, allocation pie, tax lot accounting.</div>
+<div class="tool-money">Exchange affiliates; premium for multiple portfolios</div>
+<div class="tool-app">Price alerts, widget, portfolio snapshot</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">7</span><span class="tool-name">Self Assessment & Tax Return Estimator</span></div>
+<div class="tool-desc">Deadline tracker, thresholds, reliefs, estimated bill. Jan peak traffic.</div>
+<div class="tool-money">Accounting affiliate + paid deadline alerts</div>
+<div class="tool-app">Deadline reminders + document organiser</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">8</span><span class="tool-name">Emergency Fund & Runway Calculator</span></div>
+<div class="tool-desc">Enter monthly costs + savings → see months of survival. Target builder included.</div>
+<div class="tool-money">Savings account and high-interest account affiliates</div>
+<div class="tool-app">App recalculates runway automatically as balance changes</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">9</span><span class="tool-name">Car Finance PCP vs HP vs Cash Comparator</span></div>
+<div class="tool-desc">Total cost across finance types: balloon payment, depreciation, interest, mileage.</div>
+<div class="tool-money">Car finance and lease broker affiliates</div>
+<div class="tool-app">App tracks mileage against contract allowance, warns before excess</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">10</span><span class="tool-name">Student Loan Repayment Projector</span></div>
+<div class="tool-desc">Repayments, interest, likely write-off date by plan and salary trajectory.</div>
+<div class="tool-money">Ads plus paid 'should I overpay' report</div>
+<div class="tool-app">App updates projection as salary changes each year</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">11</span><span class="tool-name">Rent vs Buy Break-Even Calculator</span></div>
+<div class="tool-desc">Compare renting vs buying: fees, maintenance, opportunity cost of deposit, growth.</div>
+<div class="tool-money">Mortgage broker leads; estate agent sponsorship</div>
+<div class="tool-app">App tracks local price/rent indices, tells you when maths flips</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">12</span><span class="tool-name">Inflation & Purchasing Power Calculator</span></div>
+<div class="tool-desc">What a sum from any year is worth today. Wage vs inflation comparison.</div>
+<div class="tool-money">Display ads at scale — huge evergreen search volume</div>
+<div class="tool-app">App gives a 'your salary in real terms' yearly check</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">13</span><span class="tool-name">Side Hustle Break-Even Calculator</span></div>
+<div class="tool-desc">Startup costs, unit price, variable costs, hours → break-even volume and hourly rate.</div>
+<div class="tool-money">Business tooling and ecommerce platform affiliates</div>
+<div class="tool-app">App logs real sales against break-even line</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">14</span><span class="tool-name">Credit Card Minimum Payment Visualiser</span></div>
+<div class="tool-desc">Show how long a balance takes to clear on minimum vs fixed payment, total interest.</div>
+<div class="tool-money">Balance transfer card affiliates — extremely shareable output</div>
+<div class="tool-app">App reminds you to pay more than minimum before each statement</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">15</span><span class="tool-name">Side Hustle & Gig Economy Profit Calc</span></div>
+<div class="tool-desc">After-tax earnings, effective hourly rate, platform fees, expenses.</div>
+<div class="tool-money">Tax software affiliate + premium multi-platform version</div>
+<div class="tool-app">App tracks gigs and estimates quarterly tax bill</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- PROPERTY & REAL ESTATE (16-25) -->
+<!-- ============================== -->
+<div class="category">
+<h2>🏠 Property & Real Estate <span class="cat-count">(10 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">16</span><span class="tool-name">Serviced Accommodation Deal Analyser</span></div>
+<div class="tool-desc">Nightly rate, occupancy, length of stay, cleaning, bills, rent → monthly profit, ROI, payback.</div>
+<div class="tool-money">Paid pro version with multi-deal portfolios and PDF investor packs</div>
+<div class="tool-app">App lets investors analyse deals on viewing, save to pipeline</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">17</span><span class="tool-name">BRRR Deal Calculator</span></div>
+<div class="tool-desc">Buy, refurbish, refinance, rent — money left in deal, refinance uplift, infinite return.</div>
+<div class="tool-money">Subscription for serious investors; bridging finance leads</div>
+<div class="tool-app">App captures refurb receipts against budget on site</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">18</span><span class="tool-name">Stamp Duty & Property Tax Calculator</span></div>
+<div class="tool-desc">First-time buyer, second-home surcharge, company purchases, multiple dwellings.</div>
+<div class="tool-money">Conveyancing and broker leads — enormous search volume</div>
+<div class="tool-app">App keeps saved buyer profile, one-tap answers</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">19</span><span class="tool-name">Short-Let Nightly Rate Optimiser</span></div>
+<div class="tool-desc">Pricing by season, day-of-week, local events, minimum-stay rules.</div>
+<div class="tool-money">Subscription per listing</div>
+<div class="tool-app">App pushes 'raise your rate this weekend' alerts</div>
+<div class="tool-tags"><span class="tag tag-hard">Hard</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">20</span><span class="tool-name">BTL Yield & Stress Test Calculator</span></div>
+<div class="tool-desc">Gross/net yield, cash-on-cash return, lender stress testing at higher rates.</div>
+<div class="tool-money">BTL mortgage broker leads</div>
+<div class="tool-app">App re-stresses whole portfolio when base rate moves</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">21</span><span class="tool-name">Renovation Cost Estimator</span></div>
+<div class="tool-desc">Room-by-room cost ranges by spec level, floor area, contingency slider.</div>
+<div class="tool-money">Trade directory leads and materials affiliates</div>
+<div class="tool-app">App tracks actual spend against estimate room by room</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">22</span><span class="tool-name">HMO Room Count & Profit Calculator</span></div>
+<div class="tool-desc">Income per room, licensing thresholds, bills, voids, compliance costs.</div>
+<div class="tool-money">Niche subscription; specialist finance leads</div>
+<div class="tool-app">App manages per-room occupancy and arrears</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">23</span><span class="tool-name">Property Flip Profit & Timeline</span></div>
+<div class="tool-desc">Purchase, refurb, holding, finance, selling costs vs resale. Month-by-month cash drawdown.</div>
+<div class="tool-money">Bridging lender referrals</div>
+<div class="tool-app">App gives live 'days on project vs budget' dashboard</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">24</span><span class="tool-name">Mortgage Affordability Multi-Lender</span></div>
+<div class="tool-desc">Borrowing range across different lender income multiples and affordability rules.</div>
+<div class="tool-money">Broker leads — one of highest value verticals online</div>
+<div class="tool-app">App re-checks affordability whenever income or rates change</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">25</span><span class="tool-name">Service Charge & Ground Rent Escalation</span></div>
+<div class="tool-desc">Project leasehold costs forward under RPI-linked clauses. Lifetime cost view.</div>
+<div class="tool-money">Lease extension and legal service leads</div>
+<div class="tool-app">App reminds leaseholders before review dates</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- BUSINESS & MARKETING (26-39)   -->
+<!-- ============================== -->
+<div class="category">
+<h2>💼 Business & Marketing <span class="cat-count">(14 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">26</span><span class="tool-name">SaaS MRR, Churn & Growth Projector</span></div>
+<div class="tool-desc">MRR growth from signups, expansion, churn, pricing changes over 36 months.</div>
+<div class="tool-money">Sponsorship from billing and analytics tools</div>
+<div class="tool-app">App pulls live numbers from Stripe for pocket dashboard</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">27</span><span class="tool-name">CAC, LTV & Payback Period Calculator</span></div>
+<div class="tool-desc">Customer acquisition cost, lifetime value, LTV:CAC ratio, months to payback by channel.</div>
+<div class="tool-money">Ad platform and agency lead generation</div>
+<div class="tool-app">App gives founders weekly unit-economics snapshot</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">28</span><span class="tool-name">ROAS & Break-Even Ad Spend Calculator</span></div>
+<div class="tool-desc">ROAS needed to be profitable at a given margin. What happens as CPCs rise.</div>
+<div class="tool-money">Agency leads; ad tool affiliates</div>
+<div class="tool-app">App checks live campaign ROAS against break-even line</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">29</span><span class="tool-name">Marketplace Profit Margin Calculator</span></div>
+<div class="tool-desc">Net profit after platform fees, payment fees, shipping, returns, tax per selling platform.</div>
+<div class="tool-money">Seller tool affiliates + paid bulk product version</div>
+<div class="tool-app">App scans a product listing and returns true margin</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">30</span><span class="tool-name">FBA Fee & Profitability Calculator</span></div>
+<div class="tool-desc">Referral fees, fulfilment tiers, storage, prep, returns by product size and weight.</div>
+<div class="tool-money">Sourcing and seller software affiliates</div>
+<div class="tool-app">App works from barcode scan while sourcing in a shop</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">31</span><span class="tool-name">Email List Revenue Projector</span></div>
+<div class="tool-desc">Revenue from list size, open rate, click rate, conversion, AOV.</div>
+<div class="tool-money">Email platform affiliates — strong recurring commissions</div>
+<div class="tool-app">App reports campaign results against projection</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">32</span><span class="tool-name">Agency Retainer Pricing Calculator</span></div>
+<div class="tool-desc">Price a retainer from deliverables, team hours, blended rate, target margin.</div>
+<div class="tool-money">Paid proposal export with your branding</div>
+<div class="tool-app">App checks delivered hours against retainer, catches scope creep</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">33</span><span class="tool-name">True Cost of an Employee Calculator</span></div>
+<div class="tool-desc">Salary + employer taxes, pension, equipment, software, holiday cover, overhead.</div>
+<div class="tool-money">HR and payroll software leads</div>
+<div class="tool-app">App models headcount plans on the go</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">34</span><span class="tool-name">Break-Even & Contribution Margin Tool</span></div>
+<div class="tool-desc">Fixed costs, unit price, variable cost → break-even units, revenue, margin of safety.</div>
+<div class="tool-money">Accounting software affiliates</div>
+<div class="tool-app">App tracks live sales against break-even for the month</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">35</span><span class="tool-name">Late Payment Interest + Letter Generator</span></div>
+<div class="tool-desc">Statutory interest on overdue invoices. Generate the chase letter.</div>
+<div class="tool-money">Invoice finance and accounting leads</div>
+<div class="tool-app">App chases overdue invoices with escalating reminders</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">36</span><span class="tool-name">Business Valuation Estimator</span></div>
+<div class="tool-desc">Revenue and profit multiples by sector, adjusted for growth, concentration, owner dependency.</div>
+<div class="tool-money">Broker leads for business sales — very high ticket</div>
+<div class="tool-app">App gives owners a quarterly valuation update</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">37</span><span class="tool-name">Print-on-Demand Profit Calculator</span></div>
+<div class="tool-desc">Base cost, platform cut, shipping, ad spend vs retail price across POD providers.</div>
+<div class="tool-money">POD platform affiliates</div>
+<div class="tool-app">App prices new designs before you upload</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">38</span><span class="tool-name">Freelance Day Rate & Project Calculator</span></div>
+<div class="tool-desc">Day rate, project fee, retainer comparisons. Tax set-aside included.</div>
+<div class="tool-money">Freelance platform affiliates; paid tax estimation export</div>
+<div class="tool-app">App tracks income against annual target</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">39</span><span class="tool-name">A/B Test Significance Calculator</span></div>
+<div class="tool-desc">Statistical significance, confidence intervals, sample size needed for experiments.</div>
+<div class="tool-money">CRO tool affiliates; premium team workspace</div>
+<div class="tool-app">App checks if your test result is real</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- DEVELOPER TOOLS (40-51)        -->
+<!-- ============================== -->
+<div class="category">
+<h2>🧑‍💻 Developer Tools <span class="cat-count">(12 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">40</span><span class="tool-name">Cron Expression Generator & Explainer</span></div>
+<div class="tool-desc">Build cron from controls, see next 10 run times, translate any expression to English.</div>
+<div class="tool-money">Developer tool sponsorship; huge repeat traffic</div>
+<div class="tool-app">App is quick reference + schedule tester</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">41</span><span class="tool-name">Regex Builder, Tester & Explainer</span></div>
+<div class="tool-desc">Live match highlighting, capture group breakdown, plain-English explanation.</div>
+<div class="tool-money">Sponsorship + pro version with saved libraries</div>
+<div class="tool-app">Offline regex reference with test pad</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">42</span><span class="tool-name">JSON to Types & Schema Generator</span></div>
+<div class="tool-desc">Paste JSON → TypeScript interfaces, Zod schemas, Python dataclasses, Go structs, SQL DDL.</div>
+<div class="tool-money">Dev tool sponsorship; team version with shared schemas</div>
+<div class="tool-app">App handles quick conversions from share sheet</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">43</span><span class="tool-name">Natural Language to SQL Builder</span></div>
+<div class="tool-desc">Paste schema, describe question → get query with explanation and optimisation note.</div>
+<div class="tool-money">Credit-based pricing; database vendor sponsorship</div>
+<div class="tool-app">App is pocket query helper for on-call engineers</div>
+<div class="tool-tags"><span class="tag tag-hard">Hard</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">44</span><span class="tool-name">Config File Generator Suite</span></div>
+<div class="tool-desc">Generate .gitignore, Dockerfile, CI pipelines, Nginx configs from stack picker.</div>
+<div class="tool-money">Hosting and CI platform affiliates</div>
+<div class="tool-app">App copies configs to clipboard on mobile</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">45</span><span class="tool-name">CSS Effects Generator</span></div>
+<div class="tool-desc">Visual builder for gradients, shadows, glassmorphism, clip paths, animations → copy CSS.</div>
+<div class="tool-money">Display ads at scale; premium preset packs</div>
+<div class="tool-app">App is design snippet library browsable anywhere</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">46</span><span class="tool-name">Brand Colour to Design System Generator</span></div>
+<div class="tool-desc">One hex → full accessible tint/shade scale + Tailwind, CSS, Figma token exports.</div>
+<div class="tool-money">Pro export formats; design tool affiliates</div>
+<div class="tool-app">App picks colour from camera photo, builds palette</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">47</span><span class="tool-name">Mock Data Generator</span></div>
+<div class="tool-desc">Define schema → believable test data as JSON, CSV, SQL inserts or mock API endpoint.</div>
+<div class="tool-money">Usage-based pricing above free row limit</div>
+<div class="tool-app">App generates seed data on the move</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">48</span><span class="tool-name">Encode, Decode & Hash Multi-Tool</span></div>
+<div class="tool-desc">JWT decoder, base64, URL encoding, UUID gen, hashing, timestamp conversion.</div>
+<div class="tool-money">Ads + sponsorship; enormous repeat usage</div>
+<div class="tool-app">App works entirely offline — genuine everyday utility</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">49</span><span class="tool-name">Meta Tags & Social Preview Generator</span></div>
+<div class="tool-desc">Build OG + Twitter tags, preview renders on each platform.</div>
+<div class="tool-money">SEO tool affiliates</div>
+<div class="tool-app">App previews links before you post them</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">50</span><span class="tool-name">Colour Contrast Checker & Fixer</span></div>
+<div class="tool-desc">WCAG AA/AAA checks that suggest nearest passing colour.</div>
+<div class="tool-money">Accessibility audit service leads</div>
+<div class="tool-app">App checks contrast from screenshot or camera</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">51</span><span class="tool-name">Cloud Hosting Cost Comparator</span></div>
+<div class="tool-desc">Same workload priced across cloud providers + budget hosts, including egress costs.</div>
+<div class="tool-money">Hosting affiliate commissions — large recurring</div>
+<div class="tool-app">App alerts when usage tier makes another provider cheaper</div>
+<div class="tool-tags"><span class="tag tag-hard">Hard</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- HEALTH & FITNESS (52-63)       -->
+<!-- ============================== -->
+<div class="category">
+<h2>🏃 Health & Fitness <span class="cat-count">(12 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">52</span><span class="tool-name">TDEE & Macro Split Calculator</span></div>
+<div class="tool-desc">Calorie needs from body stats + activity. Protein/carb/fat targets for cut/maintain/bulk.</div>
+<div class="tool-money">Supplement and meal-plan affiliates; premium plan export</div>
+<div class="tool-app">App turns targets into daily tracking with barcode scanning</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">53</span><span class="tool-name">Body Recomposition Timeline Predictor</span></div>
+<div class="tool-desc">Realistic fat loss and muscle gain over time from starting stats and training age.</div>
+<div class="tool-money">Coaching lead generation</div>
+<div class="tool-app">App logs weekly weigh-ins, redraws projection</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">54</span><span class="tool-name">Race Time Predictor & Pace Splits</span></div>
+<div class="tool-desc">Predict finish times across distances from one recent result. Printable pace band.</div>
+<div class="tool-money">Running gear and race entry affiliates</div>
+<div class="tool-app">App gives live pace guidance + training plan</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">55</span><span class="tool-name">One Rep Max & Programme Generator</span></div>
+<div class="tool-desc">Calculate 1RM from any set. Auto-generate percentage-based training programme.</div>
+<div class="tool-money">Premium programme PDFs and coaching upsell</div>
+<div class="tool-app">App becomes workout logger that updates maxes automatically</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">56</span><span class="tool-name">Due Date & Pregnancy Milestone Tracker</span></div>
+<div class="tool-desc">Due date by LMP, trimester dates, appointment schedule, week-by-week development.</div>
+<div class="tool-money">Baby retail affiliates — very high commercial value audience</div>
+<div class="tool-app">App is weekly pregnancy companion with reminders</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">57</span><span class="tool-name">Sleep Cycle & Bedtime Calculator</span></div>
+<div class="tool-desc">Work back from wake time to ideal bedtimes based on 90-min cycles.</div>
+<div class="tool-money">Mattress and sleep product affiliates</div>
+<div class="tool-app">App sets alarm, adapts to actual sleep data</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">58</span><span class="tool-name">Endurance Hydration & Fuel Planner</span></div>
+<div class="tool-desc">Fluid, sodium, carbs per hour for event duration, intensity, sweat rate.</div>
+<div class="tool-money">Sports nutrition affiliates</div>
+<div class="tool-app">App gives timed fuelling alerts during event</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">59</span><span class="tool-name">Clinical Dose Reference Checker</span></div>
+<div class="tool-desc">Weight-based dosing for healthcare pros. Unit conversion + double-check step.</div>
+<div class="tool-money">Institutional or professional subscription</div>
+<div class="tool-app">Bedside use, offline-capable</div>
+<div class="tool-tags"><span class="tag tag-hard">Hard</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+<div class="tool-warn">High risk, regulated. Professional audience only. Sourced to official formularies. Clinical sign-off needed.</div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">60</span><span class="tool-name">Goal Weight Date Projector</span></div>
+<div class="tool-desc">Current weight, target, deficit → projected date. Shows how plateau changes it.</div>
+<div class="tool-money">Diet app and meal delivery affiliates</div>
+<div class="tool-app">App plots real weigh-ins against projected curve</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">61</span><span class="tool-name">Blood Test Range Explainer</span></div>
+<div class="tool-desc">Enter results and units → plotted against reference ranges in plain English.</div>
+<div class="tool-money">Private testing affiliate referrals</div>
+<div class="tool-app">App stores results over time, shows trends</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+<div class="tool-warn">Educational framing only — never diagnostic. Signpost to clinician.</div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">62</span><span class="tool-name">BMI & Healthy Weight Range</span></div>
+<div class="tool-desc">BMI, NHS guidelines, healthy weight range, children's centile charts.</div>
+<div class="tool-money">Display ads + health product affiliates</div>
+<div class="tool-app">Track weight history with trend chart</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">63</span><span class="tool-name">Water Intake & Hydration Tracker</span></div>
+<div class="tool-desc">Daily goal by weight, activity, climate. Hourly reminders.</div>
+<div class="tool-money">Reusable bottle affiliate + premium history export</div>
+<div class="tool-app">Streak tracking, widget, achievements</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- LEGAL, DIY & HOME (64-71)      -->
+<!-- ============================== -->
+<div class="category">
+<h2>⚖️ Legal, Home & DIY <span class="cat-count">(8 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">64</span><span class="tool-name">Tenancy Agreement Generator</span></div>
+<div class="tool-desc">Guided questions → compliant tenancy agreement with correct clauses.</div>
+<div class="tool-money">Per-document fee or landlord subscription</div>
+<div class="tool-app">App stores agreements, reminds of renewal and compliance dates</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+<div class="tool-warn">Jurisdiction-specific. Get templates reviewed by solicitor. Label as templates, not advice.</div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">65</span><span class="tool-name">Freelance Contract & SOW Generator</span></div>
+<div class="tool-desc">Contract with payment terms, IP ownership, revision limits, kill fee, late clauses.</div>
+<div class="tool-money">Freemium — free preview, paid download + e-signature</div>
+<div class="tool-app">App sends contract for signature from phone</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">66</span><span class="tool-name">NDA Generator</span></div>
+<div class="tool-desc">One-way or mutual NDA with toggles for term, jurisdiction, confidential info definition.</div>
+<div class="tool-money">Paid download; legal service upsell</div>
+<div class="tool-app">App generates and sends NDA before a meeting</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">67</span><span class="tool-name">Privacy & Cookie Policy Generator</span></div>
+<div class="tool-desc">Questions about data collected, processors, regions → policy + cookie banner snippet.</div>
+<div class="tool-money">Annual subscription for hosted, auto-updating policies</div>
+<div class="tool-app">App notifies you when regulation changes require update</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">68</span><span class="tool-name">Landlord Notice Letter Builder</span></div>
+<div class="tool-desc">Correct notice type, dates, service method with compliance checklist.</div>
+<div class="tool-money">Per-document fee; eviction specialist referrals</div>
+<div class="tool-app">App tracks notice deadlines and service evidence</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+<div class="tool-warn">Jurisdiction-specific. Legal review needed. Clear disclaimers.</div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">69</span><span class="tool-name">Paint Quantity & Cost Calculator</span></div>
+<div class="tool-desc">Room dimensions minus doors/windows → litres per coat, tins, cost by brand.</div>
+<div class="tool-money">Paint retailer affiliates; decorator leads</div>
+<div class="tool-app">App measures room using phone camera</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">70</span><span class="tool-name">Solar & Battery Payback Calculator</span></div>
+<div class="tool-desc">System size, generation by location/orientation, self-consumption, export income.</div>
+<div class="tool-money">Installer leads — one of most valuable lead types</div>
+<div class="tool-app">App tracks real generation against projection</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">71</span><span class="tool-name">Heat Pump vs Boiler Running Cost</span></div>
+<div class="tool-desc">Annual running costs by property type, insulation level, tariff, available grants.</div>
+<div class="tool-money">Installer leads and grant scheme referrals</div>
+<div class="tool-app">App tracks actual energy use against estimate</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- EDUCATION, TRAVEL & FUN (72-100) -->
+<!-- ============================== -->
+<div class="category">
+<h2>🎓 Education, Travel & Fun <span class="cat-count">(29 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">72</span><span class="tool-name">Grade & Predicted Grade Tool</span></div>
+<div class="tool-desc">Mark needed in remaining papers for target grade using published boundaries.</div>
+<div class="tool-money">Tutoring and revision platform leads — massive seasonal traffic</div>
+<div class="tool-app">App tracks coursework and mocks toward target</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">73</span><span class="tool-name">Revision Timetable Generator</span></div>
+<div class="tool-desc">Subjects, exam dates, confidence, free hours → spaced repetition schedule.</div>
+<div class="tool-money">Tutoring leads; premium printable planners</div>
+<div class="tool-app">Study timer with session reminders and streaks</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">74</span><span class="tool-name">Citation & Bibliography Generator</span></div>
+<div class="tool-desc">Generate citations from DOI, ISBN or URL. Export full bibliography.</div>
+<div class="tool-money">Ads plus premium plagiarism and formatting checks</div>
+<div class="tool-app">App cites a book from barcode scan</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">75</span><span class="tool-name">Readability & Reading Age Scorer</span></div>
+<div class="tool-desc">Score any text across readability measures. Highlight sentences dragging it down.</div>
+<div class="tool-money">Writing tool affiliates; team subscription for publishers</div>
+<div class="tool-app">App checks text from share sheet before sending</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">76</span><span class="tool-name">Notes to Flashcards Generator</span></div>
+<div class="tool-desc">Paste notes → Q&A flashcards with spaced repetition schedule.</div>
+<div class="tool-money">Subscription above free deck limit</div>
+<div class="tool-app">App IS the revision experience — website is the funnel</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">77</span><span class="tool-name">Group Trip Cost Splitter</span></div>
+<div class="tool-desc">Log who paid for what, handle uneven splits, compute minimum transfers to settle.</div>
+<div class="tool-money">Ads; premium multi-trip history</div>
+<div class="tool-app">Real-time shared ledger — the obvious home for this</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">78</span><span class="tool-name">Flight Delay Compensation Checker</span></div>
+<div class="tool-desc">Check eligibility from route, delay, reason. Generate claim letter.</div>
+<div class="tool-money">Claims company referral fees — substantial</div>
+<div class="tool-app">App detects your flights, prompts claim automatically</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">79</span><span class="tool-name">Jet Lag Adjustment Planner</span></div>
+<div class="tool-desc">Day-by-day light, sleep, caffeine schedule by route and departure time.</div>
+<div class="tool-money">Travel product affiliates</div>
+<div class="tool-app">App delivers timed prompts across adjustment period</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">80</span><span class="tool-name">Road Trip Fuel, Tolls & Time Calc</span></div>
+<div class="tool-desc">Driving cost by vehicle, fuel price, tolls, rest stops. Split per passenger.</div>
+<div class="tool-money">Fuel card, insurance, booking affiliates</div>
+<div class="tool-app">App tracks real trip against estimate</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">81</span><span class="tool-name">Packing List Generator</span></div>
+<div class="tool-desc">Destination, weather, trip length, activities, baggage → tailored checklist.</div>
+<div class="tool-money">Travel gear affiliates</div>
+<div class="tool-app">Tickable list with reminders night before</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">82</span><span class="tool-name">Points & Miles Value Calculator</span></div>
+<div class="tool-desc">Value redemption in pence per point against cash. Compare programmes.</div>
+<div class="tool-money">Credit card affiliates — extremely high commission</div>
+<div class="tool-app">App tracks balances, flags good redemptions</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">83</span><span class="tool-name">Wedding Budget & Guest Cost Calc</span></div>
+<div class="tool-desc">Total and per-guest cost across categories. What trimming guest list saves.</div>
+<div class="tool-money">Supplier directory leads — very high ticket vertical</div>
+<div class="tool-app">App tracks deposits and payments against budget</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">84</span><span class="tool-name">Cost of Your Habit Calculator</span></div>
+<div class="tool-desc">Daily spend on coffee, takeaways, vapes, subs × 10/20/30 years + investment growth.</div>
+<div class="tool-money">Ads and savings app affiliates — built for social sharing</div>
+<div class="tool-app">App runs habit-quitting streak with money saved</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">85</span><span class="tool-name">Life in Weeks Visualiser</span></div>
+<div class="tool-desc">Your life as a grid of weeks lived and remaining with milestone markers.</div>
+<div class="tool-money">Ads plus poster print sales</div>
+<div class="tool-app">Home screen widget — quietly compelling</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">86</span><span class="tool-name">Pet Age & Feeding Calculator</span></div>
+<div class="tool-desc">Human-equivalent years by breed/size. Daily food portions by weight/activity.</div>
+<div class="tool-money">Pet food subscription affiliates</div>
+<div class="tool-app">App handles feeding reminders and weight tracking</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">87</span><span class="tool-name">Brand Name + Availability Checker</span></div>
+<div class="tool-desc">Generate names from keywords. Check domain, social handle, trademark availability.</div>
+<div class="tool-money">Domain registrar affiliates — reliable and immediate</div>
+<div class="tool-app">App lets founders grab name the moment they think of it</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">88</span><span class="tool-name">Screen Time Lifetime Visualiser</span></div>
+<div class="tool-desc">Daily screen time converted to days/months/years of your life.</div>
+<div class="tool-money">Ads; digital wellbeing app affiliates</div>
+<div class="tool-app">App reads real screen time data, shows running total</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-med">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">89</span><span class="tool-name">EV Charging Cost Calculator</span></div>
+<div class="tool-desc">Cost per charge/mile at home vs public rapid, including off-peak tariffs.</div>
+<div class="tool-money">Charger installation and tariff switching leads</div>
+<div class="tool-app">App logs each charge, shows lifetime savings vs petrol</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">90</span><span class="tool-name">Trade Quote Generator</span></div>
+<div class="tool-desc">Customer-facing quote from labour, day rate, materials, waste, travel, margin.</div>
+<div class="tool-money">Subscription for tradespeople with saved price lists</div>
+<div class="tool-app">App produces quote on doorstep, emails before you leave</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">91</span><span class="tool-name">Invoice Generator</span></div>
+<div class="tool-desc">Branded invoices, VAT handling, multi-currency, payment links, sequential numbering.</div>
+<div class="tool-money">Free single invoices; subscription for saved clients</div>
+<div class="tool-app">App creates + sends invoice the moment a job finishes</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">92</span><span class="tool-name">Recipe Scaler & Tin Converter</span></div>
+<div class="tool-desc">Scale ingredients for different servings. Convert tin sizes and shapes correctly.</div>
+<div class="tool-money">Cookware affiliates; recipe site sponsorship</div>
+<div class="tool-app">App scales recipes hands-free while cooking</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">93</span><span class="tool-name">Planting & Sowing Calendar</span></div>
+<div class="tool-desc">Month-by-month sowing, planting, harvesting calendar from location + frost date.</div>
+<div class="tool-money">Seed and garden retailer affiliates — strongly seasonal</div>
+<div class="tool-app">App sends 'sow these this week' notifications</div>
+<div class="tool-tags"><span class="tag tag-medium">Medium</span><span class="tag tag-demand-medium">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">94</span><span class="tool-name">Team Randomiser & Tournament Scorer</span></div>
+<div class="tool-desc">Split into balanced teams, generate fixtures, live leaderboard.</div>
+<div class="tool-money">Ads; premium league and season history</div>
+<div class="tool-app">App passed around group on match day</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-medium">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">95</span><span class="tool-name">Tattoo Size & Price Estimator</span></div>
+<div class="tool-desc">Hours and price from size, placement, detail, colour, artist day rate.</div>
+<div class="tool-money">Studio directory listings</div>
+<div class="tool-app">App previews scale against photo of body area</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-medium">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">96</span><span class="tool-name">Concrete & Aggregate Mix Calc</span></div>
+<div class="tool-desc">Volume for slabs, footings, post holes. Cement/sand/aggregate/bag counts by mix.</div>
+<div class="tool-money">Builders merchant affiliates</div>
+<div class="tool-app">On-site quantity reference for trades</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-high">Demand: High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">97</span><span class="tool-name">Tiling & Flooring Area Calculator</span></div>
+<div class="tool-desc">Area + wastage, pack counts, adhesive/grout quantities, total cost.</div>
+<div class="tool-money">Materials retailer affiliates</div>
+<div class="tool-app">App works in the aisle while you're buying</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-vhigh">Demand: Very High</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">98</span><span class="tool-name">Aquarium Volume & Stocking Calc</span></div>
+<div class="tool-desc">Tank volume, safe stocking by species, filtration turnover, water change volumes.</div>
+<div class="tool-money">Aquatics retailer affiliates</div>
+<div class="tool-app">App schedules maintenance, logs water tests</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-medium">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">99</span><span class="tool-name">Insulation Savings Calculator</span></div>
+<div class="tool-desc">Annual saving and payback for loft/cavity/solid wall by property age/type.</div>
+<div class="tool-money">Installer leads; grant eligibility check as hook</div>
+<div class="tool-app">App compares bills before and after work</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-medium">Demand: Medium</span></div>
+</div></div>
+
+<div class="tool-card"><div class="tool-left">
+<div class="tool-title"><span class="tool-num">100</span><span class="tool-name">Estate Planning Cost Estimator</span></div>
+<div class="tool-desc">Compare DIY, online, solicitor routes for wills and POA. Cost ranges per option.</div>
+<div class="tool-money">Will-writing service referrals</div>
+<div class="tool-app">App reminds you to review will after life events</div>
+<div class="tool-tags"><span class="tag tag-easy">Easy</span><span class="tag tag-demand-medium">Demand: Medium</span></div>
+</div></div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- SHIPPING ADVICE               -->
+<!-- ============================== -->
+<div class="category">
+<div class="footer-box">
+<h3>📦 How to Ship One of These</h3>
+<ol>
+<li><strong>Build the calculation engine once</strong> — in plain TypeScript, no framework, no UI imports. That single module is shared by website + app so they never disagree (the most common failure: web tool and app give different answers for same inputs).</li>
+<li><strong>Wrap in Next.js for SEO</strong> and in React Native or Expo for the app.</li>
+<li><strong>Make the free version genuinely complete.</strong> Crippled calculators don't rank and don't get linked. Charge for saving, comparing, exporting, history — things that matter after using the tool more than once.</li>
+<li><strong>Give every tool a shareable result URL</strong> that encodes the inputs. Nearly free to implement and drives surprising organic traffic — people paste results into forums, group chats, and comment threads.</li>
+<li><strong>Pick ONE category.</strong> Ten property calculators under one brand outrank and out-earn 100 unrelated ones. Topical authority, one audience, one email list, one app that bundles the lot.</li>
+</ol>
+</div>
+</div>
+
+<footer style="margin-top:2rem;padding-top:1rem;border-top:1px solid #30363d;color:#475569;font-size:0.75rem;text-align:center">
+  100 Interactive Tools — Claude Edition • Build complexity + demand ratings • Generated by Hermes Agent
+</footer>
+
+</body>
+</html>
