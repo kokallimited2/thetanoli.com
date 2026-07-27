@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 Interactive Tools & Calculator Ideas — Website + Mobile App</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0d1117; color: #c9d1d9; line-height: 1.6;
+  max-width: 1100px; margin: 0 auto; padding: 2rem 1rem;
+}
+h1 { font-size: 1.8rem; margin-bottom: 0.25rem; color: #f0f6fc; }
+.subtitle { color: #8b949e; margin-bottom: 2rem; font-size: 0.9rem; }
+
+.stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.75rem; margin: 1.5rem 0 2rem; }
+.stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; text-align: center; }
+.stat-card .num { font-size: 1.6rem; font-weight: 700; color: #58a6ff; }
+.stat-card .lbl { font-size: 0.75rem; color: #8b949e; margin-top: 0.25rem; }
+
+.category { margin-bottom: 2.5rem; }
+.category h2 {
+  font-size: 1.3rem; color: #f0f6fc;
+  border-bottom: 2px solid #30363d; padding-bottom: 0.5rem; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+
+.tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.tool-card {
+  background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 0.75rem 1rem;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem;
+}
+.tool-num { color: #475569; font-size: 0.75rem; font-weight: 700; min-width: 2rem; }
+.tool-name { color: #f0f6fc; font-size: 0.9rem; font-weight: 600; }
+.tool-desc { color: #8b949e; font-size: 0.78rem; margin-top: 0.2rem; }
+.tool-mobile { color: #7ee787; font-size: 0.65rem; display: inline-block; margin-top: 0.3rem; }
+
+.legend { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; font-size: 0.8rem; color: #8b949e; }
+
+.monetise-box {
+  background: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem;
+}
+.monetise-box h3 { color: #f0f6fc; margin-bottom: 0.75rem; font-size: 1rem; }
+.monetise-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+.monetise-tier { background: #0d1117; border-radius: 8px; padding: 0.75rem; text-align: center; }
+.monetise-tier h4 { font-size: 0.9rem; }
+.monetise-tier .price { font-size: 1.4rem; font-weight: 700; color: #58a6ff; margin: 0.3rem 0; }
+.monetise-tier .features { font-size: 0.72rem; color: #8b949e; }
+.tier-free h4 { color: #7ee787; }
+.tier-pro h4 { color: #58a6ff; }
+.tier-life h4 { color: #d2a8ff; }
+
+@media (max-width: 768px) {
+  .tool-grid { grid-template-columns: 1fr; }
+  .monetise-grid { grid-template-columns: 1fr; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<a href="/" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;margin-bottom:16px;color:#94a3b8;padding:6px 12px;border:1px solid #30363d;border-radius:8px;background:#161b22;transition:all .2s;float:left;" onmouseover="this.style.background='#1e293b'" onmouseout="this.style.background='#161b22'">🏠 Dashboard Hub</a>
+<div style="clear:both"></div>
+
+<h1>🛠️ 100 Interactive Tools & Calculator Ideas</h1>
+<div class="subtitle">Each works as a website (GH Pages, 1-2 day build) AND a mobile app (PWA → Capacitor/Flutter). Monetised with display ads + freemium subscriptions.</div>
+
+<div class="stats-bar">
+  <div class="stat-card"><div class="num">100</div><div class="lbl">Total Ideas</div></div>
+  <div class="stat-card"><div class="num" style="color:#7ee787">20</div><div class="lbl">Finance & Money</div></div>
+  <div class="stat-card"><div class="num" style="color:#58a6ff">12</div><div class="lbl">Property & Home</div></div>
+  <div class="stat-card"><div class="num" style="color:#d29922">14</div><div class="lbl">Health & Fitness</div></div>
+  <div class="stat-card"><div class="num" style="color:#d2a8ff">10</div><div class="lbl">Education</div></div>
+  <div class="stat-card"><div class="num" style="color:#56d4dd">16</div><div class="lbl">Utility Tools</div></div>
+</div>
+
+<div class="legend">
+  <span>💷 Finance &nbsp;·&nbsp; 🏠 Property &nbsp;·&nbsp; 🏃 Health &nbsp;·&nbsp; 👶 Education &nbsp;·&nbsp; 🛠️ Utility &nbsp;·&nbsp; 🚗 Travel &nbsp;·&nbsp; 🔐 Security &nbsp;·&nbsp; 🎯 Niche</span>
+</div>
+
+<div class="monetise-box">
+  <h3>💰 Monetisation Model (per app)</h3>
+  <div class="monetise-grid">
+    <div class="monetise-tier tier-free">
+      <h4>Free</h4>
+      <div class="price">£0</div>
+      <div class="features">Core calculator + display ads</div>
+    </div>
+    <div class="monetise-tier tier-pro">
+      <h4>Pro</h4>
+      <div class="price">£3.99/mo</div>
+      <div class="features">No ads, history, export, widgets, dark theme</div>
+    </div>
+    <div class="monetise-tier tier-life">
+      <h4>Lifetime</h4>
+      <div class="price">£29.99</div>
+      <div class="features">One-time purchase, all Pro features forever</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- FINANCE & MONEY               -->
+<!-- ============================== -->
+<div class="category">
+<h2>💷 Finance & Money <span style="font-size:0.8rem;color:#8b949e;font-weight:400">(20 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card">
+<div>
+<div class="tool-name">1. Mortgage Calculator</div>
+<div class="tool-desc">Monthly payments, LTV, affordability, stamp duty, interest comparison</div>
+<div class="tool-mobile">📱 Save calculations, compare scenarios, amortisation chart</div>
+</div>
+<div class="tool-num">#1</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">2. Loan Repayment Calculator</div>
+<div class="tool-desc">Personal, car, student loan amortisation schedules</div>
+<div class="tool-mobile">📱 Payment calendar + reminder notifications</div>
+</div>
+<div class="tool-num">#2</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">3. Compound Interest Calculator</div>
+<div class="tool-desc">Investment growth with regular contributions, inflation-adjusted</div>
+<div class="tool-mobile">📱 Goal tracking with progress charts</div>
+</div>
+<div class="tool-num">#3</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">4. Currency Converter</div>
+<div class="tool-desc">Live forex rates, 160 currencies, historical rates</div>
+<div class="tool-mobile">📱 Home screen widget, offline rates, rate alerts</div>
+</div>
+<div class="tool-num">#4</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">5. Salary Calculator UK</div>
+<div class="tool-desc">Take-home pay after tax, NI, pension, student loan</div>
+<div class="tool-mobile">📱 Export payslip comparison, job offer comparison</div>
+</div>
+<div class="tool-num">#5</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">6. Crypto Profit Calculator</div>
+<div class="tool-desc">Buy/sell P&L, average cost, portfolio tracker</div>
+<div class="tool-mobile">📱 Portfolio dashboard + price alerts</div>
+</div>
+<div class="tool-num">#6</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">7. VAT Calculator</div>
+<div class="tool-desc">Add/remove VAT by rate, bulk calculations</div>
+<div class="tool-mobile">📱 Quick widget for business users, invoice mode</div>
+</div>
+<div class="tool-num">#7</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">8. Fuel Cost Calculator</div>
+<div class="tool-desc">Trip cost by distance + mpg, EV vs ICE comparison</div>
+<div class="tool-mobile">📱 Route-based cost with GPS, mileage log</div>
+</div>
+<div class="tool-num">#8</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">9. Tip Calculator</div>
+<div class="tool-desc">Split bill with tip %, round up options</div>
+<div class="tool-mobile">📱 Split by item, scan receipt, send payment requests</div>
+</div>
+<div class="tool-num">#9</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">10. Budget Planner</div>
+<div class="tool-desc">Monthly income vs expenses, category tracking</div>
+<div class="tool-mobile">📱 Expense logging with notifications, envelope system</div>
+</div>
+<div class="tool-num">#10</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">11. Inflation Calculator</div>
+<div class="tool-desc">Past/future money value, purchasing power adjustment</div>
+<div class="tool-mobile">📱 Cost-of-living comparison by year, charts</div>
+</div>
+<div class="tool-num">#11</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">12. Discount Calculator</div>
+<div class="tool-desc">Sale price after %, final cost, savings amount</div>
+<div class="tool-mobile">📱 Barcode scanner → instant discount check, price history</div>
+</div>
+<div class="tool-num">#12</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">13. Retirement Calculator</div>
+<div class="tool-desc">Pension needs, savings goal, retirement age planner</div>
+<div class="tool-mobile">📱 Milestone tracking with projections, pension consolidation</div>
+</div>
+<div class="tool-num">#13</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">14. Capital Gains Tax Calculator</div>
+<div class="tool-desc">CGT on shares, property, crypto, annual allowance</div>
+<div class="tool-mobile">📱 Annual allowance tracker, sale logging</div>
+</div>
+<div class="tool-num">#14</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">15. Invoice Generator</div>
+<div class="tool-desc">Create/email/save invoices with UK VAT, templates</div>
+<div class="tool-mobile">📱 Email PDF, payment status tracking, recurring invoices</div>
+</div>
+<div class="tool-num">#15</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">16. ROI Calculator</div>
+<div class="tool-desc">Return on investment, break-even point, payback period</div>
+<div class="tool-mobile">📱 Campaign comparison dashboard, multi-investment view</div>
+</div>
+<div class="tool-num">#16</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">17. Mortgage Overpayment Calculator</div>
+<div class="tool-desc">Overpayment savings, early repayment, interest saved</div>
+<div class="tool-mobile">📱 Monthly overpayment tracker, goal setting</div>
+</div>
+<div class="tool-num">#17</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">18. Holiday Pay Calculator</div>
+<div class="tool-desc">Statutory holiday entitlement + pay by hours/days</div>
+<div class="tool-mobile">📱 HR tool for small businesses, leave requests</div>
+</div>
+<div class="tool-num">#18</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">19. Universal Credit Calculator</div>
+<div class="tool-desc">Monthly entitlement, taper rate, deductions, elements</div>
+<div class="tool-mobile">📱 Monthly allowance tracker, budgeting insights</div>
+</div>
+<div class="tool-num">#19</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">20. Self Assessment Tax Helper</div>
+<div class="tool-desc">Tax return estimator, deadlines, thresholds, reliefs</div>
+<div class="tool-mobile">📱 Deadline reminders + document organiser, HMRC links</div>
+</div>
+<div class="tool-num">#20</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- PROPERTY & HOME               -->
+<!-- ============================== -->
+<div class="category">
+<h2>🏠 Property & Home <span style="font-size:0.8rem;color:#8b949e;font-weight:400">(12 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card">
+<div>
+<div class="tool-name">21. Rental Yield Calculator</div>
+<div class="tool-desc">Gross/net yield, cashflow, ROI on BTL properties</div>
+<div class="tool-mobile">📱 Portfolio tracker for landlords, property comparison</div>
+</div>
+<div class="tool-num">#21</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">22. Stamp Duty Calculator</div>
+<div class="tool-desc">UK stamp duty by price, buyer type, first-time buyer</div>
+<div class="tool-mobile">📱 Save property searches, compare costs by price band</div>
+</div>
+<div class="tool-num">#22</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">23. Floor Plan Area Calculator</div>
+<div class="tool-desc">Room dimensions → total sq ft/m, irregular shapes</div>
+<div class="tool-mobile">📱 AR camera to measure rooms, save floor plans</div>
+</div>
+<div class="tool-num">#23</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">24. Home Renovation Budget</div>
+<div class="tool-desc">Room-by-room cost estimator, material + labour</div>
+<div class="tool-mobile">📱 Track spending, compare contractor quotes, timeline</div>
+</div>
+<div class="tool-num">#24</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">25. Moving Cost Calculator</div>
+<div class="tool-desc">Removals, storage, cleaning, fees by house size</div>
+<div class="tool-mobile">📱 Moving checklist + timeline countdown, utility transfers</div>
+</div>
+<div class="tool-num">#25</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">26. Energy Performance Calculator</div>
+<div class="tool-desc">Estimated EPC rating, improvement savings, payback</div>
+<div class="tool-mobile">📱 Energy-saving tips by home type, grant checker</div>
+</div>
+<div class="tool-num">#26</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">27. BTL Affordability Calculator</div>
+<div class="tool-desc">BTL mortgage affordability, DSCR, interest coverage</div>
+<div class="tool-mobile">📱 Portfolio-wide DSCR monitoring, lender comparison</div>
+</div>
+<div class="tool-num">#27</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">28. Conveyancing Fee Calculator</div>
+<div class="tool-desc">Solicitor fees, searches, disbursements breakdown</div>
+<div class="tool-mobile">📱 Compare quotes from local solicitors, status tracker</div>
+</div>
+<div class="tool-num">#28</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">29. House Price Affordability</div>
+<div class="tool-desc">How much you can borrow by income + deposit</div>
+<div class="tool-mobile">📱 Mortgage pre-approval partner links, affordability cert</div>
+</div>
+<div class="tool-num">#29</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">30. Service Charge Calculator</div>
+<div class="tool-desc">Leasehold service fee by sqft, annual comparison</div>
+<div class="tool-mobile">📱 Annual fee tracker, dispute letter generator</div>
+</div>
+<div class="tool-num">#30</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">31. Council Tax Calculator</div>
+<div class="tool-desc">Band lookup by postcode, monthly payment, discounts</div>
+<div class="tool-mobile">📱 Split with housemates, payment reminders</div>
+</div>
+<div class="tool-num">#31</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">32. Home Insurance Calculator</div>
+<div class="tool-desc">Buildings + contents cover estimate by property</div>
+<div class="tool-mobile">📱 Policy comparison, renewal alerts, claim tracker</div>
+</div>
+<div class="tool-num">#32</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- HEALTH & FITNESS              -->
+<!-- ============================== -->
+<div class="category">
+<h2>🏃 Health & Fitness <span style="font-size:0.8rem;color:#8b949e;font-weight:400">(14 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card">
+<div>
+<div class="tool-name">33. BMI Calculator</div>
+<div class="tool-desc">BMI, healthy weight range, NHS guidelines, ideal weight</div>
+<div class="tool-mobile">📱 Track weight history with charts, goal setting</div>
+</div>
+<div class="tool-num">#33</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">34. Calorie Counter & BMR</div>
+<div class="tool-desc">BMR, TDEE, macro split by goal, activity level</div>
+<div class="tool-mobile">📱 Meal logging with barcode scanner, daily goal ring</div>
+</div>
+<div class="tool-num">#34</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">35. Body Fat Calculator</div>
+<div class="tool-desc">% body fat, lean mass, fat mass by multiple methods</div>
+<div class="tool-mobile">📱 Progress photos + measurements, trend charts</div>
+</div>
+<div class="tool-num">#35</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">36. Water Intake Tracker</div>
+<div class="tool-desc">Daily water goal by weight, activity, climate</div>
+<div class="tool-mobile">📱 Hourly reminders, streak tracking, history chart</div>
+</div>
+<div class="tool-num">#36</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">37. Sleep Calculator</div>
+<div class="tool-desc">Bedtime/wake time by 90-min sleep cycles</div>
+<div class="tool-mobile">📱 Smart alarm, sleep log, trends, nap planner</div>
+</div>
+<div class="tool-num">#37</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">38. Pregnancy Due Date</div>
+<div class="tool-desc">Due date by LMP/conception, week-by-week tracker</div>
+<div class="tool-mobile">📱 Contraction timer, kick counter, appointment log</div>
+</div>
+<div class="tool-num">#38</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">39. Blood Pressure Tracker</div>
+<div class="tool-desc">BP readings chart, trends, average, zone alerts</div>
+<div class="tool-mobile">📱 Medication reminders, doctor report PDF, trends</div>
+</div>
+<div class="tool-num">#39</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">40. Heart Rate Zone Calculator</div>
+<div class="tool-desc">Target HR zones by age, max HR, resting HR</div>
+<div class="tool-mobile">📱 Real-time zone indicator via phone sensor, workout log</div>
+</div>
+<div class="tool-num">#40</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">41. Protein Calculator</div>
+<div class="tool-desc">Daily protein need by weight, activity, goal type</div>
+<div class="tool-mobile">📱 Meal logging, recipe suggestions, supplement tracker</div>
+</div>
+<div class="tool-num">#41</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">42. Walking Steps Converter</div>
+<div class="tool-desc">Steps to distance, calories, time, elevation</div>
+<div class="tool-mobile">📱 GPS walk tracker, achievements, weekly goals</div>
+</div>
+<div class="tool-num">#42</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">43. Fasting Timer</div>
+<div class="tool-desc">Intermittent fasting schedule by method (16:8, 5:2, etc)</div>
+<div class="tool-mobile">📱 Fast tracking with progress badges, history stats</div>
+</div>
+<div class="tool-num">#43</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">44. Alcohol Units Calculator</div>
+<div class="tool-desc">Units by drink type/size, calories, safe limits</div>
+<div class="tool-mobile">📱 Weekly drink log, health insights, goal tracking</div>
+</div>
+<div class="tool-num">#44</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">45. Macro Calculator</div>
+<div class="tool-desc">Carb/fat/protein split by diet (keto, paleo, vegan, etc)</div>
+<div class="tool-mobile">📱 Meal plan generator from macros, recipe database</div>
+</div>
+<div class="tool-num">#45</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">46. Period Tracker</div>
+<div class="tool-desc">Cycle prediction, ovulation window, symptoms log</div>
+<div class="tool-mobile">📱 Fertility window, PMS log, period calendar widget</div>
+</div>
+<div class="tool-num">#46</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- EDUCATION & PARENTING         -->
+<!-- ============================== -->
+<div class="category">
+<h2>👶 Education & Parenting <span style="font-size:0.8rem;color:#8b949e;font-weight:400">(10 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card">
+<div>
+<div class="tool-name">47. Grade Calculator</div>
+<div class="tool-desc">Weighted average, GPA, percentage needed on final exam</div>
+<div class="tool-mobile">📱 Track assignments, push notifications, grade predictor</div>
+</div>
+<div class="tool-num">#47</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">48. Pomodoro Study Timer</div>
+<div class="tool-desc">Study/break intervals with session analytics</div>
+<div class="tool-mobile">📱 Focus sessions, distraction blocker, streak tracking</div>
+</div>
+<div class="tool-num">#48</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">49. Flashcard Maker</div>
+<div class="tool-desc">Create, study, share flashcards with spaced repetition</div>
+<div class="tool-mobile">📱 Quiz mode, swipe review, progress stats, share decks</div>
+</div>
+<div class="tool-num">#49</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">50. Revision Timetable</div>
+<div class="tool-desc">Subject schedule by exam dates, time blocking</div>
+<div class="tool-mobile">📱 Daily push notifications, progress tracking, reschedule</div>
+</div>
+<div class="tool-num">#50</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">51. Child Height Predictor</div>
+<div class="tool-desc">Adult height prediction by parental heights, percentile</div>
+<div class="tool-mobile">📱 Growth chart tracking, milestone logs</div>
+</div>
+<div class="tool-num">#51</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">52. 11+ Exam Score Calculator</div>
+<div class="tool-desc">Scores, percentiles, school match probability</div>
+<div class="tool-mobile">📱 Practice test tracker, weak area analysis</div>
+</div>
+<div class="tool-num">#52</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">53. Reading Level Checker</div>
+<div class="tool-desc">Text difficulty, grade level (Flesch, Gunning Fog)</div>
+<div class="tool-mobile">📱 Reading log, book recommendations by level</div>
+</div>
+<div class="tool-num">#53</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">54. School Holiday Calendar</div>
+<div class="tool-desc">Term dates, half-term, inset days by region</div>
+<div class="tool-mobile">📱 Countdown, activity planner per holiday, notifications</div>
+</div>
+<div class="tool-num">#54</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">55. Homework Planner</div>
+<div class="tool-desc">Assignment tracker, time estimate, priority sorting</div>
+<div class="tool-mobile">📱 Reminder notifications, parent dashboard view</div>
+</div>
+<div class="tool-num">#55</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">56. Vocabulary Builder</div>
+<div class="tool-desc">Daily word, definition, example, quiz with spaced repetition</div>
+<div class="tool-mobile">📱 Home screen widget, daily notification, streak tracking</div>
+</div>
+<div class="tool-num">#56</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- UTILITY TOOLS                -->
+<!-- ============================== -->
+<div class="category">
+<h2>🛠️ Utility Tools <span style="font-size:0.8rem;color:#8b949e;font-weight:400">(16 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card">
+<div>
+<div class="tool-name">57. QR Code Generator</div>
+<div class="tool-desc">Generate QR codes for URLs, text, WiFi, vCard, email</div>
+<div class="tool-mobile">📱 Scan + generate, history, custom colours, logo overlay</div>
+</div>
+<div class="tool-num">#57</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">58. Barcode Scanner</div>
+<div class="tool-desc">Product lookup, price comparison, history tracking</div>
+<div class="tool-mobile">📱 Shopping companion, price history chart, deal alerts</div>
+</div>
+<div class="tool-num">#58</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">59. Unit Converter Pro</div>
+<div class="tool-desc">Length, weight, temp, area, volume, speed, pressure</div>
+<div class="tool-mobile">📱 Widget for quick conversions, offline mode, history</div>
+</div>
+<div class="tool-num">#59</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">60. Time Zone Converter</div>
+<div class="tool-desc">World clock, meeting planner across time zones</div>
+<div class="tool-mobile">📱 Meeting scheduler, world clock widget, DST aware</div>
+</div>
+<div class="tool-num">#60</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">61. Text Counter</div>
+<div class="tool-desc">Words, characters, sentences, paragraphs, reading time</div>
+<div class="tool-mobile">📱 Writing stats, daily goals, export summaries</div>
+</div>
+<div class="tool-num">#61</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">62. Random Generator Hub</div>
+<div class="tool-desc">Random numbers, names, teams, colours, decisions</div>
+<div class="tool-mobile">📱 Dice roller, wheel spinner, coin flip with animation</div>
+</div>
+<div class="tool-num">#62</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">63. Colour Palette Picker</div>
+<div class="tool-desc">HEX/RGB picker, harmonies, gradient generator</div>
+<div class="tool-mobile">📱 Camera → colour extraction, export to CSS/JSON</div>
+</div>
+<div class="tool-num">#63</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">64. Password Generator</div>
+<div class="tool-desc">Strong passwords, strength check, memorable phrases</div>
+<div class="tool-mobile">📱 Biometric-unlock password vault, autofill, breach check</div>
+</div>
+<div class="tool-num">#64</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">65. Countdown Timer</div>
+<div class="tool-desc">Event countdown, anniversary, deadline tracker</div>
+<div class="tool-mobile">📱 Home screen widget, notification at zero, multiple timers</div>
+</div>
+<div class="tool-num">#65</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">66. Stopwatch & Lap Timer</div>
+<div class="tool-desc">Precision timer, lap splits, interval timer</div>
+<div class="tool-mobile">📱 Fitness interval timer, lap history, voice announcements</div>
+</div>
+<div class="tool-num">#66</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">67. Date Calculator</div>
+<div class="tool-desc">Days between dates, add/subtract days, business days</div>
+<div class="tool-mobile">📱 Event date planner, age calculator, workdays counter</div>
+</div>
+<div class="tool-num">#67</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">68. Age Calculator</div>
+<div class="tool-desc">Exact age in years/months/days/hours/minutes</div>
+<div class="tool-mobile">📱 Age milestones, birthday countdown, zodiac sign</div>
+</div>
+<div class="tool-num">#68</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">69. Tip + Split Calculator</div>
+<div class="tool-desc">Quick tip by %, split bill by people or items</div>
+<div class="tool-mobile">📱 QR pay link, scan receipt OCR, split with photo</div>
+</div>
+<div class="tool-num">#69</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">70. Shopping List Organiser</div>
+<div class="tool-desc">Shared lists by store aisle, categories, templates</div>
+<div class="tool-mobile">📱 Barcode add, sync with family, checklist mode, widget</div>
+</div>
+<div class="tool-num">#70</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">71. Notes Lite & Checklist</div>
+<div class="tool-desc">Quick notes, categories, checklists, priority tags</div>
+<div class="tool-mobile">📱 Voice notes, checklist mode, widget, cloud sync</div>
+</div>
+<div class="tool-num">#71</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">72. PDF Merge & Split Tool</div>
+<div class="tool-desc">Merge, split, compress, convert PDF files client-side</div>
+<div class="tool-mobile">📱 Document scanner with camera, batch processing</div>
+</div>
+<div class="tool-num">#72</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- CAR & TRAVEL                 -->
+<!-- ============================== -->
+<div class="category">
+<h2>🚗 Car & Travel <span style="font-size:0.8rem;color:#8b949e;font-weight:400">(8 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card">
+<div>
+<div class="tool-name">73. MOT Due Date Checker</div>
+<div class="tool-desc">MOT remaining time, history lookup, annual reminders</div>
+<div class="tool-mobile">📱 Push notification, book garage, service history log</div>
+</div>
+<div class="tool-num">#73</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">74. Car Fuel Cost Calculator</div>
+<div class="tool-desc">Trip fuel cost, annual budget, EV vs ICE savings</div>
+<div class="tool-mobile">📱 Route-based cost with GPS, mileage log, fill-up tracker</div>
+</div>
+<div class="tool-num">#74</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">75. Parking Cost Calculator</div>
+<div class="tool-desc">Hourly/daily/season ticket comparison, best value</div>
+<div class="tool-mobile">📱 GPS nearest parking, real-time rates, parking timer</div>
+</div>
+<div class="tool-num">#75</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">76. Flight Carbon Calculator</div>
+<div class="tool-desc">Flight emissions by route, class, offset cost</div>
+<div class="tool-mobile">📱 Eco scorecard, offset via partner, travel history</div>
+</div>
+<div class="tool-num">#76</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">77. Packing Checklist</div>
+<div class="tool-desc">Trip duration + destination → auto packing list</div>
+<div class="tool-mobile">📱 Weather-based suggestions, template save, share</div>
+</div>
+<div class="tool-num">#77</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">78. Visa Checker UK</div>
+<div class="tool-desc">Do I need a visa? by nationality + purpose of travel</div>
+<div class="tool-mobile">📱 Document expiry tracker, application checklist</div>
+</div>
+<div class="tool-num">#78</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">79. Road Trip Planner</div>
+<div class="tool-desc">Stops, distance, fuel cost, time, POIs along route</div>
+<div class="tool-mobile">📱 GPS navigation, offline maps, accommodation booking</div>
+</div>
+<div class="tool-num">#79</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">80. Trip Budget Converter</div>
+<div class="tool-desc">Trip budget in home currency → foreign daily allowance</div>
+<div class="tool-mobile">📱 Real-time exchange widget, expense logging, daily limit</div>
+</div>
+<div class="tool-num">#80</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- SECURITY & TECH              -->
+<!-- ============================== -->
+<div class="category">
+<h2>🔐 Security & Tech <span style="font-size:0.8rem;color:#8b949e;font-weight:400">(8 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card">
+<div>
+<div class="tool-name">81. Password Strength Checker</div>
+<div class="tool-desc">Analyse passwords, score, improvement suggestions</div>
+<div class="tool-mobile">📱 Biometric-secured vault, weak password audit, breach check</div>
+</div>
+<div class="tool-num">#81</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">82. Data Breach Checker</div>
+<div class="tool-desc">Check email against known breaches, breach details</div>
+<div class="tool-mobile">📱 Monitor + push alert on new breaches, affected passwords</div>
+</div>
+<div class="tool-num">#82</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">83. Encryption Tool</div>
+<div class="tool-desc">Text encrypt/decrypt with key, multiple algorithms</div>
+<div class="tool-mobile">📱 Secure messaging companion, clipboard integration</div>
+</div>
+<div class="tool-num">#83</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">84. 2FA Authenticator</div>
+<div class="tool-desc">TOTP code generator, QR scan to add, backup codes</div>
+<div class="tool-mobile">📱 All-in-one authenticator, encrypted backup, iCloud sync</div>
+</div>
+<div class="tool-num">#84</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">85. IP & Network Checker</div>
+<div class="tool-desc">IP, location, ISP, DNS, port check, leak test</div>
+<div class="tool-mobile">📱 WiFi security checker, VPN leak test, speed test</div>
+</div>
+<div class="tool-num">#85</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">86. WiFi Speed Test</div>
+<div class="tool-desc">Download/upload, ping, jitter, signal strength</div>
+<div class="tool-mobile">📱 History charts, provider comparison, coverage map</div>
+</div>
+<div class="tool-num">#86</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">87. File Hash Checker</div>
+<div class="tool-desc">MD5, SHA1, SHA256, SHA512 of text or files</div>
+<div class="tool-mobile">📱 File integrity verifier, checksum generator</div>
+</div>
+<div class="tool-num">#87</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">88. JSON/CSV Formatter</div>
+<div class="tool-desc">Pretty-print, validate, convert between formats</div>
+<div class="tool-mobile">📱 Developer tool, REST API tester, syntax highlighter</div>
+</div>
+<div class="tool-num">#88</div>
+</div>
+
+</div>
+</div>
+
+<!-- ============================== -->
+<!-- SPECIALISED NICHE            -->
+<!-- ============================== -->
+<div class="category">
+<h2>🎯 Specialised Niche <span style="font-size:0.8rem;color:#8b949e;font-weight:400">(12 tools)</span></h2>
+<div class="tool-grid">
+
+<div class="tool-card">
+<div>
+<div class="tool-name">89. Wedding Budget Planner</div>
+<div class="tool-desc">Guest count → budget allocation by category</div>
+<div class="tool-mobile">📱 Vendor tracker, guest list, checklist, seating chart</div>
+</div>
+<div class="tool-num">#89</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">90. Pet Age Calculator</div>
+<div class="tool-desc">Dog/cat/rabbit years to human years by breed</div>
+<div class="tool-mobile">📱 Vaccination reminders, vet appointment tracker, weight log</div>
+</div>
+<div class="tool-num">#90</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">91. Garden Planner</div>
+<div class="tool-desc">Space → plant recommendations by sun/shade/soil</div>
+<div class="tool-mobile">📱 Plant care reminders, sun tracker, watering schedule</div>
+</div>
+<div class="tool-num">#91</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">92. Fishing Tide Calculator</div>
+<div class="tool-desc">Tide times, height, fishing rating by location</div>
+<div class="tool-mobile">📱 GPS tide alerts, catch log, best fishing times</div>
+</div>
+<div class="tool-num">#92</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">93. Baking Converter</div>
+<div class="tool-desc">Grams ↔ cups, ingredient scaling, oven temp conversion</div>
+<div class="tool-mobile">📱 Recipe adjuster by servings, timer, substitution guide</div>
+</div>
+<div class="tool-num">#93</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">94. Wine Tracker</div>
+<div class="tool-desc">ABV, calories per glass, tasting notes, cellar inventory</div>
+<div class="tool-mobile">📱 Drink diary, barcode scan, pairing suggestions, cellar value</div>
+</div>
+<div class="tool-num">#94</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">95. Fermentation Timer</div>
+<div class="tool-desc">Ferment duration by food type, temperature log</div>
+<div class="tool-mobile">📱 Temperature alarm, batch notes, recipe scaling</div>
+</div>
+<div class="tool-num">#95</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">96. Sewing Pattern Adjuster</div>
+<div class="tool-desc">Size conversion, fabric quantity calculator</div>
+<div class="tool-mobile">📱 Project tracker, material shopping list, stash inventory</div>
+</div>
+<div class="tool-num">#96</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">97. Knitting Row Counter</div>
+<div class="tool-desc">Row/stitch count, pattern repeat tracker, gauge calculator</div>
+<div class="tool-mobile">📱 Voice-controlled counter, project notes, yarn stash</div>
+</div>
+<div class="tool-num">#97</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">98. Chess Timer</div>
+<div class="tool-desc">Tournament-style dual timer, delay modes, increments</div>
+<div class="tool-mobile">📱 Game history, ELO tracker, puzzle mode, move log</div>
+</div>
+<div class="tool-num">#98</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">99. Meditation Timer</div>
+<div class="tool-desc">Duration, interval bells, session presets</div>
+<div class="tool-mobile">📱 Streak tracking, session log, ambient sounds, stats</div>
+</div>
+<div class="tool-num">#99</div>
+</div>
+
+<div class="tool-card">
+<div>
+<div class="tool-name">100. Mood Tracker</div>
+<div class="tool-desc">Daily mood log, activity tags, journal notes</div>
+<div class="tool-mobile">📱 Trends chart, PDF export for therapist, insights</div>
+</div>
+<div class="tool-num">#100</div>
+</div>
+
+</div>
+</div>
+
+<footer style="margin-top:2rem;padding-top:1rem;border-top:1px solid #30363d;color:#475569;font-size:0.75rem;text-align:center">
+  100 Interactive Tools & Calculator Ideas • Website + Mobile App • Generated by Hermes Agent
+</footer>
+
+</body>
+</html>
